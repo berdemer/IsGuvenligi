@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
+import { useTranslations } from 'next-intl'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -27,6 +28,7 @@ import KeycloakIntegration from "@/components/admin/policies/KeycloakIntegration
 import toast from "react-hot-toast"
 
 export default function AccessPoliciesPage() {
+  const t = useTranslations('policies')
   const [activeTab, setActiveTab] = useState("policies")
   const [policies, setPolicies] = useState<AccessPolicy[]>([])
   const [analytics, setAnalytics] = useState<PolicyAnalytics | null>(null)
@@ -435,7 +437,7 @@ export default function AccessPoliciesPage() {
       setConflicts(mockConflicts)
       setLastUpdated(new Date())
     } catch (error) {
-      toast.error('Failed to load policies')
+      toast.error(t('failedToLoad') || 'Failed to load policies')
     } finally {
       setLoading(false)
     }
@@ -447,17 +449,17 @@ export default function AccessPoliciesPage() {
   }, [loadData])
 
   const handleCreatePolicy = () => {
-    toast.success("Create Policy dialog would open here")
+    toast.success(t('createPolicyDialog'))
     // TODO: Open policy creation dialog/page
   }
 
   const handleExport = () => {
-    toast.success("Policy export would start here")
+    toast.success(t('policyExportStart'))
     // TODO: Export functionality
   }
 
   const handleViewReports = () => {
-    toast.success("Navigate to reports page")
+    toast.success(t('navigateToReports'))
     // TODO: Navigate to detailed reports
   }
 
@@ -466,7 +468,7 @@ export default function AccessPoliciesPage() {
       <div className="flex items-center justify-center min-h-screen">
         <div className="flex items-center space-x-2">
           <RefreshCw className="h-4 w-4 animate-spin" />
-          <span>Loading...</span>
+          <span>{t('loading')}</span>
         </div>
       </div>
     )
@@ -476,23 +478,23 @@ export default function AccessPoliciesPage() {
     <div className="flex-1 space-y-6 p-8 pt-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-bold tracking-tight">Access Policies</h2>
+          <h2 className="text-3xl font-bold tracking-tight">{t('title')}</h2>
           <p className="text-muted-foreground">
-            Manage access control policies and permissions
+            {t('description')}
           </p>
         </div>
         <div className="flex items-center space-x-2">
           <Button variant="outline" onClick={handleViewReports}>
             <BarChart3 className="h-4 w-4 mr-2" />
-            View Reports
+            {t('viewReports')}
           </Button>
           <Button variant="outline" onClick={handleExport}>
             <Download className="h-4 w-4 mr-2" />
-            Export CSV
+            {t('exportCsv')}
           </Button>
           <Button onClick={handleCreatePolicy}>
             <Plus className="h-4 w-4 mr-2" />
-            Create Policy
+            {t('createPolicy')}
           </Button>
         </div>
       </div>
@@ -501,20 +503,20 @@ export default function AccessPoliciesPage() {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Policies</CardTitle>
+            <CardTitle className="text-sm font-medium">{t('totalPolicies')}</CardTitle>
             <FileText className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{analytics?.totalPolicies || 0}</div>
             <p className="text-xs text-muted-foreground">
-              <span className="text-green-600">↗ +3</span> from last month
+              <span className="text-green-600">↗ +3</span> {t('fromLastMonth')}
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Active Policies</CardTitle>
+            <CardTitle className="text-sm font-medium">{t('activePolicies')}</CardTitle>
             <CheckCircle className="h-4 w-4 text-green-600" />
           </CardHeader>
           <CardContent>
@@ -522,14 +524,14 @@ export default function AccessPoliciesPage() {
               {analytics?.activePolicies || 0}
             </div>
             <p className="text-xs text-muted-foreground">
-              {analytics && Math.round((analytics.activePolicies / analytics.totalPolicies) * 100)}% of total
+              {analytics && Math.round((analytics.activePolicies / analytics.totalPolicies) * 100)}% {t('ofTotal')}
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Conflicts</CardTitle>
+            <CardTitle className="text-sm font-medium">{t('conflicts')}</CardTitle>
             <AlertTriangle className="h-4 w-4 text-red-600" />
           </CardHeader>
           <CardContent>
@@ -537,20 +539,20 @@ export default function AccessPoliciesPage() {
               {analytics?.conflictingPolicies || 0}
             </div>
             <p className="text-xs text-muted-foreground">
-              <span className="text-red-600">requires attention</span>
+              <span className="text-red-600">{t('requiresAttention')}</span>
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Enforced Resources</CardTitle>
+            <CardTitle className="text-sm font-medium">{t('enforcedResources')}</CardTitle>
             <Shield className="h-4 w-4 text-blue-600" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{analytics?.enforcedResources || 0}</div>
             <p className="text-xs text-muted-foreground">
-              applications protected
+              {t('applicationsProtected')}
             </p>
           </CardContent>
         </Card>
@@ -561,8 +563,8 @@ export default function AccessPoliciesPage() {
         <Alert variant="destructive">
           <AlertTriangle className="h-4 w-4" />
           <AlertDescription>
-            <strong>{conflicts.length} conflicts detected</strong>
-            {" "}Review conflicts to prevent access issues
+            <strong>{conflicts.length} {t('conflictsDetected')}</strong>
+            {" "}{t('reviewConflicts')}
           </AlertDescription>
         </Alert>
       )}
@@ -571,11 +573,11 @@ export default function AccessPoliciesPage() {
       <div className="flex items-center justify-between text-sm text-muted-foreground">
         <div className="flex items-center space-x-2">
           <Clock className="h-4 w-4" />
-          <span>Last Updated: {lastUpdated.toLocaleString()}</span>
+          <span>{t('lastUpdated')}: {lastUpdated.toLocaleString()}</span>
         </div>
         <Button variant="ghost" size="sm" onClick={loadData}>
           <RefreshCw className="h-4 w-4 mr-2" />
-          Refresh
+          {t('refresh')}
         </Button>
       </div>
 
@@ -584,13 +586,13 @@ export default function AccessPoliciesPage() {
         <TabsList className="grid w-full grid-cols-6">
           <TabsTrigger value="policies" className="flex items-center space-x-2">
             <FileText className="h-4 w-4" />
-            <span>Policies</span>
+            <span>{t('policies')}</span>
             <Badge variant="secondary">{analytics?.totalPolicies || 0}</Badge>
           </TabsTrigger>
           
           <TabsTrigger value="conflicts" className="flex items-center space-x-2">
             <AlertTriangle className="h-4 w-4" />
-            <span>Conflicts</span>
+            <span>{t('conflicts')}</span>
             {conflicts.length > 0 && (
               <Badge variant="destructive">{conflicts.length}</Badge>
             )}
@@ -598,22 +600,22 @@ export default function AccessPoliciesPage() {
           
           <TabsTrigger value="simulation" className="flex items-center space-x-2">
             <Activity className="h-4 w-4" />
-            <span>Simulation</span>
+            <span>{t('simulation')}</span>
           </TabsTrigger>
           
           <TabsTrigger value="analytics" className="flex items-center space-x-2">
             <BarChart3 className="h-4 w-4" />
-            <span>Analytics</span>
+            <span>{t('analytics')}</span>
           </TabsTrigger>
           
           <TabsTrigger value="audit" className="flex items-center space-x-2">
             <Eye className="h-4 w-4" />
-            <span>Audit</span>
+            <span>{t('audit')}</span>
           </TabsTrigger>
           
           <TabsTrigger value="keycloak" className="flex items-center space-x-2">
             <Shield className="h-4 w-4" />
-            <span>Keycloak</span>
+            <span>{t('keycloak')}</span>
           </TabsTrigger>
         </TabsList>
 
@@ -623,11 +625,11 @@ export default function AccessPoliciesPage() {
             loading={loading}
             onPolicyUpdate={(policy) => {
               setPolicies(prev => prev.map(p => p.id === policy.id ? policy : p))
-              toast.success("Policy updated")
+              toast.success(t('policyUpdated'))
             }}
             onPolicyDelete={(policyId) => {
               setPolicies(prev => prev.filter(p => p.id !== policyId))
-              toast.success("Policy deleted")
+              toast.success(t('policyDeleted'))
             }}
             onPolicyClone={(policy) => {
               const clonedPolicy = {
@@ -640,10 +642,10 @@ export default function AccessPoliciesPage() {
                 updatedAt: new Date().toISOString()
               }
               setPolicies(prev => [clonedPolicy, ...prev])
-              toast.success("Policy cloned")
+              toast.success(t('policyCloned'))
             }}
             onPolicyEdit={(policy) => {
-              toast.success(`Edit policy: ${policy.name}`)
+              toast.success(`${t('editPolicy')}: ${policy.name}`)
               // TODO: Open policy editor
             }}
           />

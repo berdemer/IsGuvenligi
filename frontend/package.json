@@ -12,10 +12,9 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "i18n:check": "node scripts/i18n-check.js",
-    "i18n:generate": "node scripts/i18n-check.js --generate",
-    "i18n:extract": "node scripts/i18n-extract.js",
-    "prebuild": "npm run i18n:check"
+    "i18n:validate": "node scripts/validate-i18n.js",
+    "i18n:report": "node scripts/validate-i18n.js --report",
+    "prebuild": "npm run i18n:validate && npm run type-check"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
@@ -51,6 +50,7 @@
     "axios": "^1.6.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "cookies-next": "^4.2.1",
     "date-fns": "^2.30.0",
     "js-cookie": "^3.0.5",
     "keycloak-js": "^23.0.1",

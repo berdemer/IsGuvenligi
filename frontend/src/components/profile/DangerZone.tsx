@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useTranslations } from 'next-intl'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
@@ -25,6 +26,7 @@ interface DangerZoneProps {
 }
 
 export function DangerZone({ profileData }: DangerZoneProps) {
+  const t = useTranslations('profile.dangerZone')
   const router = useRouter()
   const [revokeDialogOpen, setRevokeDialogOpen] = useState(false)
   const [deactivateDialogOpen, setDeactivateDialogOpen] = useState(false)
@@ -43,7 +45,7 @@ export function DangerZone({ profileData }: DangerZoneProps) {
       // Mock API call
       await new Promise(resolve => setTimeout(resolve, 2000))
       
-      toast.success("All sessions revoked successfully. You will be redirected to login.")
+      toast.success(t('revokeAllSessions.successMessage'))
       
       // Redirect to login after a short delay
       setTimeout(() => {
@@ -52,7 +54,7 @@ export function DangerZone({ profileData }: DangerZoneProps) {
       
       setRevokeDialogOpen(false)
     } catch (error) {
-      toast.error("Failed to revoke all sessions")
+      toast.error(t('revokeAllSessions.errorMessage'))
     } finally {
       setLoading(false)
     }
@@ -60,7 +62,7 @@ export function DangerZone({ profileData }: DangerZoneProps) {
 
   const handleDeactivateAccount = async () => {
     if (confirmationText !== 'DEACTIVATE') {
-      toast.error('Please type DEACTIVATE to confirm')
+      toast.error(t('deactivateAccount.confirmationError'))
       return
     }
 
@@ -69,7 +71,7 @@ export function DangerZone({ profileData }: DangerZoneProps) {
       // Mock API call
       await new Promise(resolve => setTimeout(resolve, 2500))
       
-      toast.success("Account deactivated successfully")
+      toast.success(t('deactivateAccount.successMessage'))
       
       // Redirect to login after deactivation
       setTimeout(() => {
@@ -78,7 +80,7 @@ export function DangerZone({ profileData }: DangerZoneProps) {
       
       setDeactivateDialogOpen(false)
     } catch (error) {
-      toast.error("Failed to deactivate account")
+      toast.error(t('deactivateAccount.errorMessage'))
     } finally {
       setLoading(false)
     }
@@ -89,14 +91,14 @@ export function DangerZone({ profileData }: DangerZoneProps) {
       <CardHeader>
         <CardTitle className="flex items-center space-x-2 text-destructive">
           <AlertTriangle className="h-5 w-5" />
-          <span>Danger Zone</span>
+          <span>{t('title')}</span>
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <Alert variant="destructive">
           <AlertTriangle className="h-4 w-4" />
           <AlertDescription>
-            These actions are irreversible. Proceed with caution.
+            {t('irreversibleWarning')}
           </AlertDescription>
         </Alert>
 
@@ -104,14 +106,14 @@ export function DangerZone({ profileData }: DangerZoneProps) {
         <div className="p-4 border border-destructive/20 rounded-lg space-y-3">
           <div className="flex items-start justify-between">
             <div className="space-y-1">
-              <h4 className="font-medium text-destructive">Revoke All Sessions</h4>
+              <h4 className="font-medium text-destructive">{t('revokeAllSessions.title')}</h4>
               <p className="text-sm text-muted-foreground">
-                Sign out from all devices and browsers immediately. This will terminate all active sessions except the current one.
+                {t('revokeAllSessions.description')}
               </p>
               <div className="text-xs text-muted-foreground space-y-1">
-                <p>• All other devices will be signed out</p>
-                <p>• You will remain signed in on this device</p>
-                <p>• You'll need to sign in again on other devices</p>
+                <p>{t('revokeAllSessions.info1')}</p>
+                <p>{t('revokeAllSessions.info2')}</p>
+                <p>{t('revokeAllSessions.info3')}</p>
               </div>
             </div>
             <Dialog open={revokeDialogOpen} onOpenChange={setRevokeDialogOpen}>
@@ -122,17 +124,17 @@ export function DangerZone({ profileData }: DangerZoneProps) {
                   disabled={!userPermissions.canRevokeAllSessions}
                 >
                   <LogOut className="h-4 w-4 mr-2" />
-                  Revoke All
+                  {t('revokeAllSessions.button')}
                 </Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
                   <DialogTitle className="flex items-center space-x-2">
                     <Shield className="h-5 w-5" />
-                    <span>Revoke All Sessions</span>
+                    <span>{t('revokeAllSessions.dialogTitle')}</span>
                   </DialogTitle>
                   <DialogDescription>
-                    This will immediately sign you out of all other devices and browsers.
+                    {t('revokeAllSessions.dialogDescription')}
                   </DialogDescription>
                 </DialogHeader>
                 
@@ -140,12 +142,12 @@ export function DangerZone({ profileData }: DangerZoneProps) {
                   <AlertTriangle className="h-4 w-4" />
                   <AlertDescription>
                     <div className="space-y-2">
-                      <p className="font-medium">This action will:</p>
+                      <p className="font-medium">{t('revokeAllSessions.actionWillTitle')}</p>
                       <ul className="list-disc list-inside text-sm space-y-1">
-                        <li>Terminate all active sessions on other devices</li>
-                        <li>Require re-authentication on those devices</li>
-                        <li>Keep you signed in on this current device</li>
-                        <li>Take effect immediately</li>
+                        <li>{t('revokeAllSessions.action1')}</li>
+                        <li>{t('revokeAllSessions.action2')}</li>
+                        <li>{t('revokeAllSessions.action3')}</li>
+                        <li>{t('revokeAllSessions.action4')}</li>
                       </ul>
                     </div>
                   </AlertDescription>
@@ -157,14 +159,14 @@ export function DangerZone({ profileData }: DangerZoneProps) {
                     onClick={() => setRevokeDialogOpen(false)}
                     disabled={loading}
                   >
-                    Cancel
+                    {t('revokeAllSessions.cancel')}
                   </Button>
                   <Button
                     variant="destructive"
                     onClick={handleRevokeAllSessions}
                     disabled={loading}
                   >
-                    {loading ? 'Revoking...' : 'Revoke All Sessions'}
+                    {loading ? t('revokeAllSessions.revoking') : t('revokeAllSessions.confirmButton')}
                   </Button>
                 </DialogFooter>
               </DialogContent>
@@ -178,15 +180,15 @@ export function DangerZone({ profileData }: DangerZoneProps) {
         <div className="p-4 border border-destructive/20 rounded-lg space-y-3">
           <div className="flex items-start justify-between">
             <div className="space-y-1">
-              <h4 className="font-medium text-destructive">Deactivate Account</h4>
+              <h4 className="font-medium text-destructive">{t('deactivateAccount.title')}</h4>
               <p className="text-sm text-muted-foreground">
-                Permanently deactivate your account. This action cannot be undone without administrator intervention.
+                {t('deactivateAccount.description')}
               </p>
               <div className="text-xs text-muted-foreground space-y-1">
-                <p>• Account will be immediately disabled</p>
-                <p>• Data will be retained for compliance</p>
-                <p>• Requires administrator approval to reactivate</p>
-                <p>• All sessions will be terminated</p>
+                <p>{t('deactivateAccount.info1')}</p>
+                <p>{t('deactivateAccount.info2')}</p>
+                <p>{t('deactivateAccount.info3')}</p>
+                <p>{t('deactivateAccount.info4')}</p>
               </div>
             </div>
             <Dialog open={deactivateDialogOpen} onOpenChange={setDeactivateDialogOpen}>
@@ -197,17 +199,17 @@ export function DangerZone({ profileData }: DangerZoneProps) {
                   disabled={!userPermissions.canDeactivate}
                 >
                   <UserX className="h-4 w-4 mr-2" />
-                  Deactivate
+                  {t('deactivateAccount.button')}
                 </Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
                   <DialogTitle className="flex items-center space-x-2">
                     <UserX className="h-5 w-5" />
-                    <span>Deactivate Account</span>
+                    <span>{t('deactivateAccount.dialogTitle')}</span>
                   </DialogTitle>
                   <DialogDescription>
-                    This will permanently deactivate your account. This action cannot be undone without administrator help.
+                    {t('deactivateAccount.dialogDescription')}
                   </DialogDescription>
                 </DialogHeader>
                 
@@ -215,13 +217,13 @@ export function DangerZone({ profileData }: DangerZoneProps) {
                   <AlertTriangle className="h-4 w-4" />
                   <AlertDescription>
                     <div className="space-y-2">
-                      <p className="font-medium">Warning: This action is irreversible</p>
+                      <p className="font-medium">{t('deactivateAccount.warningTitle')}</p>
                       <ul className="list-disc list-inside text-sm space-y-1">
-                        <li>Your account will be immediately deactivated</li>
-                        <li>You will lose access to all systems</li>
-                        <li>Data will be retained for compliance purposes</li>
-                        <li>Only administrators can reactivate your account</li>
-                        <li>All active sessions will be terminated</li>
+                        <li>{t('deactivateAccount.warning1')}</li>
+                        <li>{t('deactivateAccount.warning2')}</li>
+                        <li>{t('deactivateAccount.warning3')}</li>
+                        <li>{t('deactivateAccount.warning4')}</li>
+                        <li>{t('deactivateAccount.warning5')}</li>
                       </ul>
                     </div>
                   </AlertDescription>
@@ -229,11 +231,11 @@ export function DangerZone({ profileData }: DangerZoneProps) {
 
                 <div className="space-y-2">
                   <Label htmlFor="confirmation">
-                    Type <code className="text-destructive font-mono">DEACTIVATE</code> to confirm:
+                    {t('deactivateAccount.confirmationLabel', { code: 'DEACTIVATE' }).split('DEACTIVATE')[0]}<code className="text-destructive font-mono">DEACTIVATE</code>{t('deactivateAccount.confirmationLabel', { code: 'DEACTIVATE' }).split('DEACTIVATE')[1]}
                   </Label>
                   <Input
                     id="confirmation"
-                    placeholder="Type DEACTIVATE"
+                    placeholder={t('deactivateAccount.confirmationPlaceholder')}
                     value={confirmationText}
                     onChange={(e) => setConfirmationText(e.target.value)}
                     disabled={loading}
@@ -249,7 +251,7 @@ export function DangerZone({ profileData }: DangerZoneProps) {
                     }}
                     disabled={loading}
                   >
-                    Cancel
+                    {t('deactivateAccount.cancel')}
                   </Button>
                   <Button
                     variant="destructive"
@@ -257,7 +259,7 @@ export function DangerZone({ profileData }: DangerZoneProps) {
                     disabled={loading || confirmationText !== 'DEACTIVATE'}
                   >
                     <Trash2 className="h-4 w-4 mr-2" />
-                    {loading ? 'Deactivating...' : 'Deactivate Account'}
+                    {loading ? t('deactivateAccount.deactivating') : t('deactivateAccount.confirmButton')}
                   </Button>
                 </DialogFooter>
               </DialogContent>
@@ -268,8 +270,7 @@ export function DangerZone({ profileData }: DangerZoneProps) {
             <Alert>
               <AlertTriangle className="h-4 w-4" />
               <AlertDescription>
-                Account deactivation is restricted by your organization's security policy. 
-                Contact your administrator if you need to deactivate your account.
+                {t('deactivateAccount.restrictedMessage')}
               </AlertDescription>
             </Alert>
           )}

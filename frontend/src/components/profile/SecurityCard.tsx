@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useTranslations } from 'next-intl'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
@@ -22,6 +23,8 @@ interface SecurityCardProps {
 }
 
 export function SecurityCard({ profileData, onUpdate }: SecurityCardProps) {
+  const t = useTranslations('profile.security')
+  const tCommon = useTranslations('common')
   const [passwordDialogOpen, setPasswordDialogOpen] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -33,10 +36,10 @@ export function SecurityCard({ profileData, onUpdate }: SecurityCardProps) {
       
       // In a real implementation, this would redirect to Keycloak
       window.open('/auth/change-password', '_blank')
-      toast.success('Redirecting to secure password change...')
+      toast.success(t('changePasswordDialog.redirecting'))
       setPasswordDialogOpen(false)
     } catch (error) {
-      toast.error('Failed to initiate password change')
+      toast.error(t('changePasswordDialog.failed'))
     } finally {
       setLoading(false)
     }
@@ -47,7 +50,7 @@ export function SecurityCard({ profileData, onUpdate }: SecurityCardProps) {
       <CardHeader>
         <CardTitle className="flex items-center space-x-2">
           <Shield className="h-5 w-5" />
-          <span>Security</span>
+          <span>{t('securityTitle')}</span>
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
@@ -55,26 +58,26 @@ export function SecurityCard({ profileData, onUpdate }: SecurityCardProps) {
         <div className="space-y-3">
           <div className="flex items-center justify-between">
             <div>
-              <h4 className="font-medium">Password</h4>
+              <h4 className="font-medium">{t('passwordManagement')}</h4>
               <p className="text-sm text-muted-foreground">
-                Manage your account password securely
+                {t('managePasswordSecurely')}
               </p>
             </div>
             <Dialog open={passwordDialogOpen} onOpenChange={setPasswordDialogOpen}>
               <DialogTrigger asChild>
                 <Button variant="outline">
                   <KeyRound className="h-4 w-4 mr-2" />
-                  Change Password
+                  {t('changePassword')}
                 </Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[500px]">
                 <DialogHeader>
                   <DialogTitle className="flex items-center space-x-2">
                     <Shield className="h-5 w-5" />
-                    <span>Change Password</span>
+                    <span>{t('changePasswordDialog.title')}</span>
                   </DialogTitle>
                   <DialogDescription>
-                    You will be redirected to a secure password change page managed by our identity provider.
+                    {t('changePasswordDialog.description')}
                   </DialogDescription>
                 </DialogHeader>
                 
@@ -82,12 +85,12 @@ export function SecurityCard({ profileData, onUpdate }: SecurityCardProps) {
                   <Info className="h-4 w-4" />
                   <AlertDescription>
                     <div className="space-y-2">
-                      <p className="font-medium">Security Information:</p>
+                      <p className="font-medium">{t('changePasswordDialog.securityInfo')}</p>
                       <ul className="list-disc list-inside text-sm space-y-1">
-                        <li>Password changes are handled by our secure identity provider (Keycloak)</li>
-                        <li>Your new password must meet security requirements</li>
-                        <li>You will need to log in again after changing your password</li>
-                        <li>All active sessions will be terminated for security</li>
+                        <li>{t('changePasswordDialog.info1')}</li>
+                        <li>{t('changePasswordDialog.info2')}</li>
+                        <li>{t('changePasswordDialog.info3')}</li>
+                        <li>{t('changePasswordDialog.info4')}</li>
                       </ul>
                     </div>
                   </AlertDescription>
@@ -95,11 +98,11 @@ export function SecurityCard({ profileData, onUpdate }: SecurityCardProps) {
 
                 <DialogFooter>
                   <Button variant="outline" onClick={() => setPasswordDialogOpen(false)}>
-                    Cancel
+                    {t('changePasswordDialog.cancel')}
                   </Button>
                   <Button onClick={handleChangePassword} disabled={loading}>
                     <ExternalLink className="h-4 w-4 mr-2" />
-                    {loading ? 'Opening...' : 'Open Secure Password Change'}
+                    {loading ? t('changePasswordDialog.opening') : t('changePasswordDialog.openSecurePasswordChange')}
                   </Button>
                 </DialogFooter>
               </DialogContent>
@@ -112,13 +115,13 @@ export function SecurityCard({ profileData, onUpdate }: SecurityCardProps) {
             <Info className="h-4 w-4" />
             <AlertDescription>
               <div className="space-y-2">
-                <p className="font-medium">Password Security Tips:</p>
+                <p className="font-medium">{t('passwordSecurityTips')}</p>
                 <ul className="list-disc list-inside text-sm space-y-1">
-                  <li>Use a strong, unique password with at least 12 characters</li>
-                  <li>Include a mix of uppercase, lowercase, numbers, and symbols</li>
-                  <li>Avoid using personal information or common words</li>
-                  <li>Consider using a password manager</li>
-                  <li>Enable two-factor authentication for additional security</li>
+                  <li>{t('tip1')}</li>
+                  <li>{t('tip2')}</li>
+                  <li>{t('tip3')}</li>
+                  <li>{t('tip4')}</li>
+                  <li>{t('tip5')}</li>
                 </ul>
               </div>
             </AlertDescription>

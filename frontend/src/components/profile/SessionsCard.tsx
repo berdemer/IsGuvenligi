@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useTranslations } from 'next-intl'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -88,6 +89,7 @@ const mockSessions: Session[] = [
 ]
 
 export function SessionsCard() {
+  const t = useTranslations('profile.sessions')
   const [sessions, setSessions] = useState<Session[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -105,7 +107,7 @@ export function SessionsCard() {
       
       setSessions(mockSessions)
     } catch (err) {
-      setError("Failed to load session data")
+      setError(t('loadError'))
     } finally {
       setLoading(false)
     }
@@ -126,6 +128,14 @@ export function SessionsCard() {
     }
   }
 
+  const getDisplayName = (name: string) => {
+    return name === 'Unknown Device' ? t('unknownDevice') : name
+  }
+
+  const getDisplayLocation = (location: string) => {
+    return location === 'Unknown Location' ? t('unknownLocation') : location
+  }
+
   const formatLastSeen = (timestamp: string) => {
     const date = new Date(timestamp)
     const now = new Date()
@@ -135,19 +145,19 @@ export function SessionsCard() {
     const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
 
     if (diffMins < 1) {
-      return "Active now"
+      return t('activeNow')
     } else if (diffMins < 60) {
-      return `${diffMins} minutes ago`
+      return t('minutesAgo', { minutes: diffMins })
     } else if (diffHours < 24) {
-      return `${diffHours} hours ago`
+      return t('hoursAgo', { hours: diffHours })
     } else {
-      return `${diffDays} days ago`
+      return t('daysAgo', { days: diffDays })
     }
   }
 
   const handleRevokeSession = async (sessionId: string) => {
     if (sessions.find(s => s.id === sessionId)?.isCurrent) {
-      toast.error("Cannot revoke current session")
+      toast.error(t('cannotRevokeCurrent'))
       return
     }
 
@@ -157,9 +167,9 @@ export function SessionsCard() {
       await new Promise(resolve => setTimeout(resolve, 1500))
       
       setSessions(prev => prev.filter(s => s.id !== sessionId))
-      toast.success("Session revoked successfully")
+      toast.success(t('sessionRevoked'))
     } catch (error) {
-      toast.error("Failed to revoke session")
+      toast.error(t('revokeError'))
     } finally {
       setRevoking(null)
     }
@@ -172,10 +182,10 @@ export function SessionsCard() {
       await new Promise(resolve => setTimeout(resolve, 2000))
       
       setSessions(prev => prev.filter(s => s.isCurrent))
-      toast.success("All other sessions revoked successfully")
+      toast.success(t('allOtherSessionsRevoked'))
       setRevokeAllDialogOpen(false)
     } catch (error) {
-      toast.error("Failed to revoke sessions")
+      toast.error(t('revokeAllError'))
     } finally {
       setRevokingAll(false)
     }
@@ -194,7 +204,7 @@ export function SessionsCard() {
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="flex items-center space-x-2">
             <Globe className="h-5 w-5" />
-            <span>Active Sessions</span>
+            <span>{t('title')}</span>
           </CardTitle>
           <Skeleton className="h-9 w-24" />
         </CardHeader>
@@ -222,7 +232,7 @@ export function SessionsCard() {
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="flex items-center space-x-2">
             <Globe className="h-5 w-5" />
-            <span>Active Sessions</span>
+            <span>{t('title')}</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -237,7 +247,7 @@ export function SessionsCard() {
                 className="ml-4"
               >
                 <RefreshCw className="h-4 w-4 mr-2" />
-                Retry
+                {t('retry')}
               </Button>
             </AlertDescription>
           </Alert>
@@ -261,14 +271,14 @@ export function SessionsCard() {
               disabled={activeSessions === 0}
             >
               <LogOut className="h-4 w-4 mr-2" />
-              Revoke All
+              {t('revokeAll')}
             </Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Revoke All Sessions</DialogTitle>
+              <DialogTitle>{t('revokeAllTitle')}</DialogTitle>
               <DialogDescription>
-                This will sign you out of all other devices and browsers. You will remain signed in on this device.
+                {t('revokeAllDescription')}
               </DialogDescription>
             </DialogHeader>
             
@@ -276,8 +286,8 @@ export function SessionsCard() {
               <Alert>
                 <AlertCircle className="h-4 w-4" />
                 <AlertDescription>
-                  We detected {suspiciousSessions} potentially suspicious session{suspiciousSessions > 1 ? 's' : ''} from unknown locations.
-                  Revoking all sessions is recommended for security.
+                  {suspiciousSessions > 1 ? t('suspiciousPlural', { count: suspiciousSessions }) : t('suspiciousDetected', { count: suspiciousSessions })}
+                  {' '}{t('revokeRecommended')}
                 </AlertDescription>
               </Alert>
             )}
@@ -288,14 +298,14 @@ export function SessionsCard() {
                 onClick={() => setRevokeAllDialogOpen(false)}
                 disabled={revokingAll}
               >
-                Cancel
+                {t('cancel')}
               </Button>
               <Button
                 variant="destructive"
                 onClick={handleRevokeAllSessions}
                 disabled={revokingAll}
               >
-                {revokingAll ? 'Revoking...' : 'Revoke All Sessions'}
+                {revokingAll ? t('revoking') : t('revokeAllSessions')}
               </Button>
             </DialogFooter>
           </DialogContent>
@@ -305,7 +315,7 @@ export function SessionsCard() {
         {sessions.length === 0 ? (
           <div className="text-center py-8">
             <Globe className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-            <p className="text-muted-foreground">No active sessions</p>
+            <p className="text-muted-foreground">{t('noActiveSessions')}</p>
           </div>
         ) : (
           <div className="space-y-4">
@@ -313,8 +323,8 @@ export function SessionsCard() {
               <Alert>
                 <AlertCircle className="h-4 w-4" />
                 <AlertDescription>
-                  {suspiciousSessions} suspicious session{suspiciousSessions > 1 ? 's' : ''} detected from unknown locations.
-                  Review and revoke if necessary.
+                  {suspiciousSessions > 1 ? t('suspiciousPlural', { count: suspiciousSessions }) : t('suspiciousDetected', { count: suspiciousSessions })}
+                  {' '}{t('reviewAndRevoke')}
                 </AlertDescription>
               </Alert>
             )}
@@ -331,13 +341,13 @@ export function SessionsCard() {
                     <DeviceIcon className="h-6 w-6 text-muted-foreground mt-1" />
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center space-x-2 mb-1">
-                        <h4 className="font-medium">{session.deviceName}</h4>
+                        <h4 className="font-medium">{getDisplayName(session.deviceName)}</h4>
                         {session.isCurrent && (
-                          <Badge variant="default" className="text-xs">Current</Badge>
+                          <Badge variant="default" className="text-xs">{t('current')}</Badge>
                         )}
                         {isUnknown && (
                           <Badge variant="outline" className="text-xs text-amber-700">
-                            Suspicious
+                            {t('suspicious')}
                           </Badge>
                         )}
                       </div>
@@ -345,7 +355,7 @@ export function SessionsCard() {
                         {session.browser} on {session.os}
                       </p>
                       <div className="flex items-center space-x-2 text-xs text-muted-foreground mt-1">
-                        <span>{session.location}</span>
+                        <span>{getDisplayLocation(session.location)}</span>
                         <span>•</span>
                         <span>{session.ip}</span>
                         <span>•</span>
@@ -363,12 +373,12 @@ export function SessionsCard() {
                         {revoking === session.id ? (
                           <>
                             <RefreshCw className="h-3 w-3 mr-1 animate-spin" />
-                            Revoking
+                            {t('revoking')}
                           </>
                         ) : (
                           <>
                             <Trash2 className="h-3 w-3 mr-1" />
-                            Revoke
+                            {t('revoke')}
                           </>
                         )}
                       </Button>
@@ -381,9 +391,9 @@ export function SessionsCard() {
 
             <div className="text-center pt-2">
               <p className="text-sm text-muted-foreground">
-                {sessions.length} total session{sessions.length > 1 ? 's' : ''} 
+                {t('totalSessions', { count: sessions.length })}{sessions.length > 1 ? '' : ''}
                 {activeSessions > 0 && (
-                  <span> • {activeSessions} other device{activeSessions > 1 ? 's' : ''}</span>
+                  <span> • {t('otherDevices', { count: activeSessions })}</span>
                 )}
               </p>
             </div>

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useTranslations } from 'next-intl'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
@@ -32,6 +33,7 @@ interface ProfileHeaderProps {
 }
 
 export function ProfileHeader({ profileData, onUpdate }: ProfileHeaderProps) {
+  const t = useTranslations('profile')
   const [avatarDialogOpen, setAvatarDialogOpen] = useState(false)
   const [uploading, setUploading] = useState(false)
   const [isDirty, setIsDirty] = useState(false)
@@ -61,21 +63,21 @@ export function ProfileHeader({ profileData, onUpdate }: ProfileHeaderProps) {
 
     let timeAgo = ""
     if (diffMins < 60) {
-      timeAgo = `${diffMins} minutes ago`
+      timeAgo = t('common.minutesAgo', { minutes: diffMins })
     } else if (diffHours < 24) {
-      timeAgo = `${diffHours} hours ago`
+      timeAgo = t('common.hoursAgo', { hours: diffHours })
     } else {
-      timeAgo = `${diffDays} days ago`
+      timeAgo = t('common.daysAgo', { days: diffDays })
     }
 
-    return `Last login ${timeAgo} • ${ip} • ${device}`
+    return t('common.lastLoginInfo', { timeAgo, ip, device })
   }
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text).then(() => {
-      toast.success('Copied to clipboard')
+      toast.success(t('common.copyToClipboard'))
     }).catch(() => {
-      toast.error('Failed to copy')
+      toast.error(t('common.copyFailed'))
     })
   }
 
@@ -84,12 +86,12 @@ export function ProfileHeader({ profileData, onUpdate }: ProfileHeaderProps) {
     if (!file) return
 
     if (file.size > 2 * 1024 * 1024) {
-      toast.error('File size must be less than 2MB')
+      toast.error(t('avatar.fileSizeError'))
       return
     }
 
     if (!file.type.startsWith('image/')) {
-      toast.error('Please upload an image file')
+      toast.error(t('avatar.fileTypeError'))
       return
     }
 
@@ -98,10 +100,10 @@ export function ProfileHeader({ profileData, onUpdate }: ProfileHeaderProps) {
       // Mock upload - replace with actual API call
       await new Promise(resolve => setTimeout(resolve, 1500))
       
-      toast.success('Avatar updated successfully')
+      toast.success(t('avatar.uploadSuccess'))
       setAvatarDialogOpen(false)
     } catch (error) {
-      toast.error('Failed to upload avatar')
+      toast.error(t('avatar.uploadError'))
     } finally {
       setUploading(false)
     }
@@ -114,9 +116,9 @@ export function ProfileHeader({ profileData, onUpdate }: ProfileHeaderProps) {
       
       onUpdate(tempData)
       setIsDirty(false)
-      toast.success('Profile updated successfully')
+      toast.success(t('userInfo.updateSuccess'))
     } catch (error) {
-      toast.error('Failed to update profile')
+      toast.error(t('userInfo.updateError'))
     }
   }
 
@@ -129,7 +131,7 @@ export function ProfileHeader({ profileData, onUpdate }: ProfileHeaderProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Profile Information</CardTitle>
+        <CardTitle>{t('title')}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="flex items-center space-x-6">
@@ -146,9 +148,9 @@ export function ProfileHeader({ profileData, onUpdate }: ProfileHeaderProps) {
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
               <DialogHeader>
-                <DialogTitle>Update Avatar</DialogTitle>
+                <DialogTitle>{t('avatar.update')}</DialogTitle>
                 <DialogDescription>
-                  Upload a new profile picture. File must be less than 2MB.
+                  {t('avatar.uploadDescription')}
                 </DialogDescription>
               </DialogHeader>
               <div className="grid gap-4 py-4">
@@ -161,7 +163,7 @@ export function ProfileHeader({ profileData, onUpdate }: ProfileHeaderProps) {
                   </Avatar>
                 </div>
                 <div className="grid w-full max-w-sm items-center gap-1.5">
-                  <Label htmlFor="avatar">Choose file</Label>
+                  <Label htmlFor="avatar">{t('avatar.chooseFile')}</Label>
                   <Input
                     id="avatar"
                     type="file"
@@ -173,7 +175,7 @@ export function ProfileHeader({ profileData, onUpdate }: ProfileHeaderProps) {
               </div>
               <DialogFooter>
                 <Button variant="outline" onClick={() => setAvatarDialogOpen(false)}>
-                  Cancel
+                  {t('common.cancel')}
                 </Button>
               </DialogFooter>
             </DialogContent>
@@ -200,11 +202,11 @@ export function ProfileHeader({ profileData, onUpdate }: ProfileHeaderProps) {
                     onClick={() => copyToClipboard(profileData.id)}
                   >
                     <Copy className="h-3 w-3" />
-                    <span className="sr-only">Copy user ID</span>
+                    <span className="sr-only">{t('common.copyUserId')}</span>
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>Copy user ID</p>
+                  <p>{t('common.copyUserId')}</p>
                 </TooltipContent>
               </Tooltip>
             </div>
@@ -222,7 +224,7 @@ export function ProfileHeader({ profileData, onUpdate }: ProfileHeaderProps) {
             disabled={!isDirty}
             className="min-w-[120px]"
           >
-            Save changes
+            {t('common.saveChanges')}
           </Button>
         </div>
       </CardContent>

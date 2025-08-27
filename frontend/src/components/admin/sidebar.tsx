@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import {
   LayoutDashboard,
   Users,
@@ -34,56 +35,58 @@ import { useState } from 'react'
 export function Sidebar() {
   const pathname = usePathname()
   const [expandedItems, setExpandedItems] = useState<string[]>([])
+  const t = useTranslations('nav')
+  const tCommon = useTranslations('common')
 
   // Navigation items with hierarchical structure
   const navigation = [
     {
-      title: 'Dashboard',
+      title: t('dashboard'),
       icon: LayoutDashboard,
       href: '/admin/dashboard',
       badge: null,
     },
     {
-      title: 'User Management',
+      title: t('userMgmt'),
       icon: Users,
       items: [
-        { title: 'Users', href: '/admin/users' },
-        { title: 'Roles', href: '/admin/roles' },
+        { title: t('users'), href: '/admin/users' },
+        { title: t('roles'), href: '/admin/roles' },
       ],
     },
     {
-      title: 'Authentication',
+      title: t('auth'),
       icon: KeyRound,
       items: [
-        { title: 'OAuth Providers', href: '/admin/oauth-providers' },
-        { title: 'Auth Policies', href: '/admin/auth/policy' },
-        { title: 'Active Sessions', href: '/admin/auth/sessions' },
+        { title: t('oauthProviders'), href: '/admin/oauth-providers' },
+        { title: t('authPolicies'), href: '/admin/auth/policy' },
+        { title: t('activeSessions'), href: '/admin/auth/sessions' },
       ],
     },
     {
-      title: 'Access Policies',
+      title: t('accessPolicies'),
       icon: Shield,
       href: '/admin/policies',
     },
     {
-      title: 'Audit Logs',
+      title: t('auditLogs'),
       icon: FileText,
       href: '/admin/audit',
-      badge: 'New',
+      badge: tCommon('new'),
     },
     {
-      title: 'Notifications',
+      title: t('notifications'),
       icon: Bell,
       href: '/admin/notifications',
       badge: '3',
     },
     {
-      title: 'Health Monitoring',
+      title: t('health'),
       icon: Activity,
       href: '/admin/health',
     },
     {
-      title: 'System Settings',
+      title: t('settings'),
       icon: Settings,
       href: '/admin/settings',
     },
@@ -118,7 +121,7 @@ export function Sidebar() {
             <Button asChild size="sm" className="w-full">
               <Link href="/">
                 <Home className="h-4 w-4 mr-2" />
-                Home
+                {t('home')}
               </Link>
             </Button>
           </div>

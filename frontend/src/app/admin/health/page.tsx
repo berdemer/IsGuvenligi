@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -375,6 +376,7 @@ const KPICard: React.FC<KPICardProps> = ({
 }
 
 export default function HealthMonitoringPage() {
+  const t = useTranslations('health')
   console.log('🏥 HealthMonitoringPage component mounted')
   
   
@@ -414,13 +416,13 @@ export default function HealthMonitoringPage() {
     refreshInterval: pageState.refreshInterval,
     enableRealtime: true,
     onAlert: (alert: HealthAlert) => {
-      toast.error(`New ${alert.severity} alert: ${alert.message}`)
+      toast.error(`${t('newAlert')} ${alert.severity} ${alert.severity === 'critical' ? t('criticalAlerts').toLowerCase() : 'alert'}: ${alert.message}`)
     },
     onIncident: (incident: HealthIncident) => {
-      toast.error(`New incident: ${incident.title}`)
+      toast.error(`${t('newIncident')}: ${incident.title}`)
     },
     onServiceStatusChange: (service: ServiceHealth) => {
-      toast.success(`Service ${service.name} status updated`)
+      toast.success(`${service.name} ${t('serviceStatusUpdated')}`)
     }
   })
 
@@ -430,12 +432,12 @@ export default function HealthMonitoringPage() {
 
   const handleExportMetrics = async () => {
     try {
-      toast.loading('Generating health report...', { id: 'export' })
+      toast.loading(t('generatingHealthReport'), { id: 'export' })
       // Simulate export
       await new Promise(resolve => setTimeout(resolve, 2000))
-      toast.success('Health report exported successfully', { id: 'export' })
+      toast.success(t('healthReportExported'), { id: 'export' })
     } catch (error) {
-      toast.error('Failed to export health report', { id: 'export' })
+      toast.error(t('failedToExportReport'), { id: 'export' })
     }
   }
 
@@ -446,10 +448,10 @@ export default function HealthMonitoringPage() {
   const handleToggleRealtime = () => {
     if (isConnected) {
       disconnect()
-      toast.success('Real-time monitoring disconnected')
+      toast.success(t('realtimeMonitoringDisconnected'))
     } else {
       connect()
-      toast.success('Real-time monitoring connected')
+      toast.success(t('realtimeMonitoringConnected'))
     }
   }
 
@@ -464,14 +466,14 @@ export default function HealthMonitoringPage() {
       {/* Page Header */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
-          <h1 className="text-3xl font-bold">Health Monitoring</h1>
+          <h1 className="text-3xl font-bold">{t('title')}</h1>
           <p className="text-muted-foreground">
-            Monitor system health and performance metrics
+            {t('overview')}
           </p>
         </div>
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <span>Auto-refresh</span>
+            <span>{t('autoRefresh')}</span>
             <Switch
               checked={pageState.autoRefresh}
               onCheckedChange={(checked) => 
@@ -490,12 +492,12 @@ export default function HealthMonitoringPage() {
                 <WifiOff className="h-4 w-4" />
               )}
               <span className="text-xs">
-                {isConnected ? 'Live' : 'Offline'}
+                {isConnected ? t('live') : t('offline')}
               </span>
             </div>
             {lastUpdate && (
               <span className="text-xs text-muted-foreground">
-                Updated {new Date(lastUpdate).toLocaleTimeString()}
+                {t('updated')} {new Date(lastUpdate).toLocaleTimeString()}
               </span>
             )}
           </div>
@@ -510,20 +512,20 @@ export default function HealthMonitoringPage() {
             ) : (
               <Wifi className="h-4 w-4 mr-2" />
             )}
-            {isConnected ? 'Disconnect' : 'Connect'}
+            {isConnected ? t('disconnect') : t('connect')}
           </Button>
           
           <Button variant="outline" size="sm" onClick={refresh} disabled={isLoading}>
             <RefreshCw className={`h-4 w-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
-            Refresh
+            {t('refresh')}
           </Button>
           <Button variant="outline" size="sm" onClick={handleViewReports}>
             <FileText className="h-4 w-4 mr-2" />
-            View Reports
+            {t('viewReports')}
           </Button>
           <Button variant="outline" size="sm" onClick={handleExportMetrics}>
             <Download className="h-4 w-4 mr-2" />
-            Export Metrics
+            {t('exportMetrics')}
           </Button>
         </div>
       </div>
@@ -531,7 +533,7 @@ export default function HealthMonitoringPage() {
       {/* KPI Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <KPICard
-          title="Health Score"
+          title={t('healthScore')}
           value={overview?.healthScore || 94}
           unit="/100"
           status={overview ? getOverallStatus(overview) : 'healthy'}
@@ -541,7 +543,7 @@ export default function HealthMonitoringPage() {
           onClick={() => handleTabChange('overview')}
         />
         <KPICard
-          title="System Uptime"
+          title={t('systemUptime')}
           value={overview?.uptime?.toFixed(2) || '99.97'}
           unit="%"
           trend={overview?.trends.uptime}

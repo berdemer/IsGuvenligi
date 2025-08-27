@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useTranslations } from 'next-intl'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
@@ -113,7 +114,37 @@ const mockActivities: ActivityLog[] = [
   }
 ]
 
+const getActivitySummary = (activity: ActivityLog, t: any) => {
+  switch (activity.summary) {
+    case "Successful login":
+      return t('activities.login_success')
+    case "Failed login attempt":
+      return t('activities.login_failed')
+    case "User logged out":
+      return t('activities.logout')
+    case "Profile information updated":
+      return t('activities.profile_updated')
+    case "Notification preferences updated":
+      return t('activities.notification_preferences_updated')
+    case "Two-factor authentication enabled":
+      return t('activities.mfa_enabled')
+    case "Two-factor authentication disabled":
+      return t('activities.mfa_disabled')
+    case "Password changed successfully":
+      return t('activities.password_changed')
+    case "Session revoked from mobile device":
+      return t('activities.session_revoked')
+    default:
+      return activity.summary
+  }
+}
+
+const getActivityTypeLabel = (type: string, t: any) => {
+  return t(`types.${type}`) || type.replace('_', ' ')
+}
+
 export function ActivityTable() {
+  const t = useTranslations('profile.activity')
   const [activities, setActivities] = useState<ActivityLog[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -129,7 +160,7 @@ export function ActivityTable() {
       
       setActivities(mockActivities)
     } catch (err) {
-      setError("Failed to load activity data")
+      setError(t('loadError'))
     } finally {
       setLoading(false)
     }
@@ -182,11 +213,11 @@ export function ActivityTable() {
     const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
 
     if (diffMins < 60) {
-      return `${diffMins} minutes ago`
+      return t('minutesAgo', { minutes: diffMins })
     } else if (diffHours < 24) {
-      return `${diffHours} hours ago`
+      return t('hoursAgo', { hours: diffHours })
     } else {
-      return `${diffDays} days ago`
+      return t('daysAgo', { days: diffDays })
     }
   }
 
@@ -203,8 +234,8 @@ export function ActivityTable() {
           activity.summary,
           activity.timestamp,
           activity.ip,
-          activity.userAgent || 'Unknown',
-          activity.location || 'Unknown'
+          activity.userAgent || t('activities.unknown'),
+          activity.location || t('activities.unknown')
         ])
       ].map(row => row.join(',')).join('\n')
 
@@ -218,9 +249,9 @@ export function ActivityTable() {
       document.body.removeChild(a)
       window.URL.revokeObjectURL(url)
       
-      toast.success('Activity log exported successfully')
+      toast.success(t('exportSuccess'))
     } catch (error) {
-      toast.error('Failed to export activity log')
+      toast.error(t('exportError'))
     } finally {
       setExporting(false)
     }
@@ -236,7 +267,7 @@ export function ActivityTable() {
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="flex items-center space-x-2">
             <Activity className="h-5 w-5" />
-            <span>Recent Activity</span>
+            <span>{t('title')}</span>
           </CardTitle>
           <Skeleton className="h-9 w-20" />
         </CardHeader>
@@ -264,7 +295,7 @@ export function ActivityTable() {
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="flex items-center space-x-2">
             <Activity className="h-5 w-5" />
-            <span>Recent Activity</span>
+            <span>{t('title')}</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -279,7 +310,7 @@ export function ActivityTable() {
                 className="ml-4"
               >
                 <RefreshCw className="h-4 w-4 mr-2" />
-                Retry
+                {t('retry')}
               </Button>
             </AlertDescription>
           </Alert>
@@ -302,24 +333,24 @@ export function ActivityTable() {
           disabled={exporting}
         >
           <Download className="h-4 w-4 mr-2" />
-          {exporting ? 'Exporting...' : 'Export'}
+          {exporting ? t('exporting') : t('export')}
         </Button>
       </CardHeader>
       <CardContent>
         {activities.length === 0 ? (
           <div className="text-center py-8">
             <Activity className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-            <p className="text-muted-foreground">No activity to display</p>
+            <p className="text-muted-foreground">{t('noActivity')}</p>
           </div>
         ) : (
           <div className="space-y-3">
             {activities.map((activity) => (
               <div key={activity.id} className="flex items-start space-x-3 p-3 rounded-lg border">
                 <Badge variant={getBadgeVariant(activity.type)} className="mt-0.5">
-                  {activity.type.replace('_', ' ')}
+                  {getActivityTypeLabel(activity.type, t)}
                 </Badge>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium">{activity.summary}</p>
+                  <p className="text-sm font-medium">{getActivitySummary(activity, t)}</p>
                   <div className="flex items-center space-x-2 text-xs text-muted-foreground mt-1">
                     <span>{activity.ip}</span>
                     {activity.location && (

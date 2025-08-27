@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
+import { useTranslations } from 'next-intl'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -10,8 +11,6 @@ import { SessionsList } from "@/components/admin/auth/sessions/SessionsList"
 import { SessionsAnalytics } from "@/components/admin/auth/sessions/SessionsAnalytics"
 import { SessionsAuditLog } from "@/components/admin/auth/sessions/SessionsAuditLog"  
 import { SessionsAnomalies } from "@/components/admin/auth/sessions/SessionsAnomalies"
-import { SessionDetails } from "@/components/admin/auth/sessions/SessionDetails"
-import { BulkActions } from "@/components/admin/auth/sessions/BulkActions"
 import { RealtimeStatus } from "@/components/admin/auth/sessions/RealtimeStatus"
 import { 
   Activity, Users, Shield, AlertTriangle, Download, 
@@ -21,7 +20,6 @@ import {
 import { 
   ActiveSession, 
   SessionAnalytics, 
-  SessionFilters, 
   SessionPermissions,
   RealtimeConnectionStatus,
   SessionEvent
@@ -42,6 +40,7 @@ const mockPermissions: SessionPermissions = {
 }
 
 export default function ActiveSessionsPage() {
+  const t = useTranslations('auth.sessions')
   const [activeTab, setActiveTab] = useState("sessions")
   const [sessions, setSessions] = useState<ActiveSession[]>([])
   const [analytics, setAnalytics] = useState<SessionAnalytics | null>(null)
@@ -58,7 +57,7 @@ export default function ActiveSessionsPage() {
   
   // Auto-refresh settings
   const [autoRefresh, setAutoRefresh] = useState(true)
-  const [refreshInterval, setRefreshInterval] = useState(10000) // 10 seconds
+  const refreshInterval = 10000 // 10 seconds
 
   // Mock data for demonstration
   const generateMockSessions = (): ActiveSession[] => {
@@ -237,7 +236,7 @@ export default function ActiveSessionsPage() {
       setAnalytics(mockAnalytics)
       setLastUpdated(new Date())
     } catch (error) {
-      toast.error("Failed to load sessions")
+      toast.error(t('failedToLoadSessions') || 'Failed to load sessions')
     } finally {
       setLoading(false)
     }
@@ -307,9 +306,9 @@ export default function ActiveSessionsPage() {
       // Mock export functionality
       await new Promise(resolve => setTimeout(resolve, 1500))
       
-      toast.success("Sessions exported successfully")
+      toast.success(t('sessionsExportedSuccessfully') || 'Sessions exported successfully')
     } catch (error) {
-      toast.error("Failed to export sessions")
+      toast.error(t('failedToExportSessions') || 'Failed to export sessions')
     }
   }
 
@@ -318,23 +317,14 @@ export default function ActiveSessionsPage() {
       // Mock report generation
       await new Promise(resolve => setTimeout(resolve, 2000))
       
-      toast.success("Security report generated successfully")
+      toast.success(t('securityReportGenerated') || 'Security report generated successfully')
     } catch (error) {
-      toast.error("Failed to generate report")
+      toast.error(t('failedToGenerateReport') || 'Failed to generate report')
     }
   }
 
   const formatNumber = (num: number) => {
     return num.toLocaleString()
-  }
-
-  const getKpiTrend = (current: number, previous: number) => {
-    const change = ((current - previous) / previous) * 100
-    return {
-      value: Math.abs(change).toFixed(1),
-      direction: change > 0 ? 'up' : 'down',
-      color: change > 0 ? 'text-green-600' : 'text-red-600'
-    }
   }
 
   if (!permissions.canView) {
@@ -343,7 +333,7 @@ export default function ActiveSessionsPage() {
         <Alert variant="destructive">
           <AlertTriangle className="h-4 w-4" />
           <AlertDescription>
-            You don't have permission to view active sessions.
+            {t('noPermissionToView')}
           </AlertDescription>
         </Alert>
       </div>
@@ -357,10 +347,10 @@ export default function ActiveSessionsPage() {
         <div className="space-y-1">
           <h1 className="text-2xl font-bold flex items-center space-x-2">
             <Activity className="h-6 w-6" />
-            <span>Active Sessions</span>
+            <span>{t('title')}</span>
           </h1>
           <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-            <span>Last updated: {lastUpdated.toLocaleTimeString()}</span>
+            <span>{t('lastUpdated')}: {lastUpdated.toLocaleTimeString()}</span>
             <RealtimeStatus status={realtimeStatus} />
           </div>
         </div>
@@ -376,24 +366,24 @@ export default function ActiveSessionsPage() {
             ) : (
               <WifiOff className="h-4 w-4 mr-2" />
             )}
-            {autoRefresh ? 'Live' : 'Paused'}
+            {autoRefresh ? t('live') : t('paused')}
           </Button>
           
           <Button variant="outline" size="sm" onClick={loadSessions} disabled={loading}>
             <RefreshCw className={`h-4 w-4 mr-2 ${loading ? 'animate-spin' : ''}`} />
-            Refresh
+            {t('refresh')}
           </Button>
           
           {permissions.canExport && (
             <Button variant="outline" size="sm" onClick={handleExportSessions}>
               <Download className="h-4 w-4 mr-2" />
-              Export CSV
+              {t('exportCsv')}
             </Button>
           )}
           
           <Button variant="outline" size="sm" onClick={handleGenerateReport}>
             <FileText className="h-4 w-4 mr-2" />
-            View Reports
+            {t('viewReports')}
           </Button>
         </div>
       </div>
@@ -403,7 +393,7 @@ export default function ActiveSessionsPage() {
         <div className="grid gap-4 md:grid-cols-4">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Active Sessions</CardTitle>
+              <CardTitle className="text-sm font-medium">{t('activeSessions')}</CardTitle>
               <Activity className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
@@ -411,14 +401,14 @@ export default function ActiveSessionsPage() {
               <div className="flex items-center space-x-2 text-xs">
                 <TrendingUp className="h-3 w-3 text-green-600" />
                 <span className="text-green-600">+8.2%</span>
-                <span className="text-muted-foreground">from yesterday</span>
+                <span className="text-muted-foreground">{t('fromYesterday')}</span>
               </div>
             </CardContent>
           </Card>
           
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Unique Users</CardTitle>
+              <CardTitle className="text-sm font-medium">{t('uniqueUsers')}</CardTitle>
               <Users className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
@@ -426,14 +416,14 @@ export default function ActiveSessionsPage() {
               <div className="flex items-center space-x-2 text-xs">
                 <TrendingUp className="h-3 w-3 text-green-600" />
                 <span className="text-green-600">+3.1%</span>
-                <span className="text-muted-foreground">from yesterday</span>
+                <span className="text-muted-foreground">{t('fromYesterday')}</span>
               </div>
             </CardContent>
           </Card>
           
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">High-Risk Sessions</CardTitle>
+              <CardTitle className="text-sm font-medium">{t('highRiskSessions')}</CardTitle>
               <AlertTriangle className="h-4 w-4 text-red-500" />
             </CardHeader>
             <CardContent>
@@ -444,20 +434,20 @@ export default function ActiveSessionsPage() {
                 <span className="text-red-600">
                   {((analytics.highRiskSessions / analytics.activeSessions) * 100).toFixed(1)}%
                 </span>
-                <span className="text-muted-foreground">of total sessions</span>
+                <span className="text-muted-foreground">{t('ofTotalSessions')}</span>
               </div>
             </CardContent>
           </Card>
           
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Revoked Today</CardTitle>
+              <CardTitle className="text-sm font-medium">{t('revokedToday')}</CardTitle>
               <Shield className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{formatNumber(analytics.revokedToday)}</div>
               <div className="flex items-center space-x-2 text-xs">
-                <span className="text-muted-foreground">Security actions taken</span>
+                <span className="text-muted-foreground">{t('securityActionsTaken')}</span>
               </div>
             </CardContent>
           </Card>
@@ -469,20 +459,20 @@ export default function ActiveSessionsPage() {
         <TabsList>
           <TabsTrigger value="sessions" className="flex items-center space-x-2">
             <Activity className="h-4 w-4" />
-            <span>Sessions</span>
+            <span>{t('sessions')}</span>
             <Badge variant="secondary">{analytics?.activeSessions || 0}</Badge>
           </TabsTrigger>
           
           {permissions.canViewAnalytics && (
             <TabsTrigger value="analytics" className="flex items-center space-x-2">
               <BarChart3 className="h-4 w-4" />
-              <span>Analytics</span>
+              <span>{t('analytics')}</span>
             </TabsTrigger>
           )}
           
           <TabsTrigger value="anomalies" className="flex items-center space-x-2">
             <AlertTriangle className="h-4 w-4" />
-            <span>Anomalies</span>
+            <span>{t('anomalies')}</span>
             <Badge variant="destructive">
               {sessions.filter(s => (s.riskScore?.total || 0) >= 70).length}
             </Badge>
@@ -491,7 +481,7 @@ export default function ActiveSessionsPage() {
           {permissions.canViewAudit && (
             <TabsTrigger value="audit" className="flex items-center space-x-2">
               <Eye className="h-4 w-4" />
-              <span>Audit Log</span>
+              <span>{t('auditLog')}</span>
             </TabsTrigger>
           )}
         </TabsList>

@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -11,19 +12,15 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
 import { 
-  Globe,
-  Clock,
   Palette,
   Database,
   Settings,
   RefreshCw,
   CheckCircle2,
   AlertCircle,
-  Info,
-  Flag,
-  Eye,
-  EyeOff
+  Flag
 } from 'lucide-react'
+import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 
 interface GeneralSettingsProps {
   onSettingsChange: (hasChanges: boolean) => void
@@ -92,6 +89,8 @@ const defaultConfig: GeneralConfig = {
 }
 
 export default function GeneralSettings({ onSettingsChange }: GeneralSettingsProps) {
+  const t = useTranslations('settings')
+  const tCommon = useTranslations('common')
   const [config, setConfig] = useState<GeneralConfig>(defaultConfig)
   const [initialConfig, setInitialConfig] = useState<GeneralConfig>(defaultConfig)
   const [loading, setLoading] = useState(false)
@@ -179,43 +178,26 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Settings className="h-5 w-5" />
-            System Information
+            {t('systemName')}
           </CardTitle>
           <CardDescription>
-            Configure basic system settings and preferences
+            {t('systemDescription')}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid gap-4 md:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="systemName">System Name</Label>
+              <Label htmlFor="systemName">{t('systemName')}</Label>
               <Input
                 id="systemName"
                 value={config.systemName}
                 onChange={(e) => updateConfig({ systemName: e.target.value })}
-                placeholder="Enter system name"
+                placeholder={tCommon('name')}
               />
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="defaultLanguage">Default Language</Label>
-              <p className="text-sm text-muted-foreground">
-                Choose the default language for the system
-              </p>
-              <Select 
-                value={config.defaultLanguage} 
-                onValueChange={(value) => updateConfig({ defaultLanguage: value })}
-              >
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="tr">Türkçe</SelectItem>
-                  <SelectItem value="en">English</SelectItem>
-                  <SelectItem value="de">Deutsch</SelectItem>
-                  <SelectItem value="fr">Français</SelectItem>
-                </SelectContent>
-              </Select>
+              <LanguageSwitcher variant="dropdown" />
             </div>
           </div>
 
@@ -232,7 +214,7 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
 
           <div className="grid gap-4 md:grid-cols-3">
             <div className="space-y-2">
-              <Label htmlFor="timezone">Timezone</Label>
+              <Label htmlFor="timezone">{t('timezone')}</Label>
               <Select 
                 value={config.timezone} 
                 onValueChange={(value) => updateConfig({ timezone: value })}
@@ -250,7 +232,7 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="dateFormat">Date Format</Label>
+              <Label htmlFor="dateFormat">{t('dateFormat')}</Label>
               <Select 
                 value={config.dateFormat} 
                 onValueChange={(value) => updateConfig({ dateFormat: value })}
@@ -268,7 +250,7 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="currency">Currency</Label>
+              <Label htmlFor="currency">{t('currency')}</Label>
               <Select 
                 value={config.currency} 
                 onValueChange={(value) => updateConfig({ currency: value })}
@@ -293,16 +275,16 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Palette className="h-5 w-5" />
-            User Interface
+            {tCommon('settings')}
           </CardTitle>
           <CardDescription>
-            Customize the look and feel of the system
+            {t('systemDescription')}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid gap-4 md:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="theme">Theme</Label>
+              <Label htmlFor="theme">{t('theme')}</Label>
               <Select 
                 value={config.theme} 
                 onValueChange={(value: 'light' | 'dark' | 'auto') => updateConfig({ theme: value })}
@@ -319,7 +301,7 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="itemsPerPage">Items Per Page</Label>
+              <Label htmlFor="itemsPerPage">{t('itemsPerPage')}</Label>
               <Select 
                 value={config.itemsPerPage.toString()} 
                 onValueChange={(value) => updateConfig({ itemsPerPage: parseInt(value) })}
@@ -340,7 +322,7 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div className="space-y-0.5">
-                <Label>Compact Mode</Label>
+                <Label>{t('compactMode')}</Label>
                 <p className="text-sm text-muted-foreground">
                   Reduce spacing and padding for more content
                 </p>
@@ -353,7 +335,7 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
 
             <div className="flex items-center justify-between">
               <div className="space-y-0.5">
-                <Label>Animations</Label>
+                <Label>{t('animationsEnabled')}</Label>
                 <p className="text-sm text-muted-foreground">
                   Enable smooth transitions and animations
                 </p>
@@ -366,7 +348,7 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="autoRefresh">Auto Refresh Interval (seconds)</Label>
+            <Label htmlFor="autoRefresh">{t('autoRefreshInterval')} (seconds)</Label>
             <Select 
               value={config.autoRefreshInterval.toString()} 
               onValueChange={(value) => updateConfig({ autoRefreshInterval: parseInt(value) })}

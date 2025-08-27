@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useTranslations } from 'next-intl'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Switch } from "@/components/ui/switch"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -48,7 +49,18 @@ const themes = [
   { value: 'dark', label: 'Dark', icon: Moon }
 ]
 
+const getThemeLabel = (value: string, t: any) => {
+  switch(value) {
+    case 'system': return t('system')
+    case 'light': return t('light')
+    case 'dark': return t('dark')
+    default: return value
+  }
+}
+
 export function PreferencesForm({ profileData, onUpdate }: PreferencesFormProps) {
+  const t = useTranslations('profile.preferences')
+  const tCommon = useTranslations('common')
   const [preferences, setPreferences] = useState(profileData.preferences)
   const [saving, setSaving] = useState(false)
 
@@ -71,9 +83,9 @@ export function PreferencesForm({ profileData, onUpdate }: PreferencesFormProps)
         preferences: updatedPreferences
       }
       onUpdate(updatedData)
-      toast.success('Preference updated successfully')
+      toast.success(t('preferenceUpdateSuccess'))
     } catch (error) {
-      toast.error('Failed to update preference')
+      toast.error(t('preferenceUpdateError'))
       // Revert on error
       setPreferences(profileData.preferences)
     } finally {
@@ -97,9 +109,9 @@ export function PreferencesForm({ profileData, onUpdate }: PreferencesFormProps)
         preferences: updatedPreferences
       }
       onUpdate(updatedData)
-      toast.success('Notification preference updated')
+      toast.success(t('notificationUpdateSuccess'))
     } catch (error) {
-      toast.error('Failed to update notification preference')
+      toast.error(t('notificationUpdateError'))
       // Revert on error
       setPreferences(profileData.preferences)
     } finally {
@@ -117,7 +129,7 @@ export function PreferencesForm({ profileData, onUpdate }: PreferencesFormProps)
       <CardHeader>
         <CardTitle className="flex items-center space-x-2">
           <Settings className="h-5 w-5" />
-          <span>Preferences</span>
+          <span>{t('title')}</span>
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
@@ -125,12 +137,12 @@ export function PreferencesForm({ profileData, onUpdate }: PreferencesFormProps)
         <div className="space-y-4">
           <h4 className="font-medium flex items-center space-x-2">
             <Globe className="h-4 w-4" />
-            <span>Language & Region</span>
+            <span>{t('language')}</span>
           </h4>
           
           <div className="grid gap-4 md:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="language">Language</Label>
+              <Label htmlFor="language">{t('language')}</Label>
               <Select
                 value={preferences.language}
                 onValueChange={(value) => handlePreferenceChange('language', value)}
@@ -150,7 +162,7 @@ export function PreferencesForm({ profileData, onUpdate }: PreferencesFormProps)
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="timezone">Time Zone</Label>
+              <Label htmlFor="timezone">{t('timeZone')}</Label>
               <Select
                 value={preferences.timezone}
                 onValueChange={(value) => handlePreferenceChange('timezone', value)}
@@ -178,10 +190,10 @@ export function PreferencesForm({ profileData, onUpdate }: PreferencesFormProps)
 
         {/* Theme */}
         <div className="space-y-4">
-          <h4 className="font-medium">Theme</h4>
+          <h4 className="font-medium">{t('theme')}</h4>
           
           <div className="space-y-2">
-            <Label htmlFor="theme">Appearance</Label>
+            <Label htmlFor="theme">{t('appearance')}</Label>
             <Select
               value={preferences.theme}
               onValueChange={(value) => handlePreferenceChange('theme', value)}
@@ -197,7 +209,7 @@ export function PreferencesForm({ profileData, onUpdate }: PreferencesFormProps)
                     <SelectItem key={theme.value} value={theme.value}>
                       <div className="flex items-center space-x-2">
                         <Icon className="h-4 w-4" />
-                        <span>{theme.label}</span>
+                        <span>{getThemeLabel(theme.value, t)}</span>
                       </div>
                     </SelectItem>
                   )
@@ -205,7 +217,7 @@ export function PreferencesForm({ profileData, onUpdate }: PreferencesFormProps)
               </SelectContent>
             </Select>
             <p className="text-sm text-muted-foreground">
-              System theme follows your device's appearance settings
+              {t('systemThemeDescription')}
             </p>
           </div>
         </div>
@@ -216,7 +228,7 @@ export function PreferencesForm({ profileData, onUpdate }: PreferencesFormProps)
         <div className="space-y-4">
           <h4 className="font-medium flex items-center space-x-2">
             <Bell className="h-4 w-4" />
-            <span>Notifications</span>
+            <span>{t('notifications.title')}</span>
           </h4>
           
           <div className="space-y-4">
@@ -224,9 +236,9 @@ export function PreferencesForm({ profileData, onUpdate }: PreferencesFormProps)
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-muted-foreground" />
                 <div>
-                  <h5 className="font-medium">Email Notifications</h5>
+                  <h5 className="font-medium">{t('notifications.email')}</h5>
                   <p className="text-sm text-muted-foreground">
-                    Receive security alerts and updates via email
+                    {t('notifications.emailDescription')}
                   </p>
                 </div>
               </div>
@@ -241,9 +253,9 @@ export function PreferencesForm({ profileData, onUpdate }: PreferencesFormProps)
               <div className="flex items-center space-x-3">
                 <Smartphone className="h-5 w-5 text-muted-foreground" />
                 <div>
-                  <h5 className="font-medium">SMS Notifications</h5>
+                  <h5 className="font-medium">{t('notifications.sms')}</h5>
                   <p className="text-sm text-muted-foreground">
-                    Receive critical security alerts via SMS
+                    {t('notifications.smsDescription')}
                   </p>
                 </div>
               </div>
@@ -258,9 +270,9 @@ export function PreferencesForm({ profileData, onUpdate }: PreferencesFormProps)
               <div className="flex items-center space-x-3">
                 <Bell className="h-5 w-5 text-muted-foreground" />
                 <div>
-                  <h5 className="font-medium">In-App Notifications</h5>
+                  <h5 className="font-medium">{t('notifications.app')}</h5>
                   <p className="text-sm text-muted-foreground">
-                    Show notifications within the application
+                    {t('notifications.appDescription')}
                   </p>
                 </div>
               </div>
@@ -275,7 +287,7 @@ export function PreferencesForm({ profileData, onUpdate }: PreferencesFormProps)
 
         {saving && (
           <div className="text-center text-sm text-muted-foreground">
-            Saving preferences...
+            {t('savingPreferences')}
           </div>
         )}
       </CardContent>

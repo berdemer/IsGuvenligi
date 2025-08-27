@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useTranslations } from 'next-intl'
 import { ProfileHeader } from "@/components/profile/ProfileHeader"
 import { UserInfoForm } from "@/components/profile/UserInfoForm"
 import { SecurityCard } from "@/components/profile/SecurityCard"
@@ -48,6 +49,7 @@ interface ProfileData {
 }
 
 export default function ProfilePage() {
+  const t = useTranslations('profile')
   const [profileData, setProfileData] = useState<ProfileData | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -94,7 +96,7 @@ export default function ProfilePage() {
       
       setProfileData(mockData)
     } catch (err) {
-      setError("Failed to load profile data")
+      setError(t('common.failedToLoad'))
     } finally {
       setLoading(false)
     }
@@ -169,7 +171,7 @@ export default function ProfilePage() {
               className="ml-4"
             >
               <RefreshCw className="h-4 w-4 mr-2" />
-              Retry
+              {t('common.retry')}
             </Button>
           </AlertDescription>
         </Alert>
@@ -182,7 +184,7 @@ export default function ProfilePage() {
       <div className="container mx-auto p-6">
         <Alert>
           <AlertCircle className="h-4 w-4" />
-          <AlertDescription>No profile data available</AlertDescription>
+          <AlertDescription>{t('common.noDataAvailable')}</AlertDescription>
         </Alert>
       </div>
     )

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useTranslations } from 'next-intl'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Switch } from "@/components/ui/switch"
 import { Button } from "@/components/ui/button"
@@ -32,6 +33,8 @@ interface ProvidersCardProps {
 }
 
 export function ProvidersCard({ profileData, onUpdate }: ProvidersCardProps) {
+  const t = useTranslations('profile.mfa')
+  const tCommon = useTranslations('common')
   const [totpDialogOpen, setTotpDialogOpen] = useState(false)
   const [webauthnDialogOpen, setWebauthnDialogOpen] = useState(false)
   const [totpCode, setTotpCode] = useState("")
@@ -49,7 +52,7 @@ export function ProvidersCard({ profileData, onUpdate }: ProvidersCardProps) {
       setTotpDialogOpen(true)
     } else {
       if (adminSettings.requireMfa) {
-        toast.error('MFA is required by your organization and cannot be disabled')
+        toast.error(t('totp.cannotDisable'))
         return
       }
       
@@ -63,9 +66,9 @@ export function ProvidersCard({ profileData, onUpdate }: ProvidersCardProps) {
           mfa: { ...profileData.mfa, totp: false }
         }
         onUpdate(updatedData)
-        toast.success('TOTP authentication disabled')
+        toast.success(t('totp.disabledSuccess'))
       } catch (error) {
-        toast.error('Failed to disable TOTP authentication')
+        toast.error(t('totp.disableError'))
       } finally {
         setLoading(false)
       }
@@ -74,7 +77,7 @@ export function ProvidersCard({ profileData, onUpdate }: ProvidersCardProps) {
 
   const handleTotpSetup = async () => {
     if (!totpCode || totpCode.length !== 6) {
-      toast.error('Please enter a valid 6-digit code')
+      toast.error(t('totp.enterValidCode'))
       return
     }
 
@@ -88,11 +91,11 @@ export function ProvidersCard({ profileData, onUpdate }: ProvidersCardProps) {
         mfa: { ...profileData.mfa, totp: true }
       }
       onUpdate(updatedData)
-      toast.success('TOTP authentication enabled successfully')
+      toast.success(t('totp.enabledSuccess'))
       setTotpDialogOpen(false)
       setTotpCode("")
     } catch (error) {
-      toast.error('Invalid code. Please try again.')
+      toast.error(t('totp.invalidCode'))
     } finally {
       setLoading(false)
     }
@@ -102,7 +105,7 @@ export function ProvidersCard({ profileData, onUpdate }: ProvidersCardProps) {
     if (enabled) {
       // Check browser compatibility
       if (!window.navigator.credentials) {
-        toast.error('WebAuthn is not supported in this browser')
+        toast.error(t('webauthn.notSupported'))
         return
       }
       
@@ -118,9 +121,9 @@ export function ProvidersCard({ profileData, onUpdate }: ProvidersCardProps) {
           mfa: { ...profileData.mfa, webauthn: false }
         }
         onUpdate(updatedData)
-        toast.success('WebAuthn disabled')
+        toast.success(t('webauthn.disabledSuccess'))
       } catch (error) {
-        toast.error('Failed to disable WebAuthn')
+        toast.error(t('webauthn.setupError'))
       } finally {
         setLoading(false)
       }
@@ -138,10 +141,10 @@ export function ProvidersCard({ profileData, onUpdate }: ProvidersCardProps) {
         mfa: { ...profileData.mfa, webauthn: true }
       }
       onUpdate(updatedData)
-      toast.success('WebAuthn enabled successfully')
+      toast.success(t('webauthn.enabledSuccess'))
       setWebauthnDialogOpen(false)
     } catch (error) {
-      toast.error('WebAuthn setup failed. Please try again.')
+      toast.error(t('webauthn.setupError'))
     } finally {
       setLoading(false)
     }
@@ -158,9 +161,13 @@ export function ProvidersCard({ profileData, onUpdate }: ProvidersCardProps) {
         providers: { ...profileData.providers, [provider]: enabled }
       }
       onUpdate(updatedData)
-      toast.success(`${provider.charAt(0).toUpperCase() + provider.slice(1)} ${enabled ? 'connected' : 'disconnected'}`)
+      const providerName = provider === 'google' ? t('google.title') : t('microsoft.title')
+      const status = enabled ? tCommon('connected') : tCommon('disconnected')
+      toast.success(`${providerName} ${status}`)
     } catch (error) {
-      toast.error(`Failed to ${enabled ? 'connect' : 'disconnect'} ${provider}`)
+      const providerName = provider === 'google' ? t('google.title') : t('microsoft.title')
+      const action = enabled ? tCommon('connect') : tCommon('disconnect')
+      toast.error(`${providerName} ${action} ${tCommon('failed')}`)
     } finally {
       setLoading(false)
     }
@@ -171,19 +178,19 @@ export function ProvidersCard({ profileData, onUpdate }: ProvidersCardProps) {
       <CardHeader>
         <CardTitle className="flex items-center space-x-2">
           <Shield className="h-5 w-5" />
-          <span>Multi-Factor Authentication & Providers</span>
+          <span>{t('title')}</span>
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         {/* MFA Section */}
         <div className="space-y-4">
-          <h4 className="font-medium">Multi-Factor Authentication</h4>
+          <h4 className="font-medium">{t('multiFactorAuth')}</h4>
           
           {adminSettings.requireMfa && (
             <Alert>
               <Info className="h-4 w-4" />
               <AlertDescription>
-                Multi-factor authentication is required by your organization for enhanced security.
+                {t('mfaRequired')}
               </AlertDescription>
             </Alert>
           )}
@@ -194,13 +201,13 @@ export function ProvidersCard({ profileData, onUpdate }: ProvidersCardProps) {
               <Smartphone className="h-5 w-5 text-muted-foreground" />
               <div>
                 <div className="flex items-center space-x-2">
-                  <h5 className="font-medium">Authenticator App (TOTP)</h5>
+                  <h5 className="font-medium">{t('totp.title')}</h5>
                   <Badge variant={profileData.mfa.totp ? "default" : "secondary"}>
-                    {profileData.mfa.totp ? "Enabled" : "Disabled"}
+                    {profileData.mfa.totp ? t('totp.enabled') : t('totp.disabled')}
                   </Badge>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Use Google Authenticator, Authy, or similar apps
+                  {t('totp.description')}
                 </p>
               </div>
             </div>
@@ -217,19 +224,19 @@ export function ProvidersCard({ profileData, onUpdate }: ProvidersCardProps) {
               <Key className="h-5 w-5 text-muted-foreground" />
               <div>
                 <div className="flex items-center space-x-2">
-                  <h5 className="font-medium">Security Keys (WebAuthn)</h5>
+                  <h5 className="font-medium">{t('webauthn.title')}</h5>
                   <Badge variant={profileData.mfa.webauthn ? "default" : "secondary"}>
-                    {profileData.mfa.webauthn ? "Enabled" : "Disabled"}
+                    {profileData.mfa.webauthn ? t('totp.enabled') : t('totp.disabled')}
                   </Badge>
                 </div>
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                  <span>Hardware keys, Touch ID, Face ID</span>
+                  <span>{t('webauthn.description')}</span>
                   <Tooltip>
                     <TooltipTrigger>
                       <Chrome className="h-3 w-3" />
                     </TooltipTrigger>
                     <TooltipContent>
-                      <p>Compatible browsers: Chrome, Firefox, Safari, Edge</p>
+                      <p>{t('compatibleBrowsers')}</p>
                     </TooltipContent>
                   </Tooltip>
                 </div>
@@ -247,7 +254,7 @@ export function ProvidersCard({ profileData, onUpdate }: ProvidersCardProps) {
 
         {/* Linked Providers Section */}
         <div className="space-y-4">
-          <h4 className="font-medium">Linked Accounts</h4>
+          <h4 className="font-medium">{t('linkedAccounts')}</h4>
           
           {/* Google */}
           <div className="flex items-center justify-between p-4 border rounded-lg">
@@ -255,13 +262,13 @@ export function ProvidersCard({ profileData, onUpdate }: ProvidersCardProps) {
               <Globe className="h-5 w-5 text-muted-foreground" />
               <div>
                 <div className="flex items-center space-x-2">
-                  <h5 className="font-medium">Google</h5>
+                  <h5 className="font-medium">{t('google.title')}</h5>
                   <Badge variant={profileData.providers.google ? "default" : "secondary"}>
-                    {profileData.providers.google ? "Connected" : "Disconnected"}
+                    {profileData.providers.google ? t('google.connected') : t('google.disconnected')}
                   </Badge>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Sign in with your Google account
+                  {t('google.description')}
                 </p>
               </div>
             </div>
@@ -272,7 +279,7 @@ export function ProvidersCard({ profileData, onUpdate }: ProvidersCardProps) {
                     <AlertTriangle className="h-4 w-4 text-amber-500" />
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p>Disabled by administrator</p>
+                    <p>{t('google.disabledByAdmin')}</p>
                   </TooltipContent>
                 </Tooltip>
               )}
@@ -290,13 +297,13 @@ export function ProvidersCard({ profileData, onUpdate }: ProvidersCardProps) {
               <Globe className="h-5 w-5 text-muted-foreground" />
               <div>
                 <div className="flex items-center space-x-2">
-                  <h5 className="font-medium">Microsoft</h5>
+                  <h5 className="font-medium">{t('microsoft.title')}</h5>
                   <Badge variant={profileData.providers.microsoft ? "default" : "secondary"}>
-                    {profileData.providers.microsoft ? "Connected" : "Disconnected"}
+                    {profileData.providers.microsoft ? t('microsoft.connected') : t('microsoft.disconnected')}
                   </Badge>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Sign in with your Microsoft account
+                  {t('microsoft.description')}
                 </p>
               </div>
             </div>
@@ -307,7 +314,7 @@ export function ProvidersCard({ profileData, onUpdate }: ProvidersCardProps) {
                     <AlertTriangle className="h-4 w-4 text-amber-500" />
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p>Disabled by administrator</p>
+                    <p>{t('google.disabledByAdmin')}</p>
                   </TooltipContent>
                 </Tooltip>
               )}
@@ -326,10 +333,10 @@ export function ProvidersCard({ profileData, onUpdate }: ProvidersCardProps) {
             <DialogHeader>
               <DialogTitle className="flex items-center space-x-2">
                 <Smartphone className="h-5 w-5" />
-                <span>Set up TOTP Authentication</span>
+                <span>{t('totp.setup')}</span>
               </DialogTitle>
               <DialogDescription>
-                Follow these steps to set up two-factor authentication with your authenticator app.
+                {t('totp.setupDescription')}
               </DialogDescription>
             </DialogHeader>
             
@@ -339,7 +346,7 @@ export function ProvidersCard({ profileData, onUpdate }: ProvidersCardProps) {
                   <QrCode className="h-16 w-16 text-muted-foreground" />
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  QR Code placeholder - scan with your authenticator app
+                  {t('totp.qrCodePlaceholder')}
                 </p>
               </div>
 
@@ -347,19 +354,19 @@ export function ProvidersCard({ profileData, onUpdate }: ProvidersCardProps) {
                 <Info className="h-4 w-4" />
                 <AlertDescription>
                   <div className="space-y-2">
-                    <p className="font-medium">Instructions:</p>
+                    <p className="font-medium">{t('totp.instructions')}</p>
                     <ol className="list-decimal list-inside text-sm space-y-1">
-                      <li>Install an authenticator app (Google Authenticator, Authy, etc.)</li>
-                      <li>Scan the QR code above with your app</li>
-                      <li>Enter the 6-digit code from your app below</li>
-                      <li>Click "Enable TOTP" to complete setup</li>
+                      <li>{t('totp.step1')}</li>
+                      <li>{t('totp.step2')}</li>
+                      <li>{t('totp.step3')}</li>
+                      <li>{t('totp.step4')}</li>
                     </ol>
                   </div>
                 </AlertDescription>
               </Alert>
 
               <div className="space-y-2">
-                <Label htmlFor="totpCode">Verification Code</Label>
+                <Label htmlFor="totpCode">{t('totp.verificationCode')}</Label>
                 <Input
                   id="totpCode"
                   placeholder="000000"
@@ -373,10 +380,10 @@ export function ProvidersCard({ profileData, onUpdate }: ProvidersCardProps) {
 
             <DialogFooter>
               <Button variant="outline" onClick={() => setTotpDialogOpen(false)}>
-                Cancel
+                {t('totp.cancel')}
               </Button>
               <Button onClick={handleTotpSetup} disabled={loading || totpCode.length !== 6}>
-                {loading ? 'Verifying...' : 'Enable TOTP'}
+                {loading ? t('totp.verifying') : t('totp.enableTotp')}
               </Button>
             </DialogFooter>
           </DialogContent>
@@ -388,10 +395,10 @@ export function ProvidersCard({ profileData, onUpdate }: ProvidersCardProps) {
             <DialogHeader>
               <DialogTitle className="flex items-center space-x-2">
                 <Key className="h-5 w-5" />
-                <span>Set up WebAuthn</span>
+                <span>{t('webauthn.setup')}</span>
               </DialogTitle>
               <DialogDescription>
-                Set up hardware security keys, Touch ID, Face ID, or Windows Hello for authentication.
+                {t('webauthn.setupDescription')}
               </DialogDescription>
             </DialogHeader>
             
@@ -400,13 +407,13 @@ export function ProvidersCard({ profileData, onUpdate }: ProvidersCardProps) {
                 <Info className="h-4 w-4" />
                 <AlertDescription>
                   <div className="space-y-2">
-                    <p className="font-medium">Supported Methods:</p>
+                    <p className="font-medium">{t('webauthn.supportedMethods')}</p>
                     <ul className="list-disc list-inside text-sm space-y-1">
-                      <li>Hardware security keys (YubiKey, etc.)</li>
-                      <li>Touch ID on Mac</li>
-                      <li>Face ID on iPhone/iPad</li>
-                      <li>Windows Hello</li>
-                      <li>Android fingerprint/face unlock</li>
+                      <li>{t('webauthn.hardwareKeys')}</li>
+                      <li>{t('webauthn.touchId')}</li>
+                      <li>{t('webauthn.faceId')}</li>
+                      <li>{t('webauthn.windowsHello')}</li>
+                      <li>{t('webauthn.androidBiometric')}</li>
                     </ul>
                   </div>
                 </AlertDescription>
@@ -415,17 +422,17 @@ export function ProvidersCard({ profileData, onUpdate }: ProvidersCardProps) {
               <Alert>
                 <Chrome className="h-4 w-4" />
                 <AlertDescription>
-                  Make sure you're using a compatible browser: Chrome, Firefox, Safari, or Edge.
+                  {t('webauthn.browserCompatibility')}
                 </AlertDescription>
               </Alert>
             </div>
 
             <DialogFooter>
               <Button variant="outline" onClick={() => setWebauthnDialogOpen(false)}>
-                Cancel
+                {t('webauthn.cancel')}
               </Button>
               <Button onClick={handleWebauthnSetup} disabled={loading}>
-                {loading ? 'Setting up...' : 'Set up WebAuthn'}
+                {loading ? t('webauthn.settingUp') : t('webauthn.setupWebauthn')}
               </Button>
             </DialogFooter>
           </DialogContent>

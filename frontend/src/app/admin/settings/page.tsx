@@ -31,6 +31,7 @@ import {
   RefreshCw
 } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast'
+import { useTranslations } from 'next-intl'
 
 // Import setting components
 import GeneralSettings from '@/components/admin/settings/GeneralSettings'
@@ -60,6 +61,8 @@ interface SettingsSummary {
 
 export default function SettingsPage() {
   const { toast } = useToast()
+  const t = useTranslations('settings')
+  const tCommon = useTranslations('common')
   const [state, setState] = useState<SettingsState>({
     activeTab: 'general',
     unsavedChanges: false,
@@ -221,10 +224,10 @@ export default function SettingsPage() {
         <div>
           <h1 className="text-3xl font-bold flex items-center gap-2">
             <SettingsIcon className="h-8 w-8" />
-            System Settings
+            {t('title')}
           </h1>
           <p className="text-muted-foreground">
-            Configure system preferences, security, monitoring, and integrations
+            {t('description')}
           </p>
         </div>
         
@@ -249,7 +252,7 @@ export default function SettingsPage() {
             disabled={!state.unsavedChanges || state.loading}
           >
             <RotateCcw className="h-4 w-4 mr-2" />
-            Reset
+            {tCommon('reset')}
           </Button>
           
           <Button 
@@ -259,7 +262,7 @@ export default function SettingsPage() {
             disabled={state.loading}
           >
             <Download className="h-4 w-4 mr-2" />
-            Export
+            {tCommon('export')}
           </Button>
           
           <Button 
@@ -272,7 +275,7 @@ export default function SettingsPage() {
             ) : (
               <Save className="h-4 w-4 mr-2" />
             )}
-            Save
+            {tCommon('save')}
           </Button>
         </div>
       </div>
@@ -343,35 +346,35 @@ export default function SettingsPage() {
         <TabsList className="grid w-full grid-cols-4 lg:grid-cols-8">
           <TabsTrigger value="general" className="flex items-center gap-2">
             <SettingsIcon className="h-4 w-4" />
-            <span className="hidden sm:inline">General</span>
+            <span className="hidden sm:inline">{t('general')}</span>
           </TabsTrigger>
           <TabsTrigger value="security" className="flex items-center gap-2">
             <Shield className="h-4 w-4" />
-            <span className="hidden sm:inline">Security</span>
+            <span className="hidden sm:inline">{t('security')}</span>
           </TabsTrigger>
           <TabsTrigger value="notifications" className="flex items-center gap-2">
             <Bell className="h-4 w-4" />
-            <span className="hidden sm:inline">Notifications</span>
+            <span className="hidden sm:inline">{t('notifications')}</span>
           </TabsTrigger>
           <TabsTrigger value="policies" className="flex items-center gap-2">
             <Users className="h-4 w-4" />
-            <span className="hidden sm:inline">Policies</span>
+            <span className="hidden sm:inline">{t('policies')}</span>
           </TabsTrigger>
           <TabsTrigger value="monitoring" className="flex items-center gap-2">
             <Activity className="h-4 w-4" />
-            <span className="hidden sm:inline">Monitoring</span>
+            <span className="hidden sm:inline">{t('monitoring')}</span>
           </TabsTrigger>
           <TabsTrigger value="integrations" className="flex items-center gap-2">
             <Puzzle className="h-4 w-4" />
-            <span className="hidden sm:inline">Integrations</span>
+            <span className="hidden sm:inline">{t('integrations')}</span>
           </TabsTrigger>
           <TabsTrigger value="data" className="flex items-center gap-2">
             <Database className="h-4 w-4" />
-            <span className="hidden sm:inline">Data</span>
+            <span className="hidden sm:inline">{t('data')}</span>
           </TabsTrigger>
           <TabsTrigger value="audit" className="flex items-center gap-2">
             <Eye className="h-4 w-4" />
-            <span className="hidden sm:inline">Audit</span>
+            <span className="hidden sm:inline">{t('audit')}</span>
           </TabsTrigger>
         </TabsList>
 

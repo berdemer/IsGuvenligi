@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react'
 import { useSearchParams } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -23,6 +24,7 @@ import NotificationSettings from "@/components/admin/notifications/NotificationS
 import toast from "react-hot-toast"
 
 export default function NotificationsPage() {
+  const t = useTranslations('notifications')
   const searchParams = useSearchParams()
   const highlightId = searchParams?.get('highlight')
   const tabParam = searchParams?.get('tab')
@@ -294,7 +296,7 @@ export default function NotificationsPage() {
       setNotifications(mockNotifications)
       setLastUpdated(new Date())
     } catch (error) {
-      toast.error("Failed to load notifications")
+      toast.error(t('failedToLoad'))
     } finally {
       setLoading(false)
     }
@@ -319,14 +321,14 @@ export default function NotificationsPage() {
       )
       
       setSummary(prev => prev ? { ...prev, unreadNotifications: 0 } : null)
-      toast.success("All notifications marked as read")
+      toast.success(t('allMarkedAsRead'))
     } catch (error) {
-      toast.error("Failed to mark notifications as read")
+      toast.error(t('failedToMarkAsRead'))
     }
   }
 
   const handleExport = () => {
-    toast.success("Export would start here")
+    toast.success(t('exportWouldStart'))
     // TODO: Export functionality
   }
 
@@ -345,7 +347,7 @@ export default function NotificationsPage() {
       <div className="flex items-center justify-center min-h-screen">
         <div className="flex items-center space-x-2">
           <RefreshCw className="h-4 w-4 animate-spin" />
-          <span>Loading notifications...</span>
+          <span>{t('loading')}</span>
         </div>
       </div>
     )
@@ -355,19 +357,19 @@ export default function NotificationsPage() {
     <div className="flex-1 space-y-6 p-8 pt-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-bold tracking-tight">Notifications</h2>
+          <h2 className="text-3xl font-bold tracking-tight">{t('title')}</h2>
           <p className="text-muted-foreground">
-            Manage all user and system alerts, security events, and activity notifications
+            {t('description')}
           </p>
         </div>
         <div className="flex items-center space-x-2">
           <Button variant="outline" onClick={handleExport}>
             <Download className="h-4 w-4 mr-2" />
-            Export
+            {t('export')}
           </Button>
           <Button onClick={handleMarkAllAsRead} disabled={!summary?.unreadNotifications}>
             <Check className="h-4 w-4 mr-2" />
-            Mark All Read
+            {t('markAllRead')}
           </Button>
         </div>
       </div>
@@ -376,7 +378,7 @@ export default function NotificationsPage() {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Notifications</CardTitle>
+            <CardTitle className="text-sm font-medium">{t('totalNotifications')}</CardTitle>
             <Bell className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -387,14 +389,14 @@ export default function NotificationsPage() {
               ) : (
                 <TrendingDown className="h-3 w-3 text-red-500 mr-1" />
               )}
-              {summary?.trends.notifications.change > 0 ? '+' : ''}{summary?.trends.notifications.change}% from last week
+              {summary?.trends.notifications.change > 0 ? '+' : ''}{summary?.trends.notifications.change}% {t('fromLastWeek')}
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Unread</CardTitle>
+            <CardTitle className="text-sm font-medium">{t('unread')}</CardTitle>
             <BellRing className="h-4 w-4 text-orange-600" />
           </CardHeader>
           <CardContent>
@@ -402,14 +404,14 @@ export default function NotificationsPage() {
               {summary?.unreadNotifications || 0}
             </div>
             <p className="text-xs text-muted-foreground">
-              {summary && Math.round((summary.unreadNotifications / summary.totalNotifications) * 100)}% unread rate
+              {summary && Math.round((summary.unreadNotifications / summary.totalNotifications) * 100)}% {t('unreadRate')}
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Security Alerts</CardTitle>
+            <CardTitle className="text-sm font-medium">{t('securityAlerts')}</CardTitle>
             <Shield className="h-4 w-4 text-red-600" />
           </CardHeader>
           <CardContent>
@@ -422,14 +424,14 @@ export default function NotificationsPage() {
               ) : (
                 <TrendingDown className="h-3 w-3 text-green-500 mr-1" />
               )}
-              {summary?.trends.security.change > 0 ? '+' : ''}{summary?.trends.security.change}% this week
+              {summary?.trends.security.change > 0 ? '+' : ''}{summary?.trends.security.change}% {t('thisWeek')}
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">System Health</CardTitle>
+            <CardTitle className="text-sm font-medium">{t('systemHealth')}</CardTitle>
             <Activity className="h-4 w-4 text-blue-600" />
           </CardHeader>
           <CardContent>
@@ -440,7 +442,7 @@ export default function NotificationsPage() {
               ) : (
                 <TrendingDown className="h-3 w-3 text-green-500 mr-1" />
               )}
-              {summary?.trends.system.change > 0 ? '+' : ''}{summary?.trends.system.change}% this week
+              {summary?.trends.system.change > 0 ? '+' : ''}{summary?.trends.system.change}% {t('thisWeek')}
             </p>
           </CardContent>
         </Card>
@@ -451,8 +453,8 @@ export default function NotificationsPage() {
         <Alert variant="destructive">
           <AlertTriangle className="h-4 w-4" />
           <AlertDescription>
-            <strong>{summary.securityAlerts} security alerts</strong> require immediate attention. 
-            Review the Security tab for details.
+            <strong>{summary.securityAlerts} {t('securityAlerts').toLowerCase()}</strong> {t('requireImmediateAttention')}. 
+            {t('reviewSecurityTab')}.
           </AlertDescription>
         </Alert>
       )}
@@ -461,11 +463,11 @@ export default function NotificationsPage() {
       <div className="flex items-center justify-between text-sm text-muted-foreground">
         <div className="flex items-center space-x-2">
           <Clock className="h-4 w-4" />
-          <span>Last updated: {lastUpdated.toLocaleString()}</span>
+          <span>{t('lastUpdated')}: {lastUpdated.toLocaleString()}</span>
         </div>
         <Button variant="ghost" size="sm" onClick={loadData}>
           <RefreshCw className="h-4 w-4 mr-2" />
-          Refresh
+          {t('refresh')}
         </Button>
       </div>
 
@@ -474,7 +476,7 @@ export default function NotificationsPage() {
         <TabsList className="grid w-full grid-cols-6">
           <TabsTrigger value="all" className="flex items-center space-x-2">
             <Bell className="h-4 w-4" />
-            <span>All</span>
+            <span>{t('all')}</span>
             {getUnreadCount() > 0 && (
               <Badge variant="destructive">{getUnreadCount()}</Badge>
             )}
@@ -482,7 +484,7 @@ export default function NotificationsPage() {
           
           <TabsTrigger value="security" className="flex items-center space-x-2">
             <Shield className="h-4 w-4" />
-            <span>Security</span>
+            <span>{t('security')}</span>
             <Badge variant="outline">{getTabCount('security')}</Badge>
             {getUnreadCount('security') > 0 && (
               <Badge variant="destructive" className="ml-1">{getUnreadCount('security')}</Badge>
@@ -491,7 +493,7 @@ export default function NotificationsPage() {
           
           <TabsTrigger value="system" className="flex items-center space-x-2">
             <Activity className="h-4 w-4" />
-            <span>System</span>
+            <span>{t('system')}</span>
             <Badge variant="outline">{getTabCount('system')}</Badge>
             {getUnreadCount('system') > 0 && (
               <Badge variant="destructive" className="ml-1">{getUnreadCount('system')}</Badge>
@@ -500,7 +502,7 @@ export default function NotificationsPage() {
           
           <TabsTrigger value="risk" className="flex items-center space-x-2">
             <AlertTriangle className="h-4 w-4" />
-            <span>Risk & Safety</span>
+            <span>{t('riskAndSafety')}</span>
             <Badge variant="outline">{getTabCount('risk')}</Badge>
             {getUnreadCount('risk') > 0 && (
               <Badge variant="destructive" className="ml-1">{getUnreadCount('risk')}</Badge>
@@ -509,7 +511,7 @@ export default function NotificationsPage() {
           
           <TabsTrigger value="user_activity" className="flex items-center space-x-2">
             <Users className="h-4 w-4" />
-            <span>User Activity</span>
+            <span>{t('userActivity')}</span>
             <Badge variant="outline">{getTabCount('user_activity')}</Badge>
             {getUnreadCount('user_activity') > 0 && (
               <Badge variant="destructive" className="ml-1">{getUnreadCount('user_activity')}</Badge>
@@ -518,7 +520,7 @@ export default function NotificationsPage() {
           
           <TabsTrigger value="settings" className="flex items-center space-x-2">
             <Settings className="h-4 w-4" />
-            <span>Settings</span>
+            <span>{t('settings')}</span>
           </TabsTrigger>
         </TabsList>
 
@@ -532,7 +534,7 @@ export default function NotificationsPage() {
               )
             }}
             onBulkAction={(action) => {
-              toast.success(`Bulk ${action} completed`)
+              toast.success(`Bulk ${action} ${t('bulkActionCompleted')}`)
               loadData() // Refresh data after bulk action
             }}
           />
@@ -548,7 +550,7 @@ export default function NotificationsPage() {
               )
             }}
             onBulkAction={(action) => {
-              toast.success(`Bulk ${action} completed`)
+              toast.success(`Bulk ${action} ${t('bulkActionCompleted')}`)
               loadData()
             }}
           />
@@ -564,7 +566,7 @@ export default function NotificationsPage() {
               )
             }}
             onBulkAction={(action) => {
-              toast.success(`Bulk ${action} completed`)
+              toast.success(`Bulk ${action} ${t('bulkActionCompleted')}`)
               loadData()
             }}
           />
@@ -580,7 +582,7 @@ export default function NotificationsPage() {
               )
             }}
             onBulkAction={(action) => {
-              toast.success(`Bulk ${action} completed`)
+              toast.success(`Bulk ${action} ${t('bulkActionCompleted')}`)
               loadData()
             }}
           />
@@ -596,7 +598,7 @@ export default function NotificationsPage() {
               )
             }}
             onBulkAction={(action) => {
-              toast.success(`Bulk ${action} completed`)
+              toast.success(`Bulk ${action} ${t('bulkActionCompleted')}`)
               loadData()
             }}
           />

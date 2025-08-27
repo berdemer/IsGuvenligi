@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useTranslations } from 'next-intl'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -45,6 +46,7 @@ const departments = [
 ]
 
 export function UserInfoForm({ profileData, onUpdate }: UserInfoFormProps) {
+  const t = useTranslations('profile')
   const [formData, setFormData] = useState(profileData)
   const [errors, setErrors] = useState<FormErrors>({})
   const [saving, setSaving] = useState(false)
@@ -63,30 +65,30 @@ export function UserInfoForm({ profileData, onUpdate }: UserInfoFormProps) {
   const validateField = (name: string, value: string): string | undefined => {
     switch (name) {
       case 'firstName':
-        if (!value.trim()) return 'First name is required'
-        if (value.length < 2) return 'First name must be at least 2 characters'
-        if (!/^[a-zA-ZğüşıöçĞÜŞİÖÇ\s]+$/.test(value)) return 'First name can only contain letters'
+        if (!value.trim()) return t('validation.firstNameRequired')
+        if (value.length < 2) return t('validation.firstNameMin')
+        if (!/^[a-zA-ZğüşıöçĞÜŞİÖÇ\s]+$/.test(value)) return t('validation.firstNameLetters')
         return undefined
       
       case 'lastName':
-        if (!value.trim()) return 'Last name is required'
-        if (value.length < 2) return 'Last name must be at least 2 characters'
-        if (!/^[a-zA-ZğüşıöçĞÜŞİÖÇ\s]+$/.test(value)) return 'Last name can only contain letters'
+        if (!value.trim()) return t('validation.lastNameRequired')
+        if (value.length < 2) return t('validation.lastNameMin')
+        if (!/^[a-zA-ZğüşıöçĞÜŞİÖÇ\s]+$/.test(value)) return t('validation.lastNameLetters')
         return undefined
       
       case 'username':
-        if (!value.trim()) return 'Username is required'
-        if (value.length < 3) return 'Username must be at least 3 characters'
-        if (!/^[a-zA-Z0-9._-]+$/.test(value)) return 'Username can only contain letters, numbers, dots, hyphens, and underscores'
+        if (!value.trim()) return t('validation.usernameRequired')
+        if (value.length < 3) return t('validation.usernameMin')
+        if (!/^[a-zA-Z0-9._-]+$/.test(value)) return t('validation.usernameFormat')
         return undefined
       
       case 'department':
-        if (!value.trim()) return 'Department is required'
+        if (!value.trim()) return t('validation.departmentRequired')
         return undefined
       
       case 'phone':
-        if (!value.trim()) return 'Phone number is required'
-        if (!/^[\+]?[0-9\s\-\(\)]{10,}$/.test(value)) return 'Please enter a valid phone number'
+        if (!value.trim()) return t('validation.phoneRequired')
+        if (!/^[\+]?[0-9\s\-\(\)]{10,}$/.test(value)) return t('validation.phoneValid')
         return undefined
       
       default:
@@ -129,7 +131,7 @@ export function UserInfoForm({ profileData, onUpdate }: UserInfoFormProps) {
     setErrors(newErrors)
 
     if (hasErrors) {
-      toast.error('Please fix the validation errors')
+      toast.error(t('validation.fixErrors'))
       return
     }
 
@@ -139,9 +141,9 @@ export function UserInfoForm({ profileData, onUpdate }: UserInfoFormProps) {
       await new Promise(resolve => setTimeout(resolve, 1000))
       
       onUpdate(formData)
-      toast.success('User information updated successfully')
+      toast.success(t('userInfo.updateSuccess'))
     } catch (error) {
-      toast.error('Failed to update user information')
+      toast.error(t('userInfo.updateError'))
     } finally {
       setSaving(false)
     }
@@ -154,7 +156,7 @@ export function UserInfoForm({ profileData, onUpdate }: UserInfoFormProps) {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>User Information</CardTitle>
+          <CardTitle>{t('userInfo.title')}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           {Array.from({ length: 5 }).map((_, i) => (
@@ -172,13 +174,13 @@ export function UserInfoForm({ profileData, onUpdate }: UserInfoFormProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>User Information</CardTitle>
+        <CardTitle>{t('userInfo.title')}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid gap-4 md:grid-cols-2">
           <div className="space-y-2">
             <Label htmlFor="firstName">
-              First Name <span className="text-red-500">*</span>
+              {t('userInfo.firstName')} <span className="text-red-500">{t('userInfo.required')}</span>
             </Label>
             <Input
               id="firstName"
@@ -186,7 +188,7 @@ export function UserInfoForm({ profileData, onUpdate }: UserInfoFormProps) {
               onChange={(e) => handleFieldChange('firstName', e.target.value)}
               onBlur={(e) => handleBlur('firstName', e.target.value)}
               className={errors.firstName ? 'border-red-500' : ''}
-              placeholder="Enter first name"
+              placeholder={t('userInfo.firstNamePlaceholder')}
             />
             {errors.firstName && (
               <div className="flex items-center space-x-1 text-sm text-red-500">
@@ -198,7 +200,7 @@ export function UserInfoForm({ profileData, onUpdate }: UserInfoFormProps) {
 
           <div className="space-y-2">
             <Label htmlFor="lastName">
-              Last Name <span className="text-red-500">*</span>
+              {t('userInfo.lastName')} <span className="text-red-500">{t('userInfo.required')}</span>
             </Label>
             <Input
               id="lastName"
@@ -206,7 +208,7 @@ export function UserInfoForm({ profileData, onUpdate }: UserInfoFormProps) {
               onChange={(e) => handleFieldChange('lastName', e.target.value)}
               onBlur={(e) => handleBlur('lastName', e.target.value)}
               className={errors.lastName ? 'border-red-500' : ''}
-              placeholder="Enter last name"
+              placeholder={t('userInfo.lastNamePlaceholder')}
             />
             {errors.lastName && (
               <div className="flex items-center space-x-1 text-sm text-red-500">
@@ -219,7 +221,7 @@ export function UserInfoForm({ profileData, onUpdate }: UserInfoFormProps) {
 
         <div className="space-y-2">
           <Label htmlFor="username">
-            Username <span className="text-red-500">*</span>
+            {t('userInfo.username')} <span className="text-red-500">{t('userInfo.required')}</span>
           </Label>
           <Input
             id="username"
@@ -227,7 +229,7 @@ export function UserInfoForm({ profileData, onUpdate }: UserInfoFormProps) {
             onChange={(e) => handleFieldChange('username', e.target.value)}
             onBlur={(e) => handleBlur('username', e.target.value)}
             className={errors.username ? 'border-red-500' : ''}
-            placeholder="Enter username"
+            placeholder={t('userInfo.usernamePlaceholder')}
           />
           {errors.username && (
             <div className="flex items-center space-x-1 text-sm text-red-500">
@@ -239,19 +241,19 @@ export function UserInfoForm({ profileData, onUpdate }: UserInfoFormProps) {
 
         <div className="space-y-2">
           <Label htmlFor="department">
-            Department <span className="text-red-500">*</span>
+            {t('userInfo.department')} <span className="text-red-500">{t('userInfo.required')}</span>
           </Label>
           <Select
             value={formData.department}
             onValueChange={(value) => handleFieldChange('department', value)}
           >
             <SelectTrigger className={errors.department ? 'border-red-500' : ''}>
-              <SelectValue placeholder="Select department" />
+              <SelectValue placeholder={t('userInfo.departmentPlaceholder')} />
             </SelectTrigger>
             <SelectContent>
               {departments.map((dept) => (
                 <SelectItem key={dept} value={dept}>
-                  {dept}
+                  {t(`userInfo.departments.${dept}`)}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -266,7 +268,7 @@ export function UserInfoForm({ profileData, onUpdate }: UserInfoFormProps) {
 
         <div className="space-y-2">
           <Label htmlFor="phone">
-            Phone <span className="text-red-500">*</span>
+            {t('phone')} <span className="text-red-500">*</span>
           </Label>
           <Input
             id="phone"
@@ -286,7 +288,7 @@ export function UserInfoForm({ profileData, onUpdate }: UserInfoFormProps) {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="email">{t('userInfo.email')}</Label>
           <Input
             id="email"
             type="email"
@@ -295,7 +297,7 @@ export function UserInfoForm({ profileData, onUpdate }: UserInfoFormProps) {
             className="bg-muted"
           />
           <p className="text-xs text-muted-foreground">
-            Email address cannot be changed. Contact your administrator if needed.
+            {t('userInfo.emailChangeNotice')}
           </p>
         </div>
 
@@ -305,7 +307,7 @@ export function UserInfoForm({ profileData, onUpdate }: UserInfoFormProps) {
             disabled={!isFormDirty || hasValidationErrors || saving}
             className="min-w-[120px]"
           >
-            {saving ? 'Saving...' : 'Save Changes'}
+            {saving ? t('common.loading') : t('common.saveChanges')}
           </Button>
         </div>
       </CardContent>

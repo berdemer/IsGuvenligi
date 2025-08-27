@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useTranslations } from 'next-intl'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -13,7 +14,7 @@ import { PolicyAudit } from "@/components/admin/auth/policy/PolicyAudit"
 import { PolicyConflicts } from "@/components/admin/auth/policy/PolicyConflicts"
 import { PolicyStats } from "@/components/admin/auth/policy/PolicyStats"
 import { Shield, Plus, AlertTriangle, Activity, TestTube, History, TrendingUp } from "lucide-react"
-import { AuthPolicy, PolicyFilters, PolicyPermissions } from "@/types/auth-policy"
+import { AuthPolicy, PolicyPermissions } from "@/types/auth-policy"
 import toast from "react-hot-toast"
 
 // Mock permissions - in real app, this would come from RBAC
@@ -30,6 +31,8 @@ const mockPermissions: PolicyPermissions = {
 }
 
 export default function AuthPolicyPage() {
+  const t = useTranslations('auth.policies')
+  const tCommon = useTranslations('common')
   const [activeTab, setActiveTab] = useState("policies")
   const [showCreateForm, setShowCreateForm] = useState(false)
   const [editingPolicy, setEditingPolicy] = useState<AuthPolicy | null>(null)
@@ -213,7 +216,7 @@ export default function AuthPolicyPage() {
       
       setPolicies(mockPolicies)
     } catch (error) {
-      toast.error("Failed to load policies")
+      toast.error(t('failedToLoad') || 'Failed to load policies')
     } finally {
       setLoading(false)
     }
@@ -231,7 +234,7 @@ export default function AuthPolicyPage() {
 
   const handleCreatePolicy = () => {
     if (!permissions.canCreate) {
-      toast.error("You don't have permission to create policies")
+      toast.error(t('noCreatePermission') || "You don't have permission to create policies")
       return
     }
     setEditingPolicy(null)
@@ -240,7 +243,7 @@ export default function AuthPolicyPage() {
 
   const handleEditPolicy = (policy: AuthPolicy) => {
     if (!permissions.canEdit) {
-      toast.error("You don't have permission to edit policies")
+      toast.error(t('noEditPermission') || "You don't have permission to edit policies")
       return
     }
     setEditingPolicy(policy)
@@ -260,7 +263,7 @@ export default function AuthPolicyPage() {
             : p
           )
         )
-        toast.success("Policy updated successfully")
+        toast.success(t('policyUpdated') || 'Policy updated successfully')
       } else {
         // Create new policy
         const newPolicy: AuthPolicy = {
@@ -285,19 +288,19 @@ export default function AuthPolicyPage() {
         }
         
         setPolicies(prev => [...prev, newPolicy])
-        toast.success("Policy created successfully")
+        toast.success(t('policyCreated') || 'Policy created successfully')
       }
       
       setShowCreateForm(false)
       setEditingPolicy(null)
     } catch (error) {
-      toast.error("Failed to save policy")
+      toast.error(t('failedToSave') || 'Failed to save policy')
     }
   }
 
   const handleDeletePolicy = async (policyId: string) => {
     if (!permissions.canDelete) {
-      toast.error("You don't have permission to delete policies")
+      toast.error(t('noDeletePermission') || "You don't have permission to delete policies")
       return
     }
 
@@ -306,15 +309,15 @@ export default function AuthPolicyPage() {
       await new Promise(resolve => setTimeout(resolve, 500))
       
       setPolicies(prev => prev.filter(p => p.id !== policyId))
-      toast.success("Policy deleted successfully")
+      toast.success(t('policyDeleted') || 'Policy deleted successfully')
     } catch (error) {
-      toast.error("Failed to delete policy")
+      toast.error(t('failedToDelete') || 'Failed to delete policy')
     }
   }
 
   const handleActivatePolicy = async (policyId: string) => {
     if (!permissions.canActivate) {
-      toast.error("You don't have permission to activate policies")
+      toast.error(t('noActivatePermission') || "You don't have permission to activate policies")
       return
     }
 
@@ -328,9 +331,9 @@ export default function AuthPolicyPage() {
           : p
         )
       )
-      toast.success("Policy activated successfully")
+      toast.success(t('policyActivated') || 'Policy activated successfully')
     } catch (error) {
-      toast.error("Failed to activate policy")
+      toast.error(t('failedToActivate') || 'Failed to activate policy')
     }
   }
 
@@ -341,10 +344,10 @@ export default function AuthPolicyPage() {
         <div className="space-y-1">
           <h1 className="text-2xl font-bold flex items-center space-x-2">
             <Shield className="h-6 w-6" />
-            <span>Authentication Policies</span>
+            <span>{t('title')}</span>
           </h1>
           <p className="text-muted-foreground">
-            Manage authentication, authorization, and security policies for your organization
+            {t('description')}
           </p>
         </div>
         
@@ -353,7 +356,7 @@ export default function AuthPolicyPage() {
             <Alert className="w-auto">
               <AlertTriangle className="h-4 w-4" />
               <AlertDescription>
-                {conflictCount} policy conflict{conflictCount > 1 ? 's' : ''} detected
+                {conflictCount} {t('conflictsDetected')}
               </AlertDescription>
             </Alert>
           )}
@@ -361,7 +364,7 @@ export default function AuthPolicyPage() {
           {permissions.canCreate && (
             <Button onClick={handleCreatePolicy}>
               <Plus className="h-4 w-4 mr-2" />
-              Create Policy
+              {t('createPolicy')}
             </Button>
           )}
         </div>
@@ -375,7 +378,7 @@ export default function AuthPolicyPage() {
               <Shield className="h-4 w-4 text-blue-500" />
               <div>
                 <p className="text-2xl font-bold">{policies.length}</p>
-                <p className="text-xs text-muted-foreground">Total Policies</p>
+                <p className="text-xs text-muted-foreground">{t('totalPolicies')}</p>
               </div>
             </div>
           </CardContent>
@@ -387,7 +390,7 @@ export default function AuthPolicyPage() {
               <Activity className="h-4 w-4 text-green-500" />
               <div>
                 <p className="text-2xl font-bold">{policies.filter(p => p.status === 'active').length}</p>
-                <p className="text-xs text-muted-foreground">Active Policies</p>
+                <p className="text-xs text-muted-foreground">{t('activePolicies')}</p>
               </div>
             </div>
           </CardContent>
@@ -399,7 +402,7 @@ export default function AuthPolicyPage() {
               <AlertTriangle className="h-4 w-4 text-amber-500" />
               <div>
                 <p className="text-2xl font-bold">{conflictCount}</p>
-                <p className="text-xs text-muted-foreground">Conflicts</p>
+                <p className="text-xs text-muted-foreground">{tCommon('conflicts') || 'Conflicts'}</p>
               </div>
             </div>
           </CardContent>
@@ -411,7 +414,7 @@ export default function AuthPolicyPage() {
               <TrendingUp className="h-4 w-4 text-purple-500" />
               <div>
                 <p className="text-2xl font-bold">{policies.reduce((acc, p) => acc + p.stats.appliedCount, 0)}</p>
-                <p className="text-xs text-muted-foreground">Total Applications</p>
+                <p className="text-xs text-muted-foreground">{t('totalApplications')}</p>
               </div>
             </div>
           </CardContent>
@@ -423,13 +426,13 @@ export default function AuthPolicyPage() {
         <TabsList>
           <TabsTrigger value="policies" className="flex items-center space-x-2">
             <Shield className="h-4 w-4" />
-            <span>Policies</span>
+            <span>{tCommon('policies') || 'Policies'}</span>
             <Badge variant="secondary">{policies.length}</Badge>
           </TabsTrigger>
           
           <TabsTrigger value="conflicts" className="flex items-center space-x-2">
             <AlertTriangle className="h-4 w-4" />
-            <span>Conflicts</span>
+            <span>{tCommon('conflicts') || 'Conflicts'}</span>
             {conflictCount > 0 && (
               <Badge variant="destructive">{conflictCount}</Badge>
             )}
@@ -438,19 +441,19 @@ export default function AuthPolicyPage() {
           {permissions.canSimulate && (
             <TabsTrigger value="simulation" className="flex items-center space-x-2">
               <TestTube className="h-4 w-4" />
-              <span>Simulation</span>
+              <span>{t('simulation')}</span>
             </TabsTrigger>
           )}
           
           <TabsTrigger value="stats" className="flex items-center space-x-2">
             <TrendingUp className="h-4 w-4" />
-            <span>Analytics</span>
+            <span>{tCommon('analytics') || 'Analytics'}</span>
           </TabsTrigger>
           
           {permissions.canViewAudit && (
             <TabsTrigger value="audit" className="flex items-center space-x-2">
               <History className="h-4 w-4" />
-              <span>Audit Log</span>
+              <span>{t('auditLog')}</span>
             </TabsTrigger>
           )}
         </TabsList>

@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -18,7 +19,7 @@ import {
 // Mock data for dashboard
 const stats = [
   {
-    title: 'Total Users',
+    titleKey: 'totalUsers' as const,
     value: '2,543',
     change: '+12%',
     changeType: 'positive' as const,
@@ -26,7 +27,7 @@ const stats = [
     description: 'Active users in system',
   },
   {
-    title: 'Active Sessions',
+    titleKey: 'activeSessions' as const,
     value: '1,247',
     change: '+5%',
     changeType: 'positive' as const,
@@ -34,7 +35,7 @@ const stats = [
     description: 'Currently logged in',
   },
   {
-    title: 'Security Alerts',
+    titleKey: 'securityAlerts' as const,
     value: '23',
     change: '-18%',
     changeType: 'negative' as const,
@@ -42,7 +43,7 @@ const stats = [
     description: 'Resolved this week',
   },
   {
-    title: 'System Health',
+    titleKey: 'systemHealth' as const,
     value: '99.9%',
     change: '+0.1%',
     changeType: 'positive' as const,
@@ -110,25 +111,26 @@ const securityOverview = [
 ]
 
 export default function AdminDashboard() {
+  const t = useTranslations('dashboard')
   
   return (
     <div className="space-y-6">
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
+          <h1 className="text-3xl font-bold tracking-tight">{t('title')}</h1>
           <p className="text-muted-foreground">
-            Welcome to the İş Güvenliği Admin Panel
+            {t('welcomeMessage')}
           </p>
         </div>
         <div className="flex gap-2">
           <Button variant="outline" size="sm">
             <Eye className="h-4 w-4 mr-2" />
-            View Reports
+            {t('viewReports')}
           </Button>
           <Button size="sm">
             <Bell className="h-4 w-4 mr-2" />
-            Notifications
+            {t('notifications')}
           </Button>
         </div>
       </div>
@@ -138,9 +140,9 @@ export default function AdminDashboard() {
         {stats.map((stat) => {
           const Icon = stat.icon
           return (
-            <Card key={stat.title}>
+            <Card key={stat.titleKey}>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">{stat.title}</CardTitle>
+                <CardTitle className="text-sm font-medium">{t(stat.titleKey)}</CardTitle>
                 <Icon className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
@@ -169,15 +171,15 @@ export default function AdminDashboard() {
       {/* Main Content Tabs */}
       <Tabs defaultValue="activity" className="space-y-4">
         <TabsList>
-          <TabsTrigger value="activity">Recent Activity</TabsTrigger>
-          <TabsTrigger value="security">Security Overview</TabsTrigger>
-          <TabsTrigger value="analytics">Analytics</TabsTrigger>
+          <TabsTrigger value="activity">{t('recentActivity')}</TabsTrigger>
+          <TabsTrigger value="security">{t('securityOverview')}</TabsTrigger>
+          <TabsTrigger value="analytics">{t('analytics')}</TabsTrigger>
         </TabsList>
 
         <TabsContent value="activity" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Recent Activity</CardTitle>
+              <CardTitle>{t('recentActivity')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
@@ -216,7 +218,7 @@ export default function AdminDashboard() {
         <TabsContent value="security" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Security Overview</CardTitle>
+              <CardTitle>{t('securityOverview')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
@@ -252,7 +254,7 @@ export default function AdminDashboard() {
         <TabsContent value="analytics" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Analytics</CardTitle>
+              <CardTitle>{t('analytics')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="flex items-center justify-center h-32 text-muted-foreground">
