@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect, useCallback } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -18,10 +19,17 @@ import {
   NotificationAnalytics
 } from "@/types/notification"
 import { NotificationsList } from "@/components/admin/notifications/NotificationsList"
+import NotificationSettings from "@/components/admin/notifications/NotificationSettings"
 import toast from "react-hot-toast"
 
 export default function NotificationsPage() {
-  const [activeTab, setActiveTab] = useState<'all' | NotificationType | 'settings'>('all')
+  const searchParams = useSearchParams()
+  const highlightId = searchParams?.get('highlight')
+  const tabParam = searchParams?.get('tab')
+  
+  const [activeTab, setActiveTab] = useState<'all' | NotificationType | 'settings'>(
+    (tabParam as any) || 'all'
+  )
   const [notifications, setNotifications] = useState<Notification[]>([])
   const [summary, setSummary] = useState<NotificationSummaryResponse | null>(null)
   const [loading, setLoading] = useState(true)
@@ -148,7 +156,7 @@ export default function NotificationsPage() {
         status: 'unread' as const,
         userId: 'user-001',
         createdAt: new Date(Date.now() - 15 * 60 * 1000).toISOString(),
-        relatedEntity: { type: 'user', id: 'user-001', name: 'Alice Smith' },
+        relatedEntity: { type: 'user' as const, id: 'user-001', name: 'Alice Smith' },
         metadata: { ipAddress: '203.0.113.1', location: 'Tokyo, Japan', riskScore: 92 }
       },
       {
@@ -161,7 +169,7 @@ export default function NotificationsPage() {
         status: 'unread' as const,
         userId: 'user-002',
         createdAt: new Date(Date.now() - 30 * 60 * 1000).toISOString(),
-        relatedEntity: { type: 'user', id: 'user-002', name: 'Bob Wilson' },
+        relatedEntity: { type: 'user' as const, id: 'user-002', name: 'Bob Wilson' },
         metadata: { actionRequired: true, autoResolvable: false }
       },
       {
@@ -175,7 +183,7 @@ export default function NotificationsPage() {
         userId: 'user-003',
         createdAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
         readAt: new Date(Date.now() - 90 * 60 * 1000).toISOString(),
-        relatedEntity: { type: 'session', id: 'sess-123', name: 'Session #123' }
+        relatedEntity: { type: 'session' as const, id: 'sess-123', name: 'Session #123' }
       },
 
       // System notifications
@@ -213,7 +221,7 @@ export default function NotificationsPage() {
         severity: 'high' as const,
         status: 'unread' as const,
         createdAt: new Date(Date.now() - 20 * 60 * 1000).toISOString(),
-        relatedEntity: { type: 'incident', id: 'inc-456', name: 'Incident #456' },
+        relatedEntity: { type: 'incident' as const, id: 'inc-456', name: 'Incident #456' },
         metadata: { affectedUsers: 3, actionRequired: true, riskScore: 75 }
       },
       {
@@ -239,7 +247,7 @@ export default function NotificationsPage() {
         severity: 'low' as const,
         status: 'unread' as const,
         createdAt: new Date(Date.now() - 60 * 60 * 1000).toISOString(),
-        relatedEntity: { type: 'user', id: 'user-004', name: 'Emma Davis' },
+        relatedEntity: { type: 'user' as const, id: 'user-004', name: 'Emma Davis' },
         metadata: { actionRequired: false }
       },
       {
@@ -252,19 +260,19 @@ export default function NotificationsPage() {
         status: 'read' as const,
         createdAt: new Date(Date.now() - 3 * 60 * 60 * 1000).toISOString(),
         readAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
-        relatedEntity: { type: 'user', id: 'user-005', name: 'David Brown' }
+        relatedEntity: { type: 'user' as const, id: 'user-005', name: 'David Brown' }
       }
     ]
 
     // Generate additional mock notifications to simulate large dataset
     const additionalNotifications = Array.from({ length: 100 }, (_, i) => ({
       id: `mock-${i}`,
-      type: ['security', 'system', 'risk', 'user_activity'][i % 4] as NotificationType,
+      type: (['security', 'system', 'risk', 'user_activity'] as const)[i % 4],
       title: `Mock Notification ${i + 1}`,
       description: `This is a mock notification for testing purposes #${i + 1}`,
-      source: ['auth', 'system', 'risk_assessment', 'user_management'][i % 4] as const,
-      severity: ['low', 'medium', 'high', 'critical'][i % 4] as const,
-      status: i % 3 === 0 ? 'unread' as const : i % 3 === 1 ? 'read' as const : 'archived' as const,
+      source: (['auth', 'system', 'risk_assessment', 'user_management'] as const)[i % 4],
+      severity: (['low', 'medium', 'high', 'critical'] as const)[i % 4],
+      status: (i % 3 === 0 ? 'unread' : i % 3 === 1 ? 'read' : 'archived') as const,
       createdAt: new Date(Date.now() - (i + 1) * 30 * 60 * 1000).toISOString(),
       ...(i % 3 !== 0 && { readAt: new Date(Date.now() - (i + 1) * 15 * 60 * 1000).toISOString() }),
       ...(i % 3 === 2 && { archivedAt: new Date(Date.now() - (i + 1) * 10 * 60 * 1000).toISOString() })
@@ -595,19 +603,7 @@ export default function NotificationsPage() {
         </TabsContent>
 
         <TabsContent value="settings">
-          <Card>
-            <CardHeader>
-              <CardTitle>Notification Settings</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-center py-8 text-muted-foreground">
-                <Settings className="h-12 w-12 mx-auto mb-4 text-gray-500" />
-                <h3 className="text-lg font-semibold mb-2">Notification Preferences</h3>
-                <p>Configure delivery channels and notification preferences</p>
-                <p className="text-sm mt-2">Will be implemented in next step</p>
-              </div>
-            </CardContent>
-          </Card>
+          <NotificationSettings />
         </TabsContent>
       </Tabs>
     </div>

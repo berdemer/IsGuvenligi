@@ -31,63 +31,63 @@ import {
 } from '@/components/ui/sidebar'
 import { useState } from 'react'
 
-// Navigation items with hierarchical structure
-const navigation = [
-  {
-    title: 'Dashboard',
-    icon: LayoutDashboard,
-    href: '/admin/dashboard',
-    badge: null,
-  },
-  {
-    title: 'User Management',
-    icon: Users,
-    items: [
-      { title: 'Users', href: '/admin/users' },
-      { title: 'Roles & Permissions', href: '/admin/roles' },
-    ],
-  },
-  {
-    title: 'Authentication',
-    icon: KeyRound,
-    items: [
-      { title: 'OAuth Providers', href: '/admin/oauth-providers' },
-      { title: 'Auth Policies', href: '/admin/auth/policy' },
-      { title: 'Active Sessions', href: '/admin/auth/sessions' },
-    ],
-  },
-  {
-    title: 'Access Policies',
-    icon: Shield,
-    href: '/admin/policies',
-  },
-  {
-    title: 'Audit Logs',
-    icon: FileText,
-    href: '/admin/audit',
-    badge: 'New',
-  },
-  {
-    title: 'Notifications',
-    icon: Bell,
-    href: '/admin/notifications',
-    badge: '3',
-  },
-  {
-    title: 'Health & Monitoring',
-    icon: Activity,
-    href: '/admin/health',
-  },
-  {
-    title: 'Settings',
-    icon: Settings,
-    href: '/admin/settings',
-  },
-]
-
 export function Sidebar() {
   const pathname = usePathname()
   const [expandedItems, setExpandedItems] = useState<string[]>([])
+
+  // Navigation items with hierarchical structure
+  const navigation = [
+    {
+      title: 'Dashboard',
+      icon: LayoutDashboard,
+      href: '/admin/dashboard',
+      badge: null,
+    },
+    {
+      title: 'User Management',
+      icon: Users,
+      items: [
+        { title: 'Users', href: '/admin/users' },
+        { title: 'Roles', href: '/admin/roles' },
+      ],
+    },
+    {
+      title: 'Authentication',
+      icon: KeyRound,
+      items: [
+        { title: 'OAuth Providers', href: '/admin/oauth-providers' },
+        { title: 'Auth Policies', href: '/admin/auth/policy' },
+        { title: 'Active Sessions', href: '/admin/auth/sessions' },
+      ],
+    },
+    {
+      title: 'Access Policies',
+      icon: Shield,
+      href: '/admin/policies',
+    },
+    {
+      title: 'Audit Logs',
+      icon: FileText,
+      href: '/admin/audit',
+      badge: 'New',
+    },
+    {
+      title: 'Notifications',
+      icon: Bell,
+      href: '/admin/notifications',
+      badge: '3',
+    },
+    {
+      title: 'Health Monitoring',
+      icon: Activity,
+      href: '/admin/health',
+    },
+    {
+      title: 'System Settings',
+      icon: Settings,
+      href: '/admin/settings',
+    },
+  ]
 
   const toggleExpanded = (title: string) => {
     setExpandedItems(prev =>
@@ -118,7 +118,7 @@ export function Sidebar() {
             <Button asChild size="sm" className="w-full">
               <Link href="/">
                 <Home className="h-4 w-4 mr-2" />
-                Back to App
+                Home
               </Link>
             </Button>
           </div>

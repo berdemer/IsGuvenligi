@@ -195,32 +195,32 @@ export default function ProfilePage() {
         <div className="lg:col-span-2 space-y-6">
           <ProfileHeader 
             profileData={profileData}
-            onUpdate={setProfileData}
+            onUpdate={(data) => setProfileData(data)}
           />
           
           <UserInfoForm 
             profileData={profileData}
-            onUpdate={setProfileData}
+            onUpdate={(data) => setProfileData(data)}
           />
           
           <SecurityCard 
             profileData={profileData}
-            onUpdate={setProfileData}
+            onUpdate={(data) => setProfileData(data)}
           />
           
           <ProvidersCard 
             profileData={profileData}
-            onUpdate={setProfileData}
+            onUpdate={(data) => setProfileData(data)}
           />
           
           <PreferencesForm 
             profileData={profileData}
-            onUpdate={setProfileData}
+            onUpdate={(data) => setProfileData(data)}
           />
           
           <DangerZone 
             profileData={profileData}
-            onUpdate={setProfileData}
+            onUpdate={(data) => setProfileData(data)}
           />
         </div>
         

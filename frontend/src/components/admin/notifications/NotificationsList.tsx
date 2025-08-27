@@ -58,6 +58,7 @@ import {
   NotificationFilters,
   BulkNotificationAction
 } from '@/types/notification'
+import { NotificationDetail } from './NotificationDetail'
 import { DateRange } from "react-day-picker"
 
 interface NotificationsListProps {
@@ -65,6 +66,7 @@ interface NotificationsListProps {
   loading: boolean
   onNotificationUpdate: (notification: Notification) => void
   onBulkAction: (action: string) => void
+  highlightId?: string | null
 }
 
 const SeverityIcon = ({ severity }: { severity: NotificationSeverity }) => {
@@ -141,12 +143,12 @@ const formatTimeAgo = (timestamp: string): string => {
   return time.toLocaleDateString()
 }
 
-export function NotificationsList({ 
+export const NotificationsList = ({ 
   notifications, 
   loading, 
   onNotificationUpdate, 
   onBulkAction 
-}: NotificationsListProps) {
+}: NotificationsListProps) => {
   const [searchTerm, setSearchTerm] = useState('')
   const [statusFilter, setStatusFilter] = useState<NotificationStatus | 'all'>('all')
   const [severityFilter, setSeverityFilter] = useState<NotificationSeverity | 'all'>('all')
@@ -157,6 +159,8 @@ export function NotificationsList({
   const [pageSize] = useState(20)
   const [sortBy, setSortBy] = useState<'createdAt' | 'severity' | 'status'>('createdAt')
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc')
+  const [selectedNotificationForDetail, setSelectedNotificationForDetail] = useState<Notification | null>(null)
+  const [showNotificationDetail, setShowNotificationDetail] = useState(false)
 
   // Filter and search notifications
   const filteredNotifications = useMemo(() => {
@@ -271,6 +275,22 @@ export function NotificationsList({
     
     setSelectedNotifications([])
     onBulkAction(action)
+  }
+
+  const handleViewDetails = (notification: Notification) => {
+    setSelectedNotificationForDetail(notification)
+    setShowNotificationDetail(true)
+  }
+
+  const handleNotificationDetailAction = (action: 'read' | 'archive' | 'delete' | 'follow-up') => {
+    if (!selectedNotificationForDetail) return
+    
+    if (action === 'follow-up') {
+      // Handle follow-up action based on notification type
+      return
+    }
+    
+    handleNotificationAction(selectedNotificationForDetail, action as 'read' | 'archive' | 'delete')
   }
 
   const clearFilters = () => {
@@ -524,7 +544,7 @@ export function NotificationsList({
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => handleViewDetails(notification)}>
                           <Eye className="h-4 w-4 mr-2" />
                           View Details
                         </DropdownMenuItem>
@@ -593,6 +613,17 @@ export function NotificationsList({
           </div>
         </div>
       )}
+
+      {/* Notification Detail Drawer */}
+      <NotificationDetail
+        notification={selectedNotificationForDetail}
+        open={showNotificationDetail}
+        onClose={() => {
+          setShowNotificationDetail(false)
+          setSelectedNotificationForDetail(null)
+        }}
+        onAction={handleNotificationDetailAction}
+      />
     </div>
   )
 }

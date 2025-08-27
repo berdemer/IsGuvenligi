@@ -1,36 +1,33 @@
-'use client';
+import Link from 'next/link';
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { Box, CircularProgress } from '@mui/material';
-import { useAuth } from '@/hooks/useAuth';
-
-export default function HomePage() {
-  const { isAuthenticated, isLoading } = useAuth();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!isLoading) {
-      if (isAuthenticated) {
-        router.replace('/dashboard');
-      } else {
-        router.replace('/auth/login');
-      }
-    }
-  }, [isAuthenticated, isLoading, router]);
-
-  if (isLoading) {
-    return (
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        minHeight="100vh"
-      >
-        <CircularProgress size={60} sx={{ color: '#d32f2f' }} />
-      </Box>
-    );
+// Generate metadata
+export const metadata = {
+  title: 'İş Güvenliği Admin Panel',
+  description: 'Workplace Safety Management System',
+  robots: {
+    index: false,
+    follow: false
   }
+};
 
-  return null;
+// Root page - simple welcome page with link to admin dashboard
+export default function RootPage() {
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center bg-background">
+      <div className="text-center space-y-6">
+        <h1 className="text-4xl font-bold">İş Güvenliği Admin Panel</h1>
+        <p className="text-muted-foreground">
+          Workplace Safety Management System
+        </p>
+        <div className="space-x-4">
+          <Link 
+            href="/admin/dashboard"
+            className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+          >
+            Go to Dashboard
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
 }

@@ -1,0 +1,133 @@
+version: '3.8'
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:25.0.6
+    container_name: isguvenligi-keycloak
+    environment:
+      # Database Configuration
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: ${KEYCLOAK_DB_PASSWORD:-keycloak_secure_password}
+      
+      # Admin Configuration
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD:-admin_secure_password}
+      
+      # JVM Memory Optimization
+      JAVA_OPTS: >-
+        -server
+        -Xms2048m
+        -Xmx4096m
+        -XX:+UseG1GC
+        -XX:MaxGCPauseMillis=200
+        -XX:+ParallelRefProcEnabled
+        -XX:+UseStringDeduplication
+        -XX:+OptimizeStringConcat
+        -Djgroups.dns.query=keycloak
+        -Djboss.modules.system.pkgs=org.jboss.byteman
+        -Djava.awt.headless=true
+        
+      # Keycloak Configuration
+      KC_HTTP_ENABLED: "true"
+      KC_HOSTNAME_STRICT: "false"
+      KC_PROXY: edge
+      KC_CACHE: ispn
+      KC_CACHE_STACK: tcp
+      KC_HEALTH_ENABLED: "true"
+      KC_METRICS_ENABLED: "true"
+      
+      # Performance Settings
+      KC_HTTP_MAX_QUEUED_REQUESTS: 1000
+      KC_DB_POOL_INITIAL_SIZE: 15
+      KC_DB_POOL_MIN_SIZE: 10  
+      KC_DB_POOL_MAX_SIZE: 50
+      
+    ports:
+      - "8080:8080"
+      - "9990:9990"  # Management console
+    
+    volumes:
+      - ./keycloak/keycloak.conf:/opt/keycloak/conf/keycloak.conf:ro
+      - ./keycloak/themes:/opt/keycloak/themes
+      - keycloak_data:/opt/keycloak/data
+    
+    networks:
+      - isguvenligi-network
+    
+    depends_on:
+      - postgres
+      
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+          cpus: '2.0'
+        reservations:
+          memory: 2G
+          cpus: '1.0'
+          
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/health/ready || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: isguvenligi-postgres
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: ${KEYCLOAK_DB_PASSWORD:-keycloak_secure_password}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --lc-collate=C --lc-ctype=C"
+      
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres/postgresql.conf:/etc/postgresql/postgresql.conf:ro
+      
+    ports:
+      - "5432:5432"
+      
+    networks:
+      - isguvenligi-network
+    
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '1.0'
+        reservations:
+          memory: 512M
+          cpus: '0.5'
+          
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U keycloak"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    
+    restart: unless-stopped
+
+volumes:
+  keycloak_data:
+    driver: local
+  postgres_data:
+    driver: local
+
+networks:
+  isguvenligi-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16

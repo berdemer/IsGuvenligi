@@ -435,7 +435,7 @@ export default function AccessPoliciesPage() {
       setConflicts(mockConflicts)
       setLastUpdated(new Date())
     } catch (error) {
-      toast.error("Failed to load access policies data")
+      toast.error('Failed to load policies')
     } finally {
       setLoading(false)
     }
@@ -466,7 +466,7 @@ export default function AccessPoliciesPage() {
       <div className="flex items-center justify-center min-h-screen">
         <div className="flex items-center space-x-2">
           <RefreshCw className="h-4 w-4 animate-spin" />
-          <span>Loading access policies...</span>
+          <span>Loading...</span>
         </div>
       </div>
     )
@@ -478,7 +478,7 @@ export default function AccessPoliciesPage() {
         <div>
           <h2 className="text-3xl font-bold tracking-tight">Access Policies</h2>
           <p className="text-muted-foreground">
-            Manage resource access controls, permissions, and security policies
+            Manage access control policies and permissions
           </p>
         </div>
         <div className="flex items-center space-x-2">
@@ -537,7 +537,7 @@ export default function AccessPoliciesPage() {
               {analytics?.conflictingPolicies || 0}
             </div>
             <p className="text-xs text-muted-foreground">
-              <span className="text-red-600">Requires attention</span>
+              <span className="text-red-600">requires attention</span>
             </p>
           </CardContent>
         </Card>
@@ -550,7 +550,7 @@ export default function AccessPoliciesPage() {
           <CardContent>
             <div className="text-2xl font-bold">{analytics?.enforcedResources || 0}</div>
             <p className="text-xs text-muted-foreground">
-              Applications and APIs protected
+              applications protected
             </p>
           </CardContent>
         </Card>
@@ -561,8 +561,8 @@ export default function AccessPoliciesPage() {
         <Alert variant="destructive">
           <AlertTriangle className="h-4 w-4" />
           <AlertDescription>
-            <strong>{conflicts.length} policy conflicts detected.</strong> 
-            {" "}Review the Conflicts tab to resolve issues and ensure proper access control.
+            <strong>{conflicts.length} conflicts detected</strong>
+            {" "}Review conflicts to prevent access issues
           </AlertDescription>
         </Alert>
       )}
@@ -571,7 +571,7 @@ export default function AccessPoliciesPage() {
       <div className="flex items-center justify-between text-sm text-muted-foreground">
         <div className="flex items-center space-x-2">
           <Clock className="h-4 w-4" />
-          <span>Last updated: {lastUpdated.toLocaleString()}</span>
+          <span>Last Updated: {lastUpdated.toLocaleString()}</span>
         </div>
         <Button variant="ghost" size="sm" onClick={loadData}>
           <RefreshCw className="h-4 w-4 mr-2" />
@@ -608,7 +608,7 @@ export default function AccessPoliciesPage() {
           
           <TabsTrigger value="audit" className="flex items-center space-x-2">
             <Eye className="h-4 w-4" />
-            <span>Audit Log</span>
+            <span>Audit</span>
           </TabsTrigger>
           
           <TabsTrigger value="keycloak" className="flex items-center space-x-2">

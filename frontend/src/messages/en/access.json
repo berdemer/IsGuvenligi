@@ -1,0 +1,125 @@
+{
+  "title": "Erişim Politikaları",
+  "description": "Kaynak erişim kontrollerini, izinleri ve güvenlik politikalarını yönetin",
+  "createPolicy": "Politika Oluştur",
+  "editPolicy": "Politikayı Düzenle",
+  "deletePolicy": "Politikayı Sil",
+  "exportCsv": "CSV Dışa Aktar",
+  "viewReports": "Raporları Görüntüle",
+  "totalPolicies": "Toplam Politikalar",
+  "activePolicies": "Aktif Politikalar",
+  "conflicts": "Çakışmalar",
+  "enforcedResources": "Korunan Kaynaklar",
+  "lastUpdated": "Son Güncelleme",
+  "loading": "Erişim politikaları yükleniyor...",
+  "tabs": {
+    "policies": "Politikalar",
+    "conflicts": "Çakışmalar",
+    "simulation": "Simülasyon",
+    "analytics": "Analitik",
+    "audit": "Denetim Kaydı",
+    "keycloak": "Keycloak"
+  },
+  "kpi": {
+    "fromLastMonth": "geçen aydan",
+    "ofTotal": "toplam",
+    "requiresAttention": "Dikkat gerekiyor",
+    "applicationsProtected": "Korunan uygulama ve API'ler"
+  },
+  "alerts": {
+    "conflictsDetected": "politika çakışması tespit edildi.",
+    "reviewConflicts": "Uygun erişim kontrolünü sağlamak için sorunları çözmek üzere Çakışmalar sekmesini inceleyin."
+  },
+  "policyTypes": {
+    "allow": "İzin Ver",
+    "deny": "Reddet",
+    "conditional": "Koşullu"
+  },
+  "scopes": {
+    "global": "Genel",
+    "role": "Rol",
+    "group": "Grup",
+    "user": "Kullanıcı",
+    "resource": "Kaynak"
+  },
+  "effects": {
+    "allow": "İzin Ver",
+    "deny": "Reddet"
+  },
+  "resources": {
+    "application": "Uygulama",
+    "api": "API",
+    "database": "Veritabanı",
+    "file": "Dosya",
+    "custom": "Özel"
+  },
+  "subjects": {
+    "user": "Kullanıcı",
+    "role": "Rol", 
+    "group": "Grup",
+    "everyone": "Herkes"
+  },
+  "conditions": {
+    "time": "Zaman",
+    "ip": "IP Adresi",
+    "geo": "Coğrafi Konum",
+    "device": "Cihaz",
+    "risk": "Risk Seviyesi"
+  },
+  "accessLevels": {
+    "read": "Okuma",
+    "write": "Yazma",
+    "execute": "Çalıştırma",
+    "delete": "Silme",
+    "admin": "Yönetici",
+    "full": "Tam Erişim"
+  },
+  "riskLevels": {
+    "low": "Düşük",
+    "medium": "Orta",
+    "high": "Yüksek",
+    "critical": "Kritik"
+  },
+  "deviceTypes": {
+    "desktop": "Masaüstü",
+    "mobile": "Mobil",
+    "tablet": "Tablet",
+    "unknown": "Bilinmeyen"
+  },
+  "trustLevels": {
+    "trusted": "Güvenilir",
+    "managed": "Yönetimli",
+    "unknown": "Bilinmeyen",
+    "untrusted": "Güvenilmez"
+  },
+  "conflictTypes": {
+    "contradiction": "Çelişki",
+    "overlap": "Çakışma",
+    "redundancy": "Fazlalık",
+    "gap": "Boşluk"
+  },
+  "conflictSeverities": {
+    "low": "Düşük",
+    "medium": "Orta",
+    "high": "Yüksek",
+    "critical": "Kritik"
+  },
+  "simulationResults": {
+    "allowed": "İzin Verildi",
+    "denied": "Reddedildi",
+    "conditional": "Koşullu",
+    "error": "Hata"
+  },
+  "analyticsMetrics": {
+    "accessAttempts": "Erişim Denemeleri",
+    "deniedAttempts": "Reddedilen Denemeler",
+    "allowedAttempts": "İzin Verilen Denemeler",
+    "policyEnforcements": "Politika Uygulamaları",
+    "riskAnalysis": "Risk Analizi",
+    "topResources": "En Çok Erişilen Kaynaklar",
+    "topUsers": "En Aktif Kullanıcılar",
+    "anomalousAccess": "Anormal Erişimler",
+    "privilegedAccess": "Ayrıcalıklı Erişimler",
+    "suspiciousPatterns": "Şüpheli Desenler"
+  }
+}
