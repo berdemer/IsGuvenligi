@@ -920,6 +920,91 @@
       "jwtSecretGenerated": "JWT Gizli Anahtarı Oluşturuldu"
     }
   },
+  "notificationSettings": {
+    "tabs": {
+      "email": "E-posta",
+      "push": "Push",
+      "sms": "SMS",
+      "integrations": "Entegrasyonlar",
+      "system": "Sistem",
+      "preferences": "Tercihler"
+    },
+    "email": {
+      "title": "E-posta Yapılandırması",
+      "description": "SMTP ayarlarını ve e-posta şablonlarını yapılandırın",
+      "enabled": "Etkin",
+      "disabled": "Devre Dışı",
+      "enableEmailNotifications": "E-posta Bildirimlerini Etkinleştir",
+      "enableEmailDescription": "E-posta ile bildirim gönder",
+      "smtpServerSettings": "SMTP Sunucu Ayarları",
+      "smtpHost": "SMTP Host",
+      "smtpPort": "SMTP Port",
+      "username": "Kullanıcı Adı",
+      "password": "Şifre",
+      "fromEmail": "Gönderen E-posta",
+      "fromName": "Gönderen Adı",
+      "useSslTls": "SSL/TLS Kullan",
+      "sendTestEmail": "Test E-postası Gönder",
+      "loading": "Yükleniyor...",
+      "emailTemplates": "E-posta Şablonları",
+      "subjectLine": "Konu Başlığı",
+      "templates": {
+        "welcome": "Hoş Geldin E-postası",
+        "passwordReset": "Şifre Sıfırlama",
+        "securityAlert": "Güvenlik Uyarısı",
+        "systemAlert": "Sistem Uyarısı",
+        "maintenance": "Bakım Bildirimi"
+      },
+      "placeholders": {
+        "smtpHost": "smtp.gmail.com",
+        "smtpPort": "587",
+        "username": "email@gmail.com",
+        "password": "Uygulama şifresi veya SMTP şifresi",
+        "fromEmail": "noreply@isguvenligi.com",
+        "fromName": "İş Güvenliği Sistemi",
+        "subjectFor": "{template} için konu girin"
+      }
+    },
+    "push": {
+      "title": "Push Bildirimleri",
+      "description": "Web push bildirimlerini yapılandırın",
+      "comingSoon": "Yakında",
+      "comingSoonDescription": "Push bildirim yapılandırması bir sonraki sürümde mevcut olacak."
+    },
+    "sms": {
+      "title": "SMS Bildirimleri",
+      "description": "Twilio veya AWS SNS ile SMS bildirimlerini yapılandırın",
+      "enterprise": "Kurumsal",
+      "enterpriseDescription": "SMS bildirimleri Kurumsal planda mevcuttur."
+    },
+    "integrations": {
+      "title": "Üçüncü Taraf Entegrasyonları",
+      "description": "Slack, Microsoft Teams ve diğer entegrasyonları yapılandırın",
+      "configureHere": "Entegrasyon ayarları burada yapılandırılacak."
+    },
+    "system": {
+      "title": "Sistem Bildirimleri",
+      "description": "Tarayıcı ve sistem bildirim tercihlerini yapılandırın",
+      "desktopNotifications": "Masaüstü Bildirimleri",
+      "browserNotifications": "Tarayıcı Bildirimleri",
+      "soundAlerts": "Ses Uyarıları",
+      "badgeNotifications": "Rozet Bildirimleri"
+    },
+    "preferences": {
+      "title": "Bildirim Tercihleri",
+      "description": "Bildirim zamanlaması ve öncelik ayarlarını yapılandırın",
+      "quietHours": "Sessiz Saatler",
+      "quietHoursDescription": "Belirtilen saatlerde kritik olmayan bildirimleri devre dışı bırak",
+      "startTime": "Başlangıç Saati",
+      "endTime": "Bitiş Saati"
+    },
+    "toast": {
+      "testEmailSent": "Test e-postası gönderildi",
+      "testEmailSentDescription": "Test e-postası başarıyla gönderildi.",
+      "testEmailFailed": "Test e-postası başarısız",
+      "testEmailFailedDescription": "Test e-postası gönderilemedi. SMTP ayarlarınızı kontrol edin."
+    }
+  },
   "users": {
     "title": "Kullanıcılar",
     "description": "Sistem kullanıcılarını yönetin ve izinlerini düzenleyin",
