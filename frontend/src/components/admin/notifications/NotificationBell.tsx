@@ -48,7 +48,7 @@ const formatTimeAgo = (timestamp: string): string => {
   if (diffMins < 1) return 'Just now'
   if (diffMins < 60) return `${diffMins}m ago`
   if (diffHours < 24) return `${diffHours}h ago`
-  return time.toLocaleDateString()
+  return time.toLocaleDateString('en-US', { timeZone: 'UTC' })
 }
 
 // Mock data generator for notification bell

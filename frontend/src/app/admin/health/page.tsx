@@ -497,7 +497,7 @@ export default function HealthMonitoringPage() {
             </div>
             {lastUpdate && (
               <span className="text-xs text-muted-foreground">
-                {t('updated')} {new Date(lastUpdate).toLocaleTimeString()}
+                {t('updated')} {new Date(lastUpdate).toLocaleTimeString('en-US', { timeZone: 'UTC' })}
               </span>
             )}
           </div>

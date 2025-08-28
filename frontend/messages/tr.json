@@ -1100,6 +1100,29 @@
       "testNotification": "Test {type} bildirimi gönderildi!"
     }
   },
+  "healthMonitoring": {
+    "title": "Sağlık İzleme Eşikleri",
+    "description": "Sistem sağlık izleme eşiklerini ve uyarı sistemini yapılandırın",
+    "enabled": "Etkin",
+    "disabled": "Devre Dışı",
+    "enableHealthMonitoring": "Sağlık İzlemeyi Etkinleştir",
+    "enableHealthMonitoringDescription": "Sistem kaynaklarını ve performans metriklerini izle",
+    "alertThresholds": "Uyarı Eşikleri",
+    "monitoringConfiguration": "İzleme Yapılandırması",
+    "cpuUsage": "CPU Kullanımı (%)",
+    "memoryUsage": "Bellek Kullanımı (%)",
+    "diskUsage": "Disk Kullanımı (%)",
+    "responseTime": "Yanıt Süresi (ms)",
+    "warning": "Uyarı:",
+    "critical": "Kritik:",
+    "checkInterval": "Kontrol Aralığı (saniye)",
+    "dataRetention": "Veri Saklama (gün)",
+    "enableAlerting": "Uyarı Sistemini Etkinleştir",
+    "units": {
+      "percentage": "%",
+      "milliseconds": "ms"
+    }
+  },
   "users": {
     "title": "Kullanıcılar",
     "description": "Sistem kullanıcılarını yönetin ve izinlerini düzenleyin",

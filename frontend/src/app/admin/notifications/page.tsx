@@ -463,7 +463,7 @@ export default function NotificationsPage() {
       <div className="flex items-center justify-between text-sm text-muted-foreground">
         <div className="flex items-center space-x-2">
           <Clock className="h-4 w-4" />
-          <span>{t('lastUpdated')}: {lastUpdated.toLocaleString()}</span>
+          <span>{t('lastUpdated')}: {lastUpdated.toLocaleString('en-US', { timeZone: 'UTC' })}</span>
         </div>
         <Button variant="ghost" size="sm" onClick={loadData}>
           <RefreshCw className="h-4 w-4 mr-2" />
