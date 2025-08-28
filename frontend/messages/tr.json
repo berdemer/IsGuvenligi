@@ -797,6 +797,129 @@
       }
     }
   },
+  "security": {
+    "title": "Güvenlik Ayarları",
+    "tabs": {
+      "keycloak": "Keycloak",
+      "authentication": "Kimlik Doğrulama",
+      "mfa": "Çok Faktörlü",
+      "security": "Güvenlik",
+      "audit": "Denetim"
+    },
+    "keycloak": {
+      "title": "Keycloak Yapılandırması",
+      "description": "Kimlik doğrulama ve yetkilendirme için Keycloak entegrasyonunu yapılandırın",
+      "enabled": "Etkin",
+      "disabled": "Devre Dışı",
+      "enableIntegration": "Keycloak Entegrasyonunu Etkinleştir",
+      "enableIntegrationDescription": "Kullanıcı kimlik doğrulama ve yönetimi için Keycloak kullan",
+      "serverUrl": "Sunucu URL'si",
+      "realm": "Realm",
+      "clientId": "İstemci ID",
+      "clientSecret": "İstemci Şifresi",
+      "clientSecretPlaceholder": "İstemci şifresini girin",
+      "adminUsername": "Yönetici Kullanıcı Adı",
+      "adminPassword": "Yönetici Şifresi",
+      "adminPasswordPlaceholder": "Yönetici şifresini girin",
+      "requireSsl": "SSL Gerekli",
+      "publicClient": "Genel İstemci",
+      "connectionTest": "Bağlantı Testi",
+      "connectionTestDescription": "Keycloak sunucusuna bağlantı testi yap",
+      "testConnection": "Bağlantıyı Test Et",
+      "connectionSuccessful": "Bağlantı başarılı",
+      "connectionFailed": "Bağlantı başarısız",
+      "connectionUnknown": "Keycloak sunucusuna bağlantı testi yap",
+      "successfullyConnected": "Keycloak sunucusuna başarıyla bağlandı.",
+      "couldNotConnect": "Keycloak sunucusuna bağlanılamadı. Ayarlarınızı kontrol edin.",
+      "connectionError": "Bağlantı hatası",
+      "errorOccurred": "Bağlantı testi sırasında bir hata oluştu."
+    },
+    "passwordPolicy": {
+      "title": "Şifre Politikası",
+      "description": "Şifre gereksinimlerini ve güvenlik kurallarını yapılandırın",
+      "minLength": "Minimum Uzunluk",
+      "maxAge": "Şifre Yaşı (gün)",
+      "requireUppercase": "Büyük Harf Gerekli",
+      "requireLowercase": "Küçük Harf Gerekli",
+      "requireNumbers": "Rakam Gerekli",
+      "requireSpecialChars": "Özel Karakter Gerekli",
+      "historyCount": "Şifre Geçmiş Sayısı",
+      "historyCountDescription": "Hatırlanacak önceki şifre sayısı"
+    },
+    "sessionManagement": {
+      "title": "Oturum Yönetimi",
+      "description": "Kullanıcı oturumu davranışını ve zaman aşımlarını yapılandırın",
+      "sessionTimeout": "Oturum Zaman Aşımı (saniye)",
+      "maxConcurrentSessions": "Maksimum Eşzamanlı Oturum",
+      "enableRememberMe": "Beni Hatırla Etkinleştir",
+      "enableRememberMeDescription": "Kullanıcıların uzun süre giriş yapmış kalmasına izin ver",
+      "rememberMeTimeout": "Beni Hatırla Süresi (saniye)",
+      "defaultDuration": "Varsayılan: 30 gün (2592000 saniye)"
+    },
+    "accountSecurity": {
+      "title": "Hesap Güvenliği",
+      "description": "Hesap korumasını ve güvenlik önlemlerini yapılandırın",
+      "maxLoginAttempts": "Maksimum Giriş Denemesi",
+      "lockoutDuration": "Kilitleme Süresi (saniye)",
+      "enableCaptcha": "CAPTCHA Etkinleştir",
+      "enableAccountVerification": "Hesap Doğrulama Etkinleştir"
+    },
+    "mfa": {
+      "title": "Çok Faktörlü Kimlik Doğrulama",
+      "description": "Çok faktörlü kimlik doğrulama yöntemlerini ve gereksinimlerini yapılandırın",
+      "enableMfa": "Çok Faktörlü Kimlik Doğrulamayı Etkinleştir",
+      "enableMfaDescription": "Gelişmiş güvenlik için ek kimlik doğrulama faktörleri gerekli kıl",
+      "authenticationMethods": "Kimlik Doğrulama Yöntemleri",
+      "totpAuthenticator": "TOTP Kimlik Doğrulayıcı",
+      "totpDescription": "Google Authenticator, Authy, vb.",
+      "emailVerification": "E-posta Doğrulaması",
+      "emailDescription": "Kodları e-posta ile gönder",
+      "smsVerification": "SMS Doğrulaması",
+      "smsDescription": "Kodları SMS ile gönder",
+      "backupCodes": "Yedek Kodlar",
+      "backupDescription": "Tek kullanımlık yedek kodlar",
+      "requireMfaForAllUsers": "Tüm Kullanıcılar için MFA Gerekli Kıl",
+      "requireMfaDescription": "Tüm kullanıcı hesapları için MFA'yı zorunlu kıl"
+    },
+    "apiSecurity": {
+      "title": "API Güvenliği",
+      "description": "API kimlik doğrulaması ve hız sınırlama yapılandırın",
+      "jwtSecretKey": "JWT Gizli Anahtarı",
+      "jwtSecretDescription": "JWT tokenlarının imzalanması için kullanılan gizli anahtar",
+      "jwtSecretPlaceholder": "JWT gizli anahtarı",
+      "generateNew": "Yeni Oluştur",
+      "jwtExpiration": "JWT Sona Erme (saniye)",
+      "enableRateLimiting": "Hız Sınırlama Etkinleştir",
+      "rateLimitingDescription": "Kötüye kullanımı önlemek için API isteklerini sınırla",
+      "requestsPerMinute": "Dakika Başına İstek",
+      "burstLimit": "Patlama Sınırı",
+      "jwtSecretGenerated": "JWT Gizli Anahtarı Oluşturuldu",
+      "newJwtSecretGenerated": "Yeni bir JWT gizli anahtarı oluşturuldu."
+    },
+    "corsConfiguration": {
+      "title": "CORS Yapılandırması",
+      "description": "Cross-Origin Resource Sharing ayarlarını yapılandırın",
+      "enableCors": "CORS Etkinleştir",
+      "allowedOrigins": "İzin Verilen Kaynaklar",
+      "allowCredentials": "Kimlik Bilgilerine İzin Ver"
+    },
+    "auditLogging": {
+      "title": "Güvenlik Denetim Günlükleri",
+      "description": "Hangi güvenlik olaylarının günlükleneceğini ve izleneceğini yapılandırın",
+      "logFailedLogins": "Başarısız Giriş Denemelerini Günlükle",
+      "logSuccessfulLogins": "Başarılı Girişleri Günlükle",
+      "logPasswordChanges": "Şifre Değişikliklerini Günlükle",
+      "logPermissionChanges": "İzin Değişikliklerini Günlükle",
+      "logRetention": "Günlük Saklama (gün)",
+      "logRetentionDescription": "Denetim günlüklerinin ne kadar süre saklanacağı (minimum 30 gün)"
+    },
+    "toast": {
+      "connectionSuccessful": "Bağlantı başarılı",
+      "connectionFailed": "Bağlantı başarısız",
+      "connectionError": "Bağlantı hatası",
+      "jwtSecretGenerated": "JWT Gizli Anahtarı Oluşturuldu"
+    }
+  },
   "users": {
     "title": "Kullanıcılar",
     "description": "Sistem kullanıcılarını yönetin ve izinlerini düzenleyin",
