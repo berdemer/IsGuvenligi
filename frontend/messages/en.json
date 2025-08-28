@@ -731,18 +731,210 @@
       "usernameFormat": "Username can only contain letters, numbers, dots, hyphens, and underscores",
       "departmentRequired": "Department is required",
       "phoneRequired": "Phone number is required",
-      "phoneValid": "Please enter a valid phone number",
-      "fixErrors": "Please fix the validation errors",
-      "firstNameRequired": "First name is required",
-      "firstNameMin": "First name must be at least 2 characters",
-      "firstNameLetters": "First name can only contain letters",
-      "lastNameRequired": "Last name is required",
-      "lastNameMin": "Last name must be at least 2 characters",
-      "lastNameLetters": "Last name can only contain letters",
-      "usernameRequired": "Username is required",
-      "usernameMin": "Username must be at least 3 characters",
-      "usernameFormat": "Username can only contain letters, numbers, dots, hyphens, and underscores",
-      "departmentRequired": "Department is required"
+      "phoneValid": "Please enter a valid phone number"
+    }
+  },
+  "admin": {
+    "roles": {
+      "title": "Roles & Permissions",
+      "description": "Manage system roles and permissions",
+      "newRole": "New Role",
+      "search": "Search roles...",
+      "totalRoles": "Total Roles",
+      "totalUsers": "Total Users",
+      "adminRoles": "Admin Roles",
+      "averagePermissions": "Average Permissions",
+      "role": "Role",
+      "description": "Description",
+      "permissions": "Permissions",
+      "userCount": "User Count",
+      "createdAt": "Created Date",
+      "noDescription": "No description",
+      "edit": "Edit",
+      "managePermissions": "Manage Permissions",
+      "viewUsers": "View Users",
+      "delete": "Delete",
+      "noRolesFound": "No roles found",
+      "noRolesMessage": "No roles match the specified criteria.",
+      "roleTypes": {
+        "admin": "admin",
+        "manager": "manager",
+        "viewer": "viewer"
+      },
+      "badges": {
+        "admin": "bg-red-100 text-red-800 hover:bg-red-200",
+        "manager": "bg-blue-100 text-blue-800 hover:bg-blue-200",
+        "viewer": "bg-green-100 text-green-800 hover:bg-green-200",
+        "default": "bg-gray-100 text-gray-800 hover:bg-gray-200"
+      },
+      "loading": "Loading...",
+      "dialog": {
+        "editTitle": "Edit Role",
+        "createTitle": "Create New Role",
+        "editDescription": "Update role information and permissions",
+        "createDescription": "Define a new system role and permissions",
+        "basicInformation": "Basic Information",
+        "fields": {
+          "name": "Role Name",
+          "displayName": "Display Name",
+          "description": "Description"
+        },
+        "placeholders": {
+          "name": "e.g. viewer, manager",
+          "displayName": "e.g. Viewer, Manager",
+          "description": "Describe what this role does..."
+        },
+        "permissions": {
+          "title": "Permissions",
+          "selected": "selected",
+          "categories": {
+            "user": "User Management",
+            "role": "Role Management",
+            "oauth": "OAuth Settings",
+            "audit": "Audit Logs",
+            "system": "System Settings",
+            "settings": "General Settings"
+          },
+          "actions": {
+            "read": "View",
+            "write": "Edit",
+            "delete": "Delete"
+          }
+        },
+        "preview": {
+          "title": "Role Preview",
+          "roleName": "role-name",
+          "displayName": "Display Name",
+          "permissions": "permission"
+        },
+        "validation": {
+          "nameRequired": "Role name is required",
+          "nameFormat": "Role name can only contain lowercase letters, numbers, and underscores",
+          "displayNameRequired": "Display name is required",
+          "permissionsRequired": "At least one permission must be selected",
+          "fixErrors": "Please fix the errors"
+        },
+        "cancel": "Cancel",
+        "create": "Create",
+        "update": "Update",
+        "creating": "Creating...",
+        "updating": "Updating...",
+        "createSuccess": "Role created successfully",
+        "updateSuccess": "Role updated successfully",
+        "createError": "Error creating role",
+        "updateError": "Error updating role"
+      }
+    }
+  },
+  "users": {
+    "title": "Users",
+    "description": "Manage system users and edit their permissions",
+    "newUser": "New User",
+    "search": "Search users...",
+    "totalUsers": "Total Users",
+    "activeUsers": "Active Users",
+    "inactiveUsers": "Inactive Users",
+    "selected": "Selected",
+    "status": "Status",
+    "allStatuses": "All Statuses",
+    "active": "Active",
+    "inactive": "Inactive",
+    "role": "Role",
+    "allRoles": "All Roles",
+    "admin": "Admin",
+    "manager": "Manager",
+    "viewer": "Viewer",
+    "delete": "Delete",
+    "user": "User",
+    "roles": "Roles",
+    "lastLogin": "Last Login",
+    "loginCount": "Login Count",
+    "registrationDate": "Registration Date",
+    "neverLoggedIn": "Never logged in",
+    "edit": "Edit",
+    "manageRoles": "Manage Roles",
+    "deactivate": "Deactivate",
+    "activate": "Activate",
+    "noUsersFound": "No users found",
+    "noUsersMessage": "No users match the specified criteria.",
+    "showingResults": "Showing {from}-{to} of {total} total users",
+    "previous": "Previous",
+    "next": "Next",
+    "dialog": {
+      "editTitle": "Edit User",
+      "createTitle": "Create New User",
+      "editDescription": "Update user information and roles",
+      "createDescription": "Create a new system user",
+      "personalInformation": "Personal Information",
+      "accountInformation": "Account Information",
+      "contactInformation": "Contact Information",
+      "fields": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "username": "Username",
+        "phone": "Phone",
+        "department": "Department"
+      },
+      "placeholders": {
+        "firstName": "Enter your first name",
+        "lastName": "Enter your last name",
+        "email": "example@email.com",
+        "username": "username",
+        "phone": "+1 555 123 45 67",
+        "department": "Select department"
+      },
+      "departments": {
+        "it_department": "IT Department",
+        "security_department": "Security Department",
+        "operations": "Operations",
+        "human_resources": "Human Resources",
+        "finance": "Finance",
+        "marketing": "Marketing",
+        "engineering": "Engineering",
+        "support": "Support"
+      },
+      "roles": {
+        "title": "Role Assignment",
+        "selected": "selected"
+      },
+      "accountStatus": {
+        "title": "Account Status",
+        "active": "Active Account",
+        "description": "User can log in to the system and use assigned roles"
+      },
+      "preview": {
+        "title": "User Preview",
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "validation": {
+        "emailRequired": "Email is required",
+        "emailValid": "Enter a valid email address",
+        "firstNameRequired": "First name is required",
+        "firstNameMin": "First name must be at least 2 characters",
+        "firstNameLetters": "First name can only contain letters",
+        "lastNameRequired": "Last name is required",
+        "lastNameMin": "Last name must be at least 2 characters",
+        "lastNameLetters": "Last name can only contain letters",
+        "usernameRequired": "Username is required",
+        "usernameMin": "Username must be at least 3 characters",
+        "usernameFormat": "Username can only contain letters, numbers, dots, hyphens, and underscores",
+        "departmentRequired": "Department is required",
+        "phoneRequired": "Phone number is required",
+        "phoneValid": "Please enter a valid phone number",
+        "rolesRequired": "At least one role must be selected",
+        "fixErrors": "Please fix the errors"
+      },
+      "cancel": "Cancel",
+      "create": "Create",
+      "update": "Update",
+      "creating": "Creating...",
+      "updating": "Updating...",
+      "createSuccess": "User created successfully",
+      "updateSuccess": "User updated successfully",
+      "createError": "Error creating user",
+      "updateError": "Error updating user"
     }
   }
 }

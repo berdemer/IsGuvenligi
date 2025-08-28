@@ -29,9 +29,10 @@
     "notifications": "Bildirimler"
   },
   "users": {
-    "title": "Kullanıcı Yönetimi",
-    "description": "Sistem kullanıcılarını ve izinlerini yönetin",
+    "title": "Kullanıcılar",
+    "description": "Sistem kullanıcılarını yönetin ve izinlerini düzenleyin",
     "addUser": "Kullanıcı Ekle",
+    "newUser": "Yeni Kullanıcı",
     "editUser": "Kullanıcıyı Düzenle",
     "deleteUser": "Kullanıcıyı Sil",
     "userDetails": "Kullanıcı Detayları",
@@ -39,11 +40,40 @@
     "lastName": "Soyad",
     "email": "E-posta",
     "username": "Kullanıcı Adı",
+    "fullName": "Ad Soyad",
+    "user": "Kullanıcı",
     "role": "Rol",
+    "roles": "Roller",
     "status": "Durum",
     "createdAt": "Oluşturma Tarihi",
+    "registrationDate": "Kayıt Tarihi",
     "lastLogin": "Son Giriş",
-    "actions": "İşlemler"
+    "loginCount": "Giriş Sayısı",
+    "actions": "İşlemler",
+    "search": "Kullanıcı ara...",
+    "totalUsers": "Toplam Kullanıcı",
+    "activeUsers": "Aktif Kullanıcı",
+    "inactiveUsers": "Pasif Kullanıcı",
+    "selected": "Seçili",
+    "active": "Aktif",
+    "inactive": "Pasif",
+    "allStatuses": "Tüm Durumlar",
+    "allRoles": "Tüm Roller",
+    "administrator": "Yönetici",
+    "manager": "Manager",
+    "viewer": "Görüntüleyici",
+    "edit": "Düzenle",
+    "manageRoles": "Rolleri Yönet",
+    "disable": "Devre Dışı Bırak",
+    "enable": "Etkinleştir",
+    "delete": "Sil",
+    "deleteSelected": "Sil ({count})",
+    "noUsers": "Kullanıcı bulunamadı",
+    "noUsersDescription": "Belirtilen kriterlere uygun kullanıcı bulunmuyor.",
+    "neverLoggedIn": "Hiç giriş yapmamış",
+    "showingUsers": "Toplam {total} kullanıcıdan {start}-{end} arası gösteriliyor",
+    "previous": "Önceki",
+    "next": "Sonraki"
   },
   "roles": {
     "title": "Rol Yönetimi",
@@ -727,6 +757,209 @@
       "departmentRequired": "Departman zorunludur",
       "phoneRequired": "Telefon numarası zorunludur",
       "phoneValid": "Lütfen geçerli bir telefon numarası girin"
+    }
+  },
+  "admin": {
+    "roles": {
+      "title": "Roller ve İzinler",
+      "description": "Sistem rollerini ve izinlerini yönetin",
+      "newRole": "Yeni Rol",
+      "search": "Rol ara...",
+      "totalRoles": "Toplam Rol",
+      "totalUsers": "Toplam Kullanıcı",
+      "adminRoles": "Admin Rolleri",
+      "averagePermissions": "Ortalama İzin",
+      "role": "Rol",
+      "description": "Açıklama",
+      "permissions": "İzinler",
+      "userCount": "Kullanıcı Sayısı",
+      "createdAt": "Oluşturma Tarihi",
+      "noDescription": "Açıklama yok",
+      "edit": "Düzenle",
+      "managePermissions": "İzinleri Yönet",
+      "viewUsers": "Kullanıcıları Görüntüle",
+      "delete": "Sil",
+      "noRolesFound": "Rol bulunamadı",
+      "noRolesMessage": "Belirtilen kriterlere uygun rol bulunmuyor.",
+      "roleTypes": {
+        "admin": "admin",
+        "manager": "manager",
+        "viewer": "viewer"
+      },
+      "badges": {
+        "admin": "bg-red-100 text-red-800 hover:bg-red-200",
+        "manager": "bg-blue-100 text-blue-800 hover:bg-blue-200",
+        "viewer": "bg-green-100 text-green-800 hover:bg-green-200",
+        "default": "bg-gray-100 text-gray-800 hover:bg-gray-200"
+      },
+      "loading": "Yükleniyor...",
+      "dialog": {
+        "editTitle": "Rolü Düzenle",
+        "createTitle": "Yeni Rol Oluştur",
+        "editDescription": "Rol bilgilerini ve izinlerini güncelleyin",
+        "createDescription": "Yeni bir sistem rolü ve izinleri tanımlayın",
+        "basicInformation": "Temel Bilgiler",
+        "fields": {
+          "name": "Rol Adı",
+          "displayName": "Görünen Ad",
+          "description": "Açıklama"
+        },
+        "placeholders": {
+          "name": "Örn: viewer, manager",
+          "displayName": "Örn: Görüntüleyici, Yönetici",
+          "description": "Bu rolün ne işe yaradığını açıklayın..."
+        },
+        "permissions": {
+          "title": "İzinler",
+          "selected": "seçili",
+          "categories": {
+            "user": "Kullanıcı Yönetimi",
+            "role": "Rol Yönetimi",
+            "oauth": "OAuth Ayarları",
+            "audit": "Denetim Günlükleri",
+            "system": "Sistem Ayarları",
+            "settings": "Genel Ayarlar"
+          },
+          "actions": {
+            "read": "Görüntüleme",
+            "write": "Düzenleme",
+            "delete": "Silme"
+          }
+        },
+        "preview": {
+          "title": "Rol Önizlemesi",
+          "roleName": "rol-adi",
+          "displayName": "Görünen Ad",
+          "permissions": "izin"
+        },
+        "validation": {
+          "nameRequired": "Rol adı gereklidir",
+          "nameFormat": "Rol adı sadece küçük harf, rakam ve alt çizgi içerebilir",
+          "displayNameRequired": "Görünen ad gereklidir",
+          "permissionsRequired": "En az bir izin seçmelisiniz",
+          "fixErrors": "Lütfen hataları düzeltin"
+        },
+        "cancel": "İptal",
+        "create": "Oluştur",
+        "update": "Güncelle",
+        "creating": "Oluşturuluyor...",
+        "updating": "Güncelleniyor...",
+        "createSuccess": "Rol başarıyla oluşturuldu",
+        "updateSuccess": "Rol başarıyla güncellendi",
+        "createError": "Rol oluşturulurken hata oluştu",
+        "updateError": "Rol güncellenirken hata oluştu"
+      }
+    }
+  },
+  "users": {
+    "title": "Kullanıcılar",
+    "description": "Sistem kullanıcılarını yönetin ve izinlerini düzenleyin",
+    "newUser": "Yeni Kullanıcı",
+    "search": "Kullanıcı ara...",
+    "totalUsers": "Toplam Kullanıcı",
+    "activeUsers": "Aktif Kullanıcı",
+    "inactiveUsers": "Pasif Kullanıcı",
+    "selected": "Seçili",
+    "status": "Durum",
+    "allStatuses": "Tüm Durumlar",
+    "active": "Aktif",
+    "inactive": "Pasif",
+    "role": "Rol",
+    "allRoles": "Tüm Roller",
+    "admin": "Yönetici",
+    "manager": "Manager",
+    "viewer": "Görüntüleyici",
+    "delete": "Sil",
+    "user": "Kullanıcı",
+    "roles": "Roller",
+    "lastLogin": "Son Giriş",
+    "loginCount": "Giriş Sayısı",
+    "registrationDate": "Kayıt Tarihi",
+    "neverLoggedIn": "Hiç giriş yapmamış",
+    "edit": "Düzenle",
+    "manageRoles": "Rolleri Yönet",
+    "deactivate": "Devre Dışı Bırak",
+    "activate": "Etkinleştir",
+    "noUsersFound": "Kullanıcı bulunamadı",
+    "noUsersMessage": "Belirtilen kriterlere uygun kullanıcı bulunmuyor.",
+    "showingResults": "Toplam {total} kullanıcıdan {from}-{to} arası gösteriliyor",
+    "previous": "Önceki",
+    "next": "Sonraki",
+    "dialog": {
+      "editTitle": "Kullanıcıyı Düzenle",
+      "createTitle": "Yeni Kullanıcı Oluştur",
+      "editDescription": "Kullanıcı bilgilerini ve rollerini güncelleyin",
+      "createDescription": "Yeni bir sistem kullanıcısı oluşturun",
+      "personalInformation": "Kişisel Bilgiler",
+      "accountInformation": "Hesap Bilgileri",
+      "contactInformation": "İletişim Bilgileri",
+      "fields": {
+        "firstName": "Ad",
+        "lastName": "Soyad",
+        "email": "E-posta",
+        "username": "Kullanıcı Adı",
+        "phone": "Telefon",
+        "department": "Departman"
+      },
+      "placeholders": {
+        "firstName": "Adınızı girin",
+        "lastName": "Soyadınızı girin",
+        "email": "ornek@email.com",
+        "username": "kullanici_adi",
+        "phone": "+90 555 123 45 67",
+        "department": "Departman seçin"
+      },
+      "departments": {
+        "it_department": "IT Departmanı",
+        "security_department": "Güvenlik Departmanı",
+        "operations": "Operasyonlar",
+        "human_resources": "İnsan Kaynakları",
+        "finance": "Finans",
+        "marketing": "Pazarlama",
+        "engineering": "Mühendislik",
+        "support": "Destek"
+      },
+      "roles": {
+        "title": "Rol Ataması",
+        "selected": "seçili"
+      },
+      "accountStatus": {
+        "title": "Hesap Durumu",
+        "active": "Aktif Hesap",
+        "description": "Kullanıcı sisteme giriş yapabilir ve atanan rollerini kullanabilir"
+      },
+      "preview": {
+        "title": "Kullanıcı Önizlemesi",
+        "active": "Aktif",
+        "inactive": "Pasif"
+      },
+      "validation": {
+        "emailRequired": "E-posta gereklidir",
+        "emailValid": "Geçerli bir e-posta adresi girin",
+        "firstNameRequired": "Ad gereklidir",
+        "firstNameMin": "Ad en az 2 karakter olmalıdır",
+        "firstNameLetters": "Ad sadece harf içerebilir",
+        "lastNameRequired": "Soyad gereklidir",
+        "lastNameMin": "Soyad en az 2 karakter olmalıdır",
+        "lastNameLetters": "Soyad sadece harf içerebilir",
+        "usernameRequired": "Kullanıcı adı gereklidir",
+        "usernameMin": "Kullanıcı adı en az 3 karakter olmalıdır",
+        "usernameFormat": "Kullanıcı adı sadece harf, rakam, nokta, tire ve alt çizgi içerebilir",
+        "departmentRequired": "Departman gereklidir",
+        "phoneRequired": "Telefon numarası gereklidir",
+        "phoneValid": "Lütfen geçerli bir telefon numarası girin",
+        "rolesRequired": "En az bir rol seçmelisiniz",
+        "fixErrors": "Lütfen hataları düzeltin"
+      },
+      "cancel": "İptal",
+      "create": "Oluştur",
+      "update": "Güncelle",
+      "creating": "Oluşturuluyor...",
+      "updating": "Güncelleniyor...",
+      "createSuccess": "Kullanıcı başarıyla oluşturuldu",
+      "updateSuccess": "Kullanıcı başarıyla güncellendi",
+      "createError": "Kullanıcı oluşturulurken hata oluştu",
+      "updateError": "Kullanıcı güncellenirken hata oluştu"
     }
   }
 }

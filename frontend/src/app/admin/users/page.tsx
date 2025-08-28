@@ -1,7 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { Plus, Search, Filter, Edit, Trash2, MoreHorizontal, UserPlus, UserMinus, Shield } from 'lucide-react';
+import { UserManagementDialog } from '@/components/admin/users/UserManagementDialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -34,6 +36,20 @@ interface User {
   loginCount?: number;
 }
 
+interface UserDialogData {
+  id?: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  username: string;
+  department: string;
+  phone: string;
+  isActive: boolean;
+  roles: string[];
+  createdAt?: string;
+  updatedAt?: string;
+}
+
 interface UsersResponse {
   data: User[];
   total: number;
@@ -45,8 +61,11 @@ interface UsersResponse {
 }
 
 export default function UsersPage() {
+  const t = useTranslations('users');
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
+  const [userDialogOpen, setUserDialogOpen] = useState(false);
+  const [selectedUser, setSelectedUser] = useState<UserDialogData | undefined>();
   const [selectedUsers, setSelectedUsers] = useState<Set<string>>(new Set());
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('all');
@@ -198,14 +217,20 @@ export default function UsersPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-semibold text-gray-900">Kullanıcılar</h1>
+          <h1 className="text-3xl font-semibold text-gray-900">{t('title')}</h1>
           <p className="text-gray-600 mt-1">
-            Sistem kullanıcılarını yönetin ve izinlerini düzenleyin
+            {t('description')}
           </p>
         </div>
-        <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+        <Button 
+          className="bg-blue-600 hover:bg-blue-700 text-white"
+          onClick={() => {
+            setSelectedUser(undefined);
+            setUserDialogOpen(true);
+          }}
+        >
           <UserPlus className="h-4 w-4 mr-2" />
-          Yeni Kullanıcı
+          {t('newUser')}
         </Button>
       </div>
 
@@ -215,7 +240,7 @@ export default function UsersPage() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Toplam Kullanıcı</p>
+                <p className="text-sm font-medium text-gray-600">{t('totalUsers')}</p>
                 <p className="text-2xl font-bold text-gray-900">{total}</p>
               </div>
               <div className="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center">
@@ -229,7 +254,7 @@ export default function UsersPage() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Aktif Kullanıcı</p>
+                <p className="text-sm font-medium text-gray-600">{t('activeUsers')}</p>
                 <p className="text-2xl font-bold text-green-600">
                   {users.filter(u => u.isActive).length}
                 </p>
@@ -245,7 +270,7 @@ export default function UsersPage() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Pasif Kullanıcı</p>
+                <p className="text-sm font-medium text-gray-600">{t('inactiveUsers')}</p>
                 <p className="text-2xl font-bold text-red-600">
                   {users.filter(u => !u.isActive).length}
                 </p>
@@ -261,7 +286,7 @@ export default function UsersPage() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Seçili</p>
+                <p className="text-sm font-medium text-gray-600">{t('selected')}</p>
                 <p className="text-2xl font-bold text-blue-600">{selectedUsers.size}</p>
               </div>
               <div className="h-12 w-12 bg-purple-100 rounded-lg flex items-center justify-center">
@@ -279,7 +304,7 @@ export default function UsersPage() {
             <div className="relative flex-1 max-w-md">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
               <Input
-                placeholder="Kullanıcı ara..."
+                placeholder={t('search')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-9"
@@ -288,31 +313,31 @@ export default function UsersPage() {
             <div className="flex gap-2">
               <Select value={statusFilter} onValueChange={setStatusFilter}>
                 <SelectTrigger className="w-[140px]">
-                  <SelectValue placeholder="Durum" />
+                  <SelectValue placeholder={t('status')} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">Tüm Durumlar</SelectItem>
-                  <SelectItem value="active">Aktif</SelectItem>
-                  <SelectItem value="inactive">Pasif</SelectItem>
+                  <SelectItem value="all">{t('allStatuses')}</SelectItem>
+                  <SelectItem value="active">{t('active')}</SelectItem>
+                  <SelectItem value="inactive">{t('inactive')}</SelectItem>
                 </SelectContent>
               </Select>
               
               <Select value={roleFilter} onValueChange={setRoleFilter}>
                 <SelectTrigger className="w-[140px]">
-                  <SelectValue placeholder="Rol" />
+                  <SelectValue placeholder={t('role')} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">Tüm Roller</SelectItem>
-                  <SelectItem value="admin">Yönetici</SelectItem>
-                  <SelectItem value="manager">Manager</SelectItem>
-                  <SelectItem value="viewer">Görüntüleyici</SelectItem>
+                  <SelectItem value="all">{t('allRoles')}</SelectItem>
+                  <SelectItem value="admin">{t('admin')}</SelectItem>
+                  <SelectItem value="manager">{t('manager')}</SelectItem>
+                  <SelectItem value="viewer">{t('viewer')}</SelectItem>
                 </SelectContent>
               </Select>
 
               {selectedUsers.size > 0 && (
                 <Button variant="destructive" size="sm">
                   <Trash2 className="h-4 w-4 mr-2" />
-                  Sil ({selectedUsers.size})
+                  {t('delete')} ({selectedUsers.size})
                 </Button>
               )}
             </div>
@@ -328,12 +353,12 @@ export default function UsersPage() {
                     onCheckedChange={handleSelectAll}
                   />
                 </TableHead>
-                <TableHead>Kullanıcı</TableHead>
-                <TableHead>Roller</TableHead>
-                <TableHead>Durum</TableHead>
-                <TableHead>Son Giriş</TableHead>
-                <TableHead>Giriş Sayısı</TableHead>
-                <TableHead>Kayıt Tarihi</TableHead>
+                <TableHead>{t('user')}</TableHead>
+                <TableHead>{t('roles')}</TableHead>
+                <TableHead>{t('status')}</TableHead>
+                <TableHead>{t('lastLogin')}</TableHead>
+                <TableHead>{t('loginCount')}</TableHead>
+                <TableHead>{t('registrationDate')}</TableHead>
                 <TableHead className="w-12"></TableHead>
               </TableRow>
             </TableHeader>
@@ -381,12 +406,12 @@ export default function UsersPage() {
                           : 'bg-red-100 text-red-800 hover:bg-red-200'
                       }
                     >
-                      {user.isActive ? 'Aktif' : 'Pasif'}
+                      {user.isActive ? t('active') : t('inactive')}
                     </Badge>
                   </TableCell>
                   <TableCell>
                     <div className="text-sm text-gray-900">
-                      {user.lastLoginAt ? formatDate(user.lastLoginAt) : 'Hiç giriş yapmamış'}
+                      {user.lastLoginAt ? formatDate(user.lastLoginAt) : t('neverLoggedIn')}
                     </div>
                   </TableCell>
                   <TableCell>
@@ -403,32 +428,50 @@ export default function UsersPage() {
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
-                        <DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={() => {
+                            const userData = {
+                              id: user.id,
+                              email: user.email,
+                              firstName: user.fullName.split(' ')[0] || '',
+                              lastName: user.fullName.split(' ').slice(1).join(' ') || '',
+                              username: user.email.split('@')[0],
+                              department: 'IT Department',
+                              phone: '+90 555 123 45 67',
+                              isActive: user.isActive,
+                              roles: user.roles?.map(r => r.name) || [],
+                              createdAt: user.createdAt,
+                              updatedAt: user.updatedAt
+                            };
+                            setSelectedUser(userData);
+                            setUserDialogOpen(true);
+                          }}
+                        >
                           <Edit className="h-4 w-4 mr-2" />
-                          Düzenle
+                          {t('edit')}
                         </DropdownMenuItem>
                         <DropdownMenuItem>
                           <Shield className="h-4 w-4 mr-2" />
-                          Rolleri Yönet
+                          {t('manageRoles')}
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem>
                           {user.isActive ? (
                             <>
                               <UserMinus className="h-4 w-4 mr-2" />
-                              Devre Dışı Bırak
+                              {t('deactivate')}
                             </>
                           ) : (
                             <>
                               <UserPlus className="h-4 w-4 mr-2" />
-                              Etkinleştir
+                              {t('activate')}
                             </>
                           )}
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem className="text-red-600">
                           <Trash2 className="h-4 w-4 mr-2" />
-                          Sil
+                          {t('delete')}
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
@@ -442,8 +485,8 @@ export default function UsersPage() {
             <div className="text-center py-12">
               <div className="text-gray-500">
                 <Shield className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                <h3 className="text-lg font-medium">Kullanıcı bulunamadı</h3>
-                <p>Belirtilen kriterlere uygun kullanıcı bulunmuyor.</p>
+                <h3 className="text-lg font-medium">{t('noUsersFound')}</h3>
+                <p>{t('noUsersMessage')}</p>
               </div>
             </div>
           )}
@@ -454,7 +497,11 @@ export default function UsersPage() {
       {totalPages > 1 && (
         <div className="flex items-center justify-between">
           <div className="text-sm text-gray-700">
-            Toplam {total} kullanıcıdan {((currentPage - 1) * 10) + 1}-{Math.min(currentPage * 10, total)} arası gösteriliyor
+            {t('showingResults', { 
+              total, 
+              from: ((currentPage - 1) * 10) + 1, 
+              to: Math.min(currentPage * 10, total)
+            })}
           </div>
           <div className="flex gap-2">
             <Button
@@ -463,7 +510,7 @@ export default function UsersPage() {
               onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
             >
-              Önceki
+              {t('previous')}
             </Button>
             <Button
               variant="outline"
@@ -471,11 +518,50 @@ export default function UsersPage() {
               onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
               disabled={currentPage === totalPages}
             >
-              Sonraki
+              {t('next')}
             </Button>
           </div>
         </div>
       )}
+
+      {/* User Management Dialog */}
+      <UserManagementDialog
+        open={userDialogOpen}
+        onOpenChange={setUserDialogOpen}
+        user={selectedUser}
+        onSave={(updatedUser) => {
+          if (selectedUser && selectedUser.id) {
+            // Update existing user
+            setUsers(prev => prev.map(u => u.id === selectedUser.id ? {
+              ...u,
+              email: updatedUser.email,
+              fullName: `${updatedUser.firstName} ${updatedUser.lastName}`,
+              isActive: updatedUser.isActive,
+              updatedAt: new Date().toISOString()
+            } : u));
+          } else {
+            // Add new user
+            const newUser: User = {
+              id: Date.now().toString(),
+              email: updatedUser.email,
+              fullName: `${updatedUser.firstName} ${updatedUser.lastName}`,
+              isActive: updatedUser.isActive,
+              createdAt: new Date().toISOString(),
+              updatedAt: new Date().toISOString(),
+              roles: updatedUser.roles.map(roleId => {
+                const roleNames = { admin: 'Administrator', manager: 'Manager', viewer: 'Viewer' };
+                return {
+                  id: roleId,
+                  name: roleId,
+                  displayName: roleNames[roleId as keyof typeof roleNames] || roleId
+                };
+              }),
+              loginCount: 0
+            };
+            setUsers(prev => [...prev, newUser]);
+          }
+        }}
+      />
     </div>
   );
 }

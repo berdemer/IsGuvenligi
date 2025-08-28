@@ -1,7 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { Plus, Search, Shield, Users, Settings, Edit, Trash2, MoreHorizontal } from 'lucide-react';
+import { RoleManagementDialog } from '@/components/admin/roles/RoleManagementDialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -27,9 +29,12 @@ interface Role {
 }
 
 export default function RolesPage() {
+  const t = useTranslations('admin.roles');
   const [roles, setRoles] = useState<Role[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
+  const [roleDialogOpen, setRoleDialogOpen] = useState(false);
+  const [selectedRole, setSelectedRole] = useState<Role | undefined>();
 
   // Mock data - In real implementation, this would come from API
   useEffect(() => {
@@ -147,14 +152,20 @@ export default function RolesPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-semibold text-gray-900">Roller ve İzinler</h1>
+          <h1 className="text-3xl font-semibold text-gray-900">{t('title')}</h1>
           <p className="text-gray-600 mt-1">
-            Sistem rollerini ve izinlerini yönetin
+            {t('description')}
           </p>
         </div>
-        <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+        <Button 
+          className="bg-blue-600 hover:bg-blue-700 text-white"
+          onClick={() => {
+            setSelectedRole(undefined);
+            setRoleDialogOpen(true);
+          }}
+        >
           <Plus className="h-4 w-4 mr-2" />
-          Yeni Rol
+          {t('newRole')}
         </Button>
       </div>
 
@@ -164,7 +175,7 @@ export default function RolesPage() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Toplam Rol</p>
+                <p className="text-sm font-medium text-gray-600">{t('totalRoles')}</p>
                 <p className="text-2xl font-bold text-gray-900">{roles.length}</p>
               </div>
               <Shield className="h-12 w-12 text-blue-600" />
@@ -176,7 +187,7 @@ export default function RolesPage() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Toplam Kullanıcı</p>
+                <p className="text-sm font-medium text-gray-600">{t('totalUsers')}</p>
                 <p className="text-2xl font-bold text-green-600">
                   {roles.reduce((sum, role) => sum + (role.userCount || 0), 0)}
                 </p>
@@ -190,7 +201,7 @@ export default function RolesPage() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Admin Rolleri</p>
+                <p className="text-sm font-medium text-gray-600">{t('adminRoles')}</p>
                 <p className="text-2xl font-bold text-red-600">
                   {roles.filter(r => r.name.includes('admin')).length}
                 </p>
@@ -204,7 +215,7 @@ export default function RolesPage() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Ortalama İzin</p>
+                <p className="text-sm font-medium text-gray-600">{t('averagePermissions')}</p>
                 <p className="text-2xl font-bold text-purple-600">
                   {Math.round(roles.reduce((sum, role) => sum + role.permissions.length, 0) / roles.length) || 0}
                 </p>
@@ -222,7 +233,7 @@ export default function RolesPage() {
             <div className="relative flex-1 max-w-md">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
               <Input
-                placeholder="Rol ara..."
+                placeholder={t('search')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-9"
@@ -234,11 +245,11 @@ export default function RolesPage() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Rol</TableHead>
-                <TableHead>Açıklama</TableHead>
-                <TableHead>İzinler</TableHead>
-                <TableHead>Kullanıcı Sayısı</TableHead>
-                <TableHead>Oluşturma Tarihi</TableHead>
+                <TableHead>{t('role')}</TableHead>
+                <TableHead>{t('description')}</TableHead>
+                <TableHead>{t('permissions')}</TableHead>
+                <TableHead>{t('userCount')}</TableHead>
+                <TableHead>{t('createdAt')}</TableHead>
                 <TableHead className="w-12"></TableHead>
               </TableRow>
             </TableHeader>
@@ -260,7 +271,7 @@ export default function RolesPage() {
                   </TableCell>
                   <TableCell>
                     <div className="text-sm text-gray-600 max-w-xs">
-                      {role.description || 'Açıklama yok'}
+                      {role.description || t('noDescription')}
                     </div>
                   </TableCell>
                   <TableCell>
@@ -292,22 +303,27 @@ export default function RolesPage() {
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
-                        <DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={() => {
+                            setSelectedRole(role);
+                            setRoleDialogOpen(true);
+                          }}
+                        >
                           <Edit className="h-4 w-4 mr-2" />
-                          Düzenle
+                          {t('edit')}
                         </DropdownMenuItem>
                         <DropdownMenuItem>
                           <Settings className="h-4 w-4 mr-2" />
-                          İzinleri Yönet
+                          {t('managePermissions')}
                         </DropdownMenuItem>
                         <DropdownMenuItem>
                           <Users className="h-4 w-4 mr-2" />
-                          Kullanıcıları Görüntüle
+                          {t('viewUsers')}
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem className="text-red-600">
                           <Trash2 className="h-4 w-4 mr-2" />
-                          Sil
+                          {t('delete')}
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
@@ -321,13 +337,36 @@ export default function RolesPage() {
             <div className="text-center py-12">
               <div className="text-gray-500">
                 <Shield className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                <h3 className="text-lg font-medium">Rol bulunamadı</h3>
-                <p>Belirtilen kriterlere uygun rol bulunmuyor.</p>
+                <h3 className="text-lg font-medium">{t('noRolesFound')}</h3>
+                <p>{t('noRolesMessage')}</p>
               </div>
             </div>
           )}
         </CardContent>
       </Card>
+
+      {/* Role Management Dialog */}
+      <RoleManagementDialog
+        open={roleDialogOpen}
+        onOpenChange={setRoleDialogOpen}
+        role={selectedRole}
+        onSave={(updatedRole) => {
+          if (selectedRole) {
+            // Update existing role
+            setRoles(prev => prev.map(r => r.id === selectedRole.id ? { ...r, ...updatedRole } : r));
+          } else {
+            // Add new role
+            const newRole = {
+              ...updatedRole,
+              id: Date.now().toString(),
+              createdAt: new Date().toISOString(),
+              updatedAt: new Date().toISOString(),
+              userCount: 0
+            };
+            setRoles(prev => [...prev, newRole]);
+          }
+        }}
+      />
     </div>
   );
 }
