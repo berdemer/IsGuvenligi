@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
@@ -44,6 +45,7 @@ import {
   NotificationSeverity
 } from '@/types/notification'
 import toast from "react-hot-toast"
+import { useToast } from '@/hooks/use-toast'
 
 // Mock current user settings
 const mockNotificationSettings = (): NotificationSettingsType => ({
@@ -91,73 +93,79 @@ const mockNotificationSettings = (): NotificationSettingsType => ({
   updatedAt: '2024-08-25T10:00:00Z'
 })
 
-const severityOptions = [
-  { value: 'low', label: 'Low', color: 'text-blue-600' },
-  { value: 'medium', label: 'Medium', color: 'text-yellow-600' },
-  { value: 'high', label: 'High', color: 'text-orange-600' },
-  { value: 'critical', label: 'Critical', color: 'text-red-600' }
+const getSeverityOptions = (t: any) => [
+  { value: 'low', label: t('severity.low'), color: 'text-blue-600' },
+  { value: 'medium', label: t('severity.medium'), color: 'text-yellow-600' },
+  { value: 'high', label: t('severity.high'), color: 'text-orange-600' },
+  { value: 'critical', label: t('severity.critical'), color: 'text-red-600' }
 ]
 
-const notificationTypes = [
+const getNotificationTypes = (t: any) => [
   {
     type: 'security' as NotificationType,
-    label: 'Security Alerts',
-    description: 'Login failures, suspicious activity, policy violations',
+    label: t('types.security'),
+    description: t('types.securityDescription'),
     icon: Shield,
     color: 'text-red-600'
   },
   {
     type: 'system' as NotificationType,
-    label: 'System Health',
-    description: 'System errors, performance issues, service status',
+    label: t('types.system'),
+    description: t('types.systemDescription'),
     icon: Activity,
     color: 'text-blue-600'
   },
   {
     type: 'risk' as NotificationType,
-    label: 'Risk & Safety',
-    description: 'Safety incidents, risk threshold alerts',
+    label: t('types.risk'),
+    description: t('types.riskDescription'),
     icon: AlertTriangle,
     color: 'text-orange-600'
   },
   {
     type: 'user_activity' as NotificationType,
-    label: 'User Activity',
-    description: 'Role changes, account modifications',
+    label: t('types.userActivity'),
+    description: t('types.userActivityDescription'),
     icon: Users,
     color: 'text-green-600'
   }
 ]
 
-const channelOptions = [
+const getChannelOptions = (t: any) => [
   {
     key: 'inApp' as const,
-    label: 'In-App Notifications',
-    description: 'Show notifications in the admin panel',
+    label: t('channels.inApp'),
+    description: t('channels.inAppDescription'),
     icon: Bell,
     alwaysEnabled: true
   },
   {
     key: 'email' as const,
-    label: 'Email Notifications',
-    description: 'Send notifications to your email address',
+    label: t('channels.email'),
+    description: t('channels.emailDescription'),
     icon: Mail,
     alwaysEnabled: false
   },
   {
     key: 'sms' as const,
-    label: 'SMS Notifications',
-    description: 'Send critical alerts via text message',
+    label: t('channels.sms'),
+    description: t('channels.smsDescription'),
     icon: Smartphone,
     alwaysEnabled: false
   }
 ]
 
 export default function NotificationSettings() {
+  const t = useTranslations('notificationPreferences')
+  const { toast: toastHook } = useToast()
   const [settings, setSettings] = useState<NotificationSettingsType>(mockNotificationSettings())
   const [isLoading, setIsLoading] = useState(false)
   const [isSaving, setIsSaving] = useState(false)
   const [hasChanges, setHasChanges] = useState(false)
+  
+  const severityOptions = getSeverityOptions(t)
+  const notificationTypes = getNotificationTypes(t)
+  const channelOptions = getChannelOptions(t)
 
   // Track changes
   useEffect(() => {
@@ -229,10 +237,10 @@ export default function NotificationSettings() {
     try {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000))
-      toast.success('Notification settings saved successfully')
+      toastHook({ title: t('toast.settingsSaved') })
       setHasChanges(false)
     } catch (error) {
-      toast.error('Failed to save notification settings')
+      toastHook({ title: t('toast.saveError'), variant: 'destructive' })
     } finally {
       setIsSaving(false)
     }
@@ -241,11 +249,11 @@ export default function NotificationSettings() {
   const resetSettings = () => {
     setSettings(mockNotificationSettings())
     setHasChanges(false)
-    toast.success('Settings reset to defaults')
+    toastHook({ title: t('toast.settingsReset') })
   }
 
   const testNotification = (type: NotificationType) => {
-    toast.success(`Test ${type} notification sent!`)
+    toastHook({ title: t('toast.testNotification', { type }) })
   }
 
   return (
@@ -253,15 +261,15 @@ export default function NotificationSettings() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="text-2xl font-bold">Notification Settings</h3>
+          <h3 className="text-2xl font-bold">{t('title')}</h3>
           <p className="text-muted-foreground">
-            Configure how and when you receive notifications
+            {t('description')}
           </p>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="outline" onClick={resetSettings} disabled={isSaving}>
             <RefreshCw className="h-4 w-4 mr-2" />
-            Reset
+            {t('reset')}
           </Button>
           <Button 
             onClick={saveSettings} 
@@ -273,7 +281,7 @@ export default function NotificationSettings() {
             ) : (
               <Save className="h-4 w-4 mr-2" />
             )}
-            Save Changes
+            {t('saveChanges')}
           </Button>
         </div>
       </div>
@@ -283,25 +291,25 @@ export default function NotificationSettings() {
         <Alert>
           <Info className="h-4 w-4" />
           <AlertDescription>
-            You have unsaved changes. Don't forget to save your notification preferences.
+            {t('unsavedChanges')}
           </AlertDescription>
         </Alert>
       )}
 
       <Tabs defaultValue="channels" className="space-y-6">
         <TabsList>
-          <TabsTrigger value="channels">Delivery Channels</TabsTrigger>
-          <TabsTrigger value="types">Notification Types</TabsTrigger>
-          <TabsTrigger value="schedule">Schedule & Timing</TabsTrigger>
-          <TabsTrigger value="advanced">Advanced Settings</TabsTrigger>
+          <TabsTrigger value="channels">{t('tabs.channels')}</TabsTrigger>
+          <TabsTrigger value="types">{t('tabs.types')}</TabsTrigger>
+          <TabsTrigger value="schedule">{t('tabs.schedule')}</TabsTrigger>
+          <TabsTrigger value="advanced">{t('tabs.advanced')}</TabsTrigger>
         </TabsList>
 
         <TabsContent value="channels" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Delivery Channels</CardTitle>
+              <CardTitle>{t('channels.title')}</CardTitle>
               <CardDescription>
-                Choose how you want to receive notifications. In-app notifications are always enabled.
+                {t('channels.description')}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -315,7 +323,7 @@ export default function NotificationSettings() {
                         {channel.description}
                       </p>
                       {channel.key === 'inApp' && (
-                        <Badge variant="secondary" className="mt-2">Always Enabled</Badge>
+                        <Badge variant="secondary" className="mt-2">{t('channels.alwaysEnabled')}</Badge>
                       )}
                     </div>
                   </div>
@@ -333,9 +341,9 @@ export default function NotificationSettings() {
         <TabsContent value="types" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Notification Types</CardTitle>
+              <CardTitle>{t('types.title')}</CardTitle>
               <CardDescription>
-                Configure settings for each type of notification
+                {t('types.description')}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -361,7 +369,7 @@ export default function NotificationSettings() {
                             size="sm"
                             onClick={() => testNotification(notifType.type)}
                           >
-                            Test
+                            {t('types.test')}
                           </Button>
                           <Switch
                             checked={typeSettings.enabled}
@@ -373,7 +381,7 @@ export default function NotificationSettings() {
                       {typeSettings.enabled && (
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pl-8">
                           <div className="space-y-2">
-                            <Label className="text-sm font-medium">Minimum Severity</Label>
+                            <Label className="text-sm font-medium">{t('types.minimumSeverity')}</Label>
                             <Select 
                               value={typeSettings.minSeverity} 
                               onValueChange={(value) => updateTypeSetting(notifType.type, 'minSeverity', value as NotificationSeverity)}
@@ -392,7 +400,7 @@ export default function NotificationSettings() {
                           </div>
                           
                           <div className="space-y-2">
-                            <Label className="text-sm font-medium">Delivery Channels</Label>
+                            <Label className="text-sm font-medium">{t('types.deliveryChannels')}</Label>
                             <div className="flex flex-wrap gap-2">
                               {channelOptions.map((channel) => (
                                 <Button
@@ -403,12 +411,12 @@ export default function NotificationSettings() {
                                   disabled={!settings.channels[channel.key] && channel.key !== 'inApp'}
                                 >
                                   <channel.icon className="h-3 w-3 mr-1" />
-                                  {channel.key === 'inApp' ? 'App' : channel.key === 'email' ? 'Email' : 'SMS'}
+                                  {channel.key === 'inApp' ? t('types.app') : channel.key === 'email' ? t('types.email') : t('types.sms')}
                                 </Button>
                               ))}
                             </div>
                             <p className="text-xs text-muted-foreground">
-                              Only enabled channels can be selected
+                              {t('types.onlyEnabledChannels')}
                             </p>
                           </div>
                         </div>
@@ -432,15 +440,15 @@ export default function NotificationSettings() {
                   ) : (
                     <Volume2 className="h-5 w-5" />
                   )}
-                  Quiet Hours
+                  {t('quietHours.title')}
                 </CardTitle>
                 <CardDescription>
-                  Disable non-critical notifications during specified hours
+                  {t('quietHours.description')}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <Label>Enable quiet hours</Label>
+                  <Label>{t('quietHours.enable')}</Label>
                   <Switch
                     checked={settings.quietHours?.enabled}
                     onCheckedChange={(checked) => updateQuietHours('enabled', checked)}
@@ -451,7 +459,7 @@ export default function NotificationSettings() {
                   <>
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label>Start Time</Label>
+                        <Label>{t('quietHours.startTime')}</Label>
                         <Input
                           type="time"
                           value={settings.quietHours.start}
@@ -459,7 +467,7 @@ export default function NotificationSettings() {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label>End Time</Label>
+                        <Label>{t('quietHours.endTime')}</Label>
                         <Input
                           type="time"
                           value={settings.quietHours.end}
@@ -468,7 +476,7 @@ export default function NotificationSettings() {
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <Label>Timezone</Label>
+                      <Label>{t('quietHours.timezone')}</Label>
                       <Select
                         value={settings.quietHours.timezone}
                         onValueChange={(value) => updateQuietHours('timezone', value)}
@@ -477,13 +485,13 @@ export default function NotificationSettings() {
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="UTC">UTC</SelectItem>
-                          <SelectItem value="America/New_York">Eastern Time</SelectItem>
-                          <SelectItem value="America/Chicago">Central Time</SelectItem>
-                          <SelectItem value="America/Denver">Mountain Time</SelectItem>
-                          <SelectItem value="America/Los_Angeles">Pacific Time</SelectItem>
-                          <SelectItem value="Europe/London">London</SelectItem>
-                          <SelectItem value="Europe/Istanbul">Istanbul</SelectItem>
+                          <SelectItem value="UTC">{t('quietHours.timezones.utc')}</SelectItem>
+                          <SelectItem value="America/New_York">{t('quietHours.timezones.easternTime')}</SelectItem>
+                          <SelectItem value="America/Chicago">{t('quietHours.timezones.centralTime')}</SelectItem>
+                          <SelectItem value="America/Denver">{t('quietHours.timezones.mountainTime')}</SelectItem>
+                          <SelectItem value="America/Los_Angeles">{t('quietHours.timezones.pacificTime')}</SelectItem>
+                          <SelectItem value="Europe/London">{t('quietHours.timezones.london')}</SelectItem>
+                          <SelectItem value="Europe/Istanbul">{t('quietHours.timezones.istanbul')}</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -497,15 +505,15 @@ export default function NotificationSettings() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Clock className="h-5 w-5" />
-                  Notification Digest
+                  {t('digest.title')}
                 </CardTitle>
                 <CardDescription>
-                  Receive a summary of notifications instead of individual alerts
+                  {t('digest.description')}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <Label>Enable digest mode</Label>
+                  <Label>{t('digest.enable')}</Label>
                   <Switch
                     checked={settings.digest?.enabled}
                     onCheckedChange={(checked) => updateDigest('enabled', checked)}
@@ -515,7 +523,7 @@ export default function NotificationSettings() {
                 {settings.digest?.enabled && (
                   <>
                     <div className="space-y-2">
-                      <Label>Frequency</Label>
+                      <Label>{t('digest.frequency')}</Label>
                       <Select
                         value={settings.digest.frequency}
                         onValueChange={(value: any) => updateDigest('frequency', value)}
@@ -524,13 +532,13 @@ export default function NotificationSettings() {
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="daily">Daily</SelectItem>
-                          <SelectItem value="weekly">Weekly</SelectItem>
+                          <SelectItem value="daily">{t('digest.frequencies.daily')}</SelectItem>
+                          <SelectItem value="weekly">{t('digest.frequencies.weekly')}</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
                     <div className="space-y-2">
-                      <Label>Delivery Time</Label>
+                      <Label>{t('digest.deliveryTime')}</Label>
                       <Input
                         type="time"
                         value={settings.digest.time}
@@ -547,25 +555,25 @@ export default function NotificationSettings() {
         <TabsContent value="advanced" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Advanced Settings</CardTitle>
+              <CardTitle>{t('advanced.title')}</CardTitle>
               <CardDescription>
-                Additional notification configuration options
+                {t('advanced.description')}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <Alert>
                 <Info className="h-4 w-4" />
                 <AlertDescription>
-                  Advanced settings will be available in future releases. Currently showing placeholder configuration options.
+                  {t('advanced.futureFeature')}
                 </AlertDescription>
               </Alert>
 
               <div className="space-y-4 opacity-50">
                 <div className="flex items-center justify-between">
                   <div>
-                    <Label>Auto-mark notifications as read</Label>
+                    <Label>{t('advanced.autoMarkRead')}</Label>
                     <p className="text-sm text-muted-foreground">
-                      Automatically mark notifications as read after viewing
+                      {t('advanced.autoMarkReadDescription')}
                     </p>
                   </div>
                   <Switch disabled />
@@ -575,9 +583,9 @@ export default function NotificationSettings() {
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <Label>Group similar notifications</Label>
+                    <Label>{t('advanced.groupSimilar')}</Label>
                     <p className="text-sm text-muted-foreground">
-                      Combine similar notifications into groups
+                      {t('advanced.groupSimilarDescription')}
                     </p>
                   </div>
                   <Switch disabled />
@@ -586,14 +594,14 @@ export default function NotificationSettings() {
                 <Separator />
 
                 <div className="space-y-2">
-                  <Label>Retention period</Label>
+                  <Label>{t('advanced.retentionPeriod')}</Label>
                   <Select disabled>
                     <SelectTrigger>
-                      <SelectValue placeholder="30 days" />
+                      <SelectValue placeholder={t('advanced.retentionPlaceholder')} />
                     </SelectTrigger>
                   </Select>
                   <p className="text-sm text-muted-foreground">
-                    How long to keep read notifications
+                    {t('advanced.retentionPeriodDescription')}
                   </p>
                 </div>
               </div>

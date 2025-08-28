@@ -1005,6 +1005,101 @@
       "testEmailFailedDescription": "Test e-postası gönderilemedi. SMTP ayarlarınızı kontrol edin."
     }
   },
+  "notificationPreferences": {
+    "title": "Bildirim Ayarları",
+    "description": "Bildirimleri nasıl ve ne zaman alacağınızı yapılandırın",
+    "reset": "Sıfırla",
+    "saveChanges": "Değişiklikleri Kaydet",
+    "unsavedChanges": "Kaydedilmemiş değişiklikleriniz var. Bildirim tercihlerinizi kaydetmeyi unutmayın.",
+    "tabs": {
+      "channels": "Dağıtım Kanalları",
+      "types": "Bildirim Türleri",
+      "schedule": "Zamanlama ve Zamanlar",
+      "advanced": "Gelişmiş Ayarlar"
+    },
+    "channels": {
+      "title": "Dağıtım Kanalları",
+      "description": "Bildirimleri nasıl almak istediğinizi seçin. Uygulama içi bildirimler her zaman etkindir.",
+      "inApp": "Uygulama İçi Bildirimler",
+      "inAppDescription": "Yönetici panelinde bildirimleri göster",
+      "email": "E-posta Bildirimleri",
+      "emailDescription": "E-posta adresinize bildirim gönder",
+      "sms": "SMS Bildirimleri",
+      "smsDescription": "Kritik uyarıları kısa mesaj ile gönder",
+      "alwaysEnabled": "Her Zaman Etkin"
+    },
+    "types": {
+      "title": "Bildirim Türleri",
+      "description": "Her bildirim türü için ayarları yapılandırın",
+      "security": "Güvenlik Uyarıları",
+      "securityDescription": "Giriş hataları, şüpheli aktivite, politika ihlalleri",
+      "system": "Sistem Sağlığı",
+      "systemDescription": "Sistem hataları, performans sorunları, servis durumu",
+      "risk": "Risk ve Güvenlik",
+      "riskDescription": "Güvenlik olayları, risk eşik uyarıları",
+      "userActivity": "Kullanıcı Aktivitesi",
+      "userActivityDescription": "Rol değişiklikleri, hesap modifikasyonları",
+      "test": "Test",
+      "minimumSeverity": "Minimum Önem Derecesi",
+      "deliveryChannels": "Dağıtım Kanalları",
+      "onlyEnabledChannels": "Yalnızca etkinleştirilmiş kanallar seçilebilir",
+      "app": "Uygulama",
+      "email": "E-posta",
+      "sms": "SMS"
+    },
+    "severity": {
+      "low": "Düşük",
+      "medium": "Orta",
+      "high": "Yüksek",
+      "critical": "Kritik"
+    },
+    "quietHours": {
+      "title": "Sessiz Saatler",
+      "description": "Belirtilen saatlerde kritik olmayan bildirimleri devre dışı bırak",
+      "enable": "Sessiz saatleri etkinleştir",
+      "startTime": "Başlangıç Saati",
+      "endTime": "Bitiş Saati",
+      "timezone": "Saat Dilimi",
+      "timezones": {
+        "utc": "UTC",
+        "easternTime": "Doğu Saati",
+        "centralTime": "Merkez Saati",
+        "mountainTime": "Dağ Saati",
+        "pacificTime": "Pasifik Saati",
+        "london": "Londra",
+        "istanbul": "İstanbul"
+      }
+    },
+    "digest": {
+      "title": "Bildirim Özeti",
+      "description": "Bireysel uyarılar yerine bildirimlerin bir özetini alın",
+      "enable": "Özet modunu etkinleştir",
+      "frequency": "Sıklık",
+      "deliveryTime": "Teslimat Saati",
+      "frequencies": {
+        "daily": "Günlük",
+        "weekly": "Haftalık"
+      }
+    },
+    "advanced": {
+      "title": "Gelişmiş Ayarlar",
+      "description": "Ek bildirim yapılandırma seçenekleri",
+      "futureFeature": "Gelişmiş ayarlar gelecek sürümlerde mevcut olacaktır. Şu anda yer tutucu yapılandırma seçenekleri gösteriliyor.",
+      "autoMarkRead": "Bildirimleri otomatik olarak okundu işaretle",
+      "autoMarkReadDescription": "Görüntüledikten sonra bildirimleri otomatik olarak okundu işaretle",
+      "groupSimilar": "Benzer bildirimleri grupla",
+      "groupSimilarDescription": "Benzer bildirimleri gruplara birleştir",
+      "retentionPeriod": "Saklama süresi",
+      "retentionPeriodDescription": "Okunmuş bildirimleri ne kadar süre saklanacağı",
+      "retentionPlaceholder": "30 gün"
+    },
+    "toast": {
+      "settingsSaved": "Bildirim ayarları başarıyla kaydedildi",
+      "settingsReset": "Ayarlar varsayılanlara sıfırlandı",
+      "saveError": "Bildirim ayarları kaydedilemedi",
+      "testNotification": "Test {type} bildirimi gönderildi!"
+    }
+  },
   "users": {
     "title": "Kullanıcılar",
     "description": "Sistem kullanıcılarını yönetin ve izinlerini düzenleyin",
