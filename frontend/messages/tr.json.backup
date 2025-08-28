@@ -133,6 +133,11 @@
     "analytics": "Analitik",
     "audit": "Denetim",
     "keycloak": "Keycloak",
+    "keycloakTabs": {
+      "roleMappings": "Rol Eşleştirilmeleri",
+      "resourceMappings": "Kaynak Eşleştirilmeleri",
+      "syncHistory": "Senkronizasyon Geçmişi"
+    },
     "failedToLoad": "Politikalar yüklenemedi",
     "createPolicyDialog": "Politika oluşturma diyaloğu burada açılacak",
     "policyExportStart": "Politika dışa aktarması burada başlayacak", 
@@ -234,6 +239,14 @@
   "health": {
     "title": "Sistem Sağlık İzleme",
     "overview": "Sistem sağlığını ve performans metriklerini izleyin",
+    "tabs": {
+      "overview": "Genel Bakış",
+      "services": "Servisler",
+      "infrastructure": "Altyapı",
+      "incidents": "Olaylar",
+      "metrics": "Metrikler",
+      "settings": "Ayarlar"
+    },
     "healthScore": "Sağlık Puanı",
     "systemUptime": "Sistem Çalışma Süresi",
     "services": "Servisler",
@@ -264,16 +277,23 @@
       "unknown": "Bilinmeyen"
     },
     "monitoring": {
-      "title": "Sistem Sağlığı İzleme",
-      "description": "Sistem sağlığını ve performans metriklerini izleyin",
+      "title": "Sağlık İzleme Eşikleri",
+      "description": "Sistem sağlık izleme eşiklerini ve uyarıları yapılandırın",
+      "tabs": {
+        "prometheus": "Prometheus",
+        "grafana": "Grafana",
+        "configuration": "Yapılandırma"
+      },
       "enabled": "Etkin",
       "disabled": "Devre Dışı",
       "enableHealthMonitoring": "Sağlık İzlemeyi Etkinleştir",
+      "configurationErrors": "Yapılandırma Hataları",
+      "basicMonitoringSettings": "Temel izleme ayarları ve aralıkları",
+      "seconds": "saniye",
+      "days": "gün",
       "monitorSystemResources": "Sistem kaynaklarını ve performans metriklerini izle",
       "alertThresholds": "Uyarı Eşikleri",
       "monitoringConfiguration": "İzleme Yapılandırması",
-      "checkIntervalSeconds": "Kontrol Aralığı (saniye)",
-      "dataRetentionDays": "Veri Saklama (gün)",
       "enableAlerting": "Uyarıları Etkinleştir",
       "thresholds": {
         "cpuUsage": "CPU Kullanımı (%)",
@@ -282,6 +302,55 @@
         "responseTime": "Yanıt Süresi (ms)",
         "warning": "Uyarı",
         "critical": "Kritik"
+      },
+      "monitoringConfiguration": "İzleme Yapılandırması",
+      "checkIntervalSeconds": "Kontrol Aralığı (saniye)",
+      "dataRetentionDays": "Veri Saklama (gün)",
+      "enableAlerting": "Uyarıları Etkinleştir"
+      },
+      "configuration": {
+        "checkInterval": "Kontrol Aralığı (saniye)",
+        "dataRetention": "Veri Saklama (gün)",
+        "alertingEnabled": "Uyarı Etkin",
+        "notificationChannels": "Bildirim Kanalları",
+        "escalationPolicy": "Yükseltme Politikası"
+      },
+      "metrics": {
+        "cpu": "CPU",
+        "memory": "Bellek",
+        "disk": "Disk",
+        "network": "Ağ",
+        "application": "Uygulama",
+        "database": "Veritabanı"
+      },
+      "units": {
+        "percentage": "%",
+        "milliseconds": "ms",
+        "seconds": "saniye",
+        "minutes": "dakika",
+        "hours": "saat",
+        "days": "gün",
+        "bytes": "bayt",
+        "kilobytes": "KB",
+        "megabytes": "MB",
+        "gigabytes": "GB"
+      },
+      "alerts": {
+        "enabled": "Uyarılar Etkin",
+        "disabled": "Uyarılar Devre Dışı",
+        "warningTriggered": "Uyarı eşiği aşıldı",
+        "criticalTriggered": "Kritik eşik aşıldı",
+        "thresholdExceeded": "Eşik aşıldı: {metric} {value}{unit}",
+        "systemHealthDegraded": "Sistem sağlığı bozuldu",
+        "serviceDown": "Servis çalışmıyor",
+        "highResourceUsage": "Yüksek kaynak kullanımı"
+      },
+      "status": {
+        "monitoring": "İzleniyor",
+        "idle": "Beklemede",
+        "alerting": "Uyarı Veriyor",
+        "maintenance": "Bakımda",
+        "error": "Hata"
       }
     }
   },
@@ -309,329 +378,8 @@
     "theme": "Tema",
     "compactMode": "Kompakt Mod",
     "animationsEnabled": "Animasyonlar",
-    "autoRefreshInterval": "Otomatik Yenileme Aralığı", 
-    "itemsPerPage": "Sayfa Başına Öğe",
-    "overview": {
-      "totalSettings": "Toplam Ayar",
-      "modifiedSettings": "Değiştirilen Ayarlar",
-      "systemStatus": "Sistem Durumu",
-      "cacheStatus": "Önbellek Durumu", 
-      "healthy": "Sağlıklı",
-      "warning": "Uyarı",
-      "error": "Hata",
-      "active": "Aktif",
-      "inactive": "Pasif"
-    },
-    "generalSettings": {
-      "systemInformation": "Sistem Bilgileri",
-      "systemInformationDescription": "Temel sistem ayarlarını ve tercihlerini yapılandırın",
-      "systemDescriptionPlaceholder": "Sistem açıklaması girin",
-      "userInterface": "Kullanıcı Arayüzü",
-      "userInterfaceDescription": "Arayüz tercihlerini ve görüntü ayarlarını yapılandırın",
-      "compactModeDescription": "Daha fazla içerik yoğunluğu için aralık ve dolguyu azaltın",
-      "animationsDescription": "Arayüz boyunca yumuşak geçişler ve animasyonlar etkinleştirin",
-      "autoRefreshSeconds": "saniye",
-      "currencies": {
-        "TRY": "Türk Lirası (₺)",
-        "USD": "ABD Doları ($)",
-        "EUR": "Euro (€)",
-        "GBP": "İngiliz Sterlini (£)"
-      },
-      "themes": {
-        "light": "Açık",
-        "dark": "Koyu",
-        "auto": "Sistem"
-      },
-      "refreshIntervals": {
-        "0": "Hiçbir zaman",
-        "10": "10 saniye",
-        "30": "30 saniye",
-        "60": "1 dakika",
-        "300": "5 dakika"
-      },
-      "featureFlags": "Özellik Bayrakları",
-      "featureFlagsDescription": "Deneysel özellikleri ve işlevselliği etkinleştirin veya devre dışı bırakın",
-      "features": {
-        "darkModeToggle": "Koyu Mod Geçiş",
-        "advancedSearch": "Gelişmiş Arama",
-        "exportFeatures": "Dışa Aktarma Özellikleri",
-        "betaFeatures": "Beta Özellikleri",
-        "analyticsTracking": "Analitik Takibi",
-        "maintenanceMode": "Bakım Modu",
-        "descriptions": {
-          "darkModeToggle": "Kullanıcıların açık ve koyu temalar arasında geçiş yapmasına izin ver",
-          "advancedSearch": "Gelişmiş arama filtreleri ve seçenekleri etkinleştir",
-          "exportFeatures": "Çeşitli formatlarda veri dışa aktarımına izin ver",
-          "betaFeatures": "Deneysel ve beta işlevselliğe erişim",
-          "analyticsTracking": "Sistem geliştirmesi için kullanıcı etkileşimlerini takip et",
-          "maintenanceMode": "Güncellemeler için sistemi bakım moduna al"
-        }
-      },
-      "performance": "Performans Ayarları",
-      "performanceDescription": "Performans ve önbellekleme seçeneklerini yapılandırın",
-      "cacheTimeoutDescription": "Yenilenmeden önce verilerin ne kadar süre önbellekleneceği",
-      "sessionTimeoutDescription": "Kullanıcı oturum zaman aşımı süresi",
-      "maxFileSizeDescription": "İzin verilen maksimum dosya yükleme boyutu",
-      "enableCompressionDescription": "Performansı artırmak için veri sıkıştırmayı etkinleştir",
-      "connectionTest": "Bağlantı Testi",
-      "connectionTestDescription": "Sistem bağlantısını ve performansını test edin",
-      "testConnection": "Bağlantıyı Test Et",
-      "resetSettings": "Ayarları Sıfırla",
-      "resetSettingsDescription": "Tüm ayarları varsayılan değerlerine sıfırlayın",
-      "resetToDefaults": "Varsayılanlara Sıfırla",
-      "resetWarning": "Bu işlem geri alınamaz. Tüm özelleştirmeler kaybolacak.",
-      "resetAll": "Tümünü Sıfırla"
-    },
-    "securitySettings": {
-      "keycloak": {
-        "title": "Keycloak Entegrasyonu",
-        "description": "Keycloak kimlik doğrulama sunucu ayarlarını yapılandırın",
-        "enabled": "Keycloak'ı Etkinleştir",
-        "enabledDesc": "Keycloak'ı birincil kimlik doğrulama sağlayıcısı olarak kullan",
-        "serverUrl": "Sunucu URL'si",
-        "realm": "Realm",
-        "clientId": "İstemci ID",
-        "clientSecret": "İstemci Gizli Anahtarı",
-        "clientSecretPlaceholder": "İstemci gizli anahtarını girin",
-        "adminUsername": "Yönetici Kullanıcı Adı",
-        "adminPassword": "Yönetici Şifresi",
-        "adminPasswordPlaceholder": "Yönetici şifresini girin",
-        "sslRequired": "SSL Gerekli",
-        "publicClient": "Genel İstemci",
-        "testConnection": "Bağlantıyı Test Et"
-      },
-      "authentication": {
-        "title": "Kimlik Doğrulama Ayarları",
-        "multiFactorAuth": "Çok Faktörlü Kimlik Doğrulama",
-        "passwordPolicy": "Şifre Politikası",
-        "sessionManagement": "Oturum Yönetimi",
-        "accountSecurity": "Hesap Güvenliği",
-        "description": "Kimlik doğrulama ve şifre güvenlik politikalarını yapılandırın",
-        "minLength": "Minimum Uzunluk",
-        "maxAge": "Maksimum Yaş (gün)",
-        "requireUppercase": "Büyük Harf Gerektir",
-        "requireLowercase": "Küçük Harf Gerektir",
-        "requireNumbers": "Sayı Gerektir",
-        "requireSpecialChars": "Özel Karakter Gerektir",
-        "historyCount": "Şifre Geçmişi Sayısı",
-        "historyCountDesc": "Hatırlanacak önceki şifre sayısı",
-        "sessionManagementDesc": "Kullanıcı oturum zaman aşımı ve sınırlarını yapılandırın",
-        "sessionTimeout": "Oturum Zaman Aşımı (saniye)",
-        "maxConcurrentSessions": "Maksimum Eşzamanlı Oturum",
-        "enableRememberMe": "Beni Hatırla'yı Etkinleştir",
-        "enableRememberMeDesc": "Kullanıcıların uzun süre oturum açık kalmalarına izin ver",
-        "rememberMeTimeout": "Beni Hatırla Zaman Aşımı (saniye)",
-        "rememberMeTimeoutDesc": "Beni hatırla oturumlarının ne kadar süreceği",
-        "accountSecurityDesc": "Hesap koruma ve doğrulama ayarlarını yapılandırın",
-        "maxLoginAttempts": "Maksimum Oturum Açma Denemesi",
-        "accountLockoutDuration": "Hesap Kilitleme Süresi (saniye)",
-        "enableCaptcha": "CAPTCHA'yı Etkinleştir",
-        "enableAccountVerification": "Hesap Doğrulamayı Etkinleştir"
-      },
-      "mfa": {
-        "title": "Çok Faktörlü Kimlik Doğrulama",
-        "description": "Çok faktörlü kimlik doğrulama yöntemlerini ve gerekliliklerini yapılandırın",
-        "enableMfa": "MFA'yı Etkinleştir",
-        "enableMfaDesc": "Gelişmiş güvenlik için ek kimlik doğrulama faktörleri gerektir",
-        "authMethods": "Kimlik Doğrulama Yöntemleri",
-        "totpAuthenticator": "TOTP Doğrulayıcı",
-        "totpDesc": "Google Authenticator gibi uygulamaları kullanarak zamana dayalı tek kullanımlık şifreler",
-        "emailVerification": "E-posta Doğrulama",
-        "emailDesc": "E-posta ile doğrulama kodları gönder",
-        "smsVerification": "SMS Doğrulama",
-        "smsDesc": "SMS ile doğrulama kodları gönder",
-        "backupCodes": "Yedek Kodlar",
-        "backupDesc": "Hesap kurtarma için yedek kodlar oluştur",
-        "requireMfaAll": "Tüm Kullanıcılar için MFA Gerektir",
-        "requireMfaAllDesc": "Çok faktörlü kimlik doğrulamayı tüm kullanıcılar için zorunlu yap"
-      },
-      "apiSecurity": {
-        "title": "API Güvenliği",
-        "jwtSettings": "JWT Ayarları",
-        "rateLimiting": "Hız Sınırlama",
-        "corsSettings": "CORS Ayarları",
-        "description": "API güvenliği, JWT tokenleri ve hız sınırlama yapılandırın",
-        "jwtSecret": "JWT Gizli Anahtarı",
-        "generateNew": "Yeni Oluştur",
-        "jwtSecretPlaceholder": "JWT gizli anahtarını girin",
-        "jwtSecretDesc": "JWT tokenlerini imzalamak için kullanılan gizli anahtar. Güvenli tutun!",
-        "jwtExpiration": "JWT Sona Erme (saniye)",
-        "enableRateLimit": "Hız Sınırlamayı Etkinleştir",
-        "rateLimitDesc": "Kötüye kullanımı önlemek için istemci başına istek sayısını sınırla",
-        "requestsPerMinute": "Dakika Başına İstek",
-        "burstLimit": "Patlama Sınırı",
-        "corsTitle": "CORS Ayarları",
-        "corsDesc": "Cross-Origin Resource Sharing ayarlarını yapılandırın",
-        "enableCors": "CORS'u Etkinleştir",
-        "allowedOrigins": "İzin Verilen Kaynaklar",
-        "allowCredentials": "Kimlik Bilgilerine İzin Ver"
-      },
-      "audit": {
-        "title": "Güvenlik Denetimi",
-        "logLevel": "Denetim Log Seviyesi",
-        "retentionPeriod": "Log Saklama Süresi",
-        "eventFiltering": "Olay Filtreleme",
-        "description": "Güvenlik denetim logları ve saklama politikalarını yapılandırın",
-        "logFailedLogins": "Başarısız Girişleri Logla",
-        "logSuccessfulLogins": "Başarılı Girişleri Logla",
-        "logPasswordChanges": "Şifre Değişikliklerini Logla",
-        "logPermissionChanges": "İzin Değişikliklerini Logla",
-        "retentionDays": "Saklama Günleri"
-      },
-      "common": {
-        "enabled_status": "Etkin",
-        "disabled_status": "Devre Dışı",
-        "test_connection": "Bağlantıyı Test Et",
-        "connection_successful": "Bağlantı başarılı",
-        "connection_failed": "Bağlantı başarısız"
-      },
-      "messages": {
-        "testingConnection": "Bağlantı test ediliyor...",
-        "connectionSuccess": "Bağlantı başarıyla kuruldu",
-        "connectionError": "Sunucuya bağlanılamadı",
-        "settingsSaved": "Güvenlik ayarları başarıyla kaydedildi",
-        "settingsError": "Güvenlik ayarları kaydedilemedi"
-      }
-    },
-    "notificationSettings": {
-      "title": "Bildirim Ayarları",
-      "description": "Bildirim tercihlerini ve iletim yöntemlerini yapılandırın",
-      "tabs": {
-        "deliveryChannels": "İletim Kanalları",
-        "notificationTypes": "Bildirim Türleri",
-        "scheduling": "Zamanlama",
-        "advancedSettings": "Gelişmiş Ayarlar"
-      },
-      "email": {
-        "title": "E-posta Bildirimleri",
-        "enabled": "E-postayı Etkinleştir",
-        "smtpSettings": "SMTP Ayarları",
-        "description": "E-posta ile bildirim gönder",
-        "smtp": {
-          "title": "SMTP Yapılandırması",
-          "host": "SMTP Sunucusu",
-          "port": "SMTP Portu",
-          "username": "SMTP Kullanıcı Adı",
-          "password": "SMTP Şifresi",
-          "from": "Gönderen Adresi",
-          "fromName": "Gönderen Adı",
-          "secure": "Güvenli Bağlantı Kullan"
-        },
-        "templates": {
-          "title": "E-posta Şablonları",
-          "description": "E-posta bildirim şablonlarını yönetin ve özelleştirin",
-          "templates": "Şablonlar",
-          "selectTemplate": "Düzenlenecek şablon seçin",
-          "previewMode": "Önizleme Modu",
-          "editMode": "Düzenleme Modu",
-          "previewDescription": "E-postanın nasıl görüneceğini önizleyin",
-          "editDescription": "Şablon içeriğini ve ayarlarını düzenleyin",
-          "emailPreview": "E-posta Önizlemesi",
-          "testEmailAddress": "Test E-posta Adresi",
-          "testEmailPlaceholder": "E-posta adresini girin",
-          "sendTest": "Test Gönder",
-          "templateTitle": "Şablon Başlığı",
-          "templateTitlePlaceholder": "Şablon başlığını girin",
-          "emailSubject": "E-posta Konusu",
-          "emailSubjectPlaceholder": "Konu satırını girin",
-          "emailContent": "E-posta İçeriği",
-          "emailContentPlaceholder": "E-posta içeriğini girin...",
-          "variablesHelp": "{userName}, {userEmail} gibi değişkenleri kullanabilirsiniz.",
-          "availableVariables": "Mevcut Değişkenler",
-          "status": {
-            "active": "Aktif",
-            "draft": "Taslak"
-          }
-        }
-      },
-      "sms": {
-        "title": "SMS Bildirimleri",
-        "enabled": "SMS'i Etkinleştir",
-        "provider": "SMS Sağlayıcısı",
-        "apiSettings": "API Ayarları"
-      },
-      "push": {
-        "title": "Push Bildirimleri",
-        "enabled": "Push'u Etkinleştir",
-        "webPush": "Web Push",
-        "mobilePush": "Mobil Push"
-      },
-      "common": {
-        "enabled": "Etkin",
-        "disabled": "Devre Dışı",
-        "configure": "Yapılandır",
-        "test": "Test Et"
-      },
-      "channels": {
-        "email": "E-posta",
-        "push": "Push Bildirimleri",
-        "sms": "SMS"
-      },
-      "preferences": {
-        "title": "Bildirim Tercihleri"
-      }
-    },
-    "dataManagement": {
-      "backup": {
-        "title": "Veri Yedekleme & Dışa Aktarma",
-        "description": "Otomatik yedeklemeleri ve veri dışa aktarma seçeneklerini yapılandırın",
-        "enableAutomated": "Otomatik Yedeklemeyi Etkinleştir",
-        "enableAutomatedDesc": "Sistem verilerini zamanlanmış aralıklarla otomatik olarak yedekle",
-        "frequency": "Yedekleme Sıklığı",
-        "frequencies": {
-          "hourly": "Saatlik",
-          "daily": "Günlük",
-          "weekly": "Haftalık",
-          "monthly": "Aylık"
-        },
-        "retentionPeriod": "Saklama Süresi (gün)",
-        "enableCompression": "Sıkıştırmayı Etkinleştir",
-        "enableEncryption": "Şifrelemeyi Etkinleştir"
-      },
-      "export": {
-        "title": "Manuel Veri Dışa Aktarma",
-        "description": "Tüm sistem verilerini yedekleme veya taşıma için dışa aktar",
-        "button": "Veriyi Dışa Aktar"
-      },
-      "import": {
-        "title": "Veri İçe Aktar",
-        "description": "Yedeklemeden veya taşıma dosyasından veri içe aktar",
-        "button": "Veri İçe Aktar"
-      },
-      "cache": {
-        "title": "Redis Önbellek Yönetimi",
-        "description": "Redis önbellekleme ayarlarını yapılandırın ve yönetin",
-        "active": "Aktif",
-        "inactive": "Pasif",
-        "enableRedis": "Redis Önbelleklemesini Etkinleştir",
-        "enableRedisDesc": "Uygulama önbelleklemesi için Redis kullanın",
-        "defaultTtl": "Varsayılan TTL (saniye)",
-        "maxSize": "Maksimum Önbellek Boyutu",
-        "cleanupInterval": "Temizleme Aralığı (saniye)",
-        "clearCache": "Önbelleği Temizle",
-        "clearCacheDesc": "Tüm önbelleğe alınan verileri hemen temizle",
-        "clearCacheButton": "Önbelleği Temizle"
-      },
-      "cleanup": {
-        "title": "Veri Temizleme & Bakım",
-        "description": "Otomatik veri temizleme ve bakım görevlerini yapılandırın",
-        "enableAutomatic": "Otomatik Temizlemeyi Etkinleştir",
-        "enableAutomaticDesc": "Eski verileri ve geçici dosyaları otomatik olarak temizle",
-        "logRetention": "Log Saklama (gün)",
-        "cleanTempFiles": "Geçici Dosyaları Temizle",
-        "cleanExpiredSessions": "Süresi Dolmuş Oturumları Temizle"
-      },
-      "messages": {
-        "exportCompleted": "Dışa Aktarma Tamamlandı",
-        "exportCompletedDesc": "Sistem verileri başarıyla dışa aktarıldı",
-        "exportFailed": "Dışa Aktarma Başarısız",
-        "exportFailedDesc": "Sistem verileri dışa aktarılamadı",
-        "cacheCleared": "Önbellek Temizlendi",
-        "cacheClearedDesc": "Redis önbelleği başarıyla temizlendi",
-        "clearFailed": "Temizleme Başarısız",
-        "clearFailedDesc": "Önbellek temizlenemedi"
-      }
-    }
+    "autoRefreshInterval": "Otomatik Yenileme Aralığı",
+    "itemsPerPage": "Sayfa Başına Öğe"
   },
   "profile": {
     "title": "Profil Bilgileri",
@@ -1015,8 +763,6 @@
     "forgotPassword": "Şifremi Unuttum",
     "resetPassword": "Şifre Sıfırla",
     "changePassword": "Şifre Değiştir",
-    "integrations": "Entegrasyonlar",
-    "system": "Sistem",
     "emptyState": {
       "noData": "Veri bulunamadı",
       "noResults": "Sonuç bulunamadı",
@@ -1252,66 +998,771 @@
       "updateError": "Kullanıcı güncellenirken hata oluştu"
     }
   },
+  "notifications": {
+    "title": "Bildirimler",
+    "bell": {
+      "notifications": "Bildirimler",
+      "markAllRead": "Tümünü okundu işaretle",
+      "total": "toplam",
+      "unread": "okunmamış",
+      "settings": "Ayarlar",
+      "viewAll": "Tümünü Görüntüle",
+      "noNotifications": "Henüz bildirim yok",
+      "actionRequired": "Eylem Gerekli",
+      "justNow": "Şimdi",
+      "minutesAgo": "{minutes} dk önce",
+      "hoursAgo": "{hours} sa önce",
+      "loadError": "Bildirimler yüklenemedi",
+      "markReadSuccess": "Bildirim okundu işaretlendi",
+      "markReadError": "Okundu işaretlenemedi",
+      "markAllReadSuccess": "Tüm bildirimler okundu işaretlendi",
+      "markAllReadError": "Tüm bildirimler okundu işaretlenemedi"
+    },
+    "page": {
+      "title": "Bildirim Merkezi",
+      "description": "Sistem bildirimleri ve güvenlik uyarıları",
+      "filters": {
+        "all": "Tümü",
+        "unread": "Okunmamış",
+        "security": "Güvenlik",
+        "system": "Sistem",
+        "userActivity": "Kullanıcı Aktivitesi",
+        "risk": "Risk",
+        "critical": "Kritik",
+        "high": "Yüksek",
+        "medium": "Orta",
+        "low": "Düşük"
+      },
+      "tabs": {
+        "notifications": "Bildirimler",
+        "settings": "Ayarlar"
+      },
+      "actions": {
+        "markRead": "Okundu İşaretle",
+        "markUnread": "Okunmadı İşaretle",
+        "delete": "Sil",
+        "archive": "Arşivle",
+        "refresh": "Yenile",
+        "export": "Dışa Aktar",
+        "selectAll": "Tümünü Seç",
+        "deselectAll": "Seçimi Kaldır"
+      },
+      "stats": {
+        "totalNotifications": "Toplam Bildirim",
+        "unreadNotifications": "Okunmamış",
+        "securityAlerts": "Güvenlik Uyarısı",
+        "systemWarnings": "Sistem Uyarısı",
+        "todayNotifications": "Bugünkü Bildirimler",
+        "weeklyTrend": "Haftalık Trend"
+      },
+      "types": {
+        "security": "Güvenlik",
+        "system": "Sistem",
+        "user_activity": "Kullanıcı Aktivitesi",
+        "risk": "Risk",
+        "compliance": "Uyumluluk",
+        "maintenance": "Bakım",
+        "audit": "Denetim"
+      },
+      "mockData": {
+        "multipleLoginFailures": "Çoklu Giriş Hatası",
+        "multipleLoginFailuresDesc": "Kullanıcı {user} için 5 başarısız giriş denemesi",
+        "databaseWarning": "Veritabanı Bağlantı Uyarısı",
+        "databaseWarningDesc": "PostgreSQL bağlantı havuzu %85 kapasitede",
+        "safetyIncident": "Güvenlik Olayı Raporu",
+        "safetyIncidentDesc": "İmalat B Alanında yeni olay",
+        "newAdminUser": "Yeni Admin Kullanıcı Oluşturuldu",
+        "newAdminUserDesc": "Kullanıcı {user} admin yetkisi aldı",
+        "backupCompleted": "Yedekleme Tamamlandı",
+        "backupCompletedDesc": "Günlük veritabanı yedeklemesi başarıyla tamamlandı"
+      }
+    },
+    "failedToLoad": "Veriler yüklenemedi",
+    "allMarkedAsRead": "Tüm bildirimler okundu işaretlendi",
+    "failedToMarkAsRead": "Okundu işaretlenemedi",
+    "exportWouldStart": "Dışa aktarma başlayacak",
+    "loading": "Yükleniyor...",
+    "description": "Sistem bildirimleri ve güvenlik uyarıları",
+    "export": "Dışa Aktar",
+    "markAllRead": "Tümünü Okundu İşaretle",
+    "totalNotifications": "Toplam Bildirim",
+    "fromLastWeek": "geçen haftadan",
+    "unread": "Okunmamış",
+    "unreadRate": "okunmama oranı",
+    "securityAlerts": "Güvenlik Uyarıları",
+    "thisWeek": "bu hafta",
+    "systemHealth": "Sistem Sağlığı",
+    "requireImmediateAttention": "acil dikkat gerektiriyor",
+    "reviewSecurityTab": "Güvenlik sekmesini gözden geçirin",
+    "lastUpdated": "Son güncelleme",
+    "refresh": "Yenile",
+    "all": "Tümü",
+    "security": "Güvenlik",
+    "system": "Sistem",
+    "riskAndSafety": "Risk ve Güvenlik",
+    "userActivity": "Kullanıcı Aktivitesi",
+    "settings": "Ayarlar",
+    "bulkActionCompleted": "işlemi tamamlandı",
+    "list": {
+      "filtersAndSearch": "Filtreler & Arama",
+      "clearAll": "Tümünü Temizle",
+      "search": "Ara",
+      "searchPlaceholder": "Bildirimleri ara...",
+      "status": "Durum",
+      "allStatus": "Tüm Durumlar",
+      "severity": "Önem Seviyesi",
+      "allSeverity": "Tüm Seviyeler",
+      "source": "Kaynak",
+      "allSources": "Tüm Kaynaklar",
+      "dateRange": "Tarih Aralığı",
+      "showing": "{count} adet bildirim gösteriliyor",
+      "showingOf": "{showing} / {total} bildirim gösteriliyor",
+      "showingWithTotal": "{showing} / {filtered} bildirim gösteriliyor ({total} toplam)",
+      "sortBy": "Sırala:",
+      "date": "Tarih",
+      "selected": "{count} bildirim seçildi",
+      "markRead": "Okundu İşaretle",
+      "archive": "Arşivle",
+      "delete": "Sil",
+      "clearSelection": "Seçimi Temizle",
+      "type": "Tür",
+      "titleAndDescription": "Başlık & Açıklama",
+      "time": "Zaman",
+      "actions": "İşlemler",
+      "viewDetails": "Detayları Görüntüle",
+      "markAsRead": "Okundu İşaretle",
+      "noNotificationsFound": "Bildirim bulunamadı",
+      "tryAdjustingFilters": "Arama filtrelerini ayarlamayı deneyin",
+      "page": "Sayfa",
+      "of": "/",
+      "entries": "kayıt",
+      "showingEntries": "{from} - {to} arası gösteriliyor ({total} kayıt)",
+      "previous": "Önceki",
+      "next": "Sonraki",
+      "pageOf": "Sayfa {current} / {total}",
+      "justNow": "Şimdi",
+      "minutesAgo": "{minutes}d önce",
+      "hoursAgo": "{hours}s önce",
+      "daysAgo": "{days}g önce",
+      "read": "Okundu:",
+      "statusLabels": {
+        "unread": "Okunmamış",
+        "read": "Okundu",
+        "archived": "Arşivlendi"
+      },
+      "severityLabels": {
+        "critical": "Kritik",
+        "high": "Yüksek",
+        "medium": "Orta",
+        "low": "Düşük"
+      },
+      "sources": {
+        "auth": "Kimlik Doğrulama",
+        "access_policies": "Erişim Politikaları",
+        "health": "Sistem Sağlığı",
+        "keycloak": "Keycloak",
+        "system": "Sistem",
+        "user_management": "Kullanıcı Yönetimi",
+        "risk_assessment": "Risk Değerlendirmesi",
+        "incidents": "Olaylar"
+      }
+    }
+  },
   "settings": {
-    "auditSettings": {
-      "title": "Denetim Günlüğü Yapılandırması",
-      "description": "Güvenlik ve uyumluluk için kapsamlı denetim günlüğü yapılandırın",
-      "status": {
+    "title": "Sistem Ayarları",
+    "description": "Sistem konfigürasyonu ve güvenlik ayarları",
+    "general": "Genel",
+    "security": "Güvenlik",
+    "notifications": "Bildirimler",
+    "policies": "Politikalar",
+    "monitoring": "İzleme",
+    "integrations": "Entegrasyonlar",
+    "data": "Veri",
+    "audit": "Denetim",
+    "language": "Dil",
+    "systemName": "Sistem Adı",
+    "systemDescription": "Sistem Açıklaması",
+    "timezone": "Saat Dilimi",
+    "dateFormat": "Tarih Formatı",
+    "currency": "Para Birimi",
+    "theme": "Tema",
+    "compactMode": "Kompakt Mod",
+    "animationsEnabled": "Animasyonlar Etkin",
+    "autoRefreshInterval": "Otomatik Yenileme Aralığı",
+    "itemsPerPage": "Sayfa Başına Öğe",
+    "overview": {
+      "totalSettings": "Toplam Ayar",
+      "modifiedSettings": "Değiştirilmiş",
+      "systemStatus": "Sistem Durumu",
+      "cacheStatus": "Önbellek Durumu",
+      "healthy": "Sağlıklı",
+      "warning": "Uyarı",
+      "error": "Hata",
+      "active": "Aktif",
+      "inactive": "Pasif"
+    },
+    "messages": {
+      "unsavedChanges": "Kaydedilmemiş Değişiklikler",
+      "lastSaved": "Son Kayıt",
+      "autoSaved": "Otomatik Kaydedildi",
+      "autoSavedDescription": "Değişiklikleriniz otomatik olarak kaydedildi.",
+      "autoSaveFailed": "Otomatik kayıt başarısız",
+      "autoSaveFailedDescription": "Değişiklikler otomatik kaydedilemedi. Lütfen manuel kaydedin.",
+      "settingsSaved": "Ayarlar kaydedildi",
+      "settingsSavedDescription": "Tüm ayarlar başarıyla kaydedildi.",
+      "saveFailed": "Kaydetme başarısız",
+      "saveFailedDescription": "Ayarlar kaydedilemedi. Lütfen tekrar deneyin.",
+      "settingsReset": "Ayarlar sıfırlandı",
+      "settingsResetDescription": "Tüm kaydedilmemiş değişiklikler iptal edildi.",
+      "settingsExported": "Ayarlar dışa aktarıldı",
+      "settingsExportedDescription": "Ayarlar başarıyla dışa aktarıldı.",
+      "exportFailed": "Dışa aktarma başarısız",
+      "exportFailedDescription": "Ayarlar dışa aktarılamadı."
+    },
+    "generalSettings": {
+      "systemInformation": "Sistem Bilgileri",
+      "systemInformationDescription": "Temel sistem ayarları ve yapılandırması",
+      "userInterface": "Kullanıcı Arayüzü",
+      "userInterfaceDescription": "Görünüm ve deneyim ayarları",
+      "featureFlags": "Özellik Bayrakları",
+      "featureFlagsDescription": "Sistem özelliklerini ve deneysel işlevleri etkinleştirin veya devre dışı bırakın",
+      "performance": "Performans ve Önbellek",
+      "performanceDescription": "Sistem performansı ve önbellek davranışını yapılandırın",
+      "resetSettings": "Ayarları Sıfırla",
+      "resetSettingsDescription": "Tüm genel ayarları varsayılan değerlerine sıfırla",
+      "systemDescriptionPlaceholder": "Sistem açıklamasını girin",
+      "compactModeDescription": "Daha fazla içerik için boşluk ve dolguyu azalt",
+      "animationsDescription": "Düzgün geçişler ve animasyonları etkinleştir",
+      "autoRefreshSeconds": "saniye",
+      "cacheTimeoutDescription": "Verileri önbellekte ne kadar süre saklanacağı (0 = önbellek yok)",
+      "sessionTimeoutDescription": "Kullanıcı oturum sona erme süresi",
+      "maxFileSizeDescription": "Maksimum dosya yükleme boyutu",
+      "enableCompressionDescription": "Bant genişliğini azaltmak için yanıtları sıkıştır",
+      "connectionTest": "Bağlantı Testi",
+      "connectionTestDescription": "Sistem bağlantısını ve performansını test et",
+      "testConnection": "Bağlantıyı Test Et",
+      "resetToDefaults": "Varsayılanlara Sıfırla",
+      "resetWarning": "Bu, tüm genel ayarları varsayılan değerlerine sıfırlar. Bu eylem geri alınamaz.",
+      "resetAll": "Tümünü Sıfırla",
+      "features": {
+        "darkModeToggle": "Karanlık Mod Değiştirici",
+        "advancedSearch": "Gelişmiş Arama",
+        "exportFeatures": "Dışa Aktarma Özellikleri",
+        "betaFeatures": "Beta Özellikleri",
+        "analyticsTracking": "Analitik Takibi",
+        "maintenanceMode": "Bakım Modu",
+        "descriptions": {
+          "darkModeToggle": "Kullanıcıların açık ve koyu temalar arasında geçiş yapmasına izin ver",
+          "advancedSearch": "Gelişmiş filtreleme ve arama yeteneklerini etkinleştir",
+          "exportFeatures": "Verilerin çeşitli formatlara aktarılmasına izin ver",
+          "betaFeatures": "Deneysel ve beta özelliklerini etkinleştir",
+          "analyticsTracking": "Anonim kullanım analitiklerini topla",
+          "maintenanceMode": "Sistemi bakım moduna al"
+        }
+      },
+      "currencies": {
+        "TRY": "Türk Lirası (₺)",
+        "USD": "ABD Doları ($)",
+        "EUR": "Euro (€)",
+        "GBP": "İngiliz Sterlini (£)"
+      },
+      "themes": {
+        "light": "Açık",
+        "dark": "Koyu",
+        "auto": "Otomatik (Sistem)"
+      },
+      "refreshIntervals": {
+        "10": "10 saniye",
+        "30": "30 saniye",
+        "60": "1 dakika",
+        "300": "5 dakika",
+        "0": "Devre dışı"
+      }
+    },
+    "securitySettings": {
+      "title": "Güvenlik Ayarları",
+      "description": "Sistem güvenliği ve kimlik doğrulama ayarları",
+      "keycloak": {
+        "title": "Keycloak Yapılandırması",
+        "description": "Keycloak kimlik yönetim sunucusu ayarları",
+        "enabledDesc": "Kullanıcı kimlik doğrulaması ve yönetimi için Keycloak kullan",
+        "serverUrlPlaceholder": "http://localhost:8080",
+        "realmPlaceholder": "isguvenligi",
+        "clientIdPlaceholder": "admin-console",
+        "clientSecretPlaceholder": "Client secret girin",
+        "adminUsernamePlaceholder": "admin",
+        "adminPasswordPlaceholder": "Admin şифрesi girin",
+        "serverUrl": "Sunucu URL'si",
+        "realm": "Realm",
+        "clientId": "Client ID",
+        "clientSecret": "Client Secret",
+        "adminUsername": "Admin Kullanıcı Adı",
+        "adminPassword": "Admin Şifresi",
         "enabled": "Etkin",
-        "disabled": "Pasif"
+        "sslRequired": "SSL Gerekli",
+        "publicClient": "Public Client",
+        "testConnection": "Bağlantıyı Test Et",
+        "saveConfiguration": "Yapılandırmayı Kaydet"
       },
-      "general": {
-        "title": "Genel Ayarlar",
-        "enableLabel": "Denetim Günlüğü Etkinleştir",
-        "enableDescription": "Güvenlik izleme ve uyumluluk için tüm sistem aktivitelerini kaydet",
-        "logLevel": "Günlük Seviyesi",
-        "logLevels": {
-          "debug": "Hata Ayıklama",
-          "info": "Bilgi",
-          "warning": "Uyarı",
-          "error": "Hata",
-          "critical": "Kritik"
+      "common": {
+        "enabled": "Etkin",
+        "disabled": "Devre Dışı",
+        "enabled_status": "Etkin",
+        "disabled_status": "Devre Dışı"
+      },
+      "authentication": {
+        "title": "Kimlik Doğrulama",
+        "description": "Kullanıcı kimlik doğrulama ayarları",
+        "passwordPolicy": "Şifre Politikası",
+        "sessionManagement": "Oturum Yönetimi",
+        "multiFactorAuth": "Çok Faktörlü Kimlik Doğrulama",
+        "accountSecurity": "Hesap Güvenliği",
+        "minLength": "Minimum Uzunluk",
+        "requireUppercase": "Büyük Harf Gerekli",
+        "requireLowercase": "Küçük Harf Gerekli",
+        "requireNumbers": "Rakam Gerekli",
+        "requireSpecialChars": "Özel Karakter Gerekli",
+        "maxAge": "Maksimum Yaş (gün)",
+        "historyCount": "Geçmiş Sayısı",
+        "sessionTimeout": "Oturum Zaman Aşımı (saniye)",
+        "maxConcurrentSessions": "Maksimum Eş Zamanlı Oturum",
+        "rememberMeTimeout": "Beni Hatırla Zaman Aşımı (saniye)",
+        "enableRememberMe": "Beni Hatırla Etkin",
+        "sessionManagementDesc": "Kullanıcı oturum davranışı ve zaman aşımlarını yapılandırın",
+        "accountSecurityDesc": "Hesap koruması ve güvenlik önlemlerini yapılandırın",
+        "enableRememberMeDesc": "Kullanıcıların uzun süreli giriş yapmalarına izin ver",
+        "rememberMeTimeoutDesc": "Varsayılan: 30 gün (2592000 saniye)",
+        "historyCountDesc": "Hatırlanacak önceki şifre sayısı",
+        "jwtSecretGenerated": "JWT Secret Oluşturuldu",
+        "jwtSecretGeneratedDesc": "Yeni bir JWT secret oluşturuldu.",
+        "mfaEnabled": "MFA Etkin",
+        "mfaRequired": "MFA Zorunlu",
+        "totpMethod": "TOTP Yöntemi",
+        "smsMethod": "SMS Yöntemi",
+        "emailMethod": "E-posta Yöntemi",
+        "backupMethod": "Yedek Yöntem",
+        "maxLoginAttempts": "Maksimum Giriş Denemesi",
+        "accountLockoutDuration": "Hesap Kilitleme Süresi (dakika)",
+        "enableCaptcha": "CAPTCHA Etkin",
+        "enableAccountVerification": "Hesap Doğrulama Etkin"
+      },
+      "apiSecurity": {
+        "title": "API Güvenliği",
+        "description": "API erişim ve güvenlik ayarları",
+        "jwtSecret": "JWT Secret",
+        "jwtExpiration": "JWT Süre Sonu (saniye)",
+        "rateLimiting": "Hız Sınırlama",
+        "rateLimitingEnabled": "Hız Sınırlama Etkin",
+        "requestsPerMinute": "Dakika Başına İstek",
+        "burstLimit": "Burst Limiti"
+      },
+      "cors": {
+        "title": "CORS Ayarları",
+        "description": "Cross-Origin Resource Sharing yapılandırması",
+        "enabled": "CORS Etkin",
+        "origins": "İzin Verilen Origin'ler",
+        "methods": "İzin Verilen Yöntemler",
+        "credentials": "Credentials İzni"
+      },
+      "encryption": {
+        "title": "Şifreleme",
+        "description": "Veri şifreleme ve anahtar yönetimi",
+        "algorithm": "Şifreleme Algoritması",
+        "keyRotationDays": "Anahtar Rotasyonu (gün)",
+        "enableFieldEncryption": "Alan Şifreleme Etkin"
+      },
+      "audit": {
+        "title": "Güvenlik Denetim Kaydı",
+        "description": "Hangi güvenlik olaylarının kaydedileceğini ve izleneceğini yapılandırın",
+        "logFailedLogins": "Başarısız Giriş Denemelerini Kaydet",
+        "logSuccessfulLogins": "Başarılı Girişleri Kaydet",
+        "logPasswordChanges": "Şifre Değişikliklerini Kaydet",
+        "logPermissionChanges": "İzin Değişikliklerini Kaydet",
+        "retentionDays": "Günlük Saklama (gün)",
+        "retentionDesc": "Denetim günlüklerinin ne kadar süreyle saklanacağı (minimum 30 gün)"
+      },
+      "mfa": {
+        "title": "Çok Faktörlü Kimlik Doğrulama",
+        "description": "Çok faktörlü kimlik doğrulama yöntemlerini ve gereksinimlerini yapılandırın",
+        "enabled": "Etkin",
+        "disabled": "Devre Dışı",
+        "enableMfa": "Çok Faktörlü Kimlik Doğrulamayı Etkinleştir",
+        "enableMfaDesc": "Gelişmiş güvenlik için ek kimlik doğrulama faktörleri gerektir",
+        "authMethods": "Kimlik Doğrulama Yöntemleri",
+        "totpAuthenticator": "TOTP Doğrulayıcı",
+        "totpDesc": "Google Authenticator, Authy, vb.",
+        "emailVerification": "E-posta Doğrulama",
+        "emailDesc": "E-posta ile kod gönder",
+        "smsVerification": "SMS Doğrulama",
+        "smsDesc": "SMS ile kod gönder",
+        "backupCodes": "Yedek Kodlar",
+        "backupDesc": "Tek kullanımlık yedek kodlar",
+        "requireMfaAll": "Tüm Kullanıcılar İçin MFA Gerektir",
+        "requireMfaAllDesc": "Tüm kullanıcı hesapları için MFA'yı zorunlu kıl"
+      },
+      "apiSecurity": {
+        "title": "API Güvenliği",
+        "description": "API kimlik doğrulama ve hız sınırlamasını yapılandırın",
+        "jwtSecret": "JWT Gizli Anahtar",
+        "generateNew": "Yeni Üret",
+        "jwtSecretPlaceholder": "JWT gizli anahtarı",
+        "jwtSecretDesc": "JWT tokenlarını imzalamak için kullanılan gizli anahtar",
+        "jwtExpiration": "JWT Süresi (saniye)",
+        "enableRateLimit": "Hız Sınırlamayı Etkinleştir",
+        "rateLimitDesc": "Kötüye kullanımı önlemek için API isteklerini sınırla",
+        "requestsPerMinute": "Dakika Başına İstek",
+        "burstLimit": "Patlama Sınırı",
+        "corsTitle": "CORS Yapılandırması",
+        "corsDesc": "Kökenler Arası Kaynak Paylaşımı ayarları",
+        "enableCors": "CORS'u Etkinleştir",
+        "allowedOrigins": "İzin Verilen Kökenler",
+        "corsOriginsPlaceholder": "http://localhost:3000, https://yourdomain.com",
+        "allowCredentials": "Kimlik Bilgilerine İzin Ver"
+      },
+      "messages": {
+        "configurationSaved": "Yapılandırma kaydedildi",
+        "configurationSavedDescription": "Güvenlik ayarları başarıyla güncellendi.",
+        "connectionTestSuccess": "Bağlantı başarılı",
+        "connectionTestFailed": "Bağlantı başarısız",
+        "invalidConfiguration": "Geçersiz yapılandırma",
+        "testingConnection": "Bağlantı test ediliyor...",
+        "connectionSuccessDesc": "Keycloak sunucusuna başarıyla bağlanıldı.",
+        "connectionFailedDesc": "Keycloak sunucusuna bağlanılamadı. Ayarlarınızı kontrol edin.",
+        "connectionErrorDesc": "Bağlantı test edilirken bir hata oluştu.",
+        "jwtSecretGenerated": "JWT Secret Oluşturuldu",
+        "jwtSecretGeneratedDesc": "Yeni bir JWT secret oluşturuldu."
+      }
+    },
+    "notificationSettings": {
+      "title": "Bildirim Ayarları",
+      "description": "E-posta, SMS ve sistem bildirim ayarları",
+      "tabs": {
+        "deliveryChannels": "Teslimat Kanalları",
+        "notificationTypes": "Bildirim Türleri",
+        "scheduleAndTiming": "Program ve Zamanlama",
+        "advancedSettings": "Gelişmiş Ayarlar"
+      },
+      "unsavedChanges": "Kaydedilmemiş değişiklikleriniz var. Bildirim tercihlerinizi kaydetmeyi unutmayın.",
+      "alwaysEnabled": "Her Zaman Etkin",
+      "test": "Test",
+      "minimumSeverity": "Minimum Önem Derecesi",
+      "email": {
+        "title": "E-posta Bildirimleri",
+        "description": "E-posta bildirimleri ve SMTP yapılandırması",
+        "enabled": "E-posta Bildirimleri Etkin",
+        "templates": {
+          "title": "E-posta Şablonları",
+          "description": "Farklı sistem bildirimleri için e-posta şablonlarını yönetin",
+          "editMode": "Düzenle Modu",
+          "previewMode": "Önizleme Modu",
+          "templates": "Şablonlar",
+          "selectTemplate": "Düzenlemek için bir şablon seçin",
+          "previewDescription": "Bu e-postanın nasıl görüneceğini önizleyin",
+          "editDescription": "E-posta şablon içeriğini düzenleyin",
+          "emailPreview": "E-posta Önizlemesi",
+          "testEmailAddress": "Test E-posta Adresi",
+          "testEmailPlaceholder": "test@ornek.com",
+          "sendTest": "Test Gönder",
+          "templateTitle": "Şablon Başlığı",
+          "templateTitlePlaceholder": "Şablon başlığı girin",
+          "emailSubject": "E-posta Konusu",
+          "emailSubjectPlaceholder": "E-posta konu satırı girin",
+          "emailContent": "E-posta İçeriği",
+          "emailContentPlaceholder": "E-posta içeriği girin",
+          "variablesHelp": "Dinamik içerik için {userName}, {systemName} gibi değişkenleri kullanın",
+          "availableVariables": "Kullanılabilir Değişkenler",
+          "status": {
+            "active": "Aktif",
+            "draft": "Taslak"
+          }
         },
-        "retentionDays": "Saklama Süresi (gün)",
+        "smtp": {
+          "title": "SMTP Yapılandırması",
+          "host": "SMTP Sunucusu",
+          "port": "Port",
+          "secure": "Güvenli Bağlantı (SSL/TLS)",
+          "username": "Kullanıcı Adı",
+          "password": "Şifre",
+          "from": "Gönderen E-posta",
+          "fromName": "Gönderen Adı"
+        },
+        "templates": {
+          "title": "E-posta Şablonları",
+          "welcome": {
+            "title": "Hoş Geldin E-postası",
+            "subject": "İş Güvenliği Sistemine Hoş Geldiniz",
+            "content": "Hoş geldiniz! İş Güvenliği Sistemine başarıyla kaydoldunuz."
+          },
+          "passwordReset": {
+            "title": "Şifre Sıfırlama",
+            "subject": "Şifre Sıfırlama İsteği",
+            "content": "Şifre sıfırlama talebiniz alındı. Aşağıdaki bağlantıya tıklayarak yeni şifrenizi belirleyebilirsiniz."
+          },
+          "securityAlert": {
+            "title": "Güvenlik Uyarısı",
+            "subject": "Güvenlik Uyarısı - İşlem Gerekli",
+            "content": "Hesabınızda şüpheli bir aktivite tespit edildi. Lütfen derhal giriş yaparak hesabınızı kontrol edin."
+          },
+          "systemAlert": {
+            "title": "Sistem Uyarısı",
+            "subject": "Sistem Uyarı Bildirimi",
+            "content": "Sistem durumu hakkında önemli bir bildirim."
+          },
+          "maintenanceNotice": {
+            "title": "Bakım Bildirimi",
+            "subject": "Planlı Bakım Bildirimi",
+            "content": "Sistemde planlı bakım çalışması yapılacaktır. Bu süre zarfında hizmette kesinti yaşanabilir."
+          }
+        }
+      },
+      "sms": {
+        "title": "SMS Bildirimleri",
+        "description": "SMS bildirimleri ve provider ayarları",
+        "enabled": "SMS Bildirimleri Etkin",
+        "provider": "SMS Sağlayıcısı",
+        "apiKey": "API Anahtarı",
+        "senderId": "Gönderen ID",
+        "templates": {
+          "title": "SMS Şablonları",
+          "securityAlert": "Güvenlik Uyarısı",
+          "systemAlert": "Sistem Uyarısı",
+          "loginNotification": "Giriş Bildirimi"
+        }
+      },
+      "push": {
+        "title": "Push Bildirimleri",
+        "description": "Tarayıcı ve mobil push bildirimleri",
+        "enabled": "Push Bildirimleri Etkin",
+        "webPush": "Web Push",
+        "mobilePush": "Mobil Push"
+      },
+      "preferences": {
+        "title": "Bildirim Tercihleri",
+        "description": "Kullanıcıların bildirim tercihlerini yönetme",
+        "allowUserControl": "Kullanıcı Kontrolüne İzin Ver",
+        "defaultSettings": "Varsayılan Ayarlar",
+        "systemEvents": "Sistem Olayları",
+        "securityEvents": "Güvenlik Olayları",
+        "maintenanceAlerts": "Bakım Uyarıları"
+      },
+      "channels": {
+        "title": "Bildirim Kanalları",
+        "email": "E-posta",
+        "sms": "SMS",
+        "push": "Push",
+        "inApp": "Uygulama İçi"
+      },
+      "messages": {
+        "configurationSaved": "Bildirim ayarları kaydedildi",
+        "configurationSavedDescription": "Bildirim ayarları başarıyla güncellendi.",
+        "testEmailSent": "Test e-postası gönderildi",
+        "testEmailFailed": "Test e-postası gönderilemedi",
+        "testSmsSent": "Test SMS'i gönderildi",
+        "testSmsFailed": "Test SMS'i gönderilemedi",
+        "invalidConfiguration": "Geçersiz yapılandırma"
+      }
+    },
+    "dataSettings": {
+      "title": "Veri Yönetimi",
+      "description": "Yedekleme, dışa aktarma, önbellekleme ve veri bakım ayarları",
+      "tabs": {
+        "backupAndExport": "Yedekleme ve Dışa Aktarma",
+        "redisCache": "Redis Önbellek",
+        "dataCleanup": "Veri Temizleme"
+      },
+      "backup": {
+        "title": "Veri Yedekleme ve Dışa Aktarma",
+        "description": "Otomatik yedeklemeleri ve veri dışa aktarma seçeneklerini yapılandırın",
+        "enableAutomatedBackups": "Otomatik Yedeklemeleri Etkinleştir",
+        "automatedBackupDescription": "Sistem verilerini programlı aralıklarla otomatik olarak yedekle",
+        "backupFrequency": "Yedekleme Sıklığı",
+        "retentionPeriod": "Saklama Süresi (gün)",
         "enableCompression": "Sıkıştırmayı Etkinleştir",
-        "enableEncryption": "Şifrelemeyi Etkinleştir"
-      },
-      "events": {
-        "title": "Olay Türleri",
-        "userActions": "Kullanıcı İşlemleri",
-        "systemActions": "Sistem İşlemleri",
-        "authEvents": "Kimlik Doğrulama Olayları",
-        "dataChanges": "Veri Değişiklikleri",
-        "configChanges": "Yapılandırma Değişiklikleri",
-        "errorEvents": "Hata Olayları",
-        "performanceMetrics": "Performans Metrikleri"
-      },
-      "storage": {
-        "title": "Depolama Yapılandırması",
-        "location": "Depolama Konumu",
-        "locations": {
-          "database": "Veritabanı",
-          "file": "Dosya Sistemi",
-          "both": "İkisi Birden"
-        },
-        "maxFileSize": "Maksimum Dosya Boyutu",
-        "rotationPolicy": "Döndürme Politikası",
-        "rotationPolicies": {
+        "enableEncryption": "Şifrelemeyi Etkinleştir",
+        "frequencies": {
           "hourly": "Saatlik",
           "daily": "Günlük",
           "weekly": "Haftalık",
           "monthly": "Aylık"
         },
-        "enableBackup": "Yedeklemeyi Etkinleştir"
+        "manualExport": {
+          "title": "Manuel Veri Dışa Aktarma",
+          "description": "Yedekleme veya taşıma için tüm sistem verilerini dışa aktarın",
+          "exportData": "Veriyi Dışa Aktar",
+          "exportInProgress": "Dışa aktarma devam ediyor...",
+          "exportCompleted": "Dışa aktarma tamamlandı",
+          "exportFailed": "Dışa aktarma başarısız",
+          "downloadReady": "İndirme hazır"
+        },
+        "manualImport": {
+          "title": "Veri İçe Aktarma",
+          "description": "Yedek veya taşıma dosyasından veri içe aktarın",
+          "importData": "Veriyi İçe Aktar",
+          "selectFile": "Dosya Seç",
+          "importInProgress": "İçe aktarma devam ediyor...",
+          "importCompleted": "İçe aktarma tamamlandı",
+          "importFailed": "İçe aktarma başarısız",
+          "fileSelected": "Dosya seçildi",
+          "validationPassed": "Doğrulama başarılı",
+          "validationFailed": "Doğrulama başarısız"
+        }
       },
-      "alerts": {
-        "title": "Güvenlik Uyarıları",
-        "failedLogins": "Başarısız Giriş Denemeleri",
-        "suspiciousActivity": "Şüpheli Aktivite",
-        "dataExfiltration": "Veri Sızıntısı",
-        "configurationChanges": "Yapılandırma Değişiklikleri",
-        "thresholdBreaches": "Eşik Aşımları"
+      "cache": {
+        "title": "Redis Önbellek Yönetimi",
+        "description": "Redis önbellekleme ayarlarını yapılandırın ve yönetin",
+        "status": "Durum",
+        "active": "Aktif",
+        "inactive": "Pasif",
+        "enableRedisCache": "Redis Önbelleği Etkinleştir",
+        "redisCacheDescription": "Uygulama önbelleği için Redis kullan",
+        "defaultTTL": "Varsayılan TTL (saniye)",
+        "maxCacheSize": "Maksimum Önbellek Boyutu",
+        "cleanupInterval": "Temizlik Aralığı (saniye)",
+        "clearCache": "Önbelleği Temizle",
+        "clearCacheDescription": "Tüm önbelleğe alınmış veriyi anında temizle",
+        "cacheCleared": "Önbellek temizlendi",
+        "cacheClearFailed": "Önbellek temizleme başarısız",
+        "stats": {
+          "hitRatio": "İsabet Oranı",
+          "memoryUsage": "Bellek Kullanımı",
+          "totalKeys": "Toplam Anahtar",
+          "expiredKeys": "Süresi Dolan Anahtarlar"
+        },
+        "units": {
+          "mb": "MB",
+          "gb": "GB",
+          "kb": "KB",
+          "bytes": "bayt"
+        }
+      },
+      "cleanup": {
+        "title": "Veri Temizleme ve Bakım",
+        "description": "Otomatik veri temizleme ve bakım görevlerini yapılandırın",
+        "enableAutoCleanup": "Otomatik Temizlemeyi Etkinleştir",
+        "autoCleanupDescription": "Eski verileri ve geçici dosyaları otomatik olarak temizle",
+        "logRetention": "Günlük Saklama Süresi (gün)",
+        "cleanTempFiles": "Geçici Dosyaları Temizle",
+        "cleanExpiredSessions": "Süresi Dolan Oturumları Temizle",
+        "maintenanceTasks": {
+          "title": "Bakım Görevleri",
+          "optimizeDatabase": "Veritabanını Optimize Et",
+          "cleanupLogs": "Günlükleri Temizle",
+          "removeOrphanedFiles": "Sahipsiz Dosyaları Kaldır",
+          "compactDatabase": "Veritabanını Sıkıştır",
+          "rebuildIndexes": "İndeksleri Yeniden Oluştur"
+        },
+        "schedule": {
+          "title": "Temizlik Programı",
+          "frequency": "Sıklık",
+          "time": "Saat",
+          "lastRun": "Son Çalışma",
+          "nextRun": "Sonraki Çalışma"
+        }
+      },
+      "storage": {
+        "title": "Depolama Yönetimi",
+        "description": "Disk kullanımı ve dosya depolama ayarları",
+        "diskUsage": "Disk Kullanımı",
+        "totalSpace": "Toplam Alan",
+        "usedSpace": "Kullanılan Alan",
+        "freeSpace": "Boş Alan",
+        "quotas": {
+          "title": "Depolama Kotaları",
+          "userUploads": "Kullanıcı Yüklemeleri",
+          "systemBackups": "Sistem Yedekleri",
+          "logFiles": "Günlük Dosyaları",
+          "tempFiles": "Geçici Dosyalar"
+        }
+      },
+      "messages": {
+        "backupStarted": "Yedekleme başlatıldı",
+        "backupCompleted": "Yedekleme tamamlandı",
+        "backupFailed": "Yedekleme başarısız",
+        "exportStarted": "Dışa aktarma başlatıldı",
+        "exportCompleted": "Veri başarıyla dışa aktarıldı",
+        "exportFailed": "Veri dışa aktarılamadı",
+        "importStarted": "İçe aktarma başlatıldı",
+        "importCompleted": "Veri başarıyla içe aktarıldı",
+        "importFailed": "Veri içe aktarılamadı",
+        "cacheCleared": "Önbellek başarıyla temizlendi",
+        "cacheClearFailed": "Önbellek temizlenemedi",
+        "cleanupStarted": "Temizlik başlatıldı",
+        "cleanupCompleted": "Temizlik tamamlandı",
+        "cleanupFailed": "Temizlik başarısız",
+        "configurationSaved": "Veri ayarları kaydedildi",
+        "configurationFailed": "Veri ayarları kaydedilemedi",
+        "insufficientSpace": "Yetersiz disk alanı",
+        "invalidFileFormat": "Geçersiz dosya formatı",
+        "connectionError": "Bağlantı hatası",
+        "permissionDenied": "İzin reddedildi"
       }
+    }
+  },
+  "frontpage": {
+    "homepage": {
+      "title": "İş Güvenliği Admin Panel",
+      "description": "Workplace Safety Management System",
+      "goToDashboard": "Panele Git"
+    },
+    "login": {
+      "title": "İş Güvenliği Sistemi",
+      "subtitle": "Güvenli çalışma ortamı için giriş yapın",
+      "username": "Kullanıcı Adı",
+      "password": "Şifre",
+      "loginButton": "Giriş Yap",
+      "socialLogin": "{provider} ile Giriş Yap",
+      "or": "veya",
+      "footer": "© 2024 İş Güvenliği Sistemi - Güvenli çalışma ortamı için tasarlandı",
+      "validation": {
+        "usernameRequired": "Kullanıcı adı gereklidir",
+        "passwordRequired": "Şifre gereklidir",
+        "passwordMinLength": "Şifre en az 8 karakter olmalıdır"
+      }
+    },
+    "dashboard": {
+      "welcome": "Hoş geldiniz, {name}!",
+      "title": "İş Güvenliği Sistemi Dashboard",
+      "adminPanel": "Admin Panel",
+      "debugTitle": "Debug Bilgileri (Geliştirme)",
+      "debugDescription": "Mevcut kullanıcı bilgileri ve yetkileri",
+      "userId": "Kullanıcı ID",
+      "userRoles": "Roller",
+      "adminAccess": "Admin Yetkisi",
+      "hasAccess": "VAR",
+      "noAccess": "YOK",
+      "noRoles": "Rol bulunamadı",
+      "userProfile": {
+        "title": "Kullanıcı Profili",
+        "description": "Profil bilgilerinizi görüntüleyin ve güncelleyin",
+        "button": "Profili Görüntüle"
+      },
+      "activityHistory": {
+        "title": "Aktivite Geçmişi", 
+        "description": "Son aktivitelerinizi görüntüleyin",
+        "button": "Geçmişi Görüntüle"
+      },
+      "notifications": {
+        "title": "Bildirimler",
+        "description": "Yeni bildirimlerinizi kontrol edin",
+        "button": "Bildirimleri Gör"
+      },
+      "adminPanelCard": {
+        "title": "Yönetici Paneli",
+        "description": "Sistem yöneticisi olarak admin paneline erişebilirsiniz",
+        "dashboardButton": "Admin Dashboard",
+        "usersButton": "Kullanıcı Yönetimi",
+        "auditButton": "Audit Logları"
+      }
+    },
+    "notFound": {
+      "title": "404",
+      "heading": "Sayfa Bulunamadı",
+      "description": "Aradığınız sayfa kaldırılmış, yeniden adlandırılmış veya geçici olarak kullanılamıyor olabilir.",
+      "dashboardButton": "Dashboard'a Git",
+      "homeButton": "Ana Sayfaya Git"
+    },
+    "adminHome": {
+      "redirecting": "Admin paneline yönlendiriliyor..."
     }
   }
 }

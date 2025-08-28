@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
@@ -154,6 +155,7 @@ const channelOptions = [
 ]
 
 export default function NotificationSettings() {
+  const t = useTranslations('notificationSettings')
   const [settings, setSettings] = useState<NotificationSettingsType>(mockNotificationSettings())
   const [isLoading, setIsLoading] = useState(false)
   const [isSaving, setIsSaving] = useState(false)
@@ -283,23 +285,23 @@ export default function NotificationSettings() {
         <Alert>
           <Info className="h-4 w-4" />
           <AlertDescription>
-            You have unsaved changes. Don't forget to save your notification preferences.
+            {t('unsavedChanges')}
           </AlertDescription>
         </Alert>
       )}
 
       <Tabs defaultValue="channels" className="space-y-6">
         <TabsList>
-          <TabsTrigger value="channels">Delivery Channels</TabsTrigger>
-          <TabsTrigger value="types">Notification Types</TabsTrigger>
-          <TabsTrigger value="schedule">Schedule & Timing</TabsTrigger>
-          <TabsTrigger value="advanced">Advanced Settings</TabsTrigger>
+          <TabsTrigger value="channels">{t('tabs.deliveryChannels')}</TabsTrigger>
+          <TabsTrigger value="types">{t('tabs.notificationTypes')}</TabsTrigger>
+          <TabsTrigger value="schedule">{t('tabs.scheduleAndTiming')}</TabsTrigger>
+          <TabsTrigger value="advanced">{t('tabs.advancedSettings')}</TabsTrigger>
         </TabsList>
 
         <TabsContent value="channels" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Delivery Channels</CardTitle>
+              <CardTitle>{t('tabs.deliveryChannels')}</CardTitle>
               <CardDescription>
                 Choose how you want to receive notifications. In-app notifications are always enabled.
               </CardDescription>
@@ -315,7 +317,7 @@ export default function NotificationSettings() {
                         {channel.description}
                       </p>
                       {channel.key === 'inApp' && (
-                        <Badge variant="secondary" className="mt-2">Always Enabled</Badge>
+                        <Badge variant="secondary" className="mt-2">{t('alwaysEnabled')}</Badge>
                       )}
                     </div>
                   </div>
@@ -333,7 +335,7 @@ export default function NotificationSettings() {
         <TabsContent value="types" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Notification Types</CardTitle>
+              <CardTitle>{t('tabs.notificationTypes')}</CardTitle>
               <CardDescription>
                 Configure settings for each type of notification
               </CardDescription>
@@ -361,7 +363,7 @@ export default function NotificationSettings() {
                             size="sm"
                             onClick={() => testNotification(notifType.type)}
                           >
-                            Test
+                            {t('test')}
                           </Button>
                           <Switch
                             checked={typeSettings.enabled}
@@ -373,7 +375,7 @@ export default function NotificationSettings() {
                       {typeSettings.enabled && (
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pl-8">
                           <div className="space-y-2">
-                            <Label className="text-sm font-medium">Minimum Severity</Label>
+                            <Label className="text-sm font-medium">{t('minimumSeverity')}</Label>
                             <Select 
                               value={typeSettings.minSeverity} 
                               onValueChange={(value) => updateTypeSetting(notifType.type, 'minSeverity', value as NotificationSeverity)}
@@ -392,7 +394,7 @@ export default function NotificationSettings() {
                           </div>
                           
                           <div className="space-y-2">
-                            <Label className="text-sm font-medium">Delivery Channels</Label>
+                            <Label className="text-sm font-medium">{t('tabs.deliveryChannels')}</Label>
                             <div className="flex flex-wrap gap-2">
                               {channelOptions.map((channel) => (
                                 <Button
@@ -547,7 +549,7 @@ export default function NotificationSettings() {
         <TabsContent value="advanced" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Advanced Settings</CardTitle>
+              <CardTitle>{t('tabs.advancedSettings')}</CardTitle>
               <CardDescription>
                 Additional notification configuration options
               </CardDescription>

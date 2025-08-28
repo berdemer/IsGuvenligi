@@ -552,7 +552,7 @@ export default function HealthMonitoringPage() {
           onClick={() => handleTabChange('services')}
         />
         <KPICard
-          title="Avg Response Time"
+          title={t('avgResponseTime')}
           value={overview?.avgResponseTime || 145}
           unit="ms"
           status={overview && overview.avgResponseTime > 200 ? 'warning' : 'healthy'}
@@ -562,7 +562,7 @@ export default function HealthMonitoringPage() {
           onClick={() => handleTabChange('services')}
         />
         <KPICard
-          title="Critical Alerts"
+          title={t('criticalAlerts')}
           value={overview?.criticalAlerts || 2}
           status={overview && overview.criticalAlerts > 0 ? 'critical' : 'warning'}
           icon={<AlertTriangle className="h-4 w-4" />}
@@ -576,24 +576,24 @@ export default function HealthMonitoringPage() {
         <Card>
           <CardHeader>
             <div className="flex items-center justify-between">
-              <CardTitle className="text-base">Services</CardTitle>
+              <CardTitle className="text-base">{t('services')}</CardTitle>
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 text-green-500" />
                   <span className="text-sm">
-                    {overview.healthyServices} Healthy
+                    {overview.healthyServices} {t('status.healthy')}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <AlertTriangle className="h-4 w-4 text-yellow-500" />
                   <span className="text-sm">
-                    {overview.services.filter(s => s.status === 'warning').length} Warning
+                    {overview.services.filter(s => s.status === 'warning').length} {t('status.warning')}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <AlertCircle className="h-4 w-4 text-red-500" />
                   <span className="text-sm">
-                    {overview.services.filter(s => s.status === 'critical').length} Critical
+                    {overview.services.filter(s => s.status === 'critical').length} {t('status.critical')}
                   </span>
                 </div>
               </div>
@@ -623,27 +623,27 @@ export default function HealthMonitoringPage() {
         <TabsList className="grid w-full grid-cols-6">
           <TabsTrigger value="overview">
             <Monitor className="h-4 w-4 mr-2" />
-            Overview
+            {t('tabs.overview')}
           </TabsTrigger>
           <TabsTrigger value="services">
             <Server className="h-4 w-4 mr-2" />
-            Services
+            {t('tabs.services')}
           </TabsTrigger>
           <TabsTrigger value="infrastructure">
             <HardDrive className="h-4 w-4 mr-2" />
-            Infrastructure
+            {t('tabs.infrastructure')}
           </TabsTrigger>
           <TabsTrigger value="incidents">
             <AlertTriangle className="h-4 w-4 mr-2" />
-            Incidents
+            {t('tabs.incidents')}
           </TabsTrigger>
           <TabsTrigger value="audit">
             <BarChart3 className="h-4 w-4 mr-2" />
-            Metrics
+            {t('tabs.metrics')}
           </TabsTrigger>
           <TabsTrigger value="settings">
             <SettingsIcon className="h-4 w-4 mr-2" />
-            Settings
+            {t('tabs.settings')}
           </TabsTrigger>
         </TabsList>
 

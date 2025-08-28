@@ -150,6 +150,11 @@
     "analytics": "Analytics", 
     "audit": "Audit",
     "keycloak": "Keycloak",
+    "keycloakTabs": {
+      "roleMappings": "Role Mappings",
+      "resourceMappings": "Resource Mappings",
+      "syncHistory": "Sync History"
+    },
     "failedToLoad": "Failed to load policies",
     "createPolicyDialog": "Create Policy dialog would open here",
     "policyExportStart": "Policy export would start here",
@@ -251,6 +256,14 @@
   "health": {
     "title": "Health Monitoring",
     "overview": "Monitor system health and performance metrics",
+    "tabs": {
+      "overview": "Overview",
+      "services": "Services",
+      "infrastructure": "Infrastructure",
+      "incidents": "Incidents",
+      "metrics": "Metrics",
+      "settings": "Settings"
+    },
     "healthScore": "Health Score",
     "systemUptime": "System Uptime",
     "services": "Services",
@@ -281,16 +294,23 @@
       "unknown": "Unknown"
     },
     "monitoring": {
-      "title": "Health Monitoring",
-      "description": "Monitor system health and performance metrics",
+      "title": "Health Monitoring Thresholds",
+      "description": "Configure system health monitoring thresholds and alerting",
+      "tabs": {
+        "prometheus": "Prometheus",
+        "grafana": "Grafana",
+        "configuration": "Configuration"
+      },
       "enabled": "Enabled",
       "disabled": "Disabled",
       "enableHealthMonitoring": "Enable Health Monitoring",
+      "configurationErrors": "Configuration Errors",
+      "basicMonitoringSettings": "Basic monitoring settings and intervals",
+      "seconds": "seconds",
+      "days": "days",
       "monitorSystemResources": "Monitor system resources and performance metrics",
       "alertThresholds": "Alert Thresholds",
       "monitoringConfiguration": "Monitoring Configuration",
-      "checkIntervalSeconds": "Check Interval (seconds)",
-      "dataRetentionDays": "Data Retention (days)",
       "enableAlerting": "Enable Alerting",
       "thresholds": {
         "cpuUsage": "CPU Usage (%)",
@@ -299,6 +319,48 @@
         "responseTime": "Response Time (ms)",
         "warning": "Warning",
         "critical": "Critical"
+      },
+      "monitoringConfiguration": "Monitoring Configuration",
+      "checkIntervalSeconds": "Check Interval (seconds)",
+      "dataRetentionDays": "Data Retention (days)",
+      "enableAlerting": "Enable Alerting"
+      },
+      "metrics": {
+        "cpu": "CPU",
+        "memory": "Memory",
+        "disk": "Disk",
+        "network": "Network",
+        "application": "Application",
+        "database": "Database"
+      },
+      "units": {
+        "percentage": "%",
+        "milliseconds": "ms",
+        "seconds": "seconds",
+        "minutes": "minutes",
+        "hours": "hours",
+        "days": "days",
+        "bytes": "bytes",
+        "kilobytes": "KB",
+        "megabytes": "MB",
+        "gigabytes": "GB"
+      },
+      "alerts": {
+        "enabled": "Alerts Enabled",
+        "disabled": "Alerts Disabled",
+        "warningTriggered": "Warning threshold exceeded",
+        "criticalTriggered": "Critical threshold exceeded",
+        "thresholdExceeded": "Threshold exceeded: {metric} {value}{unit}",
+        "systemHealthDegraded": "System health degraded",
+        "serviceDown": "Service down",
+        "highResourceUsage": "High resource usage"
+      },
+      "status": {
+        "monitoring": "Monitoring",
+        "idle": "Idle",
+        "alerting": "Alerting",
+        "maintenance": "Maintenance",
+        "error": "Error"
       }
     }
   },
@@ -327,328 +389,7 @@
     "compactMode": "Compact Mode",
     "animationsEnabled": "Animations",
     "autoRefreshInterval": "Auto Refresh Interval",
-    "itemsPerPage": "Items Per Page",
-    "overview": {
-      "totalSettings": "Total Settings",
-      "modifiedSettings": "Modified Settings", 
-      "systemStatus": "System Status",
-      "cacheStatus": "Cache Status",
-      "healthy": "Healthy",
-      "warning": "Warning",
-      "error": "Error",
-      "active": "Active",
-      "inactive": "Inactive"
-    },
-    "generalSettings": {
-      "systemInformation": "System Information",
-      "systemInformationDescription": "Configure basic system settings and preferences",
-      "systemDescriptionPlaceholder": "Enter system description",
-      "userInterface": "User Interface",
-      "userInterfaceDescription": "Configure UI preferences and display settings",
-      "compactModeDescription": "Reduce spacing and padding for more content density",
-      "animationsDescription": "Enable smooth transitions and animations throughout the interface",
-      "autoRefreshSeconds": "seconds",
-      "currencies": {
-        "TRY": "Turkish Lira (₺)",
-        "USD": "US Dollar ($)",
-        "EUR": "Euro (€)",
-        "GBP": "British Pound (£)"
-      },
-      "themes": {
-        "light": "Light",
-        "dark": "Dark", 
-        "auto": "System"
-      },
-      "refreshIntervals": {
-        "0": "Never",
-        "10": "10 seconds",
-        "30": "30 seconds", 
-        "60": "1 minute",
-        "300": "5 minutes"
-      },
-      "featureFlags": "Feature Flags",
-      "featureFlagsDescription": "Enable or disable experimental features and functionality",
-      "features": {
-        "darkModeToggle": "Dark Mode Toggle",
-        "advancedSearch": "Advanced Search",
-        "exportFeatures": "Export Features",
-        "betaFeatures": "Beta Features",
-        "analyticsTracking": "Analytics Tracking",
-        "maintenanceMode": "Maintenance Mode",
-        "descriptions": {
-          "darkModeToggle": "Allow users to switch between light and dark themes",
-          "advancedSearch": "Enable advanced search filters and options",
-          "exportFeatures": "Allow data export in various formats",
-          "betaFeatures": "Access to experimental and beta functionality",
-          "analyticsTracking": "Track user interactions for system improvement",
-          "maintenanceMode": "Put system in maintenance mode for updates"
-        }
-      },
-      "performance": "Performance Settings",
-      "performanceDescription": "Configure performance and caching options",
-      "cacheTimeoutDescription": "How long to cache data before refreshing",
-      "sessionTimeoutDescription": "User session timeout duration",
-      "maxFileSizeDescription": "Maximum allowed file upload size",
-      "enableCompressionDescription": "Enable data compression to improve performance",
-      "connectionTest": "Connection Test",
-      "connectionTestDescription": "Test system connectivity and performance",
-      "testConnection": "Test Connection",
-      "resetSettings": "Reset Settings",
-      "resetSettingsDescription": "Reset all settings to their default values",
-      "resetToDefaults": "Reset to Defaults",
-      "resetWarning": "This action cannot be undone. All customizations will be lost.",
-      "resetAll": "Reset All"
-    },
-    "securitySettings": {
-      "keycloak": {
-        "title": "Keycloak Integration",
-        "description": "Configure Keycloak authentication server settings",
-        "enabled": "Enable Keycloak",
-        "enabledDesc": "Use Keycloak as the primary authentication provider",
-        "serverUrl": "Server URL",
-        "realm": "Realm",
-        "clientId": "Client ID",
-        "clientSecret": "Client Secret",
-        "clientSecretPlaceholder": "Enter client secret",
-        "adminUsername": "Admin Username",
-        "adminPassword": "Admin Password",
-        "adminPasswordPlaceholder": "Enter admin password",
-        "sslRequired": "SSL Required",
-        "publicClient": "Public Client",
-        "testConnection": "Test Connection"
-      },
-      "authentication": {
-        "title": "Authentication Settings",
-        "multiFactorAuth": "Multi-Factor Authentication",
-        "passwordPolicy": "Password Policy",
-        "sessionManagement": "Session Management",
-        "accountSecurity": "Account Security",
-        "description": "Configure authentication and password security policies",
-        "minLength": "Minimum Length",
-        "maxAge": "Maximum Age (days)",
-        "requireUppercase": "Require Uppercase",
-        "requireLowercase": "Require Lowercase",
-        "requireNumbers": "Require Numbers",
-        "requireSpecialChars": "Require Special Characters",
-        "historyCount": "Password History Count",
-        "historyCountDesc": "Number of previous passwords to remember",
-        "sessionManagementDesc": "Configure user session timeout and limits",
-        "sessionTimeout": "Session Timeout (seconds)",
-        "maxConcurrentSessions": "Max Concurrent Sessions",
-        "enableRememberMe": "Enable Remember Me",
-        "enableRememberMeDesc": "Allow users to stay logged in for extended periods",
-        "rememberMeTimeout": "Remember Me Timeout (seconds)",
-        "rememberMeTimeoutDesc": "How long remember me sessions last",
-        "accountSecurityDesc": "Configure account protection and verification settings",
-        "maxLoginAttempts": "Max Login Attempts",
-        "accountLockoutDuration": "Account Lockout Duration (seconds)",
-        "enableCaptcha": "Enable CAPTCHA",
-        "enableAccountVerification": "Enable Account Verification"
-      },
-      "mfa": {
-        "title": "Multi-Factor Authentication",
-        "description": "Configure multi-factor authentication methods and requirements",
-        "enableMfa": "Enable MFA",
-        "enableMfaDesc": "Require additional authentication factors for enhanced security",
-        "authMethods": "Authentication Methods",
-        "totpAuthenticator": "TOTP Authenticator",
-        "totpDesc": "Time-based one-time passwords using apps like Google Authenticator",
-        "emailVerification": "Email Verification",
-        "emailDesc": "Send verification codes via email",
-        "smsVerification": "SMS Verification", 
-        "smsDesc": "Send verification codes via SMS",
-        "backupCodes": "Backup Codes",
-        "backupDesc": "Generate backup codes for account recovery",
-        "requireMfaAll": "Require MFA for All Users",
-        "requireMfaAllDesc": "Make multi-factor authentication mandatory for all users"
-      },
-      "apiSecurity": {
-        "title": "API Security",
-        "jwtSettings": "JWT Settings",
-        "rateLimiting": "Rate Limiting",
-        "corsSettings": "CORS Settings",
-        "description": "Configure API security, JWT tokens, and rate limiting",
-        "jwtSecret": "JWT Secret Key",
-        "generateNew": "Generate New",
-        "jwtSecretPlaceholder": "Enter JWT secret key",
-        "jwtSecretDesc": "Secret key used to sign JWT tokens. Keep this secure!",
-        "jwtExpiration": "JWT Expiration (seconds)",
-        "enableRateLimit": "Enable Rate Limiting",
-        "rateLimitDesc": "Limit the number of requests per client to prevent abuse",
-        "requestsPerMinute": "Requests Per Minute",
-        "burstLimit": "Burst Limit",
-        "corsTitle": "CORS Settings",
-        "corsDesc": "Configure Cross-Origin Resource Sharing settings",
-        "enableCors": "Enable CORS",
-        "allowedOrigins": "Allowed Origins",
-        "allowCredentials": "Allow Credentials"
-      },
-      "audit": {
-        "title": "Security Audit",
-        "logLevel": "Audit Log Level",
-        "retentionPeriod": "Log Retention Period",
-        "eventFiltering": "Event Filtering",
-        "description": "Configure security audit logging and retention policies",
-        "logFailedLogins": "Log Failed Logins",
-        "logSuccessfulLogins": "Log Successful Logins",
-        "logPasswordChanges": "Log Password Changes",
-        "logPermissionChanges": "Log Permission Changes",
-        "retentionDays": "Retention Days"
-      },
-      "common": {
-        "enabled_status": "Enabled",
-        "disabled_status": "Disabled",
-        "test_connection": "Test Connection",
-        "connection_successful": "Connection successful",
-        "connection_failed": "Connection failed"
-      },
-      "messages": {
-        "testingConnection": "Testing connection...",
-        "connectionSuccess": "Connection established successfully",
-        "connectionError": "Failed to connect to server",
-        "settingsSaved": "Security settings saved successfully",
-        "settingsError": "Failed to save security settings"
-      }
-    },
-    "notificationSettings": {
-      "title": "Notification Settings",
-      "description": "Configure notification preferences and delivery methods",
-      "tabs": {
-        "deliveryChannels": "Delivery Channels",
-        "notificationTypes": "Notification Types",
-        "scheduling": "Scheduling",
-        "advancedSettings": "Advanced Settings"
-      },
-      "email": {
-        "title": "Email Notifications",
-        "enabled": "Enable Email",
-        "smtpSettings": "SMTP Settings",
-        "description": "Send notifications via email",
-        "smtp": {
-          "title": "SMTP Configuration",
-          "host": "SMTP Host",
-          "port": "SMTP Port",
-          "username": "SMTP Username",
-          "password": "SMTP Password",
-          "from": "From Address",
-          "fromName": "From Name",
-          "secure": "Use Secure Connection"
-        },
-        "templates": {
-          "title": "Email Templates",
-          "description": "Manage and customize email notification templates",
-          "templates": "Templates",
-          "selectTemplate": "Select a template to edit",
-          "previewMode": "Preview Mode",
-          "editMode": "Edit Mode",
-          "previewDescription": "Preview how the email will look",
-          "editDescription": "Edit template content and settings",
-          "emailPreview": "Email Preview",
-          "testEmailAddress": "Test Email Address",
-          "testEmailPlaceholder": "Enter email address",
-          "sendTest": "Send Test",
-          "templateTitle": "Template Title",
-          "templateTitlePlaceholder": "Enter template title",
-          "emailSubject": "Email Subject",
-          "emailSubjectPlaceholder": "Enter subject line",
-          "emailContent": "Email Content",
-          "emailContentPlaceholder": "Enter email content...",
-          "variablesHelp": "You can use variables like {userName}, {userEmail}, etc.",
-          "availableVariables": "Available Variables",
-          "status": {
-            "active": "Active",
-            "draft": "Draft"
-          }
-        }
-      },
-      "sms": {
-        "title": "SMS Notifications",
-        "enabled": "Enable SMS",
-        "provider": "SMS Provider",
-        "apiSettings": "API Settings"
-      },
-      "push": {
-        "title": "Push Notifications",
-        "enabled": "Enable Push",
-        "webPush": "Web Push",
-        "mobilePush": "Mobile Push"
-      },
-      "common": {
-        "enabled": "Enabled",
-        "disabled": "Disabled",
-        "configure": "Configure",
-        "test": "Test"
-      },
-      "channels": {
-        "email": "Email",
-        "push": "Push Notifications",
-        "sms": "SMS"
-      },
-      "preferences": {
-        "title": "Notification Preferences"
-      }
-    },
-    "dataManagement": {
-      "backup": {
-        "title": "Data Backup & Export",
-        "description": "Configure automated backups and data export options",
-        "enableAutomated": "Enable Automated Backups",
-        "enableAutomatedDesc": "Automatically backup system data at scheduled intervals",
-        "frequency": "Backup Frequency",
-        "frequencies": {
-          "hourly": "Every Hour",
-          "daily": "Daily",
-          "weekly": "Weekly",
-          "monthly": "Monthly"
-        },
-        "retentionPeriod": "Retention Period (days)",
-        "enableCompression": "Enable Compression",
-        "enableEncryption": "Enable Encryption"
-      },
-      "export": {
-        "title": "Manual Data Export",
-        "description": "Export all system data for backup or migration",
-        "button": "Export Data"
-      },
-      "import": {
-        "title": "Import Data",
-        "description": "Import data from backup or migration file",
-        "button": "Import Data"
-      },
-      "cache": {
-        "title": "Redis Cache Management",
-        "description": "Configure and manage Redis caching settings",
-        "active": "Active",
-        "inactive": "Inactive",
-        "enableRedis": "Enable Redis Caching",
-        "enableRedisDesc": "Use Redis for application caching",
-        "defaultTtl": "Default TTL (seconds)",
-        "maxSize": "Max Cache Size",
-        "cleanupInterval": "Cleanup Interval (seconds)",
-        "clearCache": "Clear Cache",
-        "clearCacheDesc": "Clear all cached data immediately",
-        "clearCacheButton": "Clear Cache"
-      },
-      "cleanup": {
-        "title": "Data Cleanup & Maintenance",
-        "description": "Configure automatic data cleanup and maintenance tasks",
-        "enableAutomatic": "Enable Automatic Cleanup",
-        "enableAutomaticDesc": "Automatically clean up old data and temporary files",
-        "logRetention": "Log Retention (days)",
-        "cleanTempFiles": "Clean Temporary Files",
-        "cleanExpiredSessions": "Clean Expired Sessions"
-      },
-      "messages": {
-        "exportCompleted": "Export Completed",
-        "exportCompletedDesc": "System data has been exported successfully",
-        "exportFailed": "Export Failed",
-        "exportFailedDesc": "Could not export system data",
-        "cacheCleared": "Cache Cleared",
-        "cacheClearedDesc": "Redis cache has been cleared successfully",
-        "clearFailed": "Clear Failed",
-        "clearFailedDesc": "Could not clear cache"
-      }
-    }
+    "itemsPerPage": "Items Per Page"
   },
   "profile": {
     "title": "Profile Information",
@@ -1043,8 +784,6 @@
     "forgotPassword": "Forgot Password",
     "resetPassword": "Reset Password",
     "changePassword": "Change Password",
-    "integrations": "Integrations",
-    "system": "System",
     "emptyState": {
       "noData": "No data found",
       "noResults": "No results found",
@@ -1281,66 +1020,770 @@
       "updateError": "Error updating user"
     }
   },
+  "notifications": {
+    "title": "Notifications",
+    "bell": {
+      "notifications": "Notifications",
+      "markAllRead": "Mark all read",
+      "total": "total",
+      "unread": "unread",
+      "settings": "Settings",
+      "viewAll": "View All",
+      "noNotifications": "No notifications yet",
+      "actionRequired": "Action Required",
+      "justNow": "Just now",
+      "minutesAgo": "{minutes}m ago",
+      "hoursAgo": "{hours}h ago",
+      "loadError": "Failed to load notifications",
+      "markReadSuccess": "Notification marked as read",
+      "markReadError": "Failed to mark as read",
+      "markAllReadSuccess": "All notifications marked as read",
+      "markAllReadError": "Failed to mark all as read"
+    },
+    "page": {
+      "title": "Notification Center",
+      "description": "System notifications and security alerts",
+      "filters": {
+        "all": "All",
+        "unread": "Unread",
+        "security": "Security",
+        "system": "System",
+        "userActivity": "User Activity",
+        "risk": "Risk",
+        "critical": "Critical",
+        "high": "High",
+        "medium": "Medium",
+        "low": "Low"
+      },
+      "tabs": {
+        "notifications": "Notifications",
+        "settings": "Settings"
+      },
+      "actions": {
+        "markRead": "Mark Read",
+        "markUnread": "Mark Unread",
+        "delete": "Delete",
+        "archive": "Archive",
+        "refresh": "Refresh",
+        "export": "Export",
+        "selectAll": "Select All",
+        "deselectAll": "Deselect All"
+      },
+      "stats": {
+        "totalNotifications": "Total Notifications",
+        "unreadNotifications": "Unread",
+        "securityAlerts": "Security Alerts",
+        "systemWarnings": "System Warnings",
+        "todayNotifications": "Today's Notifications",
+        "weeklyTrend": "Weekly Trend"
+      },
+      "types": {
+        "security": "Security",
+        "system": "System",
+        "user_activity": "User Activity",
+        "risk": "Risk",
+        "compliance": "Compliance",
+        "maintenance": "Maintenance",
+        "audit": "Audit"
+      },
+      "mockData": {
+        "multipleLoginFailures": "Multiple Login Failures",
+        "multipleLoginFailuresDesc": "User {user} has 5 failed login attempts",
+        "databaseWarning": "Database Connection Warning",
+        "databaseWarningDesc": "PostgreSQL connection pool at 85% capacity",
+        "safetyIncident": "Safety Incident Reported",
+        "safetyIncidentDesc": "New incident in Manufacturing Area B",
+        "newAdminUser": "New Admin User Created",
+        "newAdminUserDesc": "User {user} granted admin privileges",
+        "backupCompleted": "Backup Completed",
+        "backupCompletedDesc": "Daily database backup completed successfully"
+      }
+    },
+    "failedToLoad": "Failed to load data",
+    "allMarkedAsRead": "All notifications marked as read",
+    "failedToMarkAsRead": "Failed to mark as read",
+    "exportWouldStart": "Export would start here",
+    "loading": "Loading...",
+    "description": "System notifications and security alerts",
+    "export": "Export",
+    "markAllRead": "Mark All Read",
+    "totalNotifications": "Total Notifications",
+    "fromLastWeek": "from last week",
+    "unread": "Unread",
+    "unreadRate": "unread rate",
+    "securityAlerts": "Security Alerts",
+    "thisWeek": "this week",
+    "systemHealth": "System Health",
+    "requireImmediateAttention": "require immediate attention",
+    "reviewSecurityTab": "Review the security tab",
+    "lastUpdated": "Last updated",
+    "refresh": "Refresh",
+    "all": "All",
+    "security": "Security",
+    "system": "System",
+    "riskAndSafety": "Risk & Safety",
+    "userActivity": "User Activity",
+    "settings": "Settings",
+    "bulkActionCompleted": "action completed",
+    "list": {
+      "filtersAndSearch": "Filters & Search",
+      "clearAll": "Clear All",
+      "search": "Search",
+      "searchPlaceholder": "Search notifications...",
+      "status": "Status",
+      "allStatus": "All Status",
+      "severity": "Severity",
+      "allSeverity": "All Severity",
+      "source": "Source",
+      "allSources": "All Sources",
+      "dateRange": "Date Range",
+      "showing": "Showing {count} notifications",
+      "showingOf": "Showing {showing} of {total} notifications",
+      "showingWithTotal": "Showing {showing} of {filtered} notifications ({total} total)",
+      "sortBy": "Sort by:",
+      "date": "Date",
+      "selected": "{count} notification(s) selected",
+      "markRead": "Mark Read",
+      "archive": "Archive",
+      "delete": "Delete",
+      "clearSelection": "Clear Selection",
+      "type": "Type",
+      "titleAndDescription": "Title & Description",
+      "time": "Time",
+      "actions": "Actions",
+      "viewDetails": "View Details",
+      "markAsRead": "Mark as Read",
+      "noNotificationsFound": "No notifications found",
+      "tryAdjustingFilters": "Try adjusting your search filters",
+      "page": "Page",
+      "of": "of",
+      "entries": "entries",
+      "showingEntries": "Showing {from} to {to} of {total} entries",
+      "previous": "Previous",
+      "next": "Next",
+      "pageOf": "Page {current} of {total}",
+      "justNow": "Just now",
+      "minutesAgo": "{minutes}m ago",
+      "hoursAgo": "{hours}h ago",
+      "daysAgo": "{days}d ago",
+      "read": "Read:",
+      "statusLabels": {
+        "unread": "Unread",
+        "read": "Read",
+        "archived": "Archived"
+      },
+      "severityLabels": {
+        "critical": "Critical",
+        "high": "High",
+        "medium": "Medium",
+        "low": "Low"
+      },
+      "sources": {
+        "auth": "Authentication",
+        "access_policies": "Access Policies",
+        "health": "Health Monitor",
+        "keycloak": "Keycloak",
+        "system": "System",
+        "user_management": "User Management",
+        "risk_assessment": "Risk Assessment",
+        "incidents": "Incidents"
+      }
+    }
+  },
   "settings": {
-    "auditSettings": {
-      "title": "Audit Logging Configuration",
-      "description": "Configure comprehensive audit logging for security and compliance",
-      "status": {
+    "title": "System Settings",
+    "description": "System configuration and security settings",
+    "general": "General",
+    "security": "Security",
+    "notifications": "Notifications",
+    "policies": "Policies",
+    "monitoring": "Monitoring",
+    "integrations": "Integrations",
+    "data": "Data",
+    "audit": "Audit",
+    "language": "Language",
+    "systemName": "System Name",
+    "systemDescription": "System Description",
+    "timezone": "Timezone",
+    "dateFormat": "Date Format",
+    "currency": "Currency",
+    "theme": "Theme",
+    "compactMode": "Compact Mode",
+    "animationsEnabled": "Animations Enabled",
+    "autoRefreshInterval": "Auto Refresh Interval",
+    "itemsPerPage": "Items Per Page",
+    "overview": {
+      "totalSettings": "Total Settings",
+      "modifiedSettings": "Modified",
+      "systemStatus": "System Status",
+      "cacheStatus": "Cache Status",
+      "healthy": "Healthy",
+      "warning": "Warning",
+      "error": "Error",
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "messages": {
+      "unsavedChanges": "Unsaved Changes",
+      "lastSaved": "Last saved",
+      "autoSaved": "Auto-saved",
+      "autoSavedDescription": "Your changes have been automatically saved.",
+      "autoSaveFailed": "Auto-save failed",
+      "autoSaveFailedDescription": "Could not auto-save changes. Please save manually.",
+      "settingsSaved": "Settings saved",
+      "settingsSavedDescription": "All settings have been saved successfully.",
+      "saveFailed": "Save failed",
+      "saveFailedDescription": "Could not save settings. Please try again.",
+      "settingsReset": "Settings reset",
+      "settingsResetDescription": "All unsaved changes have been discarded.",
+      "settingsExported": "Settings exported",
+      "settingsExportedDescription": "Settings have been exported successfully.",
+      "exportFailed": "Export failed",
+      "exportFailedDescription": "Could not export settings."
+    },
+    "generalSettings": {
+      "systemInformation": "System Information",
+      "systemInformationDescription": "Basic system settings and configuration",
+      "userInterface": "User Interface",
+      "userInterfaceDescription": "Appearance and experience settings",
+      "featureFlags": "Feature Flags",
+      "featureFlagsDescription": "Enable or disable system features and experimental functionality",
+      "performance": "Performance & Caching",
+      "performanceDescription": "Configure system performance and caching behavior",
+      "resetSettings": "Reset Settings",
+      "resetSettingsDescription": "Reset all general settings to their default values",
+      "systemDescriptionPlaceholder": "Enter system description",
+      "compactModeDescription": "Reduce spacing and padding for more content",
+      "animationsDescription": "Enable smooth transitions and animations",
+      "autoRefreshSeconds": "seconds",
+      "cacheTimeoutDescription": "How long to keep data in cache (0 = no cache)",
+      "sessionTimeoutDescription": "User session expiration time",
+      "maxFileSizeDescription": "Maximum file upload size",
+      "enableCompressionDescription": "Compress responses to reduce bandwidth",
+      "connectionTest": "Connection Test",
+      "connectionTestDescription": "Test system connectivity and performance",
+      "testConnection": "Test Connection",
+      "resetToDefaults": "Reset to Defaults",
+      "resetWarning": "This will reset all general settings to their default values. This action cannot be undone.",
+      "resetAll": "Reset All",
+      "features": {
+        "darkModeToggle": "Dark Mode Toggle",
+        "advancedSearch": "Advanced Search",
+        "exportFeatures": "Export Features",
+        "betaFeatures": "Beta Features",
+        "analyticsTracking": "Analytics Tracking",
+        "maintenanceMode": "Maintenance Mode",
+        "descriptions": {
+          "darkModeToggle": "Allow users to switch between light and dark themes",
+          "advancedSearch": "Enable advanced filtering and search capabilities",
+          "exportFeatures": "Allow data export to various formats",
+          "betaFeatures": "Enable experimental and beta features",
+          "analyticsTracking": "Collect anonymous usage analytics",
+          "maintenanceMode": "Put system in maintenance mode"
+        }
+      },
+      "currencies": {
+        "TRY": "Turkish Lira (₺)",
+        "USD": "US Dollar ($)",
+        "EUR": "Euro (€)",
+        "GBP": "British Pound (£)"
+      },
+      "themes": {
+        "light": "Light",
+        "dark": "Dark",
+        "auto": "Auto (System)"
+      },
+      "refreshIntervals": {
+        "10": "10 seconds",
+        "30": "30 seconds",
+        "60": "1 minute",
+        "300": "5 minutes",
+        "0": "Disabled"
+      }
+    },
+    "securitySettings": {
+      "title": "Security Settings",
+      "description": "System security and authentication settings",
+      "keycloak": {
+        "title": "Keycloak Configuration",
+        "description": "Keycloak identity management server settings",
+        "enabledDesc": "Use Keycloak for user authentication and management",
+        "serverUrlPlaceholder": "http://localhost:8080",
+        "realmPlaceholder": "isguvenligi",
+        "clientIdPlaceholder": "admin-console",
+        "clientSecretPlaceholder": "Enter client secret",
+        "adminUsernamePlaceholder": "admin",
+        "adminPasswordPlaceholder": "Enter admin password",
+        "serverUrl": "Server URL",
+        "realm": "Realm",
+        "clientId": "Client ID",
+        "clientSecret": "Client Secret",
+        "adminUsername": "Admin Username",
+        "adminPassword": "Admin Password",
         "enabled": "Enabled",
-        "disabled": "Disabled"
+        "sslRequired": "SSL Required",
+        "publicClient": "Public Client",
+        "testConnection": "Test Connection",
+        "saveConfiguration": "Save Configuration"
       },
-      "general": {
-        "title": "General Settings",
-        "enableLabel": "Enable Audit Logging",
-        "enableDescription": "Record all system activities for security monitoring and compliance",
-        "logLevel": "Log Level",
-        "logLevels": {
-          "debug": "Debug",
-          "info": "Info",
-          "warning": "Warning",
-          "error": "Error",
-          "critical": "Critical"
+      "common": {
+        "enabled": "Enabled",
+        "disabled": "Disabled",
+        "enabled_status": "Enabled",
+        "disabled_status": "Disabled"
+      },
+      "authentication": {
+        "title": "Authentication",
+        "description": "User authentication settings",
+        "passwordPolicy": "Password Policy",
+        "sessionManagement": "Session Management",
+        "multiFactorAuth": "Multi-Factor Authentication",
+        "accountSecurity": "Account Security",
+        "minLength": "Minimum Length",
+        "requireUppercase": "Require Uppercase",
+        "requireLowercase": "Require Lowercase",
+        "requireNumbers": "Require Numbers",
+        "requireSpecialChars": "Require Special Characters",
+        "maxAge": "Maximum Age (days)",
+        "historyCount": "History Count",
+        "sessionTimeout": "Session Timeout (seconds)",
+        "maxConcurrentSessions": "Max Concurrent Sessions",
+        "rememberMeTimeout": "Remember Me Timeout (seconds)",
+        "enableRememberMe": "Enable Remember Me",
+        "sessionManagementDesc": "Configure user session behavior and timeouts",
+        "accountSecurityDesc": "Configure account protection and security measures",
+        "enableRememberMeDesc": "Allow users to stay logged in for extended periods",
+        "rememberMeTimeoutDesc": "Default: 30 days (2592000 seconds)",
+        "historyCountDesc": "Number of previous passwords to remember",
+        "jwtSecretGenerated": "JWT Secret Generated",
+        "jwtSecretGeneratedDesc": "A new JWT secret has been generated.",
+        "mfaEnabled": "MFA Enabled",
+        "mfaRequired": "MFA Required",
+        "totpMethod": "TOTP Method",
+        "smsMethod": "SMS Method",
+        "emailMethod": "Email Method",
+        "backupMethod": "Backup Method",
+        "maxLoginAttempts": "Max Login Attempts",
+        "accountLockoutDuration": "Account Lockout Duration (minutes)",
+        "enableCaptcha": "Enable CAPTCHA",
+        "enableAccountVerification": "Enable Account Verification"
+      },
+      "apiSecurity": {
+        "title": "API Security",
+        "description": "API access and security settings",
+        "jwtSecret": "JWT Secret",
+        "jwtExpiration": "JWT Expiration (seconds)",
+        "rateLimiting": "Rate Limiting",
+        "rateLimitingEnabled": "Rate Limiting Enabled",
+        "requestsPerMinute": "Requests Per Minute",
+        "burstLimit": "Burst Limit"
+      },
+      "cors": {
+        "title": "CORS Settings",
+        "description": "Cross-Origin Resource Sharing configuration",
+        "enabled": "CORS Enabled",
+        "origins": "Allowed Origins",
+        "methods": "Allowed Methods",
+        "credentials": "Allow Credentials"
+      },
+      "encryption": {
+        "title": "Encryption",
+        "description": "Data encryption and key management",
+        "algorithm": "Encryption Algorithm",
+        "keyRotationDays": "Key Rotation (days)",
+        "enableFieldEncryption": "Enable Field Encryption"
+      },
+      "audit": {
+        "title": "Security Audit Logging",
+        "description": "Configure what security events to log and monitor",
+        "logFailedLogins": "Log Failed Login Attempts",
+        "logSuccessfulLogins": "Log Successful Logins",
+        "logPasswordChanges": "Log Password Changes",
+        "logPermissionChanges": "Log Permission Changes",
+        "retentionDays": "Log Retention (days)",
+        "retentionDesc": "How long to keep audit logs (minimum 30 days)"
+      },
+      "mfa": {
+        "title": "Multi-Factor Authentication",
+        "description": "Configure multi-factor authentication methods and requirements",
+        "enabled": "Enabled",
+        "disabled": "Disabled",
+        "enableMfa": "Enable Multi-Factor Authentication",
+        "enableMfaDesc": "Require additional authentication factors for enhanced security",
+        "authMethods": "Authentication Methods",
+        "totpAuthenticator": "TOTP Authenticator",
+        "totpDesc": "Google Authenticator, Authy, etc.",
+        "emailVerification": "Email Verification",
+        "emailDesc": "Send codes via email",
+        "smsVerification": "SMS Verification",
+        "smsDesc": "Send codes via SMS",
+        "backupCodes": "Backup Codes",
+        "backupDesc": "One-time backup codes",
+        "requireMfaAll": "Require MFA for All Users",
+        "requireMfaAllDesc": "Make MFA mandatory for all user accounts"
+      },
+      "apiSecurity": {
+        "title": "API Security",
+        "description": "Configure API authentication and rate limiting",
+        "jwtSecret": "JWT Secret Key",
+        "generateNew": "Generate New",
+        "jwtSecretPlaceholder": "JWT secret key",
+        "jwtSecretDesc": "Secret key used for signing JWT tokens",
+        "jwtExpiration": "JWT Expiration (seconds)",
+        "enableRateLimit": "Enable Rate Limiting",
+        "rateLimitDesc": "Limit API requests to prevent abuse",
+        "requestsPerMinute": "Requests Per Minute",
+        "burstLimit": "Burst Limit",
+        "corsTitle": "CORS Configuration",
+        "corsDesc": "Configure Cross-Origin Resource Sharing settings",
+        "enableCors": "Enable CORS",
+        "allowedOrigins": "Allowed Origins",
+        "corsOriginsPlaceholder": "http://localhost:3000, https://yourdomain.com",
+        "allowCredentials": "Allow Credentials"
+      },
+      "messages": {
+        "configurationSaved": "Configuration saved",
+        "configurationSavedDescription": "Security settings have been successfully updated.",
+        "connectionTestSuccess": "Connection successful",
+        "connectionTestFailed": "Connection failed",
+        "invalidConfiguration": "Invalid configuration",
+        "testingConnection": "Testing connection...",
+        "connectionSuccessDesc": "Successfully connected to Keycloak server.",
+        "connectionFailedDesc": "Could not connect to Keycloak server. Check your settings.",
+        "connectionErrorDesc": "An error occurred while testing the connection.",
+        "jwtSecretGenerated": "JWT Secret Generated",
+        "jwtSecretGeneratedDesc": "A new JWT secret has been generated."
+      }
+    },
+    "notificationSettings": {
+      "title": "Notification Settings",
+      "description": "Email, SMS and system notification settings",
+      "tabs": {
+        "deliveryChannels": "Delivery Channels",
+        "notificationTypes": "Notification Types",
+        "scheduleAndTiming": "Schedule & Timing",
+        "advancedSettings": "Advanced Settings"
+      },
+      "unsavedChanges": "You have unsaved changes. Don't forget to save your notification preferences.",
+      "alwaysEnabled": "Always Enabled",
+      "test": "Test",
+      "minimumSeverity": "Minimum Severity",
+      "email": {
+        "title": "Email Notifications",
+        "description": "Email notifications and SMTP configuration",
+        "enabled": "Email Notifications Enabled",
+        "templates": {
+          "title": "Email Templates",
+          "description": "Manage email templates for different system notifications",
+          "editMode": "Edit Mode",
+          "previewMode": "Preview Mode",
+          "templates": "Templates",
+          "selectTemplate": "Select a template to edit",
+          "previewDescription": "Preview how this email will look",
+          "editDescription": "Edit the email template content",
+          "emailPreview": "Email Preview",
+          "testEmailAddress": "Test Email Address",
+          "testEmailPlaceholder": "test@example.com",
+          "sendTest": "Send Test",
+          "templateTitle": "Template Title",
+          "templateTitlePlaceholder": "Enter template title",
+          "emailSubject": "Email Subject",
+          "emailSubjectPlaceholder": "Enter email subject line",
+          "emailContent": "Email Content",
+          "emailContentPlaceholder": "Enter email content",
+          "variablesHelp": "Use variables like {userName}, {systemName} for dynamic content",
+          "availableVariables": "Available Variables",
+          "status": {
+            "active": "active",
+            "draft": "draft"
+          }
         },
-        "retentionDays": "Retention Period (days)",
+        "smtp": {
+          "title": "SMTP Configuration",
+          "host": "SMTP Host",
+          "port": "Port",
+          "secure": "Secure Connection (SSL/TLS)",
+          "username": "Username",
+          "password": "Password",
+          "from": "From Email",
+          "fromName": "From Name"
+        },
+        "templates": {
+          "title": "Email Templates",
+          "welcome": {
+            "title": "Welcome Email",
+            "subject": "Welcome to İş Güvenliği Sistemi",
+            "content": "Welcome! You have successfully registered to the Workplace Safety System."
+          },
+          "passwordReset": {
+            "title": "Password Reset",
+            "subject": "Password Reset Request",
+            "content": "Your password reset request has been received. Click the link below to set your new password."
+          },
+          "securityAlert": {
+            "title": "Security Alert",
+            "subject": "Security Alert - Action Required",
+            "content": "Suspicious activity has been detected in your account. Please log in immediately to check your account."
+          },
+          "systemAlert": {
+            "title": "System Alert",
+            "subject": "System Alert Notification",
+            "content": "Important notification about system status."
+          },
+          "maintenanceNotice": {
+            "title": "Maintenance Notice",
+            "subject": "Scheduled Maintenance Notice",
+            "content": "Scheduled maintenance work will be performed on the system. Service interruptions may occur during this time."
+          }
+        }
+      },
+      "sms": {
+        "title": "SMS Notifications",
+        "description": "SMS notifications and provider settings",
+        "enabled": "SMS Notifications Enabled",
+        "provider": "SMS Provider",
+        "apiKey": "API Key",
+        "senderId": "Sender ID",
+        "templates": {
+          "title": "SMS Templates",
+          "securityAlert": "Security Alert",
+          "systemAlert": "System Alert",
+          "loginNotification": "Login Notification"
+        }
+      },
+      "push": {
+        "title": "Push Notifications",
+        "description": "Browser and mobile push notifications",
+        "enabled": "Push Notifications Enabled",
+        "webPush": "Web Push",
+        "mobilePush": "Mobile Push"
+      },
+      "preferences": {
+        "title": "Notification Preferences",
+        "description": "Manage user notification preferences",
+        "allowUserControl": "Allow User Control",
+        "defaultSettings": "Default Settings",
+        "systemEvents": "System Events",
+        "securityEvents": "Security Events",
+        "maintenanceAlerts": "Maintenance Alerts"
+      },
+      "channels": {
+        "title": "Notification Channels",
+        "email": "Email",
+        "sms": "SMS",
+        "push": "Push",
+        "inApp": "In-App"
+      },
+      "messages": {
+        "configurationSaved": "Notification settings saved",
+        "configurationSavedDescription": "Notification settings have been successfully updated.",
+        "testEmailSent": "Test email sent",
+        "testEmailFailed": "Test email failed to send",
+        "testSmsSent": "Test SMS sent",
+        "testSmsFailed": "Test SMS failed to send",
+        "invalidConfiguration": "Invalid configuration"
+      }
+    },
+    "dataSettings": {
+      "title": "Data Management",
+      "description": "Backup, export, caching, and data maintenance settings",
+      "tabs": {
+        "backupAndExport": "Backup & Export",
+        "redisCache": "Redis Cache",
+        "dataCleanup": "Data Cleanup"
+      },
+      "backup": {
+        "title": "Data Backup & Export",
+        "description": "Configure automated backups and data export options",
+        "enableAutomatedBackups": "Enable Automated Backups",
+        "automatedBackupDescription": "Automatically backup system data at scheduled intervals",
+        "backupFrequency": "Backup Frequency",
+        "retentionPeriod": "Retention Period (days)",
         "enableCompression": "Enable Compression",
-        "enableEncryption": "Enable Encryption"
-      },
-      "events": {
-        "title": "Event Types",
-        "userActions": "User Actions",
-        "systemActions": "System Actions",
-        "authEvents": "Authentication Events",
-        "dataChanges": "Data Changes",
-        "configChanges": "Configuration Changes",
-        "errorEvents": "Error Events",
-        "performanceMetrics": "Performance Metrics"
-      },
-      "storage": {
-        "title": "Storage Configuration",
-        "location": "Storage Location",
-        "locations": {
-          "database": "Database",
-          "file": "File System",
-          "both": "Both"
-        },
-        "maxFileSize": "Max File Size",
-        "rotationPolicy": "Rotation Policy",
-        "rotationPolicies": {
+        "enableEncryption": "Enable Encryption",
+        "frequencies": {
           "hourly": "Hourly",
           "daily": "Daily",
           "weekly": "Weekly",
           "monthly": "Monthly"
         },
-        "enableBackup": "Enable Backup"
+        "manualExport": {
+          "title": "Manual Data Export",
+          "description": "Export all system data for backup or migration",
+          "exportData": "Export Data",
+          "exportInProgress": "Export in progress...",
+          "exportCompleted": "Export completed",
+          "exportFailed": "Export failed",
+          "downloadReady": "Download ready"
+        },
+        "manualImport": {
+          "title": "Import Data",
+          "description": "Import data from backup or migration file",
+          "importData": "Import Data",
+          "selectFile": "Select File",
+          "importInProgress": "Import in progress...",
+          "importCompleted": "Import completed",
+          "importFailed": "Import failed",
+          "fileSelected": "File selected",
+          "validationPassed": "Validation passed",
+          "validationFailed": "Validation failed"
+        }
       },
-      "alerts": {
-        "title": "Security Alerts",
-        "failedLogins": "Failed Login Attempts",
-        "suspiciousActivity": "Suspicious Activity",
-        "dataExfiltration": "Data Exfiltration",
-        "configurationChanges": "Configuration Changes",
-        "thresholdBreaches": "Threshold Breaches"
+      "cache": {
+        "title": "Redis Cache Management",
+        "description": "Configure and manage Redis caching settings",
+        "status": "Status",
+        "active": "Active",
+        "inactive": "Inactive",
+        "enableRedisCache": "Enable Redis Caching",
+        "redisCacheDescription": "Use Redis for application caching",
+        "defaultTTL": "Default TTL (seconds)",
+        "maxCacheSize": "Max Cache Size",
+        "cleanupInterval": "Cleanup Interval (seconds)",
+        "clearCache": "Clear Cache",
+        "clearCacheDescription": "Clear all cached data immediately",
+        "cacheCleared": "Cache cleared",
+        "cacheClearFailed": "Cache clear failed",
+        "stats": {
+          "hitRatio": "Hit Ratio",
+          "memoryUsage": "Memory Usage",
+          "totalKeys": "Total Keys",
+          "expiredKeys": "Expired Keys"
+        },
+        "units": {
+          "mb": "MB",
+          "gb": "GB",
+          "kb": "KB",
+          "bytes": "bytes"
+        }
+      },
+      "cleanup": {
+        "title": "Data Cleanup & Maintenance",
+        "description": "Configure automatic data cleanup and maintenance tasks",
+        "enableAutoCleanup": "Enable Automatic Cleanup",
+        "autoCleanupDescription": "Automatically clean up old data and temporary files",
+        "logRetention": "Log Retention (days)",
+        "cleanTempFiles": "Clean Temporary Files",
+        "cleanExpiredSessions": "Clean Expired Sessions",
+        "maintenanceTasks": {
+          "title": "Maintenance Tasks",
+          "optimizeDatabase": "Optimize Database",
+          "cleanupLogs": "Cleanup Logs",
+          "removeOrphanedFiles": "Remove Orphaned Files",
+          "compactDatabase": "Compact Database",
+          "rebuildIndexes": "Rebuild Indexes"
+        },
+        "schedule": {
+          "title": "Cleanup Schedule",
+          "frequency": "Frequency",
+          "time": "Time",
+          "lastRun": "Last Run",
+          "nextRun": "Next Run"
+        }
+      },
+      "storage": {
+        "title": "Storage Management",
+        "description": "Disk usage and file storage settings",
+        "diskUsage": "Disk Usage",
+        "totalSpace": "Total Space",
+        "usedSpace": "Used Space",
+        "freeSpace": "Free Space",
+        "quotas": {
+          "title": "Storage Quotas",
+          "userUploads": "User Uploads",
+          "systemBackups": "System Backups",
+          "logFiles": "Log Files",
+          "tempFiles": "Temporary Files"
+        }
+      },
+      "messages": {
+        "backupStarted": "Backup started",
+        "backupCompleted": "Backup completed",
+        "backupFailed": "Backup failed",
+        "exportStarted": "Export started",
+        "exportCompleted": "Data exported successfully",
+        "exportFailed": "Data export failed",
+        "importStarted": "Import started",
+        "importCompleted": "Data imported successfully",
+        "importFailed": "Data import failed",
+        "cacheCleared": "Cache cleared successfully",
+        "cacheClearFailed": "Cache clear failed",
+        "cleanupStarted": "Cleanup started",
+        "cleanupCompleted": "Cleanup completed",
+        "cleanupFailed": "Cleanup failed",
+        "configurationSaved": "Data settings saved",
+        "configurationFailed": "Data settings failed to save",
+        "insufficientSpace": "Insufficient disk space",
+        "invalidFileFormat": "Invalid file format",
+        "connectionError": "Connection error",
+        "permissionDenied": "Permission denied"
       }
     }
+  },
+  "frontpage": {
+    "homepage": {
+      "title": "İş Güvenliği Admin Panel",
+      "description": "Workplace Safety Management System",
+      "goToDashboard": "Go to Dashboard"
+    },
+    "login": {
+      "title": "İş Güvenliği Sistemi",
+      "subtitle": "Login for a secure work environment",
+      "username": "Username",
+      "password": "Password",
+      "loginButton": "Sign In",
+      "socialLogin": "Sign in with {provider}",
+      "or": "or",
+      "footer": "© 2024 İş Güvenliği Sistemi - Designed for secure work environment",
+      "validation": {
+        "usernameRequired": "Username is required",
+        "passwordRequired": "Password is required",
+        "passwordMinLength": "Password must be at least 8 characters"
+      }
+    },
+    "dashboard": {
+      "welcome": "Welcome, {name}!",
+      "title": "İş Güvenliği Sistemi Dashboard",
+      "adminPanel": "Admin Panel",
+      "debugTitle": "Debug Information (Development)",
+      "debugDescription": "Current user information and permissions",
+      "userId": "User ID",
+      "userRoles": "Roles",
+      "adminAccess": "Admin Access",
+      "hasAccess": "YES",
+      "noAccess": "NO",
+      "noRoles": "No roles found",
+      "userProfile": {
+        "title": "User Profile",
+        "description": "View and update your profile information",
+        "button": "View Profile"
+      },
+      "activityHistory": {
+        "title": "Activity History",
+        "description": "View your recent activities",
+        "button": "View History"
+      },
+      "notifications": {
+        "title": "Notifications",
+        "description": "Check your new notifications",
+        "button": "View Notifications"
+      },
+      "adminPanelCard": {
+        "title": "Admin Panel",
+        "description": "As a system administrator, you can access the admin panel",
+        "dashboardButton": "Admin Dashboard",
+        "usersButton": "User Management",
+        "auditButton": "Audit Logs"
+      }
+    },
+    "notFound": {
+      "title": "404",
+      "heading": "Page Not Found",
+      "description": "The page you are looking for might have been removed, renamed, or is temporarily unavailable.",
+      "dashboardButton": "Go to Dashboard",
+      "homeButton": "Go to Home"
+    },
+    "adminHome": {
+      "redirecting": "Redirecting to admin panel..."
+    }
   }
-}

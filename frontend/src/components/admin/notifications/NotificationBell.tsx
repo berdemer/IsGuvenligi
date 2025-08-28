@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
@@ -38,21 +39,21 @@ const SeverityIcon = ({ severity }: { severity: NotificationSeverity }) => {
   return <div className={`w-2 h-2 rounded-full bg-current ${colors[severity]}`} />
 }
 
-const formatTimeAgo = (timestamp: string): string => {
+const formatTimeAgo = (timestamp: string, t: any): string => {
   const now = new Date()
   const time = new Date(timestamp)
   const diffMs = now.getTime() - time.getTime()
   const diffMins = Math.floor(diffMs / (1000 * 60))
   const diffHours = Math.floor(diffMs / (1000 * 60 * 60))
 
-  if (diffMins < 1) return 'Just now'
-  if (diffMins < 60) return `${diffMins}m ago`
-  if (diffHours < 24) return `${diffHours}h ago`
+  if (diffMins < 1) return t('notifications.bell.justNow')
+  if (diffMins < 60) return t('notifications.bell.minutesAgo', { minutes: diffMins })
+  if (diffHours < 24) return t('notifications.bell.hoursAgo', { hours: diffHours })
   return time.toLocaleDateString()
 }
 
 // Mock data generator for notification bell
-const generateMockSummary = (): NotificationSummaryResponse => ({
+const generateMockSummary = (t: any): NotificationSummaryResponse => ({
   totalNotifications: 47,
   unreadNotifications: 8,
   securityAlerts: 3,
@@ -61,8 +62,8 @@ const generateMockSummary = (): NotificationSummaryResponse => ({
     {
       id: 'bell-1',
       type: 'security',
-      title: 'Multiple Login Failures',
-      description: 'User john.doe@company.com has 5 failed login attempts',
+      title: t('notifications.page.mockData.multipleLoginFailures'),
+      description: t('notifications.page.mockData.multipleLoginFailuresDesc', { user: 'john.doe@company.com' }),
       source: 'auth',
       severity: 'high',
       status: 'unread',
@@ -73,8 +74,8 @@ const generateMockSummary = (): NotificationSummaryResponse => ({
     {
       id: 'bell-2',
       type: 'system',
-      title: 'Database Connection Warning',
-      description: 'PostgreSQL connection pool at 85% capacity',
+      title: t('notifications.page.mockData.databaseWarning'),
+      description: t('notifications.page.mockData.databaseWarningDesc'),
       source: 'system',
       severity: 'medium',
       status: 'unread',
@@ -84,8 +85,8 @@ const generateMockSummary = (): NotificationSummaryResponse => ({
     {
       id: 'bell-3',
       type: 'risk',
-      title: 'Safety Incident Reported',
-      description: 'New incident in Manufacturing Area B',
+      title: t('notifications.page.mockData.safetyIncident'),
+      description: t('notifications.page.mockData.safetyIncidentDesc'),
       source: 'incidents',
       severity: 'high',
       status: 'unread',
@@ -96,8 +97,8 @@ const generateMockSummary = (): NotificationSummaryResponse => ({
     {
       id: 'bell-4',
       type: 'user_activity',
-      title: 'New Admin User Created',
-      description: 'User Mike Chen granted admin privileges',
+      title: t('notifications.page.mockData.newAdminUser'),
+      description: t('notifications.page.mockData.newAdminUserDesc', { user: 'Mike Chen' }),
       source: 'user_management',
       severity: 'medium',
       status: 'read',
@@ -108,8 +109,8 @@ const generateMockSummary = (): NotificationSummaryResponse => ({
     {
       id: 'bell-5',
       type: 'system',
-      title: 'Backup Completed',
-      description: 'Daily database backup completed successfully',
+      title: t('notifications.page.mockData.backupCompleted'),
+      description: t('notifications.page.mockData.backupCompletedDesc'),
       source: 'system',
       severity: 'low',
       status: 'read',
@@ -131,6 +132,7 @@ interface NotificationBellProps {
 }
 
 export default function NotificationBell({ className = '' }: NotificationBellProps) {
+  const t = useTranslations()
   const [summary, setSummary] = useState<NotificationSummaryResponse | null>(null)
   const [isOpen, setIsOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -162,9 +164,9 @@ export default function NotificationBell({ className = '' }: NotificationBellPro
     try {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 500))
-      setSummary(generateMockSummary())
+      setSummary(generateMockSummary(t))
     } catch (error) {
-      toast.error('Failed to load notifications')
+      toast.error(t('notifications.bell.loadError'))
     } finally {
       setIsLoading(false)
     }
@@ -191,9 +193,9 @@ export default function NotificationBell({ className = '' }: NotificationBellPro
         }
       })
       
-      toast.success('Notification marked as read')
+      toast.success(t('notifications.bell.markReadSuccess'))
     } catch (error) {
-      toast.error('Failed to mark as read')
+      toast.error(t('notifications.bell.markReadError'))
     }
   }
 
@@ -219,10 +221,10 @@ export default function NotificationBell({ className = '' }: NotificationBellPro
         }
       })
       
-      toast.success('All notifications marked as read')
+      toast.success(t('notifications.bell.markAllReadSuccess'))
       setIsOpen(false)
     } catch (error) {
-      toast.error('Failed to mark all as read')
+      toast.error(t('notifications.bell.markAllReadError'))
     } finally {
       setIsLoading(false)
     }
@@ -274,7 +276,7 @@ export default function NotificationBell({ className = '' }: NotificationBellPro
       >
         <div className="p-4 border-b">
           <div className="flex items-center justify-between">
-            <h4 className="font-semibold">Notifications</h4>
+            <h4 className="font-semibold">{t('notifications.bell.notifications')}</h4>
             <div className="flex items-center gap-2">
               <Button
                 variant="ghost"
@@ -292,17 +294,17 @@ export default function NotificationBell({ className = '' }: NotificationBellPro
                   disabled={isLoading}
                 >
                   <Check className="h-3 w-3 mr-1" />
-                  Mark all read
+                  {t('notifications.bell.markAllRead')}
                 </Button>
               )}
             </div>
           </div>
           {summary && (
             <div className="flex items-center gap-4 mt-2 text-sm text-muted-foreground">
-              <span>{summary.totalNotifications} total</span>
+              <span>{summary.totalNotifications} {t('notifications.bell.total')}</span>
               {hasUnread && (
                 <span className="text-orange-600 font-medium">
-                  {unreadCount} unread
+                  {unreadCount} {t('notifications.bell.unread')}
                 </span>
               )}
             </div>
@@ -344,7 +346,7 @@ export default function NotificationBell({ className = '' }: NotificationBellPro
                             </Button>
                           )}
                           <span className="text-xs text-muted-foreground">
-                            {formatTimeAgo(notification.createdAt)}
+                            {formatTimeAgo(notification.createdAt, t)}
                           </span>
                         </div>
                       </div>
@@ -356,11 +358,11 @@ export default function NotificationBell({ className = '' }: NotificationBellPro
                           variant="outline" 
                           className="text-xs capitalize"
                         >
-                          {notification.type.replace('_', ' ')}
+                          {t(`notifications.page.types.${notification.type}`, { fallback: notification.type.replace('_', ' ') })}
                         </Badge>
                         {notification.metadata?.actionRequired && (
                           <Badge variant="destructive" className="text-xs">
-                            Action Required
+                            {t('notifications.bell.actionRequired')}
                           </Badge>
                         )}
                       </div>
@@ -372,7 +374,7 @@ export default function NotificationBell({ className = '' }: NotificationBellPro
           ) : (
             <div className="p-6 text-center text-muted-foreground">
               <Bell className="h-8 w-8 mx-auto mb-2 opacity-50" />
-              <p className="text-sm">No notifications yet</p>
+              <p className="text-sm">{t('notifications.bell.noNotifications')}</p>
             </div>
           )}
         </div>
@@ -389,7 +391,7 @@ export default function NotificationBell({ className = '' }: NotificationBellPro
             }}
           >
             <Settings className="h-3 w-3 mr-1" />
-            Settings
+            {t('notifications.bell.settings')}
           </Button>
           <Button
             variant="outline"
@@ -397,7 +399,7 @@ export default function NotificationBell({ className = '' }: NotificationBellPro
             onClick={handleViewAll}
           >
             <ExternalLink className="h-3 w-3 mr-1" />
-            View All
+            {t('notifications.bell.viewAll')}
           </Button>
         </div>
       </PopoverContent>

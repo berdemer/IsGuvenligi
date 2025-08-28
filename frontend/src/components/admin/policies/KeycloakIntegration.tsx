@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -318,6 +319,7 @@ const ResourceMappingDialog: React.FC<ResourceMappingDialogProps> = ({ resource,
 }
 
 export default function KeycloakIntegration() {
+  const t = useTranslations('policies')
   const [integration, setIntegration] = useState<KeycloakIntegration>(mockKeycloakIntegration())
   const [isConnecting, setIsConnecting] = useState(false)
   const [isSyncing, setIsSyncing] = useState(false)
@@ -503,9 +505,9 @@ export default function KeycloakIntegration() {
       {/* Mapping Tables */}
       <Tabs defaultValue="roles" className="space-y-4">
         <TabsList>
-          <TabsTrigger value="roles">Role Mappings</TabsTrigger>
-          <TabsTrigger value="resources">Resource Mappings</TabsTrigger>
-          <TabsTrigger value="sync-log">Sync History</TabsTrigger>
+          <TabsTrigger value="roles">{t('keycloakTabs.roleMappings')}</TabsTrigger>
+          <TabsTrigger value="resources">{t('keycloakTabs.resourceMappings')}</TabsTrigger>
+          <TabsTrigger value="sync-log">{t('keycloakTabs.syncHistory')}</TabsTrigger>
         </TabsList>
 
         <TabsContent value="roles" className="space-y-4">
@@ -515,7 +517,7 @@ export default function KeycloakIntegration() {
                 <div>
                   <CardTitle className="flex items-center gap-2">
                     <Users className="h-4 w-4" />
-                    Role Mappings
+                    {t('keycloakTabs.roleMappings')}
                   </CardTitle>
                   <CardDescription>
                     Map Keycloak roles to internal application roles

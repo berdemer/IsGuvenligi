@@ -93,14 +93,14 @@ export default function SettingsPage() {
       }))
       
       toast({
-        title: "Auto-saved",
-        description: "Your changes have been automatically saved.",
+        title: t('messages.autoSaved'),
+        description: t('messages.autoSavedDescription'),
       })
     } catch (error) {
       setState(prev => ({ ...prev, loading: false }))
       toast({
-        title: "Auto-save failed",
-        description: "Could not auto-save changes. Please save manually.",
+        title: t('messages.autoSaveFailed'),
+        description: t('messages.autoSaveFailedDescription'),
         variant: "destructive"
       })
     }
@@ -136,14 +136,14 @@ export default function SettingsPage() {
       }))
       
       toast({
-        title: "Settings saved",
-        description: "All settings have been saved successfully.",
+        title: t('messages.settingsSaved'),
+        description: t('messages.settingsSavedDescription'),
       })
     } catch (error) {
       setState(prev => ({ ...prev, loading: false }))
       toast({
-        title: "Save failed",
-        description: "Could not save settings. Please try again.",
+        title: t('messages.saveFailed'),
+        description: t('messages.saveFailedDescription'),
         variant: "destructive"
       })
     }
@@ -152,8 +152,8 @@ export default function SettingsPage() {
   const handleReset = () => {
     setState(prev => ({ ...prev, unsavedChanges: false }))
     toast({
-      title: "Settings reset",
-      description: "All unsaved changes have been discarded.",
+      title: t('messages.settingsReset'),
+      description: t('messages.settingsResetDescription'),
     })
   }
 
@@ -189,14 +189,14 @@ export default function SettingsPage() {
       
       setState(prev => ({ ...prev, loading: false }))
       toast({
-        title: "Settings exported",
-        description: "Settings have been exported successfully.",
+        title: t('messages.settingsExported'),
+        description: t('messages.settingsExportedDescription'),
       })
     } catch (error) {
       setState(prev => ({ ...prev, loading: false }))
       toast({
-        title: "Export failed",
-        description: "Could not export settings.",
+        title: t('messages.exportFailed'),
+        description: t('messages.exportFailedDescription'),
         variant: "destructive"
       })
     }
@@ -235,13 +235,13 @@ export default function SettingsPage() {
           {state.unsavedChanges && (
             <Badge variant="outline" className="text-yellow-600 border-yellow-600">
               <Clock className="h-3 w-3 mr-1" />
-              Unsaved Changes
+              {t('messages.unsavedChanges')}
             </Badge>
           )}
           
           {state.lastSaved && (
             <span className="text-xs text-muted-foreground">
-              Last saved: {new Date(state.lastSaved).toLocaleTimeString()}
+              {t('messages.lastSaved')}: {new Date(state.lastSaved).toLocaleTimeString()}
             </span>
           )}
           
@@ -286,7 +286,7 @@ export default function SettingsPage() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Total Settings</p>
+                <p className="text-sm text-muted-foreground">{t('overview.totalSettings')}</p>
                 <p className="text-2xl font-bold">{summary.totalSettings}</p>
               </div>
               <SettingsIcon className="h-8 w-8 text-muted-foreground" />
@@ -298,7 +298,7 @@ export default function SettingsPage() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Modified</p>
+                <p className="text-sm text-muted-foreground">{t('overview.modifiedSettings')}</p>
                 <p className="text-2xl font-bold text-orange-600">{summary.modifiedSettings}</p>
               </div>
               <FileText className="h-8 w-8 text-orange-600" />
@@ -310,10 +310,10 @@ export default function SettingsPage() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">System Status</p>
+                <p className="text-sm text-muted-foreground">{t('overview.systemStatus')}</p>
                 <div className="flex items-center gap-2">
                   {getStatusIcon(summary.systemStatus)}
-                  <p className="text-sm font-medium capitalize">{summary.systemStatus}</p>
+                  <p className="text-sm font-medium capitalize">{t(`overview.${summary.systemStatus}`)}</p>
                 </div>
               </div>
               <Activity className="h-8 w-8 text-muted-foreground" />
@@ -325,10 +325,10 @@ export default function SettingsPage() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Cache Status</p>
+                <p className="text-sm text-muted-foreground">{t('overview.cacheStatus')}</p>
                 <div className="flex items-center gap-2">
                   {getStatusIcon(summary.cacheStatus)}
-                  <p className="text-sm font-medium capitalize">{summary.cacheStatus}</p>
+                  <p className="text-sm font-medium capitalize">{t(`overview.${summary.cacheStatus}`)}</p>
                 </div>
               </div>
               <Database className="h-8 w-8 text-muted-foreground" />

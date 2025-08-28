@@ -33,6 +33,7 @@ import {
   Network
 } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast'
+import { useTranslations } from 'next-intl'
 
 interface SecuritySettingsProps {
   onSettingsChange: (hasChanges: boolean) => void
@@ -185,6 +186,8 @@ const defaultConfig: SecurityConfig = {
 
 export default function SecuritySettings({ onSettingsChange }: SecuritySettingsProps) {
   const { toast } = useToast()
+  const t = useTranslations('settings.securitySettings')
+  const tCommon = useTranslations('common')
   const [config, setConfig] = useState<SecurityConfig>(defaultConfig)
   const [initialConfig, setInitialConfig] = useState<SecurityConfig>(defaultConfig)
   const [loading, setLoading] = useState(false)
@@ -228,22 +231,22 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
       if (success) {
         setConnectionStatus('connected')
         toast({
-          title: "Connection successful",
-          description: "Successfully connected to Keycloak server.",
+          title: t('messages.connectionTestSuccess'),
+          description: t('messages.connectionSuccessDesc'),
         })
       } else {
         setConnectionStatus('error')
         toast({
-          title: "Connection failed",
-          description: "Could not connect to Keycloak server. Check your settings.",
+          title: t('messages.connectionTestFailed'),
+          description: t('messages.connectionFailedDesc'),
           variant: "destructive"
         })
       }
     } catch (error) {
       setConnectionStatus('error')
       toast({
-        title: "Connection error",
-        description: "An error occurred while testing the connection.",
+        title: t('messages.connectionTestFailed'),
+        description: t('messages.connectionErrorDesc'),
         variant: "destructive"
       })
     } finally {
@@ -265,8 +268,8 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
       }
     }))
     toast({
-      title: "JWT Secret Generated",
-      description: "A new JWT secret has been generated.",
+      title: t('authentication.jwtSecretGenerated'),
+      description: t('authentication.jwtSecretGeneratedDesc'),
     })
   }
 
@@ -344,11 +347,11 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
     <div className="space-y-6">
       <Tabs defaultValue="keycloak" className="space-y-6">
         <TabsList className="grid w-full grid-cols-5">
-          <TabsTrigger value="keycloak">Keycloak</TabsTrigger>
-          <TabsTrigger value="authentication">Authentication</TabsTrigger>
-          <TabsTrigger value="mfa">Multi-Factor</TabsTrigger>
-          <TabsTrigger value="security">Security</TabsTrigger>
-          <TabsTrigger value="audit">Audit</TabsTrigger>
+          <TabsTrigger value="keycloak">{t('keycloak.title')}</TabsTrigger>
+          <TabsTrigger value="authentication">{t('authentication.title')}</TabsTrigger>
+          <TabsTrigger value="mfa">{t('authentication.multiFactorAuth')}</TabsTrigger>
+          <TabsTrigger value="security">{t('apiSecurity.title')}</TabsTrigger>
+          <TabsTrigger value="audit">{t('audit.title')}</TabsTrigger>
         </TabsList>
 
         {/* Keycloak Configuration */}
@@ -357,23 +360,23 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Key className="h-5 w-5" />
-                Keycloak Configuration
+                {t('keycloak.title')}
                 {config.keycloak.enabled ? (
-                  <Badge variant="default" className="bg-green-500">Enabled</Badge>
+                  <Badge variant="default" className="bg-green-500">{t('common.enabled_status')}</Badge>
                 ) : (
-                  <Badge variant="outline">Disabled</Badge>
+                  <Badge variant="outline">{t('common.disabled_status')}</Badge>
                 )}
               </CardTitle>
               <CardDescription>
-                Configure Keycloak integration for authentication and authorization
+                {t('keycloak.description')}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between mb-4">
                 <div className="space-y-0.5">
-                  <Label>Enable Keycloak Integration</Label>
+                  <Label>{t('keycloak.enabled')}</Label>
                   <p className="text-sm text-muted-foreground">
-                    Use Keycloak for user authentication and management
+                    {t('keycloak.enabledDesc')}
                   </p>
                 </div>
                 <Switch
@@ -386,46 +389,46 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                 <>
                   <div className="grid gap-4 md:grid-cols-2">
                     <div className="space-y-2">
-                      <Label htmlFor="serverUrl">Server URL</Label>
+                      <Label htmlFor="serverUrl">{t('keycloak.serverUrl')}</Label>
                       <Input
                         id="serverUrl"
                         value={config.keycloak.serverUrl}
                         onChange={(e) => updateKeycloak({ serverUrl: e.target.value })}
-                        placeholder="http://localhost:8080"
+                        placeholder={t('keycloak.serverUrlPlaceholder')}
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="realm">Realm</Label>
+                      <Label htmlFor="realm">{t('keycloak.realm')}</Label>
                       <Input
                         id="realm"
                         value={config.keycloak.realm}
                         onChange={(e) => updateKeycloak({ realm: e.target.value })}
-                        placeholder="isguvenligi"
+                        placeholder={t('keycloak.realmPlaceholder')}
                       />
                     </div>
                   </div>
 
                   <div className="grid gap-4 md:grid-cols-2">
                     <div className="space-y-2">
-                      <Label htmlFor="clientId">Client ID</Label>
+                      <Label htmlFor="clientId">{t('keycloak.clientId')}</Label>
                       <Input
                         id="clientId"
                         value={config.keycloak.clientId}
                         onChange={(e) => updateKeycloak({ clientId: e.target.value })}
-                        placeholder="admin-console"
+                        placeholder={t('keycloak.clientIdPlaceholder')}
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="clientSecret">Client Secret</Label>
+                      <Label htmlFor="clientSecret">{t('keycloak.clientSecret')}</Label>
                       <div className="flex gap-2">
                         <Input
                           id="clientSecret"
                           type={showSecrets ? "text" : "password"}
                           value={config.keycloak.clientSecret}
                           onChange={(e) => updateKeycloak({ clientSecret: e.target.value })}
-                          placeholder="Enter client secret"
+                          placeholder={t('keycloak.clientSecretPlaceholder')}
                         />
                         <Button
                           type="button"
@@ -441,23 +444,23 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
 
                   <div className="grid gap-4 md:grid-cols-2">
                     <div className="space-y-2">
-                      <Label htmlFor="adminUsername">Admin Username</Label>
+                      <Label htmlFor="adminUsername">{t('keycloak.adminUsername')}</Label>
                       <Input
                         id="adminUsername"
                         value={config.keycloak.adminUsername}
                         onChange={(e) => updateKeycloak({ adminUsername: e.target.value })}
-                        placeholder="admin"
+                        placeholder={t('keycloak.adminUsernamePlaceholder')}
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="adminPassword">Admin Password</Label>
+                      <Label htmlFor="adminPassword">{t('keycloak.adminPassword')}</Label>
                       <Input
                         id="adminPassword"
                         type={showSecrets ? "text" : "password"}
                         value={config.keycloak.adminPassword}
                         onChange={(e) => updateKeycloak({ adminPassword: e.target.value })}
-                        placeholder="Enter admin password"
+                        placeholder={t('keycloak.adminPasswordPlaceholder')}
                       />
                     </div>
                   </div>
@@ -469,7 +472,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                         checked={config.keycloak.sslRequired}
                         onCheckedChange={(checked) => updateKeycloak({ sslRequired: checked })}
                       />
-                      <Label htmlFor="sslRequired">Require SSL</Label>
+                      <Label htmlFor="sslRequired">{t('keycloak.sslRequired')}</Label>
                     </div>
 
                     <div className="flex items-center space-x-2">
@@ -478,7 +481,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                         checked={config.keycloak.publicClient}
                         onCheckedChange={(checked) => updateKeycloak({ publicClient: checked })}
                       />
-                      <Label htmlFor="publicClient">Public Client</Label>
+                      <Label htmlFor="publicClient">{t('keycloak.publicClient')}</Label>
                     </div>
                   </div>
 
@@ -488,11 +491,11 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                     <div className="flex items-center gap-2">
                       {getConnectionIcon()}
                       <div>
-                        <h4 className="font-medium">Connection Test</h4>
+                        <h4 className="font-medium">{t('keycloak.testConnection')}</h4>
                         <p className="text-sm text-muted-foreground">
-                          {connectionStatus === 'connected' && 'Connected successfully'}
-                          {connectionStatus === 'error' && 'Connection failed'}
-                          {connectionStatus === 'unknown' && 'Test connection to Keycloak server'}
+                          {connectionStatus === 'connected' && t('messages.connectionTestSuccess')}
+                          {connectionStatus === 'error' && t('messages.connectionTestFailed')}
+                          {connectionStatus === 'unknown' && t('messages.testingConnection')}
                         </p>
                       </div>
                     </div>
@@ -506,7 +509,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                       ) : (
                         <Network className="h-4 w-4 mr-2" />
                       )}
-                      Test Connection
+                      {t('keycloak.testConnection')}
                     </Button>
                   </div>
                 </>
@@ -521,16 +524,16 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Lock className="h-5 w-5" />
-                Password Policy
+                {t('authentication.passwordPolicy')}
               </CardTitle>
               <CardDescription>
-                Configure password requirements and security rules
+                {t('authentication.description')}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="minLength">Minimum Length</Label>
+                  <Label htmlFor="minLength">{t('authentication.minLength')}</Label>
                   <Input
                     id="minLength"
                     type="number"
@@ -542,7 +545,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="maxAge">Password Age (days)</Label>
+                  <Label htmlFor="maxAge">{t('authentication.maxAge')}</Label>
                   <Input
                     id="maxAge"
                     type="number"
@@ -556,7 +559,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
 
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <Label>Require Uppercase Letters</Label>
+                  <Label>{t('authentication.requireUppercase')}</Label>
                   <Switch
                     checked={config.auth.passwordPolicy.requireUppercase}
                     onCheckedChange={(checked) => updatePasswordPolicy({ requireUppercase: checked })}
@@ -564,7 +567,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <Label>Require Lowercase Letters</Label>
+                  <Label>{t('authentication.requireLowercase')}</Label>
                   <Switch
                     checked={config.auth.passwordPolicy.requireLowercase}
                     onCheckedChange={(checked) => updatePasswordPolicy({ requireLowercase: checked })}
@@ -572,7 +575,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <Label>Require Numbers</Label>
+                  <Label>{t('authentication.requireNumbers')}</Label>
                   <Switch
                     checked={config.auth.passwordPolicy.requireNumbers}
                     onCheckedChange={(checked) => updatePasswordPolicy({ requireNumbers: checked })}
@@ -580,7 +583,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <Label>Require Special Characters</Label>
+                  <Label>{t('authentication.requireSpecialChars')}</Label>
                   <Switch
                     checked={config.auth.passwordPolicy.requireSpecialChars}
                     onCheckedChange={(checked) => updatePasswordPolicy({ requireSpecialChars: checked })}
@@ -589,7 +592,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="historyCount">Password History Count</Label>
+                <Label htmlFor="historyCount">{t('authentication.historyCount')}</Label>
                 <Input
                   id="historyCount"
                   type="number"
@@ -599,7 +602,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                   onChange={(e) => updatePasswordPolicy({ historyCount: parseInt(e.target.value) || 5 })}
                 />
                 <p className="text-xs text-muted-foreground">
-                  Number of previous passwords to remember
+                  {t('authentication.historyCountDesc')}
                 </p>
               </div>
             </CardContent>
@@ -609,16 +612,16 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Clock className="h-5 w-5" />
-                Session Management
+                {t('authentication.sessionManagement')}
               </CardTitle>
               <CardDescription>
-                Configure user session behavior and timeouts
+                {t('authentication.sessionManagementDesc')}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="sessionTimeout">Session Timeout (seconds)</Label>
+                  <Label htmlFor="sessionTimeout">{t('authentication.sessionTimeout')}</Label>
                   <Input
                     id="sessionTimeout"
                     type="number"
@@ -630,7 +633,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="maxConcurrentSessions">Max Concurrent Sessions</Label>
+                  <Label htmlFor="maxConcurrentSessions">{t('authentication.maxConcurrentSessions')}</Label>
                   <Input
                     id="maxConcurrentSessions"
                     type="number"
@@ -644,9 +647,9 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
 
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <Label>Enable Remember Me</Label>
+                  <Label>{t('authentication.enableRememberMe')}</Label>
                   <p className="text-sm text-muted-foreground">
-                    Allow users to stay logged in for extended periods
+                    {t('authentication.enableRememberMeDesc')}
                   </p>
                 </div>
                 <Switch
@@ -657,7 +660,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
 
               {config.auth.enableRememberMe && (
                 <div className="space-y-2">
-                  <Label htmlFor="rememberMeTimeout">Remember Me Duration (seconds)</Label>
+                  <Label htmlFor="rememberMeTimeout">{t('authentication.rememberMeTimeout')}</Label>
                   <Input
                     id="rememberMeTimeout"
                     type="number"
@@ -667,7 +670,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                     onChange={(e) => updateAuth({ rememberMeTimeout: parseInt(e.target.value) || 2592000 })}
                   />
                   <p className="text-xs text-muted-foreground">
-                    Default: 30 days (2592000 seconds)
+                    {t('authentication.rememberMeTimeoutDesc')}
                   </p>
                 </div>
               )}
@@ -678,16 +681,16 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <ShieldAlert className="h-5 w-5" />
-                Account Security
+                {t('authentication.accountSecurity')}
               </CardTitle>
               <CardDescription>
-                Configure account protection and security measures
+                {t('authentication.accountSecurityDesc')}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="maxLoginAttempts">Max Login Attempts</Label>
+                  <Label htmlFor="maxLoginAttempts">{t('authentication.maxLoginAttempts')}</Label>
                   <Input
                     id="maxLoginAttempts"
                     type="number"
@@ -699,7 +702,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="accountLockoutDuration">Lockout Duration (seconds)</Label>
+                  <Label htmlFor="accountLockoutDuration">{t('authentication.accountLockoutDuration')}</Label>
                   <Input
                     id="accountLockoutDuration"
                     type="number"
@@ -713,7 +716,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
 
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <Label>Enable CAPTCHA</Label>
+                  <Label>{t('authentication.enableCaptcha')}</Label>
                   <Switch
                     checked={config.auth.enableCaptcha}
                     onCheckedChange={(checked) => updateAuth({ enableCaptcha: checked })}
@@ -721,7 +724,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <Label>Enable Account Verification</Label>
+                  <Label>{t('authentication.enableAccountVerification')}</Label>
                   <Switch
                     checked={config.auth.enableAccountVerification}
                     onCheckedChange={(checked) => updateAuth({ enableAccountVerification: checked })}
@@ -738,23 +741,23 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Fingerprint className="h-5 w-5" />
-                Multi-Factor Authentication
+                {t('mfa.title')}
                 {config.auth.mfaEnabled ? (
-                  <Badge variant="default" className="bg-green-500">Enabled</Badge>
+                  <Badge variant="default" className="bg-green-500">{t('common.enabled_status')}</Badge>
                 ) : (
-                  <Badge variant="outline">Disabled</Badge>
+                  <Badge variant="outline">{t('common.disabled_status')}</Badge>
                 )}
               </CardTitle>
               <CardDescription>
-                Configure multi-factor authentication methods and requirements
+                {t('mfa.description')}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <Label>Enable Multi-Factor Authentication</Label>
+                  <Label>{t('mfa.enableMfa')}</Label>
                   <p className="text-sm text-muted-foreground">
-                    Require additional authentication factors for enhanced security
+                    {t('mfa.enableMfaDesc')}
                   </p>
                 </div>
                 <Switch
@@ -768,16 +771,16 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                   <Separator />
                   
                   <div className="space-y-4">
-                    <h4 className="font-medium">Authentication Methods</h4>
+                    <h4 className="font-medium">{t('mfa.authMethods')}</h4>
                     
                     <div className="grid gap-4 md:grid-cols-2">
                       <div className="flex items-center justify-between p-3 border rounded-lg">
                         <div className="flex items-center gap-2">
                           <Smartphone className="h-4 w-4 text-blue-500" />
                           <div>
-                            <Label>TOTP Authenticator</Label>
+                            <Label>{t('mfa.totpAuthenticator')}</Label>
                             <p className="text-sm text-muted-foreground">
-                              Google Authenticator, Authy, etc.
+                              {t('mfa.totpDesc')}
                             </p>
                           </div>
                         </div>
@@ -791,9 +794,9 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                         <div className="flex items-center gap-2">
                           <Mail className="h-4 w-4 text-green-500" />
                           <div>
-                            <Label>Email Verification</Label>
+                            <Label>{t('mfa.emailVerification')}</Label>
                             <p className="text-sm text-muted-foreground">
-                              Send codes via email
+                              {t('mfa.emailDesc')}
                             </p>
                           </div>
                         </div>
@@ -807,9 +810,9 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                         <div className="flex items-center gap-2">
                           <Smartphone className="h-4 w-4 text-purple-500" />
                           <div>
-                            <Label>SMS Verification</Label>
+                            <Label>{t('mfa.smsVerification')}</Label>
                             <p className="text-sm text-muted-foreground">
-                              Send codes via SMS
+                              {t('mfa.smsDesc')}
                             </p>
                           </div>
                         </div>
@@ -823,9 +826,9 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                         <div className="flex items-center gap-2">
                           <Key className="h-4 w-4 text-orange-500" />
                           <div>
-                            <Label>Backup Codes</Label>
+                            <Label>{t('mfa.backupCodes')}</Label>
                             <p className="text-sm text-muted-foreground">
-                              One-time backup codes
+                              {t('mfa.backupDesc')}
                             </p>
                           </div>
                         </div>
@@ -841,9 +844,9 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
 
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
-                      <Label>Require MFA for All Users</Label>
+                      <Label>{t('mfa.requireMfaAll')}</Label>
                       <p className="text-sm text-muted-foreground">
-                        Make MFA mandatory for all user accounts
+                        {t('mfa.requireMfaAllDesc')}
                       </p>
                     </div>
                     <Switch
@@ -863,16 +866,16 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Shield className="h-5 w-5" />
-                API Security
+                {t('apiSecurity.title')}
               </CardTitle>
               <CardDescription>
-                Configure API authentication and rate limiting
+                {t('apiSecurity.description')}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label htmlFor="jwtSecret">JWT Secret Key</Label>
+                  <Label htmlFor="jwtSecret">{t('apiSecurity.jwtSecret')}</Label>
                   <Button
                     type="button"
                     variant="outline"
@@ -880,7 +883,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                     onClick={generateJwtSecret}
                   >
                     <RefreshCw className="h-4 w-4 mr-2" />
-                    Generate New
+                    {t('apiSecurity.generateNew')}
                   </Button>
                 </div>
                 <Input
@@ -888,15 +891,15 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                   type={showSecrets ? "text" : "password"}
                   value={config.auth.jwtSecret}
                   onChange={(e) => updateAuth({ jwtSecret: e.target.value })}
-                  placeholder="JWT secret key"
+                  placeholder={t('apiSecurity.jwtSecretPlaceholder')}
                 />
                 <p className="text-xs text-muted-foreground">
-                  Secret key used for signing JWT tokens
+                  {t('apiSecurity.jwtSecretDesc')}
                 </p>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="jwtExpiration">JWT Expiration (seconds)</Label>
+                <Label htmlFor="jwtExpiration">{t('apiSecurity.jwtExpiration')}</Label>
                 <Input
                   id="jwtExpiration"
                   type="number"
@@ -912,9 +915,9 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="space-y-0.5">
-                    <Label>Enable Rate Limiting</Label>
+                    <Label>{t('apiSecurity.enableRateLimit')}</Label>
                     <p className="text-sm text-muted-foreground">
-                      Limit API requests to prevent abuse
+                      {t('apiSecurity.rateLimitDesc')}
                     </p>
                   </div>
                   <Switch
@@ -928,7 +931,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                 {config.auth.rateLimiting.enabled && (
                   <div className="grid gap-4 md:grid-cols-2">
                     <div className="space-y-2">
-                      <Label htmlFor="requestsPerMinute">Requests Per Minute</Label>
+                      <Label htmlFor="requestsPerMinute">{t('apiSecurity.requestsPerMinute')}</Label>
                       <Input
                         id="requestsPerMinute"
                         type="number"
@@ -945,7 +948,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="burstLimit">Burst Limit</Label>
+                      <Label htmlFor="burstLimit">{t('apiSecurity.burstLimit')}</Label>
                       <Input
                         id="burstLimit"
                         type="number"
@@ -970,15 +973,15 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Globe className="h-5 w-5" />
-                CORS Configuration
+                {t('apiSecurity.corsTitle')}
               </CardTitle>
               <CardDescription>
-                Configure Cross-Origin Resource Sharing settings
+                {t('apiSecurity.corsDesc')}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between">
-                <Label>Enable CORS</Label>
+                <Label>{t('apiSecurity.enableCors')}</Label>
                 <Switch
                   checked={config.cors.enabled}
                   onCheckedChange={(checked) => setConfig(prev => ({
@@ -991,7 +994,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
               {config.cors.enabled && (
                 <>
                   <div className="space-y-2">
-                    <Label htmlFor="corsOrigins">Allowed Origins</Label>
+                    <Label htmlFor="corsOrigins">{t('apiSecurity.allowedOrigins')}</Label>
                     <Input
                       id="corsOrigins"
                       value={config.cors.origins.join(', ')}
@@ -1002,12 +1005,12 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                           origins: e.target.value.split(',').map(s => s.trim())
                         }
                       }))}
-                      placeholder="http://localhost:3000, https://yourdomain.com"
+                      placeholder={t('apiSecurity.corsOriginsPlaceholder')}
                     />
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <Label>Allow Credentials</Label>
+                    <Label>{t('apiSecurity.allowCredentials')}</Label>
                     <Switch
                       checked={config.cors.credentials}
                       onCheckedChange={(checked) => setConfig(prev => ({
@@ -1028,16 +1031,16 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Eye className="h-5 w-5" />
-                Security Audit Logging
+                {t('audit.title')}
               </CardTitle>
               <CardDescription>
-                Configure what security events to log and monitor
+                {t('audit.description')}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <Label>Log Failed Login Attempts</Label>
+                  <Label>{t('audit.logFailedLogins')}</Label>
                   <Switch
                     checked={config.audit.logFailedLogins}
                     onCheckedChange={(checked) => setConfig(prev => ({
@@ -1048,7 +1051,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <Label>Log Successful Logins</Label>
+                  <Label>{t('audit.logSuccessfulLogins')}</Label>
                   <Switch
                     checked={config.audit.logSuccessfulLogins}
                     onCheckedChange={(checked) => setConfig(prev => ({
@@ -1059,7 +1062,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <Label>Log Password Changes</Label>
+                  <Label>{t('audit.logPasswordChanges')}</Label>
                   <Switch
                     checked={config.audit.logPasswordChanges}
                     onCheckedChange={(checked) => setConfig(prev => ({
@@ -1070,7 +1073,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <Label>Log Permission Changes</Label>
+                  <Label>{t('audit.logPermissionChanges')}</Label>
                   <Switch
                     checked={config.audit.logPermissionChanges}
                     onCheckedChange={(checked) => setConfig(prev => ({
@@ -1082,7 +1085,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="retentionDays">Log Retention (days)</Label>
+                <Label htmlFor="retentionDays">{t('audit.retentionDays')}</Label>
                 <Input
                   id="retentionDays"
                   type="number"
@@ -1095,7 +1098,7 @@ export default function SecuritySettings({ onSettingsChange }: SecuritySettingsP
                   }))}
                 />
                 <p className="text-xs text-muted-foreground">
-                  How long to keep audit logs (minimum 30 days)
+                  {t('audit.retentionDesc')}
                 </p>
               </div>
             </CardContent>

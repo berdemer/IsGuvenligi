@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useMemo } from 'react'
+import { useTranslations } from 'next-intl'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -82,7 +83,7 @@ const SeverityIcon = ({ severity }: { severity: NotificationSeverity }) => {
   }
 }
 
-const SeverityBadge = ({ severity }: { severity: NotificationSeverity }) => {
+const SeverityBadge = ({ severity, t }: { severity: NotificationSeverity, t: any }) => {
   const colors = {
     critical: 'bg-red-100 text-red-800 border-red-200',
     high: 'bg-orange-100 text-orange-800 border-orange-200',
@@ -93,7 +94,7 @@ const SeverityBadge = ({ severity }: { severity: NotificationSeverity }) => {
   return (
     <Badge variant="outline" className={colors[severity]}>
       <SeverityIcon severity={severity} />
-      <span className="ml-1 capitalize">{severity}</span>
+      <span className="ml-1">{t(`notifications.list.severityLabels.${severity}`)}</span>
     </Badge>
   )
 }
@@ -111,7 +112,7 @@ const TypeIcon = ({ type }: { type: Notification['type'] }) => {
   }
 }
 
-const StatusBadge = ({ status }: { status: NotificationStatus }) => {
+const StatusBadge = ({ status, t }: { status: NotificationStatus, t: any }) => {
   const colors = {
     unread: 'bg-orange-100 text-orange-800 border-orange-200',
     read: 'bg-green-100 text-green-800 border-green-200',
@@ -123,12 +124,12 @@ const StatusBadge = ({ status }: { status: NotificationStatus }) => {
       {status === 'unread' && '●'}
       {status === 'read' && '✓'}
       {status === 'archived' && '📁'}
-      <span className="ml-1 capitalize">{status}</span>
+      <span className="ml-1">{t(`notifications.list.statusLabels.${status}`)}</span>
     </Badge>
   )
 }
 
-const formatTimeAgo = (timestamp: string): string => {
+const formatTimeAgo = (timestamp: string, t: any): string => {
   const now = new Date()
   const time = new Date(timestamp)
   const diffMs = now.getTime() - time.getTime()
@@ -136,10 +137,10 @@ const formatTimeAgo = (timestamp: string): string => {
   const diffHours = Math.floor(diffMs / (1000 * 60 * 60))
   const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
 
-  if (diffMins < 1) return 'Just now'
-  if (diffMins < 60) return `${diffMins}m ago`
-  if (diffHours < 24) return `${diffHours}h ago`
-  if (diffDays < 7) return `${diffDays}d ago`
+  if (diffMins < 1) return t('notifications.list.justNow')
+  if (diffMins < 60) return t('notifications.list.minutesAgo', { minutes: diffMins })
+  if (diffHours < 24) return t('notifications.list.hoursAgo', { hours: diffHours })
+  if (diffDays < 7) return t('notifications.list.daysAgo', { days: diffDays })
   return time.toLocaleDateString()
 }
 
@@ -149,6 +150,7 @@ export const NotificationsList = ({
   onNotificationUpdate, 
   onBulkAction 
 }: NotificationsListProps) => {
+  const t = useTranslations()
   const [searchTerm, setSearchTerm] = useState('')
   const [statusFilter, setStatusFilter] = useState<NotificationStatus | 'all'>('all')
   const [severityFilter, setSeverityFilter] = useState<NotificationSeverity | 'all'>('all')
@@ -310,21 +312,21 @@ export const NotificationsList = ({
           <CardTitle className="flex items-center justify-between">
             <span className="flex items-center gap-2">
               <Filter className="h-4 w-4" />
-              Filters & Search
+              {t('notifications.list.filtersAndSearch')}
             </span>
             <Button variant="outline" size="sm" onClick={clearFilters}>
-              Clear All
+              {t('notifications.list.clearAll')}
             </Button>
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             <div className="space-y-2">
-              <label className="text-sm font-medium">Search</label>
+              <label className="text-sm font-medium">{t('notifications.list.search')}</label>
               <div className="relative">
                 <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
                 <Input
-                  placeholder="Search notifications..."
+                  placeholder={t('notifications.list.searchPlaceholder')}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="pl-8"
@@ -333,58 +335,58 @@ export const NotificationsList = ({
             </div>
             
             <div className="space-y-2">
-              <label className="text-sm font-medium">Status</label>
+              <label className="text-sm font-medium">{t('notifications.list.status')}</label>
               <Select value={statusFilter} onValueChange={(value: any) => setStatusFilter(value)}>
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">All Status</SelectItem>
-                  <SelectItem value="unread">Unread</SelectItem>
-                  <SelectItem value="read">Read</SelectItem>
-                  <SelectItem value="archived">Archived</SelectItem>
+                  <SelectItem value="all">{t('notifications.list.allStatus')}</SelectItem>
+                  <SelectItem value="unread">{t('notifications.list.statusLabels.unread')}</SelectItem>
+                  <SelectItem value="read">{t('notifications.list.statusLabels.read')}</SelectItem>
+                  <SelectItem value="archived">{t('notifications.list.statusLabels.archived')}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             
             <div className="space-y-2">
-              <label className="text-sm font-medium">Severity</label>
+              <label className="text-sm font-medium">{t('notifications.list.severity')}</label>
               <Select value={severityFilter} onValueChange={(value: any) => setSeverityFilter(value)}>
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">All Severity</SelectItem>
-                  <SelectItem value="critical">Critical</SelectItem>
-                  <SelectItem value="high">High</SelectItem>
-                  <SelectItem value="medium">Medium</SelectItem>
-                  <SelectItem value="low">Low</SelectItem>
+                  <SelectItem value="all">{t('notifications.list.allSeverity')}</SelectItem>
+                  <SelectItem value="critical">{t('notifications.list.severityLabels.critical')}</SelectItem>
+                  <SelectItem value="high">{t('notifications.list.severityLabels.high')}</SelectItem>
+                  <SelectItem value="medium">{t('notifications.list.severityLabels.medium')}</SelectItem>
+                  <SelectItem value="low">{t('notifications.list.severityLabels.low')}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             
             <div className="space-y-2">
-              <label className="text-sm font-medium">Source</label>
+              <label className="text-sm font-medium">{t('notifications.list.source')}</label>
               <Select value={sourceFilter} onValueChange={(value: any) => setSourceFilter(value)}>
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">All Sources</SelectItem>
-                  <SelectItem value="auth">Authentication</SelectItem>
-                  <SelectItem value="access_policies">Access Policies</SelectItem>
-                  <SelectItem value="health">Health Monitor</SelectItem>
-                  <SelectItem value="keycloak">Keycloak</SelectItem>
-                  <SelectItem value="system">System</SelectItem>
-                  <SelectItem value="user_management">User Management</SelectItem>
-                  <SelectItem value="risk_assessment">Risk Assessment</SelectItem>
-                  <SelectItem value="incidents">Incidents</SelectItem>
+                  <SelectItem value="all">{t('notifications.list.allSources')}</SelectItem>
+                  <SelectItem value="auth">{t('notifications.list.sources.auth')}</SelectItem>
+                  <SelectItem value="access_policies">{t('notifications.list.sources.access_policies')}</SelectItem>
+                  <SelectItem value="health">{t('notifications.list.sources.health')}</SelectItem>
+                  <SelectItem value="keycloak">{t('notifications.list.sources.keycloak')}</SelectItem>
+                  <SelectItem value="system">{t('notifications.list.sources.system')}</SelectItem>
+                  <SelectItem value="user_management">{t('notifications.list.sources.user_management')}</SelectItem>
+                  <SelectItem value="risk_assessment">{t('notifications.list.sources.risk_assessment')}</SelectItem>
+                  <SelectItem value="incidents">{t('notifications.list.sources.incidents')}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             
             <div className="space-y-2">
-              <label className="text-sm font-medium">Date Range</label>
+              <label className="text-sm font-medium">{t('notifications.list.dateRange')}</label>
               <DatePickerWithRange
                 value={dateRange}
                 onChange={setDateRange}
@@ -394,19 +396,28 @@ export const NotificationsList = ({
           
           <div className="flex items-center justify-between text-sm text-muted-foreground">
             <span>
-              Showing {paginatedNotifications.length} of {filteredNotifications.length} notifications
-              {filteredNotifications.length !== notifications.length && ` (${notifications.length} total)`}
+              {filteredNotifications.length !== notifications.length 
+                ? t('notifications.list.showingWithTotal', {
+                    showing: paginatedNotifications.length,
+                    filtered: filteredNotifications.length,
+                    total: notifications.length
+                  })
+                : t('notifications.list.showingOf', {
+                    showing: paginatedNotifications.length,
+                    total: filteredNotifications.length
+                  })
+              }
             </span>
             <div className="flex items-center gap-2">
-              <label className="text-sm">Sort by:</label>
+              <label className="text-sm">{t('notifications.list.sortBy')}</label>
               <Select value={sortBy} onValueChange={(value: any) => setSortBy(value)}>
                 <SelectTrigger className="w-32">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="createdAt">Date</SelectItem>
-                  <SelectItem value="severity">Severity</SelectItem>
-                  <SelectItem value="status">Status</SelectItem>
+                  <SelectItem value="createdAt">{t('notifications.list.date')}</SelectItem>
+                  <SelectItem value="severity">{t('notifications.list.severity')}</SelectItem>
+                  <SelectItem value="status">{t('notifications.list.status')}</SelectItem>
                 </SelectContent>
               </Select>
               <Button
@@ -427,7 +438,7 @@ export const NotificationsList = ({
           <CardContent className="pt-4">
             <div className="flex items-center justify-between">
               <span className="text-sm text-muted-foreground">
-                {selectedNotifications.length} notification(s) selected
+                {t('notifications.list.selected', { count: selectedNotifications.length })}
               </span>
               <div className="flex items-center gap-2">
                 <Button
@@ -436,7 +447,7 @@ export const NotificationsList = ({
                   onClick={() => handleBulkAction('mark_read')}
                 >
                   <CheckCircle className="h-4 w-4 mr-1" />
-                  Mark Read
+                  {t('notifications.list.markRead')}
                 </Button>
                 <Button
                   variant="outline"
@@ -444,7 +455,7 @@ export const NotificationsList = ({
                   onClick={() => handleBulkAction('archive')}
                 >
                   <Archive className="h-4 w-4 mr-1" />
-                  Archive
+                  {t('notifications.list.archive')}
                 </Button>
                 <Button
                   variant="outline"
@@ -452,14 +463,14 @@ export const NotificationsList = ({
                   onClick={() => handleBulkAction('delete')}
                 >
                   <Trash2 className="h-4 w-4 mr-1" />
-                  Delete
+                  {t('notifications.list.delete')}
                 </Button>
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={() => setSelectedNotifications([])}
                 >
-                  Clear Selection
+                  {t('notifications.list.clearSelection')}
                 </Button>
               </div>
             </div>
@@ -479,13 +490,13 @@ export const NotificationsList = ({
                     onCheckedChange={handleSelectAll}
                   />
                 </TableHead>
-                <TableHead>Type</TableHead>
-                <TableHead>Title & Description</TableHead>
-                <TableHead>Source</TableHead>
-                <TableHead>Severity</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Time</TableHead>
-                <TableHead className="w-[50px]">Actions</TableHead>
+                <TableHead>{t('notifications.list.type')}</TableHead>
+                <TableHead>{t('notifications.list.titleAndDescription')}</TableHead>
+                <TableHead>{t('notifications.list.source')}</TableHead>
+                <TableHead>{t('notifications.list.severity')}</TableHead>
+                <TableHead>{t('notifications.list.status')}</TableHead>
+                <TableHead>{t('notifications.list.time')}</TableHead>
+                <TableHead className="w-[50px]">{t('notifications.list.actions')}</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -524,15 +535,15 @@ export const NotificationsList = ({
                     </Badge>
                   </TableCell>
                   <TableCell>
-                    <SeverityBadge severity={notification.severity} />
+                    <SeverityBadge severity={notification.severity} t={t} />
                   </TableCell>
                   <TableCell>
-                    <StatusBadge status={notification.status} />
+                    <StatusBadge status={notification.status} t={t} />
                   </TableCell>
                   <TableCell className="text-sm text-gray-500">
-                    <div>{formatTimeAgo(notification.createdAt)}</div>
+                    <div>{formatTimeAgo(notification.createdAt, t)}</div>
                     {notification.readAt && (
-                      <div className="text-xs">Read: {formatTimeAgo(notification.readAt)}</div>
+                      <div className="text-xs">{t('notifications.list.read')} {formatTimeAgo(notification.readAt, t)}</div>
                     )}
                   </TableCell>
                   <TableCell>
@@ -543,20 +554,20 @@ export const NotificationsList = ({
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                        <DropdownMenuLabel>{t('notifications.list.actions')}</DropdownMenuLabel>
                         <DropdownMenuItem onClick={() => handleViewDetails(notification)}>
                           <Eye className="h-4 w-4 mr-2" />
-                          View Details
+                          {t('notifications.list.viewDetails')}
                         </DropdownMenuItem>
                         {notification.status === 'unread' && (
                           <DropdownMenuItem onClick={() => handleNotificationAction(notification, 'read')}>
                             <CheckCircle className="h-4 w-4 mr-2" />
-                            Mark as Read
+                            {t('notifications.list.markAsRead')}
                           </DropdownMenuItem>
                         )}
                         <DropdownMenuItem onClick={() => handleNotificationAction(notification, 'archive')}>
                           <Archive className="h-4 w-4 mr-2" />
-                          Archive
+                          {t('notifications.list.archive')}
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem 
@@ -564,7 +575,7 @@ export const NotificationsList = ({
                           className="text-red-600"
                         >
                           <Trash2 className="h-4 w-4 mr-2" />
-                          Delete
+                          {t('notifications.list.delete')}
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
@@ -577,8 +588,8 @@ export const NotificationsList = ({
           {paginatedNotifications.length === 0 && (
             <div className="text-center py-8 text-gray-500">
               <AlertCircle className="h-12 w-12 mx-auto mb-2" />
-              <p>No notifications found</p>
-              <p className="text-sm">Try adjusting your search filters</p>
+              <p>{t('notifications.list.noNotificationsFound')}</p>
+              <p className="text-sm">{t('notifications.list.tryAdjustingFilters')}</p>
             </div>
           )}
         </CardContent>
@@ -588,7 +599,11 @@ export const NotificationsList = ({
       {totalPages > 1 && (
         <div className="flex items-center justify-between">
           <div className="text-sm text-gray-600">
-            Showing {((currentPage - 1) * pageSize) + 1} to {Math.min(currentPage * pageSize, filteredNotifications.length)} of {filteredNotifications.length} entries
+            {t('notifications.list.showingEntries', {
+              from: ((currentPage - 1) * pageSize) + 1,
+              to: Math.min(currentPage * pageSize, filteredNotifications.length),
+              total: filteredNotifications.length
+            })}
           </div>
           <div className="flex items-center gap-2">
             <Button
@@ -597,10 +612,10 @@ export const NotificationsList = ({
               onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
               disabled={currentPage === 1}
             >
-              Previous
+              {t('notifications.list.previous')}
             </Button>
             <span className="text-sm">
-              Page {currentPage} of {totalPages}
+              {t('notifications.list.pageOf', { current: currentPage, total: totalPages })}
             </span>
             <Button
               variant="outline"
@@ -608,7 +623,7 @@ export const NotificationsList = ({
               onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
               disabled={currentPage === totalPages}
             >
-              Next
+              {t('notifications.list.next')}
             </Button>
           </div>
         </div>

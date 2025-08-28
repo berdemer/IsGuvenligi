@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { useAuth } from '@/hooks/useAuth';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -17,6 +18,7 @@ import {
 } from 'lucide-react';
 
 export default function DashboardPage() {
+  const t = useTranslations('frontpage.dashboard');
   const { user, isAuthenticated } = useAuth();
   const router = useRouter();
 
@@ -70,10 +72,10 @@ export default function DashboardPage() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-semibold text-gray-900">
-              Hoş geldiniz, {user.firstName || user.fullName || user.username}!
+              {t('welcome', { name: user.firstName || user.fullName || user.username })}
             </h1>
             <p className="text-gray-600 mt-1">
-              İş Güvenliği Sistemi Dashboard
+              {t('title')}
             </p>
           </div>
           {hasAdminAccess && (
@@ -82,7 +84,7 @@ export default function DashboardPage() {
               className="bg-red-600 hover:bg-red-700 text-white"
             >
               <Shield className="h-4 w-4 mr-2" />
-              Admin Panel
+              {t('adminPanel')}
               <ArrowRight className="h-4 w-4 ml-2" />
             </Button>
           )}
@@ -93,16 +95,16 @@ export default function DashboardPage() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Zap className="h-5 w-5 text-yellow-600" />
-              Debug Bilgileri (Geliştirme)
+              {t('debugTitle')}
             </CardTitle>
             <CardDescription>
-              Mevcut kullanıcı bilgileri ve yetkileri
+              {t('debugDescription')}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
               <div>
-                <p className="text-sm font-medium text-gray-700">Kullanıcı ID:</p>
+                <p className="text-sm font-medium text-gray-700">{t('userId')}:</p>
                 <p className="text-sm text-gray-600">{user.id}</p>
               </div>
               <div>
@@ -110,11 +112,11 @@ export default function DashboardPage() {
                 <p className="text-sm text-gray-600">{user.email}</p>
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-700">Kullanıcı Adı:</p>
+                <p className="text-sm font-medium text-gray-700">Username:</p>
                 <p className="text-sm text-gray-600">{user.username}</p>
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-700">Roller:</p>
+                <p className="text-sm font-medium text-gray-700">{t('userRoles')}:</p>
                 <div className="flex flex-wrap gap-2 mt-1">
                   {user.roles && user.roles.length > 0 ? (
                     user.roles.map((role, index) => {
@@ -126,14 +128,14 @@ export default function DashboardPage() {
                       );
                     })
                   ) : (
-                    <span className="text-sm text-gray-500">Rol bulunamadı</span>
+                    <span className="text-sm text-gray-500">{t('noRoles')}</span>
                   )}
                 </div>
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-700">Admin Yetkisi:</p>
+                <p className="text-sm font-medium text-gray-700">{t('adminAccess')}:</p>
                 <Badge variant={hasAdminAccess ? 'default' : 'secondary'}>
-                  {hasAdminAccess ? 'VAR' : 'YOK'}
+                  {hasAdminAccess ? t('hasAccess') : t('noAccess')}
                 </Badge>
               </div>
               <div className="mt-4">
@@ -152,15 +154,15 @@ export default function DashboardPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Users className="h-5 w-5 text-blue-600" />
-                Kullanıcı Profili
+                {t('userProfile.title')}
               </CardTitle>
               <CardDescription>
-                Profil bilgilerinizi görüntüleyin ve güncelleyin
+                {t('userProfile.description')}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <Button variant="outline" size="sm">
-                Profili Görüntüle
+                {t('userProfile.button')}
               </Button>
             </CardContent>
           </Card>
@@ -169,15 +171,15 @@ export default function DashboardPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Activity className="h-5 w-5 text-green-600" />
-                Aktivite Geçmişi
+                {t('activityHistory.title')}
               </CardTitle>
               <CardDescription>
-                Son aktivitelerinizi görüntüleyin
+                {t('activityHistory.description')}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <Button variant="outline" size="sm">
-                Geçmişi Görüntüle
+                {t('activityHistory.button')}
               </Button>
             </CardContent>
           </Card>
@@ -186,15 +188,15 @@ export default function DashboardPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Bell className="h-5 w-5 text-orange-600" />
-                Bildirimler
+                {t('notifications.title')}
               </CardTitle>
               <CardDescription>
-                Yeni bildirimlerinizi kontrol edin
+                {t('notifications.description')}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <Button variant="outline" size="sm">
-                Bildirimleri Gör
+                {t('notifications.button')}
               </Button>
             </CardContent>
           </Card>
@@ -206,10 +208,10 @@ export default function DashboardPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-red-800">
                 <Shield className="h-5 w-5" />
-                Yönetici Paneli
+                {t('adminPanelCard.title')}
               </CardTitle>
               <CardDescription className="text-red-700">
-                Sistem yöneticisi olarak admin paneline erişebilirsiniz
+                {t('adminPanelCard.description')}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -219,21 +221,21 @@ export default function DashboardPage() {
                   className="bg-red-600 hover:bg-red-700"
                 >
                   <Shield className="h-4 w-4 mr-2" />
-                  Admin Dashboard
+                  {t('adminPanelCard.dashboardButton')}
                 </Button>
                 <Button 
                   variant="outline"
                   onClick={() => router.push('/admin/users')}
                 >
                   <Users className="h-4 w-4 mr-2" />
-                  Kullanıcı Yönetimi
+                  {t('adminPanelCard.usersButton')}
                 </Button>
                 <Button 
                   variant="outline"
                   onClick={() => router.push('/admin/audit')}
                 >
                   <Activity className="h-4 w-4 mr-2" />
-                  Audit Logları
+                  {t('adminPanelCard.auditButton')}
                 </Button>
               </div>
             </CardContent>

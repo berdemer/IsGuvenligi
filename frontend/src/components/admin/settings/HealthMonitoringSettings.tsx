@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -13,6 +14,7 @@ interface HealthMonitoringSettingsProps {
 }
 
 export default function HealthMonitoringSettings({ onSettingsChange }: HealthMonitoringSettingsProps) {
+  const t = useTranslations('health.monitoring')
   const [config, setConfig] = useState({
     thresholds: {
       cpuWarning: 70,
@@ -54,23 +56,23 @@ export default function HealthMonitoringSettings({ onSettingsChange }: HealthMon
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-5 w-5" />
-            Health Monitoring Thresholds
+            {t('title')}
             {config.monitoring.enabled ? (
-              <Badge variant="default" className="bg-green-500">Enabled</Badge>
+              <Badge variant="default" className="bg-green-500">{t('enabled')}</Badge>
             ) : (
-              <Badge variant="outline">Disabled</Badge>
+              <Badge variant="outline">{t('disabled')}</Badge>
             )}
           </CardTitle>
           <CardDescription>
-            Configure system health monitoring thresholds and alerting
+            {t('description')}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
-              <Label>Enable Health Monitoring</Label>
+              <Label>{t('enableHealthMonitoring')}</Label>
               <p className="text-sm text-muted-foreground">
-                Monitor system resources and performance metrics
+                {t('monitorSystemResources')}
               </p>
             </div>
             <Switch
@@ -84,15 +86,15 @@ export default function HealthMonitoringSettings({ onSettingsChange }: HealthMon
               <div className="space-y-4">
                 <h4 className="font-medium flex items-center gap-2">
                   <AlertTriangle className="h-4 w-4" />
-                  Alert Thresholds
+                  {t('alertThresholds')}
                 </h4>
                 
                 <div className="grid gap-6 md:grid-cols-2">
                   <div className="space-y-4">
-                    <h5 className="font-medium text-sm">CPU Usage (%)</h5>
+                    <h5 className="font-medium text-sm">{t('thresholds.cpuUsage')}</h5>
                     <div className="space-y-2">
                       <div className="flex gap-2 items-center">
-                        <Label htmlFor="cpuWarning" className="text-xs w-16">Warning:</Label>
+                        <Label htmlFor="cpuWarning" className="text-xs w-16">{t('thresholds.warning')}:</Label>
                         <Input
                           id="cpuWarning"
                           type="number"
@@ -105,7 +107,7 @@ export default function HealthMonitoringSettings({ onSettingsChange }: HealthMon
                         <span className="text-xs text-muted-foreground">%</span>
                       </div>
                       <div className="flex gap-2 items-center">
-                        <Label htmlFor="cpuCritical" className="text-xs w-16">Critical:</Label>
+                        <Label htmlFor="cpuCritical" className="text-xs w-16">{t('thresholds.critical')}:</Label>
                         <Input
                           id="cpuCritical"
                           type="number"
@@ -121,10 +123,10 @@ export default function HealthMonitoringSettings({ onSettingsChange }: HealthMon
                   </div>
 
                   <div className="space-y-4">
-                    <h5 className="font-medium text-sm">Memory Usage (%)</h5>
+                    <h5 className="font-medium text-sm">{t('thresholds.memoryUsage')}</h5>
                     <div className="space-y-2">
                       <div className="flex gap-2 items-center">
-                        <Label htmlFor="memoryWarning" className="text-xs w-16">Warning:</Label>
+                        <Label htmlFor="memoryWarning" className="text-xs w-16">{t('thresholds.warning')}:</Label>
                         <Input
                           id="memoryWarning"
                           type="number"
@@ -137,7 +139,7 @@ export default function HealthMonitoringSettings({ onSettingsChange }: HealthMon
                         <span className="text-xs text-muted-foreground">%</span>
                       </div>
                       <div className="flex gap-2 items-center">
-                        <Label htmlFor="memoryCritical" className="text-xs w-16">Critical:</Label>
+                        <Label htmlFor="memoryCritical" className="text-xs w-16">{t('thresholds.critical')}:</Label>
                         <Input
                           id="memoryCritical"
                           type="number"
@@ -153,10 +155,10 @@ export default function HealthMonitoringSettings({ onSettingsChange }: HealthMon
                   </div>
 
                   <div className="space-y-4">
-                    <h5 className="font-medium text-sm">Disk Usage (%)</h5>
+                    <h5 className="font-medium text-sm">{t('thresholds.diskUsage')}</h5>
                     <div className="space-y-2">
                       <div className="flex gap-2 items-center">
-                        <Label htmlFor="diskWarning" className="text-xs w-16">Warning:</Label>
+                        <Label htmlFor="diskWarning" className="text-xs w-16">{t('thresholds.warning')}:</Label>
                         <Input
                           id="diskWarning"
                           type="number"
@@ -169,7 +171,7 @@ export default function HealthMonitoringSettings({ onSettingsChange }: HealthMon
                         <span className="text-xs text-muted-foreground">%</span>
                       </div>
                       <div className="flex gap-2 items-center">
-                        <Label htmlFor="diskCritical" className="text-xs w-16">Critical:</Label>
+                        <Label htmlFor="diskCritical" className="text-xs w-16">{t('thresholds.critical')}:</Label>
                         <Input
                           id="diskCritical"
                           type="number"
@@ -185,10 +187,10 @@ export default function HealthMonitoringSettings({ onSettingsChange }: HealthMon
                   </div>
 
                   <div className="space-y-4">
-                    <h5 className="font-medium text-sm">Response Time (ms)</h5>
+                    <h5 className="font-medium text-sm">{t('thresholds.responseTime')}</h5>
                     <div className="space-y-2">
                       <div className="flex gap-2 items-center">
-                        <Label htmlFor="responseWarning" className="text-xs w-16">Warning:</Label>
+                        <Label htmlFor="responseWarning" className="text-xs w-16">{t('thresholds.warning')}:</Label>
                         <Input
                           id="responseWarning"
                           type="number"
@@ -200,7 +202,7 @@ export default function HealthMonitoringSettings({ onSettingsChange }: HealthMon
                         <span className="text-xs text-muted-foreground">ms</span>
                       </div>
                       <div className="flex gap-2 items-center">
-                        <Label htmlFor="responseCritical" className="text-xs w-16">Critical:</Label>
+                        <Label htmlFor="responseCritical" className="text-xs w-16">{t('thresholds.critical')}:</Label>
                         <Input
                           id="responseCritical"
                           type="number"
@@ -219,12 +221,12 @@ export default function HealthMonitoringSettings({ onSettingsChange }: HealthMon
               <div className="space-y-4">
                 <h4 className="font-medium flex items-center gap-2">
                   <Clock className="h-4 w-4" />
-                  Monitoring Configuration
+                  {t('monitoringConfiguration')}
                 </h4>
                 
                 <div className="grid gap-4 md:grid-cols-2">
                   <div className="space-y-2">
-                    <Label htmlFor="checkInterval">Check Interval (seconds)</Label>
+                    <Label htmlFor="checkInterval">{t('checkIntervalSeconds')}</Label>
                     <Input
                       id="checkInterval"
                       type="number"
@@ -236,7 +238,7 @@ export default function HealthMonitoringSettings({ onSettingsChange }: HealthMon
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="retentionDays">Data Retention (days)</Label>
+                    <Label htmlFor="retentionDays">{t('dataRetentionDays')}</Label>
                     <Input
                       id="retentionDays"
                       type="number"
@@ -249,7 +251,7 @@ export default function HealthMonitoringSettings({ onSettingsChange }: HealthMon
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <Label>Enable Alerting</Label>
+                  <Label>{t('enableAlerting')}</Label>
                   <Switch
                     checked={config.monitoring.alerting}
                     onCheckedChange={(checked) => updateMonitoring('alerting', checked)}

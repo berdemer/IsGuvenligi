@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -360,6 +361,7 @@ const GrafanaDashboardCard: React.FC<GrafanaDashboardCardProps> = ({
 }
 
 export default function PrometheusGrafanaIntegration() {
+  const t = useTranslations('health.monitoring')
   const [prometheusMetrics, setPrometheusMetrics] = useState<PrometheusMetric[]>([])
   const [grafanaDashboards, setGrafanaDashboards] = useState<GrafanaDashboard[]>([])
   const [loading, setLoading] = useState(false)
@@ -481,15 +483,15 @@ export default function PrometheusGrafanaIntegration() {
         <TabsList>
           <TabsTrigger value="prometheus">
             <Database className="h-4 w-4 mr-2" />
-            Prometheus
+            {t('tabs.prometheus')}
           </TabsTrigger>
           <TabsTrigger value="grafana">
             <BarChart3 className="h-4 w-4 mr-2" />
-            Grafana
+            {t('tabs.grafana')}
           </TabsTrigger>
           <TabsTrigger value="configuration">
             <Settings className="h-4 w-4 mr-2" />
-            Configuration
+            {t('tabs.configuration')}
           </TabsTrigger>
         </TabsList>
 

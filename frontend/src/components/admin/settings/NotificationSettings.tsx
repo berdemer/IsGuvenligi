@@ -26,6 +26,7 @@ import {
   Clock
 } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast'
+import { useTranslations } from 'next-intl'
 
 interface NotificationSettingsProps {
   onSettingsChange: (hasChanges: boolean) => void
@@ -172,6 +173,8 @@ const defaultConfig: NotificationConfig = {
 
 export default function NotificationSettings({ onSettingsChange }: NotificationSettingsProps) {
   const { toast } = useToast()
+  const t = useTranslations('settings.notificationSettings')
+  const tCommon = useTranslations('common')
   const [config, setConfig] = useState<NotificationConfig>(defaultConfig)
   const [initialConfig, setInitialConfig] = useState<NotificationConfig>(defaultConfig)
   const [loading, setLoading] = useState(false)
@@ -277,12 +280,12 @@ export default function NotificationSettings({ onSettingsChange }: NotificationS
     <div className="space-y-6">
       <Tabs defaultValue="email" className="space-y-6">
         <TabsList className="grid w-full grid-cols-6">
-          <TabsTrigger value="email">Email</TabsTrigger>
-          <TabsTrigger value="push">Push</TabsTrigger>
-          <TabsTrigger value="sms">SMS</TabsTrigger>
-          <TabsTrigger value="integrations">Integrations</TabsTrigger>
-          <TabsTrigger value="system">System</TabsTrigger>
-          <TabsTrigger value="preferences">Preferences</TabsTrigger>
+          <TabsTrigger value="email">{t('channels.email')}</TabsTrigger>
+          <TabsTrigger value="push">{t('channels.push')}</TabsTrigger>
+          <TabsTrigger value="sms">{t('channels.sms')}</TabsTrigger>
+          <TabsTrigger value="integrations">{tCommon('integrations')}</TabsTrigger>
+          <TabsTrigger value="system">{tCommon('system')}</TabsTrigger>
+          <TabsTrigger value="preferences">{t('preferences.title')}</TabsTrigger>
         </TabsList>
 
         {/* Email Configuration */}
@@ -291,7 +294,7 @@ export default function NotificationSettings({ onSettingsChange }: NotificationS
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Mail className="h-5 w-5" />
-                Email Configuration
+                {t('email.title')}
                 {config.email.enabled ? (
                   <Badge variant="default" className="bg-green-500">Enabled</Badge>
                 ) : (
@@ -299,13 +302,13 @@ export default function NotificationSettings({ onSettingsChange }: NotificationS
                 )}
               </CardTitle>
               <CardDescription>
-                Configure SMTP settings and email templates
+                {t('email.description')}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <Label>Enable Email Notifications</Label>
+                  <Label>{t('email.enabled')}</Label>
                   <p className="text-sm text-muted-foreground">
                     Send notifications via email
                   </p>
@@ -321,11 +324,11 @@ export default function NotificationSettings({ onSettingsChange }: NotificationS
                   <Separator />
                   
                   <div className="space-y-4">
-                    <h4 className="font-medium">SMTP Server Settings</h4>
+                    <h4 className="font-medium">{t('email.smtp.title')}</h4>
                     
                     <div className="grid gap-4 md:grid-cols-2">
                       <div className="space-y-2">
-                        <Label htmlFor="smtpHost">SMTP Host</Label>
+                        <Label htmlFor="smtpHost">{t('email.smtp.host')}</Label>
                         <Input
                           id="smtpHost"
                           value={config.email.smtp.host}
@@ -335,7 +338,7 @@ export default function NotificationSettings({ onSettingsChange }: NotificationS
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="smtpPort">SMTP Port</Label>
+                        <Label htmlFor="smtpPort">{t('email.smtp.port')}</Label>
                         <Input
                           id="smtpPort"
                           type="number"
@@ -348,7 +351,7 @@ export default function NotificationSettings({ onSettingsChange }: NotificationS
 
                     <div className="grid gap-4 md:grid-cols-2">
                       <div className="space-y-2">
-                        <Label htmlFor="smtpUsername">Username</Label>
+                        <Label htmlFor="smtpUsername">{t('email.smtp.username')}</Label>
                         <Input
                           id="smtpUsername"
                           value={config.email.smtp.username}
@@ -358,7 +361,7 @@ export default function NotificationSettings({ onSettingsChange }: NotificationS
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="smtpPassword">Password</Label>
+                        <Label htmlFor="smtpPassword">{t('email.smtp.password')}</Label>
                         <Input
                           id="smtpPassword"
                           type="password"
@@ -371,7 +374,7 @@ export default function NotificationSettings({ onSettingsChange }: NotificationS
 
                     <div className="grid gap-4 md:grid-cols-2">
                       <div className="space-y-2">
-                        <Label htmlFor="fromEmail">From Email</Label>
+                        <Label htmlFor="fromEmail">{t('email.smtp.from')}</Label>
                         <Input
                           id="fromEmail"
                           value={config.email.smtp.from}
@@ -381,7 +384,7 @@ export default function NotificationSettings({ onSettingsChange }: NotificationS
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="fromName">From Name</Label>
+                        <Label htmlFor="fromName">{t('email.smtp.fromName')}</Label>
                         <Input
                           id="fromName"
                           value={config.email.smtp.fromName}
@@ -397,7 +400,7 @@ export default function NotificationSettings({ onSettingsChange }: NotificationS
                         checked={config.email.smtp.secure}
                         onCheckedChange={(checked) => updateSMTP({ secure: checked })}
                       />
-                      <Label htmlFor="smtpSecure">Use SSL/TLS</Label>
+                      <Label htmlFor="smtpSecure">{t('email.smtp.secure')}</Label>
                     </div>
 
                     <div className="flex justify-end">
@@ -407,7 +410,7 @@ export default function NotificationSettings({ onSettingsChange }: NotificationS
                         variant="outline"
                       >
                         {testingEmail ? (
-                          <>Loading...</>
+                          <>{tCommon('loading')}</>
                         ) : (
                           <>
                             <Send className="h-4 w-4 mr-2" />

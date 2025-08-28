@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import {
   Box,
   Container,
@@ -28,21 +29,23 @@ import * as yup from 'yup';
 import { useAuth } from '@/hooks/useAuth';
 import { useSocialProviders } from '@/hooks/useSocialProviders';
 
-const schema = yup.object({
-  username: yup.string().required('Kullanıcı adı gereklidir'),
-  password: yup.string().min(8, 'Şifre en az 8 karakter olmalıdır').required('Şifre gereklidir'),
-});
-
 type LoginForm = {
   username: string;
   password: string;
 };
 
 export default function LoginPage() {
+  const t = useTranslations('frontpage.login');
   const [showPassword, setShowPassword] = useState(false);
   const { login, isLoading, error, isAuthenticated } = useAuth();
   const { socialProviders, isLoading: providersLoading } = useSocialProviders();
   const router = useRouter();
+
+  // Create dynamic schema with translations
+  const schema = yup.object({
+    username: yup.string().required(t('validation.usernameRequired')),
+    password: yup.string().min(8, t('validation.passwordMinLength')).required(t('validation.passwordRequired')),
+  });
 
   const {
     register,
@@ -151,10 +154,10 @@ export default function LoginPage() {
               <Security sx={{ fontSize: 40, color: 'white' }} />
             </Box>
             <Typography variant="h4" component="h1" fontWeight="bold" color="#d32f2f" mb={1}>
-              İş Güvenliği Sistemi
+              {t('title')}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Güvenli çalışma ortamı için giriş yapın
+              {t('subtitle')}
             </Typography>
           </Box>
 
@@ -182,14 +185,14 @@ export default function LoginPage() {
                       },
                     }}
                   >
-                    {provider.displayName} ile Giriş Yap
+                    {t('socialLogin', { provider: provider.displayName })}
                   </Button>
                 ))}
               </Box>
 
               <Divider sx={{ my: 3 }}>
                 <Typography variant="body2" color="text.secondary">
-                  veya
+                  {t('or')}
                 </Typography>
               </Divider>
             </>
@@ -206,7 +209,7 @@ export default function LoginPage() {
           <Box component="form" onSubmit={handleSubmit(onSubmit)}>
             <TextField
               fullWidth
-              label="Kullanıcı Adı"
+              label={t('username')}
               {...register('username')}
               error={!!errors.username}
               helperText={errors.username?.message}
@@ -217,7 +220,7 @@ export default function LoginPage() {
             <TextField
               fullWidth
               type={showPassword ? 'text' : 'password'}
-              label="Şifre"
+              label={t('password')}
               {...register('password')}
               error={!!errors.password}
               helperText={errors.password?.message}
@@ -258,7 +261,7 @@ export default function LoginPage() {
               {isLoading ? (
                 <CircularProgress size={24} color="inherit" />
               ) : (
-                'Giriş Yap'
+                t('loginButton')
               )}
             </Button>
           </Box>
@@ -266,7 +269,7 @@ export default function LoginPage() {
           {/* Footer */}
           <Box textAlign="center" mt={3}>
             <Typography variant="body2" color="text.secondary">
-              © 2024 İş Güvenliği Sistemi - Güvenli çalışma ortamı için tasarlandı
+              {t('footer')}
             </Typography>
           </Box>
         </Paper>
