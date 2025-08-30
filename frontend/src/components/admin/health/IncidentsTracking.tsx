@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect, useMemo } from 'react'
+import { useTranslations } from 'next-intl'
 import ErrorBoundary from './ErrorBoundary'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -74,13 +75,13 @@ interface IncidentsTrackingProps {
 }
 
 // COMPREHENSIVE INCIDENT RESOLUTION DATA - Updated with Keycloak Research 2025-08-26
-const generateMockIncidents = (): HealthIncident[] => [
+const generateMockIncidents = (t: any): HealthIncident[] => [
   {
     id: 'inc-001',
     serviceId: 'keycloak-auth',
     serviceName: 'Keycloak SSO',
-    title: 'Authentication Service Degradation',
-    description: 'High response times and increased error rates detected in authentication service - RESOLVED by service restart',
+    title: t('mockData.incidents.authDegradation.title'),
+    description: t('mockData.incidents.authDegradation.description'),
     severity: 'high' as const,
     status: 'resolved' as const,
     startedAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
@@ -96,14 +97,14 @@ const generateMockIncidents = (): HealthIncident[] => [
         id: 'evt-001',
         timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
         type: 'detected' as const,
-        message: 'Automated alert triggered for high response time',
+        message: t('mockData.timeline.alertTriggered'),
         automated: true
       },
       {
         id: 'evt-002',
         timestamp: new Date(Date.now() - 110 * 60 * 1000).toISOString(),
         type: 'investigating' as const,
-        message: 'Investigation started by on-call engineer',
+        message: t('mockData.timeline.investigationStarted'),
         author: { userId: 'eng-001', username: 'john.doe' },
         automated: false
       },
@@ -111,7 +112,7 @@ const generateMockIncidents = (): HealthIncident[] => [
         id: 'evt-003',
         timestamp: new Date(Date.now() - 90 * 60 * 1000).toISOString(),
         type: 'update' as const,
-        message: 'Identified database connection pool exhaustion as root cause',
+        message: t('mockData.timeline.rootCauseIdentified'),
         author: { userId: 'eng-001', username: 'john.doe' },
         automated: false
       },
@@ -119,7 +120,7 @@ const generateMockIncidents = (): HealthIncident[] => [
         id: 'evt-004',
         timestamp: new Date().toISOString(),
         type: 'resolved' as const,
-        message: 'Service restart completed successfully - Response times normalized',
+        message: t('mockData.timeline.serviceRestarted'),
         author: { userId: 'sys-admin', username: 'claude.ai' },
         automated: true
       }
@@ -129,22 +130,22 @@ const generateMockIncidents = (): HealthIncident[] => [
       downtimeMinutes: 0,
       responseTimeIncrease: 350
     },
-    rootCause: 'Database connection pool exhaustion due to long-running queries',
-    resolution: 'Service restart completed + Keycloak optimization deployed with 4GB memory allocation',
+    rootCause: t('mockData.rootCauses.connectionPool'),
+    resolution: t('mockData.resolutions.serviceRestart'),
     preventionSteps: [
-      'Keycloak memory increased: 2GB → 4GB with G1GC optimization',
-      'Database connection pool: 10 → 50 connections',  
-      'Proactive monitoring: Memory >95% triggers auto-remediation',
-      'Automated service restart for performance degradation',
-      'Complete Docker optimization stack deployed'
+      t('mockData.preventionSteps.keycloakMemory'),
+      t('mockData.preventionSteps.dbConnections'),  
+      t('mockData.preventionSteps.proactiveMonitoring'),
+      t('mockData.preventionSteps.autoRestart'),
+      t('mockData.preventionSteps.dockerOptimization')
     ]
   },
   {
     id: 'inc-002',
     serviceId: 'postgres-primary',
     serviceName: 'PostgreSQL Primary',
-    title: 'Database Backup Failure',
-    description: 'Scheduled database backup failed due to insufficient disk space',
+    title: t('mockData.incidents.backupFailure.title'),
+    description: t('mockData.incidents.backupFailure.description'),
     severity: 'medium' as const,
     status: 'resolved' as const,
     startedAt: new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString(),
@@ -165,14 +166,14 @@ const generateMockIncidents = (): HealthIncident[] => [
         id: 'evt-004',
         timestamp: new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString(),
         type: 'detected' as const,
-        message: 'Backup script failed with disk space error',
+        message: t('mockData.timeline.backupFailed'),
         automated: true
       },
       {
         id: 'evt-005',
         timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(),
         type: 'investigating' as const,
-        message: 'Investigating backup failure',
+        message: t('mockData.timeline.backupInvestigation'),
         author: { userId: 'eng-002', username: 'jane.smith' },
         automated: false
       },
@@ -180,26 +181,26 @@ const generateMockIncidents = (): HealthIncident[] => [
         id: 'evt-006',
         timestamp: new Date(Date.now() - 4 * 60 * 60 * 1000).toISOString(),
         type: 'resolved' as const,
-        message: 'Cleared old log files and reran backup successfully',
+        message: t('mockData.timeline.backupFixed'),
         author: { userId: 'eng-002', username: 'jane.smith' },
         automated: false
       }
     ],
-    rootCause: 'Log files not rotated properly, causing disk space shortage',
-    resolution: 'Cleaned up log files and implemented automated disk cleanup system',
+    rootCause: t('mockData.rootCauses.logRotation'),
+    resolution: t('mockData.resolutions.diskCleanup'),
     preventionSteps: [
-      'Automated disk cleanup script deployed (80% warning, 90% critical)',
-      'Proactive monitoring with auto-remediation enabled',
-      'Daily cleanup job scheduled for backup & log files',
-      'Disk usage alerts integrated into Health & Monitoring system'
+      t('mockData.preventionSteps.diskCleanupScript'),
+      t('mockData.preventionSteps.proactiveAuto'),
+      t('mockData.preventionSteps.dailyCleanup'),
+      t('mockData.preventionSteps.diskAlerts')
     ]
   },
   {
     id: 'inc-003',
     serviceId: 'redis-cache',
     serviceName: 'Redis Cache',
-    title: 'Cache Memory Warning',
-    description: 'Redis memory usage exceeded warning threshold',
+    title: t('mockData.incidents.cacheWarning.title'),
+    description: t('mockData.incidents.cacheWarning.description'),
     severity: 'low' as const,
     status: 'resolved' as const,
     startedAt: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
@@ -220,24 +221,24 @@ const generateMockIncidents = (): HealthIncident[] => [
         id: 'evt-007',
         timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
         type: 'detected' as const,
-        message: 'Memory usage threshold exceeded',
+        message: t('mockData.timeline.memoryThreshold'),
         automated: true
       },
       {
         id: 'evt-008',
         timestamp: new Date(Date.now() - 22 * 60 * 60 * 1000).toISOString(),
         type: 'resolved' as const,
-        message: 'Automatic cache cleanup completed',
+        message: t('mockData.timeline.cacheCleanup'),
         automated: true
       }
     ],
-    rootCause: 'High traffic caused memory usage spike',
-    resolution: 'Deployed optimized Redis configuration with memory limits and LRU eviction',
+    rootCause: t('mockData.rootCauses.highTraffic'),
+    resolution: t('mockData.resolutions.redisOptimization'),
     preventionSteps: [
-      'Redis memory optimized: 1.5GB limit with LRU eviction policy',
-      'Enhanced monitoring with memory usage alerts',
-      'Automated cache cleanup integrated with Health & Monitoring',
-      'Connection pool optimization for better resource management'
+      t('mockData.preventionSteps.redisMemoryOpt'),
+      t('mockData.preventionSteps.enhancedMonitoring'),
+      t('mockData.preventionSteps.autoCacheCleanup'),
+      t('mockData.preventionSteps.connectionPoolOpt')
     ]
   }
 ]
@@ -255,7 +256,7 @@ const getSeverityIcon = (severity: IncidentSeverity) => {
   }
 }
 
-const getSeverityBadge = (severity: IncidentSeverity) => {
+const getSeverityBadge = (severity: IncidentSeverity, t: any) => {
   const variants = {
     critical: 'destructive',
     high: 'destructive',
@@ -265,7 +266,7 @@ const getSeverityBadge = (severity: IncidentSeverity) => {
 
   return (
     <Badge variant={variants[severity]} className="capitalize">
-      {severity}
+      {t(`severity.${severity}`)}
     </Badge>
   )
 }
@@ -282,7 +283,7 @@ const getStatusIcon = (status: IncidentStatus) => {
   }
 }
 
-const getStatusBadge = (status: IncidentStatus) => {
+const getStatusBadge = (status: IncidentStatus, t: any) => {
   const variants = {
     open: 'destructive',
     investigating: 'secondary',
@@ -292,19 +293,19 @@ const getStatusBadge = (status: IncidentStatus) => {
 
   return (
     <Badge variant={variants[status]} className="capitalize">
-      {status}
+      {t(`status.${status}`)}
     </Badge>
   )
 }
 
-const formatDuration = (minutes: number): string => {
-  if (minutes < 60) return `${Math.round(minutes)}m`
+const formatDuration = (minutes: number, t: any): string => {
+  if (minutes < 60) return `${Math.round(minutes)}${t('durations.minutes')}`
   const hours = Math.floor(minutes / 60)
   const mins = Math.round(minutes % 60)
-  return `${hours}h ${mins}m`
+  return `${hours}${t('durations.hours')} ${mins}${t('durations.minutes')}`
 }
 
-const formatTimeAgo = (timestamp: string): string => {
+const formatTimeAgo = (timestamp: string, t: any): string => {
   const now = new Date()
   const time = new Date(timestamp)
   const diffMs = now.getTime() - time.getTime()
@@ -312,9 +313,9 @@ const formatTimeAgo = (timestamp: string): string => {
   const diffHours = Math.floor(diffMs / (1000 * 60 * 60))
   const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
 
-  if (diffMins < 60) return `${diffMins}m ago`
-  if (diffHours < 24) return `${diffHours}h ago`
-  return `${diffDays}d ago`
+  if (diffMins < 60) return `${diffMins}${t('durations.minutesAgo')}`
+  if (diffHours < 24) return `${diffHours}${t('durations.hoursAgo')}`
+  return `${diffDays}${t('durations.daysAgo')}`
 }
 
 interface IncidentTimelineProps {
@@ -322,6 +323,7 @@ interface IncidentTimelineProps {
 }
 
 const IncidentTimeline: React.FC<IncidentTimelineProps> = ({ incident }) => {
+  const t = useTranslations('health.incidentsTracking')
   return (
     <div className="space-y-4">
       {incident.timeline.map((event, index) => (
@@ -354,11 +356,11 @@ const IncidentTimeline: React.FC<IncidentTimelineProps> = ({ incident }) => {
                 {event.type.replace('_', ' ')}
               </span>
               <span className="text-xs text-muted-foreground">
-                {formatTimeAgo(event.timestamp)}
+                {formatTimeAgo(event.timestamp, t)}
               </span>
               {event.automated && (
                 <Badge variant="outline" className="text-xs">
-                  Auto
+                  {t('timeline.auto')}
                 </Badge>
               )}
             </div>
@@ -367,7 +369,7 @@ const IncidentTimeline: React.FC<IncidentTimelineProps> = ({ incident }) => {
             </p>
             {event.author && (
               <p className="text-xs text-muted-foreground">
-                by {event.author.username}
+                {t('timeline.by')} {event.author.username}
               </p>
             )}
           </div>
@@ -383,6 +385,7 @@ interface CreateIncidentDialogProps {
 }
 
 const CreateIncidentDialog: React.FC<CreateIncidentDialogProps> = ({ onClose, onCreate }) => {
+  const t = useTranslations('health.incidentsTracking')
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -393,7 +396,7 @@ const CreateIncidentDialog: React.FC<CreateIncidentDialogProps> = ({ onClose, on
 
   const handleSubmit = () => {
     if (!formData.title.trim() || !formData.description.trim()) {
-      toast.error('Title and description are required')
+      toast.error(t('toast.titleRequired'))
       return
     }
 
@@ -415,26 +418,26 @@ const CreateIncidentDialog: React.FC<CreateIncidentDialogProps> = ({ onClose, on
   return (
     <DialogContent className="sm:max-w-[500px]">
       <DialogHeader>
-        <DialogTitle>Create New Incident</DialogTitle>
+        <DialogTitle>{t('dialog.createTitle')}</DialogTitle>
         <DialogDescription>
-          Report a new incident or system issue
+          {t('dialog.createDescription')}
         </DialogDescription>
       </DialogHeader>
       
       <div className="space-y-4 py-4">
         <div className="space-y-2">
-          <label className="text-sm font-medium">Title</label>
+          <label className="text-sm font-medium">{t('dialog.fields.title')}</label>
           <Input
-            placeholder="Brief incident title"
+            placeholder={t('dialog.placeholders.title')}
             value={formData.title}
             onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
           />
         </div>
         
         <div className="space-y-2">
-          <label className="text-sm font-medium">Description</label>
+          <label className="text-sm font-medium">{t('dialog.fields.description')}</label>
           <Textarea
-            placeholder="Detailed description of the incident"
+            placeholder={t('dialog.placeholders.description')}
             value={formData.description}
             onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
             rows={3}
@@ -443,7 +446,7 @@ const CreateIncidentDialog: React.FC<CreateIncidentDialogProps> = ({ onClose, on
         
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
-            <label className="text-sm font-medium">Severity</label>
+            <label className="text-sm font-medium">{t('dialog.fields.severity')}</label>
             <Select 
               value={formData.severity} 
               onValueChange={(value) => setFormData(prev => ({ ...prev, severity: value as IncidentSeverity }))}
@@ -452,16 +455,16 @@ const CreateIncidentDialog: React.FC<CreateIncidentDialogProps> = ({ onClose, on
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="low">Low</SelectItem>
-                <SelectItem value="medium">Medium</SelectItem>
-                <SelectItem value="high">High</SelectItem>
-                <SelectItem value="critical">Critical</SelectItem>
+                <SelectItem value="low">{t('severity.low')}</SelectItem>
+                <SelectItem value="medium">{t('severity.medium')}</SelectItem>
+                <SelectItem value="high">{t('severity.high')}</SelectItem>
+                <SelectItem value="critical">{t('severity.critical')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
           
           <div className="space-y-2">
-            <label className="text-sm font-medium">User Impact</label>
+            <label className="text-sm font-medium">{t('dialog.fields.userImpact')}</label>
             <Select 
               value={formData.userImpact} 
               onValueChange={(value) => setFormData(prev => ({ ...prev, userImpact: value as any }))}
@@ -470,31 +473,31 @@ const CreateIncidentDialog: React.FC<CreateIncidentDialogProps> = ({ onClose, on
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="none">None</SelectItem>
-                <SelectItem value="minimal">Minimal</SelectItem>
-                <SelectItem value="moderate">Moderate</SelectItem>
-                <SelectItem value="severe">Severe</SelectItem>
+                <SelectItem value="none">{t('userImpact.none')}</SelectItem>
+                <SelectItem value="minimal">{t('userImpact.minimal')}</SelectItem>
+                <SelectItem value="moderate">{t('userImpact.moderate')}</SelectItem>
+                <SelectItem value="severe">{t('userImpact.severe')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
         </div>
         
         <div className="space-y-2">
-          <label className="text-sm font-medium">Affected Service (Optional)</label>
+          <label className="text-sm font-medium">{t('dialog.fields.affectedService')}</label>
           <Select 
             value={formData.serviceId} 
             onValueChange={(value) => setFormData(prev => ({ ...prev, serviceId: value }))}
           >
             <SelectTrigger>
-              <SelectValue placeholder="Select a service" />
+              <SelectValue placeholder={t('dialog.placeholders.selectService')} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="none">None</SelectItem>
-              <SelectItem value="api-gateway">API Gateway</SelectItem>
-              <SelectItem value="postgres-primary">PostgreSQL Primary</SelectItem>
-              <SelectItem value="redis-cache">Redis Cache</SelectItem>
-              <SelectItem value="keycloak-auth">Keycloak SSO</SelectItem>
-              <SelectItem value="notification-service">Notification Service</SelectItem>
+              <SelectItem value="none">{t('services.none')}</SelectItem>
+              <SelectItem value="api-gateway">{t('services.apiGateway')}</SelectItem>
+              <SelectItem value="postgres-primary">{t('services.postgresqlPrimary')}</SelectItem>
+              <SelectItem value="redis-cache">{t('services.redisCache')}</SelectItem>
+              <SelectItem value="keycloak-auth">{t('services.keycloakSSO')}</SelectItem>
+              <SelectItem value="notification-service">{t('services.notificationService')}</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -502,10 +505,10 @@ const CreateIncidentDialog: React.FC<CreateIncidentDialogProps> = ({ onClose, on
       
       <DialogFooter>
         <Button variant="outline" onClick={onClose}>
-          Cancel
+          {t('buttons.cancel')}
         </Button>
         <Button onClick={handleSubmit}>
-          Create Incident
+          {t('buttons.createIncident')}
         </Button>
       </DialogFooter>
     </DialogContent>
@@ -513,6 +516,7 @@ const CreateIncidentDialog: React.FC<CreateIncidentDialogProps> = ({ onClose, on
 }
 
 export default function IncidentsTracking({ loading, timeRange }: IncidentsTrackingProps) {
+  const t = useTranslations('health.incidentsTracking')
   const [incidents, setIncidents] = useState<HealthIncident[]>([])
   const [selectedIncident, setSelectedIncident] = useState<HealthIncident | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
@@ -544,16 +548,16 @@ export default function IncidentsTracking({ loading, timeRange }: IncidentsTrack
     try {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 800))
-      const mockIncidents = generateMockIncidents()
+      const mockIncidents = generateMockIncidents(t)
       setIncidents(mockIncidents)
     } catch (error) {
-      toast.error('Failed to load incidents')
+      toast.error(t('toast.loadFailed'))
     }
   }
 
   const handleCreateIncident = async (incidentData: Partial<HealthIncident>) => {
     try {
-      toast.loading('Creating incident...', { id: 'create-incident' })
+      toast.loading(t('toast.creating'), { id: 'create-incident' })
       
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000))
@@ -574,27 +578,27 @@ export default function IncidentsTracking({ loading, timeRange }: IncidentsTrack
           id: `evt-${Date.now()}`,
           timestamp: new Date().toISOString(),
           type: 'detected',
-          message: 'Incident reported manually',
+          message: t('mockData.timeline.manualReport'),
           automated: false,
           author: { userId: 'current-user', username: 'admin' }
         }]
       }
       
       setIncidents(prev => [newIncident, ...prev])
-      toast.success('Incident created successfully', { id: 'create-incident' })
+      toast.success(t('toast.createSuccess'), { id: 'create-incident' })
     } catch (error) {
-      toast.error('Failed to create incident', { id: 'create-incident' })
+      toast.error(t('toast.createFailed'), { id: 'create-incident' })
     }
   }
 
   const handleExportReport = async () => {
     try {
-      toast.loading('Generating incident report...', { id: 'export' })
+      toast.loading(t('toast.exporting'), { id: 'export' })
       // Simulate export
       await new Promise(resolve => setTimeout(resolve, 2000))
-      toast.success('Incident report exported successfully', { id: 'export' })
+      toast.success(t('toast.exportSuccess'), { id: 'export' })
     } catch (error) {
-      toast.error('Failed to export incident report', { id: 'export' })
+      toast.error(t('toast.exportFailed'), { id: 'export' })
     }
   }
 
@@ -617,7 +621,7 @@ export default function IncidentsTracking({ loading, timeRange }: IncidentsTrack
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Incidents</CardTitle>
+          <CardTitle>{t('title')}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -646,7 +650,7 @@ export default function IncidentsTracking({ loading, timeRange }: IncidentsTrack
           <CardContent className="p-4">
             <div className="text-center">
               <div className="text-2xl font-bold">{stats.total}</div>
-              <div className="text-xs text-muted-foreground">Total Incidents</div>
+              <div className="text-xs text-muted-foreground">{t('stats.totalIncidents')}</div>
             </div>
           </CardContent>
         </Card>
@@ -655,7 +659,7 @@ export default function IncidentsTracking({ loading, timeRange }: IncidentsTrack
           <CardContent className="p-4">
             <div className="text-center">
               <div className="text-2xl font-bold text-red-600">{stats.open}</div>
-              <div className="text-xs text-muted-foreground">Open</div>
+              <div className="text-xs text-muted-foreground">{t('stats.open')}</div>
             </div>
           </CardContent>
         </Card>
@@ -664,7 +668,7 @@ export default function IncidentsTracking({ loading, timeRange }: IncidentsTrack
           <CardContent className="p-4">
             <div className="text-center">
               <div className="text-2xl font-bold text-yellow-600">{stats.investigating}</div>
-              <div className="text-xs text-muted-foreground">Investigating</div>
+              <div className="text-xs text-muted-foreground">{t('stats.investigating')}</div>
             </div>
           </CardContent>
         </Card>
@@ -673,7 +677,7 @@ export default function IncidentsTracking({ loading, timeRange }: IncidentsTrack
           <CardContent className="p-4">
             <div className="text-center">
               <div className="text-2xl font-bold text-green-600">{stats.resolved}</div>
-              <div className="text-xs text-muted-foreground">Resolved</div>
+              <div className="text-xs text-muted-foreground">{t('stats.resolved')}</div>
             </div>
           </CardContent>
         </Card>
@@ -681,8 +685,8 @@ export default function IncidentsTracking({ loading, timeRange }: IncidentsTrack
         <Card>
           <CardContent className="p-4">
             <div className="text-center">
-              <div className="text-2xl font-bold">{formatDuration(stats.avgResolutionTime)}</div>
-              <div className="text-xs text-muted-foreground">Avg Resolution</div>
+              <div className="text-2xl font-bold">{formatDuration(stats.avgResolutionTime, t)}</div>
+              <div className="text-xs text-muted-foreground">{t('stats.avgResolution')}</div>
             </div>
           </CardContent>
         </Card>
@@ -694,7 +698,7 @@ export default function IncidentsTracking({ loading, timeRange }: IncidentsTrack
           <div className="relative">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
-              placeholder="Search incidents..."
+              placeholder={t('search.placeholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-9 w-full sm:w-80"
@@ -706,11 +710,11 @@ export default function IncidentsTracking({ loading, timeRange }: IncidentsTrack
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All Status</SelectItem>
-              <SelectItem value="open">Open</SelectItem>
-              <SelectItem value="investigating">Investigating</SelectItem>
-              <SelectItem value="resolved">Resolved</SelectItem>
-              <SelectItem value="closed">Closed</SelectItem>
+              <SelectItem value="all">{t('search.allStatus')}</SelectItem>
+              <SelectItem value="open">{t('status.open')}</SelectItem>
+              <SelectItem value="investigating">{t('status.investigating')}</SelectItem>
+              <SelectItem value="resolved">{t('status.resolved')}</SelectItem>
+              <SelectItem value="closed">{t('status.closed')}</SelectItem>
             </SelectContent>
           </Select>
           
@@ -719,11 +723,11 @@ export default function IncidentsTracking({ loading, timeRange }: IncidentsTrack
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All Severity</SelectItem>
-              <SelectItem value="critical">Critical</SelectItem>
-              <SelectItem value="high">High</SelectItem>
-              <SelectItem value="medium">Medium</SelectItem>
-              <SelectItem value="low">Low</SelectItem>
+              <SelectItem value="all">{t('search.allSeverity')}</SelectItem>
+              <SelectItem value="critical">{t('severity.critical')}</SelectItem>
+              <SelectItem value="high">{t('severity.high')}</SelectItem>
+              <SelectItem value="medium">{t('severity.medium')}</SelectItem>
+              <SelectItem value="low">{t('severity.low')}</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -731,14 +735,14 @@ export default function IncidentsTracking({ loading, timeRange }: IncidentsTrack
         <div className="flex items-center gap-2">
           <Button variant="outline" size="sm" onClick={handleExportReport}>
             <Download className="h-4 w-4 mr-2" />
-            Export Report
+            {t('buttons.exportReport')}
           </Button>
           
           <Dialog open={showCreateDialog} onOpenChange={setShowCreateDialog}>
             <DialogTrigger asChild>
               <Button size="sm">
                 <Plus className="h-4 w-4 mr-2" />
-                New Incident
+                {t('buttons.newIncident')}
               </Button>
             </DialogTrigger>
             <CreateIncidentDialog 
@@ -752,23 +756,23 @@ export default function IncidentsTracking({ loading, timeRange }: IncidentsTrack
       {/* Incidents Table */}
       <Card>
         <CardHeader>
-          <CardTitle>Incidents Timeline</CardTitle>
+          <CardTitle>{t('title')}</CardTitle>
           <CardDescription>
-            Track and manage system incidents and outages
+            {t('description')}
           </CardDescription>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Incident</TableHead>
-                <TableHead>Service</TableHead>
-                <TableHead>Severity</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Duration</TableHead>
-                <TableHead>Impact</TableHead>
-                <TableHead>Started</TableHead>
-                <TableHead>Actions</TableHead>
+                <TableHead>{t('table.headers.incident')}</TableHead>
+                <TableHead>{t('table.headers.service')}</TableHead>
+                <TableHead>{t('table.headers.severity')}</TableHead>
+                <TableHead>{t('table.headers.status')}</TableHead>
+                <TableHead>{t('table.headers.duration')}</TableHead>
+                <TableHead>{t('table.headers.impact')}</TableHead>
+                <TableHead>{t('table.headers.started')}</TableHead>
+                <TableHead>{t('table.headers.actions')}</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -790,36 +794,36 @@ export default function IncidentsTracking({ loading, timeRange }: IncidentsTrack
                         <span className="text-sm">{incident.serviceName}</span>
                       </div>
                     ) : (
-                      <span className="text-xs text-muted-foreground">System-wide</span>
+                      <span className="text-xs text-muted-foreground">{t('impact.systemWide')}</span>
                     )}
                   </TableCell>
                   
                   <TableCell>
                     <div className="flex items-center gap-2">
                       {getSeverityIcon(incident.severity)}
-                      {getSeverityBadge(incident.severity)}
+                      {getSeverityBadge(incident.severity, t)}
                     </div>
                   </TableCell>
                   
                   <TableCell>
                     <div className="flex items-center gap-2">
                       {getStatusIcon(incident.status)}
-                      {getStatusBadge(incident.status)}
+                      {getStatusBadge(incident.status, t)}
                     </div>
                   </TableCell>
                   
                   <TableCell>
                     <div className="text-sm">
-                      {incident.duration ? formatDuration(incident.duration) : 'Ongoing'}
+                      {incident.duration ? formatDuration(incident.duration, t) : t('durations.ongoing')}
                     </div>
                   </TableCell>
                   
                   <TableCell>
                     <div className="text-sm">
-                      <div className="capitalize">{incident.impact.userImpact}</div>
+                      <div className="capitalize">{t(`userImpact.${incident.impact.userImpact}`)}</div>
                       {incident.impact.estimatedUsers > 0 && (
                         <div className="text-xs text-muted-foreground">
-                          ~{incident.impact.estimatedUsers} users
+                          ~{incident.impact.estimatedUsers} {t('impact.users')}
                         </div>
                       )}
                     </div>
@@ -827,7 +831,7 @@ export default function IncidentsTracking({ loading, timeRange }: IncidentsTrack
                   
                   <TableCell>
                     <div className="text-sm">
-                      {formatTimeAgo(incident.startedAt)}
+                      {formatTimeAgo(incident.startedAt, t)}
                     </div>
                   </TableCell>
                   
@@ -840,7 +844,7 @@ export default function IncidentsTracking({ loading, timeRange }: IncidentsTrack
                           onClick={() => setSelectedIncident(incident)}
                         >
                           <Eye className="h-4 w-4 mr-1" />
-                          Details
+                          {t('buttons.details')}
                         </Button>
                       </DialogTrigger>
                       
@@ -851,7 +855,7 @@ export default function IncidentsTracking({ loading, timeRange }: IncidentsTrack
                             {selectedIncident?.title}
                           </DialogTitle>
                           <DialogDescription>
-                            Incident #{selectedIncident?.id} • Started {selectedIncident && formatTimeAgo(selectedIncident.startedAt)}
+                            Incident #{selectedIncident?.id} • Started {selectedIncident && formatTimeAgo(selectedIncident.startedAt, t)}
                           </DialogDescription>
                         </DialogHeader>
                         
@@ -860,36 +864,36 @@ export default function IncidentsTracking({ loading, timeRange }: IncidentsTrack
                             {/* Status and Metadata */}
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                               <div>
-                                <div className="text-xs text-muted-foreground">Status</div>
+                                <div className="text-xs text-muted-foreground">{t('detail.sections.status')}</div>
                                 <div className="flex items-center gap-1 mt-1">
                                   {getStatusIcon(selectedIncident.status)}
-                                  {getStatusBadge(selectedIncident.status)}
+                                  {getStatusBadge(selectedIncident.status, t)}
                                 </div>
                               </div>
                               <div>
-                                <div className="text-xs text-muted-foreground">Severity</div>
+                                <div className="text-xs text-muted-foreground">{t('detail.sections.severity')}</div>
                                 <div className="flex items-center gap-1 mt-1">
                                   {getSeverityIcon(selectedIncident.severity)}
-                                  {getSeverityBadge(selectedIncident.severity)}
+                                  {getSeverityBadge(selectedIncident.severity, t)}
                                 </div>
                               </div>
                               <div>
-                                <div className="text-xs text-muted-foreground">Duration</div>
+                                <div className="text-xs text-muted-foreground">{t('detail.sections.duration')}</div>
                                 <div className="font-medium mt-1">
-                                  {selectedIncident.duration ? formatDuration(selectedIncident.duration) : 'Ongoing'}
+                                  {selectedIncident.duration ? formatDuration(selectedIncident.duration, t) : t('durations.ongoing')}
                                 </div>
                               </div>
                               <div>
-                                <div className="text-xs text-muted-foreground">Impact</div>
+                                <div className="text-xs text-muted-foreground">{t('detail.sections.impact')}</div>
                                 <div className="font-medium mt-1 capitalize">
-                                  {selectedIncident.impact.userImpact}
+                                  {t(`userImpact.${selectedIncident.impact.userImpact}`)}
                                 </div>
                               </div>
                             </div>
                             
                             {/* Description */}
                             <div>
-                              <h4 className="font-medium mb-2">Description</h4>
+                              <h4 className="font-medium mb-2">{t('detail.sections.description')}</h4>
                               <p className="text-sm text-muted-foreground">
                                 {selectedIncident.description}
                               </p>
@@ -900,7 +904,7 @@ export default function IncidentsTracking({ loading, timeRange }: IncidentsTrack
                               <div className="space-y-4">
                                 {selectedIncident.rootCause && (
                                   <div>
-                                    <h4 className="font-medium mb-2">Root Cause</h4>
+                                    <h4 className="font-medium mb-2">{t('detail.sections.rootCause')}</h4>
                                     <p className="text-sm text-muted-foreground">
                                       {selectedIncident.rootCause}
                                     </p>
@@ -909,7 +913,7 @@ export default function IncidentsTracking({ loading, timeRange }: IncidentsTrack
                                 
                                 {selectedIncident.resolution && (
                                   <div>
-                                    <h4 className="font-medium mb-2">Resolution</h4>
+                                    <h4 className="font-medium mb-2">{t('detail.sections.resolution')}</h4>
                                     <p className="text-sm text-muted-foreground">
                                       {selectedIncident.resolution}
                                     </p>
@@ -920,7 +924,7 @@ export default function IncidentsTracking({ loading, timeRange }: IncidentsTrack
                             
                             {/* Timeline */}
                             <div>
-                              <h4 className="font-medium mb-4">Timeline</h4>
+                              <h4 className="font-medium mb-4">{t('detail.sections.timeline')}</h4>
                               <IncidentTimeline incident={selectedIncident} />
                             </div>
                           </div>
@@ -936,11 +940,11 @@ export default function IncidentsTracking({ loading, timeRange }: IncidentsTrack
           {filteredIncidents.length === 0 && (
             <div className="text-center py-8 text-muted-foreground">
               <AlertTriangle className="h-12 w-12 mx-auto mb-4 opacity-50" />
-              <p className="text-lg font-medium">No incidents found</p>
+              <p className="text-lg font-medium">{t('empty.noIncidents')}</p>
               <p className="text-sm">
                 {searchTerm || statusFilter !== 'all' || severityFilter !== 'all' ? 
-                  'Try adjusting your filters' : 
-                  'No incidents have been reported'
+                  t('empty.tryFilters') : 
+                  t('empty.noReported')
                 }
               </p>
             </div>

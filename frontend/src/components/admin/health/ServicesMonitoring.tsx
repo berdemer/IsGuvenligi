@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -104,16 +105,16 @@ const getStatusBadge = (status: ServiceStatus) => {
   )
 }
 
-const formatLastCheck = (timestamp: string): string => {
+const formatLastCheck = (timestamp: string, t: any): string => {
   const now = new Date()
   const time = new Date(timestamp)
   const diffMs = now.getTime() - time.getTime()
   const diffMins = Math.floor(diffMs / (1000 * 60))
   
-  if (diffMins < 1) return 'Just now'
-  if (diffMins < 60) return `${diffMins}m ago`
+  if (diffMins < 1) return t('timeFormats.justNow')
+  if (diffMins < 60) return t('timeFormats.minutesAgo', { minutes: diffMins })
   const diffHours = Math.floor(diffMins / 60)
-  if (diffHours < 24) return `${diffHours}h ago`
+  if (diffHours < 24) return t('timeFormats.hoursAgo', { hours: diffHours })
   return time.toLocaleDateString('en-US', {
     year: 'numeric',
     month: '2-digit',
@@ -128,6 +129,8 @@ interface ServiceDetailProps {
 }
 
 const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
+  const t = useTranslations('health.servicesMonitoring')
+  const tCommon = useTranslations('health.common')
   const [actionLoading, setActionLoading] = useState<string | null>(null)
 
   const handleServiceAction = async (action: string) => {
@@ -138,17 +141,17 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
       
       switch (action) {
         case 'restart':
-          toast.success(`${service.name} restarted successfully`)
+          toast.success(t('toasts.restarted', { serviceName: service.name }))
           break
         case 'clear_cache':
-          toast.success(`${service.name} cache cleared`)
+          toast.success(t('toasts.cacheCleared', { serviceName: service.name }))
           break
         case 'health_check':
-          toast.success(`Health check completed for ${service.name}`)
+          toast.success(t('toasts.healthCheckCompleted', { serviceName: service.name }))
           break
       }
     } catch (error) {
-      toast.error(`Failed to ${action} ${service.name}`)
+      toast.error(t('toasts.actionFailed', { serviceName: service.name, action }))
     } finally {
       setActionLoading(null)
     }
@@ -166,8 +169,8 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
     id: service.lastIncident.id,
     serviceId: service.id,
     serviceName: service.name,
-    title: `Service Degradation`,
-    description: `${service.name} experienced performance issues`,
+    title: t('mockData.serviceTitle'),
+    description: t('mockData.serviceDescription', { serviceName: service.name }),
     severity: service.lastIncident.impact,
     status: 'resolved' as const,
     startedAt: service.lastIncident.timestamp,
@@ -191,11 +194,11 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
         <div className="flex-1">
           <h3 className="text-lg font-semibold">{service.name}</h3>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <span>Type: {service.type}</span>
+            <span>{t('serviceDetail.type')}: {service.type}</span>
             {service.version && (
               <>
                 <span>•</span>
-                <span>Version: {service.version}</span>
+                <span>{t('serviceDetail.version')}: {service.version}</span>
               </>
             )}
           </div>
@@ -214,7 +217,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
               <div className="text-2xl font-bold text-green-600">
                 {service.uptime.toFixed(2)}%
               </div>
-              <div className="text-xs text-muted-foreground">Uptime (7d)</div>
+              <div className="text-xs text-muted-foreground">{t('serviceDetail.metrics.uptime7d')}</div>
             </div>
           </CardContent>
         </Card>
@@ -225,7 +228,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
               <div className="text-2xl font-bold">
                 {service.avgLatency}ms
               </div>
-              <div className="text-xs text-muted-foreground">Avg Latency</div>
+              <div className="text-xs text-muted-foreground">{t('serviceDetail.metrics.avgLatency')}</div>
             </div>
           </CardContent>
         </Card>
@@ -239,7 +242,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
               }`}>
                 {service.errorRate.toFixed(2)}%
               </div>
-              <div className="text-xs text-muted-foreground">Error Rate</div>
+              <div className="text-xs text-muted-foreground">{t('serviceDetail.metrics.errorRate')}</div>
             </div>
           </CardContent>
         </Card>
@@ -253,7 +256,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
               }`}>
                 {service.healthScore}/100
               </div>
-              <div className="text-xs text-muted-foreground">Health Score</div>
+              <div className="text-xs text-muted-foreground">{t('serviceDetail.metrics.healthScore')}</div>
             </div>
           </CardContent>
         </Card>
@@ -262,7 +265,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
       {/* Health Metrics */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Current Metrics</CardTitle>
+          <CardTitle className="text-base">{t('serviceDetail.currentMetrics')}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -282,8 +285,8 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
                         }
                         className="text-xs"
                       >
-                        {metric.value >= metric.threshold.critical ? 'Critical' :
-                         metric.value >= metric.threshold.warning ? 'Warning' : 'Good'}
+                        {metric.value >= metric.threshold.critical ? tCommon('critical') :
+                         metric.value >= metric.threshold.warning ? tCommon('warning') : tCommon('good')}
                       </Badge>
                     )}
                   </div>
@@ -304,9 +307,9 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
       {dependencies.length > 0 && (
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">Dependencies</CardTitle>
+            <CardTitle className="text-base">{t('serviceDetail.dependencies.title')}</CardTitle>
             <CardDescription>
-              Services that this service depends on
+              {t('serviceDetail.dependencies.description')}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -329,7 +332,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
       {recentIncidents.length > 0 && (
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">Recent Incidents</CardTitle>
+            <CardTitle className="text-base">{t('serviceDetail.recentIncidents.title')}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
@@ -343,9 +346,9 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
                     {incident.description}
                   </p>
                   <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                    <span>Duration: {incident.duration}min</span>
-                    <span>Impact: {incident.impact.userImpact}</span>
-                    <span>Status: {incident.status}</span>
+                    <span>{t('serviceDetail.recentIncidents.duration')}: {incident.duration}min</span>
+                    <span>{t('serviceDetail.recentIncidents.impact')}: {incident.impact.userImpact}</span>
+                    <span>{t('serviceDetail.recentIncidents.status')}: {incident.status}</span>
                   </div>
                 </div>
               ))}
@@ -357,9 +360,9 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
       {/* Service Actions */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Service Actions</CardTitle>
+          <CardTitle className="text-base">{t('serviceDetail.serviceActions.title')}</CardTitle>
           <CardDescription>
-            Administrative actions for this service
+            {t('serviceDetail.serviceActions.description')}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -375,7 +378,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
               ) : (
                 <Activity className="h-4 w-4 mr-2" />
               )}
-              Health Check
+              {t('actions.healthCheck')}
             </Button>
             
             <Button 
@@ -389,7 +392,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
               ) : (
                 <Trash2 className="h-4 w-4 mr-2" />
               )}
-              Clear Cache
+              {t('actions.clearCache')}
             </Button>
             
             <Button 
@@ -404,7 +407,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }) => {
               ) : (
                 <Power className="h-4 w-4 mr-2" />
               )}
-              Restart Service
+              {t('actions.restart')}
             </Button>
           </div>
         </CardContent>
@@ -419,6 +422,7 @@ export default function ServicesMonitoring({
   showUnhealthyOnly,
   onToggleFilter
 }: ServicesMonitoringProps) {
+  const t = useTranslations('health.servicesMonitoring')
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedService, setSelectedService] = useState<ServiceHealth | null>(null)
 
@@ -435,16 +439,16 @@ export default function ServicesMonitoring({
 
   const handleServiceAction = async (serviceId: string, action: string) => {
     try {
-      toast.loading(`Performing ${action} on service...`, { id: `${serviceId}-${action}` })
+      toast.loading(t('toasts.actionLoading', { action }), { id: `${serviceId}-${action}` })
       
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000))
       
-      toast.success(`Service ${action} completed successfully`, { 
+      toast.success(t('toasts.actionSuccess', { action }), { 
         id: `${serviceId}-${action}` 
       })
     } catch (error) {
-      toast.error(`Failed to ${action} service`, { 
+      toast.error(t('toasts.actionError', { action }), { 
         id: `${serviceId}-${action}` 
       })
     }
@@ -454,7 +458,7 @@ export default function ServicesMonitoring({
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Services Status</CardTitle>
+          <CardTitle>{t('loading.title')}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -481,7 +485,7 @@ export default function ServicesMonitoring({
         <div className="relative">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
-            placeholder="Search services..."
+            placeholder={t('searchPlaceholder')}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="pl-9 w-full sm:w-80"
@@ -496,12 +500,12 @@ export default function ServicesMonitoring({
               onCheckedChange={onToggleFilter}
             />
             <label htmlFor="unhealthy-only" className="text-sm">
-              Show unhealthy only
+              {t('showUnhealthyOnly')}
             </label>
           </div>
           
           <div className="text-sm text-muted-foreground">
-            {filteredServices.length} of {services.length} services
+            {t('servicesCountFiltered', { filtered: filteredServices.length, total: services.length })}
           </div>
         </div>
       </div>
@@ -509,22 +513,22 @@ export default function ServicesMonitoring({
       {/* Services Table */}
       <Card>
         <CardHeader>
-          <CardTitle>Service Status</CardTitle>
+          <CardTitle>{t('title')}</CardTitle>
           <CardDescription>
-            Real-time health status of all system services
+            {t('description')}
           </CardDescription>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Service</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Last Check</TableHead>
-                <TableHead>Latency</TableHead>
-                <TableHead>Error Rate</TableHead>
-                <TableHead>Uptime</TableHead>
-                <TableHead>Actions</TableHead>
+                <TableHead>{t('table.service')}</TableHead>
+                <TableHead>{t('table.status')}</TableHead>
+                <TableHead>{t('table.lastCheck')}</TableHead>
+                <TableHead>{t('table.latency')}</TableHead>
+                <TableHead>{t('table.errorRate')}</TableHead>
+                <TableHead>{t('table.uptime')}</TableHead>
+                <TableHead>{t('table.actions')}</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -554,7 +558,7 @@ export default function ServicesMonitoring({
                   
                   <TableCell>
                     <div className="text-sm">
-                      {formatLastCheck(service.lastCheck)}
+                      {formatLastCheck(service.lastCheck, t)}
                     </div>
                   </TableCell>
                   
@@ -589,14 +593,14 @@ export default function ServicesMonitoring({
                             onClick={() => setSelectedService(service)}
                           >
                             <Eye className="h-4 w-4 mr-1" />
-                            Details
+                            {t('actions.details')}
                           </Button>
                         </SheetTrigger>
                         <SheetContent className="w-[600px] sm:max-w-[600px] overflow-y-auto">
                           <SheetHeader>
-                            <SheetTitle>Service Details</SheetTitle>
+                            <SheetTitle>{t('serviceDetail.title')}</SheetTitle>
                             <SheetDescription>
-                              Detailed health metrics and controls for {selectedService?.name}
+                              {t('serviceDetail.description', { serviceName: selectedService?.name })}
                             </SheetDescription>
                           </SheetHeader>
                           {selectedService && (
@@ -621,20 +625,20 @@ export default function ServicesMonitoring({
                             onClick={() => handleServiceAction(service.id, 'health_check')}
                           >
                             <Activity className="h-4 w-4 mr-2" />
-                            Health Check
+                            {t('actions.healthCheck')}
                           </DropdownMenuItem>
                           <DropdownMenuItem
                             onClick={() => handleServiceAction(service.id, 'clear_cache')}
                           >
                             <Trash2 className="h-4 w-4 mr-2" />
-                            Clear Cache
+                            {t('actions.clearCache')}
                           </DropdownMenuItem>
                           <DropdownMenuItem
                             onClick={() => handleServiceAction(service.id, 'restart')}
                             className="text-red-600"
                           >
                             <Power className="h-4 w-4 mr-2" />
-                            Restart
+                            {t('actions.restart')}
                           </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
@@ -648,11 +652,11 @@ export default function ServicesMonitoring({
           {filteredServices.length === 0 && (
             <div className="text-center py-8 text-muted-foreground">
               <Server className="h-12 w-12 mx-auto mb-4 opacity-50" />
-              <p className="text-lg font-medium">No services found</p>
+              <p className="text-lg font-medium">{t('noServicesFound')}</p>
               <p className="text-sm">
                 {searchTerm ? 
-                  'Try adjusting your search criteria' : 
-                  'No services match the current filters'
+                  t('noServicesMessage') : 
+                  t('noServicesFilterMessage')
                 }
               </p>
             </div>

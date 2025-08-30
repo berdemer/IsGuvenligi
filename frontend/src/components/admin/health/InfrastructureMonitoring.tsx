@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
@@ -172,6 +173,8 @@ const ResourceCard: React.FC<ResourceCardProps> = ({
   details = [],
   trend = 0
 }) => {
+  const tCommon = useTranslations('health.status')
+  const tMetrics = useTranslations('health.infrastructureMonitoring.metrics')
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'healthy': return 'text-green-600'
@@ -190,7 +193,7 @@ const ResourceCard: React.FC<ResourceCardProps> = ({
 
     return (
       <Badge variant={variants[status as keyof typeof variants]} className="capitalize">
-        {status}
+        {tCommon(status)}
       </Badge>
     )
   }
@@ -230,7 +233,7 @@ const ResourceCard: React.FC<ResourceCardProps> = ({
           {usage !== undefined && (
             <div className="space-y-1">
               <div className="flex justify-between text-xs">
-                <span>Usage</span>
+                <span>{tMetrics('usage')}</span>
                 <span>{usage.toFixed(1)}%</span>
               </div>
               <Progress value={usage} className="h-2" />
@@ -258,6 +261,9 @@ interface ServiceResourceUsageProps {
 }
 
 const ServiceResourceUsage: React.FC<ServiceResourceUsageProps> = ({ services }) => {
+  const tCards = useTranslations('health.infrastructureMonitoring.cards')
+  const tAbbr = useTranslations('health.infrastructureMonitoring.serviceAbbr')
+  
   const sortedServices = Object.entries(services)
     .map(([id, metrics]) => ({
       id,
@@ -269,9 +275,9 @@ const ServiceResourceUsage: React.FC<ServiceResourceUsageProps> = ({ services })
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-base">Service Resource Usage</CardTitle>
+        <CardTitle className="text-base">{tCards('serviceResourceUsage.title')}</CardTitle>
         <CardDescription>
-          Resource consumption by individual services
+          {tCards('serviceResourceUsage.description')}
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -281,9 +287,9 @@ const ServiceResourceUsage: React.FC<ServiceResourceUsageProps> = ({ services })
               <div className="flex items-center justify-between">
                 <span className="font-medium text-sm">{service.name}</span>
                 <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                  <span>CPU: {service.cpu.toFixed(1)}%</span>
-                  <span>MEM: {service.memory.toFixed(1)}%</span>
-                  <span>DISK: {service.disk.toFixed(1)}%</span>
+                  <span>{tAbbr('cpu')} {service.cpu.toFixed(1)}%</span>
+                  <span>{tAbbr('memory')} {service.memory.toFixed(1)}%</span>
+                  <span>{tAbbr('disk')} {service.disk.toFixed(1)}%</span>
                 </div>
               </div>
               
@@ -410,6 +416,8 @@ export default function InfrastructureMonitoring({
   loading, 
   timeRange 
 }: InfrastructureMonitoringProps) {
+  const t = useTranslations('health.infrastructureMonitoring')
+  const tCommon = useTranslations('health.status')
   const [metrics, setMetrics] = useState<InfrastructureMetrics | null>(null)
   const [selectedMetric, setSelectedMetric] = useState<'cpu' | 'memory' | 'disk' | 'network'>('cpu')
 
@@ -423,7 +431,7 @@ export default function InfrastructureMonitoring({
       await new Promise(resolve => setTimeout(resolve, 800))
       setMetrics(generateMockInfraMetrics())
     } catch (error) {
-      toast.error('Failed to load infrastructure metrics')
+      toast.error(t('toast.loadFailed'))
     }
   }
 
@@ -485,21 +493,21 @@ export default function InfrastructureMonitoring({
       {/* Resource Overview Cards */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <ResourceCard
-          title="CPU Usage"
+          title={t('components.cpuUsage')}
           icon={<Cpu className="h-4 w-4" />}
           current={metrics.system.cpu.usage}
           unit="%"
           usage={metrics.system.cpu.usage}
           status={getResourceStatus(metrics.system.cpu.usage)}
           details={[
-            { label: 'Cores', value: metrics.system.cpu.cores.toString() },
-            { label: 'Load Avg', value: metrics.system.cpu.loadAverage.map(l => l.toFixed(1)).join(', ') }
+            { label: t('metrics.cores'), value: metrics.system.cpu.cores.toString() },
+            { label: t('metrics.loadAvg'), value: metrics.system.cpu.loadAverage.map(l => l.toFixed(1)).join(', ') }
           ]}
           trend={2.3}
         />
         
         <ResourceCard
-          title="Memory"
+          title={t('components.memory')}
           icon={<MemoryStick className="h-4 w-4" />}
           current={metrics.system.memory.used / (1024 * 1024 * 1024)}
           max={metrics.system.memory.total / (1024 * 1024 * 1024)}
@@ -508,7 +516,7 @@ export default function InfrastructureMonitoring({
           status={getResourceStatus(metrics.system.memory.usage)}
           details={[
             { 
-              label: 'Swap Used', 
+              label: t('metrics.swapUsed'), 
               value: formatBytes(metrics.system.memory.swap?.used || 0) 
             }
           ]}
@@ -516,7 +524,7 @@ export default function InfrastructureMonitoring({
         />
         
         <ResourceCard
-          title="Disk Space"
+          title={t('components.diskSpace')}
           icon={<HardDrive className="h-4 w-4" />}
           current={metrics.system.disk.used / (1024 * 1024 * 1024)}
           max={metrics.system.disk.total / (1024 * 1024 * 1024)}
@@ -525,11 +533,11 @@ export default function InfrastructureMonitoring({
           status={getResourceStatus(metrics.system.disk.usage)}
           details={[
             { 
-              label: 'Read IOPS', 
+              label: t('metrics.readIOPS'), 
               value: formatNumber(metrics.system.disk.iops?.read || 0) 
             },
             { 
-              label: 'Write IOPS', 
+              label: t('metrics.writeIOPS'), 
               value: formatNumber(metrics.system.disk.iops?.write || 0) 
             }
           ]}
@@ -537,22 +545,22 @@ export default function InfrastructureMonitoring({
         />
         
         <ResourceCard
-          title="Network I/O"
+          title={t('components.networkIO')}
           icon={<Wifi className="h-4 w-4" />}
           current={metrics.system.network.bytesIn / (1024 * 1024)}
           unit="MB/s"
           status="healthy"
           details={[
             { 
-              label: 'Outbound', 
+              label: t('metrics.outbound'), 
               value: `${(metrics.system.network.bytesOut / (1024 * 1024)).toFixed(1)} MB/s` 
             },
             { 
-              label: 'Packets In', 
+              label: t('metrics.packetsIn'), 
               value: formatNumber(metrics.system.network.packetsIn) 
             },
             { 
-              label: 'Errors', 
+              label: t('metrics.errors'), 
               value: metrics.system.network.errors.toString() 
             }
           ]}
@@ -563,16 +571,16 @@ export default function InfrastructureMonitoring({
       {/* Charts Section */}
       <div className="space-y-6">
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-semibold">Historical Metrics</h3>
+          <h3 className="text-lg font-semibold">{t('cards.historicalMetrics.title')}</h3>
           <Select value={selectedMetric} onValueChange={(value) => setSelectedMetric(value as any)}>
             <SelectTrigger className="w-40">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="cpu">CPU Usage</SelectItem>
-              <SelectItem value="memory">Memory Usage</SelectItem>
-              <SelectItem value="disk">Disk Usage</SelectItem>
-              <SelectItem value="network">Network I/O</SelectItem>
+              <SelectItem value="cpu">{t('dropdown.cpuUsage')}</SelectItem>
+              <SelectItem value="memory">{t('dropdown.memoryUsage')}</SelectItem>
+              <SelectItem value="disk">{t('dropdown.diskUsage')}</SelectItem>
+              <SelectItem value="network">{t('dropdown.networkIO')}</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -581,7 +589,7 @@ export default function InfrastructureMonitoring({
           {selectedMetric === 'cpu' && (
             <>
               <MetricChart
-                title="CPU Usage"
+                title={t('components.cpuUsage')}
                 data={cpuData}
                 unit="%"
                 color="#3b82f6"
@@ -593,25 +601,25 @@ export default function InfrastructureMonitoring({
           {selectedMetric === 'memory' && (
             <>
               <MetricChart
-                title="Memory Usage"
+                title={t('components.memory')}
                 data={memoryData}
                 unit="%"
                 color="#10b981"
               />
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-base">Memory Breakdown</CardTitle>
+                  <CardTitle className="text-base">{t('cards.memoryBreakdown.title')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
-                      <span>Physical Memory</span>
+                      <span>{t('memoryTypes.physicalMemory')}</span>
                       <span>{formatBytes(metrics.system.memory.used)} / {formatBytes(metrics.system.memory.total)}</span>
                     </div>
                     <Progress value={metrics.system.memory.usage} />
                     
                     <div className="flex justify-between items-center">
-                      <span>Swap Memory</span>
+                      <span>{t('memoryTypes.swapMemory')}</span>
                       <span>{formatBytes(metrics.system.memory.swap?.used || 0)} / {formatBytes(metrics.system.memory.swap?.total || 0)}</span>
                     </div>
                     <Progress value={((metrics.system.memory.swap?.used || 0) / (metrics.system.memory.swap?.total || 1)) * 100} />
@@ -624,14 +632,14 @@ export default function InfrastructureMonitoring({
           {selectedMetric === 'disk' && (
             <>
               <MetricChart
-                title="Disk Usage"
+                title={t('components.diskSpace')}
                 data={diskData}
                 unit="%"
                 color="#f59e0b"
               />
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-base">Disk I/O Performance</CardTitle>
+                  <CardTitle className="text-base">{t('cards.diskIOPerformance.title')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-2 gap-4">
@@ -639,13 +647,13 @@ export default function InfrastructureMonitoring({
                       <div className="text-2xl font-bold text-blue-600">
                         {formatNumber(metrics.system.disk.iops?.read || 0)}
                       </div>
-                      <div className="text-sm text-muted-foreground">Read IOPS</div>
+                      <div className="text-sm text-muted-foreground">{t('metrics.readIOPS')}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-2xl font-bold text-green-600">
                         {formatNumber(metrics.system.disk.iops?.write || 0)}
                       </div>
-                      <div className="text-sm text-muted-foreground">Write IOPS</div>
+                      <div className="text-sm text-muted-foreground">{t('metrics.writeIOPS')}</div>
                     </div>
                   </div>
                 </CardContent>
@@ -656,21 +664,21 @@ export default function InfrastructureMonitoring({
           {selectedMetric === 'network' && (
             <>
               <MetricChart
-                title="Network Inbound"
+                title={t('cards.networkInbound.title')}
                 data={networkInData}
                 unit=" MB/s"
                 color="#ef4444"
               />
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-base">Network Statistics</CardTitle>
+                  <CardTitle className="text-base">{t('cards.networkStatistics.title')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <Download className="h-4 w-4 text-blue-500" />
-                        <span>Inbound</span>
+                        <span>{t('metrics.inbound')}</span>
                       </div>
                       <span>{formatBytes(metrics.system.network.bytesIn)}/s</span>
                     </div>
@@ -678,25 +686,25 @@ export default function InfrastructureMonitoring({
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <Upload className="h-4 w-4 text-green-500" />
-                        <span>Outbound</span>
+                        <span>{t('metrics.outbound')}</span>
                       </div>
                       <span>{formatBytes(metrics.system.network.bytesOut)}/s</span>
                     </div>
                     
                     <div className="flex items-center justify-between">
-                      <span>Packets In</span>
+                      <span>{t('metrics.packetsIn')}</span>
                       <span>{formatNumber(metrics.system.network.packetsIn)}/s</span>
                     </div>
                     
                     <div className="flex items-center justify-between">
-                      <span>Packets Out</span>
+                      <span>{t('metrics.packetsOut')}</span>
                       <span>{formatNumber(metrics.system.network.packetsOut)}/s</span>
                     </div>
                     
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <AlertTriangle className="h-4 w-4 text-red-500" />
-                        <span>Errors</span>
+                        <span>{t('metrics.errors')}</span>
                       </div>
                       <span>{metrics.system.network.errors}</span>
                     </div>
@@ -711,9 +719,9 @@ export default function InfrastructureMonitoring({
       {/* Alerts for Infrastructure */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Infrastructure Alerts</CardTitle>
+          <CardTitle className="text-base">{t('cards.infrastructureAlerts.title')}</CardTitle>
           <CardDescription>
-            Active alerts and threshold violations
+            {t('cards.infrastructureAlerts.description')}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -722,12 +730,12 @@ export default function InfrastructureMonitoring({
               <div className="flex items-center gap-3 p-3 border rounded-lg bg-yellow-50">
                 <AlertTriangle className="h-4 w-4 text-yellow-500" />
                 <div className="flex-1">
-                  <h4 className="font-medium text-sm">High Memory Usage</h4>
+                  <h4 className="font-medium text-sm">{t('alerts.titles.highMemoryUsage')}</h4>
                   <p className="text-xs text-muted-foreground">
-                    Memory usage is at {metrics.system.memory.usage.toFixed(1)}%, approaching threshold
+                    {t('alerts.descriptions.memoryThreshold', { usage: metrics.system.memory.usage.toFixed(1) })}
                   </p>
                 </div>
-                <Badge variant="secondary">Warning</Badge>
+                <Badge variant="secondary">{tCommon('warning')}</Badge>
               </div>
             )}
             
@@ -735,12 +743,12 @@ export default function InfrastructureMonitoring({
               <div className="flex items-center gap-3 p-3 border rounded-lg bg-red-50">
                 <AlertTriangle className="h-4 w-4 text-red-500" />
                 <div className="flex-1">
-                  <h4 className="font-medium text-sm">Critical CPU Usage</h4>
+                  <h4 className="font-medium text-sm">{t('alerts.titles.criticalCPUUsage')}</h4>
                   <p className="text-xs text-muted-foreground">
-                    CPU usage is at {metrics.system.cpu.usage.toFixed(1)}%, immediate attention required
+                    {t('alerts.descriptions.cpuCritical', { usage: metrics.system.cpu.usage.toFixed(1) })}
                   </p>
                 </div>
-                <Badge variant="destructive">Critical</Badge>
+                <Badge variant="destructive">{tCommon('critical')}</Badge>
               </div>
             )}
             
@@ -748,12 +756,12 @@ export default function InfrastructureMonitoring({
               <div className="flex items-center gap-3 p-3 border rounded-lg bg-orange-50">
                 <AlertTriangle className="h-4 w-4 text-orange-500" />
                 <div className="flex-1">
-                  <h4 className="font-medium text-sm">Disk Space Low</h4>
+                  <h4 className="font-medium text-sm">{t('alerts.titles.diskSpaceLow')}</h4>
                   <p className="text-xs text-muted-foreground">
-                    Disk usage is at {metrics.system.disk.usage.toFixed(1)}%, consider cleanup
+                    {t('alerts.descriptions.diskCleanup', { usage: metrics.system.disk.usage.toFixed(1) })}
                   </p>
                 </div>
-                <Badge variant="secondary">Warning</Badge>
+                <Badge variant="secondary">{tCommon('warning')}</Badge>
               </div>
             )}
             
@@ -762,7 +770,7 @@ export default function InfrastructureMonitoring({
              metrics.system.disk.usage <= 85 && (
               <div className="text-center py-6 text-muted-foreground">
                 <Activity className="h-8 w-8 mx-auto mb-2 opacity-50" />
-                <p className="text-sm">All infrastructure metrics within normal range</p>
+                <p className="text-sm">{t('alerts.noAlerts')}</p>
               </div>
             )}
           </div>

@@ -1271,6 +1271,552 @@
       "dailyBackupSuccess": "Günlük veritabanı yedeklemesi başarıyla tamamlandı"
     }
   },
+  "health": {
+    "common": {
+      "healthy": "Sağlıklı",
+      "warning": "Uyarı", 
+      "critical": "Kritik",
+      "excellent": "Mükemmel",
+      "good": "İyi",
+      "status": "Durum",
+      "lastUpdated": "Son Güncelleme",
+      "loading": "Yükleniyor...",
+      "error": "Hata",
+      "retry": "Tekrar Dene",
+      "refresh": "Yenile",
+      "close": "Kapat",
+      "save": "Kaydet",
+      "cancel": "İptal"
+    },
+    "errorBoundary": {
+      "title": "Bir şeyler yanlış gitti",
+      "description": "Beklenmeyen bir hata oluştu",
+      "reload": "Sayfayı Yeniden Yükle"
+    },
+    "healthSettings": {
+      "title": "Sağlık İzleme Ayarları",
+      "description": "Sistem sağlık izleme parametrelerini yapılandırın",
+      "placeholder": "Sağlık izleme ayarları burada yapılandırılacaktır."
+    },
+    "servicesMonitoring": {
+      "title": "Hizmet Durumu",
+      "description": "Tüm sistem hizmetlerinin gerçek zamanlı sağlık durumu",
+      "searchPlaceholder": "Hizmet ara...",
+      "showUnhealthyOnly": "Sadece sağlıksız olanları göster",
+      "servicesCount": "{count} hizmet",
+      "servicesCountFiltered": "{filtered} / {total} hizmet",
+      "noServicesFound": "Hizmet bulunamadı",
+      "noServicesMessage": "Arama kriterlerinizi ayarlamayı deneyin",
+      "noServicesFilterMessage": "Mevcut filtrelere uyan hizmet yok",
+      "loading": {
+        "title": "Hizmet Durumu"
+      },
+      "table": {
+        "service": "Hizmet",
+        "status": "Durum",
+        "lastCheck": "Son Kontrol",
+        "latency": "Gecikme",
+        "errorRate": "Hata Oranı",
+        "uptime": "Çalışma Süresi",
+        "actions": "İşlemler"
+      },
+      "actions": {
+        "details": "Detaylar",
+        "healthCheck": "Sağlık Kontrolü",
+        "clearCache": "Cache Temizle",
+        "restart": "Yeniden Başlat"
+      },
+      "timeFormats": {
+        "justNow": "Şimdi",
+        "minutesAgo": "{minutes}d önce",
+        "hoursAgo": "{hours}s önce"
+      },
+      "serviceDetail": {
+        "title": "Hizmet Detayları",
+        "description": "{serviceName} için detaylı sağlık metrikleri ve kontroller",
+        "type": "Tip",
+        "version": "Versiyon",
+        "currentMetrics": "Mevcut Metrikler",
+        "dependencies": {
+          "title": "Bağımlılıklar",
+          "description": "Bu hizmetin bağımlı olduğu hizmetler"
+        },
+        "recentIncidents": {
+          "title": "Son Olaylar",
+          "duration": "Süre",
+          "impact": "Etki",
+          "status": "Durum"
+        },
+        "serviceActions": {
+          "title": "Hizmet İşlemleri",
+          "description": "Bu hizmet için yönetim işlemleri"
+        },
+        "metrics": {
+          "uptime7d": "Çalışma Süresi (7g)",
+          "avgLatency": "Ort. Gecikme",
+          "errorRate": "Hata Oranı",
+          "healthScore": "Sağlık Puanı"
+        }
+      },
+      "mockData": {
+        "serviceTitle": "Hizmet Bozulması",
+        "serviceDescription": "{serviceName} performans sorunları yaşadı",
+        "impact": {
+          "moderate": "orta"
+        },
+        "status": {
+          "resolved": "çözüldü"
+        }
+      },
+      "toasts": {
+        "restarted": "{serviceName} başarıyla yeniden başlatıldı",
+        "cacheCleared": "{serviceName} cache temizlendi",
+        "healthCheckCompleted": "{serviceName} için sağlık kontrolü tamamlandı",
+        "actionFailed": "{serviceName} {action} işlemi başarısız",
+        "actionLoading": "Hizmette {action} işlemi gerçekleştiriliyor...",
+        "actionSuccess": "Hizmet {action} işlemi başarıyla tamamlandı",
+        "actionError": "Hizmet {action} işlemi başarısız"
+      }
+    },
+    "overviewDashboard": {
+      "title": "Sistem Genel Bakış",
+      "timeRange": {
+        "lastHour": "Son Saat",
+        "last24h": "Son 24 Saat",
+        "last7d": "Son 7 Gün",
+        "last30d": "Son 30 Gün"
+      },
+      "systemHealth": {
+        "title": "Sistem Sağlık Puanı",
+        "description": "Genel sistem sağlığı göstergesi",
+        "score": "{score} / 100",
+        "status": {
+          "excellent": "Mükemmel",
+          "good": "İyi",
+          "warning": "Uyarı",
+          "critical": "Kritik"
+        }
+      },
+      "metrics": {
+        "responseTime": "Ortalama Yanıt Süresi",
+        "errorRate": "Hata Oranı"
+      },
+      "serviceUptime": {
+        "title": "Hizmet Çalışma Süresi",
+        "title7d": "Hizmet Çalışma Süresi (7g)",
+        "noServices": "Hizmet yok"
+      },
+      "activeAlerts": {
+        "title": "Aktif Uyarılar",
+        "count": "{count} aktif",
+        "acknowledged": "Onaylandı",
+        "noActiveAlerts": "Aktif uyarı yok"
+      },
+      "sla": {
+        "title": "SLA Durumu",
+        "target": "Hedef",
+        "current": "Mevcut",
+        "monthToDate": "Aybaşından Bugüne",
+        "status": "Durum",
+        "good": "İYİ",
+        "breach": "İHLAL"
+      },
+      "mockData": {
+        "apiGateway": "API Gateway",
+        "postgresqlPrimary": "PostgreSQL Ana",
+        "redisCache": "Redis Cache",
+        "keycloakAuth": "Keycloak Auth",
+        "alerts": {
+          "memoryThreshold": "Bellek kullanımı %80 eşiğini aştı",
+          "responseTimeDegraded": "Yanıt süresi önemli ölçüde bozuldu",
+          "errorRateElevated": "Hata oranı hafif yükseldi"
+        }
+      }
+    },
+    "incidentsTracking": {
+      "title": "Olay Zaman Çizelgesi",
+      "description": "Sistem olaylarını ve kesintileri takip edin ve yönetin",
+      "stats": {
+        "totalIncidents": "Toplam Olay",
+        "open": "Açık",
+        "investigating": "Araştırılıyor",
+        "resolved": "Çözüldü",
+        "avgResolution": "Ort. Çözüm"
+      },
+      "table": {
+        "headers": {
+          "incident": "Olay",
+          "service": "Hizmet",
+          "severity": "Önem",
+          "status": "Durum",
+          "duration": "Süre",
+          "impact": "Etki",
+          "started": "Başlangıç",
+          "actions": "İşlemler"
+        }
+      },
+      "status": {
+        "open": "Açık",
+        "investigating": "Araştırılıyor",
+        "resolved": "Çözüldü",
+        "closed": "Kapalı"
+      },
+      "severity": {
+        "critical": "Kritik",
+        "high": "Yüksek",
+        "medium": "Orta",
+        "low": "Düşük"
+      },
+      "userImpact": {
+        "none": "Yok",
+        "minimal": "Minimal",
+        "moderate": "Orta",
+        "severe": "Ciddi"
+      },
+      "services": {
+        "none": "Yok",
+        "apiGateway": "API Gateway",
+        "postgresqlPrimary": "PostgreSQL Ana",
+        "redisCache": "Redis Cache",
+        "keycloakSSO": "Keycloak SSO",
+        "notificationService": "Bildirim Servisi"
+      },
+      "search": {
+        "placeholder": "Olay ara...",
+        "allStatus": "Tüm Durumlar",
+        "allSeverity": "Tüm Önem Seviyeleri"
+      },
+      "buttons": {
+        "exportReport": "Rapor Dışa Aktar",
+        "newIncident": "Yeni Olay",
+        "details": "Detaylar",
+        "cancel": "İptal",
+        "createIncident": "Olay Oluştur"
+      },
+      "dialog": {
+        "createTitle": "Yeni Olay Oluştur",
+        "createDescription": "Yeni bir olay veya sistem sorunu bildirin",
+        "fields": {
+          "title": "Başlık",
+          "description": "Açıklama",
+          "severity": "Önem",
+          "userImpact": "Kullanıcı Etkisi",
+          "affectedService": "Etkilenen Hizmet (Opsiyonel)"
+        },
+        "placeholders": {
+          "title": "Kısa olay başlığı",
+          "description": "Olayın detaylı açıklaması",
+          "selectService": "Bir hizmet seçin"
+        }
+      },
+      "detail": {
+        "sections": {
+          "status": "Durum",
+          "severity": "Önem",
+          "duration": "Süre",
+          "impact": "Etki",
+          "description": "Açıklama",
+          "rootCause": "Kök Neden",
+          "resolution": "Çözüm",
+          "timeline": "Zaman Çizelgesi"
+        }
+      },
+      "timeline": {
+        "auto": "Otomatik",
+        "by": "tarafından"
+      },
+      "durations": {
+        "ongoing": "Devam Ediyor",
+        "minutes": "d",
+        "hours": "s",
+        "days": "g",
+        "minutesAgo": "d önce",
+        "hoursAgo": "s önce",
+        "daysAgo": "g önce"
+      },
+      "impact": {
+        "users": "kullanıcı",
+        "systemWide": "Sistem Geneli"
+      },
+      "empty": {
+        "noIncidents": "Olay bulunamadı",
+        "tryFilters": "Filtrelerinizi ayarlamayı deneyin",
+        "noReported": "Henüz hiç olay bildirilmedi"
+      },
+      "toast": {
+        "titleRequired": "Başlık ve açıklama gerekli",
+        "loadFailed": "Olaylar yüklenemedi",
+        "creating": "Olay oluşturuluyor...",
+        "createSuccess": "Olay başarıyla oluşturuldu",
+        "createFailed": "Olay oluşturulamadı",
+        "exporting": "Olay raporu oluşturuluyor...",
+        "exportSuccess": "Olay raporu başarıyla dışa aktarıldı",
+        "exportFailed": "Olay raporu dışa aktarılamadı"
+      },
+      "mockData": {
+        "incidents": {
+          "authDegradation": {
+            "title": "Kimlik Doğrulama Servisi Bozulması",
+            "description": "Kimlik doğrulama servisinde yüksek yanıt süreleri ve artan hata oranları tespit edildi - Servis yeniden başlatılarak ÇÖZÜLDİ"
+          },
+          "backupFailure": {
+            "title": "Veritabanı Yedekleme Hatası",
+            "description": "Yetersiz disk alanı nedeniyle zamanlanmış veritabanı yedeklemesi başarısız oldu"
+          },
+          "cacheWarning": {
+            "title": "Cache Bellek Uyarısı",
+            "description": "Redis bellek kullanımı uyarı eşiğini aştı"
+          }
+        },
+        "timeline": {
+          "alertTriggered": "Yüksek yanıt süresi için otomatik uyarı tetiklendi",
+          "investigationStarted": "Nöbetçi mühendis tarafından araştırma başlatıldı",
+          "rootCauseIdentified": "Kök neden olarak veritabanı bağlantı havuzu tükenmesi belirlendi",
+          "serviceRestarted": "Servis yeniden başlatması başarıyla tamamlandı - Yanıt süreleri normale döndü",
+          "backupFailed": "Yedekleme scripti disk alanı hatası ile başarısız oldu",
+          "backupInvestigation": "Yedekleme hatası araştırılıyor",
+          "backupFixed": "Eski log dosyaları temizlendi ve yedekleme başarıyla yeniden çalıştırıldı",
+          "memoryThreshold": "Bellek kullanımı eşiği aşıldı",
+          "cacheCleanup": "Otomatik cache temizliği tamamlandı",
+          "manualReport": "Olay manuel olarak bildirildi"
+        },
+        "rootCauses": {
+          "connectionPool": "Uzun süren sorgular nedeniyle veritabanı bağlantı havuzu tükenmesi",
+          "logRotation": "Log dosyaları düzgün döndürülmediği için disk alanı kıtlığı",
+          "highTraffic": "Yoğun trafik bellek kullanımı artışına neden oldu"
+        },
+        "resolutions": {
+          "serviceRestart": "Servis yeniden başlatması tamamlandı + 4GB bellek tahsisi ile Keycloak optimizasyonu dağıtıldı",
+          "diskCleanup": "Log dosyaları temizlendi ve otomatik disk temizleme sistemi uygulandı",
+          "redisOptimization": "Bellek sınırları ve LRU çıkarma ile optimize edilmiş Redis yapılandırması dağıtıldı"
+        },
+        "preventionSteps": {
+          "keycloakMemory": "Keycloak bellek artırıldı: 2GB → G1GC optimizasyonu ile 4GB",
+          "dbConnections": "Veritabanı bağlantı havuzu: 10 → 50 bağlantı",
+          "proactiveMonitoring": "Proaktif izleme: Bellek >%95 otomatik düzeltmeyi tetikler",
+          "autoRestart": "Performans bozulması için otomatik servis yeniden başlatması",
+          "dockerOptimization": "Tam Docker optimizasyon yığını dağıtıldı",
+          "diskCleanupScript": "Otomatik disk temizleme scripti dağıtıldı (%80 uyarı, %90 kritik)",
+          "proactiveAuto": "Otomatik düzeltme ile proaktif izleme etkinleştirildi",
+          "dailyCleanup": "Yedekleme ve log dosyaları için günlük temizlik işi zamanlandı",
+          "diskAlerts": "Disk kullanımı uyarıları Sağlık ve İzleme sistemine entegre edildi",
+          "redisMemoryOpt": "Redis bellek optimize edildi: LRU çıkarma politikası ile 1.5GB sınır",
+          "enhancedMonitoring": "Bellek kullanımı uyarıları ile gelişmiş izleme",
+          "autoCacheCleanup": "Otomatik cache temizliği Sağlık ve İzleme ile entegre edildi",
+          "connectionPoolOpt": "Daha iyi kaynak yönetimi için bağlantı havuzu optimizasyonu"
+        }
+      }
+    },
+    "prometheusGrafana": {
+      "title": "Prometheus & Grafana Entegrasyonu",
+      "description": "Prometheus ve Grafana kullanarak sağlık metriklerini izleyin ve görselleştirin",
+      "tabs": {
+        "prometheus": "Prometheus",
+        "grafana": "Grafana",
+        "configuration": "Yapılandırma"
+      },
+      "prometheus": {
+        "query": {
+          "title": "Prometheus Sorgusu",
+          "description": "Metrik verilerini almak için PromQL sorguları çalıştırın",
+          "label": "PromQL Sorgusu",
+          "placeholder": "PromQL sorgusu girin (örn: up, cpu_usage_percent)",
+          "recentQueries": "Son Sorgular",
+          "executeButton": "Sorguyu Çalıştır",
+          "results": "Sorgu Sonuçları",
+          "noData": "Metrik verisi yok"
+        },
+        "export": {
+          "title": "Metrik Dışa Aktarma",
+          "description": "Sağlık metriklerini Prometheus formatında dışa aktarın",
+          "button": "Metrikleri Dışa Aktar",
+          "viewFull": "Tüm Metrikleri Görüntüle",
+          "download": "İndir"
+        },
+        "table": {
+          "metric": "Metrik",
+          "value": "Değer",
+          "timestamp": "Zaman Damgası"
+        },
+        "status": {
+          "metrics": "metrik",
+          "panels": "panel"
+        }
+      },
+      "grafana": {
+        "title": "Grafana Panolar",
+        "newDashboard": "Yeni Panel",
+        "menu": {
+          "view": "Paneli Görüntüle",
+          "openInGrafana": "Grafana'da Aç",
+          "edit": "Düzenle",
+          "delete": "Sil"
+        },
+        "dialog": {
+          "preview": "Panel önizlemesi {count} panel ile",
+          "close": "Kapat",
+          "open": "Grafana'da Aç",
+          "visualization": "görselleştirme",
+          "query": "Sorgu: "
+        }
+      },
+      "configuration": {
+        "prometheus": {
+          "title": "Prometheus Yapılandırması",
+          "enable": "Prometheus Entegrasyonunu Etkinleştir",
+          "enableDescription": "Metrik toplama için Prometheus'a bağlan",
+          "url": "Prometheus URL",
+          "urlPlaceholder": "http://prometheus.example.com:9090"
+        },
+        "grafana": {
+          "title": "Grafana Yapılandırması", 
+          "enable": "Grafana Entegrasyonunu Etkinleştir",
+          "enableDescription": "Panel yönetimi için Grafana'ya bağlan",
+          "url": "Grafana URL",
+          "urlPlaceholder": "http://grafana.example.com:3000"
+        },
+        "advanced": {
+          "title": "Gelişmiş Ayarlar",
+          "scrapeInterval": "Toplama Aralığı",
+          "queryTimeout": "Sorgu Zaman Aşımı",
+          "retentionPeriod": "Saklama Süresi",
+          "maxSamples": "Maksimum Örnek",
+          "placeholders": {
+            "interval": "15s",
+            "timeout": "30s",
+            "retention": "30d",
+            "samples": "50000"
+          }
+        },
+        "connection": {
+          "test": "Bağlantıyı Test Et",
+          "connected": "Bağlandı",
+          "warning": "Uyarı"
+        }
+      },
+      "toast": {
+        "loading": {
+          "query": "Prometheus sorgusu çalıştırılıyor...",
+          "export": "Prometheus metrikleri dışa aktarılıyor...",
+          "delete": "Panel siliniyor...",
+          "testPrometheus": "Prometheus bağlantısı test ediliyor...",
+          "testGrafana": "Grafana bağlantısı test ediliyor..."
+        },
+        "success": {
+          "queryExecuted": "Sorgu başarıyla çalıştırıldı. {count} metrik bulundu.",
+          "exportSuccess": "Metrikler başarıyla dışa aktarıldı",
+          "deleteSuccess": "Panel başarıyla silindi",
+          "prometheusConnected": "Prometheus bağlantısı başarılı",
+          "grafanaConnected": "Grafana bağlantısı başarılı"
+        },
+        "error": {
+          "loadDashboards": "Grafana panelleri yüklenemedi",
+          "queryFailed": "Prometheus sorgusu çalıştırılamadı",
+          "exportFailed": "Metrikler dışa aktarılamadı", 
+          "deleteFailed": "Panel silinemedi",
+          "prometheusConnection": "Prometheus bağlantısı başarısız",
+          "grafanaConnection": "Grafana bağlantısı başarısız",
+          "testPrometheus": "Prometheus bağlantısı test edilemedi",
+          "testGrafana": "Grafana bağlantısı test edilemedi"
+        },
+        "info": {
+          "editingDashboard": "Panel düzenleniyor: {title}"
+        }
+      },
+      "mockData": {
+        "dashboards": {
+          "systemHealth": "Sistem Sağlık Genel Bakış",
+          "infrastructure": "Altyapı Metrikleri"
+        },
+        "panels": {
+          "healthScore": "Sistem Sağlık Puanı",
+          "responseTime": "Servis Yanıt Süreleri",
+          "cpuUsage": "CPU Kullanımı",
+          "memoryUsage": "Bellek Kullanımı"
+        },
+        "legends": {
+          "healthScore": "Sağlık Puanı"
+        }
+      }
+    },
+    "infrastructureMonitoring": {
+      "components": {
+        "cpuUsage": "CPU Kullanımı",
+        "memory": "Bellek",
+        "diskSpace": "Disk Alanı",
+        "networkIO": "Ağ G/Ç"
+      },
+      "metrics": {
+        "usage": "Kullanım",
+        "cores": "Çekirdek",
+        "loadAvg": "Ortalama Yük",
+        "swapUsed": "Kullanılan Swap",
+        "readIOPS": "Okuma IOPS",
+        "writeIOPS": "Yazma IOPS",
+        "outbound": "Giden",
+        "packetsIn": "Gelen Paket",
+        "packetsOut": "Giden Paket",
+        "errors": "Hata",
+        "inbound": "Gelen"
+      },
+      "cards": {
+        "serviceResourceUsage": {
+          "title": "Servis Kaynak Kullanımı",
+          "description": "Bireysel servislerin kaynak tüketimi"
+        },
+        "historicalMetrics": {
+          "title": "Geçmiş Metrikler"
+        },
+        "memoryBreakdown": {
+          "title": "Bellek Dağılımı"
+        },
+        "diskIOPerformance": {
+          "title": "Disk G/Ç Performansı"
+        },
+        "networkStatistics": {
+          "title": "Ağ İstatistikleri"
+        },
+        "infrastructureAlerts": {
+          "title": "Altyapı Uyarıları",
+          "description": "Aktif uyarılar ve eşik ihlalleri"
+        },
+        "networkInbound": {
+          "title": "Ağ Gelen"
+        }
+      },
+      "dropdown": {
+        "cpuUsage": "CPU Kullanımı",
+        "memoryUsage": "Bellek Kullanımı",
+        "diskUsage": "Disk Kullanımı",
+        "networkIO": "Ağ G/Ç"
+      },
+      "memoryTypes": {
+        "physicalMemory": "Fiziksel Bellek",
+        "swapMemory": "Swap Bellek"
+      },
+      "alerts": {
+        "titles": {
+          "highMemoryUsage": "Yüksek Bellek Kullanımı",
+          "criticalCPUUsage": "Kritik CPU Kullanımı",
+          "diskSpaceLow": "Disk Alanı Az"
+        },
+        "descriptions": {
+          "memoryThreshold": "Bellek kullanımı %{usage} seviyesinde, eşiğe yaklaşıyor",
+          "cpuCritical": "CPU kullanımı %{usage} seviyesinde, acil müdahale gerekli",
+          "diskCleanup": "Disk kullanımı %{usage} seviyesinde, temizlik düşünün"
+        },
+        "noAlerts": "Tüm altyapı metrikleri normal aralıkta"
+      },
+      "serviceAbbr": {
+        "cpu": "CPU:",
+        "memory": "BEL:",
+        "disk": "DSK:"
+      },
+      "toast": {
+        "loadFailed": "Altyapı metrikleri yüklenemedi"
+      }
+    }
+  },
   "users": {
     "title": "Kullanıcılar",
     "description": "Sistem kullanıcılarını yönetin ve izinlerini düzenleyin",

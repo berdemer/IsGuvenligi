@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -72,29 +73,29 @@ const generateMockPrometheusMetrics = (): PrometheusMetric[] => [
 ]
 
 // Mock Grafana dashboards
-const generateMockGrafanaDashboards = (): GrafanaDashboard[] => [
+const generateMockGrafanaDashboards = (t: any): GrafanaDashboard[] => [
   {
     id: '1',
     uid: 'health-overview',
-    title: 'System Health Overview',
+    title: t('mockData.dashboards.systemHealth'),
     tags: ['health', 'overview'],
     url: 'http://grafana.example.com/d/health-overview',
     embedUrl: 'http://grafana.example.com/d-solo/health-overview',
     panels: [
       {
         id: 1,
-        title: 'System Health Score',
+        title: t('mockData.panels.healthScore'),
         type: 'gauge',
         targets: [
           {
             expr: 'system_health_score',
-            legendFormat: 'Health Score'
+            legendFormat: t('mockData.legends.healthScore')
           }
         ]
       },
       {
         id: 2,
-        title: 'Service Response Times',
+        title: t('mockData.panels.responseTime'),
         type: 'graph',
         targets: [
           {
@@ -108,30 +109,30 @@ const generateMockGrafanaDashboards = (): GrafanaDashboard[] => [
   {
     id: '2',
     uid: 'infrastructure-metrics',
-    title: 'Infrastructure Metrics',
+    title: t('mockData.dashboards.infrastructure'),
     tags: ['infrastructure', 'metrics'],
     url: 'http://grafana.example.com/d/infrastructure-metrics',
     embedUrl: 'http://grafana.example.com/d-solo/infrastructure-metrics',
     panels: [
       {
         id: 1,
-        title: 'CPU Usage',
+        title: t('mockData.panels.cpuUsage'),
         type: 'graph',
         targets: [
           {
             expr: 'cpu_usage_percent',
-            legendFormat: 'CPU Usage'
+            legendFormat: t('mockData.panels.cpuUsage')
           }
         ]
       },
       {
         id: 2,
-        title: 'Memory Usage',
+        title: t('mockData.panels.memoryUsage'),
         type: 'graph',
         targets: [
           {
             expr: 'memory_usage_percent',
-            legendFormat: 'Memory Usage'
+            legendFormat: t('mockData.panels.memoryUsage')
           }
         ]
       }
@@ -144,6 +145,7 @@ interface PrometheusQueryProps {
 }
 
 const PrometheusQuery: React.FC<PrometheusQueryProps> = ({ onQuery }) => {
+  const t = useTranslations('health.prometheusGrafana.prometheus.query')
   const [query, setQuery] = useState('')
   const [recentQueries, setRecentQueries] = useState<string[]>([
     'system_health_score',
@@ -166,30 +168,30 @@ const PrometheusQuery: React.FC<PrometheusQueryProps> = ({ onQuery }) => {
       <CardHeader>
         <CardTitle className="text-base flex items-center gap-2">
           <Code className="h-4 w-4" />
-          Prometheus Query
+          {t('title')}
         </CardTitle>
         <CardDescription>
-          Execute PromQL queries to retrieve metrics data
+          {t('description')}
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label>PromQL Query</Label>
+            <Label>{t('label')}</Label>
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Enter PromQL query (e.g., up, cpu_usage_percent)"
+              placeholder={t('placeholder')}
               className="font-mono"
             />
           </div>
           <Button type="submit" disabled={!query.trim()}>
-            Execute Query
+            {t('executeButton')}
           </Button>
         </form>
         
         <div className="space-y-2">
-          <Label>Recent Queries</Label>
+          <Label>{t('recentQueries')}</Label>
           <div className="space-y-1">
             {recentQueries.slice(0, 5).map((recentQuery, index) => (
               <div
@@ -213,11 +215,14 @@ interface MetricsResultsProps {
 }
 
 const MetricsResults: React.FC<MetricsResultsProps> = ({ metrics, loading }) => {
+  const t = useTranslations('health.prometheusGrafana.prometheus.query')
+  const tTable = useTranslations('health.prometheusGrafana.prometheus.table')
+  const tStatus = useTranslations('health.prometheusGrafana.prometheus.status')
   if (loading) {
     return (
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Query Results</CardTitle>
+          <CardTitle className="text-base">{t('results')}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
@@ -234,8 +239,8 @@ const MetricsResults: React.FC<MetricsResultsProps> = ({ metrics, loading }) => 
     <Card>
       <CardHeader>
         <div className="flex items-center justify-between">
-          <CardTitle className="text-base">Query Results</CardTitle>
-          <Badge variant="outline">{metrics.length} metrics</Badge>
+          <CardTitle className="text-base">{t('results')}</CardTitle>
+          <Badge variant="outline">{metrics.length} {tStatus('metrics')}</Badge>
         </div>
       </CardHeader>
       <CardContent>
@@ -243,9 +248,9 @@ const MetricsResults: React.FC<MetricsResultsProps> = ({ metrics, loading }) => 
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Metric</TableHead>
-                <TableHead>Value</TableHead>
-                <TableHead>Timestamp</TableHead>
+                <TableHead>{tTable('metric')}</TableHead>
+                <TableHead>{tTable('value')}</TableHead>
+                <TableHead>{tTable('timestamp')}</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -282,7 +287,7 @@ const MetricsResults: React.FC<MetricsResultsProps> = ({ metrics, loading }) => 
         ) : (
           <div className="text-center py-8 text-muted-foreground">
             <Database className="h-12 w-12 mx-auto mb-4 opacity-50" />
-            <p>No metrics data</p>
+            <p>{t('noData')}</p>
           </div>
         )}
       </CardContent>
@@ -303,6 +308,8 @@ const GrafanaDashboardCard: React.FC<GrafanaDashboardCardProps> = ({
   onEdit,
   onDelete
 }) => {
+  const tMenu = useTranslations('health.prometheusGrafana.grafana.menu')
+  const tStatus = useTranslations('health.prometheusGrafana.prometheus.status')
   return (
     <Card>
       <CardContent className="p-4">
@@ -322,7 +329,7 @@ const GrafanaDashboardCard: React.FC<GrafanaDashboardCardProps> = ({
             </div>
             
             <div className="text-xs text-muted-foreground">
-              {dashboard.panels.length} panels
+              {dashboard.panels.length} {tStatus('panels')}
             </div>
           </div>
           
@@ -335,22 +342,22 @@ const GrafanaDashboardCard: React.FC<GrafanaDashboardCardProps> = ({
             <DropdownMenuContent align="end">
               <DropdownMenuItem onClick={() => onView(dashboard)}>
                 <Eye className="h-4 w-4 mr-2" />
-                View Dashboard
+                {tMenu('view')}
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => window.open(dashboard.url, '_blank')}>
                 <ExternalLink className="h-4 w-4 mr-2" />
-                Open in Grafana
+                {tMenu('openInGrafana')}
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => onEdit(dashboard)}>
                 <Edit className="h-4 w-4 mr-2" />
-                Edit
+                {tMenu('edit')}
               </DropdownMenuItem>
               <DropdownMenuItem
                 onClick={() => onDelete(dashboard.id)}
                 className="text-red-600"
               >
                 <Trash2 className="h-4 w-4 mr-2" />
-                Delete
+                {tMenu('delete')}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -361,6 +368,14 @@ const GrafanaDashboardCard: React.FC<GrafanaDashboardCardProps> = ({
 }
 
 export default function PrometheusGrafanaIntegration() {
+  const t = useTranslations('health.prometheusGrafana')
+  const tTabs = useTranslations('health.prometheusGrafana.tabs')
+  const tToast = useTranslations('health.prometheusGrafana.toast')
+  const tConfig = useTranslations('health.prometheusGrafana.configuration')
+  const tGrafana = useTranslations('health.prometheusGrafana.grafana')
+  const tPrometheus = useTranslations('health.prometheusGrafana.prometheus')
+  const tDialog = useTranslations('health.prometheusGrafana.grafana.dialog')
+  
   const [prometheusMetrics, setPrometheusMetrics] = useState<PrometheusMetric[]>([])
   const [grafanaDashboards, setGrafanaDashboards] = useState<GrafanaDashboard[]>([])
   const [loading, setLoading] = useState(false)
@@ -380,16 +395,16 @@ export default function PrometheusGrafanaIntegration() {
     try {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 500))
-      setGrafanaDashboards(generateMockGrafanaDashboards())
+      setGrafanaDashboards(generateMockGrafanaDashboards(t))
     } catch (error) {
-      toast.error('Failed to load Grafana dashboards')
+      toast.error(tToast('error.loadDashboards'))
     }
   }
 
   const executePrometheusQuery = async (query: string) => {
     setLoading(true)
     try {
-      toast.loading('Executing Prometheus query...', { id: 'prometheus-query' })
+      toast.loading(tToast('loading.query'), { id: 'prometheus-query' })
       
       // Simulate API call to Prometheus
       await new Promise(resolve => setTimeout(resolve, 1000))
@@ -397,11 +412,11 @@ export default function PrometheusGrafanaIntegration() {
       const mockMetrics = generateMockPrometheusMetrics()
       setPrometheusMetrics(mockMetrics)
       
-      toast.success(`Query executed successfully. Found ${mockMetrics.length} metrics.`, { 
+      toast.success(tToast('success.queryExecuted', { count: mockMetrics.length }), { 
         id: 'prometheus-query' 
       })
     } catch (error) {
-      toast.error('Failed to execute Prometheus query', { id: 'prometheus-query' })
+      toast.error(tToast('error.queryFailed'), { id: 'prometheus-query' })
     } finally {
       setLoading(false)
     }
@@ -409,14 +424,14 @@ export default function PrometheusGrafanaIntegration() {
 
   const exportMetrics = async () => {
     try {
-      toast.loading('Exporting Prometheus metrics...', { id: 'export-metrics' })
+      toast.loading(tToast('loading.export'), { id: 'export-metrics' })
       
       // Simulate export
       await new Promise(resolve => setTimeout(resolve, 2000))
       
-      toast.success('Metrics exported successfully', { id: 'export-metrics' })
+      toast.success(tToast('success.exportSuccess'), { id: 'export-metrics' })
     } catch (error) {
-      toast.error('Failed to export metrics', { id: 'export-metrics' })
+      toast.error(tToast('error.exportFailed'), { id: 'export-metrics' })
     }
   }
 
@@ -425,26 +440,26 @@ export default function PrometheusGrafanaIntegration() {
   }
 
   const handleEditDashboard = (dashboard: GrafanaDashboard) => {
-    toast.info(`Editing dashboard: ${dashboard.title}`)
+    toast.info(tToast('info.editingDashboard', { title: dashboard.title }))
   }
 
   const handleDeleteDashboard = async (id: string) => {
     try {
-      toast.loading('Deleting dashboard...', { id: 'delete-dashboard' })
+      toast.loading(tToast('loading.delete'), { id: 'delete-dashboard' })
       
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000))
       
       setGrafanaDashboards(prev => prev.filter(d => d.id !== id))
-      toast.success('Dashboard deleted successfully', { id: 'delete-dashboard' })
+      toast.success(tToast('success.deleteSuccess'), { id: 'delete-dashboard' })
     } catch (error) {
-      toast.error('Failed to delete dashboard', { id: 'delete-dashboard' })
+      toast.error(tToast('error.deleteFailed'), { id: 'delete-dashboard' })
     }
   }
 
   const testConnection = async (service: 'prometheus' | 'grafana') => {
     try {
-      toast.loading(`Testing ${service} connection...`, { id: `test-${service}` })
+      toast.loading(service === 'prometheus' ? tToast('loading.testPrometheus') : tToast('loading.testGrafana'), { id: `test-${service}` })
       
       // Simulate connection test
       await new Promise(resolve => setTimeout(resolve, 1500))
@@ -452,12 +467,12 @@ export default function PrometheusGrafanaIntegration() {
       const isConnected = Math.random() > 0.2 // 80% success rate for demo
       
       if (isConnected) {
-        toast.success(`${service} connection successful`, { id: `test-${service}` })
+        toast.success(service === 'prometheus' ? tToast('success.prometheusConnected') : tToast('success.grafanaConnected'), { id: `test-${service}` })
       } else {
-        toast.error(`${service} connection failed`, { id: `test-${service}` })
+        toast.error(service === 'prometheus' ? tToast('error.prometheusConnection') : tToast('error.grafanaConnection'), { id: `test-${service}` })
       }
     } catch (error) {
-      toast.error(`Failed to test ${service} connection`, { id: `test-${service}` })
+      toast.error(service === 'prometheus' ? tToast('error.testPrometheus') : tToast('error.testGrafana'), { id: `test-${service}` })
     }
   }
 
@@ -465,15 +480,15 @@ export default function PrometheusGrafanaIntegration() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-lg font-semibold">Prometheus & Grafana Integration</h2>
+          <h2 className="text-lg font-semibold">{t('title')}</h2>
           <p className="text-sm text-muted-foreground">
-            Monitor and visualize health metrics using Prometheus and Grafana
+            {t('description')}
           </p>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="outline" size="sm" onClick={exportMetrics}>
             <Download className="h-4 w-4 mr-2" />
-            Export Metrics
+            {tPrometheus('export.button')}
           </Button>
         </div>
       </div>
@@ -482,15 +497,15 @@ export default function PrometheusGrafanaIntegration() {
         <TabsList>
           <TabsTrigger value="prometheus">
             <Database className="h-4 w-4 mr-2" />
-            Prometheus
+            {tTabs('prometheus')}
           </TabsTrigger>
           <TabsTrigger value="grafana">
             <BarChart3 className="h-4 w-4 mr-2" />
-            Grafana
+            {tTabs('grafana')}
           </TabsTrigger>
           <TabsTrigger value="configuration">
             <Settings className="h-4 w-4 mr-2" />
-            Configuration
+            {tTabs('configuration')}
           </TabsTrigger>
         </TabsList>
 
@@ -503,9 +518,9 @@ export default function PrometheusGrafanaIntegration() {
           {/* Prometheus Metrics Export */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-base">Metrics Export</CardTitle>
+              <CardTitle className="text-base">{tPrometheus('export.title')}</CardTitle>
               <CardDescription>
-                Export health metrics in Prometheus format
+                {tPrometheus('export.description')}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -526,11 +541,11 @@ export default function PrometheusGrafanaIntegration() {
                 <div className="flex items-center gap-2">
                   <Button variant="outline" size="sm">
                     <ExternalLink className="h-4 w-4 mr-2" />
-                    View Full Metrics
+                    {tPrometheus('export.viewFull')}
                   </Button>
                   <Button variant="outline" size="sm" onClick={exportMetrics}>
                     <Download className="h-4 w-4 mr-2" />
-                    Download
+                    {tPrometheus('export.download')}
                   </Button>
                 </div>
               </div>
@@ -540,10 +555,10 @@ export default function PrometheusGrafanaIntegration() {
 
         <TabsContent value="grafana" className="space-y-6">
           <div className="flex items-center justify-between">
-            <h3 className="text-base font-semibold">Grafana Dashboards</h3>
+            <h3 className="text-base font-semibold">{tGrafana('title')}</h3>
             <Button size="sm">
               <Plus className="h-4 w-4 mr-2" />
-              New Dashboard
+              {tGrafana('newDashboard')}
             </Button>
           </div>
           
@@ -568,7 +583,7 @@ export default function PrometheusGrafanaIntegration() {
                   {selectedDashboard?.title}
                 </DialogTitle>
                 <DialogDescription>
-                  Dashboard preview with {selectedDashboard?.panels.length} panels
+                  {tDialog('preview', { count: selectedDashboard?.panels.length })}
                 </DialogDescription>
               </DialogHeader>
               
@@ -584,11 +599,11 @@ export default function PrometheusGrafanaIntegration() {
                           <div className="h-32 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg flex items-center justify-center">
                             <div className="text-center text-muted-foreground">
                               <TrendingUp className="h-8 w-8 mx-auto mb-2" />
-                              <p className="text-xs">{panel.type} visualization</p>
+                              <p className="text-xs">{panel.type} {tDialog('visualization')}</p>
                             </div>
                           </div>
                           <div className="mt-2 text-xs text-muted-foreground">
-                            Query: {panel.targets[0]?.expr}
+                            {tDialog('query')}{panel.targets[0]?.expr}
                           </div>
                         </CardContent>
                       </Card>
@@ -599,11 +614,11 @@ export default function PrometheusGrafanaIntegration() {
               
               <DialogFooter>
                 <Button variant="outline" onClick={() => setSelectedDashboard(null)}>
-                  Close
+                  {tDialog('close')}
                 </Button>
                 <Button onClick={() => selectedDashboard && window.open(selectedDashboard.url, '_blank')}>
                   <ExternalLink className="h-4 w-4 mr-2" />
-                  Open in Grafana
+                  {tDialog('open')}
                 </Button>
               </DialogFooter>
             </DialogContent>
@@ -617,15 +632,15 @@ export default function PrometheusGrafanaIntegration() {
               <CardHeader>
                 <CardTitle className="text-base flex items-center gap-2">
                   <Database className="h-4 w-4" />
-                  Prometheus Configuration
+                  {tConfig('prometheus.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <Label>Enable Prometheus Integration</Label>
+                    <Label>{tConfig('prometheus.enable')}</Label>
                     <p className="text-xs text-muted-foreground">
-                      Connect to Prometheus for metrics collection
+                      {tConfig('prometheus.enableDescription')}
                     </p>
                   </div>
                   <Switch
@@ -635,11 +650,11 @@ export default function PrometheusGrafanaIntegration() {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label>Prometheus URL</Label>
+                  <Label>{tConfig('prometheus.url')}</Label>
                   <Input
                     value={prometheusUrl}
                     onChange={(e) => setPrometheusUrl(e.target.value)}
-                    placeholder="http://prometheus.example.com:9090"
+                    placeholder={tConfig('prometheus.urlPlaceholder')}
                     disabled={!prometheusEnabled}
                   />
                 </div>
@@ -652,11 +667,11 @@ export default function PrometheusGrafanaIntegration() {
                     disabled={!prometheusEnabled}
                   >
                     <Zap className="h-4 w-4 mr-2" />
-                    Test Connection
+                    {tConfig('connection.test')}
                   </Button>
                   <div className="flex items-center gap-1">
                     <CheckCircle2 className="h-4 w-4 text-green-500" />
-                    <span className="text-xs text-green-600">Connected</span>
+                    <span className="text-xs text-green-600">{tConfig('connection.connected')}</span>
                   </div>
                 </div>
               </CardContent>
@@ -667,15 +682,15 @@ export default function PrometheusGrafanaIntegration() {
               <CardHeader>
                 <CardTitle className="text-base flex items-center gap-2">
                   <BarChart3 className="h-4 w-4" />
-                  Grafana Configuration
+                  {tConfig('grafana.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <Label>Enable Grafana Integration</Label>
+                    <Label>{tConfig('grafana.enable')}</Label>
                     <p className="text-xs text-muted-foreground">
-                      Connect to Grafana for dashboard management
+                      {tConfig('grafana.enableDescription')}
                     </p>
                   </div>
                   <Switch
@@ -685,11 +700,11 @@ export default function PrometheusGrafanaIntegration() {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label>Grafana URL</Label>
+                  <Label>{tConfig('grafana.url')}</Label>
                   <Input
                     value={grafanaUrl}
                     onChange={(e) => setGrafanaUrl(e.target.value)}
-                    placeholder="http://grafana.example.com:3000"
+                    placeholder={tConfig('grafana.urlPlaceholder')}
                     disabled={!grafanaEnabled}
                   />
                 </div>
@@ -702,11 +717,11 @@ export default function PrometheusGrafanaIntegration() {
                     disabled={!grafanaEnabled}
                   >
                     <Zap className="h-4 w-4 mr-2" />
-                    Test Connection
+                    {tConfig('connection.test')}
                   </Button>
                   <div className="flex items-center gap-1">
                     <AlertCircle className="h-4 w-4 text-yellow-500" />
-                    <span className="text-xs text-yellow-600">Warning</span>
+                    <span className="text-xs text-yellow-600">{tConfig('connection.warning')}</span>
                   </div>
                 </div>
               </CardContent>
@@ -716,28 +731,28 @@ export default function PrometheusGrafanaIntegration() {
           {/* Advanced Settings */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-base">Advanced Settings</CardTitle>
+              <CardTitle className="text-base">{tConfig('advanced.title')}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
-                  <Label>Scrape Interval</Label>
-                  <Input defaultValue="15s" placeholder="15s" />
+                  <Label>{tConfig('advanced.scrapeInterval')}</Label>
+                  <Input defaultValue={tConfig('advanced.placeholders.interval')} placeholder={tConfig('advanced.placeholders.interval')} />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label>Query Timeout</Label>
-                  <Input defaultValue="30s" placeholder="30s" />
+                  <Label>{tConfig('advanced.queryTimeout')}</Label>
+                  <Input defaultValue={tConfig('advanced.placeholders.timeout')} placeholder={tConfig('advanced.placeholders.timeout')} />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label>Retention Period</Label>
-                  <Input defaultValue="30d" placeholder="30d" />
+                  <Label>{tConfig('advanced.retentionPeriod')}</Label>
+                  <Input defaultValue={tConfig('advanced.placeholders.retention')} placeholder={tConfig('advanced.placeholders.retention')} />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label>Max Samples</Label>
-                  <Input defaultValue="50000" placeholder="50000" />
+                  <Label>{tConfig('advanced.maxSamples')}</Label>
+                  <Input defaultValue={tConfig('advanced.placeholders.samples')} placeholder={tConfig('advanced.placeholders.samples')} />
                 </div>
               </div>
             </CardContent>

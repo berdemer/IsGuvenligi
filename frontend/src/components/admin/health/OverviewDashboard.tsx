@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -82,17 +83,18 @@ const generateTimeSeriesData = (
 }
 
 const SystemHealthGauge: React.FC<{ score: number; loading: boolean }> = ({ score, loading }) => {
+  const t = useTranslations('health.overviewDashboard.systemHealth')
   const getScoreColor = (score: number) => {
     if (score >= 95) return 'text-green-600'
     if (score >= 85) return 'text-yellow-600'
     return 'text-red-600'
   }
 
-  const getScoreStatus = (score: number) => {
-    if (score >= 95) return 'Excellent'
-    if (score >= 85) return 'Good'
-    if (score >= 70) return 'Warning'
-    return 'Critical'
+  const getScoreStatus = (score: number, t: any) => {
+    if (score >= 95) return t('status.excellent')
+    if (score >= 85) return t('status.good')
+    if (score >= 70) return t('status.warning')
+    return t('status.critical')
   }
 
   if (loading || score === undefined || score === null) {
@@ -143,10 +145,10 @@ const SystemHealthGauge: React.FC<{ score: number; loading: boolean }> = ({ scor
       </div>
       <div className="mt-4 text-center">
         <div className={`font-medium ${getScoreColor(score)}`}>
-          {getScoreStatus(score)}
+          {getScoreStatus(score, t)}
         </div>
         <div className="text-xs text-muted-foreground">
-          System Health Score
+          {t('title')}
         </div>
       </div>
     </div>
@@ -259,11 +261,12 @@ const ServiceUptimeCard: React.FC<{
   services: SystemOverview['services']
   loading: boolean
 }> = ({ services, loading }) => {
+  const t = useTranslations('health.overviewDashboard.serviceUptime')
   if (loading) {
     return (
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Service Uptime</CardTitle>
+          <CardTitle className="text-base">{t('title')}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -282,7 +285,7 @@ const ServiceUptimeCard: React.FC<{
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-base">Service Uptime (7d)</CardTitle>
+        <CardTitle className="text-base">{t('title7d')}</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
@@ -307,7 +310,7 @@ const ServiceUptimeCard: React.FC<{
             </div>
           )) : (
             <div className="text-center py-6 text-muted-foreground">
-              <p className="text-sm">No services available</p>
+              <p className="text-sm">{t('noServices')}</p>
             </div>
           )}
         </div>
@@ -321,11 +324,12 @@ const TopAlertsCard: React.FC<{
   loading: boolean
   onViewAlert: (alert: HealthAlert) => void
 }> = ({ alerts, loading, onViewAlert }) => {
+  const t = useTranslations('health.overviewDashboard.activeAlerts')
   if (loading) {
     return (
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Active Alerts</CardTitle>
+          <CardTitle className="text-base">{t('title')}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
@@ -358,9 +362,9 @@ const TopAlertsCard: React.FC<{
     <Card>
       <CardHeader>
         <div className="flex items-center justify-between">
-          <CardTitle className="text-base">Active Alerts</CardTitle>
+          <CardTitle className="text-base">{t('title')}</CardTitle>
           <Badge variant="outline">
-            {alerts.filter(a => !a.resolved).length} active
+            {t('count', { count: alerts.filter(a => !a.resolved).length })}
           </Badge>
         </div>
       </CardHeader>
@@ -402,7 +406,7 @@ const TopAlertsCard: React.FC<{
                   </span>
                   {alert.acknowledged && (
                     <Badge variant="outline" className="text-xs">
-                      Acknowledged
+                      {t('acknowledged')}
                     </Badge>
                   )}
                 </div>
@@ -412,7 +416,7 @@ const TopAlertsCard: React.FC<{
           {alerts.length === 0 && (
             <div className="text-center py-6 text-muted-foreground">
               <CheckCircle2 className="h-8 w-8 mx-auto mb-2 opacity-50" />
-              <p className="text-sm">No active alerts</p>
+              <p className="text-sm">{t('noActiveAlerts')}</p>
             </div>
           )}
         </div>
@@ -427,6 +431,9 @@ export default function OverviewDashboard({
   timeRange, 
   onTimeRangeChange 
 }: OverviewDashboardProps) {
+  const t = useTranslations('health.overviewDashboard')
+  const tSla = useTranslations('health.overviewDashboard.sla')
+  const tMock = useTranslations('health.overviewDashboard.mockData')
 
   // Generate mock time series data based on current overview
   const responseTimeData = generateTimeSeriesData(
@@ -452,16 +459,16 @@ export default function OverviewDashboard({
     <div className="space-y-6">
       {/* Time Range Selector */}
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-semibold">System Overview</h2>
+        <h2 className="text-lg font-semibold">{t('title')}</h2>
         <Select value={timeRange} onValueChange={onTimeRangeChange}>
           <SelectTrigger className="w-32">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="1h">Last Hour</SelectItem>
-            <SelectItem value="24h">Last 24h</SelectItem>
-            <SelectItem value="7d">Last 7d</SelectItem>
-            <SelectItem value="30d">Last 30d</SelectItem>
+            <SelectItem value="1h">{t('timeRange.lastHour')}</SelectItem>
+            <SelectItem value="24h">{t('timeRange.last24h')}</SelectItem>
+            <SelectItem value="7d">{t('timeRange.last7d')}</SelectItem>
+            <SelectItem value="30d">{t('timeRange.last30d')}</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -473,10 +480,10 @@ export default function OverviewDashboard({
           <CardHeader>
             <CardTitle className="text-base flex items-center gap-2">
               <Activity className="h-4 w-4" />
-              System Health Score
+              {t('systemHealth.title')}
             </CardTitle>
             <CardDescription>
-              Overall system health indicator
+              {t('systemHealth.description')}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -489,7 +496,7 @@ export default function OverviewDashboard({
 
         {/* Response Time Chart */}
         <MetricChart
-          title="Average Response Time"
+          title={t('metrics.responseTime')}
           data={responseTimeData}
           unit="ms"
           color="#3b82f6"
@@ -498,7 +505,7 @@ export default function OverviewDashboard({
 
         {/* Error Rate Chart */}
         <MetricChart
-          title="Error Rate"
+          title={t('metrics.errorRate')}
           data={errorRateData}
           unit="%"
           color="#ef4444"
@@ -513,7 +520,7 @@ export default function OverviewDashboard({
           services={overview?.services || [
             {
               id: 'api-gateway',
-              name: 'API Gateway',
+              name: tMock('apiGateway'),
               type: 'api',
               status: 'healthy',
               uptime: 99.98,
@@ -526,7 +533,7 @@ export default function OverviewDashboard({
             },
             {
               id: 'postgres-primary',
-              name: 'PostgreSQL Primary',
+              name: tMock('postgresqlPrimary'),
               type: 'database',
               status: 'healthy',
               uptime: 99.95,
@@ -539,7 +546,7 @@ export default function OverviewDashboard({
             },
             {
               id: 'redis-cache',
-              name: 'Redis Cache',
+              name: tMock('redisCache'),
               type: 'redis',
               status: 'warning',
               uptime: 98.87,
@@ -552,7 +559,7 @@ export default function OverviewDashboard({
             },
             {
               id: 'keycloak-auth',
-              name: 'Keycloak Auth',
+              name: tMock('keycloakAuth'),
               type: 'keycloak',
               status: 'healthy',
               uptime: 99.92,
@@ -573,10 +580,10 @@ export default function OverviewDashboard({
             {
               id: 'alert-001',
               serviceId: 'redis-cache',
-              serviceName: 'Redis Cache',
+              serviceName: tMock('redisCache'),
               type: 'memory',
               severity: 'high',
-              message: 'Memory usage exceeded 80% threshold',
+              message: tMock('alerts.memoryThreshold'),
               value: 84.2,
               threshold: 80,
               unit: '%',
@@ -587,10 +594,10 @@ export default function OverviewDashboard({
             {
               id: 'alert-002',
               serviceId: 'keycloak-auth',
-              serviceName: 'Keycloak Auth',
+              serviceName: tMock('keycloakAuth'),
               type: 'response_time',
               severity: 'critical',
-              message: 'Response time degraded significantly',
+              message: tMock('alerts.responseTimeDegraded'),
               value: 234,
               threshold: 200,
               unit: 'ms',
@@ -601,10 +608,10 @@ export default function OverviewDashboard({
             {
               id: 'alert-003',
               serviceId: 'api-gateway',
-              serviceName: 'API Gateway',
+              serviceName: tMock('apiGateway'),
               type: 'error_rate',
               severity: 'medium',
-              message: 'Error rate slightly elevated',
+              message: tMock('alerts.errorRateElevated'),
               value: 0.02,
               threshold: 0.01,
               unit: '%',
@@ -623,7 +630,7 @@ export default function OverviewDashboard({
         <CardHeader>
           <CardTitle className="text-base flex items-center gap-2">
             <Shield className="h-4 w-4" />
-            SLA Status
+            {tSla('title')}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -632,7 +639,7 @@ export default function OverviewDashboard({
               <div className="text-2xl font-bold text-blue-600">
                 {overview?.sla?.target ?? 99.9}%
               </div>
-              <div className="text-sm text-muted-foreground">Target</div>
+              <div className="text-sm text-muted-foreground">{tSla('target')}</div>
             </div>
             <div className="text-center">
               <div className={`text-2xl font-bold ${
@@ -640,7 +647,7 @@ export default function OverviewDashboard({
               }`}>
                 {overview?.sla?.current ?? 99.97}%
               </div>
-              <div className="text-sm text-muted-foreground">Current</div>
+              <div className="text-sm text-muted-foreground">{tSla('current')}</div>
             </div>
             <div className="text-center">
               <div className={`text-2xl font-bold ${
@@ -648,15 +655,15 @@ export default function OverviewDashboard({
               }`}>
                 {overview?.sla?.monthToDate ?? 99.94}%
               </div>
-              <div className="text-sm text-muted-foreground">Month to Date</div>
+              <div className="text-sm text-muted-foreground">{tSla('monthToDate')}</div>
             </div>
             <div className="text-center">
               <div className={`text-2xl font-bold ${
                 (overview?.sla?.breach ?? false) ? 'text-red-600' : 'text-green-600'
               }`}>
-                {(overview?.sla?.breach ?? false) ? 'BREACH' : 'GOOD'}
+                {(overview?.sla?.breach ?? false) ? tSla('breach') : tSla('good')}
               </div>
-              <div className="text-sm text-muted-foreground">Status</div>
+              <div className="text-sm text-muted-foreground">{tSla('status')}</div>
             </div>
           </div>
         </CardContent>
