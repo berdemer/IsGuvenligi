@@ -1244,6 +1244,33 @@
     "detailedDescription": "Detaylı RBAC ayarları burada kullanıcı rolleri, izinler ve erişim politikaları ile uygulanacaktır.",
     "addPolicy": "Politika Ekle"
   },
+  "notificationBell": {
+    "notifications": "Bildirimler",
+    "markAllRead": "Tümünü Okundu İşaretle",
+    "total": "toplam",
+    "unread": "okunmamış",
+    "noNotifications": "Henüz bildirim yok",
+    "actionRequired": "Eylem Gerekli",
+    "settings": "Ayarlar",
+    "viewAll": "Tümünü Görüntüle",
+    "toast": {
+      "loadFailed": "Bildirimler yüklenemedi",
+      "markedAsRead": "Bildirim okundu olarak işaretlendi",
+      "markReadFailed": "Okundu olarak işaretlenemedi",
+      "allMarkedAsRead": "Tüm bildirimler okundu olarak işaretlendi",
+      "markAllFailed": "Tümü okundu olarak işaretlenemedi"
+    },
+    "mockData": {
+      "criticalSecurityAlert": "Kritik Güvenlik Uyarısı",
+      "multipleFailedLogins": "Son 5 dakikada çoklu başarısız giriş denemeleri tespit edildi",
+      "systemHealthWarning": "Sistem Sağlık Uyarısı",
+      "highCpuUsage": "Sunucu CPU kullanımı %85'i aştı",
+      "newAdminUserCreated": "Yeni Yönetici Kullanıcı Oluşturuldu",
+      "userGrantedAdmin": "Kullanıcı Mike Chen yönetici ayrıcalıkları verildi",
+      "backupCompleted": "Yedekleme Tamamlandı",
+      "dailyBackupSuccess": "Günlük veritabanı yedeklemesi başarıyla tamamlandı"
+    }
+  },
   "users": {
     "title": "Kullanıcılar",
     "description": "Sistem kullanıcılarını yönetin ve izinlerini düzenleyin",
