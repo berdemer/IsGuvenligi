@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -26,6 +27,7 @@ interface DataManagementSettingsProps {
 
 export default function DataManagementSettings({ onSettingsChange }: DataManagementSettingsProps) {
   const { toast } = useToast()
+  const t = useTranslations('dataManagement')
   const [loading, setLoading] = useState(false)
   const [config, setConfig] = useState({
     backup: {
@@ -54,13 +56,13 @@ export default function DataManagementSettings({ onSettingsChange }: DataManagem
     try {
       await new Promise(resolve => setTimeout(resolve, 2000))
       toast({
-        title: "Export completed",
-        description: "System data has been exported successfully.",
+        title: t('toast.exportCompleted'),
+        description: t('toast.exportCompletedDescription'),
       })
     } catch (error) {
       toast({
-        title: "Export failed",
-        description: "Could not export system data.",
+        title: t('toast.exportFailed'),
+        description: t('toast.exportFailedDescription'),
         variant: "destructive"
       })
     } finally {
@@ -73,13 +75,13 @@ export default function DataManagementSettings({ onSettingsChange }: DataManagem
     try {
       await new Promise(resolve => setTimeout(resolve, 1500))
       toast({
-        title: "Cache cleared",
-        description: "Redis cache has been cleared successfully.",
+        title: t('toast.cacheCleared'),
+        description: t('toast.cacheClearedDescription'),
       })
     } catch (error) {
       toast({
-        title: "Clear failed",
-        description: "Could not clear cache.",
+        title: t('toast.clearFailed'),
+        description: t('toast.clearFailedDescription'),
         variant: "destructive"
       })
     } finally {
@@ -93,18 +95,18 @@ export default function DataManagementSettings({ onSettingsChange }: DataManagem
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Database className="h-5 w-5" />
-            Data Backup & Export
+            {t('backup.title')}
           </CardTitle>
           <CardDescription>
-            Configure automated backups and data export options
+            {t('backup.description')}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
-              <Label>Enable Automated Backups</Label>
+              <Label>{t('backup.enableAutomatedBackups')}</Label>
               <p className="text-sm text-muted-foreground">
-                Automatically backup system data at scheduled intervals
+                {t('backup.enableAutomatedBackupsDescription')}
               </p>
             </div>
             <Switch
@@ -120,7 +122,7 @@ export default function DataManagementSettings({ onSettingsChange }: DataManagem
             <div className="space-y-4 border-l-2 border-blue-200 pl-4">
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="frequency">Backup Frequency</Label>
+                  <Label htmlFor="frequency">{t('backup.backupFrequency')}</Label>
                   <select
                     id="frequency"
                     value={config.backup.frequency}
@@ -130,15 +132,15 @@ export default function DataManagementSettings({ onSettingsChange }: DataManagem
                     }}
                     className="w-full p-2 border rounded-md"
                   >
-                    <option value="hourly">Every Hour</option>
-                    <option value="daily">Daily</option>
-                    <option value="weekly">Weekly</option>
-                    <option value="monthly">Monthly</option>
+                    <option value="hourly">{t('backup.frequencies.hourly')}</option>
+                    <option value="daily">{t('backup.frequencies.daily')}</option>
+                    <option value="weekly">{t('backup.frequencies.weekly')}</option>
+                    <option value="monthly">{t('backup.frequencies.monthly')}</option>
                   </select>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="retention">Retention Period (days)</Label>
+                  <Label htmlFor="retention">{t('backup.retentionPeriod')}</Label>
                   <Input
                     id="retention"
                     type="number"
@@ -163,7 +165,7 @@ export default function DataManagementSettings({ onSettingsChange }: DataManagem
                       onSettingsChange(true)
                     }}
                   />
-                  <Label htmlFor="compression">Enable Compression</Label>
+                  <Label htmlFor="compression">{t('backup.enableCompression')}</Label>
                 </div>
 
                 <div className="flex items-center space-x-2">
@@ -175,7 +177,7 @@ export default function DataManagementSettings({ onSettingsChange }: DataManagem
                       onSettingsChange(true)
                     }}
                   />
-                  <Label htmlFor="encryption">Enable Encryption</Label>
+                  <Label htmlFor="encryption">{t('backup.enableEncryption')}</Label>
                 </div>
               </div>
             </div>
@@ -185,9 +187,9 @@ export default function DataManagementSettings({ onSettingsChange }: DataManagem
 
           <div className="flex items-center justify-between">
             <div>
-              <h4 className="font-medium">Manual Data Export</h4>
+              <h4 className="font-medium">{t('backup.manualDataExport')}</h4>
               <p className="text-sm text-muted-foreground">
-                Export all system data for backup or migration
+                {t('backup.manualDataExportDescription')}
               </p>
             </div>
             <Button onClick={handleExport} disabled={loading}>
@@ -196,20 +198,20 @@ export default function DataManagementSettings({ onSettingsChange }: DataManagem
               ) : (
                 <Download className="h-4 w-4 mr-2" />
               )}
-              Export Data
+              {t('backup.exportData')}
             </Button>
           </div>
 
           <div className="flex items-center justify-between">
             <div>
-              <h4 className="font-medium">Import Data</h4>
+              <h4 className="font-medium">{t('backup.importData')}</h4>
               <p className="text-sm text-muted-foreground">
-                Import data from backup or migration file
+                {t('backup.importDataDescription')}
               </p>
             </div>
             <Button variant="outline" disabled>
               <Upload className="h-4 w-4 mr-2" />
-              Import Data
+              {t('backup.importData')}
             </Button>
           </div>
         </CardContent>
@@ -219,23 +221,23 @@ export default function DataManagementSettings({ onSettingsChange }: DataManagem
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <RefreshCw className="h-5 w-5" />
-            Redis Cache Management
+            {t('cache.title')}
             {config.cache.enabled ? (
-              <Badge variant="default" className="bg-green-500">Active</Badge>
+              <Badge variant="default" className="bg-green-500">{t('cache.active')}</Badge>
             ) : (
-              <Badge variant="outline">Inactive</Badge>
+              <Badge variant="outline">{t('cache.inactive')}</Badge>
             )}
           </CardTitle>
           <CardDescription>
-            Configure and manage Redis caching settings
+            {t('cache.description')}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
-              <Label>Enable Redis Caching</Label>
+              <Label>{t('cache.enableRedisCache')}</Label>
               <p className="text-sm text-muted-foreground">
-                Use Redis for application caching
+                {t('cache.enableRedisCacheDescription')}
               </p>
             </div>
             <Switch
@@ -251,7 +253,7 @@ export default function DataManagementSettings({ onSettingsChange }: DataManagem
             <div className="space-y-4 border-l-2 border-red-200 pl-4">
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="defaultTtl">Default TTL (seconds)</Label>
+                  <Label htmlFor="defaultTtl">{t('cache.defaultTtl')}</Label>
                   <Input
                     id="defaultTtl"
                     type="number"
@@ -266,7 +268,7 @@ export default function DataManagementSettings({ onSettingsChange }: DataManagem
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="maxSize">Max Cache Size</Label>
+                  <Label htmlFor="maxSize">{t('cache.maxCacheSize')}</Label>
                   <Input
                     id="maxSize"
                     value={config.cache.maxSize}
@@ -280,7 +282,7 @@ export default function DataManagementSettings({ onSettingsChange }: DataManagem
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="cleanupInterval">Cleanup Interval (seconds)</Label>
+                <Label htmlFor="cleanupInterval">{t('cache.cleanupInterval')}</Label>
                 <Input
                   id="cleanupInterval"
                   type="number"
@@ -300,9 +302,9 @@ export default function DataManagementSettings({ onSettingsChange }: DataManagem
 
           <div className="flex items-center justify-between">
             <div>
-              <h4 className="font-medium">Clear Cache</h4>
+              <h4 className="font-medium">{t('cache.clearCache')}</h4>
               <p className="text-sm text-muted-foreground">
-                Clear all cached data immediately
+                {t('cache.clearCacheDescription')}
               </p>
             </div>
             <Button 
@@ -315,7 +317,7 @@ export default function DataManagementSettings({ onSettingsChange }: DataManagem
               ) : (
                 <Trash2 className="h-4 w-4 mr-2" />
               )}
-              Clear Cache
+              {t('cache.clearCache')}
             </Button>
           </div>
         </CardContent>
@@ -325,19 +327,19 @@ export default function DataManagementSettings({ onSettingsChange }: DataManagem
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Clock className="h-5 w-5" />
-            Data Cleanup & Maintenance
+            {t('cleanup.title')}
           </CardTitle>
           <CardDescription>
-            Configure automatic data cleanup and maintenance tasks
+            {t('cleanup.description')}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div className="space-y-0.5">
-                <Label>Enable Automatic Cleanup</Label>
+                <Label>{t('cleanup.enableAutomaticCleanup')}</Label>
                 <p className="text-sm text-muted-foreground">
-                  Automatically clean up old data and temporary files
+                  {t('cleanup.enableAutomaticCleanupDescription')}
                 </p>
               </div>
               <Switch
@@ -352,7 +354,7 @@ export default function DataManagementSettings({ onSettingsChange }: DataManagem
             {config.cleanup.enabled && (
               <div className="space-y-4 border-l-2 border-yellow-200 pl-4">
                 <div className="space-y-2">
-                  <Label htmlFor="logRetention">Log Retention (days)</Label>
+                  <Label htmlFor="logRetention">{t('cleanup.logRetention')}</Label>
                   <Input
                     id="logRetention"
                     type="number"
@@ -368,7 +370,7 @@ export default function DataManagementSettings({ onSettingsChange }: DataManagem
 
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <Label>Clean Temporary Files</Label>
+                    <Label>{t('cleanup.cleanTemporaryFiles')}</Label>
                     <Switch
                       checked={config.cleanup.tempFileCleanup}
                       onCheckedChange={(checked) => {
@@ -379,7 +381,7 @@ export default function DataManagementSettings({ onSettingsChange }: DataManagem
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <Label>Clean Expired Sessions</Label>
+                    <Label>{t('cleanup.cleanExpiredSessions')}</Label>
                     <Switch
                       checked={config.cleanup.sessionCleanup}
                       onCheckedChange={(checked) => {

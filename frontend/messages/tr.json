@@ -1123,6 +1123,127 @@
       "milliseconds": "ms"
     }
   },
+  "dataManagement": {
+    "backup": {
+      "title": "Veri Yedekleme ve Dışa Aktarma",
+      "description": "Otomatik yedekleme ve veri dışa aktarma seçeneklerini yapılandırın",
+      "enableAutomatedBackups": "Otomatik Yedeklemeyi Etkinleştir",
+      "enableAutomatedBackupsDescription": "Sistem verilerini belirli aralıklarla otomatik olarak yedekle",
+      "backupFrequency": "Yedekleme Sıklığı",
+      "retentionPeriod": "Saklama Süresi (gün)",
+      "enableCompression": "Sıkıştırmayı Etkinleştir",
+      "enableEncryption": "Şifrelemeyi Etkinleştir",
+      "manualDataExport": "Manuel Veri Dışa Aktarma",
+      "manualDataExportDescription": "Yedekleme veya taşıma için tüm sistem verilerini dışa aktar",
+      "exportData": "Veri Dışa Aktar",
+      "importData": "Veri İçe Aktar",
+      "importDataDescription": "Yedeklemeden veya taşıma dosyasından veri içe aktar",
+      "frequencies": {
+        "hourly": "Her Saat",
+        "daily": "Günlük",
+        "weekly": "Haftalık",
+        "monthly": "Aylık"
+      }
+    },
+    "cache": {
+      "title": "Redis Önbellek Yönetimi",
+      "description": "Redis önbellek ayarlarını yapılandır ve yönet",
+      "active": "Aktif",
+      "inactive": "Pasif",
+      "enableRedisCache": "Redis Önbelleği Etkinleştir",
+      "enableRedisCacheDescription": "Uygulama önbelleği için Redis kullan",
+      "defaultTtl": "Varsayılan TTL (saniye)",
+      "maxCacheSize": "Maksimum Önbellek Boyutu",
+      "cleanupInterval": "Temizleme Aralığı (saniye)",
+      "clearCache": "Önbelleği Temizle",
+      "clearCacheDescription": "Tüm önbellek verilerini hemen temizle"
+    },
+    "cleanup": {
+      "title": "Veri Temizleme ve Bakım",
+      "description": "Otomatik veri temizleme ve bakım görevlerini yapılandırın",
+      "enableAutomaticCleanup": "Otomatik Temizlemeyi Etkinleştir",
+      "enableAutomaticCleanupDescription": "Eski verileri ve geçici dosyaları otomatik olarak temizle",
+      "logRetention": "Günlük Saklama (gün)",
+      "cleanTemporaryFiles": "Geçici Dosyaları Temizle",
+      "cleanExpiredSessions": "Süresi Dolmuş Oturumları Temizle"
+    },
+    "toast": {
+      "exportCompleted": "Dışa aktarma tamamlandı",
+      "exportCompletedDescription": "Sistem verileri başarıyla dışa aktarıldı.",
+      "exportFailed": "Dışa aktarma başarısız",
+      "exportFailedDescription": "Sistem verileri dışa aktarılamadı.",
+      "cacheCleared": "Önbellek temizlendi",
+      "cacheClearedDescription": "Redis önbelleği başarıyla temizlendi.",
+      "clearFailed": "Temizleme başarısız",
+      "clearFailedDescription": "Önbellek temizlenemedi."
+    }
+  },
+  "auditSettings": {
+    "title": "Denetim Günlüğü Yapılandırması",
+    "description": "Güvenlik ve uyumluluk için kapsamlı denetim günlüğü yapılandırın",
+    "enabled": "Etkin",
+    "disabled": "Devre Dışı",
+    "enableAuditLogging": "Denetim Günlüğünü Etkinleştir",
+    "enableAuditLoggingDescription": "Güvenlik izleme ve uyumluluk için tüm sistem aktivitelerini kaydet",
+    "general": {
+      "title": "Genel Ayarlar",
+      "logLevel": "Günlük Seviyesi",
+      "retentionPeriod": "Saklama Süresi (gün)",
+      "enableCompression": "Sıkıştırmayı Etkinleştir",
+      "enableEncryption": "Şifrelemeyi Etkinleştir",
+      "logLevels": {
+        "debug": "Hata Ayıklama",
+        "info": "Bilgi",
+        "warn": "Uyarı",
+        "error": "Hata",
+        "critical": "Kritik"
+      }
+    },
+    "events": {
+      "title": "Olay Türleri",
+      "userActions": "Kullanıcı İşlemleri",
+      "systemActions": "Sistem İşlemleri",
+      "authenticationEvents": "Kimlik Doğrulama Olayları",
+      "dataChanges": "Veri Değişiklikleri",
+      "configurationChanges": "Yapılandırma Değişiklikleri",
+      "errorEvents": "Hata Olayları",
+      "performanceMetrics": "Performans Metrikleri"
+    },
+    "storage": {
+      "title": "Depolama Yapılandırması",
+      "storageLocation": "Depolama Konumu",
+      "maxFileSize": "Maksimum Dosya Boyutu",
+      "rotationPolicy": "Döndürme Politikası",
+      "enableBackup": "Yedeklemeyi Etkinleştir",
+      "locations": {
+        "database": "Veritabanı",
+        "file": "Dosya Sistemi",
+        "both": "Her İkisi"
+      },
+      "rotations": {
+        "hourly": "Saatlik",
+        "daily": "Günlük",
+        "weekly": "Haftalık",
+        "monthly": "Aylık"
+      }
+    },
+    "alerts": {
+      "title": "Güvenlik Uyarıları",
+      "failedLoginAttempts": "Başarısız Giriş Denemeleri",
+      "suspiciousActivity": "Şüpheli Aktivite",
+      "dataExfiltration": "Veri Sızdırma",
+      "configurationChanges": "Yapılandırma Değişiklikleri",
+      "thresholdBreaches": "Eşik İhlalleri"
+    }
+  },
+  "accessPolicySettings": {
+    "title": "Erişim Politikası Yönetimi",
+    "description": "Rol tabanlı erişim kontrolü ve kullanıcı izinlerini yapılandırın",
+    "rbacEnabled": "RBAC Etkin",
+    "accessPolicyConfiguration": "Erişim Politikası Yapılandırması",
+    "detailedDescription": "Detaylı RBAC ayarları burada kullanıcı rolleri, izinler ve erişim politikaları ile uygulanacaktır.",
+    "addPolicy": "Politika Ekle"
+  },
   "users": {
     "title": "Kullanıcılar",
     "description": "Sistem kullanıcılarını yönetin ve izinlerini düzenleyin",
