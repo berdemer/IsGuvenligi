@@ -1,0 +1,406 @@
+{
+  "loading": "Yükleniyor...",
+  "save": "Kaydet",
+  "cancel": "İptal",
+  "delete": "Sil",
+  "edit": "Düzenle",
+  "add": "Ekle",
+  "search": "Ara",
+  "filter": "Filtrele",
+  "export": "Dışa Aktar",
+  "import": "İçe Aktar",
+  "refresh": "Yenile",
+  "back": "Geri",
+  "next": "İleri",
+  "previous": "Önceki",
+  "submit": "Gönder",
+  "confirm": "Onayla",
+  "yes": "Evet",
+  "no": "Hayır",
+  "close": "Kapat",
+  "view": "Görüntüle",
+  "download": "İndir",
+  "upload": "Yükle",
+  "clear": "Temizle",
+  "reset": "Sıfırla",
+  "apply": "Uygula",
+  "actions": "İşlemler",
+  "status": "Durum",
+  "name": "Ad",
+  "description": "Açıklama",
+  "date": "Tarih",
+  "time": "Zaman",
+  "user": "Kullanıcı",
+  "email": "E-posta",
+  "phone": "Telefon",
+  "address": "Adres",
+  "total": "Toplam",
+  "active": "Aktif",
+  "inactive": "Pasif",
+  "enabled": "Etkin",
+  "disabled": "Devre Dışı",
+  "success": "Başarılı",
+  "error": "Hata",
+  "warning": "Uyarı",
+  "info": "Bilgi",
+  "welcome": "Hoşgeldin",
+  "welcomeBack": "Tekrar Hoşgeldin",
+  "goodMorning": "Günaydın",
+  "goodAfternoon": "Tünaydın", 
+  "goodEvening": "İyi akşamlar",
+  "pleaseWait": "Lütfen bekleyin...",
+  "noData": "Veri bulunamadı",
+  "notFound": "Bulunamadı",
+  "unauthorized": "Yetkisiz erişim",
+  "forbidden": "Yasaklı",
+  "sessionExpired": "Oturum süresi doldu",
+  "networkError": "Ağ hatası",
+  "serverError": "Sunucu hatası",
+  "operationSuccessful": "İşlem başarılı",
+  "operationFailed": "İşlem başarısız",
+  "confirmDelete": "Silmek istediğinizden emin misiniz?",
+  "confirmAction": "Bu işlemi gerçekleştirmek istediğinizden emin misiniz?",
+  "unsavedChanges": "Kaydedilmemiş değişiklikler var",
+  "language": "Dil",
+  "theme": "Tema",
+  "timezone": "Saat Dilimi",
+  "dateFormat": "Tarih Formatı",
+  "timeFormat": "Saat Formatı",
+  "currency": "Para Birimi",
+  "goToDashboard": "Panoya Git",
+  "welcome": "Hoşgeldiniz",
+  "workplaceSafety": "İş Güvenliği Yönetim Sistemi",
+  "general": "Genel",
+  "languages": "Diller",
+  "placeholders": "Yer Tutucular",
+  "sessions": {
+    "title": "Aktif Oturumlar",
+    "search": {
+      "placeholder": "E-posta, kullanıcı adı, IP veya cihaz parmak izi ile ara..."
+    },
+    "filters": {
+      "title": "Filtreler",
+      "allRoles": "Tüm Roller",
+      "allDevices": "Tüm Cihazlar",
+      "allRiskLevels": "Tüm Risk Seviyeleri",
+      "allMfaStatus": "Tüm MFA Durumları",
+      "mfaPassed": "MFA Başarılı",
+      "mfaRequired": "MFA Gerekli",
+      "mfaFailed": "MFA Başarısız",
+      "mfaBypassed": "MFA Atlandı"
+    },
+    "roles": {
+      "admin": "Yönetici",
+      "security": "Güvenlik",
+      "viewer": "İzleyici"
+    },
+    "devices": {
+      "desktop": "Masaüstü",
+      "mobile": "Mobil",
+      "tablet": "Tablet"
+    },
+    "risk": {
+      "low": "Düşük Risk",
+      "medium": "Orta Risk",
+      "high": "Yüksek Risk",
+      "critical": "Kritik Risk",
+      "score": "Risk Skoru: {score}/100 ({level})"
+    },
+    "mfa": {
+      "passed": "Geçti",
+      "required": "Gerekli",
+      "failed": "Başarısız",
+      "bypassed": "Atlandı",
+      "unknown": "Bilinmiyor"
+    },
+    "time": {
+      "justNow": "Şimdi",
+      "minutesAgo": "{minutes}d önce",
+      "hoursAgo": "{hours}s önce",
+      "daysAgo": "{days}g önce"
+    },
+    "stats": {
+      "showing": "{filtered} / {total} oturum gösteriliyor",
+      "selected": "{count} oturum seçildi"
+    },
+    "empty": {
+      "title": "Oturum bulunamadı",
+      "noSessions": "Şu anda aktif oturum yok",
+      "noResults": "Arama veya filtre kriterlerinizi ayarlamayı deneyin"
+    },
+    "table": {
+      "user": "Kullanıcı",
+      "device": "Cihaz",
+      "location": "Konum",
+      "loginTime": "Giriş Zamanı",
+      "lastActivity": "Son Aktivite",
+      "idle": "Boşta",
+      "mfa": "MFA",
+      "risk": "Risk",
+      "ttl": "TTL",
+      "concurrent": "Eşzamanlı"
+    },
+    "device": {
+      "new": "Yeni"
+    },
+    "location": {
+      "vpn": "VPN"
+    },
+    "status": {
+      "active": "Aktif"
+    },
+    "anomalies": {
+      "detected": "{count} anomali tespit edildi"
+    },
+    "actions": {
+      "viewDetails": "Detayları Görüntüle",
+      "revokeSession": "Oturumu Sonlandır",
+      "revokeAndBlockIp": "Sonlandır + IP Engelle (15d)",
+      "requireMfa": "Sonraki İşlemde MFA Gerektir",
+      "flagCompromised": "Tehlikeye Girmiş Olarak İşaretle"
+    },
+    "toast": {
+      "noRevokePermission": "Oturumları sonlandırma izniniz yok",
+      "noQuarantinePermission": "IP'leri karantinaya alma izniniz yok",
+      "actionFailed": "{action} oturumu başarısız",
+      "sessionRevoked": "Oturum başarıyla sonlandırıldı",
+      "sessionRevokedAndBlocked": "Oturum sonlandırıldı ve IP engellendi",
+      "mfaRequirementAdded": "MFA gereksinimi eklendi",
+      "ipQuarantined": "IP başarıyla karantinaya alındı",
+      "sessionFlagged": "Oturum tehlikeye girmiş olarak işaretlendi",
+      "reauthRequired": "Yeniden kimlik doğrulama gerekli",
+      "actionCompleted": "İşlem başarıyla tamamlandı",
+      "bulkCompleted": "Toplu {action} tamamlandı"
+    },
+    "details": {
+      "noSessionSelected": "Seçili oturum yok",
+      "title": "Oturum Detayları",
+      "risk": {
+        "high": "Yüksek Risk",
+        "medium": "Orta Risk",
+        "low": "Düşük Risk"
+      },
+      "actions": {
+        "revoke": "Sonlandır",
+        "flag": "İşaretle"
+      },
+      "tabs": {
+        "overview": "Genel Bakış",
+        "security": "Güvenlik",
+        "timeline": "Zaman Çizelgesi",
+        "location": "Konum",
+        "tokens": "Token'lar"
+      },
+      "sections": {
+        "sessionInfo": "Oturum Bilgisi",
+        "deviceInfo": "Cihaz Bilgisi",
+        "securityOverview": "Güvenlik Genel Bakışı",
+        "securityEvents": "Güvenlik Olayları",
+        "sessionTimeline": "Oturum Zaman Çizelgesi",
+        "geoInfo": "Coğrafi Bilgi",
+        "asnInfo": "ASN Bilgisi",
+        "tokenInfo": "Token Bilgisi",
+        "sessionState": "Oturum Durumu"
+      },
+      "fields": {
+        "sessionId": "Oturum ID",
+        "user": "Kullanıcı",
+        "clientId": "İstemci ID",
+        "duration": "Süre",
+        "rolesPermissions": "Roller ve İzinler",
+        "scopes": "Kapsamlar",
+        "deviceType": "Cihaz Türü",
+        "platform": "Platform",
+        "browser": "Tarayıcı",
+        "ipAddress": "IP Adresi",
+        "userAgent": "Kullanıcı Aracısı",
+        "mfaStatus": "MFA Durumu",
+        "riskScore": "Risk Skoru",
+        "asn": "ASN",
+        "country": "Ülke",
+        "city": "Şehir",
+        "region": "Bölge",
+        "timezone": "Saat Dilimi",
+        "organization": "Kuruluş",
+        "isp": "ISP",
+        "expires": "Son Geçerlilik",
+        "type": "Tür",
+        "lastUsed": "Son Kullanım",
+        "rememberMe": "Beni Hatırla",
+        "lastActivity": "Son Aktivite"
+      },
+      "status": {
+        "verified": "Doğrulandı",
+        "notVerified": "Doğrulanmadı",
+        "unknown": "Bilinmiyor",
+        "active": "Aktif",
+        "expired": "Süresi Doldu",
+        "available": "Mevcut",
+        "enabled": "Etkin",
+        "disabled": "Devre Dışı"
+      },
+      "map": {
+        "placeholder": "Etkileşimli harita burada görüntülenecek"
+      },
+      "tokens": {
+        "accessToken": "Erişim Token'ı",
+        "refreshToken": "Yenileme Token'ı",
+        "bearer": "Bearer"
+      }
+    },
+    "bulkActions": {
+      "selected": "{count} seçildi",
+      "choosePlaceholder": "Toplu işlem seçin...",
+      "executeAction": "İşlemi Yürüt",
+      "confirmTitle": "Toplu İşlemi Onayla",
+      "confirmDescription": "{count} oturum üzerinde \"{action}\" işlemini gerçekleştirmek üzeresiniz.",
+      "cannotUndo": "Bu işlem geri alınamaz.",
+      "actions": {
+        "revoke": {
+          "label": "Oturumları Sonlandır",
+          "description": "Seçili oturumları anında sonlandır"
+        },
+        "revokeBlockIp": {
+          "label": "Sonlandır + IP'leri Engelle",
+          "description": "Oturumları sonlandır ve IP adreslerini geçici olarak engelle"
+        },
+        "forceMfa": {
+          "label": "MFA Zorla",
+          "description": "Bu oturumlar için sonraki işlemde MFA gerektir"
+        },
+        "quarantineIp": {
+          "label": "IP'leri Karantinaya Al",
+          "description": "IP adreslerini belirtilen süre karantinaya al"
+        },
+        "flagCompromised": {
+          "label": "Tehlikeye Girmiş Olarak İşaretle",
+          "description": "Oturumları potansiyel olarak tehlikeye girmiş olarak işaretle"
+        },
+        "requireReauth": {
+          "label": "Yeniden Kimlik Doğrulama Gerektir",
+          "description": "Kullanıcıları yeniden kimlik doğrulamaya zorla"
+        }
+      },
+      "alert": {
+        "action": "İşlem",
+        "affectedSessions": "Etkilenen Oturumlar",
+        "warning": "Uyarı",
+        "terminateWarning": "Bu işlem kullanıcı oturumlarını anında sonlandıracak."
+      },
+      "fields": {
+        "reason": "İşlem Nedeni",
+        "reasonPlaceholder": "Bu toplu işlemin neden gerekli olduğunu açıklayın...",
+        "blockDuration": "Engelleme Süresi (dakika)",
+        "notifyUsers": "Etkilenen kullanıcıları e-posta ile bilgilendir"
+      },
+      "duration": {
+        "15min": "15 dakika",
+        "30min": "30 dakika",
+        "1hour": "1 saat",
+        "4hours": "4 saat",
+        "24hours": "24 saat"
+      },
+      "buttons": {
+        "cancel": "İptal",
+        "processing": "İşleniyor...",
+        "execute": "{action} Yürüt"
+      },
+      "clearSelection": "Seçimi Temizle",
+      "tip": "💡 İpucu: Birden fazla oturumu verimli bir şekilde yönetmek için toplu işlemleri kullanın",
+      "toast": {
+        "reasonRequired": "Lütfen bu işlem için bir neden belirtin",
+        "executeFailed": "Toplu işlem yürütülemedi"
+      }
+    },
+    "realtime": {
+      "status": {
+        "live": "Canlı",
+        "reconnecting": "Yeniden bağlanıyor",
+        "disconnected": "Bağlantı kesildi"
+      },
+      "tooltip": {
+        "connectionStatus": "Bağlantı Durumu",
+        "connected": "Bağlandı",
+        "disconnected": "Bağlantı kesildi",
+        "lastUpdate": "Son Güncelleme",
+        "reconnectAttempts": "Yeniden Bağlanma Denemeleri"
+      }
+    },
+    "analytics": {
+      "title": "Oturum Analitiği",
+      "timeRanges": {
+        "lastHour": "Son Saat",
+        "last24h": "Son 24s",
+        "last7days": "Son 7 gün",
+        "last30days": "Son 30 gün"
+      },
+      "metrics": {
+        "peakConcurrent": "Pik Eşzamanlı",
+        "avgDuration": "Ort. Süre",
+        "highRisk": "Yüksek Risk",
+        "mfaCoverage": "MFA Kapsamı"
+      },
+      "charts": {
+        "riskDistribution": "Risk Skoru Dağılımı",
+        "topAnomalies": "En İyi Anomaliler",
+        "sessionsByCountry": "Ülkeye Göre Oturumlar",
+        "geoHeatmap": "Coğrafi Isı Haritası",
+        "deviceDistribution": "Cihaz Türü Dağılımı",
+        "browserDistribution": "Tarayıcı Dağılımı",
+        "securityMetrics": "Güvenlik Metrikleri",
+        "securityEvents": "Güvenlik Olayları"
+      },
+      "risk": {
+        "lowRange": "Düşük (0-39)",
+        "mediumRange": "Orta (40-69)",
+        "highRange": "Yüksek (70-100)"
+      },
+      "anomalies": {
+        "multipleConcurrent": "Çoklu eşzamanlı oturumlar",
+        "unusualLoginTime": "Olağandışı giriş zamanı",
+        "newDeviceLogin": "Yeni cihaz girişi",
+        "geographicAnomaly": "Coğrafi anomali"
+      },
+      "worldMap": {
+        "title": "Dünya Haritası",
+        "description": "Etkileşimli coğrafi görselleştirme burada gösterilecek"
+      },
+      "security": {
+        "mfaEnabled": "MFA Etkin Oturumlar",
+        "highRisk": "Yüksek Risk Oturumları",
+        "flagged": "İşaretli Oturumlar"
+      }
+    },
+    "anomalies": {
+      "search": {
+        "placeholder": "Anomalileri ara..."
+      },
+      "types": {
+        "geoVelocity": {
+          "name": "Coğrafi Hız",
+          "description": "Giriş konumları arasında imkansız seyahat"
+        },
+        "deviceAnomaly": {
+          "name": "Cihaz Anomalisi",
+          "description": "Olağandışı cihaz veya tarayıcı parmak izi"
+        },
+        "timeAnomaly": {
+          "name": "Zaman Anomalisi",
+          "description": "Kullanıcı için olağandışı saatlerde giriş"
+        },
+        "behavioralAnomaly": {
+          "name": "Davranışsal Anomali",
+          "description": "Olağandışı kullanıcı davranış kalıpları"
+        },
+        "concurrentSessions": {
+          "name": "Eşzamanlı Oturumlar",
+          "description": "Aşırı eşzamanlı oturumlar"
+        },
+        "ipReputation": {
+          "name": "IP İtibarı",
+          "description": "Bilinen kötü amaçlı veya şüpheli IP"
+        }
+      }
+    }
+  }
+}

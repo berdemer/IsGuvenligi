@@ -1,0 +1,52 @@
+# Multi-stage build for optimization
+FROM node:18-alpine AS base
+
+# Set build arguments
+ARG NODE_ENV=development
+
+# Install system dependencies in one layer
+RUN apk add --no-cache --update \
+    git \
+    curl \
+    dumb-init \
+    libc6-compat \
+    && rm -rf /var/cache/apk/*
+
+# Create non-root user early
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nextjs -u 1001 -G nodejs
+
+WORKDIR /app
+
+# Copy package files first for better caching
+COPY --chown=nextjs:nodejs package*.json ./
+
+# Install dependencies with optimization
+RUN npm ci --no-audit --no-fund && \
+    npm cache clean --force
+
+# Copy source code
+COPY --chown=nextjs:nodejs . .
+
+# Ensure .next directory has correct permissions
+RUN mkdir -p .next && chown -R nextjs:nodejs .next
+
+# Switch to non-root user
+USER nextjs
+
+# Expose port
+EXPOSE 3000
+
+# Environment optimization
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_OPTIONS="--max-old-space-size=1024"
+
+# Health check (moved to docker-compose.yml for better control)
+# HEALTHCHECK --interval=15s --timeout=5s --start-period=30s --retries=3 \
+#   CMD curl -f http://localhost:3000 || exit 1
+
+# Use dumb-init for proper signal handling
+ENTRYPOINT ["dumb-init", "--"]
+
+# Development command
+CMD ["npm", "run", "dev"]

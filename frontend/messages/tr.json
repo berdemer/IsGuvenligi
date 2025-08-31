@@ -1,0 +1,2426 @@
+{
+  "nav": {
+    "home": "Ana Sayfa",
+    "dashboard": "Panel",
+    "userMgmt": "Kullanıcı Yönetimi",
+    "users": "Kullanıcılar",
+    "roles": "Roller",
+    "auth": "Kimlik Doğrulama",
+    "oauthProviders": "OAuth Sağlayıcılar",
+    "authPolicies": "Kimlik Politikaları",
+    "activeSessions": "Aktif Oturumlar",
+    "accessPolicies": "Erişim Politikaları",
+    "auditLogs": "Denetim Günlükleri",
+    "notifications": "Bildirimler",
+    "health": "Sistem Sağlığı",
+    "settings": "Sistem Ayarları"
+  },
+  "dashboard": {
+    "title": "Panel",
+    "welcomeMessage": "İş Güvenliği Admin Paneline Hoş Geldiniz",
+    "totalUsers": "Toplam Kullanıcı",
+    "activeSessions": "Aktif Oturumlar",
+    "securityAlerts": "Güvenlik Uyarıları",
+    "systemHealth": "Sistem Sağlığı",
+    "recentActivity": "Son Aktiviteler",
+    "securityOverview": "Güvenlik Özeti",
+    "analytics": "Analitik",
+    "viewReports": "Raporları Görüntüle",
+    "notifications": "Bildirimler",
+    "stats": {
+      "activeUsersInSystem": "Sistemde aktif kullanıcılar",
+      "currentlyLoggedIn": "Şu anda giriş yapmış",
+      "resolvedThisWeek": "Bu hafta çözüldü",
+      "uptimeThisMonth": "Bu ayki çalışma süresi"
+    },
+    "activities": {
+      "userLogin": "Kullanıcı girişi",
+      "failedLoginAttempt": "Başarısız giriş denemesi",
+      "roleUpdated": "Rol güncellendi",
+      "newUserCreated": "Yeni kullanıcı oluşturuldu"
+    },
+    "security": {
+      "authentication": "Kimlik Doğrulama",
+      "accessControl": "Erişim Kontrolü",
+      "sessionManagement": "Oturum Yönetimi",
+      "auditCompliance": "Denetim Uyumluluğu",
+      "good": "İyi",
+      "excellent": "Mükemmel",
+      "poor": "Zayıf",
+      "tfaEnabledFor95Percent": "Kullanıcıların %95'i için 2FA etkin",
+      "allRolesProperlyConfigured": "Tüm roller düzgün yapılandırılmış",
+      "longLivedSessionsDetected": "Uzun süreli oturumlar tespit edildi",
+      "allEventsLogged": "Tüm olaylar kaydedildi",
+      "issues": "sorun"
+    },
+    "common": {
+      "fromLastMonth": "geçen aydan",
+      "success": "başarı",
+      "warning": "uyarı",
+      "info": "bilgi",
+      "analyticsChartsWillBeImplemented": "Analitik grafikleri burada uygulanacak",
+      "integrationWithChartingLibraryNeeded": "Grafik kütüphanesi entegrasyonu gerekiyor"
+    },
+    "sessions": {
+      "title": "Aktif Oturumlar",
+      "refresh": "Yenile",
+      "terminateAll": "Tüm Oturumları Sonlandır",
+      "sessionDetails": "Oturum Detayları",
+      "loading": "Oturumlar yükleniyor...",
+      "error": "Oturumlar yüklenirken hata oluştu. Lütfen sayfayı yenileyin.",
+      "noActiveSessions": "Aktif oturum bulunamadı",
+      "currentSession": "Mevcut Oturum",
+      "activeSession": "Aktif Oturum",
+      "terminateSession": "Oturumu Sonlandır",
+      "unknownBrowser": "Bilinmeyen Tarayıcı",
+      "unknownOS": "Bilinmeyen İşletim Sistemi",
+      "toasts": {
+        "sessionTerminated": "Oturum sonlandırıldı",
+        "sessionTerminationFailed": "Oturum sonlandırılamadı"
+      },
+      "dialogs": {
+        "terminateAll": {
+          "title": "Tüm Oturumları Sonlandır",
+          "content": "Mevcut oturum hariç tüm aktif oturumlarınızı sonlandırmak istediğinizden emin misiniz?",
+          "action": "Tüm Oturumları Sonlandır"
+        },
+        "terminate": {
+          "title": "Oturumu Sonlandır", 
+          "content": "Bu oturumu sonlandırmak istediğinizden emin misiniz?",
+          "action": "Oturumu Sonlandır"
+        }
+      }
+    }
+  },
+  "roles": {
+    "title": "Rol Yönetimi",
+    "description": "Kullanıcı rollerini ve izinlerini tanımlayın",
+    "addRole": "Rol Ekle",
+    "editRole": "Rolü Düzenle",
+    "deleteRole": "Rolü Sil",
+    "roleName": "Rol Adı",
+    "roleDescription": "Açıklama",
+    "permissions": "İzinler",
+    "userCount": "Kullanıcı Sayısı"
+  },
+  "auth": {
+    "title": "Kimlik Doğrulama",
+    "oauthProviders": {
+      "title": "OAuth Sağlayıcılar",
+      "description": "Sosyal medya ve kurumsal OAuth sağlayıcılarını yönetin",
+      "addProvider": "Yeni Sağlayıcı",
+      "providerName": "Sağlayıcı Adı",
+      "clientId": "İstemci ID",
+      "enabled": "Etkin",
+      "stats": {
+        "totalProviders": "Toplam Sağlayıcı",
+        "activeProviders": "Aktif Sağlayıcı",
+        "inactiveProviders": "Pasif Sağlayıcı",
+        "configured": "Yapılandırılan"
+      },
+      "search": {
+        "placeholder": "Sağlayıcı ara..."
+      },
+      "status": {
+        "active": "Aktif",
+        "inactive": "Pasif",
+        "status": "Durum"
+      },
+      "fields": {
+        "clientId": "Client ID",
+        "scopes": "Kapsamlar",
+        "notConfigured": "Yapılandırılmamış"
+      },
+      "actions": {
+        "configure": "Yapılandır",
+        "test": "Test Et"
+      },
+      "empty": {
+        "title": "Sağlayıcı bulunamadı",
+        "description": "Belirtilen kriterlere uygun OAuth sağlayıcısı bulunmuyor."
+      }
+    },
+    "policies": {
+      "title": "Kimlik Politikaları",
+      "description": "Şifre ve güvenlik politikalarını belirleyin",
+      "passwordPolicy": "Şifre Politikası",
+      "mfaRequired": "Çok Faktörlü Kimlik Doğrulama Gerekli",
+      "sessionTimeout": "Oturum Zaman Aşımı",
+      "createPolicy": "Politika Oluştur",
+      "conflictsDetected": "çakışma tespit edildi",
+      "totalPolicies": "Toplam Politikalar",
+      "activePolicies": "Aktif Politikalar",
+      "totalApplications": "Toplam Uygulamalar",
+      "simulation": "Simülasyon",
+      "auditLog": "Denetim Kayıtları",
+      "failedToLoad": "Politikalar yüklenemedi",
+      "noCreatePermission": "Politika oluşturma izniniz yok",
+      "noEditPermission": "Politika düzenleme izniniz yok",
+      "noDeletePermission": "Politika silme izniniz yok",
+      "noActivatePermission": "Politika etkinleştirme izniniz yok",
+      "policyUpdated": "Politika başarıyla güncellendi",
+      "policyCreated": "Politika başarıyla oluşturuldu",
+      "policyDeleted": "Politika başarıyla silindi",
+      "policyActivated": "Politika başarıyla etkinleştirildi",
+      "failedToSave": "Politika kaydedilemedi",
+      "failedToDelete": "Politika silinemedi",
+      "failedToActivate": "Politika etkinleştirilemedi"
+    },
+    "sessions": {
+      "title": "Aktif Oturumlar",
+      "description": "Mevcut kullanıcı oturumlarını izleyin",
+      "user": "Kullanıcı",
+      "device": "Cihaz",
+      "location": "Konum",
+      "startTime": "Başlangıç Zamanı",
+      "lastActivity": "Son Aktivite",
+      "terminate": "Sonlandır",
+      "activeSessions": "Aktif Oturumlar",
+      "uniqueUsers": "Benzersiz Kullanıcılar",
+      "highRiskSessions": "Yüksek Riskli Oturumlar",
+      "revokedToday": "Bugün İptal Edilen",
+      "securityActionsTaken": "Güvenlik Eylemleri Alındı",
+      "fromYesterday": "dünden itibaren",
+      "ofTotalSessions": "toplam oturum",
+      "lastUpdated": "Son Güncelleme",
+      "live": "Canlı",
+      "paused": "Duraklı",
+      "refresh": "Yenile",
+      "exportCsv": "CSV Dışa Aktar",
+      "viewReports": "Raporları Görüntüle",
+      "sessions": "Oturumlar",
+      "analytics": "Analitik",
+      "anomalies": "Anomaliler",
+      "auditLog": "Denetim Kaydı",
+      "failedToLoadSessions": "Oturumlar yüklenemedi",
+      "sessionsExportedSuccessfully": "Oturumlar başarıyla dışa aktarıldı",
+      "failedToExportSessions": "Oturumlar dışa aktarılamadı",
+      "securityReportGenerated": "Güvenlik raporu başarıyla oluşturuldu",
+      "failedToGenerateReport": "Rapor oluşturulamadı",
+      "noPermissionToView": "Aktif oturumları görüntüleme izniniz yok"
+    },
+    "login": {
+      "title": "İş Güvenliği Sistemi",
+      "subtitle": "Güvenli çalışma ortamı için giriş yapın",
+      "username": "Kullanıcı Adı",
+      "password": "Şifre",
+      "loginButton": "Giriş Yap",
+      "socialLoginWith": "{provider} ile Giriş Yap",
+      "or": "veya",
+      "footer": "© 2024 İş Güvenliği Sistemi - Güvenli çalışma ortamı için tasarlandı",
+      "validation": {
+        "usernameRequired": "Kullanıcı adı gereklidir",
+        "passwordRequired": "Şifre gereklidir",
+        "passwordMinLength": "Şifre en az 8 karakter olmalıdır"
+      }
+    }
+  },
+  "policies": {
+    "title": "Erişim Politikaları", 
+    "description": "Erişim kontrolü politikalarını ve izinlerini yönetin",
+    "viewReports": "Raporları Görüntüle",
+    "exportCsv": "CSV Dışa Aktar", 
+    "createPolicy": "Politika Oluştur",
+    "totalPolicies": "Toplam Politikalar",
+    "activePolicies": "Aktif Politikalar",
+    "conflicts": "Çakışmalar",
+    "enforcedResources": "Korunan Kaynaklar",
+    "fromLastMonth": "geçen aydan",
+    "ofTotal": "toplam",
+    "requiresAttention": "dikkat gerektirir",
+    "applicationsProtected": "uygulama korundu",
+    "conflictsDetected": "çakışma tespit edildi",
+    "reviewConflicts": "Erişim sorunlarını önlemek için çakışmaları inceleyin",
+    "lastUpdated": "Son Güncelleme",
+    "refresh": "Yenile",
+    "loading": "Yükleniyor...",
+    "policies": "Politikalar",
+    "simulation": "Simülasyon", 
+    "analytics": "Analitik",
+    "audit": "Denetim",
+    "keycloak": "Keycloak",
+    "failedToLoad": "Politikalar yüklenemedi",
+    "createPolicyDialog": "Politika oluşturma diyaloğu burada açılacak",
+    "policyExportStart": "Politika dışa aktarması burada başlayacak", 
+    "navigateToReports": "Rapor sayfasına git",
+    "policyUpdated": "Politika güncellendi",
+    "policyDeleted": "Politika silindi",
+    "policyCloned": "Politika kopyalandı",
+    "editPolicy": "Politikayı düzenle",
+    "conflictManager": {
+      "title": "Politika Çakışmaları",
+      "description": "Doğru erişim kontrolü sağlamak için çakışan politikaları çözümleyin",
+      "searchPlaceholder": "Çakışmaları ara...",
+      "priorityOrder": {
+        "title": "Politika Öncelik Sırası",
+        "description": "Politikaları önceliklerini yeniden sıralamak için sürükleyin. Daha yüksek öncelikli politikalar düşük olanları geçersiz kılar."
+      },
+      "filters": {
+        "severity": "Önem Derecesi",
+        "allSeverity": "Tüm Önem Dereceleri",
+        "type": "Tür",
+        "allTypes": "Tüm Türler"
+      },
+      "severity": {
+        "critical": "Kritik",
+        "high": "Yüksek",
+        "medium": "Orta",
+        "low": "Düşük"
+      },
+      "types": {
+        "contradiction": "Çelişki",
+        "priority": "Öncelik",
+        "overlap": "Örtüşme",
+        "circular": "Döngüsel"
+      }
+    },
+    "policyList": {
+      "loading": "Politikalar yükleniyor...",
+      "noConditions": "Koşul yok",
+      "search": "Politikaları ara...",
+      "filters": {
+        "types": {
+          "all": "Tüm Türler",
+          "allow": "İzin Ver",
+          "deny": "Reddet",
+          "conditional": "Koşullu"
+        },
+        "statuses": {
+          "all": "Tüm Durumlar",
+          "active": "Aktif",
+          "disabled": "Devre Dışı",
+          "draft": "Taslak",
+          "expired": "Süresi Dolmuş"
+        },
+        "scopes": {
+          "all": "Tüm Kapsamlar",
+          "global": "Global",
+          "role": "Rol",
+          "group": "Grup",
+          "user": "Kullanıcı",
+          "resource": "Kaynak"
+        }
+      },
+      "conditions": {
+        "time": "Zaman",
+        "location": "Konum",
+        "ip": "IP",
+        "device": "Cihaz",
+        "risk": "Risk"
+      },
+      "viewModes": {
+        "table": "Tablo",
+        "cards": "Kartlar"
+      },
+      "sorting": {
+        "sortBy": "Sıralama:",
+        "name": "Ad",
+        "priority": "Öncelik",
+        "status": "Durum",
+        "updated": "Güncellenme"
+      },
+      "table": {
+        "headers": {
+          "policyName": "Politika Adı",
+          "type": "Tür",
+          "scope": "Kapsam",
+          "conditions": "Koşullar",
+          "status": "Durum",
+          "priority": "Öncelik",
+          "rollout": "Yayınlama",
+          "affectedUsers": "Etkilenen Kullanıcılar",
+          "updated": "Güncellenme",
+          "actions": "İşlemler"
+        }
+      },
+      "results": {
+        "showing": "{filtered} / {total} politika",
+        "selected": "{count} seçili"
+      },
+      "toast": {
+        "enabled": "Politika etkinleştirildi",
+        "disabled": "Politika devre dışı bırakıldı",
+        "deleted": "Politika silindi",
+        "cloned": "Politika kopyalandı"
+      }
+    },
+    "policyEditor": {
+      "title": {
+        "create": "Politika Oluştur",
+        "edit": "Politikayı Düzenle"
+      },
+      "description": "Politikanız için erişim kuralları, koşulları ve yayınlama ayarlarını tanımlayın",
+      "validation": {
+        "nameRequired": "Politika adı gereklidir",
+        "descriptionRequired": "Politika açıklaması gereklidir",
+        "subjectsRequired": "En az bir konu gereklidir",
+        "resourcesRequired": "En az bir kaynak gereklidir",
+        "priorityRange": "Öncelik 1 ile 100 arasında olmalıdır"
+      },
+      "tabs": {
+        "basic": "Temel",
+        "subjects": "Konular",
+        "resources": "Kaynaklar",
+        "conditions": "Koşullar",
+        "preview": "Önizleme"
+      },
+      "form": {
+        "labels": {
+          "policyName": "Politika Adı",
+          "category": "Kategori",
+          "description": "Açıklama",
+          "policyType": "Politika Türü",
+          "scope": "Kapsam",
+          "required": "*"
+        },
+        "placeholders": {
+          "policyName": "Politika adını girin...",
+          "category": "örn. yönetim, güvenlik...",
+          "description": "Bu politikanın neyi kontrol ettiğini açıklayın..."
+        },
+        "types": {
+          "allow": "İzin Ver",
+          "deny": "Reddet",
+          "conditional": "Koşullu"
+        }
+      },
+      "toast": {
+        "fixErrors": "Lütfen doğrulama hatalarını düzeltin",
+        "saved": "Politika başarıyla kaydedildi",
+        "simulationRequired": "Lütfen simülasyon için hem kullanıcı hem de kaynak girin",
+        "simulationCompleted": "Simülasyon tamamlandı",
+        "simulationFailed": "Simülasyon başarısız"
+      }
+    },
+    "policySimulation": {
+      "title": "Politika Simülasyonu",
+      "description": "Farklı kullanıcı-kaynak kombinasyonlarıyla erişim politikalarınızın nasıl davrandığını test edin",
+      "tabs": {
+        "simulate": "Yeni Simülasyon",
+        "history": "Simülasyon Geçmişi"
+      },
+      "parameters": {
+        "title": "Simülasyon Parametreleri",
+        "description": "Test etmek istediğiniz senaryoyu yapılandırın",
+        "selectUser": "Kullanıcı Seç",
+        "selectUserPlaceholder": "Simüle edilecek kullanıcıyı seçin",
+        "selectResource": "Kaynak Seç",
+        "selectResourcePlaceholder": "Test edilecek kaynağı seçin",
+        "accessLevel": "Erişim Düzeyi",
+        "accessLevelPlaceholder": "Erişim düzeyi seçin"
+      },
+      "context": {
+        "title": "Simülasyon Bağlamı",
+        "description": "Ek parametreleri ayarlayın",
+        "ipAddress": "IP Adresi",
+        "ipPlaceholder": "Kullanıcının IP adresini girin",
+        "userAgent": "Kullanıcı Aracısı",
+        "userAgentPlaceholder": "Tarayıcı/cihaz bilgisini girin",
+        "location": "Konum",
+        "locationPlaceholder": "Coğrafi konumu girin",
+        "timeOfDay": "Günün Saati",
+        "timeOfDayPlaceholder": "Erişim zamanını seçin"
+      },
+      "actions": {
+        "runSimulation": "Simülasyonu Çalıştır",
+        "saveSimulation": "Simülasyonu Kaydet",
+        "clearHistory": "Geçmişi Temizle"
+      },
+      "results": {
+        "loading": "Simülasyon çalışıyor...",
+        "noResults": "Parametreleri yapılandırın ve sonuçları görmek için simülasyonu çalıştırın",
+        "accessGranted": "Erişim İzni Verildi",
+        "accessDenied": "Erişim Reddedildi",
+        "effectiveAccess": "Etkin Erişim",
+        "appliedPolicies": "Uygulanan Politikalar",
+        "matchedConditions": "Eşleşen Koşullar",
+        "conflicts": "Çakışmalar",
+        "recommendations": "Öneriler"
+      },
+      "history": {
+        "title": "Simülasyon Geçmişi",
+        "noHistory": "Henüz kaydedilmiş simülasyon yok",
+        "user": "Kullanıcı",
+        "resource": "Kaynak", 
+        "result": "Sonuç",
+        "timestamp": "Zaman Damgası"
+      }
+    },
+    "policyAnalytics": {
+      "title": "Erişim Politikası Analitikleri",
+      "description": "Organizasyonunuzdaki politika performansını ve erişim modellerini izleyin",
+      "timeRange": {
+        "7d": "Son 7 Gün",
+        "30d": "Son 30 Gün",
+        "90d": "Son 90 Gün",
+        "1y": "Son 1 Yıl"
+      },
+      "tabs": {
+        "overview": "Genel Bakış",
+        "trends": "Erişim Eğilimleri",
+        "distribution": "Dağılım",
+        "risk": "Risk Analizi",
+        "performance": "Performans",
+        "usage": "Kaynak Kullanımı",
+        "users": "Kullanıcı Aktivitesi"
+      },
+      "metrics": {
+        "totalAttempts": {
+          "title": "Toplam Erişim Denemesi",
+          "description": "Tüm kaynak erişim istekleri"
+        },
+        "successRate": {
+          "title": "Başarı Oranı", 
+          "description": "İzin verilen vs reddedilen erişim"
+        },
+        "activePolicies": {
+          "title": "Aktif Politikalar",
+          "description": "toplam politika"
+        },
+        "conflictsDetected": {
+          "title": "Tespit Edilen Çakışmalar",
+          "description": "Çakışması olan politikalar"
+        }
+      },
+      "charts": {
+        "accessTrends": {
+          "title": "Erişim Eğilimleri",
+          "description": "Zaman içindeki erişim denemelerini takip edin",
+          "granted": "İzin Verildi",
+          "denied": "Reddedildi"
+        },
+        "policyDistribution": {
+          "title": "Politika Türü Dağılımı",
+          "description": "Kullanımdaki politika türlerinin dökümü",
+          "breakdown": "Kullanımdaki politika türlerinin dökümü",
+          "distributionBreakdown": "İzin ver, reddet ve koşullu politikalarının dağılımı"
+        },
+        "resourceUsage": {
+          "title": "En Çok Erişilen Kaynaklar",
+          "description": "Erişim hacmine göre sıralanan kaynaklar"
+        },
+        "userActivity": {
+          "title": "Kullanıcı Aktivitesi",
+          "description": "Erişim denemelerine göre en aktif kullanıcılar"
+        },
+        "riskScore": {
+          "title": "Risk Skoru Dağılımı",
+          "description": "Erişim denemelerinin risk seviyesi analizi"
+        },
+        "accessTrendAnalysis": {
+          "title": "Erişim Trendi Analizi",
+          "description": "Zaman içindeki erişim modellerinin detaylı görünümü"
+        },
+        "suspiciousPatterns": {
+          "title": "Şüpheli Erişim Modelleri",
+          "description": "Güvenlik endişelerini gösterebilecek tespit edilmiş modeller"
+        },
+        "enforcementActivity": {
+          "title": "Politika Uygulama Aktivitesi",
+          "description": "En aktif olarak uygulanan politikalar"
+        },
+        "resourceAccessVolume": {
+          "title": "Kaynak Erişim Hacmi",
+          "description": "Kaynaklara göre erişim denemeleri"
+        }
+      },
+      "actions": {
+        "refresh": "Yenile",
+        "export": "Rapor İndir",
+        "viewDetails": "Detayları Görüntüle"
+      }
+    },
+    "policyAuditLog": {
+      "title": "Politika Denetim Günlüğü",
+      "description": "Tüm politika ile ilgili aktivitelerin tam denetim izi",
+      "actions": {
+        "exportCsv": "CSV İndir",
+        "refresh": "Yenile",
+        "viewDetails": "Detayları Görüntüle"
+      },
+      "filters": {
+        "searchPlaceholder": "Günlüklerde ara...",
+        "actionPlaceholder": "Eylem",
+        "actorPlaceholder": "Aktör",
+        "allActions": "Tüm Eylemler",
+        "allActors": "Tüm Aktörler"
+      },
+      "actionTypes": {
+        "create": "Oluştur",
+        "update": "Güncelle", 
+        "delete": "Sil",
+        "enable": "Etkinleştir",
+        "disable": "Devre Dışı Bırak",
+        "simulate": "Simüle Et",
+        "enforce": "Uygula"
+      },
+      "actorTypes": {
+        "user": "Kullanıcı",
+        "system": "Sistem",
+        "api": "API"
+      },
+      "table": {
+        "headers": {
+          "timestamp": "Zaman Damgası",
+          "action": "Eylem",
+          "policy": "Politika",
+          "actor": "Aktör",
+          "details": "Detaylar"
+        },
+        "noData": "Gösterilecek denetim günlüğü yok"
+      },
+      "details": {
+        "policyChanges": "Politika Değişiklikleri",
+        "enforcement": "Uygulama",
+        "simulation": "Simülasyon",
+        "additionalMetadata": "Ek Meta Veriler",
+        "requestContext": "İstek Bağlamı",
+        "ipAddress": "IP Adresi",
+        "userAgent": "Kullanıcı Aracısı",
+        "requestId": "İstek ID",
+        "correlationId": "Korelasyon ID",
+        "accessGranted": "Erişim İzni Verildi",
+        "accessDenied": "Erişim Reddedildi",
+        "from": "Önceki",
+        "to": "Sonrası"
+      },
+      "pagination": {
+        "showing": "Gösterilen: {start} - {end} / {total}",
+        "previous": "Önceki",
+        "next": "Sonraki"
+      }
+    },
+    "keycloakIntegration": {
+      "title": "Keycloak Entegrasyonu",
+      "description": "Merkezi kimlik yönetimi için roller ve kaynakları Keycloak ile senkronize edin",
+      "connection": {
+        "title": "Bağlantı Durumu",
+        "status": {
+          "connected": "Bağlandı",
+          "error": "Bağlantı Hatası", 
+          "syncing": "Senkronize ediliyor..."
+        },
+        "settings": {
+          "title": "Bağlantı Ayarları",
+          "serverUrl": "Sunucu URL",
+          "realm": "Realm",
+          "clientId": "Client ID",
+          "clientSecret": "Client Secret",
+          "testConnection": "Bağlantıyı Test Et",
+          "save": "Kaydet"
+        },
+        "info": {
+          "realm": "Realm",
+          "clientId": "Client ID", 
+          "mappedRoles": "Eşlenen Roller",
+          "mappedResources": "Eşlenen Kaynaklar",
+          "lastSync": "Son Senkronizasyon"
+        }
+      },
+      "tabs": {
+        "roles": "Rol Eşleştirme",
+        "resources": "Kaynak Eşleştirme",
+        "settings": "Ayarlar"
+      },
+      "roles": {
+        "title": "Keycloak Rol Eşleştirme",
+        "description": "Keycloak rollerini iç roller ile eşleştirin",
+        "addMapping": "Eşleştirme Ekle",
+        "table": {
+          "keycloakRole": "Keycloak Rolü",
+          "mappedRole": "Eşlenen Rol",
+          "description": "Açıklama",
+          "actions": "Eylemler"
+        },
+        "dialog": {
+          "title": {
+            "add": "Rol Eşleştirme Ekle",
+            "edit": "Rol Eşleştirmeyi Düzenle"
+          },
+          "description": "Keycloak rolünü iç uygulama rolü ile eşleştirin",
+          "keycloakRole": "Keycloak Rolü",
+          "mappedRole": "Eşlenen Rol",
+          "descriptionField": "Açıklama",
+          "placeholders": {
+            "keycloakRole": "admin, hr-manager, developer...",
+            "mappedRole": "admin, hr-manager, developer...",
+            "description": "Bu eşleştirmenin amacını açıklayın..."
+          }
+        }
+      },
+      "resources": {
+        "title": "Keycloak Kaynak Eşleştirme",
+        "description": "Keycloak kaynaklarını iç kaynaklar ile eşleştirin", 
+        "addMapping": "Eşleştirme Ekle",
+        "table": {
+          "keycloakResource": "Keycloak Kaynağı",
+          "mappedResource": "Eşlenen Kaynak",
+          "scopes": "Kapsamlar",
+          "actions": "Eylemler"
+        },
+        "dialog": {
+          "title": {
+            "add": "Kaynak Eşleştirme Ekle",
+            "edit": "Kaynak Eşleştirmeyi Düzenle"
+          },
+          "description": "Keycloak kaynaklarını iç uygulama kaynakları ile eşleştirin",
+          "keycloakResource": "Keycloak Kaynağı",
+          "mappedResource": "Eşlenen Kaynak",
+          "scopes": "Kapsamlar",
+          "placeholders": {
+            "keycloakResource": "safety-app, admin-panel...",
+            "mappedResource": "safety-applications, admin-panel..."
+          }
+        }
+      },
+      "actions": {
+        "sync": "Keycloak ile Senkronize Et",
+        "testConnection": "Bağlantıyı Test Et",
+        "save": "Kaydet",
+        "cancel": "İptal",
+        "edit": "Düzenle",
+        "delete": "Sil",
+        "add": "Ekle"
+      }
+    }
+  },
+  "access": {
+    "title": "Erişim Politikaları",
+    "description": "Erişim kontrolü politikalarını ve izinlerini yönetin",
+    "createPolicy": "Politika Oluştur",
+    "policyName": "Politika Adı",
+    "resources": "Kaynaklar",
+    "subjects": "Konu",
+    "effect": "Etki",
+    "conditions": "Koşullar",
+    "priority": "Öncelik",
+    "status": "Durum",
+    "totalPolicies": "Toplam Politikalar",
+    "activePolicies": "Aktif Politikalar",
+    "conflicts": "Çakışmalar",
+    "enforcedResources": "Korunan Kaynaklar",
+    "viewReports": "Raporları Görüntüle",
+    "exportCsv": "CSV Dışa Aktar",
+    "kpi": {
+      "fromLastMonth": "geçen aydan",
+      "ofTotal": "toplam",
+      "requiresAttention": "dikkat gerektirir",
+      "applicationsProtected": "uygulama korundu"
+    },
+    "alerts": {
+      "conflictsDetected": "çakışma tespit edildi",
+      "reviewConflicts": "Erişim sorunlarını önlemek için çakışmaları inceleyin"
+    },
+    "lastUpdated": "Son Güncelleme",
+    "loading": "Yükleniyor...",
+    "tabs": {
+      "policies": "Politikalar",
+      "conflicts": "Çakışmalar",
+      "simulation": "Simülasyon",
+      "analytics": "Analitik",
+      "audit": "Denetim",
+      "keycloak": "Keycloak"
+    }
+  },
+  "audit": {
+    "title": "Denetim Günlükleri",
+    "description": "Sistem aktivitelerini ve güvenlik olaylarını izleyin",
+    "eventType": "Olay Türü",
+    "timestamp": "Zaman Damgası",
+    "user": "Kullanıcı",
+    "resource": "Kaynak",
+    "action": "Eylem",
+    "result": "Sonuç",
+    "ipAddress": "IP Adresi",
+    "details": "Detaylar"
+  },
+  "notifications": {
+    "title": "Bildirimler",
+    "description": "Tüm kullanıcı ve sistem uyarıları, güvenlik olayları ve aktivite bildirimlerini yönetin",
+    "markAsRead": "Okundu Olarak İşaretle",
+    "markAllRead": "Tümünü Okundu İşaretle",
+    "deleteAll": "Tümünü Sil",
+    "count": "{count, plural, =0 {Bildirim yok} one {# bildirim} other {# bildirim}}",
+    "noNotifications": "Henüz bildirim yok",
+    "settings": "Bildirim Ayarları",
+    "export": "Dışa Aktar",
+    "loading": "Bildirimler yükleniyor...",
+    "totalNotifications": "Toplam Bildirimler",
+    "unread": "Okunmamış",
+    "securityAlerts": "Güvenlik Uyarıları",
+    "systemHealth": "Sistem Sağlığı",
+    "fromLastWeek": "geçen haftadan",
+    "unreadRate": "okunmamış oran",
+    "thisWeek": "bu hafta",
+    "requireImmediateAttention": "acil dikkat gerektirir",
+    "reviewSecurityTab": "Ayrıntılar için Güvenlik sekmesini inceleyin",
+    "lastUpdated": "Son güncelleme",
+    "refresh": "Yenile",
+    "all": "Tümü",
+    "security": "Güvenlik",
+    "system": "Sistem",
+    "riskAndSafety": "Risk ve Güvenlik",
+    "userActivity": "Kullanıcı Aktivitesi",
+    "failedToLoad": "Bildirimler yüklenemedi",
+    "allMarkedAsRead": "Tüm bildirimler okundu olarak işaretlendi",
+    "failedToMarkAsRead": "Bildirimler okundu olarak işaretlenemedi",
+    "exportWouldStart": "Dışa aktarma burada başlayacak",
+    "bulkActionCompleted": "Toplu işlem tamamlandı",
+    "types": {
+      "security": "Güvenlik",
+      "system": "Sistem",
+      "user": "Kullanıcı",
+      "info": "Bilgi"
+    }
+  },
+  "health": {
+    "title": "Sistem Sağlık İzleme",
+    "overview": "Sistem sağlığını ve performans metriklerini izleyin",
+    "tabs": {
+      "overview": "Genel Bakış",
+      "services": "Servisler", 
+      "infrastructure": "Altyapı",
+      "incidents": "Olaylar",
+      "metrics": "Metrikler",
+      "settings": "Ayarlar"
+    },
+    "healthScore": "Sağlık Puanı",
+    "systemUptime": "Sistem Çalışma Süresi",
+    "services": "Servisler",
+    "avgResponseTime": "Ortalama Yanıt Süresi",
+    "errorRate": "Hata Oranı",
+    "criticalAlerts": "Kritik Uyarılar",
+    "autoRefresh": "Otomatik Yenile",
+    "live": "Canlı",
+    "offline": "Çevrimdışı",
+    "updated": "Güncellendi",
+    "connect": "Bağlan",
+    "disconnect": "Bağlantıyı Kes",
+    "refresh": "Yenile",
+    "viewReports": "Raporları Görüntüle",
+    "exportMetrics": "Metrikleri Dışa Aktar",
+    "generatingHealthReport": "Sağlık raporu oluşturuluyor...",
+    "healthReportExported": "Sağlık raporu başarıyla dışa aktarıldı",
+    "failedToExportReport": "Sağlık raporu dışa aktarılamadı",
+    "realtimeMonitoringDisconnected": "Gerçek zamanlı izleme bağlantısı kesildi",
+    "realtimeMonitoringConnected": "Gerçek zamanlı izleme bağlandı",
+    "newAlert": "Yeni uyarı",
+    "newIncident": "Yeni olay",
+    "serviceStatusUpdated": "servis durumu güncellendi",
+    "status": {
+      "healthy": "Sağlıklı",
+      "warning": "Uyarı",
+      "critical": "Kritik",
+      "unknown": "Bilinmeyen"
+    },
+    "infrastructure": {
+      "cpuUsage": "CPU Kullanımı",
+      "memory": "Bellek",
+      "diskSpace": "Disk Alanı",
+      "networkIO": "Ağ G/Ç",
+      "usage": "Kullanım",
+      "cores": "Çekirdek",
+      "loadAvg": "Yük Ort.",
+      "swapUsed": "Takas Kullanılan",
+      "readIOPS": "Okuma IOPS",
+      "writeIOPS": "Yazma IOPS",
+      "outbound": "Giden",
+      "packetsIn": "Gelen Paket",
+      "errors": "Hata",
+      "serviceResourceUsage": "Servis Kaynak Kullanımı",
+      "resourceConsumption": "Bireysel servislerin kaynak tüketimi",
+      "historicalMetrics": "Geçmiş Metrikler",
+      "memoryBreakdown": "Bellek Dağılımı",
+      "physicalMemory": "Fiziksel Bellek",
+      "swapMemory": "Takas Belleği",
+      "diskIOPerformance": "Disk G/Ç Performansı",
+      "networkStatistics": "Ağ İstatistikleri",
+      "inbound": "Gelen",
+      "packetsOut": "Giden Paket",
+      "infrastructureAlerts": "Altyapı Uyarıları",
+      "activeAlerts": "Aktif uyarılar ve eşik ihlalleri",
+      "highMemoryUsage": "Yüksek Bellek Kullanımı",
+      "memoryApproaching": "Bellek kullanımı {usage}% seviyesinde, eşiğe yaklaşıyor",
+      "criticalCPUUsage": "Kritik CPU Kullanımı",
+      "cpuImmediateAttention": "CPU kullanımı {usage}% seviyesinde, acil müdahale gerekli",
+      "diskSpaceLow": "Disk Alanı Düşük",
+      "diskConsiderCleanup": "Disk kullanımı {usage}% seviyesinde, temizlik düşünün",
+      "allMetricsNormal": "Tüm altyapı metrikleri normal aralıkta"
+    },
+    "overview": {
+      "title": "Sistem Genel Görünümü",
+      "timeRanges": {
+        "1h": "Son 1 Saat",
+        "24h": "Son 24 Saat",
+        "7d": "Son 7 Gün",
+        "30d": "Son 30 Gün"
+      },
+      "healthScore": {
+        "title": "Sistem Sağlık Puanı",
+        "description": "Genel sistem sağlığı göstergesi",
+        "outOf100": "/ 100",
+        "status": {
+          "excellent": "Mükemmel",
+          "good": "İyi",
+          "warning": "Uyarı",
+          "critical": "Kritik"
+        }
+      },
+      "metrics": {
+        "averageResponseTime": "Ortalama Yanıt Süresi",
+        "errorRate": "Hata Oranı"
+      },
+      "services": {
+        "title": "Servis Çalışma Süreleri",
+        "uptimeTitle": "Servis Çalışma Süreleri (7g)",
+        "noServicesAvailable": "Kullanılabilir servis yok"
+      },
+      "alerts": {
+        "title": "Aktif Uyarılar",
+        "active": "aktif",
+        "acknowledged": "Onaylandı",
+        "noActiveAlerts": "Aktif uyarı yok"
+      },
+      "sla": {
+        "title": "SLA Durumu",
+        "target": "Hedef",
+        "current": "Mevcut",
+        "monthToDate": "Aya Kadar",
+        "status": "Durum",
+        "breach": "İHLAL",
+        "good": "İYİ"
+      }
+    },
+    "services": {
+      "title": "Servis Durumu",
+      "description": "Tüm sistem servislerinin gerçek zamanlı sağlık durumu",
+      "searchPlaceholder": "Servisleri ara...",
+      "showUnhealthyOnly": "Sadece sağlıksızları göster",
+      "servicesCount": "{filtered} / {total} servis",
+      "table": {
+        "service": "Servis",
+        "status": "Durum",
+        "lastCheck": "Son Kontrol",
+        "latency": "Gecikme",
+        "errorRate": "Hata Oranı",
+        "uptime": "Çalışma Süresi",
+        "actions": "İşlemler"
+      },
+      "actions": {
+        "details": "Detaylar",
+        "healthCheck": "Sağlık Kontrolü",
+        "clearCache": "Önbelleği Temizle",
+        "restart": "Yeniden Başlat",
+        "restartService": "Servisi Yeniden Başlat"
+      },
+      "detail": {
+        "title": "Servis Detayları",
+        "description": "{serviceName} için detaylı sağlık metrikleri ve kontroller",
+        "type": "Tür",
+        "version": "Sürüm",
+        "metrics": {
+          "uptime7d": "Çalışma Süresi (7g)",
+          "avgLatency": "Ort. Gecikme",
+          "errorRate": "Hata Oranı",
+          "healthScore": "Sağlık Puanı",
+          "currentMetrics": "Mevcut Metrikler"
+        },
+        "dependencies": {
+          "title": "Bağımlılıklar",
+          "description": "Bu servisin bağımlı olduğu servisler"
+        },
+        "incidents": {
+          "title": "Son Olaylar",
+          "serviceGradation": "Servis Performans Düşüşü",
+          "description": "{serviceName} performans sorunları yaşadı",
+          "duration": "Süre: {duration}dk",
+          "impact": "Etki: {impact}",
+          "status": "Durum: {status}"
+        },
+        "serviceActions": {
+          "title": "Servis İşlemleri",
+          "description": "Bu servis için yönetici işlemleri"
+        }
+      },
+      "timeFormat": {
+        "justNow": "Az önce",
+        "minutesAgo": "{minutes}dk önce",
+        "hoursAgo": "{hours}s önce"
+      },
+      "threshold": {
+        "critical": "Kritik",
+        "warning": "Uyarı",
+        "good": "İyi"
+      },
+      "empty": {
+        "title": "Servis bulunamadı",
+        "searchMessage": "Arama kriterlerinizi ayarlamayı deneyin",
+        "filterMessage": "Mevcut filtrelere uygun servis yok"
+      },
+      "toast": {
+        "performing": "{action} işlemi gerçekleştiriliyor...",
+        "success": "Servis {action} işlemi başarıyla tamamlandı",
+        "error": "Servis {action} işlemi başarısız",
+        "restarted": "{serviceName} başarıyla yeniden başlatıldı",
+        "cacheCleared": "{serviceName} önbelleği temizlendi",
+        "healthCheckCompleted": "{serviceName} için sağlık kontrolü tamamlandı",
+        "actionFailed": "{serviceName} için {action} işlemi başarısız"
+      }
+    },
+    "incidents": {
+      "title": "Olaylar",
+      "timeline": "Zaman Çizelgesi",
+      "description": "Sistem olaylarını ve kesintilerini takip edin ve yönetin",
+      "searchPlaceholder": "Olayları ara...",
+      "stats": {
+        "totalIncidents": "Toplam Olay",
+        "open": "Açık",
+        "investigating": "Araştırılıyor",
+        "resolved": "Çözüldü",
+        "avgResolution": "Ort. Çözüm"
+      },
+      "filters": {
+        "allStatus": "Tüm Durumlar",
+        "allSeverity": "Tüm Öncelikler"
+      },
+      "severity": {
+        "low": "Düşük",
+        "medium": "Orta",
+        "high": "Yüksek",
+        "critical": "Kritik"
+      },
+      "status": {
+        "open": "Açık",
+        "investigating": "Araştırılıyor",
+        "resolved": "Çözüldü",
+        "closed": "Kapalı"
+      },
+      "impact": {
+        "none": "Yok",
+        "minimal": "Minimal",
+        "moderate": "Orta",
+        "severe": "Şiddetli"
+      },
+      "table": {
+        "incident": "Olay",
+        "service": "Servis",
+        "severity": "Öncelik",
+        "status": "Durum",
+        "duration": "Süre",
+        "impact": "Etki",
+        "started": "Başlangıç",
+        "actions": "İşlemler"
+      },
+      "actions": {
+        "exportReport": "Rapor Ver",
+        "newIncident": "Yeni Olay",
+        "details": "Detaylar"
+      },
+      "create": {
+        "title": "Yeni Olay Oluştur",
+        "description": "Yeni bir olay veya sistem sorunu bildir",
+        "titleLabel": "Başlık",
+        "titlePlaceholder": "Kısa olay başlığı",
+        "descriptionLabel": "Açıklama",
+        "descriptionPlaceholder": "Olayın detaylı açıklaması",
+        "severityLabel": "Öncelik",
+        "userImpactLabel": "Kullanıcı Etkisi",
+        "affectedServiceLabel": "Etkilenen Servis (Opsiyonel)",
+        "selectService": "Servis seç",
+        "cancel": "İptal",
+        "create": "Olay Oluştur"
+      },
+      "detail": {
+        "incidentNumber": "Olay #{incidentId}",
+        "startedAgo": "Başladı {timeAgo}",
+        "status": "Durum",
+        "severity": "Öncelik",
+        "duration": "Süre",
+        "impact": "Etki",
+        "description": "Açıklama",
+        "rootCause": "Kök Neden",
+        "resolution": "Çözüm",
+        "timeline": "Zaman Çizelgesi"
+      },
+      "timeline": {
+        "detected": "tespit edildi",
+        "investigating": "araştırılıyor",
+        "update": "güncelleme",
+        "resolved": "çözüldü",
+        "auto": "Otomatik",
+        "by": "tarafından"
+      },
+      "timeFormat": {
+        "ongoing": "Devam ediyor",
+        "minutesAgo": "{minutes}dk önce",
+        "hoursAgo": "{hours}s önce",
+        "daysAgo": "{days}g önce",
+        "users": "kullanıcı",
+        "systemWide": "Sistem geneli"
+      },
+      "empty": {
+        "title": "Olay bulunamadı",
+        "filterMessage": "Filtrelerinizi ayarlamayı deneyin",
+        "noIncidents": "Hiç olay rapor edilmedi"
+      },
+      "toast": {
+        "titleRequired": "Başlık ve açıklama gerekli",
+        "creating": "Olay oluşturuluyor...",
+        "created": "Olay başarıyla oluşturuldu",
+        "createFailed": "Olay oluşturulamadı",
+        "loadFailed": "Olaylar yüklenemedi",
+        "exporting": "Olay raporu oluşturuluyor...",
+        "exported": "Olay raporu başarıyla dışa aktarıldı",
+        "exportFailed": "Olay raporu dışa aktarılamadı"
+      }
+    },
+    "prometheus": {
+      "title": "Prometheus & Grafana Entegrasyonu",
+      "description": "Prometheus ve Grafana kullanarak sağlık metriklerini izleyin ve görselleştirin",
+      "tabs": {
+        "prometheus": "Prometheus",
+        "grafana": "Grafana",
+        "configuration": "Yapılandırma"
+      },
+      "query": {
+        "title": "Prometheus Sorgusu",
+        "description": "Metrik verilerini almak için PromQL sorguları çalıştırın",
+        "label": "PromQL Sorgusu",
+        "placeholder": "PromQL sorgusu girin (örn: up, cpu_usage_percent)",
+        "execute": "Sorguyu Çalıştır",
+        "recentQueries": "Son Sorgular"
+      },
+      "results": {
+        "title": "Sorgu Sonuçları",
+        "metrics": "metrik",
+        "table": {
+          "metric": "Metrik",
+          "value": "Değer",
+          "timestamp": "Zaman Damgası"
+        },
+        "noData": "Metrik verisi yok"
+      },
+      "export": {
+        "title": "Metrik Dışa Aktarımı",
+        "description": "Sağlık metriklerini Prometheus formatında dışa aktarın",
+        "viewFull": "Tüm Metrikleri Görüntüle",
+        "download": "İndir",
+        "exportMetrics": "Metrikleri Dışa Aktar"
+      },
+      "grafana": {
+        "dashboards": "Grafana Panoları",
+        "newDashboard": "Yeni Pano",
+        "panels": "panel",
+        "actions": {
+          "viewDashboard": "Panoyu Görüntüle",
+          "openInGrafana": "Grafana'da Aç",
+          "edit": "Düzenle",
+          "delete": "Sil"
+        },
+        "preview": {
+          "title": "Pano önizlemesi",
+          "panels": "{panelCount} panel ile",
+          "query": "Sorgu:",
+          "visualization": "görselleştirme",
+          "close": "Kapat"
+        }
+      },
+      "config": {
+        "prometheus": {
+          "title": "Prometheus Yapılandırması",
+          "enable": "Prometheus Entegrasyonunu Etkinleştir",
+          "enableDescription": "Metrik toplama için Prometheus'a bağlan",
+          "url": "Prometheus URL",
+          "urlPlaceholder": "http://prometheus.example.com:9090",
+          "testConnection": "Bağlantıyı Test Et",
+          "connected": "Bağlandı",
+          "warning": "Uyarı"
+        },
+        "grafana": {
+          "title": "Grafana Yapılandırması",
+          "enable": "Grafana Entegrasyonunu Etkinleştir",
+          "enableDescription": "Pano yönetimi için Grafana'ya bağlan",
+          "url": "Grafana URL",
+          "urlPlaceholder": "http://grafana.example.com:3000"
+        },
+        "advanced": {
+          "title": "Gelişmiş Ayarlar",
+          "scrapeInterval": "Tarama Aralığı",
+          "queryTimeout": "Sorgu Zaman Aşımı",
+          "retentionPeriod": "Saklama Süresi",
+          "maxSamples": "Maksimum Örnek"
+        }
+      },
+      "toast": {
+        "loadFailed": "Grafana panoları yüklenemedi",
+        "executing": "Prometheus sorgusu çalıştırılıyor...",
+        "querySuccess": "Sorgu başarıyla çalıştırıldı. {count} metrik bulundu.",
+        "queryFailed": "Prometheus sorgusu başarısız",
+        "exporting": "Prometheus metrikleri dışa aktarılıyor...",
+        "exported": "Metrikler başarıyla dışa aktarıldı",
+        "exportFailed": "Metrikler dışa aktarılamadı",
+        "editing": "Pano düzenleniyor: {dashboardTitle}",
+        "deleting": "Pano siliniyor...",
+        "deleted": "Pano başarıyla silindi",
+        "deleteFailed": "Pano silinemedi",
+        "testingConnection": "{service} bağlantısı test ediliyor...",
+        "connectionSuccess": "{service} bağlantısı başarılı",
+        "connectionFailed": "{service} bağlantısı başarısız",
+        "testFailed": "{service} bağlantısı test edilemedi"
+      },
+      "mockData": {
+        "dashboards": {
+          "systemHealthOverview": "Sistem Sağlık Durumu",
+          "infrastructureMetrics": "Altyapı Metrikleri"
+        },
+        "panels": {
+          "systemHealthScore": "Sistem Sağlık Skoru",
+          "serviceResponseTimes": "Servis Yanıt Süreleri",
+          "cpuUsage": "CPU Kullanımı",
+          "memoryUsage": "Bellek Kullanımı"
+        },
+        "legends": {
+          "healthScore": "Sağlık Skoru",
+          "cpuUsage": "CPU Kullanımı",
+          "memoryUsage": "Bellek Kullanımı"
+        },
+        "tags": {
+          "health": "sağlık",
+          "overview": "genel bakış",
+          "infrastructure": "altyapı",
+          "metrics": "metrikler"
+        }
+      },
+      "healthSettings": {
+        "title": "Sağlık İzleme Ayarları",
+        "description": "Sağlık izleme için eşikler ve uyarıları yapılandırın",
+        "thresholds": {
+          "title": "Sağlık Eşikleri",
+          "description": "Sağlık metrikleri için uyarı ve kritik eşikleri tanımlayın"
+        },
+        "comingSoon": "Sağlık ayarları yapılandırması yakında..."
+      }
+    }
+  },
+  "settings": {
+    "title": "Sistem Ayarları",
+    "description": "Sistem tercihlerini, güvenliği, izlemeyi ve entegrasyonları yapılandırın",
+    "general": "Genel",
+    "security": "Güvenlik",
+    "notifications": "Bildirimler",
+    "policies": "Politikalar",
+    "monitoring": "İzleme",
+    "integrations": "Entegrasyonlar",
+    "data": "Veri",
+    "audit": "Denetim",
+    "language": "Dil",
+    "selectLanguage": "Dil Seçin",
+    "languageChanged": "Dil başarıyla değiştirildi",
+    "systemName": "Sistem Adı",
+    "systemDescription": "Temel sistem ayarlarını ve tercihlerini yapılandırın",
+    "defaultLanguage": "Varsayılan Dil",
+    "defaultLanguageDescription": "Sistem için varsayılan dili seçin",
+    "timezone": "Saat Dilimi",
+    "dateFormat": "Tarih Formatı",
+    "currency": "Para Birimi",
+    "theme": "Tema",
+    "compactMode": "Kompakt Mod",
+    "animationsEnabled": "Animasyonlar",
+    "autoRefreshInterval": "Otomatik Yenileme Aralığı",
+    "itemsPerPage": "Sayfa Başına Öğe",
+    "featureFlags": {
+      "title": "Özellik Bayrakları",
+      "description": "Sistem özelliklerini ve deneysel işlevleri etkinleştirin veya devre dışı bırakın",
+      "beta": "Beta"
+    },
+    "performance": {
+      "title": "Performans ve Önbellekleme",
+      "description": "Sistem performansı ve önbellekleme ayarlarını yapılandırın"
+    },
+    "reset": {
+      "title": "Ayarları Sıfırla",
+      "resetToDefaults": "Varsayılanlara Sıfırla",
+      "resetDescription": "Bu, tüm genel ayarları varsayılan değerlerine sıfırlar. Bu eylem geri alınamaz.",
+      "warning": "Bu işlem geri alınamaz!"
+    }
+  },
+  "profile": {
+    "title": "Profil Bilgileri",
+    "personalInfo": "Kişisel Bilgiler",
+    "firstName": "Ad",
+    "lastName": "Soyad",
+    "email": "E-posta",
+    "username": "Kullanıcı Adı",
+    "department": "Departman",
+    "phone": "Telefon",
+    "role": "Rol",
+    "lastLogin": "Son Giriş",
+    "userInfo": {
+      "title": "Kullanıcı Bilgileri",
+      "updateSuccess": "Kullanıcı bilgileri başarıyla güncellendi",
+      "updateError": "Kullanıcı bilgileri güncellenemedi",
+      "emailChangeNotice": "E-posta adresi değiştirilemez. Gerekiyorsa yöneticinizle iletişime geçin.",
+      "firstName": "Ad",
+      "lastName": "Soyad",
+      "username": "Kullanıcı Adı",
+      "department": "Departman",
+      "phone": "Telefon",
+      "email": "E-posta",
+      "firstNamePlaceholder": "Adınızı girin",
+      "lastNamePlaceholder": "Soyadınızı girin",
+      "usernamePlaceholder": "Kullanıcı adınızı girin",
+      "departmentPlaceholder": "Departman seçin",
+      "required": "*",
+      "departments": {
+        "IT Security": "BT Güvenliği",
+        "Information Technology": "Bilgi Teknolojileri",
+        "Human Resources": "İnsan Kaynakları",
+        "Finance": "Finans",
+        "Operations": "Operasyonlar",
+        "Legal": "Hukuk",
+        "Marketing": "Pazarlama",
+        "Sales": "Satış"
+      }
+    },
+    "security": {
+      "title": "Güvenlik",
+      "changePassword": "Şifre Değiştir",
+      "currentPassword": "Mevcut Şifre",
+      "newPassword": "Yeni Şifre",
+      "confirmPassword": "Şifre Onayı",
+      "passwordRequirements": "Şifre en az 8 karakter olmalı ve büyük harf, küçük harf, rakam içermelidir",
+      "passwordChanged": "Şifre başarıyla değiştirildi",
+      "passwordChangeError": "Şifre değiştirilemedi",
+      "passwordSecurityTips": "Şifre Güvenlik İpuçları:",
+      "tip1": "En az 12 karakter içeren güçlü, benzersiz bir şifre kullanın",
+      "tip2": "Büyük harf, küçük harf, rakam ve sembol karışımı kullanın",
+      "tip3": "Kişisel bilgiler veya yaygın kelimeler kullanmaktan kaçının",
+      "tip4": "Bir şifre yöneticisi kullanmayı düşünün",
+      "tip5": "Ek güvenlik için iki faktörlü kimlik doğrulamayı etkinleştirin",
+      "passwordManagement": "Şifre",
+      "managePasswordSecurely": "Hesap şifrenizi güvenli şekilde yönetin",
+      "securityTitle": "Güvenlik",
+      "changePasswordDialog": {
+        "title": "Şifre Değiştir",
+        "description": "Kimlik sağlayıcımız tarafından yönetilen güvenli bir şifre değiştirme sayfasına yönlendirileceksiniz.",
+        "securityInfo": "Güvenlik Bilgisi:",
+        "info1": "Şifre değişiklikleri güvenli kimlik sağlayıcımız (Keycloak) tarafından işlenir",
+        "info2": "Yeni şifreniz güvenlik gereksinimlerini karşılamalıdır",
+        "info3": "Şifrenizi değiştirdikten sonra tekrar giriş yapmanız gerekecek",
+        "info4": "Güvenlik için tüm aktif oturumlar sonlandırılacaktır",
+        "cancel": "İptal",
+        "openSecurePasswordChange": "Güvenli Şifre Değiştirme Sayfasını Aç",
+        "opening": "Açılıyor...",
+        "redirecting": "Güvenli şifre değiştirme sayfasına yönlendiriliyor...",
+        "failed": "Şifre değiştirme başlatılamadı"
+      }
+    },
+    "mfa": {
+      "title": "Çok Faktörlü Kimlik Doğrulama ve Sağlayıcılar",
+      "multiFactorAuth": "Çok Faktörlü Kimlik Doğrulama",
+      "mfaRequired": "Çok faktörlü kimlik doğrulama, kuruluşunuz tarafından gelişmiş güvenlik için gereklidir.",
+      "totp": {
+        "title": "Doğrulayıcı Uygulaması (TOTP)",
+        "description": "Google Authenticator, Authy veya benzeri uygulamaları kullanın",
+        "enabled": "Etkin",
+        "disabled": "Devre Dışı",
+        "setup": "TOTP Kimlik Doğrulamasını Kur",
+        "setupDescription": "Doğrulayıcı uygulamanızla iki faktörlü kimlik doğrulamayı kurmak için bu adımları izleyin.",
+        "qrCodePlaceholder": "QR Kod yer tutucu - doğrulayıcı uygulamanızla tarayın",
+        "instructions": "Talimatlar:",
+        "step1": "Bir doğrulayıcı uygulaması yükleyin (Google Authenticator, Authy, vb.)",
+        "step2": "Yukarıdaki QR kodu uygulamanızla tarayın",
+        "step3": "Uygulamanızdan 6 haneli kodu aşağıya girin",
+        "step4": "Kurulumu tamamlamak için \"TOTP Etkinleştir\"e tıklayın",
+        "verificationCode": "Doğrulama Kodu",
+        "enableTotp": "TOTP Etkinleştir",
+        "verifying": "Doğrulanıyor...",
+        "enabledSuccess": "TOTP kimlik doğrulaması etkinleştirildi",
+        "disabledSuccess": "TOTP kimlik doğrulaması devre dışı bırakıldı",
+        "invalidCode": "Geçersiz kod. Lütfen tekrar deneyin.",
+        "enterValidCode": "Lütfen geçerli bir 6 haneli kod girin",
+        "cannotDisable": "MFA kuruluşunuz tarafından gereklidir ve devre dışı bırakılamaz"
+      },
+      "webauthn": {
+        "title": "Güvenlik Anahtarları (WebAuthn)",
+        "description": "Donanım anahtarları, Touch ID, Face ID",
+        "setup": "WebAuthn'i Kur",
+        "setupDescription": "Kimlik doğrulama için donanım güvenlik anahtarları, Touch ID, Face ID veya Windows Hello'yu kurun.",
+        "supportedMethods": "Desteklenen Yöntemler:",
+        "hardwareKeys": "Donanım güvenlik anahtarları (YubiKey, vb.)",
+        "touchId": "Mac'te Touch ID",
+        "faceId": "iPhone/iPad'de Face ID",
+        "windowsHello": "Windows Hello",
+        "androidBiometric": "Android parmak izi/yüz kilidi",
+        "browserCompatibility": "Uyumlu bir tarayıcı kullandığınızdan emin olun: Chrome, Firefox, Safari veya Edge.",
+        "setupWebauthn": "WebAuthn'i Kur",
+        "settingUp": "Kuruluyor...",
+        "enabledSuccess": "WebAuthn başarıyla etkinleştirildi",
+        "disabledSuccess": "WebAuthn devre dışı bırakıldı",
+        "setupError": "WebAuthn kurulumu başarısız. Lütfen tekrar deneyin.",
+        "notSupported": "WebAuthn bu tarayıcıda desteklenmiyor"
+      },
+      "linkedAccounts": "Bağlı Hesaplar",
+      "google": {
+        "title": "Google",
+        "description": "Google hesabınızla giriş yapın",
+        "connected": "Bağlı",
+        "disconnected": "Bağlantı Kesildi",
+        "disabledByAdmin": "Yönetici tarafından devre dışı bırakıldı"
+      },
+      "microsoft": {
+        "title": "Microsoft",
+        "description": "Microsoft hesabınızla giriş yapın",
+        "connected": "Bağlı",
+        "disconnected": "Bağlantı Kesildi"
+      },
+      "providerConnected": "bağlandı",
+      "providerDisconnected": "bağlantısı kesildi",
+      "providerConnectError": "bağlanılamadı",
+      "providerDisconnectError": "bağlantısı kesilemedi"
+    },
+    "preferences": {
+      "title": "Tercihler",
+      "language": "Dil",
+      "selectLanguage": "Dil Seçin",
+      "timezone": "Saat Dilimi",
+      "theme": "Tema",
+      "light": "Açık",
+      "dark": "Koyu",
+      "system": "Sistem",
+      "notifications": {
+        "title": "Bildirimler",
+        "email": "E-posta Bildirimleri",
+        "emailDescription": "Güvenlik uyarıları ve güncellemeleri e-posta ile alın",
+        "sms": "SMS Bildirimleri",
+        "smsDescription": "Kritik güvenlik uyarılarını SMS ile alın",
+        "app": "Uygulama İçi Bildirimler",
+        "appDescription": "Uygulama içinde bildirimleri göster"
+      },
+      "updateSuccess": "Tercihler başarıyla güncellendi",
+      "updateError": "Tercihler güncellenemedi",
+      "preferenceUpdateSuccess": "Tercih başarıyla güncellendi",
+      "preferenceUpdateError": "Tercih güncellenemedi",
+      "notificationUpdateSuccess": "Bildirim tercihi güncellendi",
+      "notificationUpdateError": "Bildirim tercihi güncellenemedi",
+      "timeZone": "Saat Dilimi",
+      "appearance": "Görünüm",
+      "systemThemeDescription": "Sistem teması cihazınızın görünüm ayarlarını takip eder",
+      "savingPreferences": "Tercihler kaydediliyor..."
+    },
+    "activity": {
+      "title": "Son Aktiviteler",
+      "timestamp": "Zaman",
+      "action": "Eylem",
+      "device": "Cihaz",
+      "ipAddress": "IP Adresi",
+      "noActivity": "Gösterilecek aktivite yok",
+      "loadError": "Aktivite verileri yüklenemedi",
+      "retry": "Yeniden Dene",
+      "export": "Dışa Aktar",
+      "exporting": "Dışa aktarılıyor...",
+      "exportSuccess": "Aktivite günlüğü başarıyla dışa aktarıldı",
+      "exportError": "Aktivite günlüğü dışa aktarılamadı",
+      "minutesAgo": "{minutes} dakika önce",
+      "hoursAgo": "{hours} saat önce",
+      "daysAgo": "{days} gün önce",
+      "types": {
+        "login": "giriş",
+        "logout": "çıkış",
+        "password_change": "şifre değiştirme",
+        "mfa_enabled": "mfa etkin",
+        "mfa_disabled": "mfa devre dışı",
+        "profile_updated": "profil güncellendi",
+        "session_revoked": "oturum iptal edildi"
+      },
+      "activities": {
+        "login_success": "Başarılı giriş",
+        "login_failed": "Başarısız giriş girişimi",
+        "logout": "Kullanıcı çıkış yaptı",
+        "profile_updated": "Profil bilgileri güncellendi",
+        "notification_preferences_updated": "Bildirim tercihleri güncellendi",
+        "mfa_enabled": "İki faktörlü kimlik doğrulama etkinleştirildi",
+        "mfa_disabled": "İki faktörlü kimlik doğrulama devre dışı bırakıldı",
+        "password_changed": "Şifre başarıyla değiştirildi",
+        "session_revoked": "Mobil cihazdan oturum iptal edildi",
+        "unknown": "Bilinmeyen"
+      }
+    },
+    "sessions": {
+      "title": "Aktif Oturumlar",
+      "currentSession": "Mevcut Oturum",
+      "lastActivity": "Son Aktivite",
+      "device": "Cihaz",
+      "location": "Konum",
+      "terminate": "Sonlandır",
+      "terminateAll": "Tümünü Sonlandır",
+      "sessionTerminated": "Oturum sonlandırıldı",
+      "allSessionsTerminated": "Tüm oturumlar sonlandırıldı",
+      "terminateError": "Oturum sonlandırılamadı",
+      "loadError": "Oturum verileri yüklenemedi",
+      "retry": "Yeniden Dene",
+      "activeNow": "Şu anda aktif",
+      "minutesAgo": "{minutes} dakika önce",
+      "hoursAgo": "{hours} saat önce",
+      "daysAgo": "{days} gün önce",
+      "cannotRevokeCurrent": "Mevcut oturum iptal edilemez",
+      "sessionRevoked": "Oturum başarıyla iptal edildi",
+      "revokeError": "Oturum iptal edilemedi",
+      "allOtherSessionsRevoked": "Diğer tüm oturumlar başarıyla iptal edildi",
+      "revokeAllError": "Oturumlar iptal edilemedi",
+      "revokeAll": "Tümünü İptal Et",
+      "revokeAllTitle": "Tüm Oturumları İptal Et",
+      "revokeAllDescription": "Bu işlem sizi diğer tüm cihaz ve tarayıcılardan çıkarır. Bu cihazda girişli kalacaksınız.",
+      "suspiciousDetected": "{count} şüpheli oturum bilinmeyen konumlardan tespit ettik.",
+      "suspiciousPlural": "{count} şüpheli oturum bilinmeyen konumlardan tespit ettik.",
+      "revokeRecommended": "Tüm oturumları iptal etmek güvenlik için önerilir.",
+      "reviewAndRevoke": "İnceleyin ve gerekirse iptal edin.",
+      "cancel": "İptal",
+      "revoking": "İptal ediliyor...",
+      "revokeAllSessions": "Tüm Oturumları İptal Et",
+      "noActiveSessions": "Aktif oturum yok",
+      "current": "Mevcut",
+      "suspicious": "Şüpheli",
+      "revoke": "İptal Et",
+      "totalSessions": "{count} toplam oturum",
+      "otherDevices": "{count} diğer cihaz",
+      "unknownDevice": "Bilinmeyen Cihaz",
+      "unknownLocation": "Bilinmeyen Konum"
+    },
+    "dangerZone": {
+      "title": "Tehlikeli Bölge",
+      "irreversibleWarning": "Bu eylemler geri alınamaz. Dikkatli ilerleyin.",
+      "revokeAllSessions": {
+        "title": "Tüm Oturumları İptal Et",
+        "description": "Tüm cihaz ve tarayıcılardan hemen çıkış yapın. Bu işlem mevcut oturum hariç tüm aktif oturumları sonlandırır.",
+        "info1": "• Diğer tüm cihazlar çıkış yapar",
+        "info2": "• Bu cihazda girişli kalacaksınız",
+        "info3": "• Diğer cihazlarda tekrar giriş yapmanız gerekecek",
+        "button": "Tümünü İptal Et",
+        "dialogTitle": "Tüm Oturumları İptal Et",
+        "dialogDescription": "Bu işlem sizi diğer tüm cihaz ve tarayıcılardan hemen çıkarır.",
+        "actionWillTitle": "Bu eylem:",
+        "action1": "Diğer cihazlardaki tüm aktif oturumları sonlandırır",
+        "action2": "Bu cihazlarda yeniden kimlik doğrulama gerektirir",
+        "action3": "Bu mevcut cihazda girişli kalmanızı sağlar",
+        "action4": "Hemen etkili olur",
+        "cancel": "İptal",
+        "revoking": "İptal ediliyor...",
+        "confirmButton": "Tüm Oturumları İptal Et",
+        "successMessage": "Tüm oturumlar başarıyla iptal edildi. Giriş sayfasına yönlendirileceksiniz.",
+        "errorMessage": "Tüm oturumlar iptal edilemedi"
+      },
+      "deactivateAccount": {
+        "title": "Hesabı Devre Dışı Bırak",
+        "description": "Hesabınızı kalıcı olarak devre dışı bırakın. Bu eylem yönetici müdahalesi olmadan geri alınamaz.",
+        "info1": "• Hesap hemen devre dışı bırakılır",
+        "info2": "• Veriler uyumluluk için saklanır",
+        "info3": "• Yeniden etkinleştirmek için yönetici onayi gerekir",
+        "info4": "• Tüm oturumlar sonlandırılır",
+        "button": "Devre Dışı Bırak",
+        "dialogTitle": "Hesabı Devre Dışı Bırak",
+        "dialogDescription": "Bu işlem hesabınızı kalıcı olarak devre dışı bırakır. Bu eylem yönetici yardımı olmadan geri alınamaz.",
+        "warningTitle": "Uyarı: Bu eylem geri alınamaz",
+        "warning1": "Hesabınız hemen devre dışı bırakılır",
+        "warning2": "Tüm sistemlere erişiminizi kaybedersiniz",
+        "warning3": "Veriler uyumluluk amaçları için saklanır",
+        "warning4": "Sadece yöneticiler hesabınızı yeniden etkinleştirebilir",
+        "warning5": "Tüm aktif oturumlar sonlandırılır",
+        "confirmationLabel": "Onaylamak için {code} yazın:",
+        "confirmationPlaceholder": "DEACTIVATE yazın",
+        "confirmationCode": "DEACTIVATE",
+        "confirmationError": "Lütfen onaylamak için DEACTIVATE yazın",
+        "cancel": "İptal",
+        "deactivating": "Devre dışı bırakılıyor...",
+        "confirmButton": "Hesabı Devre Dışı Bırak",
+        "successMessage": "Hesap başarıyla devre dışı bırakıldı",
+        "errorMessage": "Hesap devre dışı bırakılamadı",
+        "restrictedMessage": "Hesap devre dışı bırakma kuruluşunuzun güvenlik politikası tarafından kısıtlanmıştır. Hesabınızı devre dışı bırakmanız gerekiyorsa yöneticinizle iletişime geçin."
+      }
+    },
+    "avatar": {
+      "update": "Avatar Güncelle",
+      "uploadDescription": "Yeni bir profil resmi yükleyin. Dosya 2MB'dan küçük olmalıdır.",
+      "chooseFile": "Dosya Seç",
+      "fileSizeError": "Dosya boyutu 2MB'dan küçük olmalıdır",
+      "fileTypeError": "Lütfen bir resim dosyası yükleyin",
+      "uploadSuccess": "Avatar başarıyla güncellendi",
+      "uploadError": "Avatar yüklenemedi"
+    },
+    "common": {
+      "saveChanges": "Değişiklikleri Kaydet",
+      "cancel": "İptal",
+      "update": "Güncelle",
+      "save": "Kaydet",
+      "loading": "Yükleniyor...",
+      "noDataAvailable": "Profil verisi mevcut değil",
+      "failedToLoad": "Profil verileri yüklenemedi",
+      "retry": "Yeniden Dene",
+      "copyToClipboard": "Panoya kopyalandı",
+      "copyFailed": "Kopyalanamadı",
+      "copyUserId": "Kullanıcı ID'sini kopyala",
+      "lastLoginInfo": "Son giriş {timeAgo} • {ip} • {device}",
+      "minutesAgo": "{minutes} dakika önce",
+      "hoursAgo": "{hours} saat önce",
+      "daysAgo": "{days} gün önce"
+    }
+  },
+  "common": {
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "delete": "Sil",
+    "edit": "Düzenle",
+    "add": "Ekle",
+    "create": "Oluştur",
+    "update": "Güncelle",
+    "refresh": "Yenile",
+    "reset": "Sıfırla",
+    "search": "Ara",
+    "filter": "Filtrele",
+    "export": "Dışa Aktar",
+    "import": "İçe Aktar",
+    "loading": "Yükleniyor...",
+    "error": "Hata",
+    "success": "Başarılı",
+    "warning": "Uyarı",
+    "info": "Bilgi",
+    "confirm": "Onayla",
+    "yes": "Evet",
+    "no": "Hayır",
+    "ok": "Tamam",
+    "close": "Kapat",
+    "back": "Geri",
+    "next": "İleri",
+    "previous": "Önceki",
+    "finish": "Bitir",
+    "new": "Yeni",
+    "active": "Aktif",
+    "inactive": "Pasif",
+    "enabled": "Etkin",
+    "disabled": "Devre Dışı",
+    "online": "Çevrimiçi",
+    "offline": "Çevrimdışı",
+    "connected": "Bağlı",
+    "disconnected": "Bağlantı Kesildi",
+    "failed": "başarısız",
+    "connect": "bağlan",
+    "disconnect": "bağlantıyı kes",
+    "name": "Ad",
+    "description": "Açıklama",
+    "email": "E-posta",
+    "phone": "Telefon",
+    "address": "Adres",
+    "date": "Tarih",
+    "time": "Saat",
+    "type": "Tür",
+    "category": "Kategori",
+    "priority": "Öncelik",
+    "status": "Durum",
+    "actions": "İşlemler",
+    "details": "Detaylar",
+    "settings": "Ayarlar",
+    "profile": "Profil",
+    "logout": "Çıkış",
+    "login": "Giriş",
+    "register": "Kayıt",
+    "forgotPassword": "Şifremi Unuttum",
+    "resetPassword": "Şifre Sıfırla",
+    "changePassword": "Şifre Değiştir",
+    "emptyState": {
+      "noData": "Veri bulunamadı",
+      "noResults": "Sonuç bulunamadı",
+      "noItems": "Öğe bulunamadı"
+    },
+    "pagination": {
+      "page": "Sayfa",
+      "of": "of",
+      "items": "öğe",
+      "showing": "Gösteriliyor",
+      "to": "ile",
+      "results": "sonuç"
+    },
+    "validation": {
+      "required": "Bu alan zorunludur",
+      "email": "Geçerli bir e-posta adresi girin",
+      "minLength": "En az {min} karakter olmalıdır",
+      "maxLength": "En fazla {max} karakter olmalıdır",
+      "fixErrors": "Lütfen doğrulama hatalarını düzeltin",
+      "firstNameRequired": "Ad zorunludur",
+      "firstNameMin": "Ad en az 2 karakter olmalıdır",
+      "firstNameLetters": "Ad sadece harf içerebilir",
+      "lastNameRequired": "Soyad zorunludur",
+      "lastNameMin": "Soyad en az 2 karakter olmalıdır",
+      "lastNameLetters": "Soyad sadece harf içerebilir",
+      "usernameRequired": "Kullanıcı adı zorunludur",
+      "usernameMin": "Kullanıcı adı en az 3 karakter olmalıdır",
+      "usernameFormat": "Kullanıcı adı sadece harf, rakam, nokta, tire ve alt çizgi içerebilir",
+      "departmentRequired": "Departman zorunludur",
+      "phoneRequired": "Telefon numarası zorunludur",
+      "phoneValid": "Lütfen geçerli bir telefon numarası girin"
+    }
+  },
+  "admin": {
+    "roles": {
+      "title": "Roller ve İzinler",
+      "description": "Sistem rollerini ve izinlerini yönetin",
+      "newRole": "Yeni Rol",
+      "search": "Rol ara...",
+      "totalRoles": "Toplam Rol",
+      "totalUsers": "Toplam Kullanıcı",
+      "adminRoles": "Admin Rolleri",
+      "averagePermissions": "Ortalama İzin",
+      "role": "Rol",
+      "permissions": "İzinler",
+      "userCount": "Kullanıcı Sayısı",
+      "createdAt": "Oluşturma Tarihi",
+      "noDescription": "Açıklama yok",
+      "edit": "Düzenle",
+      "managePermissions": "İzinleri Yönet",
+      "viewUsers": "Kullanıcıları Görüntüle",
+      "delete": "Sil",
+      "noRolesFound": "Rol bulunamadı",
+      "noRolesMessage": "Belirtilen kriterlere uygun rol bulunmuyor.",
+      "roleTypes": {
+        "admin": "admin",
+        "manager": "manager",
+        "viewer": "viewer"
+      },
+      "badges": {
+        "admin": "bg-red-100 text-red-800 hover:bg-red-200",
+        "manager": "bg-blue-100 text-blue-800 hover:bg-blue-200",
+        "viewer": "bg-green-100 text-green-800 hover:bg-green-200",
+        "default": "bg-gray-100 text-gray-800 hover:bg-gray-200"
+      },
+      "loading": "Yükleniyor...",
+      "dialog": {
+        "editTitle": "Rolü Düzenle",
+        "createTitle": "Yeni Rol Oluştur",
+        "editDescription": "Rol bilgilerini ve izinlerini güncelleyin",
+        "createDescription": "Yeni bir sistem rolü ve izinleri tanımlayın",
+        "basicInformation": "Temel Bilgiler",
+        "fields": {
+          "name": "Rol Adı",
+          "displayName": "Görünen Ad",
+          "description": "Açıklama"
+        },
+        "placeholders": {
+          "name": "Örn: viewer, manager",
+          "displayName": "Örn: Görüntüleyici, Yönetici",
+          "description": "Bu rolün ne işe yaradığını açıklayın..."
+        },
+        "permissions": {
+          "title": "İzinler",
+          "selected": "seçili",
+          "categories": {
+            "user": "Kullanıcı Yönetimi",
+            "role": "Rol Yönetimi",
+            "oauth": "OAuth Ayarları",
+            "audit": "Denetim Günlükleri",
+            "system": "Sistem Ayarları",
+            "settings": "Genel Ayarlar"
+          },
+          "actions": {
+            "read": "Görüntüleme",
+            "write": "Düzenleme",
+            "delete": "Silme"
+          }
+        },
+        "preview": {
+          "title": "Rol Önizlemesi",
+          "roleName": "rol-adi",
+          "displayName": "Görünen Ad",
+          "permissions": "izin"
+        },
+        "validation": {
+          "nameRequired": "Rol adı gereklidir",
+          "nameFormat": "Rol adı sadece küçük harf, rakam ve alt çizgi içerebilir",
+          "displayNameRequired": "Görünen ad gereklidir",
+          "permissionsRequired": "En az bir izin seçmelisiniz",
+          "fixErrors": "Lütfen hataları düzeltin"
+        },
+        "cancel": "İptal",
+        "create": "Oluştur",
+        "update": "Güncelle",
+        "creating": "Oluşturuluyor...",
+        "updating": "Güncelleniyor...",
+        "createSuccess": "Rol başarıyla oluşturuldu",
+        "updateSuccess": "Rol başarıyla güncellendi",
+        "createError": "Rol oluşturulurken hata oluştu",
+        "updateError": "Rol güncellenirken hata oluştu"
+      }
+    }
+  },
+  "security": {
+    "title": "Güvenlik Ayarları",
+    "tabs": {
+      "keycloak": "Keycloak",
+      "authentication": "Kimlik Doğrulama",
+      "mfa": "Çok Faktörlü",
+      "security": "Güvenlik",
+      "audit": "Denetim"
+    },
+    "keycloak": {
+      "title": "Keycloak Yapılandırması",
+      "description": "Kimlik doğrulama ve yetkilendirme için Keycloak entegrasyonunu yapılandırın",
+      "enabled": "Etkin",
+      "disabled": "Devre Dışı",
+      "enableIntegration": "Keycloak Entegrasyonunu Etkinleştir",
+      "enableIntegrationDescription": "Kullanıcı kimlik doğrulama ve yönetimi için Keycloak kullan",
+      "serverUrl": "Sunucu URL'si",
+      "realm": "Realm",
+      "clientId": "İstemci ID",
+      "clientSecret": "İstemci Şifresi",
+      "clientSecretPlaceholder": "İstemci şifresini girin",
+      "adminUsername": "Yönetici Kullanıcı Adı",
+      "adminPassword": "Yönetici Şifresi",
+      "adminPasswordPlaceholder": "Yönetici şifresini girin",
+      "requireSsl": "SSL Gerekli",
+      "publicClient": "Genel İstemci",
+      "connectionTest": "Bağlantı Testi",
+      "connectionTestDescription": "Keycloak sunucusuna bağlantı testi yap",
+      "testConnection": "Bağlantıyı Test Et",
+      "connectionSuccessful": "Bağlantı başarılı",
+      "connectionFailed": "Bağlantı başarısız",
+      "connectionUnknown": "Keycloak sunucusuna bağlantı testi yap",
+      "successfullyConnected": "Keycloak sunucusuna başarıyla bağlandı.",
+      "couldNotConnect": "Keycloak sunucusuna bağlanılamadı. Ayarlarınızı kontrol edin.",
+      "connectionError": "Bağlantı hatası",
+      "errorOccurred": "Bağlantı testi sırasında bir hata oluştu."
+    },
+    "passwordPolicy": {
+      "title": "Şifre Politikası",
+      "description": "Şifre gereksinimlerini ve güvenlik kurallarını yapılandırın",
+      "minLength": "Minimum Uzunluk",
+      "maxAge": "Şifre Yaşı (gün)",
+      "requireUppercase": "Büyük Harf Gerekli",
+      "requireLowercase": "Küçük Harf Gerekli",
+      "requireNumbers": "Rakam Gerekli",
+      "requireSpecialChars": "Özel Karakter Gerekli",
+      "historyCount": "Şifre Geçmiş Sayısı",
+      "historyCountDescription": "Hatırlanacak önceki şifre sayısı"
+    },
+    "sessionManagement": {
+      "title": "Oturum Yönetimi",
+      "description": "Kullanıcı oturumu davranışını ve zaman aşımlarını yapılandırın",
+      "sessionTimeout": "Oturum Zaman Aşımı (saniye)",
+      "maxConcurrentSessions": "Maksimum Eşzamanlı Oturum",
+      "enableRememberMe": "Beni Hatırla Etkinleştir",
+      "enableRememberMeDescription": "Kullanıcıların uzun süre giriş yapmış kalmasına izin ver",
+      "rememberMeTimeout": "Beni Hatırla Süresi (saniye)",
+      "defaultDuration": "Varsayılan: 30 gün (2592000 saniye)"
+    },
+    "accountSecurity": {
+      "title": "Hesap Güvenliği",
+      "description": "Hesap korumasını ve güvenlik önlemlerini yapılandırın",
+      "maxLoginAttempts": "Maksimum Giriş Denemesi",
+      "lockoutDuration": "Kilitleme Süresi (saniye)",
+      "enableCaptcha": "CAPTCHA Etkinleştir",
+      "enableAccountVerification": "Hesap Doğrulama Etkinleştir"
+    },
+    "mfa": {
+      "title": "Çok Faktörlü Kimlik Doğrulama",
+      "description": "Çok faktörlü kimlik doğrulama yöntemlerini ve gereksinimlerini yapılandırın",
+      "enableMfa": "Çok Faktörlü Kimlik Doğrulamayı Etkinleştir",
+      "enableMfaDescription": "Gelişmiş güvenlik için ek kimlik doğrulama faktörleri gerekli kıl",
+      "authenticationMethods": "Kimlik Doğrulama Yöntemleri",
+      "totpAuthenticator": "TOTP Kimlik Doğrulayıcı",
+      "totpDescription": "Google Authenticator, Authy, vb.",
+      "emailVerification": "E-posta Doğrulaması",
+      "emailDescription": "Kodları e-posta ile gönder",
+      "smsVerification": "SMS Doğrulaması",
+      "smsDescription": "Kodları SMS ile gönder",
+      "backupCodes": "Yedek Kodlar",
+      "backupDescription": "Tek kullanımlık yedek kodlar",
+      "requireMfaForAllUsers": "Tüm Kullanıcılar için MFA Gerekli Kıl",
+      "requireMfaDescription": "Tüm kullanıcı hesapları için MFA'yı zorunlu kıl"
+    },
+    "apiSecurity": {
+      "title": "API Güvenliği",
+      "description": "API kimlik doğrulaması ve hız sınırlama yapılandırın",
+      "jwtSecretKey": "JWT Gizli Anahtarı",
+      "jwtSecretDescription": "JWT tokenlarının imzalanması için kullanılan gizli anahtar",
+      "jwtSecretPlaceholder": "JWT gizli anahtarı",
+      "generateNew": "Yeni Oluştur",
+      "jwtExpiration": "JWT Sona Erme (saniye)",
+      "enableRateLimiting": "Hız Sınırlama Etkinleştir",
+      "rateLimitingDescription": "Kötüye kullanımı önlemek için API isteklerini sınırla",
+      "requestsPerMinute": "Dakika Başına İstek",
+      "burstLimit": "Patlama Sınırı",
+      "jwtSecretGenerated": "JWT Gizli Anahtarı Oluşturuldu",
+      "newJwtSecretGenerated": "Yeni bir JWT gizli anahtarı oluşturuldu."
+    },
+    "corsConfiguration": {
+      "title": "CORS Yapılandırması",
+      "description": "Cross-Origin Resource Sharing ayarlarını yapılandırın",
+      "enableCors": "CORS Etkinleştir",
+      "allowedOrigins": "İzin Verilen Kaynaklar",
+      "allowCredentials": "Kimlik Bilgilerine İzin Ver"
+    },
+    "auditLogging": {
+      "title": "Güvenlik Denetim Günlükleri",
+      "description": "Hangi güvenlik olaylarının günlükleneceğini ve izleneceğini yapılandırın",
+      "logFailedLogins": "Başarısız Giriş Denemelerini Günlükle",
+      "logSuccessfulLogins": "Başarılı Girişleri Günlükle",
+      "logPasswordChanges": "Şifre Değişikliklerini Günlükle",
+      "logPermissionChanges": "İzin Değişikliklerini Günlükle",
+      "logRetention": "Günlük Saklama (gün)",
+      "logRetentionDescription": "Denetim günlüklerinin ne kadar süre saklanacağı (minimum 30 gün)"
+    },
+    "toast": {
+      "connectionSuccessful": "Bağlantı başarılı",
+      "connectionFailed": "Bağlantı başarısız",
+      "connectionError": "Bağlantı hatası",
+      "jwtSecretGenerated": "JWT Gizli Anahtarı Oluşturuldu"
+    }
+  },
+  "notificationSettings": {
+    "tabs": {
+      "email": "E-posta",
+      "push": "Push",
+      "sms": "SMS",
+      "integrations": "Entegrasyonlar",
+      "system": "Sistem",
+      "preferences": "Tercihler"
+    },
+    "email": {
+      "title": "E-posta Yapılandırması",
+      "description": "SMTP ayarlarını ve e-posta şablonlarını yapılandırın",
+      "enabled": "Etkin",
+      "disabled": "Devre Dışı",
+      "enableEmailNotifications": "E-posta Bildirimlerini Etkinleştir",
+      "enableEmailDescription": "E-posta ile bildirim gönder",
+      "smtpServerSettings": "SMTP Sunucu Ayarları",
+      "smtpHost": "SMTP Host",
+      "smtpPort": "SMTP Port",
+      "username": "Kullanıcı Adı",
+      "password": "Şifre",
+      "fromEmail": "Gönderen E-posta",
+      "fromName": "Gönderen Adı",
+      "useSslTls": "SSL/TLS Kullan",
+      "sendTestEmail": "Test E-postası Gönder",
+      "loading": "Yükleniyor...",
+      "emailTemplates": "E-posta Şablonları",
+      "subjectLine": "Konu Başlığı",
+      "templates": {
+        "welcome": "Hoş Geldin E-postası",
+        "passwordReset": "Şifre Sıfırlama",
+        "securityAlert": "Güvenlik Uyarısı",
+        "systemAlert": "Sistem Uyarısı",
+        "maintenance": "Bakım Bildirimi"
+      },
+      "placeholders": {
+        "smtpHost": "smtp.gmail.com",
+        "smtpPort": "587",
+        "username": "email@gmail.com",
+        "password": "Uygulama şifresi veya SMTP şifresi",
+        "fromEmail": "noreply@isguvenligi.com",
+        "fromName": "İş Güvenliği Sistemi",
+        "subjectFor": "{template} için konu girin"
+      }
+    },
+    "push": {
+      "title": "Push Bildirimleri",
+      "description": "Web push bildirimlerini yapılandırın",
+      "comingSoon": "Yakında",
+      "comingSoonDescription": "Push bildirim yapılandırması bir sonraki sürümde mevcut olacak."
+    },
+    "sms": {
+      "title": "SMS Bildirimleri",
+      "description": "Twilio veya AWS SNS ile SMS bildirimlerini yapılandırın",
+      "enterprise": "Kurumsal",
+      "enterpriseDescription": "SMS bildirimleri Kurumsal planda mevcuttur."
+    },
+    "integrations": {
+      "title": "Üçüncü Taraf Entegrasyonları",
+      "description": "Slack, Microsoft Teams ve diğer entegrasyonları yapılandırın",
+      "configureHere": "Entegrasyon ayarları burada yapılandırılacak."
+    },
+    "system": {
+      "title": "Sistem Bildirimleri",
+      "description": "Tarayıcı ve sistem bildirim tercihlerini yapılandırın",
+      "desktopNotifications": "Masaüstü Bildirimleri",
+      "browserNotifications": "Tarayıcı Bildirimleri",
+      "soundAlerts": "Ses Uyarıları",
+      "badgeNotifications": "Rozet Bildirimleri"
+    },
+    "preferences": {
+      "title": "Bildirim Tercihleri",
+      "description": "Bildirim zamanlaması ve öncelik ayarlarını yapılandırın",
+      "quietHours": "Sessiz Saatler",
+      "quietHoursDescription": "Belirtilen saatlerde kritik olmayan bildirimleri devre dışı bırak",
+      "startTime": "Başlangıç Saati",
+      "endTime": "Bitiş Saati"
+    },
+    "toast": {
+      "testEmailSent": "Test e-postası gönderildi",
+      "testEmailSentDescription": "Test e-postası başarıyla gönderildi.",
+      "testEmailFailed": "Test e-postası başarısız",
+      "testEmailFailedDescription": "Test e-postası gönderilemedi. SMTP ayarlarınızı kontrol edin."
+    }
+  },
+  "notificationPreferences": {
+    "title": "Bildirim Ayarları",
+    "description": "Bildirimleri nasıl ve ne zaman alacağınızı yapılandırın",
+    "reset": "Sıfırla",
+    "saveChanges": "Değişiklikleri Kaydet",
+    "unsavedChanges": "Kaydedilmemiş değişiklikleriniz var. Bildirim tercihlerinizi kaydetmeyi unutmayın.",
+    "tabs": {
+      "channels": "Dağıtım Kanalları",
+      "types": "Bildirim Türleri",
+      "schedule": "Zamanlama ve Zamanlar",
+      "advanced": "Gelişmiş Ayarlar"
+    },
+    "channels": {
+      "title": "Dağıtım Kanalları",
+      "description": "Bildirimleri nasıl almak istediğinizi seçin. Uygulama içi bildirimler her zaman etkindir.",
+      "inApp": "Uygulama İçi Bildirimler",
+      "inAppDescription": "Yönetici panelinde bildirimleri göster",
+      "email": "E-posta Bildirimleri",
+      "emailDescription": "E-posta adresinize bildirim gönder",
+      "sms": "SMS Bildirimleri",
+      "smsDescription": "Kritik uyarıları kısa mesaj ile gönder",
+      "alwaysEnabled": "Her Zaman Etkin"
+    },
+    "types": {
+      "title": "Bildirim Türleri",
+      "description": "Her bildirim türü için ayarları yapılandırın",
+      "security": "Güvenlik Uyarıları",
+      "securityDescription": "Giriş hataları, şüpheli aktivite, politika ihlalleri",
+      "system": "Sistem Sağlığı",
+      "systemDescription": "Sistem hataları, performans sorunları, servis durumu",
+      "risk": "Risk ve Güvenlik",
+      "riskDescription": "Güvenlik olayları, risk eşik uyarıları",
+      "userActivity": "Kullanıcı Aktivitesi",
+      "userActivityDescription": "Rol değişiklikleri, hesap modifikasyonları",
+      "test": "Test",
+      "minimumSeverity": "Minimum Önem Derecesi",
+      "deliveryChannels": "Dağıtım Kanalları",
+      "onlyEnabledChannels": "Yalnızca etkinleştirilmiş kanallar seçilebilir",
+      "app": "Uygulama",
+      "email": "E-posta",
+      "sms": "SMS"
+    },
+    "severity": {
+      "low": "Düşük",
+      "medium": "Orta",
+      "high": "Yüksek",
+      "critical": "Kritik"
+    },
+    "quietHours": {
+      "title": "Sessiz Saatler",
+      "description": "Belirtilen saatlerde kritik olmayan bildirimleri devre dışı bırak",
+      "enable": "Sessiz saatleri etkinleştir",
+      "startTime": "Başlangıç Saati",
+      "endTime": "Bitiş Saati",
+      "timezone": "Saat Dilimi",
+      "timezones": {
+        "utc": "UTC",
+        "easternTime": "Doğu Saati",
+        "centralTime": "Merkez Saati",
+        "mountainTime": "Dağ Saati",
+        "pacificTime": "Pasifik Saati",
+        "london": "Londra",
+        "istanbul": "İstanbul"
+      }
+    },
+    "digest": {
+      "title": "Bildirim Özeti",
+      "description": "Bireysel uyarılar yerine bildirimlerin bir özetini alın",
+      "enable": "Özet modunu etkinleştir",
+      "frequency": "Sıklık",
+      "deliveryTime": "Teslimat Saati",
+      "frequencies": {
+        "daily": "Günlük",
+        "weekly": "Haftalık"
+      }
+    },
+    "advanced": {
+      "title": "Gelişmiş Ayarlar",
+      "description": "Ek bildirim yapılandırma seçenekleri",
+      "futureFeature": "Gelişmiş ayarlar gelecek sürümlerde mevcut olacaktır. Şu anda yer tutucu yapılandırma seçenekleri gösteriliyor.",
+      "autoMarkRead": "Bildirimleri otomatik olarak okundu işaretle",
+      "autoMarkReadDescription": "Görüntüledikten sonra bildirimleri otomatik olarak okundu işaretle",
+      "groupSimilar": "Benzer bildirimleri grupla",
+      "groupSimilarDescription": "Benzer bildirimleri gruplara birleştir",
+      "retentionPeriod": "Saklama süresi",
+      "retentionPeriodDescription": "Okunmuş bildirimleri ne kadar süre saklanacağı",
+      "retentionPlaceholder": "30 gün"
+    },
+    "toast": {
+      "settingsSaved": "Bildirim ayarları başarıyla kaydedildi",
+      "settingsReset": "Ayarlar varsayılanlara sıfırlandı",
+      "saveError": "Bildirim ayarları kaydedilemedi",
+      "testNotification": "Test {type} bildirimi gönderildi!"
+    }
+  },
+  "healthMonitoring": {
+    "title": "Sağlık İzleme Eşikleri",
+    "description": "Sistem sağlık izleme eşiklerini ve uyarı sistemini yapılandırın",
+    "enabled": "Etkin",
+    "disabled": "Devre Dışı",
+    "enableHealthMonitoring": "Sağlık İzlemeyi Etkinleştir",
+    "enableHealthMonitoringDescription": "Sistem kaynaklarını ve performans metriklerini izle",
+    "alertThresholds": "Uyarı Eşikleri",
+    "monitoringConfiguration": "İzleme Yapılandırması",
+    "cpuUsage": "CPU Kullanımı (%)",
+    "memoryUsage": "Bellek Kullanımı (%)",
+    "diskUsage": "Disk Kullanımı (%)",
+    "responseTime": "Yanıt Süresi (ms)",
+    "warning": "Uyarı:",
+    "critical": "Kritik:",
+    "checkInterval": "Kontrol Aralığı (saniye)",
+    "dataRetention": "Veri Saklama (gün)",
+    "enableAlerting": "Uyarı Sistemini Etkinleştir",
+    "units": {
+      "percentage": "%",
+      "milliseconds": "ms"
+    }
+  },
+  "dataManagement": {
+    "backup": {
+      "title": "Veri Yedekleme ve Dışa Aktarma",
+      "description": "Otomatik yedekleme ve veri dışa aktarma seçeneklerini yapılandırın",
+      "enableAutomatedBackups": "Otomatik Yedeklemeyi Etkinleştir",
+      "enableAutomatedBackupsDescription": "Sistem verilerini belirli aralıklarla otomatik olarak yedekle",
+      "backupFrequency": "Yedekleme Sıklığı",
+      "retentionPeriod": "Saklama Süresi (gün)",
+      "enableCompression": "Sıkıştırmayı Etkinleştir",
+      "enableEncryption": "Şifrelemeyi Etkinleştir",
+      "manualDataExport": "Manuel Veri Dışa Aktarma",
+      "manualDataExportDescription": "Yedekleme veya taşıma için tüm sistem verilerini dışa aktar",
+      "exportData": "Veri Dışa Aktar",
+      "importData": "Veri İçe Aktar",
+      "importDataDescription": "Yedeklemeden veya taşıma dosyasından veri içe aktar",
+      "frequencies": {
+        "hourly": "Her Saat",
+        "daily": "Günlük",
+        "weekly": "Haftalık",
+        "monthly": "Aylık"
+      }
+    },
+    "cache": {
+      "title": "Redis Önbellek Yönetimi",
+      "description": "Redis önbellek ayarlarını yapılandır ve yönet",
+      "active": "Aktif",
+      "inactive": "Pasif",
+      "enableRedisCache": "Redis Önbelleği Etkinleştir",
+      "enableRedisCacheDescription": "Uygulama önbelleği için Redis kullan",
+      "defaultTtl": "Varsayılan TTL (saniye)",
+      "maxCacheSize": "Maksimum Önbellek Boyutu",
+      "cleanupInterval": "Temizleme Aralığı (saniye)",
+      "clearCache": "Önbelleği Temizle",
+      "clearCacheDescription": "Tüm önbellek verilerini hemen temizle"
+    },
+    "cleanup": {
+      "title": "Veri Temizleme ve Bakım",
+      "description": "Otomatik veri temizleme ve bakım görevlerini yapılandırın",
+      "enableAutomaticCleanup": "Otomatik Temizlemeyi Etkinleştir",
+      "enableAutomaticCleanupDescription": "Eski verileri ve geçici dosyaları otomatik olarak temizle",
+      "logRetention": "Günlük Saklama (gün)",
+      "cleanTemporaryFiles": "Geçici Dosyaları Temizle",
+      "cleanExpiredSessions": "Süresi Dolmuş Oturumları Temizle"
+    },
+    "toast": {
+      "exportCompleted": "Dışa aktarma tamamlandı",
+      "exportCompletedDescription": "Sistem verileri başarıyla dışa aktarıldı.",
+      "exportFailed": "Dışa aktarma başarısız",
+      "exportFailedDescription": "Sistem verileri dışa aktarılamadı.",
+      "cacheCleared": "Önbellek temizlendi",
+      "cacheClearedDescription": "Redis önbelleği başarıyla temizlendi.",
+      "clearFailed": "Temizleme başarısız",
+      "clearFailedDescription": "Önbellek temizlenemedi."
+    }
+  },
+  "auditSettings": {
+    "title": "Denetim Günlüğü Yapılandırması",
+    "description": "Güvenlik ve uyumluluk için kapsamlı denetim günlüğü yapılandırın",
+    "enabled": "Etkin",
+    "disabled": "Devre Dışı",
+    "enableAuditLogging": "Denetim Günlüğünü Etkinleştir",
+    "enableAuditLoggingDescription": "Güvenlik izleme ve uyumluluk için tüm sistem aktivitelerini kaydet",
+    "general": {
+      "title": "Genel Ayarlar",
+      "logLevel": "Günlük Seviyesi",
+      "retentionPeriod": "Saklama Süresi (gün)",
+      "enableCompression": "Sıkıştırmayı Etkinleştir",
+      "enableEncryption": "Şifrelemeyi Etkinleştir",
+      "logLevels": {
+        "debug": "Hata Ayıklama",
+        "info": "Bilgi",
+        "warn": "Uyarı",
+        "error": "Hata",
+        "critical": "Kritik"
+      }
+    },
+    "events": {
+      "title": "Olay Türleri",
+      "userActions": "Kullanıcı İşlemleri",
+      "systemActions": "Sistem İşlemleri",
+      "authenticationEvents": "Kimlik Doğrulama Olayları",
+      "dataChanges": "Veri Değişiklikleri",
+      "configurationChanges": "Yapılandırma Değişiklikleri",
+      "errorEvents": "Hata Olayları",
+      "performanceMetrics": "Performans Metrikleri"
+    },
+    "storage": {
+      "title": "Depolama Yapılandırması",
+      "storageLocation": "Depolama Konumu",
+      "maxFileSize": "Maksimum Dosya Boyutu",
+      "rotationPolicy": "Döndürme Politikası",
+      "enableBackup": "Yedeklemeyi Etkinleştir",
+      "locations": {
+        "database": "Veritabanı",
+        "file": "Dosya Sistemi",
+        "both": "Her İkisi"
+      },
+      "rotations": {
+        "hourly": "Saatlik",
+        "daily": "Günlük",
+        "weekly": "Haftalık",
+        "monthly": "Aylık"
+      }
+    },
+    "alerts": {
+      "title": "Güvenlik Uyarıları",
+      "failedLoginAttempts": "Başarısız Giriş Denemeleri",
+      "suspiciousActivity": "Şüpheli Aktivite",
+      "dataExfiltration": "Veri Sızdırma",
+      "configurationChanges": "Yapılandırma Değişiklikleri",
+      "thresholdBreaches": "Eşik İhlalleri"
+    }
+  },
+  "accessPolicySettings": {
+    "title": "Erişim Politikası Yönetimi",
+    "description": "Rol tabanlı erişim kontrolü ve kullanıcı izinlerini yapılandırın",
+    "rbacEnabled": "RBAC Etkin",
+    "accessPolicyConfiguration": "Erişim Politikası Yapılandırması",
+    "detailedDescription": "Detaylı RBAC ayarları burada kullanıcı rolleri, izinler ve erişim politikaları ile uygulanacaktır.",
+    "addPolicy": "Politika Ekle"
+  },
+  "notificationBell": {
+    "notifications": "Bildirimler",
+    "markAllRead": "Tümünü Okundu İşaretle",
+    "total": "toplam",
+    "unread": "okunmamış",
+    "noNotifications": "Henüz bildirim yok",
+    "actionRequired": "Eylem Gerekli",
+    "settings": "Ayarlar",
+    "viewAll": "Tümünü Görüntüle",
+    "toast": {
+      "loadFailed": "Bildirimler yüklenemedi",
+      "markedAsRead": "Bildirim okundu olarak işaretlendi",
+      "markReadFailed": "Okundu olarak işaretlenemedi",
+      "allMarkedAsRead": "Tüm bildirimler okundu olarak işaretlendi",
+      "markAllFailed": "Tümü okundu olarak işaretlenemedi"
+    },
+    "mockData": {
+      "criticalSecurityAlert": "Kritik Güvenlik Uyarısı",
+      "multipleFailedLogins": "Son 5 dakikada çoklu başarısız giriş denemeleri tespit edildi",
+      "systemHealthWarning": "Sistem Sağlık Uyarısı",
+      "highCpuUsage": "Sunucu CPU kullanımı %85'i aştı",
+      "newAdminUserCreated": "Yeni Yönetici Kullanıcı Oluşturuldu",
+      "userGrantedAdmin": "Kullanıcı Mike Chen yönetici ayrıcalıkları verildi",
+      "backupCompleted": "Yedekleme Tamamlandı",
+      "dailyBackupSuccess": "Günlük veritabanı yedeklemesi başarıyla tamamlandı"
+    }
+  },
+  "admin": {
+    "roles": {
+      "title": "Roller",
+      "description": "Sistem rollerini ve yetkilerini yönetin",
+      "newRole": "Yeni Rol",
+      "totalRoles": "Toplam Roller",
+      "totalUsers": "Toplam Kullanıcı",
+      "adminRoles": "Admin Rolleri",
+      "averagePermissions": "Ortalama Yetki",
+      "search": "Rol ara...",
+      "role": "Rol",
+      "description": "Açıklama",
+      "permissions": "Yetkiler",
+      "userCount": "Kullanıcı Sayısı",
+      "createdAt": "Oluşturulma Tarihi",
+      "noDescription": "Açıklama yok",
+      "edit": "Düzenle",
+      "managePermissions": "Yetkileri Yönet",
+      "viewUsers": "Kullanıcıları Görüntüle",
+      "delete": "Sil",
+      "noRolesFound": "Rol bulunamadı",
+      "noRolesMessage": "Arama kriterlerinize uygun rol bulunamadı.",
+      "mockData": {
+        "admin": {
+          "displayName": "Sistem Yöneticisi",
+          "description": "Tüm sistem yetkilerine sahip süper yönetici"
+        },
+        "manager": {
+          "displayName": "Güvenlik Yöneticisi",
+          "description": "Güvenlik yönetimi ve kullanıcı yönetimi yetkilerine sahip"
+        },
+        "viewer": {
+          "displayName": "Salt Okunur Kullanıcı",
+          "description": "Sadece görüntüleme yetkisine sahip kullanıcı"
+        }
+      }
+    },
+    "audit": {
+      "title": "Audit Logları",
+      "description": "Sistem aktivitelerini takip edin ve denetim kayıtlarını inceleyin",
+      "downloadReport": "Rapor İndir",
+      "stats": {
+        "totalLogs": "Toplam Log",
+        "errorLogs": "Hata Logları",
+        "warningLogs": "Uyarı Logları",
+        "today": "Bugün"
+      },
+      "search": {
+        "placeholder": "Log ara...",
+        "level": "Seviye",
+        "resource": "Kaynak"
+      },
+      "filters": {
+        "allLevels": "Tüm Seviyeler",
+        "error": "Hata",
+        "warn": "Uyarı",
+        "info": "Bilgi",
+        "debug": "Debug",
+        "allResources": "Tüm Kaynaklar",
+        "auth": "Auth",
+        "user": "User",
+        "role": "Role",
+        "oauth": "OAuth",
+        "audit": "Audit"
+      },
+      "table": {
+        "dateTime": "Tarih & Saat",
+        "user": "Kullanıcı",
+        "action": "Aksiyon",
+        "resource": "Kaynak",
+        "level": "Seviye",
+        "ipAddress": "IP Adresi",
+        "details": "Detaylar",
+        "systemUnknown": "Sistem / Bilinmeyen",
+        "showDetails": "Detayları Göster",
+        "noDetails": "Detay yok"
+      },
+      "pagination": {
+        "showingResults": "Toplam {total} log'dan {from}-{to} arası gösteriliyor",
+        "previous": "Önceki",
+        "next": "Sonraki"
+      },
+      "empty": {
+        "title": "Log bulunamadı",
+        "description": "Belirtilen kriterlere uygun audit log'u bulunmuyor."
+      }
+    }
+  },
+  "users": {
+    "title": "Kullanıcılar",
+    "description": "Sistem kullanıcılarını yönetin ve izinlerini düzenleyin",
+    "newUser": "Yeni Kullanıcı",
+    "search": "Kullanıcı ara...",
+    "totalUsers": "Toplam Kullanıcı",
+    "activeUsers": "Aktif Kullanıcı",
+    "inactiveUsers": "Pasif Kullanıcı",
+    "selected": "Seçili",
+    "status": "Durum",
+    "allStatuses": "Tüm Durumlar",
+    "active": "Aktif",
+    "inactive": "Pasif",
+    "role": "Rol",
+    "allRoles": "Tüm Roller",
+    "admin": "Yönetici",
+    "manager": "Manager",
+    "viewer": "Görüntüleyici",
+    "delete": "Sil",
+    "user": "Kullanıcı",
+    "roles": "Roller",
+    "lastLogin": "Son Giriş",
+    "loginCount": "Giriş Sayısı",
+    "registrationDate": "Kayıt Tarihi",
+    "neverLoggedIn": "Hiç giriş yapmamış",
+    "edit": "Düzenle",
+    "manageRoles": "Rolleri Yönet",
+    "deactivate": "Devre Dışı Bırak",
+    "activate": "Etkinleştir",
+    "noUsersFound": "Kullanıcı bulunamadı",
+    "noUsersMessage": "Belirtilen kriterlere uygun kullanıcı bulunmuyor.",
+    "showingResults": "Toplam {total} kullanıcıdan {from}-{to} arası gösteriliyor",
+    "previous": "Önceki",
+    "next": "Sonraki",
+    "dialog": {
+      "editTitle": "Kullanıcıyı Düzenle",
+      "createTitle": "Yeni Kullanıcı Oluştur",
+      "editDescription": "Kullanıcı bilgilerini ve rollerini güncelleyin",
+      "createDescription": "Yeni bir sistem kullanıcısı oluşturun",
+      "personalInformation": "Kişisel Bilgiler",
+      "accountInformation": "Hesap Bilgileri",
+      "contactInformation": "İletişim Bilgileri",
+      "fields": {
+        "firstName": "Ad",
+        "lastName": "Soyad",
+        "email": "E-posta",
+        "username": "Kullanıcı Adı",
+        "phone": "Telefon",
+        "department": "Departman"
+      },
+      "placeholders": {
+        "firstName": "Adınızı girin",
+        "lastName": "Soyadınızı girin",
+        "email": "ornek@email.com",
+        "username": "kullanici_adi",
+        "phone": "+90 555 123 45 67",
+        "department": "Departman seçin"
+      },
+      "departments": {
+        "it_department": "IT Departmanı",
+        "security_department": "Güvenlik Departmanı",
+        "operations": "Operasyonlar",
+        "human_resources": "İnsan Kaynakları",
+        "finance": "Finans",
+        "marketing": "Pazarlama",
+        "engineering": "Mühendislik",
+        "support": "Destek"
+      },
+      "roles": {
+        "title": "Rol Ataması",
+        "selected": "seçili"
+      },
+      "accountStatus": {
+        "title": "Hesap Durumu",
+        "active": "Aktif Hesap",
+        "description": "Kullanıcı sisteme giriş yapabilir ve atanan rollerini kullanabilir"
+      },
+      "preview": {
+        "title": "Kullanıcı Önizlemesi",
+        "active": "Aktif",
+        "inactive": "Pasif"
+      },
+      "validation": {
+        "emailRequired": "E-posta gereklidir",
+        "emailValid": "Geçerli bir e-posta adresi girin",
+        "firstNameRequired": "Ad gereklidir",
+        "firstNameMin": "Ad en az 2 karakter olmalıdır",
+        "firstNameLetters": "Ad sadece harf içerebilir",
+        "lastNameRequired": "Soyad gereklidir",
+        "lastNameMin": "Soyad en az 2 karakter olmalıdır",
+        "lastNameLetters": "Soyad sadece harf içerebilir",
+        "usernameRequired": "Kullanıcı adı gereklidir",
+        "usernameMin": "Kullanıcı adı en az 3 karakter olmalıdır",
+        "usernameFormat": "Kullanıcı adı sadece harf, rakam, nokta, tire ve alt çizgi içerebilir",
+        "departmentRequired": "Departman gereklidir",
+        "phoneRequired": "Telefon numarası gereklidir",
+        "phoneValid": "Lütfen geçerli bir telefon numarası girin",
+        "rolesRequired": "En az bir rol seçmelisiniz",
+        "fixErrors": "Lütfen hataları düzeltin"
+      },
+      "cancel": "İptal",
+      "create": "Oluştur",
+      "update": "Güncelle",
+      "creating": "Oluşturuluyor...",
+      "updating": "Güncelleniyor...",
+      "createSuccess": "Kullanıcı başarıyla oluşturuldu",
+      "updateSuccess": "Kullanıcı başarıyla güncellendi",
+      "createError": "Kullanıcı oluşturulurken hata oluştu",
+      "updateError": "Kullanıcı güncellenirken hata oluştu"
+    }
+  }
+}

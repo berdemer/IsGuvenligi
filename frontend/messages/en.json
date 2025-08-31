@@ -1,0 +1,1981 @@
+{
+  "nav": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "userMgmt": "User Management",
+    "users": "Users",
+    "roles": "Roles",
+    "auth": "Authentication",
+    "oauthProviders": "OAuth Providers",
+    "authPolicies": "Auth Policies",
+    "activeSessions": "Active Sessions",
+    "accessPolicies": "Access Policies",
+    "auditLogs": "Audit Logs",
+    "notifications": "Notifications",
+    "health": "Health Monitoring",
+    "settings": "System Settings"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcomeMessage": "Welcome to the İş Güvenliği Admin Panel",
+    "totalUsers": "Total Users",
+    "activeSessions": "Active Sessions",
+    "securityAlerts": "Security Alerts",
+    "systemHealth": "System Health",
+    "recentActivity": "Recent Activity",
+    "securityOverview": "Security Overview",
+    "analytics": "Analytics",
+    "viewReports": "View Reports",
+    "notifications": "Notifications",
+    "stats": {
+      "activeUsersInSystem": "Active users in system",
+      "currentlyLoggedIn": "Currently logged in",
+      "resolvedThisWeek": "Resolved this week",
+      "uptimeThisMonth": "Uptime this month"
+    },
+    "activities": {
+      "userLogin": "User login",
+      "failedLoginAttempt": "Failed login attempt",
+      "roleUpdated": "Role updated",
+      "newUserCreated": "New user created"
+    },
+    "security": {
+      "authentication": "Authentication",
+      "accessControl": "Access Control",
+      "sessionManagement": "Session Management",
+      "auditCompliance": "Audit Compliance",
+      "good": "Good",
+      "excellent": "Excellent",
+      "poor": "Poor",
+      "tfaEnabledFor95Percent": "2FA enabled for 95% of users",
+      "allRolesProperlyConfigured": "All roles properly configured",
+      "longLivedSessionsDetected": "Long-lived sessions detected",
+      "allEventsLogged": "All events logged",
+      "issues": "issues"
+    },
+    "common": {
+      "fromLastMonth": "from last month",
+      "success": "success",
+      "warning": "warning",
+      "info": "info",
+      "analyticsChartsWillBeImplemented": "Analytics charts will be implemented here",
+      "integrationWithChartingLibraryNeeded": "Integration with charting library needed"
+    },
+    "sessions": {
+      "title": "Active Sessions",
+      "refresh": "Refresh",
+      "terminateAll": "Terminate All Sessions",
+      "sessionDetails": "Session Details",
+      "loading": "Loading sessions...",
+      "error": "An error occurred while loading sessions. Please refresh the page.",
+      "noActiveSessions": "No active sessions found",
+      "currentSession": "Current Session",
+      "activeSession": "Active Session",
+      "terminateSession": "Terminate Session",
+      "unknownBrowser": "Unknown Browser",
+      "unknownOS": "Unknown Operating System",
+      "toasts": {
+        "sessionTerminated": "Session terminated",
+        "sessionTerminationFailed": "Session could not be terminated"
+      },
+      "dialogs": {
+        "terminateAll": {
+          "title": "Terminate All Sessions",
+          "content": "Are you sure you want to terminate all your active sessions except the current one?",
+          "action": "Terminate All Sessions"
+        },
+        "terminate": {
+          "title": "Terminate Session",
+          "content": "Are you sure you want to terminate this session?",
+          "action": "Terminate Session"
+        }
+      }
+    }
+  },
+  "users": {
+    "title": "User Management",
+    "description": "Manage system users and their permissions",
+    "addUser": "Add User",
+    "editUser": "Edit User",
+    "deleteUser": "Delete User",
+    "userDetails": "User Details",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "username": "Username",
+    "role": "Role",
+    "status": "Status",
+    "createdAt": "Created At",
+    "lastLogin": "Last Login",
+    "actions": "Actions"
+  },
+  "roles": {
+    "title": "Role Management",
+    "description": "Define user roles and permissions",
+    "addRole": "Add Role",
+    "editRole": "Edit Role",
+    "deleteRole": "Delete Role",
+    "roleName": "Role Name",
+    "roleDescription": "Description",
+    "permissions": "Permissions",
+    "userCount": "User Count"
+  },
+  "auth": {
+    "title": "Authentication",
+    "oauthProviders": {
+      "title": "OAuth Providers",
+      "description": "Manage social media and corporate OAuth providers",
+      "addProvider": "New Provider",
+      "providerName": "Provider Name",
+      "clientId": "Client ID",
+      "enabled": "Enabled",
+      "stats": {
+        "totalProviders": "Total Providers",
+        "activeProviders": "Active Providers",
+        "inactiveProviders": "Inactive Providers",
+        "configured": "Configured"
+      },
+      "search": {
+        "placeholder": "Search providers..."
+      },
+      "status": {
+        "active": "Active",
+        "inactive": "Inactive",
+        "status": "Status"
+      },
+      "fields": {
+        "clientId": "Client ID",
+        "scopes": "Scopes",
+        "notConfigured": "Not Configured"
+      },
+      "actions": {
+        "configure": "Configure",
+        "test": "Test"
+      },
+      "empty": {
+        "title": "No providers found",
+        "description": "No OAuth providers match the specified criteria."
+      }
+    },
+    "policies": {
+      "title": "Auth Policies",
+      "description": "Define password and security policies",
+      "passwordPolicy": "Password Policy",
+      "mfaRequired": "Multi-Factor Authentication Required",
+      "sessionTimeout": "Session Timeout",
+      "createPolicy": "Create Policy",
+      "conflictsDetected": "conflicts detected",
+      "totalPolicies": "Total Policies",
+      "activePolicies": "Active Policies",
+      "totalApplications": "Total Applications",
+      "simulation": "Simulation",
+      "auditLog": "Audit Log",
+      "failedToLoad": "Failed to load policies",
+      "noCreatePermission": "You don't have permission to create policies",
+      "noEditPermission": "You don't have permission to edit policies",
+      "noDeletePermission": "You don't have permission to delete policies",
+      "noActivatePermission": "You don't have permission to activate policies",
+      "policyUpdated": "Policy updated successfully",
+      "policyCreated": "Policy created successfully",
+      "policyDeleted": "Policy deleted successfully",
+      "policyActivated": "Policy activated successfully",
+      "failedToSave": "Failed to save policy",
+      "failedToDelete": "Failed to delete policy",
+      "failedToActivate": "Failed to activate policy"
+    },
+    "sessions": {
+      "title": "Active Sessions",
+      "description": "Monitor current user sessions",
+      "user": "User",
+      "device": "Device",
+      "location": "Location",
+      "startTime": "Start Time",
+      "lastActivity": "Last Activity",
+      "terminate": "Terminate",
+      "activeSessions": "Active Sessions",
+      "uniqueUsers": "Unique Users",
+      "highRiskSessions": "High-Risk Sessions",
+      "revokedToday": "Revoked Today",
+      "securityActionsTaken": "Security actions taken",
+      "fromYesterday": "from yesterday",
+      "ofTotalSessions": "of total sessions",
+      "lastUpdated": "Last updated",
+      "live": "Live",
+      "paused": "Paused",
+      "refresh": "Refresh",
+      "exportCsv": "Export CSV",
+      "viewReports": "View Reports",
+      "sessions": "Sessions",
+      "analytics": "Analytics",
+      "anomalies": "Anomalies",
+      "auditLog": "Audit Log",
+      "failedToLoadSessions": "Failed to load sessions",
+      "sessionsExportedSuccessfully": "Sessions exported successfully",
+      "failedToExportSessions": "Failed to export sessions",
+      "securityReportGenerated": "Security report generated successfully",
+      "failedToGenerateReport": "Failed to generate report",
+      "noPermissionToView": "You don't have permission to view active sessions."
+    },
+    "login": {
+      "title": "Workplace Safety System",
+      "subtitle": "Login for a secure work environment",
+      "username": "Username",
+      "password": "Password",
+      "loginButton": "Login",
+      "socialLoginWith": "Login with {provider}",
+      "or": "or",
+      "footer": "© 2024 Workplace Safety System - Designed for secure work environment",
+      "validation": {
+        "usernameRequired": "Username is required",
+        "passwordRequired": "Password is required",
+        "passwordMinLength": "Password must be at least 8 characters"
+      }
+    }
+  },
+  "policies": {
+    "title": "Access Policies",
+    "description": "Manage access control policies and permissions", 
+    "viewReports": "View Reports",
+    "exportCsv": "Export CSV",
+    "createPolicy": "Create Policy",
+    "totalPolicies": "Total Policies",
+    "activePolicies": "Active Policies",
+    "conflicts": "Conflicts",
+    "enforcedResources": "Enforced Resources",
+    "fromLastMonth": "from last month",
+    "ofTotal": "of total",
+    "requiresAttention": "requires attention", 
+    "applicationsProtected": "applications protected",
+    "conflictsDetected": "conflicts detected",
+    "reviewConflicts": "Review conflicts to prevent access issues",
+    "lastUpdated": "Last Updated",
+    "refresh": "Refresh",
+    "loading": "Loading...",
+    "policies": "Policies",
+    "simulation": "Simulation",
+    "analytics": "Analytics", 
+    "audit": "Audit",
+    "keycloak": "Keycloak",
+    "failedToLoad": "Failed to load policies",
+    "createPolicyDialog": "Create Policy dialog would open here",
+    "policyExportStart": "Policy export would start here",
+    "navigateToReports": "Navigate to reports page",
+    "policyUpdated": "Policy updated",
+    "policyDeleted": "Policy deleted", 
+    "policyCloned": "Policy cloned",
+    "editPolicy": "Edit policy",
+    "conflictManager": {
+      "title": "Policy Conflicts",
+      "description": "Resolve conflicting policies to ensure proper access control",
+      "searchPlaceholder": "Search conflicts...",
+      "priorityOrder": {
+        "title": "Policy Priority Order",
+        "description": "Drag policies to reorder their priority. Higher priority policies override lower ones."
+      },
+      "filters": {
+        "severity": "Severity",
+        "allSeverity": "All Severity",
+        "type": "Type",
+        "allTypes": "All Types"
+      },
+      "severity": {
+        "critical": "Critical",
+        "high": "High",
+        "medium": "Medium",
+        "low": "Low"
+      },
+      "types": {
+        "contradiction": "Contradiction",
+        "priority": "Priority",
+        "overlap": "Overlap",
+        "circular": "Circular"
+      }
+    },
+    "policyList": {
+      "loading": "Loading policies...",
+      "noConditions": "No conditions",
+      "search": "Search policies...",
+      "filters": {
+        "types": {
+          "all": "All Types",
+          "allow": "Allow",
+          "deny": "Deny",
+          "conditional": "Conditional"
+        },
+        "statuses": {
+          "all": "All Status",
+          "active": "Active",
+          "disabled": "Disabled",
+          "draft": "Draft",
+          "expired": "Expired"
+        },
+        "scopes": {
+          "all": "All Scopes",
+          "global": "Global",
+          "role": "Role",
+          "group": "Group",
+          "user": "User",
+          "resource": "Resource"
+        }
+      },
+      "conditions": {
+        "time": "Time",
+        "location": "Location",
+        "ip": "IP",
+        "device": "Device",
+        "risk": "Risk"
+      },
+      "viewModes": {
+        "table": "Table",
+        "cards": "Cards"
+      },
+      "sorting": {
+        "sortBy": "Sort by:",
+        "name": "Name",
+        "priority": "Priority",
+        "status": "Status",
+        "updated": "Updated"
+      },
+      "table": {
+        "headers": {
+          "policyName": "Policy Name",
+          "type": "Type",
+          "scope": "Scope",
+          "conditions": "Conditions",
+          "status": "Status",
+          "priority": "Priority",
+          "rollout": "Rollout",
+          "affectedUsers": "Affected Users",
+          "updated": "Updated",
+          "actions": "Actions"
+        }
+      },
+      "results": {
+        "showing": "{filtered} of {total} policies",
+        "selected": "{count} selected"
+      },
+      "toast": {
+        "enabled": "Policy enabled",
+        "disabled": "Policy disabled",
+        "deleted": "Policy deleted",
+        "cloned": "Policy cloned"
+      }
+    },
+    "policyEditor": {
+      "title": {
+        "create": "Create Policy",
+        "edit": "Edit Policy"
+      },
+      "description": "Define access rules, conditions, and deployment settings for your policy",
+      "validation": {
+        "nameRequired": "Policy name is required",
+        "descriptionRequired": "Policy description is required",
+        "subjectsRequired": "At least one subject is required",
+        "resourcesRequired": "At least one resource is required",
+        "priorityRange": "Priority must be between 1 and 100"
+      },
+      "tabs": {
+        "basic": "Basic",
+        "subjects": "Subjects",
+        "resources": "Resources",
+        "conditions": "Conditions",
+        "preview": "Preview"
+      },
+      "form": {
+        "labels": {
+          "policyName": "Policy Name",
+          "category": "Category",
+          "description": "Description",
+          "policyType": "Policy Type",
+          "scope": "Scope",
+          "required": "*"
+        },
+        "placeholders": {
+          "policyName": "Enter policy name...",
+          "category": "e.g. admin, security...",
+          "description": "Describe what this policy controls..."
+        },
+        "types": {
+          "allow": "Allow",
+          "deny": "Deny",
+          "conditional": "Conditional"
+        }
+      },
+      "toast": {
+        "fixErrors": "Please fix validation errors",
+        "saved": "Policy saved successfully",
+        "simulationRequired": "Please enter both user and resource for simulation",
+        "simulationCompleted": "Simulation completed",
+        "simulationFailed": "Simulation failed"
+      }
+    },
+    "policySimulation": {
+      "title": "Policy Simulation",
+      "description": "Test how your access policies behave with different user-resource combinations",
+      "tabs": {
+        "simulate": "New Simulation",
+        "history": "Simulation History"
+      },
+      "parameters": {
+        "title": "Simulation Parameters",
+        "description": "Configure the scenario you want to test",
+        "selectUser": "Select User",
+        "selectUserPlaceholder": "Choose a user to simulate",
+        "selectResource": "Select Resource",
+        "selectResourcePlaceholder": "Choose a resource to test",
+        "accessLevel": "Access Level",
+        "accessLevelPlaceholder": "Select access level"
+      },
+      "context": {
+        "title": "Simulation Context",
+        "description": "Set additional parameters",
+        "ipAddress": "IP Address",
+        "ipPlaceholder": "Enter user's IP address",
+        "userAgent": "User Agent",
+        "userAgentPlaceholder": "Enter browser/device info",
+        "location": "Location",
+        "locationPlaceholder": "Enter geographic location",
+        "timeOfDay": "Time of Day",
+        "timeOfDayPlaceholder": "Select time of access"
+      },
+      "actions": {
+        "runSimulation": "Run Simulation",
+        "saveSimulation": "Save Simulation",
+        "clearHistory": "Clear History"
+      },
+      "results": {
+        "loading": "Running simulation...",
+        "noResults": "Configure parameters and run simulation to see results",
+        "accessGranted": "Access Granted",
+        "accessDenied": "Access Denied",
+        "effectiveAccess": "Effective Access",
+        "appliedPolicies": "Applied Policies",
+        "matchedConditions": "Matched Conditions",
+        "conflicts": "Conflicts",
+        "recommendations": "Recommendations"
+      },
+      "history": {
+        "title": "Simulation History",
+        "noHistory": "No saved simulations yet",
+        "user": "User",
+        "resource": "Resource",
+        "result": "Result",
+        "timestamp": "Timestamp"
+      }
+    },
+    "policyAnalytics": {
+      "title": "Access Policy Analytics",
+      "description": "Monitor policy performance and access patterns across your organization",
+      "timeRange": {
+        "7d": "Last 7 Days",
+        "30d": "Last 30 Days",
+        "90d": "Last 90 Days",
+        "1y": "Last 1 Year"
+      },
+      "tabs": {
+        "overview": "Overview",
+        "trends": "Access Trends",
+        "distribution": "Distribution",
+        "risk": "Risk Analysis",
+        "performance": "Performance",
+        "usage": "Resource Usage",
+        "users": "User Activity"
+      },
+      "metrics": {
+        "totalAttempts": {
+          "title": "Total Access Attempts",
+          "description": "All resource access requests"
+        },
+        "successRate": {
+          "title": "Success Rate",
+          "description": "Granted vs denied access"
+        },
+        "activePolicies": {
+          "title": "Active Policies",
+          "description": "total policies"
+        },
+        "conflictsDetected": {
+          "title": "Conflicts Detected",
+          "description": "Policies with conflicts"
+        }
+      },
+      "charts": {
+        "accessTrends": {
+          "title": "Access Trends",
+          "description": "Track access attempts over time",
+          "granted": "Granted",
+          "denied": "Denied"
+        },
+        "policyDistribution": {
+          "title": "Policy Type Distribution",
+          "description": "Breakdown of policy types in use",
+          "breakdown": "Breakdown of policy types in use",
+          "distributionBreakdown": "Distribution of allow, deny, and conditional policies"
+        },
+        "resourceUsage": {
+          "title": "Most Accessed Resources",
+          "description": "Resources ranked by access volume"
+        },
+        "userActivity": {
+          "title": "User Activity",
+          "description": "Most active users by access attempts"
+        },
+        "riskScore": {
+          "title": "Risk Score Distribution",
+          "description": "Risk level analysis of access attempts"
+        },
+        "accessTrendAnalysis": {
+          "title": "Access Trend Analysis",
+          "description": "Detailed view of access patterns over time"
+        },
+        "suspiciousPatterns": {
+          "title": "Suspicious Access Patterns",
+          "description": "Detected patterns that may indicate security concerns"
+        },
+        "enforcementActivity": {
+          "title": "Policy Enforcement Activity",
+          "description": "Most actively enforced policies"
+        },
+        "resourceAccessVolume": {
+          "title": "Resource Access Volume",
+          "description": "Access attempts by resource"
+        }
+      },
+      "actions": {
+        "refresh": "Refresh",
+        "export": "Export Report",
+        "viewDetails": "View Details"
+      }
+    },
+    "policyAuditLog": {
+      "title": "Policy Audit Log",
+      "description": "Complete audit trail of all policy-related activities",
+      "actions": {
+        "exportCsv": "Export CSV",
+        "refresh": "Refresh",
+        "viewDetails": "View Details"
+      },
+      "filters": {
+        "searchPlaceholder": "Search logs...",
+        "actionPlaceholder": "Action",
+        "actorPlaceholder": "Actor",
+        "allActions": "All Actions",
+        "allActors": "All Actors"
+      },
+      "actionTypes": {
+        "create": "Create",
+        "update": "Update",
+        "delete": "Delete",
+        "enable": "Enable",
+        "disable": "Disable",
+        "simulate": "Simulate",
+        "enforce": "Enforce"
+      },
+      "actorTypes": {
+        "user": "User",
+        "system": "System",
+        "api": "API"
+      },
+      "table": {
+        "headers": {
+          "timestamp": "Timestamp",
+          "action": "Action",
+          "policy": "Policy",
+          "actor": "Actor",
+          "details": "Details"
+        },
+        "noData": "No audit logs to display"
+      },
+      "details": {
+        "policyChanges": "Policy Changes",
+        "enforcement": "Enforcement",
+        "simulation": "Simulation",
+        "additionalMetadata": "Additional Metadata",
+        "requestContext": "Request Context",
+        "ipAddress": "IP Address",
+        "userAgent": "User Agent",
+        "requestId": "Request ID",
+        "correlationId": "Correlation ID",
+        "accessGranted": "Access Granted",
+        "accessDenied": "Access Denied",
+        "from": "From",
+        "to": "To"
+      },
+      "pagination": {
+        "showing": "Showing: {start} - {end} of {total}",
+        "previous": "Previous",
+        "next": "Next"
+      }
+    },
+    "keycloakIntegration": {
+      "title": "Keycloak Integration",
+      "description": "Synchronize roles and resources with Keycloak for centralized identity management",
+      "connection": {
+        "title": "Connection Status",
+        "status": {
+          "connected": "Connected",
+          "error": "Connection Error",
+          "syncing": "Syncing..."
+        },
+        "settings": {
+          "title": "Connection Settings",
+          "serverUrl": "Server URL",
+          "realm": "Realm",
+          "clientId": "Client ID",
+          "clientSecret": "Client Secret",
+          "testConnection": "Test Connection",
+          "save": "Save"
+        },
+        "info": {
+          "realm": "Realm",
+          "clientId": "Client ID",
+          "mappedRoles": "Mapped Roles",
+          "mappedResources": "Mapped Resources",
+          "lastSync": "Last Sync"
+        }
+      },
+      "tabs": {
+        "roles": "Role Mapping",
+        "resources": "Resource Mapping",
+        "settings": "Settings"
+      },
+      "roles": {
+        "title": "Keycloak Role Mapping",
+        "description": "Map Keycloak roles to internal roles",
+        "addMapping": "Add Mapping",
+        "table": {
+          "keycloakRole": "Keycloak Role",
+          "mappedRole": "Mapped Role",
+          "description": "Description",
+          "actions": "Actions"
+        },
+        "dialog": {
+          "title": {
+            "add": "Add Role Mapping",
+            "edit": "Edit Role Mapping"
+          },
+          "description": "Map a Keycloak role to an internal application role",
+          "keycloakRole": "Keycloak Role",
+          "mappedRole": "Mapped Role",
+          "descriptionField": "Description",
+          "placeholders": {
+            "keycloakRole": "admin, hr-manager, developer...",
+            "mappedRole": "admin, hr-manager, developer...",
+            "description": "Describe the purpose of this mapping..."
+          }
+        }
+      },
+      "resources": {
+        "title": "Keycloak Resource Mapping",
+        "description": "Map Keycloak resources to internal resources",
+        "addMapping": "Add Mapping",
+        "table": {
+          "keycloakResource": "Keycloak Resource",
+          "mappedResource": "Mapped Resource",
+          "scopes": "Scopes",
+          "actions": "Actions"
+        },
+        "dialog": {
+          "title": {
+            "add": "Add Resource Mapping",
+            "edit": "Edit Resource Mapping"
+          },
+          "description": "Map Keycloak resources to internal application resources",
+          "keycloakResource": "Keycloak Resource",
+          "mappedResource": "Mapped Resource",
+          "scopes": "Scopes",
+          "placeholders": {
+            "keycloakResource": "safety-app, admin-panel...",
+            "mappedResource": "safety-applications, admin-panel..."
+          }
+        }
+      },
+      "actions": {
+        "sync": "Sync with Keycloak",
+        "testConnection": "Test Connection",
+        "save": "Save",
+        "cancel": "Cancel",
+        "edit": "Edit",
+        "delete": "Delete",
+        "add": "Add"
+      }
+    }
+  },
+  "access": {
+    "title": "Access Policies",
+    "description": "Manage access control policies and permissions",
+    "createPolicy": "Create Policy",
+    "policyName": "Policy Name",
+    "resources": "Resources",
+    "subjects": "Subjects",
+    "effect": "Effect",
+    "conditions": "Conditions",
+    "priority": "Priority",
+    "status": "Status",
+    "totalPolicies": "Total Policies",
+    "activePolicies": "Active Policies",
+    "conflicts": "Conflicts",
+    "enforcedResources": "Enforced Resources",
+    "viewReports": "View Reports",
+    "exportCsv": "Export CSV",
+    "kpi": {
+      "fromLastMonth": "from last month",
+      "ofTotal": "of total",
+      "requiresAttention": "requires attention",
+      "applicationsProtected": "applications protected"
+    },
+    "alerts": {
+      "conflictsDetected": "conflicts detected",
+      "reviewConflicts": "Review conflicts to prevent access issues"
+    },
+    "lastUpdated": "Last Updated",
+    "loading": "Loading...",
+    "tabs": {
+      "policies": "Policies",
+      "conflicts": "Conflicts",
+      "simulation": "Simulation",
+      "analytics": "Analytics",
+      "audit": "Audit",
+      "keycloak": "Keycloak"
+    }
+  },
+  "audit": {
+    "title": "Audit Logs",
+    "description": "Monitor system activities and security events",
+    "eventType": "Event Type",
+    "timestamp": "Timestamp",
+    "user": "User",
+    "resource": "Resource",
+    "action": "Action",
+    "result": "Result",
+    "ipAddress": "IP Address",
+    "details": "Details"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "description": "Manage all user and system alerts, security events, and activity notifications",
+    "markAsRead": "Mark as Read",
+    "markAllRead": "Mark All as Read",
+    "deleteAll": "Delete All",
+    "count": "{count, plural, =0 {No notifications} one {# notification} other {# notifications}}",
+    "noNotifications": "No notifications yet",
+    "settings": "Notification Settings",
+    "export": "Export",
+    "loading": "Loading notifications...",
+    "totalNotifications": "Total Notifications",
+    "unread": "Unread",
+    "securityAlerts": "Security Alerts",
+    "systemHealth": "System Health",
+    "fromLastWeek": "from last week",
+    "unreadRate": "unread rate",
+    "thisWeek": "this week",
+    "requireImmediateAttention": "require immediate attention",
+    "reviewSecurityTab": "Review the Security tab for details",
+    "lastUpdated": "Last updated",
+    "refresh": "Refresh",
+    "all": "All",
+    "security": "Security",
+    "system": "System",
+    "riskAndSafety": "Risk & Safety",
+    "userActivity": "User Activity",
+    "failedToLoad": "Failed to load notifications",
+    "allMarkedAsRead": "All notifications marked as read",
+    "failedToMarkAsRead": "Failed to mark notifications as read",
+    "exportWouldStart": "Export would start here",
+    "bulkActionCompleted": "completed",
+    "types": {
+      "security": "Security",
+      "system": "System",
+      "user": "User",
+      "info": "Info"
+    }
+  },
+  "health": {
+    "title": "Health Monitoring",
+    "overview": "Monitor system health and performance metrics",
+    "tabs": {
+      "overview": "Overview",
+      "services": "Services", 
+      "infrastructure": "Infrastructure",
+      "incidents": "Incidents",
+      "metrics": "Metrics",
+      "settings": "Settings"
+    },
+    "healthScore": "Health Score",
+    "systemUptime": "System Uptime",
+    "services": "Services",
+    "avgResponseTime": "Avg Response Time",
+    "errorRate": "Error Rate",
+    "criticalAlerts": "Critical Alerts",
+    "autoRefresh": "Auto-refresh",
+    "live": "Live",
+    "offline": "Offline",
+    "updated": "Updated",
+    "connect": "Connect",
+    "disconnect": "Disconnect",
+    "refresh": "Refresh",
+    "viewReports": "View Reports",
+    "exportMetrics": "Export Metrics",
+    "generatingHealthReport": "Generating health report...",
+    "healthReportExported": "Health report exported successfully",
+    "failedToExportReport": "Failed to export health report",
+    "realtimeMonitoringDisconnected": "Real-time monitoring disconnected",
+    "realtimeMonitoringConnected": "Real-time monitoring connected",
+    "newAlert": "New",
+    "newIncident": "New incident",
+    "serviceStatusUpdated": "status updated",
+    "status": {
+      "healthy": "Healthy",
+      "warning": "Warning",
+      "critical": "Critical",
+      "unknown": "Unknown"
+    },
+    "infrastructure": {
+      "cpuUsage": "CPU Usage",
+      "memory": "Memory",
+      "diskSpace": "Disk Space",
+      "networkIO": "Network I/O",
+      "usage": "Usage",
+      "cores": "Cores",
+      "loadAvg": "Load Avg",
+      "swapUsed": "Swap Used",
+      "readIOPS": "Read IOPS",
+      "writeIOPS": "Write IOPS",
+      "outbound": "Outbound",
+      "packetsIn": "Packets In",
+      "errors": "Errors",
+      "serviceResourceUsage": "Service Resource Usage",
+      "resourceConsumption": "Resource consumption by individual services",
+      "historicalMetrics": "Historical Metrics",
+      "memoryBreakdown": "Memory Breakdown",
+      "physicalMemory": "Physical Memory",
+      "swapMemory": "Swap Memory",
+      "diskIOPerformance": "Disk I/O Performance",
+      "networkStatistics": "Network Statistics",
+      "inbound": "Inbound",
+      "packetsOut": "Packets Out",
+      "infrastructureAlerts": "Infrastructure Alerts",
+      "activeAlerts": "Active alerts and threshold violations",
+      "highMemoryUsage": "High Memory Usage",
+      "memoryApproaching": "Memory usage is at {usage}%, approaching threshold",
+      "criticalCPUUsage": "Critical CPU Usage",
+      "cpuImmediateAttention": "CPU usage is at {usage}%, immediate attention required",
+      "diskSpaceLow": "Disk Space Low",
+      "diskConsiderCleanup": "Disk usage is at {usage}%, consider cleanup",
+      "allMetricsNormal": "All infrastructure metrics within normal range"
+    },
+    "overview": {
+      "title": "System Overview",
+      "timeRanges": {
+        "1h": "Last Hour",
+        "24h": "Last 24h",
+        "7d": "Last 7d",
+        "30d": "Last 30d"
+      },
+      "healthScore": {
+        "title": "System Health Score",
+        "description": "Overall system health indicator",
+        "outOf100": "/ 100",
+        "status": {
+          "excellent": "Excellent",
+          "good": "Good",
+          "warning": "Warning",
+          "critical": "Critical"
+        }
+      },
+      "metrics": {
+        "averageResponseTime": "Average Response Time",
+        "errorRate": "Error Rate"
+      },
+      "services": {
+        "title": "Service Uptime",
+        "uptimeTitle": "Service Uptime (7d)",
+        "noServicesAvailable": "No services available"
+      },
+      "alerts": {
+        "title": "Active Alerts",
+        "active": "active",
+        "acknowledged": "Acknowledged",
+        "noActiveAlerts": "No active alerts"
+      },
+      "sla": {
+        "title": "SLA Status",
+        "target": "Target",
+        "current": "Current",
+        "monthToDate": "Month to Date",
+        "status": "Status",
+        "breach": "BREACH",
+        "good": "GOOD"
+      }
+    },
+    "services": {
+      "title": "Service Status",
+      "description": "Real-time health status of all system services",
+      "searchPlaceholder": "Search services...",
+      "showUnhealthyOnly": "Show unhealthy only",
+      "servicesCount": "{filtered} of {total} services",
+      "table": {
+        "service": "Service",
+        "status": "Status",
+        "lastCheck": "Last Check",
+        "latency": "Latency",
+        "errorRate": "Error Rate",
+        "uptime": "Uptime",
+        "actions": "Actions"
+      },
+      "actions": {
+        "details": "Details",
+        "healthCheck": "Health Check",
+        "clearCache": "Clear Cache",
+        "restart": "Restart",
+        "restartService": "Restart Service"
+      },
+      "detail": {
+        "title": "Service Details",
+        "description": "Detailed health metrics and controls for {serviceName}",
+        "type": "Type",
+        "version": "Version",
+        "metrics": {
+          "uptime7d": "Uptime (7d)",
+          "avgLatency": "Avg Latency",
+          "errorRate": "Error Rate",
+          "healthScore": "Health Score",
+          "currentMetrics": "Current Metrics"
+        },
+        "dependencies": {
+          "title": "Dependencies",
+          "description": "Services that this service depends on"
+        },
+        "incidents": {
+          "title": "Recent Incidents",
+          "serviceGradation": "Service Degradation",
+          "description": "{serviceName} experienced performance issues",
+          "duration": "Duration: {duration}min",
+          "impact": "Impact: {impact}",
+          "status": "Status: {status}"
+        },
+        "serviceActions": {
+          "title": "Service Actions",
+          "description": "Administrative actions for this service"
+        }
+      },
+      "timeFormat": {
+        "justNow": "Just now",
+        "minutesAgo": "{minutes}m ago",
+        "hoursAgo": "{hours}h ago"
+      },
+      "threshold": {
+        "critical": "Critical",
+        "warning": "Warning",
+        "good": "Good"
+      },
+      "empty": {
+        "title": "No services found",
+        "searchMessage": "Try adjusting your search criteria",
+        "filterMessage": "No services match the current filters"
+      },
+      "toast": {
+        "performing": "Performing {action} on service...",
+        "success": "Service {action} completed successfully",
+        "error": "Failed to {action} service",
+        "restarted": "{serviceName} restarted successfully",
+        "cacheCleared": "{serviceName} cache cleared",
+        "healthCheckCompleted": "Health check completed for {serviceName}",
+        "actionFailed": "Failed to {action} {serviceName}"
+      }
+    },
+    "incidents": {
+      "title": "Incidents",
+      "timeline": "Timeline",
+      "description": "Track and manage system incidents and outages",
+      "searchPlaceholder": "Search incidents...",
+      "stats": {
+        "totalIncidents": "Total Incidents",
+        "open": "Open",
+        "investigating": "Investigating",
+        "resolved": "Resolved",
+        "avgResolution": "Avg Resolution"
+      },
+      "filters": {
+        "allStatus": "All Status",
+        "allSeverity": "All Severity"
+      },
+      "severity": {
+        "low": "Low",
+        "medium": "Medium",
+        "high": "High",
+        "critical": "Critical"
+      },
+      "status": {
+        "open": "Open",
+        "investigating": "Investigating",
+        "resolved": "Resolved",
+        "closed": "Closed"
+      },
+      "impact": {
+        "none": "None",
+        "minimal": "Minimal",
+        "moderate": "Moderate",
+        "severe": "Severe"
+      },
+      "table": {
+        "incident": "Incident",
+        "service": "Service",
+        "severity": "Severity",
+        "status": "Status",
+        "duration": "Duration",
+        "impact": "Impact",
+        "started": "Started",
+        "actions": "Actions"
+      },
+      "actions": {
+        "exportReport": "Export Report",
+        "newIncident": "New Incident",
+        "details": "Details"
+      },
+      "create": {
+        "title": "Create New Incident",
+        "description": "Report a new incident or system issue",
+        "titleLabel": "Title",
+        "titlePlaceholder": "Brief incident title",
+        "descriptionLabel": "Description",
+        "descriptionPlaceholder": "Detailed description of the incident",
+        "severityLabel": "Severity",
+        "userImpactLabel": "User Impact",
+        "affectedServiceLabel": "Affected Service (Optional)",
+        "selectService": "Select a service",
+        "cancel": "Cancel",
+        "create": "Create Incident"
+      },
+      "detail": {
+        "incidentNumber": "Incident #{incidentId}",
+        "startedAgo": "Started {timeAgo}",
+        "status": "Status",
+        "severity": "Severity",
+        "duration": "Duration",
+        "impact": "Impact",
+        "description": "Description",
+        "rootCause": "Root Cause",
+        "resolution": "Resolution",
+        "timeline": "Timeline"
+      },
+      "timeline": {
+        "detected": "detected",
+        "investigating": "investigating",
+        "update": "update",
+        "resolved": "resolved",
+        "auto": "Auto",
+        "by": "by"
+      },
+      "timeFormat": {
+        "ongoing": "Ongoing",
+        "minutesAgo": "{minutes}m ago",
+        "hoursAgo": "{hours}h ago",
+        "daysAgo": "{days}d ago",
+        "users": "users",
+        "systemWide": "System-wide"
+      },
+      "empty": {
+        "title": "No incidents found",
+        "filterMessage": "Try adjusting your filters",
+        "noIncidents": "No incidents have been reported"
+      },
+      "toast": {
+        "titleRequired": "Title and description are required",
+        "creating": "Creating incident...",
+        "created": "Incident created successfully",
+        "createFailed": "Failed to create incident",
+        "loadFailed": "Failed to load incidents",
+        "exporting": "Generating incident report...",
+        "exported": "Incident report exported successfully",
+        "exportFailed": "Failed to export incident report"
+      }
+    },
+    "prometheus": {
+      "title": "Prometheus & Grafana Integration",
+      "description": "Monitor and visualize health metrics using Prometheus and Grafana",
+      "tabs": {
+        "prometheus": "Prometheus",
+        "grafana": "Grafana",
+        "configuration": "Configuration"
+      },
+      "query": {
+        "title": "Prometheus Query",
+        "description": "Execute PromQL queries to retrieve metrics data",
+        "label": "PromQL Query",
+        "placeholder": "Enter PromQL query (e.g., up, cpu_usage_percent)",
+        "execute": "Execute Query",
+        "recentQueries": "Recent Queries"
+      },
+      "results": {
+        "title": "Query Results",
+        "metrics": "metrics",
+        "table": {
+          "metric": "Metric",
+          "value": "Value",
+          "timestamp": "Timestamp"
+        },
+        "noData": "No metrics data"
+      },
+      "export": {
+        "title": "Metrics Export",
+        "description": "Export health metrics in Prometheus format",
+        "viewFull": "View Full Metrics",
+        "download": "Download",
+        "exportMetrics": "Export Metrics"
+      },
+      "grafana": {
+        "dashboards": "Grafana Dashboards",
+        "newDashboard": "New Dashboard",
+        "panels": "panels",
+        "actions": {
+          "viewDashboard": "View Dashboard",
+          "openInGrafana": "Open in Grafana",
+          "edit": "Edit",
+          "delete": "Delete"
+        },
+        "preview": {
+          "title": "Dashboard preview",
+          "panels": "with {panelCount} panels",
+          "query": "Query:",
+          "visualization": "visualization",
+          "close": "Close"
+        }
+      },
+      "config": {
+        "prometheus": {
+          "title": "Prometheus Configuration",
+          "enable": "Enable Prometheus Integration",
+          "enableDescription": "Connect to Prometheus for metrics collection",
+          "url": "Prometheus URL",
+          "urlPlaceholder": "http://prometheus.example.com:9090",
+          "testConnection": "Test Connection",
+          "connected": "Connected",
+          "warning": "Warning"
+        },
+        "grafana": {
+          "title": "Grafana Configuration",
+          "enable": "Enable Grafana Integration",
+          "enableDescription": "Connect to Grafana for dashboard management",
+          "url": "Grafana URL",
+          "urlPlaceholder": "http://grafana.example.com:3000"
+        },
+        "advanced": {
+          "title": "Advanced Settings",
+          "scrapeInterval": "Scrape Interval",
+          "queryTimeout": "Query Timeout",
+          "retentionPeriod": "Retention Period",
+          "maxSamples": "Max Samples"
+        }
+      },
+      "toast": {
+        "loadFailed": "Failed to load Grafana dashboards",
+        "executing": "Executing Prometheus query...",
+        "querySuccess": "Query executed successfully. Found {count} metrics.",
+        "queryFailed": "Failed to execute Prometheus query",
+        "exporting": "Exporting Prometheus metrics...",
+        "exported": "Metrics exported successfully",
+        "exportFailed": "Failed to export metrics",
+        "editing": "Editing dashboard: {dashboardTitle}",
+        "deleting": "Deleting dashboard...",
+        "deleted": "Dashboard deleted successfully",
+        "deleteFailed": "Failed to delete dashboard",
+        "testingConnection": "Testing {service} connection...",
+        "connectionSuccess": "{service} connection successful",
+        "connectionFailed": "{service} connection failed",
+        "testFailed": "Failed to test {service} connection"
+      },
+      "mockData": {
+        "dashboards": {
+          "systemHealthOverview": "System Health Overview",
+          "infrastructureMetrics": "Infrastructure Metrics"
+        },
+        "panels": {
+          "systemHealthScore": "System Health Score",
+          "serviceResponseTimes": "Service Response Times",
+          "cpuUsage": "CPU Usage",
+          "memoryUsage": "Memory Usage"
+        },
+        "legends": {
+          "healthScore": "Health Score",
+          "cpuUsage": "CPU Usage",
+          "memoryUsage": "Memory Usage"
+        },
+        "tags": {
+          "health": "health",
+          "overview": "overview",
+          "infrastructure": "infrastructure",
+          "metrics": "metrics"
+        }
+      },
+      "healthSettings": {
+        "title": "Health Monitoring Settings",
+        "description": "Configure thresholds and alerting for health monitoring",
+        "thresholds": {
+          "title": "Health Thresholds",
+          "description": "Define warning and critical thresholds for health metrics"
+        },
+        "comingSoon": "Health settings configuration coming soon..."
+      }
+    }
+  },
+  "settings": {
+    "title": "System Settings",
+    "description": "Configure system preferences, security, monitoring, and integrations",
+    "general": "General",
+    "security": "Security",
+    "notifications": "Notifications",
+    "policies": "Policies",
+    "monitoring": "Monitoring",
+    "integrations": "Integrations",
+    "data": "Data",
+    "audit": "Audit",
+    "language": "Language",
+    "selectLanguage": "Select Language",
+    "languageChanged": "Language changed successfully",
+    "systemName": "System Name",
+    "systemDescription": "Configure basic system settings and preferences",
+    "defaultLanguage": "Default Language",
+    "defaultLanguageDescription": "Choose the default language for the system",
+    "timezone": "Timezone",
+    "dateFormat": "Date Format",
+    "currency": "Currency",
+    "theme": "Theme",
+    "compactMode": "Compact Mode",
+    "animationsEnabled": "Animations",
+    "autoRefreshInterval": "Auto Refresh Interval",
+    "itemsPerPage": "Items Per Page",
+    "featureFlags": {
+      "title": "Feature Flags",
+      "description": "Enable or disable system features and experimental functionality",
+      "beta": "Beta"
+    },
+    "performance": {
+      "title": "Performance & Caching",
+      "description": "Configure system performance and caching settings"
+    },
+    "reset": {
+      "title": "Reset Settings",
+      "resetToDefaults": "Reset to Defaults",
+      "resetDescription": "This will reset all general settings to their default values. This action cannot be undone.",
+      "warning": "This action cannot be undone!"
+    }
+  },
+  "profile": {
+    "title": "Profile Information",
+    "personalInfo": "Personal Information",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "username": "Username",
+    "department": "Department",
+    "phone": "Phone",
+    "role": "Role",
+    "lastLogin": "Last Login",
+    "userInfo": {
+      "title": "User Information",
+      "updateSuccess": "User information updated successfully",
+      "updateError": "Failed to update user information",
+      "emailChangeNotice": "Email address cannot be changed. Contact your administrator if needed.",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "username": "Username",
+      "department": "Department",
+      "phone": "Phone",
+      "email": "Email",
+      "firstNamePlaceholder": "Enter first name",
+      "lastNamePlaceholder": "Enter last name",
+      "usernamePlaceholder": "Enter username",
+      "departmentPlaceholder": "Select department",
+      "required": "*",
+      "firstNamePlaceholder": "Enter first name",
+      "lastNamePlaceholder": "Enter last name",
+      "usernamePlaceholder": "Enter username",
+      "departmentPlaceholder": "Select department",
+      "required": "*",
+      "departments": {
+        "IT Security": "IT Security",
+        "Information Technology": "Information Technology",
+        "Human Resources": "Human Resources",
+        "Finance": "Finance",
+        "Operations": "Operations",
+        "Legal": "Legal",
+        "Marketing": "Marketing",
+        "Sales": "Sales"
+      }
+    },
+    "security": {
+      "title": "Security",
+      "changePassword": "Change Password",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm Password",
+      "passwordRequirements": "Password must be at least 8 characters and contain uppercase, lowercase, and numbers",
+      "passwordChanged": "Password changed successfully",
+      "passwordChangeError": "Failed to change password",
+      "passwordSecurityTips": "Password Security Tips:",
+      "tip1": "Use a strong, unique password with at least 12 characters",
+      "tip2": "Include a mix of uppercase, lowercase, numbers, and symbols",
+      "tip3": "Avoid using personal information or common words",
+      "tip4": "Consider using a password manager",
+      "tip5": "Enable two-factor authentication for additional security",
+      "passwordManagement": "Password",
+      "managePasswordSecurely": "Manage your account password securely",
+      "securityTitle": "Security",
+      "changePasswordDialog": {
+        "title": "Change Password",
+        "description": "You will be redirected to a secure password change page managed by our identity provider.",
+        "securityInfo": "Security Information:",
+        "info1": "Password changes are handled by our secure identity provider (Keycloak)",
+        "info2": "Your new password must meet security requirements",
+        "info3": "You will need to log in again after changing your password",
+        "info4": "All active sessions will be terminated for security",
+        "cancel": "Cancel",
+        "openSecurePasswordChange": "Open Secure Password Change",
+        "opening": "Opening...",
+        "redirecting": "Redirecting to secure password change...",
+        "failed": "Failed to initiate password change"
+      }
+    },
+    "mfa": {
+      "title": "Multi-Factor Authentication & Providers",
+      "multiFactorAuth": "Multi-Factor Authentication",
+      "mfaRequired": "Multi-factor authentication is required by your organization for enhanced security.",
+      "totp": {
+        "title": "Authenticator App (TOTP)",
+        "description": "Use Google Authenticator, Authy, or similar apps",
+        "enabled": "Enabled",
+        "disabled": "Disabled",
+        "setup": "Set up TOTP Authentication",
+        "setupDescription": "Follow these steps to set up two-factor authentication with your authenticator app.",
+        "qrCodePlaceholder": "QR Code placeholder - scan with your authenticator app",
+        "instructions": "Instructions:",
+        "step1": "Install an authenticator app (Google Authenticator, Authy, etc.)",
+        "step2": "Scan the QR code above with your app",
+        "step3": "Enter the 6-digit code from your app below",
+        "step4": "Click \"Enable TOTP\" to complete setup",
+        "verificationCode": "Verification Code",
+        "enableTotp": "Enable TOTP",
+        "verifying": "Verifying...",
+        "enabledSuccess": "TOTP authentication enabled successfully",
+        "disabledSuccess": "TOTP authentication disabled",
+        "invalidCode": "Invalid code. Please try again.",
+        "enterValidCode": "Please enter a valid 6-digit code",
+        "cannotDisable": "MFA is required by your organization and cannot be disabled"
+      },
+      "webauthn": {
+        "title": "Security Keys (WebAuthn)",
+        "description": "Hardware keys, Touch ID, Face ID",
+        "setup": "Set up WebAuthn",
+        "setupDescription": "Set up hardware security keys, Touch ID, Face ID, or Windows Hello for authentication.",
+        "supportedMethods": "Supported Methods:",
+        "hardwareKeys": "Hardware security keys (YubiKey, etc.)",
+        "touchId": "Touch ID on Mac",
+        "faceId": "Face ID on iPhone/iPad",
+        "windowsHello": "Windows Hello",
+        "androidBiometric": "Android fingerprint/face unlock",
+        "browserCompatibility": "Make sure you're using a compatible browser: Chrome, Firefox, Safari, or Edge.",
+        "setupWebauthn": "Set up WebAuthn",
+        "settingUp": "Setting up...",
+        "enabledSuccess": "WebAuthn enabled successfully",
+        "disabledSuccess": "WebAuthn disabled",
+        "setupError": "WebAuthn setup failed. Please try again.",
+        "notSupported": "WebAuthn is not supported in this browser"
+      },
+      "linkedAccounts": "Linked Accounts",
+      "google": {
+        "title": "Google",
+        "description": "Sign in with your Google account",
+        "connected": "Connected",
+        "disconnected": "Disconnected",
+        "disabledByAdmin": "Disabled by administrator"
+      },
+      "microsoft": {
+        "title": "Microsoft",
+        "description": "Sign in with your Microsoft account",
+        "connected": "Connected",
+        "disconnected": "Disconnected"
+      },
+      "providerConnected": "connected",
+      "providerDisconnected": "disconnected",
+      "providerConnectError": "failed to connect",
+      "providerDisconnectError": "failed to disconnect"
+    },
+    "preferences": {
+      "title": "Preferences",
+      "language": "Language",
+      "selectLanguage": "Select Language",
+      "timezone": "Timezone",
+      "theme": "Theme",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System",
+      "notifications": {
+        "title": "Notifications",
+        "email": "Email Notifications",
+        "sms": "SMS Notifications",
+        "app": "App Notifications"
+      },
+      "updateSuccess": "Preferences updated successfully",
+      "updateError": "Failed to update preferences",
+      "preferenceUpdateSuccess": "Preference updated successfully",
+      "preferenceUpdateError": "Failed to update preference",
+      "notificationUpdateSuccess": "Notification preference updated",
+      "notificationUpdateError": "Failed to update notification preference",
+      "timeZone": "Time Zone",
+      "appearance": "Appearance",
+      "systemThemeDescription": "System theme follows your device's appearance settings",
+      "savingPreferences": "Saving preferences...",
+      "notifications": {
+        "title": "Notifications",
+        "email": "Email Notifications",
+        "emailDescription": "Receive security alerts and updates via email",
+        "sms": "SMS Notifications",
+        "smsDescription": "Receive critical security alerts via SMS",
+        "app": "In-App Notifications",
+        "appDescription": "Show notifications within the application"
+      }
+    },
+    "activity": {
+      "title": "Recent Activities",
+      "timestamp": "Time",
+      "action": "Action",
+      "device": "Device",
+      "ipAddress": "IP Address",
+      "noActivity": "No activity to display",
+      "loadError": "Failed to load activity data",
+      "retry": "Retry",
+      "export": "Export",
+      "exporting": "Exporting...",
+      "exportSuccess": "Activity log exported successfully",
+      "exportError": "Failed to export activity log",
+      "minutesAgo": "{minutes} minutes ago",
+      "hoursAgo": "{hours} hours ago",
+      "daysAgo": "{days} days ago",
+      "types": {
+        "login": "login",
+        "logout": "logout",
+        "password_change": "password change",
+        "mfa_enabled": "mfa enabled",
+        "mfa_disabled": "mfa disabled",
+        "profile_updated": "profile updated",
+        "session_revoked": "session revoked"
+      },
+      "activities": {
+        "login_success": "Successful login",
+        "login_failed": "Failed login attempt",
+        "logout": "User logged out",
+        "profile_updated": "Profile information updated",
+        "notification_preferences_updated": "Notification preferences updated",
+        "mfa_enabled": "Two-factor authentication enabled",
+        "mfa_disabled": "Two-factor authentication disabled",
+        "password_changed": "Password changed successfully",
+        "session_revoked": "Session revoked from mobile device",
+        "unknown": "Unknown"
+      }
+    },
+    "sessions": {
+      "title": "Active Sessions",
+      "currentSession": "Current Session",
+      "lastActivity": "Last Activity",
+      "device": "Device",
+      "location": "Location",
+      "terminate": "Terminate",
+      "terminateAll": "Terminate All",
+      "sessionTerminated": "Session terminated",
+      "allSessionsTerminated": "All sessions terminated",
+      "terminateError": "Failed to terminate session",
+      "loadError": "Failed to load session data",
+      "retry": "Retry",
+      "activeNow": "Active now",
+      "minutesAgo": "{minutes} minutes ago",
+      "hoursAgo": "{hours} hours ago",
+      "daysAgo": "{days} days ago",
+      "cannotRevokeCurrent": "Cannot revoke current session",
+      "sessionRevoked": "Session revoked successfully",
+      "revokeError": "Failed to revoke session",
+      "allOtherSessionsRevoked": "All other sessions revoked successfully",
+      "revokeAllError": "Failed to revoke sessions",
+      "revokeAll": "Revoke All",
+      "revokeAllTitle": "Revoke All Sessions",
+      "revokeAllDescription": "This will sign you out of all other devices and browsers. You will remain signed in on this device.",
+      "suspiciousDetected": "We detected {count} potentially suspicious session from unknown locations.",
+      "suspiciousPlural": "We detected {count} potentially suspicious sessions from unknown locations.",
+      "revokeRecommended": "Revoking all sessions is recommended for security.",
+      "reviewAndRevoke": "Review and revoke if necessary.",
+      "cancel": "Cancel",
+      "revoking": "Revoking...",
+      "revokeAllSessions": "Revoke All Sessions",
+      "noActiveSessions": "No active sessions",
+      "current": "Current",
+      "suspicious": "Suspicious",
+      "revoke": "Revoke",
+      "totalSessions": "{count} total session",
+      "otherDevices": "{count} other device",
+      "unknownDevice": "Unknown Device",
+      "unknownLocation": "Unknown Location"
+    },
+    "dangerZone": {
+      "title": "Danger Zone",
+      "irreversibleWarning": "These actions are irreversible. Proceed with caution.",
+      "revokeAllSessions": {
+        "title": "Revoke All Sessions",
+        "description": "Sign out from all devices and browsers immediately. This will terminate all active sessions except the current one.",
+        "info1": "• All other devices will be signed out",
+        "info2": "• You will remain signed in on this device",
+        "info3": "• You'll need to sign in again on other devices",
+        "button": "Revoke All",
+        "dialogTitle": "Revoke All Sessions",
+        "dialogDescription": "This will immediately sign you out of all other devices and browsers.",
+        "actionWillTitle": "This action will:",
+        "action1": "Terminate all active sessions on other devices",
+        "action2": "Require re-authentication on those devices",
+        "action3": "Keep you signed in on this current device",
+        "action4": "Take effect immediately",
+        "cancel": "Cancel",
+        "revoking": "Revoking...",
+        "confirmButton": "Revoke All Sessions",
+        "successMessage": "All sessions revoked successfully. You will be redirected to login.",
+        "errorMessage": "Failed to revoke all sessions"
+      },
+      "deactivateAccount": {
+        "title": "Deactivate Account",
+        "description": "Permanently deactivate your account. This action cannot be undone without administrator intervention.",
+        "info1": "• Account will be immediately disabled",
+        "info2": "• Data will be retained for compliance",
+        "info3": "• Requires administrator approval to reactivate",
+        "info4": "• All sessions will be terminated",
+        "button": "Deactivate",
+        "dialogTitle": "Deactivate Account",
+        "dialogDescription": "This will permanently deactivate your account. This action cannot be undone without administrator help.",
+        "warningTitle": "Warning: This action is irreversible",
+        "warning1": "Your account will be immediately deactivated",
+        "warning2": "You will lose access to all systems",
+        "warning3": "Data will be retained for compliance purposes",
+        "warning4": "Only administrators can reactivate your account",
+        "warning5": "All active sessions will be terminated",
+        "confirmationLabel": "Type {code} to confirm:",
+        "confirmationPlaceholder": "Type DEACTIVATE",
+        "confirmationCode": "DEACTIVATE",
+        "confirmationError": "Please type DEACTIVATE to confirm",
+        "cancel": "Cancel",
+        "deactivating": "Deactivating...",
+        "confirmButton": "Deactivate Account",
+        "successMessage": "Account deactivated successfully",
+        "errorMessage": "Failed to deactivate account",
+        "restrictedMessage": "Account deactivation is restricted by your organization's security policy. Contact your administrator if you need to deactivate your account."
+      }
+    },
+    "avatar": {
+      "update": "Update Avatar",
+      "uploadDescription": "Upload a new profile picture. File must be less than 2MB.",
+      "chooseFile": "Choose file",
+      "fileSizeError": "File size must be less than 2MB",
+      "fileTypeError": "Please upload an image file",
+      "uploadSuccess": "Avatar updated successfully",
+      "uploadError": "Failed to upload avatar"
+    },
+    "common": {
+      "saveChanges": "Save changes",
+      "cancel": "Cancel",
+      "update": "Update",
+      "save": "Save",
+      "loading": "Loading...",
+      "noDataAvailable": "No profile data available",
+      "failedToLoad": "Failed to load profile data",
+      "retry": "Retry",
+      "copyToClipboard": "Copied to clipboard",
+      "copyFailed": "Failed to copy",
+      "copyUserId": "Copy user ID",
+      "lastLoginInfo": "Last login {timeAgo} • {ip} • {device}",
+      "minutesAgo": "{minutes} minutes ago",
+      "hoursAgo": "{hours} hours ago",
+      "daysAgo": "{days} days ago"
+    }
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "create": "Create",
+    "update": "Update",
+    "refresh": "Refresh",
+    "reset": "Reset",
+    "search": "Search",
+    "filter": "Filter",
+    "export": "Export",
+    "import": "Import",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "warning": "Warning",
+    "info": "Info",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No",
+    "ok": "OK",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "finish": "Finish",
+    "new": "New",
+    "active": "Active",
+    "inactive": "Inactive",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "online": "Online",
+    "offline": "Offline",
+    "connected": "Connected",
+    "disconnected": "Disconnected",
+    "failed": "failed",
+    "connect": "connect",
+    "disconnect": "disconnect",
+    "name": "Name",
+    "description": "Description",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "date": "Date",
+    "time": "Time",
+    "type": "Type",
+    "category": "Category",
+    "priority": "Priority",
+    "status": "Status",
+    "actions": "Actions",
+    "details": "Details",
+    "settings": "Settings",
+    "profile": "Profile",
+    "logout": "Logout",
+    "login": "Login",
+    "register": "Register",
+    "forgotPassword": "Forgot Password",
+    "resetPassword": "Reset Password",
+    "changePassword": "Change Password",
+    "emptyState": {
+      "noData": "No data found",
+      "noResults": "No results found",
+      "noItems": "No items found"
+    },
+    "pagination": {
+      "page": "Page",
+      "of": "of",
+      "items": "items",
+      "showing": "Showing",
+      "to": "to",
+      "results": "results"
+    },
+    "validation": {
+      "required": "This field is required",
+      "email": "Enter a valid email address",
+      "minLength": "Must be at least {min} characters",
+      "maxLength": "Must be at most {max} characters",
+      "fixErrors": "Please fix the validation errors",
+      "firstNameRequired": "First name is required",
+      "firstNameMin": "First name must be at least 2 characters",
+      "firstNameLetters": "First name can only contain letters",
+      "lastNameRequired": "Last name is required",
+      "lastNameMin": "Last name must be at least 2 characters",
+      "lastNameLetters": "Last name can only contain letters",
+      "usernameRequired": "Username is required",
+      "usernameMin": "Username must be at least 3 characters",
+      "usernameFormat": "Username can only contain letters, numbers, dots, hyphens, and underscores",
+      "departmentRequired": "Department is required",
+      "phoneRequired": "Phone number is required",
+      "phoneValid": "Please enter a valid phone number"
+    }
+  },
+  "admin": {
+    "roles": {
+      "title": "Roles & Permissions",
+      "description": "Manage system roles and permissions",
+      "newRole": "New Role",
+      "search": "Search roles...",
+      "totalRoles": "Total Roles",
+      "totalUsers": "Total Users",
+      "adminRoles": "Admin Roles",
+      "averagePermissions": "Average Permissions",
+      "role": "Role",
+      "description": "Description",
+      "permissions": "Permissions",
+      "userCount": "User Count",
+      "createdAt": "Created Date",
+      "noDescription": "No description",
+      "edit": "Edit",
+      "managePermissions": "Manage Permissions",
+      "viewUsers": "View Users",
+      "delete": "Delete",
+      "noRolesFound": "No roles found",
+      "noRolesMessage": "No roles match the specified criteria.",
+      "roleTypes": {
+        "admin": "admin",
+        "manager": "manager",
+        "viewer": "viewer"
+      },
+      "badges": {
+        "admin": "bg-red-100 text-red-800 hover:bg-red-200",
+        "manager": "bg-blue-100 text-blue-800 hover:bg-blue-200",
+        "viewer": "bg-green-100 text-green-800 hover:bg-green-200",
+        "default": "bg-gray-100 text-gray-800 hover:bg-gray-200"
+      },
+      "loading": "Loading...",
+      "dialog": {
+        "editTitle": "Edit Role",
+        "createTitle": "Create New Role",
+        "editDescription": "Update role information and permissions",
+        "createDescription": "Define a new system role and permissions",
+        "basicInformation": "Basic Information",
+        "fields": {
+          "name": "Role Name",
+          "displayName": "Display Name",
+          "description": "Description"
+        },
+        "placeholders": {
+          "name": "e.g. viewer, manager",
+          "displayName": "e.g. Viewer, Manager",
+          "description": "Describe what this role does..."
+        },
+        "permissions": {
+          "title": "Permissions",
+          "selected": "selected",
+          "categories": {
+            "user": "User Management",
+            "role": "Role Management",
+            "oauth": "OAuth Settings",
+            "audit": "Audit Logs",
+            "system": "System Settings",
+            "settings": "General Settings"
+          },
+          "actions": {
+            "read": "View",
+            "write": "Edit",
+            "delete": "Delete"
+          }
+        },
+        "preview": {
+          "title": "Role Preview",
+          "roleName": "role-name",
+          "displayName": "Display Name",
+          "permissions": "permission"
+        },
+        "validation": {
+          "nameRequired": "Role name is required",
+          "nameFormat": "Role name can only contain lowercase letters, numbers, and underscores",
+          "displayNameRequired": "Display name is required",
+          "permissionsRequired": "At least one permission must be selected",
+          "fixErrors": "Please fix the errors"
+        },
+        "cancel": "Cancel",
+        "create": "Create",
+        "update": "Update",
+        "creating": "Creating...",
+        "updating": "Updating...",
+        "createSuccess": "Role created successfully",
+        "updateSuccess": "Role updated successfully",
+        "createError": "Error creating role",
+        "updateError": "Error updating role"
+      }
+    }
+  },
+  "admin": {
+    "roles": {
+      "title": "Roles",
+      "description": "Manage system roles and permissions",
+      "newRole": "New Role",
+      "totalRoles": "Total Roles",
+      "totalUsers": "Total Users",
+      "adminRoles": "Admin Roles",
+      "averagePermissions": "Average Permissions",
+      "search": "Search roles...",
+      "role": "Role",
+      "description": "Description",
+      "permissions": "Permissions",
+      "userCount": "User Count",
+      "createdAt": "Created At",
+      "noDescription": "No description",
+      "edit": "Edit",
+      "managePermissions": "Manage Permissions",
+      "viewUsers": "View Users",
+      "delete": "Delete",
+      "noRolesFound": "No roles found",
+      "noRolesMessage": "No roles found matching your search criteria.",
+      "mockData": {
+        "admin": {
+          "displayName": "System Administrator",
+          "description": "Super administrator with all system privileges"
+        },
+        "manager": {
+          "displayName": "Security Manager",
+          "description": "Has security management and user management privileges"
+        },
+        "viewer": {
+          "displayName": "Read-Only User",
+          "description": "User with view-only permissions"
+        }
+      }
+    },
+    "audit": {
+      "title": "Audit Logs",
+      "description": "Track system activities and review audit records",
+      "downloadReport": "Download Report",
+      "stats": {
+        "totalLogs": "Total Logs",
+        "errorLogs": "Error Logs",
+        "warningLogs": "Warning Logs",
+        "today": "Today"
+      },
+      "search": {
+        "placeholder": "Search logs...",
+        "level": "Level",
+        "resource": "Resource"
+      },
+      "filters": {
+        "allLevels": "All Levels",
+        "error": "Error",
+        "warn": "Warning",
+        "info": "Info",
+        "debug": "Debug",
+        "allResources": "All Resources",
+        "auth": "Auth",
+        "user": "User",
+        "role": "Role",
+        "oauth": "OAuth",
+        "audit": "Audit"
+      },
+      "table": {
+        "dateTime": "Date & Time",
+        "user": "User",
+        "action": "Action",
+        "resource": "Resource",
+        "level": "Level",
+        "ipAddress": "IP Address",
+        "details": "Details",
+        "systemUnknown": "System / Unknown",
+        "showDetails": "Show Details",
+        "noDetails": "No details"
+      },
+      "pagination": {
+        "showingResults": "Showing {from}-{to} of {total} logs",
+        "previous": "Previous",
+        "next": "Next"
+      },
+      "empty": {
+        "title": "No logs found",
+        "description": "No audit logs found matching the specified criteria."
+      }
+    }
+  },
+  "users": {
+    "title": "Users",
+    "description": "Manage system users and edit their permissions",
+    "newUser": "New User",
+    "search": "Search users...",
+    "totalUsers": "Total Users",
+    "activeUsers": "Active Users",
+    "inactiveUsers": "Inactive Users",
+    "selected": "Selected",
+    "status": "Status",
+    "allStatuses": "All Statuses",
+    "active": "Active",
+    "inactive": "Inactive",
+    "role": "Role",
+    "allRoles": "All Roles",
+    "admin": "Admin",
+    "manager": "Manager",
+    "viewer": "Viewer",
+    "delete": "Delete",
+    "user": "User",
+    "roles": "Roles",
+    "lastLogin": "Last Login",
+    "loginCount": "Login Count",
+    "registrationDate": "Registration Date",
+    "neverLoggedIn": "Never logged in",
+    "edit": "Edit",
+    "manageRoles": "Manage Roles",
+    "deactivate": "Deactivate",
+    "activate": "Activate",
+    "noUsersFound": "No users found",
+    "noUsersMessage": "No users match the specified criteria.",
+    "showingResults": "Showing {from}-{to} of {total} total users",
+    "previous": "Previous",
+    "next": "Next",
+    "dialog": {
+      "editTitle": "Edit User",
+      "createTitle": "Create New User",
+      "editDescription": "Update user information and roles",
+      "createDescription": "Create a new system user",
+      "personalInformation": "Personal Information",
+      "accountInformation": "Account Information",
+      "contactInformation": "Contact Information",
+      "fields": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "username": "Username",
+        "phone": "Phone",
+        "department": "Department"
+      },
+      "placeholders": {
+        "firstName": "Enter your first name",
+        "lastName": "Enter your last name",
+        "email": "example@email.com",
+        "username": "username",
+        "phone": "+1 555 123 45 67",
+        "department": "Select department"
+      },
+      "departments": {
+        "it_department": "IT Department",
+        "security_department": "Security Department",
+        "operations": "Operations",
+        "human_resources": "Human Resources",
+        "finance": "Finance",
+        "marketing": "Marketing",
+        "engineering": "Engineering",
+        "support": "Support"
+      },
+      "roles": {
+        "title": "Role Assignment",
+        "selected": "selected"
+      },
+      "accountStatus": {
+        "title": "Account Status",
+        "active": "Active Account",
+        "description": "User can log in to the system and use assigned roles"
+      },
+      "preview": {
+        "title": "User Preview",
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "validation": {
+        "emailRequired": "Email is required",
+        "emailValid": "Enter a valid email address",
+        "firstNameRequired": "First name is required",
+        "firstNameMin": "First name must be at least 2 characters",
+        "firstNameLetters": "First name can only contain letters",
+        "lastNameRequired": "Last name is required",
+        "lastNameMin": "Last name must be at least 2 characters",
+        "lastNameLetters": "Last name can only contain letters",
+        "usernameRequired": "Username is required",
+        "usernameMin": "Username must be at least 3 characters",
+        "usernameFormat": "Username can only contain letters, numbers, dots, hyphens, and underscores",
+        "departmentRequired": "Department is required",
+        "phoneRequired": "Phone number is required",
+        "phoneValid": "Please enter a valid phone number",
+        "rolesRequired": "At least one role must be selected",
+        "fixErrors": "Please fix the errors"
+      },
+      "cancel": "Cancel",
+      "create": "Create",
+      "update": "Update",
+      "creating": "Creating...",
+      "updating": "Updating...",
+      "createSuccess": "User created successfully",
+      "updateSuccess": "User updated successfully",
+      "createError": "Error creating user",
+      "updateError": "Error updating user"
+    }
+  }
+}

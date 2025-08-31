@@ -1,0 +1,3318 @@
+TRANSLATION USAGE ANALYSIS REPORT
+==================================================
+Generated on: 1756635039.5847032
+
+Total translation keys defined: 1713
+Translation keys used in code:  1254
+Unused translation keys:        1680
+Usage rate:                     73.2%
+
+Keys only in Turkish: 368
+  [  ] [TR] accessPolicySettings.accessPolicyConfiguration
+  [  ] [TR] accessPolicySettings.addPolicy
+  [  ] [TR] accessPolicySettings.description
+  [  ] [TR] accessPolicySettings.detailedDescription
+  [  ] [TR] accessPolicySettings.rbacEnabled
+  [  ] [TR] accessPolicySettings.title
+  [  ] [TR] auditSettings.alerts.configurationChanges
+  [  ] [TR] auditSettings.alerts.dataExfiltration
+  [  ] [TR] auditSettings.alerts.failedLoginAttempts
+  [  ] [TR] auditSettings.alerts.suspiciousActivity
+  [  ] [TR] auditSettings.alerts.thresholdBreaches
+  [  ] [TR] auditSettings.alerts.title
+  [  ] [TR] auditSettings.description
+  [  ] [TR] auditSettings.disabled
+  [  ] [TR] auditSettings.enableAuditLogging
+  [  ] [TR] auditSettings.enableAuditLoggingDescription
+  [  ] [TR] auditSettings.enabled
+  [  ] [TR] auditSettings.events.authenticationEvents
+  [  ] [TR] auditSettings.events.configurationChanges
+  [  ] [TR] auditSettings.events.dataChanges
+  [  ] [TR] auditSettings.events.errorEvents
+  [  ] [TR] auditSettings.events.performanceMetrics
+  [  ] [TR] auditSettings.events.systemActions
+  [  ] [TR] auditSettings.events.title
+  [  ] [TR] auditSettings.events.userActions
+  [  ] [TR] auditSettings.general.enableCompression
+  [  ] [TR] auditSettings.general.enableEncryption
+  [  ] [TR] auditSettings.general.logLevel
+  [  ] [TR] auditSettings.general.logLevels.critical
+  [  ] [TR] auditSettings.general.logLevels.debug
+  [  ] [TR] auditSettings.general.logLevels.error
+  [  ] [TR] auditSettings.general.logLevels.info
+  [  ] [TR] auditSettings.general.logLevels.warn
+  [  ] [TR] auditSettings.general.retentionPeriod
+  [  ] [TR] auditSettings.general.title
+  [  ] [TR] auditSettings.storage.enableBackup
+  [  ] [TR] auditSettings.storage.locations.both
+  [  ] [TR] auditSettings.storage.locations.database
+  [  ] [TR] auditSettings.storage.locations.file
+  [  ] [TR] auditSettings.storage.maxFileSize
+  [  ] [TR] auditSettings.storage.rotationPolicy
+  [  ] [TR] auditSettings.storage.rotations.daily
+  [  ] [TR] auditSettings.storage.rotations.hourly
+  [  ] [TR] auditSettings.storage.rotations.monthly
+  [  ] [TR] auditSettings.storage.rotations.weekly
+  [  ] [TR] auditSettings.storage.storageLocation
+  [  ] [TR] auditSettings.storage.title
+  [  ] [TR] auditSettings.title
+  [  ] [TR] dataManagement.backup.backupFrequency
+  [  ] [TR] dataManagement.backup.description
+  [  ] [TR] dataManagement.backup.enableAutomatedBackups
+  [  ] [TR] dataManagement.backup.enableAutomatedBackupsDescription
+  [  ] [TR] dataManagement.backup.enableCompression
+  [  ] [TR] dataManagement.backup.enableEncryption
+  [  ] [TR] dataManagement.backup.exportData
+  [  ] [TR] dataManagement.backup.frequencies.daily
+  [  ] [TR] dataManagement.backup.frequencies.hourly
+  [  ] [TR] dataManagement.backup.frequencies.monthly
+  [  ] [TR] dataManagement.backup.frequencies.weekly
+  [  ] [TR] dataManagement.backup.importData
+  [  ] [TR] dataManagement.backup.importDataDescription
+  [  ] [TR] dataManagement.backup.manualDataExport
+  [  ] [TR] dataManagement.backup.manualDataExportDescription
+  [  ] [TR] dataManagement.backup.retentionPeriod
+  [  ] [TR] dataManagement.backup.title
+  [  ] [TR] dataManagement.cache.active
+  [  ] [TR] dataManagement.cache.cleanupInterval
+  [  ] [TR] dataManagement.cache.clearCache
+  [  ] [TR] dataManagement.cache.clearCacheDescription
+  [  ] [TR] dataManagement.cache.defaultTtl
+  [  ] [TR] dataManagement.cache.description
+  [  ] [TR] dataManagement.cache.enableRedisCache
+  [  ] [TR] dataManagement.cache.enableRedisCacheDescription
+  [  ] [TR] dataManagement.cache.inactive
+  [  ] [TR] dataManagement.cache.maxCacheSize
+  [  ] [TR] dataManagement.cache.title
+  [  ] [TR] dataManagement.cleanup.cleanExpiredSessions
+  [  ] [TR] dataManagement.cleanup.cleanTemporaryFiles
+  [  ] [TR] dataManagement.cleanup.description
+  [  ] [TR] dataManagement.cleanup.enableAutomaticCleanup
+  [  ] [TR] dataManagement.cleanup.enableAutomaticCleanupDescription
+  [  ] [TR] dataManagement.cleanup.logRetention
+  [  ] [TR] dataManagement.cleanup.title
+  [  ] [TR] dataManagement.toast.cacheCleared
+  [  ] [TR] dataManagement.toast.cacheClearedDescription
+  [  ] [TR] dataManagement.toast.clearFailed
+  [  ] [TR] dataManagement.toast.clearFailedDescription
+  [  ] [TR] dataManagement.toast.exportCompleted
+  [  ] [TR] dataManagement.toast.exportCompletedDescription
+  [  ] [TR] dataManagement.toast.exportFailed
+  [  ] [TR] dataManagement.toast.exportFailedDescription
+  [  ] [TR] healthMonitoring.alertThresholds
+  [  ] [TR] healthMonitoring.checkInterval
+  [  ] [TR] healthMonitoring.cpuUsage
+  [  ] [TR] healthMonitoring.critical
+  [  ] [TR] healthMonitoring.dataRetention
+  [  ] [TR] healthMonitoring.description
+  [  ] [TR] healthMonitoring.disabled
+  [  ] [TR] healthMonitoring.diskUsage
+  [  ] [TR] healthMonitoring.enableAlerting
+  [  ] [TR] healthMonitoring.enableHealthMonitoring
+  [  ] [TR] healthMonitoring.enableHealthMonitoringDescription
+  [  ] [TR] healthMonitoring.enabled
+  [  ] [TR] healthMonitoring.memoryUsage
+  [  ] [TR] healthMonitoring.monitoringConfiguration
+  [  ] [TR] healthMonitoring.responseTime
+  [  ] [TR] healthMonitoring.title
+  [  ] [TR] healthMonitoring.units.milliseconds
+  [  ] [TR] healthMonitoring.units.percentage
+  [  ] [TR] healthMonitoring.warning
+  [  ] [TR] notificationBell.actionRequired
+  [  ] [TR] notificationBell.markAllRead
+  [  ] [TR] notificationBell.mockData.backupCompleted
+  [  ] [TR] notificationBell.mockData.criticalSecurityAlert
+  [  ] [TR] notificationBell.mockData.dailyBackupSuccess
+  [  ] [TR] notificationBell.mockData.highCpuUsage
+  [  ] [TR] notificationBell.mockData.multipleFailedLogins
+  [  ] [TR] notificationBell.mockData.newAdminUserCreated
+  [  ] [TR] notificationBell.mockData.systemHealthWarning
+  [  ] [TR] notificationBell.mockData.userGrantedAdmin
+  [  ] [TR] notificationBell.noNotifications
+  [  ] [TR] notificationBell.notifications
+  [  ] [TR] notificationBell.settings
+  [  ] [TR] notificationBell.toast.allMarkedAsRead
+  [  ] [TR] notificationBell.toast.loadFailed
+  [  ] [TR] notificationBell.toast.markAllFailed
+  [  ] [TR] notificationBell.toast.markReadFailed
+  [  ] [TR] notificationBell.toast.markedAsRead
+  [  ] [TR] notificationBell.total
+  [  ] [TR] notificationBell.unread
+  [  ] [TR] notificationBell.viewAll
+  [  ] [TR] notificationPreferences.advanced.autoMarkRead
+  [  ] [TR] notificationPreferences.advanced.autoMarkReadDescription
+  [  ] [TR] notificationPreferences.advanced.description
+  [  ] [TR] notificationPreferences.advanced.futureFeature
+  [  ] [TR] notificationPreferences.advanced.groupSimilar
+  [  ] [TR] notificationPreferences.advanced.groupSimilarDescription
+  [  ] [TR] notificationPreferences.advanced.retentionPeriod
+  [  ] [TR] notificationPreferences.advanced.retentionPeriodDescription
+  [  ] [TR] notificationPreferences.advanced.retentionPlaceholder
+  [  ] [TR] notificationPreferences.advanced.title
+  [  ] [TR] notificationPreferences.channels.alwaysEnabled
+  [  ] [TR] notificationPreferences.channels.description
+  [  ] [TR] notificationPreferences.channels.email
+  [  ] [TR] notificationPreferences.channels.emailDescription
+  [  ] [TR] notificationPreferences.channels.inApp
+  [  ] [TR] notificationPreferences.channels.inAppDescription
+  [  ] [TR] notificationPreferences.channels.sms
+  [  ] [TR] notificationPreferences.channels.smsDescription
+  [  ] [TR] notificationPreferences.channels.title
+  [  ] [TR] notificationPreferences.description
+  [  ] [TR] notificationPreferences.digest.deliveryTime
+  [  ] [TR] notificationPreferences.digest.description
+  [  ] [TR] notificationPreferences.digest.enable
+  [  ] [TR] notificationPreferences.digest.frequencies.daily
+  [  ] [TR] notificationPreferences.digest.frequencies.weekly
+  [  ] [TR] notificationPreferences.digest.frequency
+  [  ] [TR] notificationPreferences.digest.title
+  [  ] [TR] notificationPreferences.quietHours.description
+  [  ] [TR] notificationPreferences.quietHours.enable
+  [  ] [TR] notificationPreferences.quietHours.endTime
+  [  ] [TR] notificationPreferences.quietHours.startTime
+  [  ] [TR] notificationPreferences.quietHours.timezone
+  [  ] [TR] notificationPreferences.quietHours.timezones.centralTime
+  [  ] [TR] notificationPreferences.quietHours.timezones.easternTime
+  [  ] [TR] notificationPreferences.quietHours.timezones.istanbul
+  [  ] [TR] notificationPreferences.quietHours.timezones.london
+  [  ] [TR] notificationPreferences.quietHours.timezones.mountainTime
+  [  ] [TR] notificationPreferences.quietHours.timezones.pacificTime
+  [  ] [TR] notificationPreferences.quietHours.timezones.utc
+  [  ] [TR] notificationPreferences.quietHours.title
+  [  ] [TR] notificationPreferences.reset
+  [  ] [TR] notificationPreferences.saveChanges
+  [  ] [TR] notificationPreferences.severity.critical
+  [  ] [TR] notificationPreferences.severity.high
+  [  ] [TR] notificationPreferences.severity.low
+  [  ] [TR] notificationPreferences.severity.medium
+  [  ] [TR] notificationPreferences.tabs.advanced
+  [  ] [TR] notificationPreferences.tabs.channels
+  [  ] [TR] notificationPreferences.tabs.schedule
+  [  ] [TR] notificationPreferences.tabs.types
+  [  ] [TR] notificationPreferences.title
+  [  ] [TR] notificationPreferences.toast.saveError
+  [  ] [TR] notificationPreferences.toast.settingsReset
+  [  ] [TR] notificationPreferences.toast.settingsSaved
+  [  ] [TR] notificationPreferences.toast.testNotification
+  [  ] [TR] notificationPreferences.types.app
+  [  ] [TR] notificationPreferences.types.deliveryChannels
+  [  ] [TR] notificationPreferences.types.description
+  [  ] [TR] notificationPreferences.types.email
+  [  ] [TR] notificationPreferences.types.minimumSeverity
+  [  ] [TR] notificationPreferences.types.onlyEnabledChannels
+  [  ] [TR] notificationPreferences.types.risk
+  [  ] [TR] notificationPreferences.types.riskDescription
+  [  ] [TR] notificationPreferences.types.security
+  [  ] [TR] notificationPreferences.types.securityDescription
+  [  ] [TR] notificationPreferences.types.sms
+  [  ] [TR] notificationPreferences.types.system
+  [  ] [TR] notificationPreferences.types.systemDescription
+  [  ] [TR] notificationPreferences.types.test
+  [  ] [TR] notificationPreferences.types.title
+  [  ] [TR] notificationPreferences.types.userActivity
+  [  ] [TR] notificationPreferences.types.userActivityDescription
+  [  ] [TR] notificationPreferences.unsavedChanges
+  [  ] [TR] notificationSettings.email.description
+  [  ] [TR] notificationSettings.email.disabled
+  [  ] [TR] notificationSettings.email.emailTemplates
+  [  ] [TR] notificationSettings.email.enableEmailDescription
+  [  ] [TR] notificationSettings.email.enableEmailNotifications
+  [  ] [TR] notificationSettings.email.enabled
+  [  ] [TR] notificationSettings.email.fromEmail
+  [  ] [TR] notificationSettings.email.fromName
+  [  ] [TR] notificationSettings.email.loading
+  [  ] [TR] notificationSettings.email.password
+  [  ] [TR] notificationSettings.email.placeholders.fromEmail
+  [  ] [TR] notificationSettings.email.placeholders.fromName
+  [  ] [TR] notificationSettings.email.placeholders.password
+  [  ] [TR] notificationSettings.email.placeholders.smtpHost
+  [  ] [TR] notificationSettings.email.placeholders.smtpPort
+  [  ] [TR] notificationSettings.email.placeholders.subjectFor
+  [  ] [TR] notificationSettings.email.placeholders.username
+  [  ] [TR] notificationSettings.email.sendTestEmail
+  [  ] [TR] notificationSettings.email.smtpHost
+  [  ] [TR] notificationSettings.email.smtpPort
+  [  ] [TR] notificationSettings.email.smtpServerSettings
+  [  ] [TR] notificationSettings.email.subjectLine
+  [  ] [TR] notificationSettings.email.templates.maintenance
+  [  ] [TR] notificationSettings.email.templates.passwordReset
+  [  ] [TR] notificationSettings.email.templates.securityAlert
+  [  ] [TR] notificationSettings.email.templates.systemAlert
+  [  ] [TR] notificationSettings.email.templates.welcome
+  [  ] [TR] notificationSettings.email.title
+  [  ] [TR] notificationSettings.email.useSslTls
+  [  ] [TR] notificationSettings.email.username
+  [  ] [TR] notificationSettings.integrations.configureHere
+  [  ] [TR] notificationSettings.integrations.description
+  [  ] [TR] notificationSettings.integrations.title
+  [  ] [TR] notificationSettings.preferences.description
+  [  ] [TR] notificationSettings.preferences.endTime
+  [  ] [TR] notificationSettings.preferences.quietHours
+  [  ] [TR] notificationSettings.preferences.quietHoursDescription
+  [  ] [TR] notificationSettings.preferences.startTime
+  [  ] [TR] notificationSettings.preferences.title
+  [  ] [TR] notificationSettings.push.comingSoon
+  [  ] [TR] notificationSettings.push.comingSoonDescription
+  [  ] [TR] notificationSettings.push.description
+  [  ] [TR] notificationSettings.push.title
+  [  ] [TR] notificationSettings.sms.description
+  [  ] [TR] notificationSettings.sms.enterprise
+  [  ] [TR] notificationSettings.sms.enterpriseDescription
+  [  ] [TR] notificationSettings.sms.title
+  [  ] [TR] notificationSettings.system.badgeNotifications
+  [  ] [TR] notificationSettings.system.browserNotifications
+  [  ] [TR] notificationSettings.system.description
+  [  ] [TR] notificationSettings.system.desktopNotifications
+  [  ] [TR] notificationSettings.system.soundAlerts
+  [  ] [TR] notificationSettings.system.title
+  [  ] [TR] notificationSettings.tabs.email
+  [  ] [TR] notificationSettings.tabs.integrations
+  [  ] [TR] notificationSettings.tabs.preferences
+  [  ] [TR] notificationSettings.tabs.push
+  [  ] [TR] notificationSettings.tabs.sms
+  [  ] [TR] notificationSettings.tabs.system
+  [  ] [TR] notificationSettings.toast.testEmailFailed
+  [  ] [TR] notificationSettings.toast.testEmailFailedDescription
+  [  ] [TR] notificationSettings.toast.testEmailSent
+  [  ] [TR] notificationSettings.toast.testEmailSentDescription
+  [  ] [TR] security.accountSecurity.description
+  [  ] [TR] security.accountSecurity.enableAccountVerification
+  [  ] [TR] security.accountSecurity.enableCaptcha
+  [  ] [TR] security.accountSecurity.lockoutDuration
+  [  ] [TR] security.accountSecurity.maxLoginAttempts
+  [  ] [TR] security.accountSecurity.title
+  [  ] [TR] security.apiSecurity.burstLimit
+  [  ] [TR] security.apiSecurity.description
+  [  ] [TR] security.apiSecurity.enableRateLimiting
+  [  ] [TR] security.apiSecurity.generateNew
+  [  ] [TR] security.apiSecurity.jwtExpiration
+  [  ] [TR] security.apiSecurity.jwtSecretDescription
+  [  ] [TR] security.apiSecurity.jwtSecretGenerated
+  [  ] [TR] security.apiSecurity.jwtSecretKey
+  [  ] [TR] security.apiSecurity.jwtSecretPlaceholder
+  [  ] [TR] security.apiSecurity.newJwtSecretGenerated
+  [  ] [TR] security.apiSecurity.rateLimitingDescription
+  [  ] [TR] security.apiSecurity.requestsPerMinute
+  [  ] [TR] security.apiSecurity.title
+  [  ] [TR] security.auditLogging.description
+  [  ] [TR] security.auditLogging.logFailedLogins
+  [  ] [TR] security.auditLogging.logPasswordChanges
+  [  ] [TR] security.auditLogging.logPermissionChanges
+  [  ] [TR] security.auditLogging.logRetention
+  [  ] [TR] security.auditLogging.logRetentionDescription
+  [  ] [TR] security.auditLogging.logSuccessfulLogins
+  [  ] [TR] security.auditLogging.title
+  [  ] [TR] security.corsConfiguration.allowCredentials
+  [  ] [TR] security.corsConfiguration.allowedOrigins
+  [  ] [TR] security.corsConfiguration.description
+  [  ] [TR] security.corsConfiguration.enableCors
+  [  ] [TR] security.corsConfiguration.title
+  [  ] [TR] security.keycloak.adminPassword
+  [  ] [TR] security.keycloak.adminPasswordPlaceholder
+  [  ] [TR] security.keycloak.adminUsername
+  [  ] [TR] security.keycloak.clientId
+  [  ] [TR] security.keycloak.clientSecret
+  [  ] [TR] security.keycloak.clientSecretPlaceholder
+  [  ] [TR] security.keycloak.connectionError
+  [  ] [TR] security.keycloak.connectionFailed
+  [  ] [TR] security.keycloak.connectionSuccessful
+  [  ] [TR] security.keycloak.connectionTest
+  [  ] [TR] security.keycloak.connectionTestDescription
+  [  ] [TR] security.keycloak.connectionUnknown
+  [  ] [TR] security.keycloak.couldNotConnect
+  [  ] [TR] security.keycloak.description
+  [  ] [TR] security.keycloak.disabled
+  [  ] [TR] security.keycloak.enableIntegration
+  [  ] [TR] security.keycloak.enableIntegrationDescription
+  [  ] [TR] security.keycloak.enabled
+  [  ] [TR] security.keycloak.errorOccurred
+  [  ] [TR] security.keycloak.publicClient
+  [  ] [TR] security.keycloak.realm
+  [  ] [TR] security.keycloak.requireSsl
+  [  ] [TR] security.keycloak.serverUrl
+  [  ] [TR] security.keycloak.successfullyConnected
+  [  ] [TR] security.keycloak.testConnection
+  [  ] [TR] security.keycloak.title
+  [  ] [TR] security.mfa.authenticationMethods
+  [  ] [TR] security.mfa.backupCodes
+  [  ] [TR] security.mfa.backupDescription
+  [  ] [TR] security.mfa.description
+  [  ] [TR] security.mfa.emailDescription
+  [  ] [TR] security.mfa.emailVerification
+  [  ] [TR] security.mfa.enableMfa
+  [  ] [TR] security.mfa.enableMfaDescription
+  [  ] [TR] security.mfa.requireMfaDescription
+  [  ] [TR] security.mfa.requireMfaForAllUsers
+  [  ] [TR] security.mfa.smsDescription
+  [  ] [TR] security.mfa.smsVerification
+  [  ] [TR] security.mfa.title
+  [  ] [TR] security.mfa.totpAuthenticator
+  [  ] [TR] security.mfa.totpDescription
+  [  ] [TR] security.passwordPolicy.description
+  [  ] [TR] security.passwordPolicy.historyCount
+  [  ] [TR] security.passwordPolicy.historyCountDescription
+  [  ] [TR] security.passwordPolicy.maxAge
+  [  ] [TR] security.passwordPolicy.minLength
+  [  ] [TR] security.passwordPolicy.requireLowercase
+  [  ] [TR] security.passwordPolicy.requireNumbers
+  [  ] [TR] security.passwordPolicy.requireSpecialChars
+  [  ] [TR] security.passwordPolicy.requireUppercase
+  [  ] [TR] security.passwordPolicy.title
+  [  ] [TR] security.sessionManagement.defaultDuration
+  [  ] [TR] security.sessionManagement.description
+  [  ] [TR] security.sessionManagement.enableRememberMe
+  [  ] [TR] security.sessionManagement.enableRememberMeDescription
+  [  ] [TR] security.sessionManagement.maxConcurrentSessions
+  [  ] [TR] security.sessionManagement.rememberMeTimeout
+  [  ] [TR] security.sessionManagement.sessionTimeout
+  [  ] [TR] security.sessionManagement.title
+  [  ] [TR] security.tabs.audit
+  [  ] [TR] security.tabs.authentication
+  [  ] [TR] security.tabs.keycloak
+  [  ] [TR] security.tabs.mfa
+  [  ] [TR] security.tabs.security
+  [  ] [TR] security.title
+  [  ] [TR] security.toast.connectionError
+  [  ] [TR] security.toast.connectionFailed
+  [  ] [TR] security.toast.connectionSuccessful
+  [  ] [TR] security.toast.jwtSecretGenerated
+
+UNUSED TRANSLATION KEYS
+==============================
+[EN] [TR] access.activePolicies
+[EN] [TR] access.alerts.conflictsDetected
+[EN] [TR] access.alerts.reviewConflicts
+[EN] [TR] access.conditions
+[EN] [TR] access.conflicts
+[EN] [TR] access.createPolicy
+[EN] [TR] access.description
+[EN] [TR] access.effect
+[EN] [TR] access.enforcedResources
+[EN] [TR] access.exportCsv
+[EN] [TR] access.kpi.applicationsProtected
+[EN] [TR] access.kpi.fromLastMonth
+[EN] [TR] access.kpi.ofTotal
+[EN] [TR] access.kpi.requiresAttention
+[EN] [TR] access.lastUpdated
+[EN] [TR] access.loading
+[EN] [TR] access.policyName
+[EN] [TR] access.priority
+[EN] [TR] access.resources
+[EN] [TR] access.status
+[EN] [TR] access.subjects
+[EN] [TR] access.tabs.analytics
+[EN] [TR] access.tabs.audit
+[EN] [TR] access.tabs.conflicts
+[EN] [TR] access.tabs.keycloak
+[EN] [TR] access.tabs.policies
+[EN] [TR] access.tabs.simulation
+[EN] [TR] access.title
+[EN] [TR] access.totalPolicies
+[EN] [TR] access.viewReports
+[EN] [TR] accessPolicies.activePolicies
+[EN] [TR] accessPolicies.analytics
+[EN] [TR] accessPolicies.applicationsProtected
+[EN] [TR] accessPolicies.audit
+[EN] [TR] accessPolicies.conflictManager.description
+[EN] [TR] accessPolicies.conflictManager.filters.allSeverity
+[EN] [TR] accessPolicies.conflictManager.filters.allTypes
+[EN] [TR] accessPolicies.conflictManager.filters.severity
+[EN] [TR] accessPolicies.conflictManager.filters.type
+[EN] [TR] accessPolicies.conflictManager.priorityOrder.description
+[EN] [TR] accessPolicies.conflictManager.priorityOrder.title
+[EN] [TR] accessPolicies.conflictManager.searchPlaceholder
+[EN] [TR] accessPolicies.conflictManager.severity.critical
+[EN] [TR] accessPolicies.conflictManager.severity.high
+[EN] [TR] accessPolicies.conflictManager.severity.low
+[EN] [TR] accessPolicies.conflictManager.severity.medium
+[EN] [TR] accessPolicies.conflictManager.title
+[EN] [TR] accessPolicies.conflictManager.types.circular
+[EN] [TR] accessPolicies.conflictManager.types.contradiction
+[EN] [TR] accessPolicies.conflictManager.types.overlap
+[EN] [TR] accessPolicies.conflictManager.types.priority
+[EN] [TR] accessPolicies.conflicts
+[EN] [TR] accessPolicies.conflictsDetected
+[EN] [TR] accessPolicies.createPolicy
+[EN] [TR] accessPolicies.createPolicyDialog
+[EN] [TR] accessPolicies.description
+[EN] [TR] accessPolicies.editPolicy
+[EN] [TR] accessPolicies.enforcedResources
+[EN] [TR] accessPolicies.exportCsv
+[EN] [TR] accessPolicies.failedToLoad
+[EN] [TR] accessPolicies.fromLastMonth
+[EN] [TR] accessPolicies.keycloak
+[EN] [TR] accessPolicies.keycloakIntegration.actions.add
+[EN] [TR] accessPolicies.keycloakIntegration.actions.cancel
+[EN] [TR] accessPolicies.keycloakIntegration.actions.delete
+[EN] [TR] accessPolicies.keycloakIntegration.actions.edit
+[EN] [TR] accessPolicies.keycloakIntegration.actions.save
+[EN] [TR] accessPolicies.keycloakIntegration.actions.sync
+[EN] [TR] accessPolicies.keycloakIntegration.actions.testConnection
+[EN] [TR] accessPolicies.keycloakIntegration.connection.info.clientId
+[EN] [TR] accessPolicies.keycloakIntegration.connection.info.lastSync
+[EN] [TR] accessPolicies.keycloakIntegration.connection.info.mappedResources
+[EN] [TR] accessPolicies.keycloakIntegration.connection.info.mappedRoles
+[EN] [TR] accessPolicies.keycloakIntegration.connection.info.realm
+[EN] [TR] accessPolicies.keycloakIntegration.connection.settings.clientId
+[EN] [TR] accessPolicies.keycloakIntegration.connection.settings.clientSecret
+[EN] [TR] accessPolicies.keycloakIntegration.connection.settings.realm
+[EN] [TR] accessPolicies.keycloakIntegration.connection.settings.save
+[EN] [TR] accessPolicies.keycloakIntegration.connection.settings.serverUrl
+[EN] [TR] accessPolicies.keycloakIntegration.connection.settings.testConnection
+[EN] [TR] accessPolicies.keycloakIntegration.connection.settings.title
+[EN] [TR] accessPolicies.keycloakIntegration.connection.status.connected
+[EN] [TR] accessPolicies.keycloakIntegration.connection.status.error
+[EN] [TR] accessPolicies.keycloakIntegration.connection.status.syncing
+[EN] [TR] accessPolicies.keycloakIntegration.connection.title
+[EN] [TR] accessPolicies.keycloakIntegration.description
+[EN] [TR] accessPolicies.keycloakIntegration.resources.addMapping
+[EN] [TR] accessPolicies.keycloakIntegration.resources.description
+[EN] [TR] accessPolicies.keycloakIntegration.resources.dialog.description
+[EN] [TR] accessPolicies.keycloakIntegration.resources.dialog.keycloakResource
+[EN] [TR] accessPolicies.keycloakIntegration.resources.dialog.mappedResource
+[EN] [TR] accessPolicies.keycloakIntegration.resources.dialog.placeholders.keycloakResource
+[EN] [TR] accessPolicies.keycloakIntegration.resources.dialog.placeholders.mappedResource
+[EN] [TR] accessPolicies.keycloakIntegration.resources.dialog.scopes
+[EN] [TR] accessPolicies.keycloakIntegration.resources.dialog.title.add
+[EN] [TR] accessPolicies.keycloakIntegration.resources.dialog.title.edit
+[EN] [TR] accessPolicies.keycloakIntegration.resources.table.actions
+[EN] [TR] accessPolicies.keycloakIntegration.resources.table.keycloakResource
+[EN] [TR] accessPolicies.keycloakIntegration.resources.table.mappedResource
+[EN] [TR] accessPolicies.keycloakIntegration.resources.table.scopes
+[EN] [TR] accessPolicies.keycloakIntegration.resources.title
+[EN] [TR] accessPolicies.keycloakIntegration.roles.addMapping
+[EN] [TR] accessPolicies.keycloakIntegration.roles.description
+[EN] [TR] accessPolicies.keycloakIntegration.roles.dialog.description
+[EN] [TR] accessPolicies.keycloakIntegration.roles.dialog.descriptionField
+[EN] [TR] accessPolicies.keycloakIntegration.roles.dialog.keycloakRole
+[EN] [TR] accessPolicies.keycloakIntegration.roles.dialog.mappedRole
+[EN] [TR] accessPolicies.keycloakIntegration.roles.dialog.placeholders.description
+[EN] [TR] accessPolicies.keycloakIntegration.roles.dialog.placeholders.keycloakRole
+[EN] [TR] accessPolicies.keycloakIntegration.roles.dialog.placeholders.mappedRole
+[EN] [TR] accessPolicies.keycloakIntegration.roles.dialog.title.add
+[EN] [TR] accessPolicies.keycloakIntegration.roles.dialog.title.edit
+[EN] [TR] accessPolicies.keycloakIntegration.roles.table.actions
+[EN] [TR] accessPolicies.keycloakIntegration.roles.table.description
+[EN] [TR] accessPolicies.keycloakIntegration.roles.table.keycloakRole
+[EN] [TR] accessPolicies.keycloakIntegration.roles.table.mappedRole
+[EN] [TR] accessPolicies.keycloakIntegration.roles.title
+[EN] [TR] accessPolicies.keycloakIntegration.tabs.resources
+[EN] [TR] accessPolicies.keycloakIntegration.tabs.roles
+[EN] [TR] accessPolicies.keycloakIntegration.tabs.settings
+[EN] [TR] accessPolicies.keycloakIntegration.title
+[EN] [TR] accessPolicies.lastUpdated
+[EN] [TR] accessPolicies.loading
+[EN] [TR] accessPolicies.navigateToReports
+[EN] [TR] accessPolicies.ofTotal
+[EN] [TR] accessPolicies.policies
+[EN] [TR] accessPolicies.policyAnalytics.actions.export
+[EN] [TR] accessPolicies.policyAnalytics.actions.refresh
+[EN] [TR] accessPolicies.policyAnalytics.actions.viewDetails
+[EN] [TR] accessPolicies.policyAnalytics.charts.accessTrendAnalysis.description
+[EN] [TR] accessPolicies.policyAnalytics.charts.accessTrendAnalysis.title
+[EN] [TR] accessPolicies.policyAnalytics.charts.accessTrends.denied
+[EN] [TR] accessPolicies.policyAnalytics.charts.accessTrends.description
+[EN] [TR] accessPolicies.policyAnalytics.charts.accessTrends.granted
+[EN] [TR] accessPolicies.policyAnalytics.charts.accessTrends.title
+[EN] [TR] accessPolicies.policyAnalytics.charts.enforcementActivity.description
+[EN] [TR] accessPolicies.policyAnalytics.charts.enforcementActivity.title
+[EN] [TR] accessPolicies.policyAnalytics.charts.policyDistribution.breakdown
+[EN] [TR] accessPolicies.policyAnalytics.charts.policyDistribution.description
+[EN] [TR] accessPolicies.policyAnalytics.charts.policyDistribution.distributionBreakdown
+[EN] [TR] accessPolicies.policyAnalytics.charts.policyDistribution.title
+[EN] [TR] accessPolicies.policyAnalytics.charts.resourceAccessVolume.description
+[EN] [TR] accessPolicies.policyAnalytics.charts.resourceAccessVolume.title
+[EN] [TR] accessPolicies.policyAnalytics.charts.resourceUsage.description
+[EN] [TR] accessPolicies.policyAnalytics.charts.resourceUsage.title
+[EN] [TR] accessPolicies.policyAnalytics.charts.riskScore.description
+[EN] [TR] accessPolicies.policyAnalytics.charts.riskScore.title
+[EN] [TR] accessPolicies.policyAnalytics.charts.suspiciousPatterns.description
+[EN] [TR] accessPolicies.policyAnalytics.charts.suspiciousPatterns.title
+[EN] [TR] accessPolicies.policyAnalytics.charts.userActivity.description
+[EN] [TR] accessPolicies.policyAnalytics.charts.userActivity.title
+[EN] [TR] accessPolicies.policyAnalytics.description
+[EN] [TR] accessPolicies.policyAnalytics.metrics.activePolicies.description
+[EN] [TR] accessPolicies.policyAnalytics.metrics.activePolicies.title
+[EN] [TR] accessPolicies.policyAnalytics.metrics.conflictsDetected.description
+[EN] [TR] accessPolicies.policyAnalytics.metrics.conflictsDetected.title
+[EN] [TR] accessPolicies.policyAnalytics.metrics.successRate.description
+[EN] [TR] accessPolicies.policyAnalytics.metrics.successRate.title
+[EN] [TR] accessPolicies.policyAnalytics.metrics.totalAttempts.description
+[EN] [TR] accessPolicies.policyAnalytics.metrics.totalAttempts.title
+[EN] [TR] accessPolicies.policyAnalytics.tabs.distribution
+[EN] [TR] accessPolicies.policyAnalytics.tabs.overview
+[EN] [TR] accessPolicies.policyAnalytics.tabs.performance
+[EN] [TR] accessPolicies.policyAnalytics.tabs.risk
+[EN] [TR] accessPolicies.policyAnalytics.tabs.trends
+[EN] [TR] accessPolicies.policyAnalytics.tabs.usage
+[EN] [TR] accessPolicies.policyAnalytics.tabs.users
+[EN] [TR] accessPolicies.policyAnalytics.timeRange.1y
+[EN] [TR] accessPolicies.policyAnalytics.timeRange.30d
+[EN] [TR] accessPolicies.policyAnalytics.timeRange.7d
+[EN] [TR] accessPolicies.policyAnalytics.timeRange.90d
+[EN] [TR] accessPolicies.policyAnalytics.title
+[EN] [TR] accessPolicies.policyAuditLog.actionTypes.create
+[EN] [TR] accessPolicies.policyAuditLog.actionTypes.delete
+[EN] [TR] accessPolicies.policyAuditLog.actionTypes.disable
+[EN] [TR] accessPolicies.policyAuditLog.actionTypes.enable
+[EN] [TR] accessPolicies.policyAuditLog.actionTypes.enforce
+[EN] [TR] accessPolicies.policyAuditLog.actionTypes.simulate
+[EN] [TR] accessPolicies.policyAuditLog.actionTypes.update
+[EN] [TR] accessPolicies.policyAuditLog.actions.exportCsv
+[EN] [TR] accessPolicies.policyAuditLog.actions.refresh
+[EN] [TR] accessPolicies.policyAuditLog.actions.viewDetails
+[EN] [TR] accessPolicies.policyAuditLog.actorTypes.api
+[EN] [TR] accessPolicies.policyAuditLog.actorTypes.system
+[EN] [TR] accessPolicies.policyAuditLog.actorTypes.user
+[EN] [TR] accessPolicies.policyAuditLog.description
+[EN] [TR] accessPolicies.policyAuditLog.details.accessDenied
+[EN] [TR] accessPolicies.policyAuditLog.details.accessGranted
+[EN] [TR] accessPolicies.policyAuditLog.details.additionalMetadata
+[EN] [TR] accessPolicies.policyAuditLog.details.correlationId
+[EN] [TR] accessPolicies.policyAuditLog.details.enforcement
+[EN] [TR] accessPolicies.policyAuditLog.details.from
+[EN] [TR] accessPolicies.policyAuditLog.details.ipAddress
+[EN] [TR] accessPolicies.policyAuditLog.details.policyChanges
+[EN] [TR] accessPolicies.policyAuditLog.details.requestContext
+[EN] [TR] accessPolicies.policyAuditLog.details.requestId
+[EN] [TR] accessPolicies.policyAuditLog.details.simulation
+[EN] [TR] accessPolicies.policyAuditLog.details.to
+[EN] [TR] accessPolicies.policyAuditLog.details.userAgent
+[EN] [TR] accessPolicies.policyAuditLog.filters.actionPlaceholder
+[EN] [TR] accessPolicies.policyAuditLog.filters.actorPlaceholder
+[EN] [TR] accessPolicies.policyAuditLog.filters.allActions
+[EN] [TR] accessPolicies.policyAuditLog.filters.allActors
+[EN] [TR] accessPolicies.policyAuditLog.filters.searchPlaceholder
+[EN] [TR] accessPolicies.policyAuditLog.pagination.next
+[EN] [TR] accessPolicies.policyAuditLog.pagination.previous
+[EN] [TR] accessPolicies.policyAuditLog.pagination.showing
+[EN] [TR] accessPolicies.policyAuditLog.table.headers.action
+[EN] [TR] accessPolicies.policyAuditLog.table.headers.actor
+[EN] [TR] accessPolicies.policyAuditLog.table.headers.details
+[EN] [TR] accessPolicies.policyAuditLog.table.headers.policy
+[EN] [TR] accessPolicies.policyAuditLog.table.headers.timestamp
+[EN] [TR] accessPolicies.policyAuditLog.table.noData
+[EN] [TR] accessPolicies.policyAuditLog.title
+[EN] [TR] accessPolicies.policyCloned
+[EN] [TR] accessPolicies.policyDeleted
+[EN] [TR] accessPolicies.policyEditor.description
+[EN] [TR] accessPolicies.policyEditor.form.labels.category
+[EN] [TR] accessPolicies.policyEditor.form.labels.description
+[EN] [TR] accessPolicies.policyEditor.form.labels.policyName
+[EN] [TR] accessPolicies.policyEditor.form.labels.policyType
+[EN] [TR] accessPolicies.policyEditor.form.labels.required
+[EN] [TR] accessPolicies.policyEditor.form.labels.scope
+[EN] [TR] accessPolicies.policyEditor.form.placeholders.category
+[EN] [TR] accessPolicies.policyEditor.form.placeholders.description
+[EN] [TR] accessPolicies.policyEditor.form.placeholders.policyName
+[EN] [TR] accessPolicies.policyEditor.form.types.allow
+[EN] [TR] accessPolicies.policyEditor.form.types.conditional
+[EN] [TR] accessPolicies.policyEditor.form.types.deny
+[EN] [TR] accessPolicies.policyEditor.tabs.basic
+[EN] [TR] accessPolicies.policyEditor.tabs.conditions
+[EN] [TR] accessPolicies.policyEditor.tabs.preview
+[EN] [TR] accessPolicies.policyEditor.tabs.resources
+[EN] [TR] accessPolicies.policyEditor.tabs.subjects
+[EN] [TR] accessPolicies.policyEditor.title.create
+[EN] [TR] accessPolicies.policyEditor.title.edit
+[EN] [TR] accessPolicies.policyEditor.toast.fixErrors
+[EN] [TR] accessPolicies.policyEditor.toast.saved
+[EN] [TR] accessPolicies.policyEditor.toast.simulationCompleted
+[EN] [TR] accessPolicies.policyEditor.toast.simulationFailed
+[EN] [TR] accessPolicies.policyEditor.toast.simulationRequired
+[EN] [TR] accessPolicies.policyEditor.validation.descriptionRequired
+[EN] [TR] accessPolicies.policyEditor.validation.nameRequired
+[EN] [TR] accessPolicies.policyEditor.validation.priorityRange
+[EN] [TR] accessPolicies.policyEditor.validation.resourcesRequired
+[EN] [TR] accessPolicies.policyEditor.validation.subjectsRequired
+[EN] [TR] accessPolicies.policyExportStart
+[EN] [TR] accessPolicies.policyList.conditions.device
+[EN] [TR] accessPolicies.policyList.conditions.ip
+[EN] [TR] accessPolicies.policyList.conditions.location
+[EN] [TR] accessPolicies.policyList.conditions.risk
+[EN] [TR] accessPolicies.policyList.conditions.time
+[EN] [TR] accessPolicies.policyList.filters.scopes.all
+[EN] [TR] accessPolicies.policyList.filters.scopes.global
+[EN] [TR] accessPolicies.policyList.filters.scopes.group
+[EN] [TR] accessPolicies.policyList.filters.scopes.resource
+[EN] [TR] accessPolicies.policyList.filters.scopes.role
+[EN] [TR] accessPolicies.policyList.filters.scopes.user
+[EN] [TR] accessPolicies.policyList.filters.statuses.active
+[EN] [TR] accessPolicies.policyList.filters.statuses.all
+[EN] [TR] accessPolicies.policyList.filters.statuses.disabled
+[EN] [TR] accessPolicies.policyList.filters.statuses.draft
+[EN] [TR] accessPolicies.policyList.filters.statuses.expired
+[EN] [TR] accessPolicies.policyList.filters.types.all
+[EN] [TR] accessPolicies.policyList.filters.types.allow
+[EN] [TR] accessPolicies.policyList.filters.types.conditional
+[EN] [TR] accessPolicies.policyList.filters.types.deny
+[EN] [TR] accessPolicies.policyList.loading
+[EN] [TR] accessPolicies.policyList.noConditions
+[EN] [TR] accessPolicies.policyList.results.selected
+[EN] [TR] accessPolicies.policyList.results.showing
+[EN] [TR] accessPolicies.policyList.search
+[EN] [TR] accessPolicies.policyList.sorting.name
+[EN] [TR] accessPolicies.policyList.sorting.priority
+[EN] [TR] accessPolicies.policyList.sorting.sortBy
+[EN] [TR] accessPolicies.policyList.sorting.status
+[EN] [TR] accessPolicies.policyList.sorting.updated
+[EN] [TR] accessPolicies.policyList.table.headers.actions
+[EN] [TR] accessPolicies.policyList.table.headers.affectedUsers
+[EN] [TR] accessPolicies.policyList.table.headers.conditions
+[EN] [TR] accessPolicies.policyList.table.headers.policyName
+[EN] [TR] accessPolicies.policyList.table.headers.priority
+[EN] [TR] accessPolicies.policyList.table.headers.rollout
+[EN] [TR] accessPolicies.policyList.table.headers.scope
+[EN] [TR] accessPolicies.policyList.table.headers.status
+[EN] [TR] accessPolicies.policyList.table.headers.type
+[EN] [TR] accessPolicies.policyList.table.headers.updated
+[EN] [TR] accessPolicies.policyList.toast.cloned
+[EN] [TR] accessPolicies.policyList.toast.deleted
+[EN] [TR] accessPolicies.policyList.toast.disabled
+[EN] [TR] accessPolicies.policyList.toast.enabled
+[EN] [TR] accessPolicies.policyList.viewModes.cards
+[EN] [TR] accessPolicies.policyList.viewModes.table
+[EN] [TR] accessPolicies.policySimulation.actions.clearHistory
+[EN] [TR] accessPolicies.policySimulation.actions.runSimulation
+[EN] [TR] accessPolicies.policySimulation.actions.saveSimulation
+[EN] [TR] accessPolicies.policySimulation.context.description
+[EN] [TR] accessPolicies.policySimulation.context.ipAddress
+[EN] [TR] accessPolicies.policySimulation.context.ipPlaceholder
+[EN] [TR] accessPolicies.policySimulation.context.location
+[EN] [TR] accessPolicies.policySimulation.context.locationPlaceholder
+[EN] [TR] accessPolicies.policySimulation.context.timeOfDay
+[EN] [TR] accessPolicies.policySimulation.context.timeOfDayPlaceholder
+[EN] [TR] accessPolicies.policySimulation.context.title
+[EN] [TR] accessPolicies.policySimulation.context.userAgent
+[EN] [TR] accessPolicies.policySimulation.context.userAgentPlaceholder
+[EN] [TR] accessPolicies.policySimulation.description
+[EN] [TR] accessPolicies.policySimulation.history.noHistory
+[EN] [TR] accessPolicies.policySimulation.history.resource
+[EN] [TR] accessPolicies.policySimulation.history.result
+[EN] [TR] accessPolicies.policySimulation.history.timestamp
+[EN] [TR] accessPolicies.policySimulation.history.title
+[EN] [TR] accessPolicies.policySimulation.history.user
+[EN] [TR] accessPolicies.policySimulation.parameters.accessLevel
+[EN] [TR] accessPolicies.policySimulation.parameters.accessLevelPlaceholder
+[EN] [TR] accessPolicies.policySimulation.parameters.description
+[EN] [TR] accessPolicies.policySimulation.parameters.selectResource
+[EN] [TR] accessPolicies.policySimulation.parameters.selectResourcePlaceholder
+[EN] [TR] accessPolicies.policySimulation.parameters.selectUser
+[EN] [TR] accessPolicies.policySimulation.parameters.selectUserPlaceholder
+[EN] [TR] accessPolicies.policySimulation.parameters.title
+[EN] [TR] accessPolicies.policySimulation.results.accessDenied
+[EN] [TR] accessPolicies.policySimulation.results.accessGranted
+[EN] [TR] accessPolicies.policySimulation.results.appliedPolicies
+[EN] [TR] accessPolicies.policySimulation.results.conflicts
+[EN] [TR] accessPolicies.policySimulation.results.effectiveAccess
+[EN] [TR] accessPolicies.policySimulation.results.loading
+[EN] [TR] accessPolicies.policySimulation.results.matchedConditions
+[EN] [TR] accessPolicies.policySimulation.results.noResults
+[EN] [TR] accessPolicies.policySimulation.results.recommendations
+[EN] [TR] accessPolicies.policySimulation.tabs.history
+[EN] [TR] accessPolicies.policySimulation.tabs.simulate
+[EN] [TR] accessPolicies.policySimulation.title
+[EN] [TR] accessPolicies.policyUpdated
+[EN] [TR] accessPolicies.refresh
+[EN] [TR] accessPolicies.requiresAttention
+[EN] [TR] accessPolicies.reviewConflicts
+[EN] [TR] accessPolicies.simulation
+[EN] [TR] accessPolicies.title
+[EN] [TR] accessPolicies.totalPolicies
+[EN] [TR] accessPolicies.viewReports
+[  ] [TR] accessPolicySettings.accessPolicyConfiguration
+[  ] [TR] accessPolicySettings.addPolicy
+[  ] [TR] accessPolicySettings.description
+[  ] [TR] accessPolicySettings.detailedDescription
+[  ] [TR] accessPolicySettings.rbacEnabled
+[  ] [TR] accessPolicySettings.title
+[EN] [TR] admin.roles.adminRoles
+[EN] [TR] admin.roles.averagePermissions
+[EN] [TR] admin.roles.badges.admin
+[EN] [TR] admin.roles.badges.default
+[EN] [TR] admin.roles.badges.manager
+[EN] [TR] admin.roles.badges.viewer
+[EN] [TR] admin.roles.createdAt
+[EN] [TR] admin.roles.delete
+[EN] [TR] admin.roles.description
+[EN] [TR] admin.roles.dialog.basicInformation
+[EN] [TR] admin.roles.dialog.cancel
+[EN] [TR] admin.roles.dialog.create
+[EN] [TR] admin.roles.dialog.createDescription
+[EN] [TR] admin.roles.dialog.createError
+[EN] [TR] admin.roles.dialog.createSuccess
+[EN] [TR] admin.roles.dialog.createTitle
+[EN] [TR] admin.roles.dialog.creating
+[EN] [TR] admin.roles.dialog.editDescription
+[EN] [TR] admin.roles.dialog.editTitle
+[EN] [TR] admin.roles.dialog.fields.description
+[EN] [TR] admin.roles.dialog.fields.displayName
+[EN] [TR] admin.roles.dialog.fields.name
+[EN] [TR] admin.roles.dialog.permissions.actions.delete
+[EN] [TR] admin.roles.dialog.permissions.actions.read
+[EN] [TR] admin.roles.dialog.permissions.actions.write
+[EN] [TR] admin.roles.dialog.permissions.categories.audit
+[EN] [TR] admin.roles.dialog.permissions.categories.oauth
+[EN] [TR] admin.roles.dialog.permissions.categories.role
+[EN] [TR] admin.roles.dialog.permissions.categories.settings
+[EN] [TR] admin.roles.dialog.permissions.categories.system
+[EN] [TR] admin.roles.dialog.permissions.categories.user
+[EN] [TR] admin.roles.dialog.permissions.selected
+[EN] [TR] admin.roles.dialog.permissions.title
+[EN] [TR] admin.roles.dialog.placeholders.description
+[EN] [TR] admin.roles.dialog.placeholders.displayName
+[EN] [TR] admin.roles.dialog.placeholders.name
+[EN] [TR] admin.roles.dialog.preview.displayName
+[EN] [TR] admin.roles.dialog.preview.permissions
+[EN] [TR] admin.roles.dialog.preview.roleName
+[EN] [TR] admin.roles.dialog.preview.title
+[EN] [TR] admin.roles.dialog.update
+[EN] [TR] admin.roles.dialog.updateError
+[EN] [TR] admin.roles.dialog.updateSuccess
+[EN] [TR] admin.roles.dialog.updating
+[EN] [TR] admin.roles.dialog.validation.displayNameRequired
+[EN] [TR] admin.roles.dialog.validation.fixErrors
+[EN] [TR] admin.roles.dialog.validation.nameFormat
+[EN] [TR] admin.roles.dialog.validation.nameRequired
+[EN] [TR] admin.roles.dialog.validation.permissionsRequired
+[EN] [TR] admin.roles.edit
+[EN] [TR] admin.roles.loading
+[EN] [TR] admin.roles.managePermissions
+[EN] [TR] admin.roles.newRole
+[EN] [TR] admin.roles.noDescription
+[EN] [TR] admin.roles.noRolesFound
+[EN] [TR] admin.roles.noRolesMessage
+[EN] [TR] admin.roles.permissions
+[EN] [TR] admin.roles.role
+[EN] [TR] admin.roles.roleTypes.admin
+[EN] [TR] admin.roles.roleTypes.manager
+[EN] [TR] admin.roles.roleTypes.viewer
+[EN] [TR] admin.roles.search
+[EN] [TR] admin.roles.title
+[EN] [TR] admin.roles.totalRoles
+[EN] [TR] admin.roles.totalUsers
+[EN] [TR] admin.roles.userCount
+[EN] [TR] admin.roles.viewUsers
+[EN] [TR] audit.action
+[EN] [TR] audit.description
+[EN] [TR] audit.details
+[EN] [TR] audit.eventType
+[EN] [TR] audit.ipAddress
+[EN] [TR] audit.resource
+[EN] [TR] audit.result
+[EN] [TR] audit.timestamp
+[EN] [TR] audit.title
+[EN] [TR] audit.user
+[  ] [TR] auditSettings.alerts.configurationChanges
+[  ] [TR] auditSettings.alerts.dataExfiltration
+[  ] [TR] auditSettings.alerts.failedLoginAttempts
+[  ] [TR] auditSettings.alerts.suspiciousActivity
+[  ] [TR] auditSettings.alerts.thresholdBreaches
+[  ] [TR] auditSettings.alerts.title
+[  ] [TR] auditSettings.description
+[  ] [TR] auditSettings.disabled
+[  ] [TR] auditSettings.enableAuditLogging
+[  ] [TR] auditSettings.enableAuditLoggingDescription
+[  ] [TR] auditSettings.enabled
+[  ] [TR] auditSettings.events.authenticationEvents
+[  ] [TR] auditSettings.events.configurationChanges
+[  ] [TR] auditSettings.events.dataChanges
+[  ] [TR] auditSettings.events.errorEvents
+[  ] [TR] auditSettings.events.performanceMetrics
+[  ] [TR] auditSettings.events.systemActions
+[  ] [TR] auditSettings.events.title
+[  ] [TR] auditSettings.events.userActions
+[  ] [TR] auditSettings.general.enableCompression
+[  ] [TR] auditSettings.general.enableEncryption
+[  ] [TR] auditSettings.general.logLevel
+[  ] [TR] auditSettings.general.logLevels.critical
+[  ] [TR] auditSettings.general.logLevels.debug
+[  ] [TR] auditSettings.general.logLevels.error
+[  ] [TR] auditSettings.general.logLevels.info
+[  ] [TR] auditSettings.general.logLevels.warn
+[  ] [TR] auditSettings.general.retentionPeriod
+[  ] [TR] auditSettings.general.title
+[  ] [TR] auditSettings.storage.enableBackup
+[  ] [TR] auditSettings.storage.locations.both
+[  ] [TR] auditSettings.storage.locations.database
+[  ] [TR] auditSettings.storage.locations.file
+[  ] [TR] auditSettings.storage.maxFileSize
+[  ] [TR] auditSettings.storage.rotationPolicy
+[  ] [TR] auditSettings.storage.rotations.daily
+[  ] [TR] auditSettings.storage.rotations.hourly
+[  ] [TR] auditSettings.storage.rotations.monthly
+[  ] [TR] auditSettings.storage.rotations.weekly
+[  ] [TR] auditSettings.storage.storageLocation
+[  ] [TR] auditSettings.storage.title
+[  ] [TR] auditSettings.title
+[EN] [TR] auth.oauthProviders.addProvider
+[EN] [TR] auth.oauthProviders.clientId
+[EN] [TR] auth.oauthProviders.description
+[EN] [TR] auth.oauthProviders.enabled
+[EN] [TR] auth.oauthProviders.providerName
+[EN] [TR] auth.oauthProviders.title
+[EN] [TR] auth.policies.activePolicies
+[EN] [TR] auth.policies.auditLog
+[EN] [TR] auth.policies.conflictsDetected
+[EN] [TR] auth.policies.createPolicy
+[EN] [TR] auth.policies.description
+[EN] [TR] auth.policies.failedToActivate
+[EN] [TR] auth.policies.failedToDelete
+[EN] [TR] auth.policies.failedToLoad
+[EN] [TR] auth.policies.failedToSave
+[EN] [TR] auth.policies.mfaRequired
+[EN] [TR] auth.policies.noActivatePermission
+[EN] [TR] auth.policies.noCreatePermission
+[EN] [TR] auth.policies.noDeletePermission
+[EN] [TR] auth.policies.noEditPermission
+[EN] [TR] auth.policies.passwordPolicy
+[EN] [TR] auth.policies.policyActivated
+[EN] [TR] auth.policies.policyCreated
+[EN] [TR] auth.policies.policyDeleted
+[EN] [TR] auth.policies.policyUpdated
+[EN] [TR] auth.policies.sessionTimeout
+[EN] [TR] auth.policies.simulation
+[EN] [TR] auth.policies.title
+[EN] [TR] auth.policies.totalApplications
+[EN] [TR] auth.policies.totalPolicies
+[EN] [TR] auth.sessions.activeSessions
+[EN] [TR] auth.sessions.analytics
+[EN] [TR] auth.sessions.anomalies
+[EN] [TR] auth.sessions.auditLog
+[EN] [TR] auth.sessions.description
+[EN] [TR] auth.sessions.device
+[EN] [TR] auth.sessions.exportCsv
+[EN] [TR] auth.sessions.failedToExportSessions
+[EN] [TR] auth.sessions.failedToGenerateReport
+[EN] [TR] auth.sessions.failedToLoadSessions
+[EN] [TR] auth.sessions.fromYesterday
+[EN] [TR] auth.sessions.highRiskSessions
+[EN] [TR] auth.sessions.lastActivity
+[EN] [TR] auth.sessions.lastUpdated
+[EN] [TR] auth.sessions.live
+[EN] [TR] auth.sessions.location
+[EN] [TR] auth.sessions.noPermissionToView
+[EN] [TR] auth.sessions.ofTotalSessions
+[EN] [TR] auth.sessions.paused
+[EN] [TR] auth.sessions.refresh
+[EN] [TR] auth.sessions.revokedToday
+[EN] [TR] auth.sessions.securityActionsTaken
+[EN] [TR] auth.sessions.securityReportGenerated
+[EN] [TR] auth.sessions.sessions
+[EN] [TR] auth.sessions.sessionsExportedSuccessfully
+[EN] [TR] auth.sessions.startTime
+[EN] [TR] auth.sessions.terminate
+[EN] [TR] auth.sessions.title
+[EN] [TR] auth.sessions.uniqueUsers
+[EN] [TR] auth.sessions.user
+[EN] [TR] auth.sessions.viewReports
+[EN] [TR] auth.title
+[EN] [TR] common.actions
+[EN] [TR] common.active
+[EN] [TR] common.add
+[EN] [TR] common.address
+[EN] [TR] common.back
+[EN] [TR] common.category
+[EN] [TR] common.changePassword
+[EN] [TR] common.close
+[EN] [TR] common.confirm
+[EN] [TR] common.connect
+[EN] [TR] common.connected
+[EN] [TR] common.create
+[EN] [TR] common.date
+[EN] [TR] common.delete
+[EN] [TR] common.description
+[EN] [TR] common.details
+[EN] [TR] common.disabled
+[EN] [TR] common.disconnect
+[EN] [TR] common.disconnected
+[EN] [TR] common.edit
+[EN] [TR] common.email
+[EN] [TR] common.emptyState.noData
+[EN] [TR] common.emptyState.noItems
+[EN] [TR] common.emptyState.noResults
+[EN] [TR] common.enabled
+[EN] [TR] common.error
+[EN] [TR] common.export
+[EN] [TR] common.failed
+[EN] [TR] common.filter
+[EN] [TR] common.finish
+[EN] [TR] common.forgotPassword
+[EN] [TR] common.import
+[EN] [TR] common.inactive
+[EN] [TR] common.info
+[EN] [TR] common.login
+[EN] [TR] common.logout
+[EN] [TR] common.name
+[EN] [TR] common.new
+[EN] [TR] common.next
+[EN] [TR] common.no
+[EN] [TR] common.offline
+[EN] [TR] common.ok
+[EN] [TR] common.online
+[EN] [TR] common.pagination.items
+[EN] [TR] common.pagination.of
+[EN] [TR] common.pagination.page
+[EN] [TR] common.pagination.results
+[EN] [TR] common.pagination.showing
+[EN] [TR] common.pagination.to
+[EN] [TR] common.phone
+[EN] [TR] common.previous
+[EN] [TR] common.priority
+[EN] [TR] common.profile
+[EN] [TR] common.refresh
+[EN] [TR] common.register
+[EN] [TR] common.reset
+[EN] [TR] common.resetPassword
+[EN] [TR] common.save
+[EN] [TR] common.search
+[EN] [TR] common.settings
+[EN] [TR] common.status
+[EN] [TR] common.success
+[EN] [TR] common.time
+[EN] [TR] common.type
+[EN] [TR] common.update
+[EN] [TR] common.validation.departmentRequired
+[EN] [TR] common.validation.email
+[EN] [TR] common.validation.firstNameLetters
+[EN] [TR] common.validation.firstNameMin
+[EN] [TR] common.validation.firstNameRequired
+[EN] [TR] common.validation.fixErrors
+[EN] [TR] common.validation.lastNameLetters
+[EN] [TR] common.validation.lastNameMin
+[EN] [TR] common.validation.lastNameRequired
+[EN] [TR] common.validation.maxLength
+[EN] [TR] common.validation.minLength
+[EN] [TR] common.validation.phoneRequired
+[EN] [TR] common.validation.phoneValid
+[EN] [TR] common.validation.required
+[EN] [TR] common.validation.usernameFormat
+[EN] [TR] common.validation.usernameMin
+[EN] [TR] common.validation.usernameRequired
+[EN] [TR] common.warning
+[EN] [TR] common.yes
+[EN] [TR] dashboard.activeSessions
+[EN] [TR] dashboard.analytics
+[EN] [TR] dashboard.notifications
+[EN] [TR] dashboard.recentActivity
+[EN] [TR] dashboard.securityAlerts
+[EN] [TR] dashboard.securityOverview
+[EN] [TR] dashboard.systemHealth
+[EN] [TR] dashboard.title
+[EN] [TR] dashboard.totalUsers
+[EN] [TR] dashboard.viewReports
+[EN] [TR] dashboard.welcomeMessage
+[  ] [TR] dataManagement.backup.backupFrequency
+[  ] [TR] dataManagement.backup.description
+[  ] [TR] dataManagement.backup.enableAutomatedBackups
+[  ] [TR] dataManagement.backup.enableAutomatedBackupsDescription
+[  ] [TR] dataManagement.backup.enableCompression
+[  ] [TR] dataManagement.backup.enableEncryption
+[  ] [TR] dataManagement.backup.exportData
+[  ] [TR] dataManagement.backup.frequencies.daily
+[  ] [TR] dataManagement.backup.frequencies.hourly
+[  ] [TR] dataManagement.backup.frequencies.monthly
+[  ] [TR] dataManagement.backup.frequencies.weekly
+[  ] [TR] dataManagement.backup.importData
+[  ] [TR] dataManagement.backup.importDataDescription
+[  ] [TR] dataManagement.backup.manualDataExport
+[  ] [TR] dataManagement.backup.manualDataExportDescription
+[  ] [TR] dataManagement.backup.retentionPeriod
+[  ] [TR] dataManagement.backup.title
+[  ] [TR] dataManagement.cache.active
+[  ] [TR] dataManagement.cache.cleanupInterval
+[  ] [TR] dataManagement.cache.clearCache
+[  ] [TR] dataManagement.cache.clearCacheDescription
+[  ] [TR] dataManagement.cache.defaultTtl
+[  ] [TR] dataManagement.cache.description
+[  ] [TR] dataManagement.cache.enableRedisCache
+[  ] [TR] dataManagement.cache.enableRedisCacheDescription
+[  ] [TR] dataManagement.cache.inactive
+[  ] [TR] dataManagement.cache.maxCacheSize
+[  ] [TR] dataManagement.cache.title
+[  ] [TR] dataManagement.cleanup.cleanExpiredSessions
+[  ] [TR] dataManagement.cleanup.cleanTemporaryFiles
+[  ] [TR] dataManagement.cleanup.description
+[  ] [TR] dataManagement.cleanup.enableAutomaticCleanup
+[  ] [TR] dataManagement.cleanup.enableAutomaticCleanupDescription
+[  ] [TR] dataManagement.cleanup.logRetention
+[  ] [TR] dataManagement.cleanup.title
+[  ] [TR] dataManagement.toast.cacheCleared
+[  ] [TR] dataManagement.toast.cacheClearedDescription
+[  ] [TR] dataManagement.toast.clearFailed
+[  ] [TR] dataManagement.toast.clearFailedDescription
+[  ] [TR] dataManagement.toast.exportCompleted
+[  ] [TR] dataManagement.toast.exportCompletedDescription
+[  ] [TR] dataManagement.toast.exportFailed
+[  ] [TR] dataManagement.toast.exportFailedDescription
+[EN] [TR] health.autoRefresh
+[EN] [TR] health.avgResponseTime
+[EN] [TR] health.connect
+[EN] [TR] health.criticalAlerts
+[EN] [TR] health.disconnect
+[EN] [TR] health.errorRate
+[EN] [TR] health.exportMetrics
+[EN] [TR] health.failedToExportReport
+[EN] [TR] health.generatingHealthReport
+[EN] [TR] health.healthReportExported
+[EN] [TR] health.healthScore
+[EN] [TR] health.incidents.actions.details
+[EN] [TR] health.incidents.actions.exportReport
+[EN] [TR] health.incidents.actions.newIncident
+[EN] [TR] health.incidents.create.affectedServiceLabel
+[EN] [TR] health.incidents.create.cancel
+[EN] [TR] health.incidents.create.create
+[EN] [TR] health.incidents.create.description
+[EN] [TR] health.incidents.create.descriptionLabel
+[EN] [TR] health.incidents.create.descriptionPlaceholder
+[EN] [TR] health.incidents.create.selectService
+[EN] [TR] health.incidents.create.severityLabel
+[EN] [TR] health.incidents.create.title
+[EN] [TR] health.incidents.create.titleLabel
+[EN] [TR] health.incidents.create.titlePlaceholder
+[EN] [TR] health.incidents.create.userImpactLabel
+[EN] [TR] health.incidents.description
+[EN] [TR] health.incidents.detail.description
+[EN] [TR] health.incidents.detail.duration
+[EN] [TR] health.incidents.detail.impact
+[EN] [TR] health.incidents.detail.incidentNumber
+[EN] [TR] health.incidents.detail.resolution
+[EN] [TR] health.incidents.detail.rootCause
+[EN] [TR] health.incidents.detail.severity
+[EN] [TR] health.incidents.detail.startedAgo
+[EN] [TR] health.incidents.detail.status
+[EN] [TR] health.incidents.detail.timeline
+[EN] [TR] health.incidents.empty.filterMessage
+[EN] [TR] health.incidents.empty.noIncidents
+[EN] [TR] health.incidents.empty.title
+[EN] [TR] health.incidents.filters.allSeverity
+[EN] [TR] health.incidents.filters.allStatus
+[EN] [TR] health.incidents.impact.minimal
+[EN] [TR] health.incidents.impact.moderate
+[EN] [TR] health.incidents.impact.none
+[EN] [TR] health.incidents.impact.severe
+[EN] [TR] health.incidents.searchPlaceholder
+[EN] [TR] health.incidents.severity.critical
+[EN] [TR] health.incidents.severity.high
+[EN] [TR] health.incidents.severity.low
+[EN] [TR] health.incidents.severity.medium
+[EN] [TR] health.incidents.stats.avgResolution
+[EN] [TR] health.incidents.stats.investigating
+[EN] [TR] health.incidents.stats.open
+[EN] [TR] health.incidents.stats.resolved
+[EN] [TR] health.incidents.stats.totalIncidents
+[EN] [TR] health.incidents.status.closed
+[EN] [TR] health.incidents.status.investigating
+[EN] [TR] health.incidents.status.open
+[EN] [TR] health.incidents.status.resolved
+[EN] [TR] health.incidents.table.actions
+[EN] [TR] health.incidents.table.duration
+[EN] [TR] health.incidents.table.impact
+[EN] [TR] health.incidents.table.incident
+[EN] [TR] health.incidents.table.service
+[EN] [TR] health.incidents.table.severity
+[EN] [TR] health.incidents.table.started
+[EN] [TR] health.incidents.table.status
+[EN] [TR] health.incidents.timeFormat.daysAgo
+[EN] [TR] health.incidents.timeFormat.hoursAgo
+[EN] [TR] health.incidents.timeFormat.minutesAgo
+[EN] [TR] health.incidents.timeFormat.ongoing
+[EN] [TR] health.incidents.timeFormat.systemWide
+[EN] [TR] health.incidents.timeFormat.users
+[EN] [TR] health.incidents.timeline.auto
+[EN] [TR] health.incidents.timeline.by
+[EN] [TR] health.incidents.timeline.detected
+[EN] [TR] health.incidents.timeline.investigating
+[EN] [TR] health.incidents.timeline.resolved
+[EN] [TR] health.incidents.timeline.update
+[EN] [TR] health.incidents.title
+[EN] [TR] health.incidents.toast.createFailed
+[EN] [TR] health.incidents.toast.created
+[EN] [TR] health.incidents.toast.creating
+[EN] [TR] health.incidents.toast.exportFailed
+[EN] [TR] health.incidents.toast.exported
+[EN] [TR] health.incidents.toast.exporting
+[EN] [TR] health.incidents.toast.loadFailed
+[EN] [TR] health.incidents.toast.titleRequired
+[EN] [TR] health.infrastructure.activeAlerts
+[EN] [TR] health.infrastructure.allMetricsNormal
+[EN] [TR] health.infrastructure.cores
+[EN] [TR] health.infrastructure.cpuImmediateAttention
+[EN] [TR] health.infrastructure.cpuUsage
+[EN] [TR] health.infrastructure.criticalCPUUsage
+[EN] [TR] health.infrastructure.diskConsiderCleanup
+[EN] [TR] health.infrastructure.diskIOPerformance
+[EN] [TR] health.infrastructure.diskSpace
+[EN] [TR] health.infrastructure.diskSpaceLow
+[EN] [TR] health.infrastructure.errors
+[EN] [TR] health.infrastructure.highMemoryUsage
+[EN] [TR] health.infrastructure.historicalMetrics
+[EN] [TR] health.infrastructure.inbound
+[EN] [TR] health.infrastructure.infrastructureAlerts
+[EN] [TR] health.infrastructure.loadAvg
+[EN] [TR] health.infrastructure.memory
+[EN] [TR] health.infrastructure.memoryApproaching
+[EN] [TR] health.infrastructure.memoryBreakdown
+[EN] [TR] health.infrastructure.networkIO
+[EN] [TR] health.infrastructure.networkStatistics
+[EN] [TR] health.infrastructure.outbound
+[EN] [TR] health.infrastructure.packetsIn
+[EN] [TR] health.infrastructure.packetsOut
+[EN] [TR] health.infrastructure.physicalMemory
+[EN] [TR] health.infrastructure.readIOPS
+[EN] [TR] health.infrastructure.resourceConsumption
+[EN] [TR] health.infrastructure.serviceResourceUsage
+[EN] [TR] health.infrastructure.swapMemory
+[EN] [TR] health.infrastructure.swapUsed
+[EN] [TR] health.infrastructure.usage
+[EN] [TR] health.infrastructure.writeIOPS
+[EN] [TR] health.live
+[EN] [TR] health.newAlert
+[EN] [TR] health.newIncident
+[EN] [TR] health.offline
+[EN] [TR] health.overview.alerts.acknowledged
+[EN] [TR] health.overview.alerts.active
+[EN] [TR] health.overview.alerts.noActiveAlerts
+[EN] [TR] health.overview.alerts.title
+[EN] [TR] health.overview.healthScore.description
+[EN] [TR] health.overview.healthScore.outOf100
+[EN] [TR] health.overview.healthScore.status.critical
+[EN] [TR] health.overview.healthScore.status.excellent
+[EN] [TR] health.overview.healthScore.status.good
+[EN] [TR] health.overview.healthScore.status.warning
+[EN] [TR] health.overview.healthScore.title
+[EN] [TR] health.overview.metrics.averageResponseTime
+[EN] [TR] health.overview.metrics.errorRate
+[EN] [TR] health.overview.services.noServicesAvailable
+[EN] [TR] health.overview.services.title
+[EN] [TR] health.overview.services.uptimeTitle
+[EN] [TR] health.overview.sla.breach
+[EN] [TR] health.overview.sla.current
+[EN] [TR] health.overview.sla.good
+[EN] [TR] health.overview.sla.monthToDate
+[EN] [TR] health.overview.sla.status
+[EN] [TR] health.overview.sla.target
+[EN] [TR] health.overview.sla.title
+[EN] [TR] health.overview.timeRanges.1h
+[EN] [TR] health.overview.timeRanges.24h
+[EN] [TR] health.overview.timeRanges.30d
+[EN] [TR] health.overview.timeRanges.7d
+[EN] [TR] health.overview.title
+[EN] [TR] health.prometheus.config.advanced.maxSamples
+[EN] [TR] health.prometheus.config.advanced.queryTimeout
+[EN] [TR] health.prometheus.config.advanced.retentionPeriod
+[EN] [TR] health.prometheus.config.advanced.scrapeInterval
+[EN] [TR] health.prometheus.config.advanced.title
+[EN] [TR] health.prometheus.config.grafana.enable
+[EN] [TR] health.prometheus.config.grafana.enableDescription
+[EN] [TR] health.prometheus.config.grafana.title
+[EN] [TR] health.prometheus.config.grafana.url
+[EN] [TR] health.prometheus.config.grafana.urlPlaceholder
+[EN] [TR] health.prometheus.config.prometheus.connected
+[EN] [TR] health.prometheus.config.prometheus.enable
+[EN] [TR] health.prometheus.config.prometheus.enableDescription
+[EN] [TR] health.prometheus.config.prometheus.testConnection
+[EN] [TR] health.prometheus.config.prometheus.title
+[EN] [TR] health.prometheus.config.prometheus.url
+[EN] [TR] health.prometheus.config.prometheus.urlPlaceholder
+[EN] [TR] health.prometheus.config.prometheus.warning
+[EN] [TR] health.prometheus.description
+[EN] [TR] health.prometheus.export.description
+[EN] [TR] health.prometheus.export.download
+[EN] [TR] health.prometheus.export.exportMetrics
+[EN] [TR] health.prometheus.export.title
+[EN] [TR] health.prometheus.export.viewFull
+[EN] [TR] health.prometheus.grafana.actions.delete
+[EN] [TR] health.prometheus.grafana.actions.edit
+[EN] [TR] health.prometheus.grafana.actions.openInGrafana
+[EN] [TR] health.prometheus.grafana.actions.viewDashboard
+[EN] [TR] health.prometheus.grafana.dashboards
+[EN] [TR] health.prometheus.grafana.newDashboard
+[EN] [TR] health.prometheus.grafana.panels
+[EN] [TR] health.prometheus.grafana.preview.close
+[EN] [TR] health.prometheus.grafana.preview.panels
+[EN] [TR] health.prometheus.grafana.preview.query
+[EN] [TR] health.prometheus.grafana.preview.title
+[EN] [TR] health.prometheus.grafana.preview.visualization
+[EN] [TR] health.prometheus.query.description
+[EN] [TR] health.prometheus.query.execute
+[EN] [TR] health.prometheus.query.label
+[EN] [TR] health.prometheus.query.placeholder
+[EN] [TR] health.prometheus.query.recentQueries
+[EN] [TR] health.prometheus.query.title
+[EN] [TR] health.prometheus.results.metrics
+[EN] [TR] health.prometheus.results.noData
+[EN] [TR] health.prometheus.results.table.metric
+[EN] [TR] health.prometheus.results.table.timestamp
+[EN] [TR] health.prometheus.results.table.value
+[EN] [TR] health.prometheus.results.title
+[EN] [TR] health.prometheus.tabs.configuration
+[EN] [TR] health.prometheus.tabs.grafana
+[EN] [TR] health.prometheus.tabs.prometheus
+[EN] [TR] health.prometheus.title
+[EN] [TR] health.prometheus.toast.connectionFailed
+[EN] [TR] health.prometheus.toast.connectionSuccess
+[EN] [TR] health.prometheus.toast.deleteFailed
+[EN] [TR] health.prometheus.toast.deleted
+[EN] [TR] health.prometheus.toast.deleting
+[EN] [TR] health.prometheus.toast.editing
+[EN] [TR] health.prometheus.toast.executing
+[EN] [TR] health.prometheus.toast.exportFailed
+[EN] [TR] health.prometheus.toast.exported
+[EN] [TR] health.prometheus.toast.exporting
+[EN] [TR] health.prometheus.toast.loadFailed
+[EN] [TR] health.prometheus.toast.queryFailed
+[EN] [TR] health.prometheus.toast.querySuccess
+[EN] [TR] health.prometheus.toast.testFailed
+[EN] [TR] health.prometheus.toast.testingConnection
+[EN] [TR] health.realtimeMonitoringConnected
+[EN] [TR] health.realtimeMonitoringDisconnected
+[EN] [TR] health.refresh
+[EN] [TR] health.serviceStatusUpdated
+[EN] [TR] health.services.actions.clearCache
+[EN] [TR] health.services.actions.details
+[EN] [TR] health.services.actions.healthCheck
+[EN] [TR] health.services.actions.restart
+[EN] [TR] health.services.actions.restartService
+[EN] [TR] health.services.description
+[EN] [TR] health.services.detail.dependencies.description
+[EN] [TR] health.services.detail.dependencies.title
+[EN] [TR] health.services.detail.description
+[EN] [TR] health.services.detail.incidents.description
+[EN] [TR] health.services.detail.incidents.duration
+[EN] [TR] health.services.detail.incidents.impact
+[EN] [TR] health.services.detail.incidents.serviceGradation
+[EN] [TR] health.services.detail.incidents.status
+[EN] [TR] health.services.detail.incidents.title
+[EN] [TR] health.services.detail.metrics.avgLatency
+[EN] [TR] health.services.detail.metrics.currentMetrics
+[EN] [TR] health.services.detail.metrics.errorRate
+[EN] [TR] health.services.detail.metrics.healthScore
+[EN] [TR] health.services.detail.metrics.uptime7d
+[EN] [TR] health.services.detail.serviceActions.description
+[EN] [TR] health.services.detail.serviceActions.title
+[EN] [TR] health.services.detail.title
+[EN] [TR] health.services.detail.type
+[EN] [TR] health.services.detail.version
+[EN] [TR] health.services.empty.filterMessage
+[EN] [TR] health.services.empty.searchMessage
+[EN] [TR] health.services.empty.title
+[EN] [TR] health.services.searchPlaceholder
+[EN] [TR] health.services.servicesCount
+[EN] [TR] health.services.showUnhealthyOnly
+[EN] [TR] health.services.table.actions
+[EN] [TR] health.services.table.errorRate
+[EN] [TR] health.services.table.lastCheck
+[EN] [TR] health.services.table.latency
+[EN] [TR] health.services.table.service
+[EN] [TR] health.services.table.status
+[EN] [TR] health.services.table.uptime
+[EN] [TR] health.services.threshold.critical
+[EN] [TR] health.services.threshold.good
+[EN] [TR] health.services.threshold.warning
+[EN] [TR] health.services.timeFormat.hoursAgo
+[EN] [TR] health.services.timeFormat.justNow
+[EN] [TR] health.services.timeFormat.minutesAgo
+[EN] [TR] health.services.title
+[EN] [TR] health.services.toast.actionFailed
+[EN] [TR] health.services.toast.cacheCleared
+[EN] [TR] health.services.toast.error
+[EN] [TR] health.services.toast.healthCheckCompleted
+[EN] [TR] health.services.toast.performing
+[EN] [TR] health.services.toast.restarted
+[EN] [TR] health.services.toast.success
+[EN] [TR] health.status.critical
+[EN] [TR] health.status.healthy
+[EN] [TR] health.status.unknown
+[EN] [TR] health.status.warning
+[EN] [TR] health.systemUptime
+[EN] [TR] health.tabs.incidents
+[EN] [TR] health.tabs.infrastructure
+[EN] [TR] health.tabs.metrics
+[EN] [TR] health.tabs.overview
+[EN] [TR] health.tabs.services
+[EN] [TR] health.tabs.settings
+[EN] [TR] health.title
+[EN] [TR] health.updated
+[EN] [TR] health.viewReports
+[  ] [TR] healthMonitoring.alertThresholds
+[  ] [TR] healthMonitoring.checkInterval
+[  ] [TR] healthMonitoring.cpuUsage
+[  ] [TR] healthMonitoring.critical
+[  ] [TR] healthMonitoring.dataRetention
+[  ] [TR] healthMonitoring.description
+[  ] [TR] healthMonitoring.disabled
+[  ] [TR] healthMonitoring.diskUsage
+[  ] [TR] healthMonitoring.enableAlerting
+[  ] [TR] healthMonitoring.enableHealthMonitoring
+[  ] [TR] healthMonitoring.enableHealthMonitoringDescription
+[  ] [TR] healthMonitoring.enabled
+[  ] [TR] healthMonitoring.memoryUsage
+[  ] [TR] healthMonitoring.monitoringConfiguration
+[  ] [TR] healthMonitoring.responseTime
+[  ] [TR] healthMonitoring.title
+[  ] [TR] healthMonitoring.units.milliseconds
+[  ] [TR] healthMonitoring.units.percentage
+[  ] [TR] healthMonitoring.warning
+[EN] [TR] nav.accessPolicies
+[EN] [TR] nav.activeSessions
+[EN] [TR] nav.auditLogs
+[EN] [TR] nav.auth
+[EN] [TR] nav.authPolicies
+[EN] [TR] nav.dashboard
+[EN] [TR] nav.health
+[EN] [TR] nav.home
+[EN] [TR] nav.notifications
+[EN] [TR] nav.oauthProviders
+[EN] [TR] nav.roles
+[EN] [TR] nav.settings
+[EN] [TR] nav.userMgmt
+[EN] [TR] nav.users
+[  ] [TR] notificationBell.actionRequired
+[  ] [TR] notificationBell.markAllRead
+[  ] [TR] notificationBell.mockData.backupCompleted
+[  ] [TR] notificationBell.mockData.criticalSecurityAlert
+[  ] [TR] notificationBell.mockData.dailyBackupSuccess
+[  ] [TR] notificationBell.mockData.highCpuUsage
+[  ] [TR] notificationBell.mockData.multipleFailedLogins
+[  ] [TR] notificationBell.mockData.newAdminUserCreated
+[  ] [TR] notificationBell.mockData.systemHealthWarning
+[  ] [TR] notificationBell.mockData.userGrantedAdmin
+[  ] [TR] notificationBell.noNotifications
+[  ] [TR] notificationBell.notifications
+[  ] [TR] notificationBell.settings
+[  ] [TR] notificationBell.toast.allMarkedAsRead
+[  ] [TR] notificationBell.toast.loadFailed
+[  ] [TR] notificationBell.toast.markAllFailed
+[  ] [TR] notificationBell.toast.markReadFailed
+[  ] [TR] notificationBell.toast.markedAsRead
+[  ] [TR] notificationBell.total
+[  ] [TR] notificationBell.unread
+[  ] [TR] notificationBell.viewAll
+[  ] [TR] notificationPreferences.advanced.autoMarkRead
+[  ] [TR] notificationPreferences.advanced.autoMarkReadDescription
+[  ] [TR] notificationPreferences.advanced.description
+[  ] [TR] notificationPreferences.advanced.futureFeature
+[  ] [TR] notificationPreferences.advanced.groupSimilar
+[  ] [TR] notificationPreferences.advanced.groupSimilarDescription
+[  ] [TR] notificationPreferences.advanced.retentionPeriod
+[  ] [TR] notificationPreferences.advanced.retentionPeriodDescription
+[  ] [TR] notificationPreferences.advanced.retentionPlaceholder
+[  ] [TR] notificationPreferences.advanced.title
+[  ] [TR] notificationPreferences.channels.alwaysEnabled
+[  ] [TR] notificationPreferences.channels.description
+[  ] [TR] notificationPreferences.channels.email
+[  ] [TR] notificationPreferences.channels.emailDescription
+[  ] [TR] notificationPreferences.channels.inApp
+[  ] [TR] notificationPreferences.channels.inAppDescription
+[  ] [TR] notificationPreferences.channels.sms
+[  ] [TR] notificationPreferences.channels.smsDescription
+[  ] [TR] notificationPreferences.channels.title
+[  ] [TR] notificationPreferences.description
+[  ] [TR] notificationPreferences.digest.deliveryTime
+[  ] [TR] notificationPreferences.digest.description
+[  ] [TR] notificationPreferences.digest.enable
+[  ] [TR] notificationPreferences.digest.frequencies.daily
+[  ] [TR] notificationPreferences.digest.frequencies.weekly
+[  ] [TR] notificationPreferences.digest.frequency
+[  ] [TR] notificationPreferences.digest.title
+[  ] [TR] notificationPreferences.quietHours.description
+[  ] [TR] notificationPreferences.quietHours.enable
+[  ] [TR] notificationPreferences.quietHours.endTime
+[  ] [TR] notificationPreferences.quietHours.startTime
+[  ] [TR] notificationPreferences.quietHours.timezone
+[  ] [TR] notificationPreferences.quietHours.timezones.centralTime
+[  ] [TR] notificationPreferences.quietHours.timezones.easternTime
+[  ] [TR] notificationPreferences.quietHours.timezones.istanbul
+[  ] [TR] notificationPreferences.quietHours.timezones.london
+[  ] [TR] notificationPreferences.quietHours.timezones.mountainTime
+[  ] [TR] notificationPreferences.quietHours.timezones.pacificTime
+[  ] [TR] notificationPreferences.quietHours.timezones.utc
+[  ] [TR] notificationPreferences.quietHours.title
+[  ] [TR] notificationPreferences.reset
+[  ] [TR] notificationPreferences.saveChanges
+[  ] [TR] notificationPreferences.severity.critical
+[  ] [TR] notificationPreferences.severity.high
+[  ] [TR] notificationPreferences.severity.low
+[  ] [TR] notificationPreferences.severity.medium
+[  ] [TR] notificationPreferences.tabs.advanced
+[  ] [TR] notificationPreferences.tabs.channels
+[  ] [TR] notificationPreferences.tabs.schedule
+[  ] [TR] notificationPreferences.tabs.types
+[  ] [TR] notificationPreferences.title
+[  ] [TR] notificationPreferences.toast.saveError
+[  ] [TR] notificationPreferences.toast.settingsReset
+[  ] [TR] notificationPreferences.toast.settingsSaved
+[  ] [TR] notificationPreferences.toast.testNotification
+[  ] [TR] notificationPreferences.types.app
+[  ] [TR] notificationPreferences.types.deliveryChannels
+[  ] [TR] notificationPreferences.types.description
+[  ] [TR] notificationPreferences.types.email
+[  ] [TR] notificationPreferences.types.minimumSeverity
+[  ] [TR] notificationPreferences.types.onlyEnabledChannels
+[  ] [TR] notificationPreferences.types.risk
+[  ] [TR] notificationPreferences.types.riskDescription
+[  ] [TR] notificationPreferences.types.security
+[  ] [TR] notificationPreferences.types.securityDescription
+[  ] [TR] notificationPreferences.types.sms
+[  ] [TR] notificationPreferences.types.system
+[  ] [TR] notificationPreferences.types.systemDescription
+[  ] [TR] notificationPreferences.types.test
+[  ] [TR] notificationPreferences.types.title
+[  ] [TR] notificationPreferences.types.userActivity
+[  ] [TR] notificationPreferences.types.userActivityDescription
+[  ] [TR] notificationPreferences.unsavedChanges
+[  ] [TR] notificationSettings.email.description
+[  ] [TR] notificationSettings.email.disabled
+[  ] [TR] notificationSettings.email.emailTemplates
+[  ] [TR] notificationSettings.email.enableEmailDescription
+[  ] [TR] notificationSettings.email.enableEmailNotifications
+[  ] [TR] notificationSettings.email.enabled
+[  ] [TR] notificationSettings.email.fromEmail
+[  ] [TR] notificationSettings.email.fromName
+[  ] [TR] notificationSettings.email.loading
+[  ] [TR] notificationSettings.email.password
+[  ] [TR] notificationSettings.email.placeholders.fromEmail
+[  ] [TR] notificationSettings.email.placeholders.fromName
+[  ] [TR] notificationSettings.email.placeholders.password
+[  ] [TR] notificationSettings.email.placeholders.smtpHost
+[  ] [TR] notificationSettings.email.placeholders.smtpPort
+[  ] [TR] notificationSettings.email.placeholders.subjectFor
+[  ] [TR] notificationSettings.email.placeholders.username
+[  ] [TR] notificationSettings.email.sendTestEmail
+[  ] [TR] notificationSettings.email.smtpHost
+[  ] [TR] notificationSettings.email.smtpPort
+[  ] [TR] notificationSettings.email.smtpServerSettings
+[  ] [TR] notificationSettings.email.subjectLine
+[  ] [TR] notificationSettings.email.templates.maintenance
+[  ] [TR] notificationSettings.email.templates.passwordReset
+[  ] [TR] notificationSettings.email.templates.securityAlert
+[  ] [TR] notificationSettings.email.templates.systemAlert
+[  ] [TR] notificationSettings.email.templates.welcome
+[  ] [TR] notificationSettings.email.title
+[  ] [TR] notificationSettings.email.useSslTls
+[  ] [TR] notificationSettings.email.username
+[  ] [TR] notificationSettings.integrations.configureHere
+[  ] [TR] notificationSettings.integrations.description
+[  ] [TR] notificationSettings.integrations.title
+[  ] [TR] notificationSettings.preferences.description
+[  ] [TR] notificationSettings.preferences.endTime
+[  ] [TR] notificationSettings.preferences.quietHours
+[  ] [TR] notificationSettings.preferences.quietHoursDescription
+[  ] [TR] notificationSettings.preferences.startTime
+[  ] [TR] notificationSettings.preferences.title
+[  ] [TR] notificationSettings.push.comingSoon
+[  ] [TR] notificationSettings.push.comingSoonDescription
+[  ] [TR] notificationSettings.push.description
+[  ] [TR] notificationSettings.push.title
+[  ] [TR] notificationSettings.sms.description
+[  ] [TR] notificationSettings.sms.enterprise
+[  ] [TR] notificationSettings.sms.enterpriseDescription
+[  ] [TR] notificationSettings.sms.title
+[  ] [TR] notificationSettings.system.badgeNotifications
+[  ] [TR] notificationSettings.system.browserNotifications
+[  ] [TR] notificationSettings.system.description
+[  ] [TR] notificationSettings.system.desktopNotifications
+[  ] [TR] notificationSettings.system.soundAlerts
+[  ] [TR] notificationSettings.system.title
+[  ] [TR] notificationSettings.tabs.email
+[  ] [TR] notificationSettings.tabs.integrations
+[  ] [TR] notificationSettings.tabs.preferences
+[  ] [TR] notificationSettings.tabs.push
+[  ] [TR] notificationSettings.tabs.sms
+[  ] [TR] notificationSettings.tabs.system
+[  ] [TR] notificationSettings.toast.testEmailFailed
+[  ] [TR] notificationSettings.toast.testEmailFailedDescription
+[  ] [TR] notificationSettings.toast.testEmailSent
+[  ] [TR] notificationSettings.toast.testEmailSentDescription
+[EN] [TR] notifications.all
+[EN] [TR] notifications.allMarkedAsRead
+[EN] [TR] notifications.bulkActionCompleted
+[EN] [TR] notifications.count
+[EN] [TR] notifications.deleteAll
+[EN] [TR] notifications.description
+[EN] [TR] notifications.export
+[EN] [TR] notifications.exportWouldStart
+[EN] [TR] notifications.failedToLoad
+[EN] [TR] notifications.failedToMarkAsRead
+[EN] [TR] notifications.fromLastWeek
+[EN] [TR] notifications.lastUpdated
+[EN] [TR] notifications.loading
+[EN] [TR] notifications.markAllRead
+[EN] [TR] notifications.markAsRead
+[EN] [TR] notifications.noNotifications
+[EN] [TR] notifications.refresh
+[EN] [TR] notifications.requireImmediateAttention
+[EN] [TR] notifications.reviewSecurityTab
+[EN] [TR] notifications.riskAndSafety
+[EN] [TR] notifications.security
+[EN] [TR] notifications.securityAlerts
+[EN] [TR] notifications.settings
+[EN] [TR] notifications.system
+[EN] [TR] notifications.systemHealth
+[EN] [TR] notifications.thisWeek
+[EN] [TR] notifications.totalNotifications
+[EN] [TR] notifications.types.info
+[EN] [TR] notifications.types.security
+[EN] [TR] notifications.types.system
+[EN] [TR] notifications.types.user
+[EN] [TR] notifications.unread
+[EN] [TR] notifications.unreadRate
+[EN] [TR] notifications.userActivity
+[EN] [TR] profile.activity.action
+[EN] [TR] profile.activity.activities.login_failed
+[EN] [TR] profile.activity.activities.login_success
+[EN] [TR] profile.activity.activities.logout
+[EN] [TR] profile.activity.activities.mfa_disabled
+[EN] [TR] profile.activity.activities.mfa_enabled
+[EN] [TR] profile.activity.activities.notification_preferences_updated
+[EN] [TR] profile.activity.activities.password_changed
+[EN] [TR] profile.activity.activities.profile_updated
+[EN] [TR] profile.activity.activities.session_revoked
+[EN] [TR] profile.activity.activities.unknown
+[EN] [TR] profile.activity.daysAgo
+[EN] [TR] profile.activity.device
+[EN] [TR] profile.activity.export
+[EN] [TR] profile.activity.exportError
+[EN] [TR] profile.activity.exportSuccess
+[EN] [TR] profile.activity.exporting
+[EN] [TR] profile.activity.hoursAgo
+[EN] [TR] profile.activity.ipAddress
+[EN] [TR] profile.activity.loadError
+[EN] [TR] profile.activity.minutesAgo
+[EN] [TR] profile.activity.noActivity
+[EN] [TR] profile.activity.retry
+[EN] [TR] profile.activity.timestamp
+[EN] [TR] profile.activity.title
+[EN] [TR] profile.activity.types.login
+[EN] [TR] profile.activity.types.logout
+[EN] [TR] profile.activity.types.mfa_disabled
+[EN] [TR] profile.activity.types.mfa_enabled
+[EN] [TR] profile.activity.types.password_change
+[EN] [TR] profile.activity.types.profile_updated
+[EN] [TR] profile.activity.types.session_revoked
+[EN] [TR] profile.avatar.chooseFile
+[EN] [TR] profile.avatar.fileSizeError
+[EN] [TR] profile.avatar.fileTypeError
+[EN] [TR] profile.avatar.update
+[EN] [TR] profile.avatar.uploadDescription
+[EN] [TR] profile.avatar.uploadError
+[EN] [TR] profile.avatar.uploadSuccess
+[EN] [TR] profile.dangerZone.deactivateAccount.button
+[EN] [TR] profile.dangerZone.deactivateAccount.cancel
+[EN] [TR] profile.dangerZone.deactivateAccount.confirmButton
+[EN] [TR] profile.dangerZone.deactivateAccount.confirmationCode
+[EN] [TR] profile.dangerZone.deactivateAccount.confirmationError
+[EN] [TR] profile.dangerZone.deactivateAccount.confirmationLabel
+[EN] [TR] profile.dangerZone.deactivateAccount.confirmationPlaceholder
+[EN] [TR] profile.dangerZone.deactivateAccount.deactivating
+[EN] [TR] profile.dangerZone.deactivateAccount.description
+[EN] [TR] profile.dangerZone.deactivateAccount.dialogDescription
+[EN] [TR] profile.dangerZone.deactivateAccount.dialogTitle
+[EN] [TR] profile.dangerZone.deactivateAccount.errorMessage
+[EN] [TR] profile.dangerZone.deactivateAccount.info1
+[EN] [TR] profile.dangerZone.deactivateAccount.info2
+[EN] [TR] profile.dangerZone.deactivateAccount.info3
+[EN] [TR] profile.dangerZone.deactivateAccount.info4
+[EN] [TR] profile.dangerZone.deactivateAccount.restrictedMessage
+[EN] [TR] profile.dangerZone.deactivateAccount.successMessage
+[EN] [TR] profile.dangerZone.deactivateAccount.title
+[EN] [TR] profile.dangerZone.deactivateAccount.warning1
+[EN] [TR] profile.dangerZone.deactivateAccount.warning2
+[EN] [TR] profile.dangerZone.deactivateAccount.warning3
+[EN] [TR] profile.dangerZone.deactivateAccount.warning4
+[EN] [TR] profile.dangerZone.deactivateAccount.warning5
+[EN] [TR] profile.dangerZone.deactivateAccount.warningTitle
+[EN] [TR] profile.dangerZone.irreversibleWarning
+[EN] [TR] profile.dangerZone.revokeAllSessions.action1
+[EN] [TR] profile.dangerZone.revokeAllSessions.action2
+[EN] [TR] profile.dangerZone.revokeAllSessions.action3
+[EN] [TR] profile.dangerZone.revokeAllSessions.action4
+[EN] [TR] profile.dangerZone.revokeAllSessions.actionWillTitle
+[EN] [TR] profile.dangerZone.revokeAllSessions.button
+[EN] [TR] profile.dangerZone.revokeAllSessions.cancel
+[EN] [TR] profile.dangerZone.revokeAllSessions.confirmButton
+[EN] [TR] profile.dangerZone.revokeAllSessions.description
+[EN] [TR] profile.dangerZone.revokeAllSessions.dialogDescription
+[EN] [TR] profile.dangerZone.revokeAllSessions.dialogTitle
+[EN] [TR] profile.dangerZone.revokeAllSessions.errorMessage
+[EN] [TR] profile.dangerZone.revokeAllSessions.info1
+[EN] [TR] profile.dangerZone.revokeAllSessions.info2
+[EN] [TR] profile.dangerZone.revokeAllSessions.info3
+[EN] [TR] profile.dangerZone.revokeAllSessions.revoking
+[EN] [TR] profile.dangerZone.revokeAllSessions.successMessage
+[EN] [TR] profile.dangerZone.revokeAllSessions.title
+[EN] [TR] profile.dangerZone.title
+[EN] [TR] profile.department
+[EN] [TR] profile.email
+[EN] [TR] profile.firstName
+[EN] [TR] profile.lastLogin
+[EN] [TR] profile.lastName
+[EN] [TR] profile.mfa.google.connected
+[EN] [TR] profile.mfa.google.description
+[EN] [TR] profile.mfa.google.disabledByAdmin
+[EN] [TR] profile.mfa.google.disconnected
+[EN] [TR] profile.mfa.google.title
+[EN] [TR] profile.mfa.linkedAccounts
+[EN] [TR] profile.mfa.mfaRequired
+[EN] [TR] profile.mfa.microsoft.connected
+[EN] [TR] profile.mfa.microsoft.description
+[EN] [TR] profile.mfa.microsoft.disconnected
+[EN] [TR] profile.mfa.microsoft.title
+[EN] [TR] profile.mfa.multiFactorAuth
+[EN] [TR] profile.mfa.providerConnectError
+[EN] [TR] profile.mfa.providerConnected
+[EN] [TR] profile.mfa.providerDisconnectError
+[EN] [TR] profile.mfa.providerDisconnected
+[EN] [TR] profile.mfa.title
+[EN] [TR] profile.mfa.totp.cannotDisable
+[EN] [TR] profile.mfa.totp.description
+[EN] [TR] profile.mfa.totp.disabled
+[EN] [TR] profile.mfa.totp.disabledSuccess
+[EN] [TR] profile.mfa.totp.enableTotp
+[EN] [TR] profile.mfa.totp.enabled
+[EN] [TR] profile.mfa.totp.enabledSuccess
+[EN] [TR] profile.mfa.totp.enterValidCode
+[EN] [TR] profile.mfa.totp.instructions
+[EN] [TR] profile.mfa.totp.invalidCode
+[EN] [TR] profile.mfa.totp.qrCodePlaceholder
+[EN] [TR] profile.mfa.totp.setup
+[EN] [TR] profile.mfa.totp.setupDescription
+[EN] [TR] profile.mfa.totp.step1
+[EN] [TR] profile.mfa.totp.step2
+[EN] [TR] profile.mfa.totp.step3
+[EN] [TR] profile.mfa.totp.step4
+[EN] [TR] profile.mfa.totp.title
+[EN] [TR] profile.mfa.totp.verificationCode
+[EN] [TR] profile.mfa.totp.verifying
+[EN] [TR] profile.mfa.webauthn.androidBiometric
+[EN] [TR] profile.mfa.webauthn.browserCompatibility
+[EN] [TR] profile.mfa.webauthn.description
+[EN] [TR] profile.mfa.webauthn.disabledSuccess
+[EN] [TR] profile.mfa.webauthn.enabledSuccess
+[EN] [TR] profile.mfa.webauthn.faceId
+[EN] [TR] profile.mfa.webauthn.hardwareKeys
+[EN] [TR] profile.mfa.webauthn.notSupported
+[EN] [TR] profile.mfa.webauthn.settingUp
+[EN] [TR] profile.mfa.webauthn.setup
+[EN] [TR] profile.mfa.webauthn.setupDescription
+[EN] [TR] profile.mfa.webauthn.setupError
+[EN] [TR] profile.mfa.webauthn.setupWebauthn
+[EN] [TR] profile.mfa.webauthn.supportedMethods
+[EN] [TR] profile.mfa.webauthn.title
+[EN] [TR] profile.mfa.webauthn.touchId
+[EN] [TR] profile.mfa.webauthn.windowsHello
+[EN] [TR] profile.personalInfo
+[EN] [TR] profile.phone
+[EN] [TR] profile.preferences.appearance
+[EN] [TR] profile.preferences.dark
+[EN] [TR] profile.preferences.language
+[EN] [TR] profile.preferences.light
+[EN] [TR] profile.preferences.notificationUpdateError
+[EN] [TR] profile.preferences.notificationUpdateSuccess
+[EN] [TR] profile.preferences.notifications.app
+[EN] [TR] profile.preferences.notifications.appDescription
+[EN] [TR] profile.preferences.notifications.email
+[EN] [TR] profile.preferences.notifications.emailDescription
+[EN] [TR] profile.preferences.notifications.sms
+[EN] [TR] profile.preferences.notifications.smsDescription
+[EN] [TR] profile.preferences.notifications.title
+[EN] [TR] profile.preferences.preferenceUpdateError
+[EN] [TR] profile.preferences.preferenceUpdateSuccess
+[EN] [TR] profile.preferences.savingPreferences
+[EN] [TR] profile.preferences.selectLanguage
+[EN] [TR] profile.preferences.system
+[EN] [TR] profile.preferences.systemThemeDescription
+[EN] [TR] profile.preferences.theme
+[EN] [TR] profile.preferences.timeZone
+[EN] [TR] profile.preferences.timezone
+[EN] [TR] profile.preferences.title
+[EN] [TR] profile.preferences.updateError
+[EN] [TR] profile.preferences.updateSuccess
+[EN] [TR] profile.role
+[EN] [TR] profile.security.changePassword
+[EN] [TR] profile.security.changePasswordDialog.cancel
+[EN] [TR] profile.security.changePasswordDialog.description
+[EN] [TR] profile.security.changePasswordDialog.failed
+[EN] [TR] profile.security.changePasswordDialog.info1
+[EN] [TR] profile.security.changePasswordDialog.info2
+[EN] [TR] profile.security.changePasswordDialog.info3
+[EN] [TR] profile.security.changePasswordDialog.info4
+[EN] [TR] profile.security.changePasswordDialog.openSecurePasswordChange
+[EN] [TR] profile.security.changePasswordDialog.opening
+[EN] [TR] profile.security.changePasswordDialog.redirecting
+[EN] [TR] profile.security.changePasswordDialog.securityInfo
+[EN] [TR] profile.security.changePasswordDialog.title
+[EN] [TR] profile.security.confirmPassword
+[EN] [TR] profile.security.currentPassword
+[EN] [TR] profile.security.managePasswordSecurely
+[EN] [TR] profile.security.newPassword
+[EN] [TR] profile.security.passwordChangeError
+[EN] [TR] profile.security.passwordChanged
+[EN] [TR] profile.security.passwordManagement
+[EN] [TR] profile.security.passwordRequirements
+[EN] [TR] profile.security.passwordSecurityTips
+[EN] [TR] profile.security.securityTitle
+[EN] [TR] profile.security.tip1
+[EN] [TR] profile.security.tip2
+[EN] [TR] profile.security.tip3
+[EN] [TR] profile.security.tip4
+[EN] [TR] profile.security.tip5
+[EN] [TR] profile.security.title
+[EN] [TR] profile.sessions.activeNow
+[EN] [TR] profile.sessions.allOtherSessionsRevoked
+[EN] [TR] profile.sessions.allSessionsTerminated
+[EN] [TR] profile.sessions.cancel
+[EN] [TR] profile.sessions.cannotRevokeCurrent
+[EN] [TR] profile.sessions.current
+[EN] [TR] profile.sessions.currentSession
+[EN] [TR] profile.sessions.daysAgo
+[EN] [TR] profile.sessions.device
+[EN] [TR] profile.sessions.hoursAgo
+[EN] [TR] profile.sessions.lastActivity
+[EN] [TR] profile.sessions.loadError
+[EN] [TR] profile.sessions.location
+[EN] [TR] profile.sessions.minutesAgo
+[EN] [TR] profile.sessions.noActiveSessions
+[EN] [TR] profile.sessions.otherDevices
+[EN] [TR] profile.sessions.retry
+[EN] [TR] profile.sessions.reviewAndRevoke
+[EN] [TR] profile.sessions.revoke
+[EN] [TR] profile.sessions.revokeAll
+[EN] [TR] profile.sessions.revokeAllDescription
+[EN] [TR] profile.sessions.revokeAllError
+[EN] [TR] profile.sessions.revokeAllSessions
+[EN] [TR] profile.sessions.revokeAllTitle
+[EN] [TR] profile.sessions.revokeError
+[EN] [TR] profile.sessions.revokeRecommended
+[EN] [TR] profile.sessions.revoking
+[EN] [TR] profile.sessions.sessionRevoked
+[EN] [TR] profile.sessions.sessionTerminated
+[EN] [TR] profile.sessions.suspicious
+[EN] [TR] profile.sessions.suspiciousDetected
+[EN] [TR] profile.sessions.suspiciousPlural
+[EN] [TR] profile.sessions.terminate
+[EN] [TR] profile.sessions.terminateAll
+[EN] [TR] profile.sessions.terminateError
+[EN] [TR] profile.sessions.title
+[EN] [TR] profile.sessions.totalSessions
+[EN] [TR] profile.sessions.unknownDevice
+[EN] [TR] profile.sessions.unknownLocation
+[EN] [TR] profile.title
+[EN] [TR] profile.userInfo.department
+[EN] [TR] profile.userInfo.departmentPlaceholder
+[EN] [TR] profile.userInfo.departments.Finance
+[EN] [TR] profile.userInfo.departments.Human Resources
+[EN] [TR] profile.userInfo.departments.IT Security
+[EN] [TR] profile.userInfo.departments.Information Technology
+[EN] [TR] profile.userInfo.departments.Legal
+[EN] [TR] profile.userInfo.departments.Marketing
+[EN] [TR] profile.userInfo.departments.Operations
+[EN] [TR] profile.userInfo.departments.Sales
+[EN] [TR] profile.userInfo.email
+[EN] [TR] profile.userInfo.emailChangeNotice
+[EN] [TR] profile.userInfo.firstName
+[EN] [TR] profile.userInfo.firstNamePlaceholder
+[EN] [TR] profile.userInfo.lastName
+[EN] [TR] profile.userInfo.lastNamePlaceholder
+[EN] [TR] profile.userInfo.phone
+[EN] [TR] profile.userInfo.required
+[EN] [TR] profile.userInfo.title
+[EN] [TR] profile.userInfo.updateError
+[EN] [TR] profile.userInfo.updateSuccess
+[EN] [TR] profile.userInfo.username
+[EN] [TR] profile.userInfo.usernamePlaceholder
+[EN] [TR] profile.username
+[EN] [TR] roles.addRole
+[EN] [TR] roles.deleteRole
+[EN] [TR] roles.description
+[EN] [TR] roles.editRole
+[EN] [TR] roles.permissions
+[EN] [TR] roles.roleDescription
+[EN] [TR] roles.roleName
+[EN] [TR] roles.userCount
+[  ] [TR] security.accountSecurity.description
+[  ] [TR] security.accountSecurity.enableAccountVerification
+[  ] [TR] security.accountSecurity.enableCaptcha
+[  ] [TR] security.accountSecurity.lockoutDuration
+[  ] [TR] security.accountSecurity.maxLoginAttempts
+[  ] [TR] security.accountSecurity.title
+[  ] [TR] security.apiSecurity.burstLimit
+[  ] [TR] security.apiSecurity.description
+[  ] [TR] security.apiSecurity.enableRateLimiting
+[  ] [TR] security.apiSecurity.generateNew
+[  ] [TR] security.apiSecurity.jwtExpiration
+[  ] [TR] security.apiSecurity.jwtSecretDescription
+[  ] [TR] security.apiSecurity.jwtSecretGenerated
+[  ] [TR] security.apiSecurity.jwtSecretKey
+[  ] [TR] security.apiSecurity.jwtSecretPlaceholder
+[  ] [TR] security.apiSecurity.newJwtSecretGenerated
+[  ] [TR] security.apiSecurity.rateLimitingDescription
+[  ] [TR] security.apiSecurity.requestsPerMinute
+[  ] [TR] security.apiSecurity.title
+[  ] [TR] security.auditLogging.description
+[  ] [TR] security.auditLogging.logFailedLogins
+[  ] [TR] security.auditLogging.logPasswordChanges
+[  ] [TR] security.auditLogging.logPermissionChanges
+[  ] [TR] security.auditLogging.logRetention
+[  ] [TR] security.auditLogging.logRetentionDescription
+[  ] [TR] security.auditLogging.logSuccessfulLogins
+[  ] [TR] security.auditLogging.title
+[  ] [TR] security.corsConfiguration.allowCredentials
+[  ] [TR] security.corsConfiguration.allowedOrigins
+[  ] [TR] security.corsConfiguration.description
+[  ] [TR] security.corsConfiguration.enableCors
+[  ] [TR] security.corsConfiguration.title
+[  ] [TR] security.keycloak.adminPassword
+[  ] [TR] security.keycloak.adminPasswordPlaceholder
+[  ] [TR] security.keycloak.adminUsername
+[  ] [TR] security.keycloak.clientId
+[  ] [TR] security.keycloak.clientSecret
+[  ] [TR] security.keycloak.clientSecretPlaceholder
+[  ] [TR] security.keycloak.connectionError
+[  ] [TR] security.keycloak.connectionFailed
+[  ] [TR] security.keycloak.connectionSuccessful
+[  ] [TR] security.keycloak.connectionTest
+[  ] [TR] security.keycloak.connectionTestDescription
+[  ] [TR] security.keycloak.connectionUnknown
+[  ] [TR] security.keycloak.couldNotConnect
+[  ] [TR] security.keycloak.description
+[  ] [TR] security.keycloak.disabled
+[  ] [TR] security.keycloak.enableIntegration
+[  ] [TR] security.keycloak.enableIntegrationDescription
+[  ] [TR] security.keycloak.enabled
+[  ] [TR] security.keycloak.errorOccurred
+[  ] [TR] security.keycloak.publicClient
+[  ] [TR] security.keycloak.realm
+[  ] [TR] security.keycloak.requireSsl
+[  ] [TR] security.keycloak.serverUrl
+[  ] [TR] security.keycloak.successfullyConnected
+[  ] [TR] security.keycloak.testConnection
+[  ] [TR] security.keycloak.title
+[  ] [TR] security.mfa.authenticationMethods
+[  ] [TR] security.mfa.backupCodes
+[  ] [TR] security.mfa.backupDescription
+[  ] [TR] security.mfa.description
+[  ] [TR] security.mfa.emailDescription
+[  ] [TR] security.mfa.emailVerification
+[  ] [TR] security.mfa.enableMfa
+[  ] [TR] security.mfa.enableMfaDescription
+[  ] [TR] security.mfa.requireMfaDescription
+[  ] [TR] security.mfa.requireMfaForAllUsers
+[  ] [TR] security.mfa.smsDescription
+[  ] [TR] security.mfa.smsVerification
+[  ] [TR] security.mfa.title
+[  ] [TR] security.mfa.totpAuthenticator
+[  ] [TR] security.mfa.totpDescription
+[  ] [TR] security.passwordPolicy.description
+[  ] [TR] security.passwordPolicy.historyCount
+[  ] [TR] security.passwordPolicy.historyCountDescription
+[  ] [TR] security.passwordPolicy.maxAge
+[  ] [TR] security.passwordPolicy.minLength
+[  ] [TR] security.passwordPolicy.requireLowercase
+[  ] [TR] security.passwordPolicy.requireNumbers
+[  ] [TR] security.passwordPolicy.requireSpecialChars
+[  ] [TR] security.passwordPolicy.requireUppercase
+[  ] [TR] security.passwordPolicy.title
+[  ] [TR] security.sessionManagement.defaultDuration
+[  ] [TR] security.sessionManagement.description
+[  ] [TR] security.sessionManagement.enableRememberMe
+[  ] [TR] security.sessionManagement.enableRememberMeDescription
+[  ] [TR] security.sessionManagement.maxConcurrentSessions
+[  ] [TR] security.sessionManagement.rememberMeTimeout
+[  ] [TR] security.sessionManagement.sessionTimeout
+[  ] [TR] security.sessionManagement.title
+[  ] [TR] security.tabs.audit
+[  ] [TR] security.tabs.authentication
+[  ] [TR] security.tabs.keycloak
+[  ] [TR] security.tabs.mfa
+[  ] [TR] security.tabs.security
+[  ] [TR] security.title
+[  ] [TR] security.toast.connectionError
+[  ] [TR] security.toast.connectionFailed
+[  ] [TR] security.toast.connectionSuccessful
+[  ] [TR] security.toast.jwtSecretGenerated
+[EN] [TR] settings.animationsEnabled
+[EN] [TR] settings.audit
+[EN] [TR] settings.autoRefreshInterval
+[EN] [TR] settings.compactMode
+[EN] [TR] settings.currency
+[EN] [TR] settings.data
+[EN] [TR] settings.dateFormat
+[EN] [TR] settings.defaultLanguage
+[EN] [TR] settings.defaultLanguageDescription
+[EN] [TR] settings.description
+[EN] [TR] settings.featureFlags.beta
+[EN] [TR] settings.featureFlags.description
+[EN] [TR] settings.featureFlags.title
+[EN] [TR] settings.general
+[EN] [TR] settings.integrations
+[EN] [TR] settings.itemsPerPage
+[EN] [TR] settings.language
+[EN] [TR] settings.languageChanged
+[EN] [TR] settings.monitoring
+[EN] [TR] settings.notifications
+[EN] [TR] settings.performance.description
+[EN] [TR] settings.performance.title
+[EN] [TR] settings.policies
+[EN] [TR] settings.reset.resetDescription
+[EN] [TR] settings.reset.resetToDefaults
+[EN] [TR] settings.reset.title
+[EN] [TR] settings.reset.warning
+[EN] [TR] settings.security
+[EN] [TR] settings.selectLanguage
+[EN] [TR] settings.systemDescription
+[EN] [TR] settings.systemName
+[EN] [TR] settings.theme
+[EN] [TR] settings.timezone
+[EN] [TR] settings.title
+[EN] [TR] users.activate
+[EN] [TR] users.active
+[EN] [TR] users.activeUsers
+[EN] [TR] users.admin
+[EN] [TR] users.allRoles
+[EN] [TR] users.allStatuses
+[EN] [TR] users.deactivate
+[EN] [TR] users.delete
+[EN] [TR] users.description
+[EN] [TR] users.dialog.accountInformation
+[EN] [TR] users.dialog.accountStatus.active
+[EN] [TR] users.dialog.accountStatus.description
+[EN] [TR] users.dialog.accountStatus.title
+[EN] [TR] users.dialog.cancel
+[EN] [TR] users.dialog.contactInformation
+[EN] [TR] users.dialog.create
+[EN] [TR] users.dialog.createDescription
+[EN] [TR] users.dialog.createError
+[EN] [TR] users.dialog.createSuccess
+[EN] [TR] users.dialog.createTitle
+[EN] [TR] users.dialog.creating
+[EN] [TR] users.dialog.departments.engineering
+[EN] [TR] users.dialog.departments.finance
+[EN] [TR] users.dialog.departments.human_resources
+[EN] [TR] users.dialog.departments.it_department
+[EN] [TR] users.dialog.departments.marketing
+[EN] [TR] users.dialog.departments.operations
+[EN] [TR] users.dialog.departments.security_department
+[EN] [TR] users.dialog.departments.support
+[EN] [TR] users.dialog.editDescription
+[EN] [TR] users.dialog.editTitle
+[EN] [TR] users.dialog.fields.department
+[EN] [TR] users.dialog.fields.email
+[EN] [TR] users.dialog.fields.firstName
+[EN] [TR] users.dialog.fields.lastName
+[EN] [TR] users.dialog.fields.phone
+[EN] [TR] users.dialog.fields.username
+[EN] [TR] users.dialog.personalInformation
+[EN] [TR] users.dialog.placeholders.department
+[EN] [TR] users.dialog.placeholders.email
+[EN] [TR] users.dialog.placeholders.firstName
+[EN] [TR] users.dialog.placeholders.lastName
+[EN] [TR] users.dialog.placeholders.phone
+[EN] [TR] users.dialog.placeholders.username
+[EN] [TR] users.dialog.preview.active
+[EN] [TR] users.dialog.preview.inactive
+[EN] [TR] users.dialog.preview.title
+[EN] [TR] users.dialog.roles.selected
+[EN] [TR] users.dialog.roles.title
+[EN] [TR] users.dialog.update
+[EN] [TR] users.dialog.updateError
+[EN] [TR] users.dialog.updateSuccess
+[EN] [TR] users.dialog.updating
+[EN] [TR] users.dialog.validation.departmentRequired
+[EN] [TR] users.dialog.validation.emailRequired
+[EN] [TR] users.dialog.validation.emailValid
+[EN] [TR] users.dialog.validation.firstNameLetters
+[EN] [TR] users.dialog.validation.firstNameMin
+[EN] [TR] users.dialog.validation.firstNameRequired
+[EN] [TR] users.dialog.validation.fixErrors
+[EN] [TR] users.dialog.validation.lastNameLetters
+[EN] [TR] users.dialog.validation.lastNameMin
+[EN] [TR] users.dialog.validation.lastNameRequired
+[EN] [TR] users.dialog.validation.phoneRequired
+[EN] [TR] users.dialog.validation.phoneValid
+[EN] [TR] users.dialog.validation.rolesRequired
+[EN] [TR] users.dialog.validation.usernameFormat
+[EN] [TR] users.dialog.validation.usernameMin
+[EN] [TR] users.dialog.validation.usernameRequired
+[EN] [TR] users.edit
+[EN] [TR] users.inactive
+[EN] [TR] users.inactiveUsers
+[EN] [TR] users.lastLogin
+[EN] [TR] users.loginCount
+[EN] [TR] users.manageRoles
+[EN] [TR] users.manager
+[EN] [TR] users.neverLoggedIn
+[EN] [TR] users.newUser
+[EN] [TR] users.next
+[EN] [TR] users.noUsersFound
+[EN] [TR] users.noUsersMessage
+[EN] [TR] users.previous
+[EN] [TR] users.registrationDate
+[EN] [TR] users.role
+[EN] [TR] users.roles
+[EN] [TR] users.search
+[EN] [TR] users.selected
+[EN] [TR] users.showingResults
+[EN] [TR] users.status
+[EN] [TR] users.title
+[EN] [TR] users.totalUsers
+[EN] [TR] users.user
+[EN] [TR] users.viewer
+
+USED KEYS (for verification)
+==============================
+[❌] [❌] ,
+[❌] [❌] -
+[❌] [❌] .
+[❌] [❌] ../../messages/${defaultLocale}.json
+[❌] [❌] ../../messages/${locale}.json
+[❌] [❌] ../../messages/${newLocale}.json
+[❌] [❌] /
+[❌] [❌] /admin/audit-logs
+[❌] [❌] /admin/settings
+[❌] [❌] /admin/settings/${key}
+[❌] [❌] /admin/social-settings
+[❌] [❌] /admin/social-settings/${provider}
+[❌] [❌] /auth/check
+[❌] [❌] /auth/login
+[❌] [❌] /auth/logout
+[❌] [❌] /auth/logout-all
+[❌] [❌] /auth/profile
+[❌] [❌] /auth/sessions
+[❌] [❌] /auth/sessions/${sessionId}/terminate
+[❌] [❌] /auth/social-providers
+[❌] [❌] /health
+[❌] [❌] /safety/records
+[❌] [❌] /safety/records/${id}
+[❌] [❌] /safety/training
+[❌] [❌] /users
+[❌] [❌] /users/${id}
+[❌] [❌] :
+[❌] [❌] @
+[❌] [❌] DEACTIVATE
+[❌] [❌] NEXT_LOCALE
+[❌] [❌] T
+[❌] [❌] Viewing details for ${logId}
+[❌] [❌] _
+[❌] [❌] a
+[❌] [❌] accessPolicies
+[❌] [❌] accessPolicyConfiguration
+[❌] [❌] accountInformation
+[❌] [❌] accountSecurity.description
+[❌] [❌] accountSecurity.enableAccountVerification
+[❌] [❌] accountSecurity.enableCaptcha
+[❌] [❌] accountSecurity.lockoutDuration
+[❌] [❌] accountSecurity.maxLoginAttempts
+[❌] [❌] accountSecurity.title
+[❌] [❌] accountStatus.active
+[❌] [❌] accountStatus.description
+[❌] [❌] accountStatus.title
+[❌] [❌] acknowledged
+[❌] [❌] actionRequired
+[❌] [❌] actionTypes.create
+[❌] [❌] actionTypes.delete
+[❌] [❌] actionTypes.disable
+[❌] [❌] actionTypes.enable
+[❌] [❌] actionTypes.enforce
+[❌] [❌] actionTypes.simulate
+[❌] [❌] actionTypes.update
+[❌] [❌] actions.clearHistory
+[❌] [❌] actions.details
+[❌] [❌] actions.export
+[❌] [❌] actions.exportCsv
+[❌] [❌] actions.exportReport
+[❌] [❌] actions.newIncident
+[❌] [❌] actions.runSimulation
+[❌] [❌] activate
+[❌] [❌] active
+[❌] [❌] activeNow
+[❌] [❌] activePolicies
+[❌] [❌] activeSessions
+[❌] [❌] activeUsers
+[❌] [❌] activities.login_failed
+[❌] [❌] activities.login_success
+[❌] [❌] activities.logout
+[❌] [❌] activities.mfa_disabled
+[❌] [❌] activities.mfa_enabled
+[❌] [❌] activities.notification_preferences_updated
+[❌] [❌] activities.password_changed
+[❌] [❌] activities.profile_updated
+[❌] [❌] activities.session_revoked
+[❌] [❌] activities.unknown
+[❌] [❌] actorTypes.api
+[❌] [❌] actorTypes.system
+[❌] [❌] actorTypes.user
+[❌] [❌] addPolicy
+[❌] [❌] admin
+[❌] [❌] adminRoles
+[❌] [❌] advanced.autoMarkRead
+[❌] [❌] advanced.autoMarkReadDescription
+[❌] [❌] advanced.description
+[❌] [❌] advanced.futureFeature
+[❌] [❌] advanced.groupSimilar
+[❌] [❌] advanced.groupSimilarDescription
+[❌] [❌] advanced.retentionPeriod
+[❌] [❌] advanced.retentionPeriodDescription
+[❌] [❌] advanced.retentionPlaceholder
+[❌] [❌] advanced.title
+[❌] [❌] alertThresholds
+[❌] [❌] alerts.configurationChanges
+[❌] [❌] alerts.dataExfiltration
+[❌] [❌] alerts.failedLoginAttempts
+[❌] [❌] alerts.suspiciousActivity
+[❌] [❌] alerts.thresholdBreaches
+[❌] [❌] alerts.title
+[❌] [❌] all
+[❌] [❌] allMarkedAsRead
+[❌] [❌] allOtherSessionsRevoked
+[❌] [❌] allRoles
+[❌] [❌] allStatuses
+[❌] [❌] analytics
+[❌] [❌] animationsEnabled
+[❌] [❌] anomalies
+[❌] [❌] apiSecurity.burstLimit
+[❌] [❌] apiSecurity.description
+[❌] [❌] apiSecurity.enableRateLimiting
+[❌] [❌] apiSecurity.generateNew
+[❌] [❌] apiSecurity.jwtExpiration
+[❌] [❌] apiSecurity.jwtSecretDescription
+[❌] [❌] apiSecurity.jwtSecretKey
+[❌] [❌] apiSecurity.jwtSecretPlaceholder
+[❌] [❌] apiSecurity.newJwtSecretGenerated
+[❌] [❌] apiSecurity.rateLimitingDescription
+[❌] [❌] apiSecurity.requestsPerMinute
+[❌] [❌] apiSecurity.title
+[❌] [❌] appearance
+[❌] [❌] applicationsProtected
+[❌] [❌] audit
+[❌] [❌] auditLog
+[❌] [❌] auditLogging.description
+[❌] [❌] auditLogging.logFailedLogins
+[❌] [❌] auditLogging.logPasswordChanges
+[❌] [❌] auditLogging.logPermissionChanges
+[❌] [❌] auditLogging.logRetention
+[❌] [❌] auditLogging.logRetentionDescription
+[❌] [❌] auditLogging.logSuccessfulLogins
+[❌] [❌] auditLogging.title
+[❌] [❌] auditLogs
+[❌] [❌] auth
+[❌] [❌] authPolicies
+[❌] [❌] autoRefresh
+[❌] [❌] autoRefreshInterval
+[❌] [❌] avatar.chooseFile
+[❌] [❌] avatar.fileSizeError
+[❌] [❌] avatar.fileTypeError
+[❌] [❌] avatar.update
+[❌] [❌] avatar.uploadDescription
+[❌] [❌] avatar.uploadError
+[❌] [❌] avatar.uploadSuccess
+[❌] [❌] averagePermissions
+[❌] [❌] backup.backupFrequency
+[❌] [❌] backup.description
+[❌] [❌] backup.enableAutomatedBackups
+[❌] [❌] backup.enableAutomatedBackupsDescription
+[❌] [❌] backup.enableCompression
+[❌] [❌] backup.enableEncryption
+[❌] [❌] backup.exportData
+[❌] [❌] backup.frequencies.daily
+[❌] [❌] backup.frequencies.hourly
+[❌] [❌] backup.frequencies.monthly
+[❌] [❌] backup.frequencies.weekly
+[❌] [❌] backup.importData
+[❌] [❌] backup.importDataDescription
+[❌] [❌] backup.manualDataExport
+[❌] [❌] backup.manualDataExportDescription
+[❌] [❌] backup.retentionPeriod
+[❌] [❌] backup.title
+[❌] [❌] basicInformation
+[❌] [❌] bulkActionCompleted
+[❌] [❌] cache.active
+[❌] [❌] cache.cleanupInterval
+[❌] [❌] cache.clearCache
+[❌] [❌] cache.clearCacheDescription
+[❌] [❌] cache.defaultTtl
+[❌] [❌] cache.description
+[❌] [❌] cache.enableRedisCache
+[❌] [❌] cache.enableRedisCacheDescription
+[❌] [❌] cache.inactive
+[❌] [❌] cache.maxCacheSize
+[❌] [❌] cache.title
+[❌] [❌] cancel
+[❌] [❌] cannotRevokeCurrent
+[❌] [❌] changePassword
+[❌] [❌] changePasswordDialog.cancel
+[❌] [❌] changePasswordDialog.description
+[❌] [❌] changePasswordDialog.failed
+[❌] [❌] changePasswordDialog.info1
+[❌] [❌] changePasswordDialog.info2
+[❌] [❌] changePasswordDialog.info3
+[❌] [❌] changePasswordDialog.info4
+[❌] [❌] changePasswordDialog.openSecurePasswordChange
+[❌] [❌] changePasswordDialog.opening
+[❌] [❌] changePasswordDialog.redirecting
+[❌] [❌] changePasswordDialog.securityInfo
+[❌] [❌] changePasswordDialog.title
+[❌] [❌] channels.alwaysEnabled
+[❌] [❌] channels.description
+[❌] [❌] channels.email
+[❌] [❌] channels.emailDescription
+[❌] [❌] channels.inApp
+[❌] [❌] channels.inAppDescription
+[❌] [❌] channels.sms
+[❌] [❌] channels.smsDescription
+[❌] [❌] channels.title
+[❌] [❌] charts.accessTrendAnalysis.description
+[❌] [❌] charts.accessTrendAnalysis.title
+[❌] [❌] charts.accessTrends.denied
+[❌] [❌] charts.accessTrends.description
+[❌] [❌] charts.accessTrends.granted
+[❌] [❌] charts.accessTrends.title
+[❌] [❌] charts.enforcementActivity.description
+[❌] [❌] charts.enforcementActivity.title
+[❌] [❌] charts.policyDistribution.breakdown
+[❌] [❌] charts.policyDistribution.distributionBreakdown
+[❌] [❌] charts.policyDistribution.title
+[❌] [❌] charts.resourceAccessVolume.description
+[❌] [❌] charts.resourceAccessVolume.title
+[❌] [❌] charts.suspiciousPatterns.description
+[❌] [❌] charts.suspiciousPatterns.title
+[❌] [❌] checkInterval
+[❌] [❌] cleanup.cleanExpiredSessions
+[❌] [❌] cleanup.cleanTemporaryFiles
+[❌] [❌] cleanup.description
+[❌] [❌] cleanup.enableAutomaticCleanup
+[❌] [❌] cleanup.enableAutomaticCleanupDescription
+[❌] [❌] cleanup.logRetention
+[❌] [❌] cleanup.title
+[EN] [TR] common.cancel
+[EN] [TR] common.copyFailed
+[EN] [TR] common.copyToClipboard
+[EN] [TR] common.copyUserId
+[EN] [TR] common.daysAgo
+[EN] [TR] common.failedToLoad
+[EN] [TR] common.hoursAgo
+[EN] [TR] common.lastLoginInfo
+[EN] [TR] common.loading
+[EN] [TR] common.minutesAgo
+[EN] [TR] common.noDataAvailable
+[EN] [TR] common.retry
+[EN] [TR] common.saveChanges
+[❌] [❌] compactMode
+[❌] [❌] compatibleBrowsers
+[❌] [❌] conditions.device
+[❌] [❌] conditions.ip
+[❌] [❌] conditions.location
+[❌] [❌] conditions.risk
+[❌] [❌] conditions.time
+[❌] [❌] configuration.advanced.maxSamples
+[❌] [❌] configuration.advanced.queryTimeout
+[❌] [❌] configuration.advanced.retentionPeriod
+[❌] [❌] configuration.advanced.scrapeInterval
+[❌] [❌] configuration.advanced.title
+[❌] [❌] configuration.grafana.enable
+[❌] [❌] configuration.grafana.enableDescription
+[❌] [❌] configuration.grafana.title
+[❌] [❌] configuration.grafana.url
+[❌] [❌] configuration.prometheus.enable
+[❌] [❌] configuration.prometheus.enableDescription
+[❌] [❌] configuration.prometheus.title
+[❌] [❌] configuration.prometheus.url
+[❌] [❌] configuration.status.connected
+[❌] [❌] configuration.status.warning
+[❌] [❌] configuration.testConnection
+[❌] [❌] conflictManager.description
+[❌] [❌] conflictManager.filters.allSeverity
+[❌] [❌] conflictManager.filters.allTypes
+[❌] [❌] conflictManager.filters.severity
+[❌] [❌] conflictManager.filters.type
+[❌] [❌] conflictManager.priorityOrder.description
+[❌] [❌] conflictManager.priorityOrder.title
+[❌] [❌] conflictManager.searchPlaceholder
+[❌] [❌] conflictManager.severity.critical
+[❌] [❌] conflictManager.severity.high
+[❌] [❌] conflictManager.severity.low
+[❌] [❌] conflictManager.severity.medium
+[❌] [❌] conflictManager.title
+[❌] [❌] conflictManager.types.circular
+[❌] [❌] conflictManager.types.contradiction
+[❌] [❌] conflictManager.types.overlap
+[❌] [❌] conflictManager.types.priority
+[❌] [❌] conflicts
+[❌] [❌] conflictsDetected
+[❌] [❌] connect
+[❌] [❌] connection.info.clientId
+[❌] [❌] connection.info.mappedResources
+[❌] [❌] connection.info.mappedRoles
+[❌] [❌] connection.info.realm
+[❌] [❌] connection.title
+[❌] [❌] contactInformation
+[❌] [❌] context.description
+[❌] [❌] context.title
+[❌] [❌] corsConfiguration.allowCredentials
+[❌] [❌] corsConfiguration.allowedOrigins
+[❌] [❌] corsConfiguration.description
+[❌] [❌] corsConfiguration.enableCors
+[❌] [❌] corsConfiguration.title
+[❌] [❌] cpuUsage
+[❌] [❌] create
+[❌] [❌] create.affectedServiceLabel
+[❌] [❌] create.cancel
+[❌] [❌] create.create
+[❌] [❌] create.description
+[❌] [❌] create.descriptionLabel
+[❌] [❌] create.descriptionPlaceholder
+[❌] [❌] create.selectService
+[❌] [❌] create.severityLabel
+[❌] [❌] create.title
+[❌] [❌] create.titleLabel
+[❌] [❌] create.titlePlaceholder
+[❌] [❌] create.userImpactLabel
+[❌] [❌] createDescription
+[❌] [❌] createError
+[❌] [❌] createPolicy
+[❌] [❌] createPolicyDialog
+[❌] [❌] createSuccess
+[❌] [❌] createTitle
+[❌] [❌] createdAt
+[❌] [❌] creating
+[❌] [❌] critical
+[❌] [❌] criticalAlerts
+[❌] [❌] currency
+[❌] [❌] current
+[❌] [❌] dark
+[❌] [❌] dashboard
+[❌] [❌] data
+[❌] [❌] dataRetention
+[❌] [❌] dateFormat
+[❌] [❌] daysAgo
+[❌] [❌] deactivate
+[❌] [❌] deactivateAccount.button
+[❌] [❌] deactivateAccount.cancel
+[❌] [❌] deactivateAccount.confirmButton
+[❌] [❌] deactivateAccount.confirmationError
+[❌] [❌] deactivateAccount.confirmationLabel
+[❌] [❌] deactivateAccount.confirmationPlaceholder
+[❌] [❌] deactivateAccount.deactivating
+[❌] [❌] deactivateAccount.description
+[❌] [❌] deactivateAccount.dialogDescription
+[❌] [❌] deactivateAccount.dialogTitle
+[❌] [❌] deactivateAccount.errorMessage
+[❌] [❌] deactivateAccount.info1
+[❌] [❌] deactivateAccount.info2
+[❌] [❌] deactivateAccount.info3
+[❌] [❌] deactivateAccount.info4
+[❌] [❌] deactivateAccount.restrictedMessage
+[❌] [❌] deactivateAccount.successMessage
+[❌] [❌] deactivateAccount.title
+[❌] [❌] deactivateAccount.warning1
+[❌] [❌] deactivateAccount.warning2
+[❌] [❌] deactivateAccount.warning3
+[❌] [❌] deactivateAccount.warning4
+[❌] [❌] deactivateAccount.warning5
+[❌] [❌] deactivateAccount.warningTitle
+[❌] [❌] delete
+[❌] [❌] description
+[❌] [❌] detail.description
+[❌] [❌] detail.duration
+[❌] [❌] detail.impact
+[❌] [❌] detail.incidentNumber
+[❌] [❌] detail.resolution
+[❌] [❌] detail.rootCause
+[❌] [❌] detail.severity
+[❌] [❌] detail.startedAgo
+[❌] [❌] detail.status
+[❌] [❌] detail.timeline
+[❌] [❌] detailedDescription
+[❌] [❌] digest.deliveryTime
+[❌] [❌] digest.description
+[❌] [❌] digest.enable
+[❌] [❌] digest.frequencies.daily
+[❌] [❌] digest.frequencies.weekly
+[❌] [❌] digest.frequency
+[❌] [❌] digest.title
+[❌] [❌] disabled
+[❌] [❌] disconnect
+[❌] [❌] diskUsage
+[❌] [❌] edit
+[❌] [❌] editDescription
+[❌] [❌] editPolicy
+[❌] [❌] editTitle
+[❌] [❌] email.description
+[❌] [❌] email.disabled
+[❌] [❌] email.emailTemplates
+[❌] [❌] email.enableEmailDescription
+[❌] [❌] email.enableEmailNotifications
+[❌] [❌] email.enabled
+[❌] [❌] email.fromEmail
+[❌] [❌] email.fromName
+[❌] [❌] email.loading
+[❌] [❌] email.password
+[❌] [❌] email.placeholders.fromEmail
+[❌] [❌] email.placeholders.fromName
+[❌] [❌] email.placeholders.password
+[❌] [❌] email.placeholders.smtpHost
+[❌] [❌] email.placeholders.smtpPort
+[❌] [❌] email.placeholders.subjectFor
+[❌] [❌] email.placeholders.username
+[❌] [❌] email.sendTestEmail
+[❌] [❌] email.smtpHost
+[❌] [❌] email.smtpPort
+[❌] [❌] email.smtpServerSettings
+[❌] [❌] email.subjectLine
+[❌] [❌] email.templates.maintenance
+[❌] [❌] email.templates.passwordReset
+[❌] [❌] email.templates.securityAlert
+[❌] [❌] email.templates.systemAlert
+[❌] [❌] email.templates.welcome
+[❌] [❌] email.title
+[❌] [❌] email.useSslTls
+[❌] [❌] email.username
+[❌] [❌] empty.filterMessage
+[❌] [❌] empty.noIncidents
+[❌] [❌] empty.title
+[❌] [❌] enableAlerting
+[❌] [❌] enableAuditLogging
+[❌] [❌] enableAuditLoggingDescription
+[❌] [❌] enableHealthMonitoring
+[❌] [❌] enableHealthMonitoringDescription
+[❌] [❌] enabled
+[❌] [❌] enforcedResources
+[❌] [❌] events.authenticationEvents
+[❌] [❌] events.configurationChanges
+[❌] [❌] events.dataChanges
+[❌] [❌] events.errorEvents
+[❌] [❌] events.performanceMetrics
+[❌] [❌] events.systemActions
+[❌] [❌] events.title
+[❌] [❌] events.userActions
+[❌] [❌] export
+[❌] [❌] export.description
+[❌] [❌] export.download
+[❌] [❌] export.exportMetrics
+[❌] [❌] export.title
+[❌] [❌] export.viewFull
+[❌] [❌] exportCsv
+[❌] [❌] exportError
+[❌] [❌] exportMetrics
+[❌] [❌] exportSuccess
+[❌] [❌] exportWouldStart
+[❌] [❌] exporting
+[❌] [❌] failedToActivate
+[❌] [❌] failedToDelete
+[❌] [❌] failedToExportReport
+[❌] [❌] failedToExportSessions
+[❌] [❌] failedToGenerateReport
+[❌] [❌] failedToLoad
+[❌] [❌] failedToLoadSessions
+[❌] [❌] failedToMarkAsRead
+[❌] [❌] failedToSave
+[❌] [❌] featureFlags.beta
+[❌] [❌] featureFlags.description
+[❌] [❌] featureFlags.title
+[❌] [❌] fields.department
+[❌] [❌] fields.description
+[❌] [❌] fields.displayName
+[❌] [❌] fields.email
+[❌] [❌] fields.firstName
+[❌] [❌] fields.lastName
+[❌] [❌] fields.name
+[❌] [❌] fields.phone
+[❌] [❌] fields.username
+[❌] [❌] filters.actionPlaceholder
+[❌] [❌] filters.actorPlaceholder
+[❌] [❌] filters.allActions
+[❌] [❌] filters.allActors
+[❌] [❌] filters.allSeverity
+[❌] [❌] filters.allStatus
+[❌] [❌] filters.scopes.all
+[❌] [❌] filters.scopes.global
+[❌] [❌] filters.scopes.group
+[❌] [❌] filters.scopes.resource
+[❌] [❌] filters.scopes.role
+[❌] [❌] filters.scopes.user
+[❌] [❌] filters.searchPlaceholder
+[❌] [❌] filters.statuses.active
+[❌] [❌] filters.statuses.all
+[❌] [❌] filters.statuses.disabled
+[❌] [❌] filters.statuses.draft
+[❌] [❌] filters.statuses.expired
+[❌] [❌] filters.types.all
+[❌] [❌] filters.types.allow
+[❌] [❌] filters.types.conditional
+[❌] [❌] filters.types.deny
+[❌] [❌] form.labels.category
+[❌] [❌] form.labels.description
+[❌] [❌] form.labels.policyName
+[❌] [❌] form.labels.policyType
+[❌] [❌] form.labels.required
+[❌] [❌] form.labels.scope
+[❌] [❌] form.placeholders.category
+[❌] [❌] form.placeholders.description
+[❌] [❌] form.placeholders.policyName
+[❌] [❌] form.types.allow
+[❌] [❌] form.types.conditional
+[❌] [❌] form.types.deny
+[❌] [❌] frequency
+[❌] [❌] fromLastMonth
+[❌] [❌] fromLastWeek
+[❌] [❌] fromYesterday
+[❌] [❌] general
+[❌] [❌] general.enableCompression
+[❌] [❌] general.enableEncryption
+[❌] [❌] general.logLevel
+[❌] [❌] general.logLevels.critical
+[❌] [❌] general.logLevels.debug
+[❌] [❌] general.logLevels.error
+[❌] [❌] general.logLevels.info
+[❌] [❌] general.logLevels.warn
+[❌] [❌] general.retentionPeriod
+[❌] [❌] general.title
+[❌] [❌] generatingHealthReport
+[❌] [❌] google.connected
+[❌] [❌] google.description
+[❌] [❌] google.disabledByAdmin
+[❌] [❌] google.disconnected
+[❌] [❌] google.title
+[❌] [❌] grafana.actions.delete
+[❌] [❌] grafana.actions.edit
+[❌] [❌] grafana.actions.openInGrafana
+[❌] [❌] grafana.actions.viewDashboard
+[❌] [❌] grafana.dashboards
+[❌] [❌] grafana.newDashboard
+[❌] [❌] grafana.panels
+[❌] [❌] grafana.preview.close
+[❌] [❌] grafana.preview.panels
+[❌] [❌] grafana.preview.query
+[❌] [❌] grafana.preview.title
+[❌] [❌] grafana.preview.visualization
+[❌] [❌] health
+[EN] [TR] health.prometheus.healthSettings.comingSoon
+[EN] [TR] health.prometheus.healthSettings.description
+[EN] [TR] health.prometheus.healthSettings.thresholds.description
+[EN] [TR] health.prometheus.healthSettings.thresholds.title
+[EN] [TR] health.prometheus.healthSettings.title
+[EN] [TR] health.prometheus.mockData.dashboards.infrastructureMetrics
+[EN] [TR] health.prometheus.mockData.dashboards.systemHealthOverview
+[EN] [TR] health.prometheus.mockData.legends.cpuUsage
+[EN] [TR] health.prometheus.mockData.legends.healthScore
+[EN] [TR] health.prometheus.mockData.legends.memoryUsage
+[EN] [TR] health.prometheus.mockData.panels.cpuUsage
+[EN] [TR] health.prometheus.mockData.panels.memoryUsage
+[EN] [TR] health.prometheus.mockData.panels.serviceResponseTimes
+[EN] [TR] health.prometheus.mockData.panels.systemHealthScore
+[EN] [TR] health.prometheus.mockData.tags.health
+[EN] [TR] health.prometheus.mockData.tags.infrastructure
+[EN] [TR] health.prometheus.mockData.tags.metrics
+[EN] [TR] health.prometheus.mockData.tags.overview
+[❌] [❌] healthReportExported
+[❌] [❌] healthScore
+[❌] [❌] healthScore.description
+[❌] [❌] healthScore.outOf100
+[❌] [❌] healthScore.status.critical
+[❌] [❌] healthScore.status.excellent
+[❌] [❌] healthScore.status.good
+[❌] [❌] healthScore.status.warning
+[❌] [❌] healthScore.title
+[❌] [❌] highRiskSessions
+[❌] [❌] highlight
+[❌] [❌] history.noHistory
+[❌] [❌] history.title
+[❌] [❌] home
+[❌] [❌] hoursAgo
+[❌] [❌] impact.minimal
+[❌] [❌] impact.moderate
+[❌] [❌] impact.none
+[❌] [❌] impact.severe
+[❌] [❌] inactive
+[❌] [❌] inactiveUsers
+[❌] [❌] infrastructure.activeAlerts
+[❌] [❌] infrastructure.allMetricsNormal
+[❌] [❌] infrastructure.cores
+[❌] [❌] infrastructure.cpuImmediateAttention
+[❌] [❌] infrastructure.cpuUsage
+[❌] [❌] infrastructure.criticalCPUUsage
+[❌] [❌] infrastructure.diskConsiderCleanup
+[❌] [❌] infrastructure.diskIOPerformance
+[❌] [❌] infrastructure.diskSpace
+[❌] [❌] infrastructure.diskSpaceLow
+[❌] [❌] infrastructure.errors
+[❌] [❌] infrastructure.highMemoryUsage
+[❌] [❌] infrastructure.historicalMetrics
+[❌] [❌] infrastructure.inbound
+[❌] [❌] infrastructure.infrastructureAlerts
+[❌] [❌] infrastructure.loadAvg
+[❌] [❌] infrastructure.memory
+[❌] [❌] infrastructure.memoryApproaching
+[❌] [❌] infrastructure.memoryBreakdown
+[❌] [❌] infrastructure.networkIO
+[❌] [❌] infrastructure.networkStatistics
+[❌] [❌] infrastructure.outbound
+[❌] [❌] infrastructure.packetsIn
+[❌] [❌] infrastructure.packetsOut
+[❌] [❌] infrastructure.physicalMemory
+[❌] [❌] infrastructure.readIOPS
+[❌] [❌] infrastructure.resourceConsumption
+[❌] [❌] infrastructure.serviceResourceUsage
+[❌] [❌] infrastructure.swapMemory
+[❌] [❌] infrastructure.swapUsed
+[❌] [❌] infrastructure.usage
+[❌] [❌] infrastructure.writeIOPS
+[❌] [❌] integrations
+[❌] [❌] integrations.configureHere
+[❌] [❌] integrations.description
+[❌] [❌] integrations.title
+[❌] [❌] irreversibleWarning
+[❌] [❌] itemsPerPage
+[❌] [❌] keycloak
+[❌] [❌] keycloak.adminPassword
+[❌] [❌] keycloak.adminPasswordPlaceholder
+[❌] [❌] keycloak.adminUsername
+[❌] [❌] keycloak.clientId
+[❌] [❌] keycloak.clientSecret
+[❌] [❌] keycloak.clientSecretPlaceholder
+[❌] [❌] keycloak.connectionFailed
+[❌] [❌] keycloak.connectionSuccessful
+[❌] [❌] keycloak.connectionTest
+[❌] [❌] keycloak.connectionUnknown
+[❌] [❌] keycloak.couldNotConnect
+[❌] [❌] keycloak.description
+[❌] [❌] keycloak.disabled
+[❌] [❌] keycloak.enableIntegration
+[❌] [❌] keycloak.enableIntegrationDescription
+[❌] [❌] keycloak.enabled
+[❌] [❌] keycloak.errorOccurred
+[❌] [❌] keycloak.publicClient
+[❌] [❌] keycloak.realm
+[❌] [❌] keycloak.requireSsl
+[❌] [❌] keycloak.serverUrl
+[❌] [❌] keycloak.successfullyConnected
+[❌] [❌] keycloak.testConnection
+[❌] [❌] keycloak.title
+[❌] [❌] language
+[❌] [❌] languageChanged
+[❌] [❌] lastLogin
+[❌] [❌] lastUpdated
+[❌] [❌] light
+[❌] [❌] linkedAccounts
+[❌] [❌] live
+[❌] [❌] loadError
+[❌] [❌] loading
+[❌] [❌] loginCount
+[❌] [❌] managePasswordSecurely
+[❌] [❌] managePermissions
+[❌] [❌] manageRoles
+[❌] [❌] manager
+[❌] [❌] markAllRead
+[❌] [❌] memoryUsage
+[❌] [❌] metrics.activePolicies.description
+[❌] [❌] metrics.activePolicies.title
+[❌] [❌] metrics.averageResponseTime
+[❌] [❌] metrics.conflictsDetected.description
+[❌] [❌] metrics.conflictsDetected.title
+[❌] [❌] metrics.errorRate
+[❌] [❌] metrics.successRate.description
+[❌] [❌] metrics.successRate.title
+[❌] [❌] metrics.totalAttempts.description
+[❌] [❌] metrics.totalAttempts.title
+[❌] [❌] mfa.authenticationMethods
+[❌] [❌] mfa.backupCodes
+[❌] [❌] mfa.backupDescription
+[❌] [❌] mfa.description
+[❌] [❌] mfa.emailDescription
+[❌] [❌] mfa.emailVerification
+[❌] [❌] mfa.enableMfa
+[❌] [❌] mfa.enableMfaDescription
+[❌] [❌] mfa.requireMfaDescription
+[❌] [❌] mfa.requireMfaForAllUsers
+[❌] [❌] mfa.smsDescription
+[❌] [❌] mfa.smsVerification
+[❌] [❌] mfa.title
+[❌] [❌] mfa.totpAuthenticator
+[❌] [❌] mfa.totpDescription
+[❌] [❌] mfaRequired
+[❌] [❌] microsoft.connected
+[❌] [❌] microsoft.description
+[❌] [❌] microsoft.disconnected
+[❌] [❌] microsoft.title
+[❌] [❌] minutesAgo
+[❌] [❌] mockData.backupCompleted
+[❌] [❌] mockData.criticalSecurityAlert
+[❌] [❌] mockData.dailyBackupSuccess
+[❌] [❌] mockData.highCpuUsage
+[❌] [❌] mockData.multipleFailedLogins
+[❌] [❌] mockData.newAdminUserCreated
+[❌] [❌] mockData.systemHealthWarning
+[❌] [❌] mockData.userGrantedAdmin
+[❌] [❌] monitoring
+[❌] [❌] monitoringConfiguration
+[❌] [❌] multiFactorAuth
+[❌] [❌] navigateToReports
+[❌] [❌] neverLoggedIn
+[❌] [❌] newAlert
+[❌] [❌] newIncident
+[❌] [❌] newRole
+[❌] [❌] newUser
+[❌] [❌] next
+[❌] [❌] noActivatePermission
+[❌] [❌] noActiveAlerts
+[❌] [❌] noActiveSessions
+[❌] [❌] noActivity
+[❌] [❌] noConditions
+[❌] [❌] noCreatePermission
+[❌] [❌] noDeletePermission
+[❌] [❌] noDescription
+[❌] [❌] noEditPermission
+[❌] [❌] noNotifications
+[❌] [❌] noPermissionToView
+[❌] [❌] noRolesFound
+[❌] [❌] noRolesMessage
+[❌] [❌] noServicesAvailable
+[❌] [❌] noUsersFound
+[❌] [❌] noUsersMessage
+[❌] [❌] notificationUpdateError
+[❌] [❌] notificationUpdateSuccess
+[❌] [❌] notifications
+[❌] [❌] notifications.app
+[❌] [❌] notifications.appDescription
+[❌] [❌] notifications.email
+[❌] [❌] notifications.emailDescription
+[❌] [❌] notifications.sms
+[❌] [❌] notifications.smsDescription
+[EN] [TR] notifications.title
+[❌] [❌] oauthProviders
+[❌] [❌] ofTotal
+[❌] [❌] ofTotalSessions
+[❌] [❌] offline
+[❌] [❌] otherDevices
+[❌] [❌] overview
+[❌] [❌] parameters.description
+[❌] [❌] parameters.selectResource
+[❌] [❌] parameters.selectResourcePlaceholder
+[❌] [❌] parameters.selectUser
+[❌] [❌] parameters.selectUserPlaceholder
+[❌] [❌] parameters.title
+[❌] [❌] passwordManagement
+[❌] [❌] passwordPolicy.description
+[❌] [❌] passwordPolicy.historyCount
+[❌] [❌] passwordPolicy.historyCountDescription
+[❌] [❌] passwordPolicy.maxAge
+[❌] [❌] passwordPolicy.minLength
+[❌] [❌] passwordPolicy.requireLowercase
+[❌] [❌] passwordPolicy.requireNumbers
+[❌] [❌] passwordPolicy.requireSpecialChars
+[❌] [❌] passwordPolicy.requireUppercase
+[❌] [❌] passwordPolicy.title
+[❌] [❌] passwordSecurityTips
+[❌] [❌] paused
+[❌] [❌] performance.title
+[❌] [❌] permissions
+[❌] [❌] permissions.actions.${action}
+[❌] [❌] permissions.categories.${category}
+[❌] [❌] permissions.selected
+[❌] [❌] permissions.title
+[❌] [❌] personalInformation
+[❌] [❌] phone
+[❌] [❌] placeholders.department
+[❌] [❌] placeholders.description
+[❌] [❌] placeholders.displayName
+[❌] [❌] placeholders.email
+[❌] [❌] placeholders.firstName
+[❌] [❌] placeholders.lastName
+[❌] [❌] placeholders.name
+[❌] [❌] placeholders.phone
+[❌] [❌] placeholders.username
+[❌] [❌] policies
+[❌] [❌] policyActivated
+[❌] [❌] policyCloned
+[❌] [❌] policyCreated
+[❌] [❌] policyDeleted
+[❌] [❌] policyExportStart
+[❌] [❌] policyUpdated
+[❌] [❌] preferenceUpdateError
+[❌] [❌] preferenceUpdateSuccess
+[❌] [❌] preferences.description
+[❌] [❌] preferences.endTime
+[❌] [❌] preferences.quietHours
+[❌] [❌] preferences.quietHoursDescription
+[❌] [❌] preferences.startTime
+[❌] [❌] preferences.title
+[❌] [❌] preview.active
+[❌] [❌] preview.displayName
+[❌] [❌] preview.inactive
+[❌] [❌] preview.permissions
+[❌] [❌] preview.roleName
+[❌] [❌] preview.title
+[❌] [❌] previous
+[❌] [❌] push.comingSoon
+[❌] [❌] push.comingSoonDescription
+[❌] [❌] push.description
+[❌] [❌] push.title
+[❌] [❌] query.description
+[❌] [❌] query.execute
+[❌] [❌] query.label
+[❌] [❌] query.placeholder
+[❌] [❌] query.recentQueries
+[❌] [❌] query.title
+[❌] [❌] quietHours.description
+[❌] [❌] quietHours.enable
+[❌] [❌] quietHours.endTime
+[❌] [❌] quietHours.startTime
+[❌] [❌] quietHours.timezone
+[❌] [❌] quietHours.timezones.centralTime
+[❌] [❌] quietHours.timezones.easternTime
+[❌] [❌] quietHours.timezones.istanbul
+[❌] [❌] quietHours.timezones.london
+[❌] [❌] quietHours.timezones.mountainTime
+[❌] [❌] quietHours.timezones.pacificTime
+[❌] [❌] quietHours.timezones.utc
+[❌] [❌] quietHours.title
+[❌] [❌] rbacEnabled
+[❌] [❌] realtimeMonitoringConnected
+[❌] [❌] realtimeMonitoringDisconnected
+[❌] [❌] recentActivity
+[❌] [❌] refresh
+[❌] [❌] registrationDate
+[❌] [❌] requireImmediateAttention
+[❌] [❌] requiresAttention
+[❌] [❌] reset
+[❌] [❌] reset.resetDescription
+[❌] [❌] reset.resetToDefaults
+[❌] [❌] reset.title
+[❌] [❌] responseTime
+[❌] [❌] results.loading
+[❌] [❌] results.metrics
+[❌] [❌] results.noData
+[❌] [❌] results.noResults
+[❌] [❌] results.table.metric
+[❌] [❌] results.table.timestamp
+[❌] [❌] results.table.value
+[❌] [❌] results.title
+[❌] [❌] retry
+[❌] [❌] reviewAndRevoke
+[❌] [❌] reviewConflicts
+[❌] [❌] reviewSecurityTab
+[❌] [❌] revoke
+[❌] [❌] revokeAll
+[❌] [❌] revokeAllDescription
+[❌] [❌] revokeAllError
+[❌] [❌] revokeAllSessions
+[❌] [❌] revokeAllSessions.action1
+[❌] [❌] revokeAllSessions.action2
+[❌] [❌] revokeAllSessions.action3
+[❌] [❌] revokeAllSessions.action4
+[❌] [❌] revokeAllSessions.actionWillTitle
+[❌] [❌] revokeAllSessions.button
+[❌] [❌] revokeAllSessions.cancel
+[❌] [❌] revokeAllSessions.confirmButton
+[❌] [❌] revokeAllSessions.description
+[❌] [❌] revokeAllSessions.dialogDescription
+[❌] [❌] revokeAllSessions.dialogTitle
+[❌] [❌] revokeAllSessions.errorMessage
+[❌] [❌] revokeAllSessions.info1
+[❌] [❌] revokeAllSessions.info2
+[❌] [❌] revokeAllSessions.info3
+[❌] [❌] revokeAllSessions.revoking
+[❌] [❌] revokeAllSessions.successMessage
+[❌] [❌] revokeAllSessions.title
+[❌] [❌] revokeAllTitle
+[❌] [❌] revokeError
+[❌] [❌] revokeRecommended
+[❌] [❌] revokedToday
+[❌] [❌] revoking
+[❌] [❌] risk
+[❌] [❌] riskAndSafety
+[❌] [❌] role
+[❌] [❌] roles
+[❌] [❌] roles.selected
+[EN] [TR] roles.title
+[❌] [❌] saveChanges
+[❌] [❌] savingPreferences
+[❌] [❌] search
+[❌] [❌] searchPlaceholder
+[❌] [❌] security
+[❌] [❌] securityActionsTaken
+[❌] [❌] securityAlerts
+[❌] [❌] securityOverview
+[❌] [❌] securityReportGenerated
+[❌] [❌] securityTitle
+[❌] [❌] selectLanguage
+[❌] [❌] selected
+[❌] [❌] serviceStatusUpdated
+[❌] [❌] services.actions.clearCache
+[❌] [❌] services.actions.details
+[❌] [❌] services.actions.healthCheck
+[❌] [❌] services.actions.restart
+[❌] [❌] services.description
+[❌] [❌] services.detail.dependencies.description
+[❌] [❌] services.detail.dependencies.title
+[❌] [❌] services.detail.description
+[❌] [❌] services.detail.incidents.duration
+[❌] [❌] services.detail.incidents.impact
+[❌] [❌] services.detail.incidents.status
+[❌] [❌] services.detail.incidents.title
+[❌] [❌] services.detail.metrics.avgLatency
+[❌] [❌] services.detail.metrics.currentMetrics
+[❌] [❌] services.detail.metrics.errorRate
+[❌] [❌] services.detail.metrics.healthScore
+[❌] [❌] services.detail.metrics.uptime7d
+[❌] [❌] services.detail.title
+[❌] [❌] services.detail.type
+[❌] [❌] services.detail.version
+[❌] [❌] services.empty.filterMessage
+[❌] [❌] services.empty.searchMessage
+[❌] [❌] services.empty.title
+[❌] [❌] services.searchPlaceholder
+[❌] [❌] services.servicesCount
+[❌] [❌] services.showUnhealthyOnly
+[❌] [❌] services.table.actions
+[❌] [❌] services.table.errorRate
+[❌] [❌] services.table.lastCheck
+[❌] [❌] services.table.latency
+[❌] [❌] services.table.service
+[❌] [❌] services.table.status
+[❌] [❌] services.table.uptime
+[❌] [❌] services.threshold.critical
+[❌] [❌] services.threshold.good
+[❌] [❌] services.threshold.warning
+[❌] [❌] services.timeFormat.hoursAgo
+[❌] [❌] services.timeFormat.justNow
+[❌] [❌] services.timeFormat.minutesAgo
+[❌] [❌] services.title
+[❌] [❌] services.toast.actionFailed
+[❌] [❌] services.toast.cacheCleared
+[❌] [❌] services.toast.error
+[❌] [❌] services.toast.healthCheckCompleted
+[❌] [❌] services.toast.performing
+[❌] [❌] services.toast.restarted
+[❌] [❌] services.toast.success
+[❌] [❌] sessionManagement.defaultDuration
+[❌] [❌] sessionManagement.description
+[❌] [❌] sessionManagement.enableRememberMe
+[❌] [❌] sessionManagement.enableRememberMeDescription
+[❌] [❌] sessionManagement.maxConcurrentSessions
+[❌] [❌] sessionManagement.rememberMeTimeout
+[❌] [❌] sessionManagement.sessionTimeout
+[❌] [❌] sessionManagement.title
+[❌] [❌] sessionRevoked
+[❌] [❌] sessions
+[❌] [❌] sessionsExportedSuccessfully
+[❌] [❌] settings
+[❌] [❌] severity.critical
+[❌] [❌] severity.high
+[❌] [❌] severity.low
+[❌] [❌] severity.medium
+[❌] [❌] showingResults
+[❌] [❌] simulation
+[❌] [❌] sla.breach
+[❌] [❌] sla.current
+[❌] [❌] sla.good
+[❌] [❌] sla.monthToDate
+[❌] [❌] sla.status
+[❌] [❌] sla.target
+[❌] [❌] sla.title
+[❌] [❌] sms.description
+[❌] [❌] sms.enterprise
+[❌] [❌] sms.enterpriseDescription
+[❌] [❌] sms.title
+[❌] [❌] sorting.sortBy
+[❌] [❌] stats.avgResolution
+[❌] [❌] stats.investigating
+[❌] [❌] stats.open
+[❌] [❌] stats.resolved
+[❌] [❌] stats.totalIncidents
+[❌] [❌] status
+[❌] [❌] status.${status}
+[❌] [❌] status.closed
+[❌] [❌] status.critical
+[❌] [❌] status.investigating
+[❌] [❌] status.open
+[❌] [❌] status.resolved
+[❌] [❌] status.warning
+[❌] [❌] storage.enableBackup
+[❌] [❌] storage.locations.both
+[❌] [❌] storage.locations.database
+[❌] [❌] storage.locations.file
+[❌] [❌] storage.maxFileSize
+[❌] [❌] storage.rotationPolicy
+[❌] [❌] storage.rotations.daily
+[❌] [❌] storage.rotations.hourly
+[❌] [❌] storage.rotations.monthly
+[❌] [❌] storage.rotations.weekly
+[❌] [❌] storage.storageLocation
+[❌] [❌] storage.title
+[❌] [❌] suspicious
+[❌] [❌] suspiciousDetected
+[❌] [❌] suspiciousPlural
+[❌] [❌] system
+[❌] [❌] system.badgeNotifications
+[❌] [❌] system.browserNotifications
+[❌] [❌] system.description
+[❌] [❌] system.desktopNotifications
+[❌] [❌] system.soundAlerts
+[❌] [❌] system.title
+[❌] [❌] systemDescription
+[❌] [❌] systemHealth
+[❌] [❌] systemName
+[❌] [❌] systemThemeDescription
+[❌] [❌] systemUptime
+[❌] [❌] tab
+[❌] [❌] table.actions
+[❌] [❌] table.duration
+[❌] [❌] table.headers.action
+[❌] [❌] table.headers.actor
+[❌] [❌] table.headers.details
+[❌] [❌] table.headers.policy
+[❌] [❌] table.headers.timestamp
+[❌] [❌] table.impact
+[❌] [❌] table.incident
+[❌] [❌] table.service
+[❌] [❌] table.severity
+[❌] [❌] table.started
+[❌] [❌] table.status
+[❌] [❌] tabs.advanced
+[❌] [❌] tabs.audit
+[❌] [❌] tabs.authentication
+[❌] [❌] tabs.basic
+[❌] [❌] tabs.channels
+[❌] [❌] tabs.conditions
+[❌] [❌] tabs.configuration
+[❌] [❌] tabs.distribution
+[❌] [❌] tabs.email
+[❌] [❌] tabs.grafana
+[❌] [❌] tabs.history
+[❌] [❌] tabs.incidents
+[❌] [❌] tabs.infrastructure
+[❌] [❌] tabs.integrations
+[❌] [❌] tabs.keycloak
+[❌] [❌] tabs.metrics
+[❌] [❌] tabs.mfa
+[❌] [❌] tabs.overview
+[❌] [❌] tabs.performance
+[❌] [❌] tabs.preferences
+[❌] [❌] tabs.preview
+[❌] [❌] tabs.prometheus
+[❌] [❌] tabs.push
+[❌] [❌] tabs.resources
+[❌] [❌] tabs.risk
+[❌] [❌] tabs.schedule
+[❌] [❌] tabs.security
+[❌] [❌] tabs.services
+[❌] [❌] tabs.settings
+[❌] [❌] tabs.simulate
+[❌] [❌] tabs.sms
+[❌] [❌] tabs.subjects
+[❌] [❌] tabs.system
+[❌] [❌] tabs.trends
+[❌] [❌] tabs.types
+[❌] [❌] theme
+[❌] [❌] thisWeek
+[❌] [❌] time
+[❌] [❌] timeFormat.daysAgo
+[❌] [❌] timeFormat.hoursAgo
+[❌] [❌] timeFormat.minutesAgo
+[❌] [❌] timeFormat.ongoing
+[❌] [❌] timeFormat.systemWide
+[❌] [❌] timeFormat.users
+[❌] [❌] timeRange.1y
+[❌] [❌] timeRange.30d
+[❌] [❌] timeRange.7d
+[❌] [❌] timeRange.90d
+[❌] [❌] timeRanges.1h
+[❌] [❌] timeRanges.24h
+[❌] [❌] timeRanges.30d
+[❌] [❌] timeRanges.7d
+[❌] [❌] timeZone
+[❌] [❌] timeline
+[❌] [❌] timeline.auto
+[❌] [❌] timeline.by
+[❌] [❌] timezone
+[❌] [❌] tip1
+[❌] [❌] tip2
+[❌] [❌] tip3
+[❌] [❌] tip4
+[❌] [❌] tip5
+[❌] [❌] title
+[❌] [❌] title.create
+[❌] [❌] title.edit
+[❌] [❌] toast.allMarkedAsRead
+[❌] [❌] toast.cacheCleared
+[❌] [❌] toast.cacheClearedDescription
+[❌] [❌] toast.clearFailed
+[❌] [❌] toast.clearFailedDescription
+[❌] [❌] toast.cloned
+[❌] [❌] toast.connectionError
+[❌] [❌] toast.connectionFailed
+[❌] [❌] toast.connectionSuccess
+[❌] [❌] toast.connectionSuccessful
+[❌] [❌] toast.createFailed
+[❌] [❌] toast.created
+[❌] [❌] toast.creating
+[❌] [❌] toast.deleteFailed
+[❌] [❌] toast.deleted
+[❌] [❌] toast.deleting
+[❌] [❌] toast.disabled
+[❌] [❌] toast.editing
+[❌] [❌] toast.enabled
+[❌] [❌] toast.executing
+[❌] [❌] toast.exportCompleted
+[❌] [❌] toast.exportCompletedDescription
+[❌] [❌] toast.exportFailed
+[❌] [❌] toast.exportFailedDescription
+[❌] [❌] toast.exported
+[❌] [❌] toast.exporting
+[❌] [❌] toast.fixErrors
+[❌] [❌] toast.jwtSecretGenerated
+[❌] [❌] toast.loadFailed
+[❌] [❌] toast.markAllFailed
+[❌] [❌] toast.markReadFailed
+[❌] [❌] toast.markedAsRead
+[❌] [❌] toast.queryFailed
+[❌] [❌] toast.querySuccess
+[❌] [❌] toast.saveError
+[❌] [❌] toast.saved
+[❌] [❌] toast.settingsReset
+[❌] [❌] toast.settingsSaved
+[❌] [❌] toast.simulationCompleted
+[❌] [❌] toast.simulationFailed
+[❌] [❌] toast.simulationRequired
+[❌] [❌] toast.testEmailFailed
+[❌] [❌] toast.testEmailFailedDescription
+[❌] [❌] toast.testEmailSent
+[❌] [❌] toast.testEmailSentDescription
+[❌] [❌] toast.testFailed
+[❌] [❌] toast.testNotification
+[❌] [❌] toast.testingConnection
+[❌] [❌] toast.titleRequired
+[❌] [❌] total
+[❌] [❌] totalApplications
+[❌] [❌] totalNotifications
+[❌] [❌] totalPolicies
+[❌] [❌] totalRoles
+[❌] [❌] totalSessions
+[❌] [❌] totalUsers
+[❌] [❌] totp.cancel
+[❌] [❌] totp.cannotDisable
+[❌] [❌] totp.description
+[❌] [❌] totp.disableError
+[❌] [❌] totp.disabled
+[❌] [❌] totp.disabledSuccess
+[❌] [❌] totp.enableTotp
+[❌] [❌] totp.enabled
+[❌] [❌] totp.enabledSuccess
+[❌] [❌] totp.enterValidCode
+[❌] [❌] totp.instructions
+[❌] [❌] totp.invalidCode
+[❌] [❌] totp.qrCodePlaceholder
+[❌] [❌] totp.setup
+[❌] [❌] totp.setupDescription
+[❌] [❌] totp.step1
+[❌] [❌] totp.step2
+[❌] [❌] totp.step3
+[❌] [❌] totp.step4
+[❌] [❌] totp.title
+[❌] [❌] totp.verificationCode
+[❌] [❌] totp.verifying
+[❌] [❌] types.${type}
+[❌] [❌] types.app
+[❌] [❌] types.deliveryChannels
+[❌] [❌] types.description
+[❌] [❌] types.email
+[❌] [❌] types.minimumSeverity
+[❌] [❌] types.onlyEnabledChannels
+[❌] [❌] types.risk
+[❌] [❌] types.riskDescription
+[❌] [❌] types.security
+[❌] [❌] types.securityDescription
+[❌] [❌] types.sms
+[❌] [❌] types.system
+[❌] [❌] types.systemDescription
+[❌] [❌] types.test
+[❌] [❌] types.title
+[❌] [❌] types.userActivity
+[❌] [❌] types.userActivityDescription
+[❌] [❌] uniqueUsers
+[❌] [❌] units.milliseconds
+[❌] [❌] units.percentage
+[❌] [❌] unknownDevice
+[❌] [❌] unknownLocation
+[❌] [❌] unread
+[❌] [❌] unreadRate
+[❌] [❌] unsavedChanges
+[❌] [❌] update
+[❌] [❌] updateError
+[❌] [❌] updateSuccess
+[❌] [❌] updated
+[❌] [❌] updating
+[❌] [❌] uptimeTitle
+[❌] [❌] user
+[❌] [❌] userActivity
+[❌] [❌] userCount
+[❌] [❌] userInfo.department
+[❌] [❌] userInfo.departmentPlaceholder
+[❌] [❌] userInfo.departments.${dept}
+[❌] [❌] userInfo.email
+[❌] [❌] userInfo.emailChangeNotice
+[❌] [❌] userInfo.firstName
+[❌] [❌] userInfo.firstNamePlaceholder
+[❌] [❌] userInfo.lastName
+[❌] [❌] userInfo.lastNamePlaceholder
+[❌] [❌] userInfo.required
+[❌] [❌] userInfo.title
+[❌] [❌] userInfo.updateError
+[❌] [❌] userInfo.updateSuccess
+[❌] [❌] userInfo.username
+[❌] [❌] userInfo.usernamePlaceholder
+[❌] [❌] userMgmt
+[❌] [❌] user_activity
+[❌] [❌] users
+[❌] [❌] validation.departmentRequired
+[❌] [❌] validation.descriptionRequired
+[❌] [❌] validation.displayNameRequired
+[❌] [❌] validation.emailRequired
+[❌] [❌] validation.emailValid
+[❌] [❌] validation.firstNameLetters
+[❌] [❌] validation.firstNameMin
+[❌] [❌] validation.firstNameRequired
+[❌] [❌] validation.fixErrors
+[❌] [❌] validation.lastNameLetters
+[❌] [❌] validation.lastNameMin
+[❌] [❌] validation.lastNameRequired
+[❌] [❌] validation.nameFormat
+[❌] [❌] validation.nameRequired
+[❌] [❌] validation.permissionsRequired
+[❌] [❌] validation.phoneRequired
+[❌] [❌] validation.phoneValid
+[❌] [❌] validation.priorityRange
+[❌] [❌] validation.resourcesRequired
+[❌] [❌] validation.rolesRequired
+[❌] [❌] validation.subjectsRequired
+[❌] [❌] validation.usernameFormat
+[❌] [❌] validation.usernameMin
+[❌] [❌] validation.usernameRequired
+[❌] [❌] viewAll
+[❌] [❌] viewModes.cards
+[❌] [❌] viewModes.table
+[❌] [❌] viewReports
+[❌] [❌] viewUsers
+[❌] [❌] viewer
+[❌] [❌] warning
+[❌] [❌] webauthn.androidBiometric
+[❌] [❌] webauthn.browserCompatibility
+[❌] [❌] webauthn.cancel
+[❌] [❌] webauthn.description
+[❌] [❌] webauthn.disabledSuccess
+[❌] [❌] webauthn.enabledSuccess
+[❌] [❌] webauthn.faceId
+[❌] [❌] webauthn.hardwareKeys
+[❌] [❌] webauthn.notSupported
+[❌] [❌] webauthn.settingUp
+[❌] [❌] webauthn.setup
+[❌] [❌] webauthn.setupDescription
+[❌] [❌] webauthn.setupError
+[❌] [❌] webauthn.setupWebauthn
+[❌] [❌] webauthn.supportedMethods
+[❌] [❌] webauthn.title
+[❌] [❌] webauthn.touchId
+[❌] [❌] webauthn.windowsHello
+[❌] [❌] welcomeMessage

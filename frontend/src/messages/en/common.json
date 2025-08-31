@@ -1,0 +1,406 @@
+{
+  "loading": "Loading...",
+  "save": "Save",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "edit": "Edit",
+  "add": "Add",
+  "search": "Search",
+  "filter": "Filter",
+  "export": "Export",
+  "import": "Import",
+  "refresh": "Refresh",
+  "back": "Back",
+  "next": "Next",
+  "previous": "Previous",
+  "submit": "Submit",
+  "confirm": "Confirm",
+  "yes": "Yes",
+  "no": "No",
+  "close": "Close",
+  "view": "View",
+  "download": "Download",
+  "upload": "Upload",
+  "clear": "Clear",
+  "reset": "Reset",
+  "apply": "Apply",
+  "actions": "Actions",
+  "status": "Status",
+  "name": "Name",
+  "description": "Description",
+  "date": "Date",
+  "time": "Time",
+  "user": "User",
+  "email": "Email",
+  "phone": "Phone",
+  "address": "Address",
+  "total": "Total",
+  "active": "Active",
+  "inactive": "Inactive",
+  "enabled": "Enabled",
+  "disabled": "Disabled",
+  "success": "Success",
+  "error": "Error",
+  "warning": "Warning",
+  "info": "Info",
+  "welcome": "Welcome",
+  "welcomeBack": "Welcome Back",
+  "goodMorning": "Good Morning",
+  "goodAfternoon": "Good Afternoon", 
+  "goodEvening": "Good Evening",
+  "pleaseWait": "Please wait...",
+  "noData": "No data found",
+  "notFound": "Not Found",
+  "unauthorized": "Unauthorized",
+  "forbidden": "Forbidden",
+  "sessionExpired": "Session expired",
+  "networkError": "Network error",
+  "serverError": "Server error",
+  "operationSuccessful": "Operation successful",
+  "operationFailed": "Operation failed",
+  "confirmDelete": "Are you sure you want to delete?",
+  "confirmAction": "Are you sure you want to perform this action?",
+  "unsavedChanges": "You have unsaved changes",
+  "language": "Language",
+  "theme": "Theme",
+  "timezone": "Timezone",
+  "dateFormat": "Date Format",
+  "timeFormat": "Time Format",
+  "currency": "Currency",
+  "goToDashboard": "Go to Dashboard",
+  "welcome": "Welcome",
+  "workplaceSafety": "Workplace Safety Management System",
+  "general": "General",
+  "languages": "Languages",
+  "placeholders": "Placeholders",
+  "sessions": {
+    "title": "Active Sessions",
+    "search": {
+      "placeholder": "Search by email, username, IP, or device fingerprint..."
+    },
+    "filters": {
+      "title": "Filters",
+      "allRoles": "All Roles",
+      "allDevices": "All Devices",
+      "allRiskLevels": "All Risk Levels",
+      "allMfaStatus": "All MFA Status",
+      "mfaPassed": "MFA Passed",
+      "mfaRequired": "MFA Required",
+      "mfaFailed": "MFA Failed",
+      "mfaBypassed": "MFA Bypassed"
+    },
+    "roles": {
+      "admin": "Admin",
+      "security": "Security",
+      "viewer": "Viewer"
+    },
+    "devices": {
+      "desktop": "Desktop",
+      "mobile": "Mobile",
+      "tablet": "Tablet"
+    },
+    "risk": {
+      "low": "Low Risk",
+      "medium": "Medium Risk",
+      "high": "High Risk",
+      "critical": "Critical Risk",
+      "score": "Risk Score: {score}/100 ({level})"
+    },
+    "mfa": {
+      "passed": "Passed",
+      "required": "Required",
+      "failed": "Failed",
+      "bypassed": "Bypassed",
+      "unknown": "Unknown"
+    },
+    "time": {
+      "justNow": "Just now",
+      "minutesAgo": "{minutes}m ago",
+      "hoursAgo": "{hours}h ago",
+      "daysAgo": "{days}d ago"
+    },
+    "stats": {
+      "showing": "Showing {filtered} of {total} sessions",
+      "selected": "{count} sessions selected"
+    },
+    "empty": {
+      "title": "No sessions found",
+      "noSessions": "No active sessions at the moment",
+      "noResults": "Try adjusting your search or filter criteria"
+    },
+    "table": {
+      "user": "User",
+      "device": "Device",
+      "location": "Location",
+      "loginTime": "Login Time",
+      "lastActivity": "Last Activity",
+      "idle": "Idle",
+      "mfa": "MFA",
+      "risk": "Risk",
+      "ttl": "TTL",
+      "concurrent": "Concurrent"
+    },
+    "device": {
+      "new": "New"
+    },
+    "location": {
+      "vpn": "VPN"
+    },
+    "status": {
+      "active": "Active"
+    },
+    "anomalies": {
+      "detected": "{count} anomalies detected"
+    },
+    "actions": {
+      "viewDetails": "View Details",
+      "revokeSession": "Revoke Session",
+      "revokeAndBlockIp": "Revoke + Block IP (15m)",
+      "requireMfa": "Require MFA on Next Action",
+      "flagCompromised": "Flag as Compromised"
+    },
+    "toast": {
+      "noRevokePermission": "You don't have permission to revoke sessions",
+      "noQuarantinePermission": "You don't have permission to quarantine IPs",
+      "actionFailed": "Failed to {action} session",
+      "sessionRevoked": "Session revoked successfully",
+      "sessionRevokedAndBlocked": "Session revoked and IP blocked",
+      "mfaRequirementAdded": "MFA requirement added",
+      "ipQuarantined": "IP quarantined successfully",
+      "sessionFlagged": "Session flagged as compromised",
+      "reauthRequired": "Reauthentication required",
+      "actionCompleted": "Action completed successfully",
+      "bulkCompleted": "Bulk {action} completed"
+    },
+    "details": {
+      "noSessionSelected": "No session selected",
+      "title": "Session Details",
+      "risk": {
+        "high": "High Risk",
+        "medium": "Medium Risk",
+        "low": "Low Risk"
+      },
+      "actions": {
+        "revoke": "Revoke",
+        "flag": "Flag"
+      },
+      "tabs": {
+        "overview": "Overview",
+        "security": "Security",
+        "timeline": "Timeline",
+        "location": "Location",
+        "tokens": "Tokens"
+      },
+      "sections": {
+        "sessionInfo": "Session Information",
+        "deviceInfo": "Device Information",
+        "securityOverview": "Security Overview",
+        "securityEvents": "Security Events",
+        "sessionTimeline": "Session Timeline",
+        "geoInfo": "Geographic Information",
+        "asnInfo": "ASN Information",
+        "tokenInfo": "Token Information",
+        "sessionState": "Session State"
+      },
+      "fields": {
+        "sessionId": "Session ID",
+        "user": "User",
+        "clientId": "Client ID",
+        "duration": "Duration",
+        "rolesPermissions": "Roles & Permissions",
+        "scopes": "Scopes",
+        "deviceType": "Device Type",
+        "platform": "Platform",
+        "browser": "Browser",
+        "ipAddress": "IP Address",
+        "userAgent": "User Agent",
+        "mfaStatus": "MFA Status",
+        "riskScore": "Risk Score",
+        "asn": "ASN",
+        "country": "Country",
+        "city": "City",
+        "region": "Region",
+        "timezone": "Timezone",
+        "organization": "Organization",
+        "isp": "ISP",
+        "expires": "Expires",
+        "type": "Type",
+        "lastUsed": "Last Used",
+        "rememberMe": "Remember Me",
+        "lastActivity": "Last Activity"
+      },
+      "status": {
+        "verified": "Verified",
+        "notVerified": "Not Verified",
+        "unknown": "Unknown",
+        "active": "Active",
+        "expired": "Expired",
+        "available": "Available",
+        "enabled": "Enabled",
+        "disabled": "Disabled"
+      },
+      "map": {
+        "placeholder": "Interactive map would be displayed here"
+      },
+      "tokens": {
+        "accessToken": "Access Token",
+        "refreshToken": "Refresh Token",
+        "bearer": "Bearer"
+      }
+    },
+    "bulkActions": {
+      "selected": "{count} selected",
+      "choosePlaceholder": "Choose bulk action...",
+      "executeAction": "Execute Action",
+      "confirmTitle": "Confirm Bulk Action",
+      "confirmDescription": "You are about to perform \"{action}\" on {count} sessions.",
+      "cannotUndo": "This action cannot be undone.",
+      "actions": {
+        "revoke": {
+          "label": "Revoke Sessions",
+          "description": "Immediately terminate selected sessions"
+        },
+        "revokeBlockIp": {
+          "label": "Revoke + Block IPs",
+          "description": "Revoke sessions and temporarily block IP addresses"
+        },
+        "forceMfa": {
+          "label": "Force MFA",
+          "description": "Require MFA on next action for these sessions"
+        },
+        "quarantineIp": {
+          "label": "Quarantine IPs",
+          "description": "Quarantine IP addresses for specified duration"
+        },
+        "flagCompromised": {
+          "label": "Flag as Compromised",
+          "description": "Mark sessions as potentially compromised"
+        },
+        "requireReauth": {
+          "label": "Require Re-auth",
+          "description": "Force users to re-authenticate"
+        }
+      },
+      "alert": {
+        "action": "Action",
+        "affectedSessions": "Affected Sessions",
+        "warning": "Warning",
+        "terminateWarning": "This will immediately terminate user sessions."
+      },
+      "fields": {
+        "reason": "Reason for Action",
+        "reasonPlaceholder": "Explain why this bulk action is necessary...",
+        "blockDuration": "Block Duration (minutes)",
+        "notifyUsers": "Notify affected users via email"
+      },
+      "duration": {
+        "15min": "15 minutes",
+        "30min": "30 minutes",
+        "1hour": "1 hour",
+        "4hours": "4 hours",
+        "24hours": "24 hours"
+      },
+      "buttons": {
+        "cancel": "Cancel",
+        "processing": "Processing...",
+        "execute": "Execute {action}"
+      },
+      "clearSelection": "Clear Selection",
+      "tip": "💡 Tip: Use bulk actions to efficiently manage multiple sessions at once",
+      "toast": {
+        "reasonRequired": "Please provide a reason for this action",
+        "executeFailed": "Failed to execute bulk action"
+      }
+    },
+    "realtime": {
+      "status": {
+        "live": "Live",
+        "reconnecting": "Reconnecting",
+        "disconnected": "Disconnected"
+      },
+      "tooltip": {
+        "connectionStatus": "Connection Status",
+        "connected": "Connected",
+        "disconnected": "Disconnected",
+        "lastUpdate": "Last Update",
+        "reconnectAttempts": "Reconnect Attempts"
+      }
+    },
+    "analytics": {
+      "title": "Session Analytics",
+      "timeRanges": {
+        "lastHour": "Last Hour",
+        "last24h": "Last 24h",
+        "last7days": "Last 7 days",
+        "last30days": "Last 30 days"
+      },
+      "metrics": {
+        "peakConcurrent": "Peak Concurrent",
+        "avgDuration": "Avg Duration",
+        "highRisk": "High Risk",
+        "mfaCoverage": "MFA Coverage"
+      },
+      "charts": {
+        "riskDistribution": "Risk Score Distribution",
+        "topAnomalies": "Top Anomalies",
+        "sessionsByCountry": "Sessions by Country",
+        "geoHeatmap": "Geographic Heatmap",
+        "deviceDistribution": "Device Type Distribution",
+        "browserDistribution": "Browser Distribution",
+        "securityMetrics": "Security Metrics",
+        "securityEvents": "Security Events"
+      },
+      "risk": {
+        "lowRange": "Low (0-39)",
+        "mediumRange": "Medium (40-69)",
+        "highRange": "High (70-100)"
+      },
+      "anomalies": {
+        "multipleConcurrent": "Multiple concurrent sessions",
+        "unusualLoginTime": "Unusual login time",
+        "newDeviceLogin": "New device login",
+        "geographicAnomaly": "Geographic anomaly"
+      },
+      "worldMap": {
+        "title": "World Map",
+        "description": "Interactive geographic visualization would be displayed here"
+      },
+      "security": {
+        "mfaEnabled": "MFA Enabled Sessions",
+        "highRisk": "High Risk Sessions",
+        "flagged": "Flagged Sessions"
+      }
+    },
+    "anomalies": {
+      "search": {
+        "placeholder": "Search anomalies..."
+      },
+      "types": {
+        "geoVelocity": {
+          "name": "Geographic Velocity",
+          "description": "Impossible travel between login locations"
+        },
+        "deviceAnomaly": {
+          "name": "Device Anomaly",
+          "description": "Unusual device or browser fingerprint"
+        },
+        "timeAnomaly": {
+          "name": "Time Anomaly",
+          "description": "Login at unusual hours for user"
+        },
+        "behavioralAnomaly": {
+          "name": "Behavioral Anomaly",
+          "description": "Unusual user behavior patterns"
+        },
+        "concurrentSessions": {
+          "name": "Concurrent Sessions",
+          "description": "Excessive concurrent sessions"
+        },
+        "ipReputation": {
+          "name": "IP Reputation",
+          "description": "Known malicious or suspicious IP"
+        }
+      }
+    }
+  }
+}

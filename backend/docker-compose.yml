@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: isguvenligi-postgres
+    environment:
+      POSTGRES_DB: isguvenligi
+      POSTGRES_USER: isguvenligi
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - isguvenligi-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: isguvenligi-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - isguvenligi-network
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:22.0
+    container_name: isguvenligi-keycloak
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres:5432/isguvenligi
+      KC_DB_USERNAME: isguvenligi
+      KC_DB_PASSWORD: password
+    ports:
+      - "8080:8080"
+    command: start-dev
+    depends_on:
+      - postgres
+    networks:
+      - isguvenligi-network
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  isguvenligi-network:
+    driver: bridge
