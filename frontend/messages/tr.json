@@ -1242,6 +1242,75 @@
       "resetToDefaults": "Varsayılanlara Sıfırla",
       "resetDescription": "Bu, tüm genel ayarları varsayılan değerlerine sıfırlar. Bu eylem geri alınamaz.",
       "warning": "Bu işlem geri alınamaz!"
+    },
+    "stats": {
+      "totalSettings": "Toplam Ayarlar",
+      "modified": "Değiştirilmiş",
+      "systemStatus": "Sistem Durumu",
+      "cacheStatus": "Önbellek Durumu"
+    },
+    "enterSystemDescription": "Sistem açıklamasını girin",
+    "timezones": {
+      "istanbul": "İstanbul (UTC+3)",
+      "utc": "UTC (UTC+0)",
+      "london": "Londra (UTC+0)",
+      "newYork": "New York (UTC-5)"
+    },
+    "currencies": {
+      "try": "Türk Lirası (₺)",
+      "usd": "ABD Doları ($)",
+      "eur": "Euro (€)",
+      "gbp": "İngiliz Sterlini (£)"
+    },
+    "themes": {
+      "light": "Açık",
+      "dark": "Koyu",
+      "auto": "Otomatik (Sistem)"
+    },
+    "compactModeDescription": "Daha fazla içerik için boşluk ve dolguyu azalt",
+    "animationsDescription": "Akıcı geçişleri ve animasyonları etkinleştir",
+    "intervals": {
+      "10seconds": "10 saniye",
+      "30seconds": "30 saniye",
+      "1minute": "1 dakika",
+      "5minutes": "5 dakika",
+      "disabled": "Devre Dışı"
+    },
+    "features": {
+      "darkModeToggle": "Koyu Mod Geçiş",
+      "advancedSearch": "Gelişmiş Arama",
+      "exportFeatures": "Dışa Aktarma Özellikleri",
+      "betaFeatures": "Beta Özellikler",
+      "analyticsTracking": "Analitik Takibi",
+      "maintenanceMode": "Bakım Modu",
+      "darkModeToggleDesc": "Kullanıcıların açık ve koyu temalar arasında geçiş yapmasına izin ver",
+      "advancedSearchDesc": "Gelişmiş filtreleme ve arama yeteneklerini etkinleştir",
+      "exportFeaturesDesc": "Veri dışa aktarmayı çeşitli formatlarda izin ver",
+      "betaFeaturesDesc": "Deneysel ve beta özelliklerini etkinleştir",
+      "analyticsTrackingDesc": "Anonim kullanım analitiği topla",
+      "maintenanceModeDesc": "Sistemi bakım moduna al"
+    },
+    "active": "Aktif",
+    "experimental": "Deneysel",
+    "performance": {
+      "title": "Performans ve Önbellekleme",
+      "description": "Sistem performansı ve önbellekleme davranışını yapılandır",
+      "cacheTimeout": "Önbellek Zaman Aşımı (saniye)",
+      "cacheTimeoutDesc": "Verileri önbellekte ne kadar süre tutacak (0 = önbellek yok)",
+      "sessionTimeout": "Oturum Zaman Aşımı (saniye)",
+      "sessionTimeoutDesc": "Kullanıcı oturumu sona erme süresi",
+      "maxFileSize": "Maksimum Dosya Boyutu (MB)",
+      "maxFileSizeDesc": "Maksimum dosya yükleme boyutu",
+      "enableCompression": "Sıkıştırmayı Etkinleştir",
+      "enableCompressionDesc": "Bant genişliğini azaltmak için yanıtları sıkıştır",
+      "connectionTest": "Bağlantı Testi",
+      "connectionTestDesc": "Sistem bağlantısını ve performansını test et",
+      "testConnection": "Bağlantıyı Test Et"
+    },
+    "reset": {
+      "title": "Ayarları Sıfırla",
+      "description": "Tüm genel ayarları varsayılan değerlerine sıfırla",
+      "resetAll": "Tümünü Sıfırla"
     }
   },
   "profile": {

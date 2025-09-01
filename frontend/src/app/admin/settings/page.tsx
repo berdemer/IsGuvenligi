@@ -298,7 +298,7 @@ export default function SettingsPage() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">{t('stats.modified')}</p>
+                <p className="text-sm text-muted-foreground">{t('stats.totalSettings')}</p>
                 <p className="text-2xl font-bold text-orange-600">{summary.modifiedSettings}</p>
               </div>
               <FileText className="h-8 w-8 text-orange-600" />
@@ -325,7 +325,8 @@ export default function SettingsPage() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">{t('stats.cacheStatus')}</p>
+                
+                
                 <div className="flex items-center gap-2">
                   {getStatusIcon(summary.cacheStatus)}
                   <p className="text-sm font-medium capitalize">{summary.cacheStatus}</p>

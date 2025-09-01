@@ -202,12 +202,12 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="systemDescription">System Description</Label>
+            <Label htmlFor="systemDescription">{t('systemDescription')}</Label>
             <Textarea
               id="systemDescription"
               value={config.systemDescription}
               onChange={(e) => updateConfig({ systemDescription: e.target.value })}
-              placeholder="Enter system description"
+              placeholder={t('enterSystemDescription')}
               rows={3}
             />
           </div>
@@ -223,10 +223,10 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="Europe/Istanbul">Istanbul (UTC+3)</SelectItem>
-                  <SelectItem value="UTC">UTC (UTC+0)</SelectItem>
-                  <SelectItem value="Europe/London">London (UTC+0)</SelectItem>
-                  <SelectItem value="America/New_York">New York (UTC-5)</SelectItem>
+                  <SelectItem value="Europe/Istanbul">{t('timezones.istanbul')}</SelectItem>
+                  <SelectItem value="UTC">{t('timezones.utc')}</SelectItem>
+                  <SelectItem value="Europe/London">{t('timezones.london')}</SelectItem>
+                  <SelectItem value="America/New_York">{t('timezones.newYork')}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -259,10 +259,10 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="TRY">Turkish Lira (₺)</SelectItem>
-                  <SelectItem value="USD">US Dollar ($)</SelectItem>
-                  <SelectItem value="EUR">Euro (€)</SelectItem>
-                  <SelectItem value="GBP">British Pound (£)</SelectItem>
+                  <SelectItem value="TRY">{t('currencies.try')}</SelectItem>
+                  <SelectItem value="USD">{t('currencies.usd')}</SelectItem>
+                  <SelectItem value="EUR">{t('currencies.eur')}</SelectItem>
+                  <SelectItem value="GBP">{t('currencies.gbp')}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -293,9 +293,9 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="light">Light</SelectItem>
-                  <SelectItem value="dark">Dark</SelectItem>
-                  <SelectItem value="auto">Auto (System)</SelectItem>
+                  <SelectItem value="light">{t('themes.light')}</SelectItem>
+                  <SelectItem value="dark">{t('themes.dark')}</SelectItem>
+                  <SelectItem value="auto">{t('themes.auto')}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -324,7 +324,7 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
               <div className="space-y-0.5">
                 <Label>{t('compactMode')}</Label>
                 <p className="text-sm text-muted-foreground">
-                  Reduce spacing and padding for more content
+                  {t('compactModeDescription')}
                 </p>
               </div>
               <Switch
@@ -337,7 +337,7 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
               <div className="space-y-0.5">
                 <Label>{t('animationsEnabled')}</Label>
                 <p className="text-sm text-muted-foreground">
-                  Enable smooth transitions and animations
+                  {t('animationsDescription')}
                 </p>
               </div>
               <Switch
@@ -357,11 +357,11 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="10">10 seconds</SelectItem>
-                <SelectItem value="30">30 seconds</SelectItem>
-                <SelectItem value="60">1 minute</SelectItem>
-                <SelectItem value="300">5 minutes</SelectItem>
-                <SelectItem value="0">Disabled</SelectItem>
+                <SelectItem value="10">{t('intervals.10seconds')}</SelectItem>
+                <SelectItem value="30">{t('intervals.30seconds')}</SelectItem>
+                <SelectItem value="60">{t('intervals.1minute')}</SelectItem>
+                <SelectItem value="300">{t('intervals.5minutes')}</SelectItem>
+                <SelectItem value="0">{t('intervals.disabled')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -385,21 +385,21 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
             {Object.entries(config.features).map(([key, value]) => {
               const featureKey = key as keyof GeneralConfig['features']
               const featureLabels = {
-                darkModeToggle: 'Dark Mode Toggle',
-                advancedSearch: 'Advanced Search',
-                exportFeatures: 'Export Features',
-                betaFeatures: 'Beta Features',
-                analyticsTracking: 'Analytics Tracking',
-                maintenanceMode: 'Maintenance Mode'
+                darkModeToggle: t('features.darkModeToggle'),
+                advancedSearch: t('features.advancedSearch'),
+                exportFeatures: t('features.exportFeatures'),
+                betaFeatures: t('features.betaFeatures'),
+                analyticsTracking: t('features.analyticsTracking'),
+                maintenanceMode: t('features.maintenanceMode')
               }
               
               const featureDescriptions = {
-                darkModeToggle: 'Allow users to switch between light and dark themes',
-                advancedSearch: 'Enable advanced filtering and search capabilities',
-                exportFeatures: 'Allow data export to various formats',
-                betaFeatures: 'Enable experimental and beta features',
-                analyticsTracking: 'Collect anonymous usage analytics',
-                maintenanceMode: 'Put system in maintenance mode'
+                darkModeToggle: t('features.darkModeToggleDesc'),
+                advancedSearch: t('features.advancedSearchDesc'),
+                exportFeatures: t('features.exportFeaturesDesc'),
+                betaFeatures: t('features.betaFeaturesDesc'),
+                analyticsTracking: t('features.analyticsTrackingDesc'),
+                maintenanceMode: t('features.maintenanceModeDesc')
               }
 
               return (
@@ -408,10 +408,10 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
                     <div className="flex items-center gap-2">
                       <Label>{featureLabels[featureKey]}</Label>
                       {featureKey === 'maintenanceMode' && value && (
-                        <Badge variant="destructive" className="text-xs">Active</Badge>
+                        <Badge variant="destructive" className="text-xs">{t('active')}</Badge>
                       )}
                       {featureKey === 'betaFeatures' && (
-                        <Badge variant="outline" className="text-xs">Experimental</Badge>
+                        <Badge variant="outline" className="text-xs">{t('experimental')}</Badge>
                       )}
                     </div>
                     <p className="text-sm text-muted-foreground">
@@ -437,13 +437,13 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
 {t('performance.title')}
           </CardTitle>
           <CardDescription>
-            Configure system performance and caching behavior
+            {t('performance.description')}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid gap-4 md:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="cacheTimeout">Cache Timeout (seconds)</Label>
+              <Label htmlFor="cacheTimeout">{t('performance.cacheTimeout')}</Label>
               <Input
                 id="cacheTimeout"
                 type="number"
@@ -454,12 +454,12 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
                 max="86400"
               />
               <p className="text-xs text-muted-foreground">
-                How long to keep data in cache (0 = no cache)
+                {t('performance.cacheTimeoutDesc')}
               </p>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="sessionTimeout">Session Timeout (seconds)</Label>
+              <Label htmlFor="sessionTimeout">{t('performance.sessionTimeout')}</Label>
               <Input
                 id="sessionTimeout"
                 type="number"
@@ -470,14 +470,14 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
                 max="86400"
               />
               <p className="text-xs text-muted-foreground">
-                User session expiration time
+                {t('performance.sessionTimeoutDesc')}
               </p>
             </div>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="maxFileSize">Max File Size (MB)</Label>
+              <Label htmlFor="maxFileSize">{t('performance.maxFileSize')}</Label>
               <Input
                 id="maxFileSize"
                 type="number"
@@ -488,15 +488,15 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
                 max="100"
               />
               <p className="text-xs text-muted-foreground">
-                Maximum file upload size
+                {t('performance.maxFileSizeDesc')}
               </p>
             </div>
 
             <div className="flex items-center justify-between">
               <div className="space-y-0.5">
-                <Label>Enable Compression</Label>
+                <Label>{t('performance.enableCompression')}</Label>
                 <p className="text-sm text-muted-foreground">
-                  Compress responses to reduce bandwidth
+                  {t('performance.enableCompressionDesc')}
                 </p>
               </div>
               <Switch
@@ -510,9 +510,9 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
 
           <div className="flex justify-between items-center">
             <div>
-              <h4 className="font-medium">Connection Test</h4>
+              <h4 className="font-medium">{t('performance.connectionTest')}</h4>
               <p className="text-sm text-muted-foreground">
-                Test system connectivity and performance
+                {t('performance.connectionTestDesc')}
               </p>
             </div>
             <Button 
@@ -525,7 +525,7 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
               ) : (
                 <CheckCircle2 className="h-4 w-4 mr-2" />
               )}
-              Test Connection
+              {t('performance.testConnection')}
             </Button>
           </div>
         </CardContent>
@@ -539,7 +539,7 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
 {t('reset.title')}
           </CardTitle>
           <CardDescription>
-            Reset all general settings to their default values
+            {t('reset.description')}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -558,7 +558,7 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
               onClick={resetToDefaults}
               className="text-orange-600 border-orange-600 hover:bg-orange-50"
             >
-              Reset All
+              {t('reset.resetAll')}
             </Button>
           </div>
         </CardContent>
