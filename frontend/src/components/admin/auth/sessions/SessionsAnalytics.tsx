@@ -167,7 +167,7 @@ export function SessionsAnalytics({ sessions, analytics }: SessionsAnalyticsProp
         <div>
           <h2 className="text-2xl font-bold tracking-tight">{t('title')}</h2>
           <p className="text-muted-foreground">
-            Insights and patterns from {sessions.length} active sessions
+            {t('description', { count: sessions.length })}
           </p>
         </div>
         <div className="flex items-center space-x-2">
@@ -184,7 +184,7 @@ export function SessionsAnalytics({ sessions, analytics }: SessionsAnalyticsProp
           </Select>
           <Button variant="outline" size="sm">
             <Download className="h-4 w-4 mr-2" />
-            Export
+            {t('export')}
           </Button>
         </div>
       </div>
@@ -193,23 +193,23 @@ export function SessionsAnalytics({ sessions, analytics }: SessionsAnalyticsProp
         <TabsList>
           <TabsTrigger value="overview">
             <BarChart3 className="h-4 w-4 mr-2" />
-            Overview
+            {t('tabs.overview')}
           </TabsTrigger>
           <TabsTrigger value="geographic">
             <MapPin className="h-4 w-4 mr-2" />
-            Geographic
+            {t('tabs.geographic')}
           </TabsTrigger>
           <TabsTrigger value="devices">
             <Monitor className="h-4 w-4 mr-2" />
-            Devices
+            {t('tabs.devices')}
           </TabsTrigger>
           <TabsTrigger value="security">
             <Shield className="h-4 w-4 mr-2" />
-            Security
+            {t('tabs.security')}
           </TabsTrigger>
           <TabsTrigger value="activity">
             <Activity className="h-4 w-4 mr-2" />
-            Activity
+            {t('tabs.activity')}
           </TabsTrigger>
         </TabsList>
 
@@ -255,7 +255,7 @@ export function SessionsAnalytics({ sessions, analytics }: SessionsAnalyticsProp
                     <p className="text-sm font-medium text-muted-foreground">{t('metrics.highRisk')}</p>
                     <p className="text-2xl font-bold">{analytics.highRiskSessions}</p>
                     <p className="text-xs text-amber-600">
-                      {Math.round((analytics.highRiskSessions / sessions.length) * 100)}% of total
+                      {t('percentOfTotal', { percent: Math.round((analytics.highRiskSessions / sessions.length) * 100) })}
                     </p>
                   </div>
                 </div>

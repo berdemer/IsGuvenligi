@@ -369,7 +369,17 @@
         "mfaEnabled": "MFA Etkin Oturumlar",
         "highRisk": "Yüksek Risk Oturumları",
         "flagged": "İşaretli Oturumlar"
-      }
+      },
+      "description": "{count} aktif oturumdan öngörüler ve desenler",
+      "export": "Dışa Aktar",
+      "tabs": {
+        "overview": "Genel Bakış",
+        "geographic": "Coğrafik",
+        "devices": "Cihazlar",
+        "security": "Güvenlik", 
+        "activity": "Aktivite"
+      },
+      "percentOfTotal": "{percent}% toplam"
     },
     "anomalies": {
       "search": {
