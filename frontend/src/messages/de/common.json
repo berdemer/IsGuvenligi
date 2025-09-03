@@ -66,5 +66,62 @@
   "timezone": "Zeitzone",
   "dateFormat": "Datumsformat",
   "timeFormat": "Zeitformat",
-  "currency": "Währung"
+  "currency": "Währung",
+  "sessions": {
+    "auditLog": {
+      "title": "Prüfprotokoll",
+      "description": "Vollständige Prüfspur der Sitzungsverwaltungsaktivitäten",
+      "export": "Exportieren",
+      "stats": {
+        "totalEvents": "Gesamtereignisse",
+        "critical": "Kritisch",
+        "errors": "Fehler",
+        "warnings": "Warnungen",
+        "adminActions": "Admin-Aktionen"
+      },
+      "tabs": {
+        "allEvents": "Alle Ereignisse",
+        "securityEvents": "Sicherheitsereignisse",
+        "adminActions": "Admin-Aktionen"
+      },
+      "filters": {
+        "searchPlaceholder": "Ereignisse, Benutzer, IP suchen...",
+        "allActions": "Alle Aktionen",
+        "allLevels": "Alle Ebenen",
+        "allActors": "Alle Akteure"
+      },
+      "actionTypes": {
+        "login": "Anmeldung",
+        "logout": "Abmeldung",
+        "sessionRevoke": "Sitzung widerrufen",
+        "sessionFlag": "Sitzung markieren",
+        "mfaChallenge": "MFA-Herausforderung",
+        "anomaly": "Anomalie",
+        "adminAction": "Admin-Aktion"
+      },
+      "severityLevels": {
+        "critical": "Kritisch",
+        "error": "Fehler",
+        "warning": "Warnung",
+        "info": "Information"
+      },
+      "actorTypes": {
+        "user": "Benutzer",
+        "system": "System",
+        "admin": "Administrator"
+      },
+      "table": {
+        "title": "Prüfereignisse ({count})",
+        "timestamp": "Zeitstempel",
+        "action": "Aktion",
+        "actor": "Akteur",
+        "target": "Ziel",
+        "severity": "Schweregrad",
+        "ipAddress": "IP-Adresse",
+        "details": "Details",
+        "actions": "Aktionen",
+        "risk": "Risiko"
+      }
+    }
+  }
 }

@@ -506,7 +506,7 @@ export function SessionsAnomalies({ sessions, onSessionAction }: SessionsAnomali
         <TabsContent value="rules" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Detection Rules Configuration</CardTitle>
+              <CardTitle>{t('rules.title')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-6">
@@ -514,16 +514,16 @@ export function SessionsAnomalies({ sessions, onSessionAction }: SessionsAnomali
                   <div key={key} className="p-4 border rounded-lg">
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="font-medium">{rule.name}</h4>
-                      <Badge variant="outline">Weight: {rule.weight}</Badge>
+                      <Badge variant="outline">{t('rules.weight')}: {rule.weight}</Badge>
                     </div>
                     <p className="text-sm text-muted-foreground mb-3">{rule.description}</p>
                     <div className="flex items-center space-x-4">
                       <div className="flex items-center space-x-2">
-                        <span className="text-sm">Threshold:</span>
+                        <span className="text-sm">{t('rules.threshold')}:</span>
                         <code className="text-xs bg-muted px-2 py-1 rounded">{rule.threshold}</code>
                       </div>
                       <Button variant="outline" size="sm">
-                        Configure
+                        {t('rules.configure')}
                       </Button>
                     </div>
                   </div>
@@ -537,16 +537,16 @@ export function SessionsAnomalies({ sessions, onSessionAction }: SessionsAnomali
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <Card>
               <CardHeader>
-                <CardTitle>Most Common Anomaly Types</CardTitle>
+                <CardTitle>{t('patterns.commonTypes')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
                   {[
-                    { type: 'Geographic Velocity', count: 15, percentage: 35 },
-                    { type: 'Device Anomaly', count: 12, percentage: 28 },
-                    { type: 'Time Anomaly', count: 8, percentage: 19 },
-                    { type: 'Behavioral Anomaly', count: 7, percentage: 16 },
-                    { type: 'IP Reputation', count: 1, percentage: 2 }
+                    { type: t('patterns.geographicVelocity'), count: 15, percentage: 35 },
+                    { type: t('patterns.deviceAnomaly'), count: 12, percentage: 28 },
+                    { type: t('patterns.timeAnomaly'), count: 8, percentage: 19 },
+                    { type: t('patterns.behavioralAnomaly'), count: 7, percentage: 16 },
+                    { type: t('patterns.ipReputation'), count: 1, percentage: 2 }
                   ].map((item) => (
                     <div key={item.type} className="flex items-center justify-between">
                       <span className="text-sm font-medium">{item.type}</span>
@@ -562,15 +562,15 @@ export function SessionsAnomalies({ sessions, onSessionAction }: SessionsAnomali
 
             <Card>
               <CardHeader>
-                <CardTitle>Risk Score Distribution</CardTitle>
+                <CardTitle>{t('patterns.riskDistribution')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
                   {[
-                    { range: '80-100 (Critical)', count: anomalyStats.critical, color: 'bg-red-500' },
-                    { range: '60-79 (High)', count: anomalyStats.high, color: 'bg-amber-500' },
-                    { range: '40-59 (Medium)', count: anomalyStats.medium, color: 'bg-yellow-400' },
-                    { range: '20-39 (Low)', count: 2, color: 'bg-green-400' }
+                    { range: t('patterns.critical80100'), count: anomalyStats.critical, color: 'bg-red-500' },
+                    { range: t('patterns.high6079'), count: anomalyStats.high, color: 'bg-amber-500' },
+                    { range: t('patterns.medium4059'), count: anomalyStats.medium, color: 'bg-yellow-400' },
+                    { range: t('patterns.low2039'), count: 2, color: 'bg-green-400' }
                   ].map((item) => (
                     <div key={item.range} className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">

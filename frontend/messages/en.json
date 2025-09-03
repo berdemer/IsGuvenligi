@@ -93,21 +93,115 @@
     }
   },
   "users": {
-    "title": "User Management",
-    "description": "Manage system users and their permissions",
-    "addUser": "Add User",
-    "editUser": "Edit User",
-    "deleteUser": "Delete User",
-    "userDetails": "User Details",
-    "firstName": "First Name",
-    "lastName": "Last Name",
-    "email": "Email",
-    "username": "Username",
-    "role": "Role",
+    "title": "Users",
+    "description": "Manage system users and edit their permissions",
+    "newUser": "New User",
+    "search": "Search users...",
+    "totalUsers": "Total Users",
+    "activeUsers": "Active Users",
+    "inactiveUsers": "Inactive Users",
+    "selected": "Selected",
     "status": "Status",
-    "createdAt": "Created At",
+    "allStatuses": "All Statuses",
+    "active": "Active",
+    "inactive": "Inactive",
+    "role": "Role",
+    "allRoles": "All Roles",
+    "admin": "Admin",
+    "manager": "Manager",
+    "viewer": "Viewer",
+    "delete": "Delete",
+    "user": "User",
+    "roles": "Roles",
     "lastLogin": "Last Login",
-    "actions": "Actions"
+    "loginCount": "Login Count",
+    "registrationDate": "Registration Date",
+    "neverLoggedIn": "Never logged in",
+    "edit": "Edit",
+    "manageRoles": "Manage Roles",
+    "deactivate": "Deactivate",
+    "activate": "Activate",
+    "noUsersFound": "No users found",
+    "noUsersMessage": "No users match the specified criteria.",
+    "showingResults": "Showing {from}-{to} of {total} total users",
+    "previous": "Previous",
+    "next": "Next",
+    "dialog": {
+      "editTitle": "Edit User",
+      "createTitle": "Create New User",
+      "editDescription": "Update user information and roles",
+      "createDescription": "Create a new system user",
+      "personalInformation": "Personal Information",
+      "accountInformation": "Account Information",
+      "contactInformation": "Contact Information",
+      "fields": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "username": "Username",
+        "phone": "Phone",
+        "department": "Department"
+      },
+      "placeholders": {
+        "firstName": "Enter your first name",
+        "lastName": "Enter your last name",
+        "email": "example@email.com",
+        "username": "username",
+        "phone": "+1 555 123 45 67",
+        "department": "Select department"
+      },
+      "departments": {
+        "it_department": "IT Department",
+        "security_department": "Security Department",
+        "operations": "Operations",
+        "human_resources": "Human Resources",
+        "finance": "Finance",
+        "marketing": "Marketing",
+        "engineering": "Engineering",
+        "support": "Support"
+      },
+      "roles": {
+        "title": "Role Assignment",
+        "selected": "selected"
+      },
+      "accountStatus": {
+        "title": "Account Status",
+        "active": "Active Account",
+        "description": "User can log in to the system and use assigned roles"
+      },
+      "preview": {
+        "title": "User Preview",
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "validation": {
+        "emailRequired": "Email is required",
+        "emailValid": "Enter a valid email address",
+        "firstNameRequired": "First name is required",
+        "firstNameMin": "First name must be at least 2 characters",
+        "firstNameLetters": "First name can only contain letters",
+        "lastNameRequired": "Last name is required",
+        "lastNameMin": "Last name must be at least 2 characters",
+        "lastNameLetters": "Last name can only contain letters",
+        "usernameRequired": "Username is required",
+        "usernameMin": "Username must be at least 3 characters",
+        "usernameFormat": "Username can only contain letters, numbers, dots, hyphens, and underscores",
+        "departmentRequired": "Department is required",
+        "phoneRequired": "Phone number is required",
+        "phoneValid": "Please enter a valid phone number",
+        "rolesRequired": "At least one role must be selected",
+        "fixErrors": "Please fix the errors"
+      },
+      "cancel": "Cancel",
+      "create": "Create",
+      "update": "Update",
+      "creating": "Creating...",
+      "updating": "Updating...",
+      "createSuccess": "User created successfully",
+      "updateSuccess": "User updated successfully",
+      "createError": "Error creating user",
+      "updateError": "Error updating user"
+    }
   },
   "roles": {
     "title": "Role Management",
@@ -234,7 +328,7 @@
   },
   "policies": {
     "title": "Access Policies",
-    "description": "Manage access control policies and permissions", 
+    "description": "Manage access control policies and permissions",
     "viewReports": "View Reports",
     "exportCsv": "Export CSV",
     "createPolicy": "Create Policy",
@@ -244,7 +338,7 @@
     "enforcedResources": "Enforced Resources",
     "fromLastMonth": "from last month",
     "ofTotal": "of total",
-    "requiresAttention": "requires attention", 
+    "requiresAttention": "requires attention",
     "applicationsProtected": "applications protected",
     "conflictsDetected": "conflicts detected",
     "reviewConflicts": "Review conflicts to prevent access issues",
@@ -253,7 +347,7 @@
     "loading": "Loading...",
     "policies": "Policies",
     "simulation": "Simulation",
-    "analytics": "Analytics", 
+    "analytics": "Analytics",
     "audit": "Audit",
     "keycloak": "Keycloak",
     "failedToLoad": "Failed to load policies",
@@ -261,7 +355,7 @@
     "policyExportStart": "Policy export would start here",
     "navigateToReports": "Navigate to reports page",
     "policyUpdated": "Policy updated",
-    "policyDeleted": "Policy deleted", 
+    "policyDeleted": "Policy deleted",
     "policyCloned": "Policy cloned",
     "editPolicy": "Edit policy",
     "conflictManager": {
@@ -792,78 +886,6 @@
   },
   "health": {
     "title": "Health Monitoring",
-    "overview": "Monitor system health and performance metrics",
-    "tabs": {
-      "overview": "Overview",
-      "services": "Services", 
-      "infrastructure": "Infrastructure",
-      "incidents": "Incidents",
-      "metrics": "Metrics",
-      "settings": "Settings"
-    },
-    "healthScore": "Health Score",
-    "systemUptime": "System Uptime",
-    "services": "Services",
-    "avgResponseTime": "Avg Response Time",
-    "errorRate": "Error Rate",
-    "criticalAlerts": "Critical Alerts",
-    "autoRefresh": "Auto-refresh",
-    "live": "Live",
-    "offline": "Offline",
-    "updated": "Updated",
-    "connect": "Connect",
-    "disconnect": "Disconnect",
-    "refresh": "Refresh",
-    "viewReports": "View Reports",
-    "exportMetrics": "Export Metrics",
-    "generatingHealthReport": "Generating health report...",
-    "healthReportExported": "Health report exported successfully",
-    "failedToExportReport": "Failed to export health report",
-    "realtimeMonitoringDisconnected": "Real-time monitoring disconnected",
-    "realtimeMonitoringConnected": "Real-time monitoring connected",
-    "newAlert": "New",
-    "newIncident": "New incident",
-    "serviceStatusUpdated": "status updated",
-    "status": {
-      "healthy": "Healthy",
-      "warning": "Warning",
-      "critical": "Critical",
-      "unknown": "Unknown"
-    },
-    "infrastructure": {
-      "cpuUsage": "CPU Usage",
-      "memory": "Memory",
-      "diskSpace": "Disk Space",
-      "networkIO": "Network I/O",
-      "usage": "Usage",
-      "cores": "Cores",
-      "loadAvg": "Load Avg",
-      "swapUsed": "Swap Used",
-      "readIOPS": "Read IOPS",
-      "writeIOPS": "Write IOPS",
-      "outbound": "Outbound",
-      "packetsIn": "Packets In",
-      "errors": "Errors",
-      "serviceResourceUsage": "Service Resource Usage",
-      "resourceConsumption": "Resource consumption by individual services",
-      "historicalMetrics": "Historical Metrics",
-      "memoryBreakdown": "Memory Breakdown",
-      "physicalMemory": "Physical Memory",
-      "swapMemory": "Swap Memory",
-      "diskIOPerformance": "Disk I/O Performance",
-      "networkStatistics": "Network Statistics",
-      "inbound": "Inbound",
-      "packetsOut": "Packets Out",
-      "infrastructureAlerts": "Infrastructure Alerts",
-      "activeAlerts": "Active alerts and threshold violations",
-      "highMemoryUsage": "High Memory Usage",
-      "memoryApproaching": "Memory usage is at {usage}%, approaching threshold",
-      "criticalCPUUsage": "Critical CPU Usage",
-      "cpuImmediateAttention": "CPU usage is at {usage}%, immediate attention required",
-      "diskSpaceLow": "Disk Space Low",
-      "diskConsiderCleanup": "Disk usage is at {usage}%, consider cleanup",
-      "allMetricsNormal": "All infrastructure metrics within normal range"
-    },
     "overview": {
       "title": "System Overview",
       "timeRanges": {
@@ -908,6 +930,16 @@
         "good": "GOOD"
       }
     },
+    "tabs": {
+      "overview": "Overview",
+      "services": "Services",
+      "infrastructure": "Infrastructure",
+      "incidents": "Incidents",
+      "metrics": "Metrics",
+      "settings": "Settings"
+    },
+    "healthScore": "Health Score",
+    "systemUptime": "System Uptime",
     "services": {
       "title": "Service Status",
       "description": "Real-time health status of all system services",
@@ -984,9 +1016,76 @@
         "actionFailed": "Failed to {action} {serviceName}"
       }
     },
+    "avgResponseTime": "Avg Response Time",
+    "errorRate": "Error Rate",
+    "criticalAlerts": "Critical Alerts",
+    "autoRefresh": "Auto-refresh",
+    "live": "Live",
+    "offline": "Offline",
+    "updated": "Updated",
+    "connect": "Connect",
+    "disconnect": "Disconnect",
+    "refresh": "Refresh",
+    "viewReports": "View Reports",
+    "exportMetrics": "Export Metrics",
+    "generatingHealthReport": "Generating health report...",
+    "healthReportExported": "Health report exported successfully",
+    "failedToExportReport": "Failed to export health report",
+    "realtimeMonitoringDisconnected": "Real-time monitoring disconnected",
+    "realtimeMonitoringConnected": "Real-time monitoring connected",
+    "newAlert": "New",
+    "newIncident": "New incident",
+    "serviceStatusUpdated": "status updated",
+    "status": {
+      "healthy": "Healthy",
+      "warning": "Warning",
+      "critical": "Critical",
+      "unknown": "Unknown"
+    },
+    "infrastructure": {
+      "cpuUsage": "CPU Usage",
+      "memory": "Memory",
+      "diskSpace": "Disk Space",
+      "networkIO": "Network I/O",
+      "usage": "Usage",
+      "cores": "Cores",
+      "loadAvg": "Load Avg",
+      "swapUsed": "Swap Used",
+      "readIOPS": "Read IOPS",
+      "writeIOPS": "Write IOPS",
+      "outbound": "Outbound",
+      "packetsIn": "Packets In",
+      "errors": "Errors",
+      "serviceResourceUsage": "Service Resource Usage",
+      "resourceConsumption": "Resource consumption by individual services",
+      "historicalMetrics": "Historical Metrics",
+      "memoryBreakdown": "Memory Breakdown",
+      "physicalMemory": "Physical Memory",
+      "swapMemory": "Swap Memory",
+      "diskIOPerformance": "Disk I/O Performance",
+      "networkStatistics": "Network Statistics",
+      "inbound": "Inbound",
+      "packetsOut": "Packets Out",
+      "infrastructureAlerts": "Infrastructure Alerts",
+      "activeAlerts": "Active alerts and threshold violations",
+      "highMemoryUsage": "High Memory Usage",
+      "memoryApproaching": "Memory usage is at {usage}%, approaching threshold",
+      "criticalCPUUsage": "Critical CPU Usage",
+      "cpuImmediateAttention": "CPU usage is at {usage}%, immediate attention required",
+      "diskSpaceLow": "Disk Space Low",
+      "diskConsiderCleanup": "Disk usage is at {usage}%, consider cleanup",
+      "allMetricsNormal": "All infrastructure metrics within normal range"
+    },
     "incidents": {
       "title": "Incidents",
-      "timeline": "Timeline",
+      "timeline": {
+        "detected": "detected",
+        "investigating": "investigating",
+        "update": "update",
+        "resolved": "resolved",
+        "auto": "Auto",
+        "by": "by"
+      },
       "description": "Track and manage system incidents and outages",
       "searchPlaceholder": "Search incidents...",
       "stats": {
@@ -1058,14 +1157,6 @@
         "rootCause": "Root Cause",
         "resolution": "Resolution",
         "timeline": "Timeline"
-      },
-      "timeline": {
-        "detected": "detected",
-        "investigating": "investigating",
-        "update": "update",
-        "resolved": "resolved",
-        "auto": "Auto",
-        "by": "by"
       },
       "timeFormat": {
         "ongoing": "Ongoing",
@@ -1288,11 +1379,6 @@
       "usernamePlaceholder": "Enter username",
       "departmentPlaceholder": "Select department",
       "required": "*",
-      "firstNamePlaceholder": "Enter first name",
-      "lastNamePlaceholder": "Enter last name",
-      "usernamePlaceholder": "Enter username",
-      "departmentPlaceholder": "Select department",
-      "required": "*",
       "departments": {
         "IT Security": "IT Security",
         "Information Technology": "Information Technology",
@@ -1413,8 +1499,11 @@
       "notifications": {
         "title": "Notifications",
         "email": "Email Notifications",
+        "emailDescription": "Receive security alerts and updates via email",
         "sms": "SMS Notifications",
-        "app": "App Notifications"
+        "smsDescription": "Receive critical security alerts via SMS",
+        "app": "In-App Notifications",
+        "appDescription": "Show notifications within the application"
       },
       "updateSuccess": "Preferences updated successfully",
       "updateError": "Failed to update preferences",
@@ -1425,16 +1514,7 @@
       "timeZone": "Time Zone",
       "appearance": "Appearance",
       "systemThemeDescription": "System theme follows your device's appearance settings",
-      "savingPreferences": "Saving preferences...",
-      "notifications": {
-        "title": "Notifications",
-        "email": "Email Notifications",
-        "emailDescription": "Receive security alerts and updates via email",
-        "sms": "SMS Notifications",
-        "smsDescription": "Receive critical security alerts via SMS",
-        "app": "In-App Notifications",
-        "appDescription": "Show notifications within the application"
-      }
+      "savingPreferences": "Saving preferences..."
     },
     "activity": {
       "title": "Recent Activities",
@@ -1594,195 +1674,434 @@
     }
   },
   "common": {
+    "loading": "Loading...",
     "save": "Save",
     "cancel": "Cancel",
     "delete": "Delete",
     "edit": "Edit",
     "add": "Add",
-    "create": "Create",
-    "update": "Update",
-    "refresh": "Refresh",
-    "reset": "Reset",
     "search": "Search",
     "filter": "Filter",
     "export": "Export",
     "import": "Import",
-    "loading": "Loading...",
-    "error": "Error",
-    "success": "Success",
-    "warning": "Warning",
-    "info": "Info",
-    "confirm": "Confirm",
-    "yes": "Yes",
-    "no": "No",
-    "ok": "OK",
-    "close": "Close",
+    "refresh": "Refresh",
     "back": "Back",
     "next": "Next",
     "previous": "Previous",
-    "finish": "Finish",
-    "new": "New",
+    "submit": "Submit",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No",
+    "close": "Close",
+    "view": "View",
+    "download": "Download",
+    "upload": "Upload",
+    "clear": "Clear",
+    "reset": "Reset",
+    "apply": "Apply",
+    "actions": "Actions",
+    "status": "Status",
+    "name": "Name",
+    "description": "Description",
+    "date": "Date",
+    "time": "Time",
+    "user": "User",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "total": "Total",
     "active": "Active",
     "inactive": "Inactive",
     "enabled": "Enabled",
     "disabled": "Disabled",
-    "online": "Online",
-    "offline": "Offline",
-    "connected": "Connected",
-    "disconnected": "Disconnected",
-    "failed": "failed",
-    "connect": "connect",
-    "disconnect": "disconnect",
-    "name": "Name",
-    "description": "Description",
-    "email": "Email",
-    "phone": "Phone",
-    "address": "Address",
-    "date": "Date",
-    "time": "Time",
-    "type": "Type",
-    "category": "Category",
-    "priority": "Priority",
-    "status": "Status",
-    "actions": "Actions",
-    "details": "Details",
-    "settings": "Settings",
-    "profile": "Profile",
-    "logout": "Logout",
-    "login": "Login",
-    "register": "Register",
-    "forgotPassword": "Forgot Password",
-    "resetPassword": "Reset Password",
-    "changePassword": "Change Password",
-    "emptyState": {
-      "noData": "No data found",
-      "noResults": "No results found",
-      "noItems": "No items found"
-    },
-    "pagination": {
-      "page": "Page",
-      "of": "of",
-      "items": "items",
-      "showing": "Showing",
-      "to": "to",
-      "results": "results"
-    },
-    "validation": {
-      "required": "This field is required",
-      "email": "Enter a valid email address",
-      "minLength": "Must be at least {min} characters",
-      "maxLength": "Must be at most {max} characters",
-      "fixErrors": "Please fix the validation errors",
-      "firstNameRequired": "First name is required",
-      "firstNameMin": "First name must be at least 2 characters",
-      "firstNameLetters": "First name can only contain letters",
-      "lastNameRequired": "Last name is required",
-      "lastNameMin": "Last name must be at least 2 characters",
-      "lastNameLetters": "Last name can only contain letters",
-      "usernameRequired": "Username is required",
-      "usernameMin": "Username must be at least 3 characters",
-      "usernameFormat": "Username can only contain letters, numbers, dots, hyphens, and underscores",
-      "departmentRequired": "Department is required",
-      "phoneRequired": "Phone number is required",
-      "phoneValid": "Please enter a valid phone number"
-    }
-  },
-  "admin": {
-    "roles": {
-      "title": "Roles & Permissions",
-      "description": "Manage system roles and permissions",
-      "newRole": "New Role",
-      "search": "Search roles...",
-      "totalRoles": "Total Roles",
-      "totalUsers": "Total Users",
-      "adminRoles": "Admin Roles",
-      "averagePermissions": "Average Permissions",
-      "role": "Role",
-      "description": "Description",
-      "permissions": "Permissions",
-      "userCount": "User Count",
-      "createdAt": "Created Date",
-      "noDescription": "No description",
-      "edit": "Edit",
-      "managePermissions": "Manage Permissions",
-      "viewUsers": "View Users",
-      "delete": "Delete",
-      "noRolesFound": "No roles found",
-      "noRolesMessage": "No roles match the specified criteria.",
-      "roleTypes": {
-        "admin": "admin",
-        "manager": "manager",
-        "viewer": "viewer"
+    "success": "Success",
+    "error": "Error",
+    "warning": "Warning",
+    "info": "Info",
+    "welcome": "Welcome",
+    "welcomeBack": "Welcome Back",
+    "goodMorning": "Good Morning",
+    "goodAfternoon": "Good Afternoon",
+    "goodEvening": "Good Evening",
+    "pleaseWait": "Please wait...",
+    "noData": "No data found",
+    "notFound": "Not Found",
+    "unauthorized": "Unauthorized",
+    "forbidden": "Forbidden",
+    "sessionExpired": "Session expired",
+    "networkError": "Network error",
+    "serverError": "Server error",
+    "operationSuccessful": "Operation successful",
+    "operationFailed": "Operation failed",
+    "confirmDelete": "Are you sure you want to delete?",
+    "confirmAction": "Are you sure you want to perform this action?",
+    "unsavedChanges": "You have unsaved changes",
+    "language": "Language",
+    "theme": "Theme",
+    "timezone": "Timezone",
+    "dateFormat": "Date Format",
+    "timeFormat": "Time Format",
+    "currency": "Currency",
+    "goToDashboard": "Go to Dashboard",
+    "workplaceSafety": "Workplace Safety Management System",
+    "general": "General",
+    "languages": "Languages",
+    "placeholders": "Placeholders",
+    "sessions": {
+      "title": "Active Sessions",
+      "search": {
+        "placeholder": "Search by email, username, IP, or device fingerprint..."
       },
-      "badges": {
-        "admin": "bg-red-100 text-red-800 hover:bg-red-200",
-        "manager": "bg-blue-100 text-blue-800 hover:bg-blue-200",
-        "viewer": "bg-green-100 text-green-800 hover:bg-green-200",
-        "default": "bg-gray-100 text-gray-800 hover:bg-gray-200"
+      "filters": {
+        "title": "Filters",
+        "allRoles": "All Roles",
+        "allDevices": "All Devices",
+        "allRiskLevels": "All Risk Levels",
+        "allMfaStatus": "All MFA Status",
+        "mfaPassed": "MFA Passed",
+        "mfaRequired": "MFA Required",
+        "mfaFailed": "MFA Failed",
+        "mfaBypassed": "MFA Bypassed"
       },
-      "loading": "Loading...",
-      "dialog": {
-        "editTitle": "Edit Role",
-        "createTitle": "Create New Role",
-        "editDescription": "Update role information and permissions",
-        "createDescription": "Define a new system role and permissions",
-        "basicInformation": "Basic Information",
+      "roles": {
+        "admin": "Admin",
+        "security": "Security",
+        "viewer": "Viewer"
+      },
+      "devices": {
+        "desktop": "Desktop",
+        "mobile": "Mobile",
+        "tablet": "Tablet"
+      },
+      "risk": {
+        "low": "Low Risk",
+        "medium": "Medium Risk",
+        "high": "High Risk",
+        "critical": "Critical Risk",
+        "score": "Risk Score: {score}/100 ({level})"
+      },
+      "mfa": {
+        "passed": "Passed",
+        "required": "Required",
+        "failed": "Failed",
+        "bypassed": "Bypassed",
+        "unknown": "Unknown"
+      },
+      "time": {
+        "justNow": "Just now",
+        "minutesAgo": "{minutes}m ago",
+        "hoursAgo": "{hours}h ago",
+        "daysAgo": "{days}d ago"
+      },
+      "stats": {
+        "showing": "Showing {filtered} of {total} sessions",
+        "selected": "{count} sessions selected"
+      },
+      "empty": {
+        "title": "No sessions found",
+        "noSessions": "No active sessions at the moment",
+        "noResults": "Try adjusting your search or filter criteria"
+      },
+      "table": {
+        "user": "User",
+        "device": "Device",
+        "location": "Location",
+        "loginTime": "Login Time",
+        "lastActivity": "Last Activity",
+        "idle": "Idle",
+        "mfa": "MFA",
+        "risk": "Risk",
+        "ttl": "TTL",
+        "concurrent": "Concurrent"
+      },
+      "device": {
+        "new": "New"
+      },
+      "location": {
+        "vpn": "VPN"
+      },
+      "status": {
+        "active": "Active"
+      },
+      "anomalies": {
+        "title": "Anomaly Detection",
+        "description": "AI-powered detection of suspicious session patterns",
+        "detected": "{count} anomalies detected",
+        "highPriority": "high priority",
+        "stats": {
+          "totalAnomalies": "Total Anomalies",
+          "critical": "Critical",
+          "highRisk": "High Risk",
+          "mediumRisk": "Medium Risk",
+          "new": "New"
+        },
+        "tabs": {
+          "detectedAnomalies": "Detected Anomalies",
+          "detectionRules": "Detection Rules",
+          "patternAnalysis": "Pattern Analysis"
+        },
+        "filters": {
+          "searchPlaceholder": "Search anomalies...",
+          "allSeverities": "All Severities",
+          "allTypes": "All Types",
+          "allStatus": "All Status",
+          "geographic": "Geographic",
+          "device": "Device",
+          "time": "Time",
+          "behavior": "Behavior",
+          "investigating": "Investigating",
+          "resolved": "Resolved",
+          "falsePositive": "False Positive"
+        },
+        "table": {
+          "user": "User",
+          "type": "Type",
+          "severity": "Severity",
+          "riskScore": "Risk Score",
+          "description": "Description",
+          "detected": "Detected",
+          "status": "Status",
+          "actions": "Actions"
+        },
+        "rules": {
+          "title": "Detection Rules Configuration",
+          "weight": "Weight",
+          "threshold": "Threshold",
+          "configure": "Configure"
+        },
+        "patterns": {
+          "commonTypes": "Most Common Anomaly Types",
+          "riskDistribution": "Risk Score Distribution",
+          "geographicVelocity": "Geographic Velocity",
+          "deviceAnomaly": "Device Anomaly",
+          "timeAnomaly": "Time Anomaly",
+          "behavioralAnomaly": "Behavioral Anomaly",
+          "ipReputation": "IP Reputation",
+          "critical80100": "80-100 (Critical)",
+          "high6079": "60-79 (High)",
+          "medium4059": "40-59 (Medium)",
+          "low2039": "20-39 (Low)"
+        }
+      },
+      "actions": {
+        "viewDetails": "View Details",
+        "revokeSession": "Revoke Session",
+        "revokeAndBlockIp": "Revoke + Block IP (15m)",
+        "requireMfa": "Require MFA on Next Action",
+        "flagCompromised": "Flag as Compromised"
+      },
+      "toast": {
+        "noRevokePermission": "You don't have permission to revoke sessions",
+        "noQuarantinePermission": "You don't have permission to quarantine IPs",
+        "actionFailed": "Failed to {action} session",
+        "sessionRevoked": "Session revoked successfully",
+        "sessionRevokedAndBlocked": "Session revoked and IP blocked",
+        "mfaRequirementAdded": "MFA requirement added",
+        "ipQuarantined": "IP quarantined successfully",
+        "sessionFlagged": "Session flagged as compromised",
+        "reauthRequired": "Reauthentication required",
+        "actionCompleted": "Action completed successfully",
+        "bulkCompleted": "Bulk {action} completed"
+      },
+      "details": {
+        "noSessionSelected": "No session selected",
+        "title": "Session Details",
+        "risk": {
+          "high": "High Risk",
+          "medium": "Medium Risk",
+          "low": "Low Risk"
+        },
+        "actions": {
+          "revoke": "Revoke",
+          "flag": "Flag"
+        },
+        "tabs": {
+          "overview": "Overview",
+          "security": "Security",
+          "timeline": "Timeline",
+          "location": "Location",
+          "tokens": "Tokens"
+        },
+        "sections": {
+          "sessionInfo": "Session Information",
+          "deviceInfo": "Device Information",
+          "securityOverview": "Security Overview",
+          "securityEvents": "Security Events",
+          "sessionTimeline": "Session Timeline",
+          "geoInfo": "Geographic Information",
+          "asnInfo": "ASN Information",
+          "tokenInfo": "Token Information",
+          "sessionState": "Session State"
+        },
         "fields": {
-          "name": "Role Name",
-          "displayName": "Display Name",
-          "description": "Description"
+          "sessionId": "Session ID",
+          "user": "User",
+          "clientId": "Client ID",
+          "duration": "Duration",
+          "rolesPermissions": "Roles & Permissions",
+          "scopes": "Scopes",
+          "deviceType": "Device Type",
+          "platform": "Platform",
+          "browser": "Browser",
+          "ipAddress": "IP Address",
+          "userAgent": "User Agent",
+          "mfaStatus": "MFA Status",
+          "riskScore": "Risk Score",
+          "asn": "ASN",
+          "country": "Country",
+          "city": "City",
+          "region": "Region",
+          "timezone": "Timezone",
+          "organization": "Organization",
+          "isp": "ISP",
+          "expires": "Expires",
+          "type": "Type",
+          "lastUsed": "Last Used",
+          "rememberMe": "Remember Me",
+          "lastActivity": "Last Activity"
         },
-        "placeholders": {
-          "name": "e.g. viewer, manager",
-          "displayName": "e.g. Viewer, Manager",
-          "description": "Describe what this role does..."
+        "status": {
+          "verified": "Verified",
+          "notVerified": "Not Verified",
+          "unknown": "Unknown",
+          "active": "Active",
+          "expired": "Expired",
+          "available": "Available",
+          "enabled": "Enabled",
+          "disabled": "Disabled"
         },
-        "permissions": {
-          "title": "Permissions",
-          "selected": "selected",
-          "categories": {
-            "user": "User Management",
-            "role": "Role Management",
-            "oauth": "OAuth Settings",
-            "audit": "Audit Logs",
-            "system": "System Settings",
-            "settings": "General Settings"
+        "map": {
+          "placeholder": "Interactive map would be displayed here"
+        },
+        "tokens": {
+          "accessToken": "Access Token",
+          "refreshToken": "Refresh Token",
+          "bearer": "Bearer"
+        }
+      },
+      "bulkActions": {
+        "selected": "{count} selected",
+        "choosePlaceholder": "Choose bulk action...",
+        "executeAction": "Execute Action",
+        "confirmTitle": "Confirm Bulk Action",
+        "confirmDescription": "You are about to perform \"{action}\" on {count} sessions.",
+        "cannotUndo": "This action cannot be undone.",
+        "actions": {
+          "revoke": {
+            "label": "Revoke Sessions",
+            "description": "Immediately terminate selected sessions"
           },
-          "actions": {
-            "read": "View",
-            "write": "Edit",
-            "delete": "Delete"
+          "revokeBlockIp": {
+            "label": "Revoke + Block IPs",
+            "description": "Revoke sessions and temporarily block IP addresses"
+          },
+          "forceMfa": {
+            "label": "Force MFA",
+            "description": "Require MFA on next action for these sessions"
+          },
+          "quarantineIp": {
+            "label": "Quarantine IPs",
+            "description": "Quarantine IP addresses for specified duration"
+          },
+          "flagCompromised": {
+            "label": "Flag as Compromised",
+            "description": "Mark sessions as potentially compromised"
+          },
+          "requireReauth": {
+            "label": "Require Re-auth",
+            "description": "Force users to re-authenticate"
           }
         },
-        "preview": {
-          "title": "Role Preview",
-          "roleName": "role-name",
-          "displayName": "Display Name",
-          "permissions": "permission"
+        "alert": {
+          "action": "Action",
+          "affectedSessions": "Affected Sessions",
+          "warning": "Warning",
+          "terminateWarning": "This will immediately terminate user sessions."
         },
-        "validation": {
-          "nameRequired": "Role name is required",
-          "nameFormat": "Role name can only contain lowercase letters, numbers, and underscores",
-          "displayNameRequired": "Display name is required",
-          "permissionsRequired": "At least one permission must be selected",
-          "fixErrors": "Please fix the errors"
+        "fields": {
+          "reason": "Reason for Action",
+          "reasonPlaceholder": "Explain why this bulk action is necessary...",
+          "blockDuration": "Block Duration (minutes)",
+          "notifyUsers": "Notify affected users via email"
         },
-        "cancel": "Cancel",
-        "create": "Create",
-        "update": "Update",
-        "creating": "Creating...",
-        "updating": "Updating...",
-        "createSuccess": "Role created successfully",
-        "updateSuccess": "Role updated successfully",
-        "createError": "Error creating role",
-        "updateError": "Error updating role"
+        "duration": {
+          "15min": "15 minutes",
+          "30min": "30 minutes",
+          "1hour": "1 hour",
+          "4hours": "4 hours",
+          "24hours": "24 hours"
+        },
+        "buttons": {
+          "cancel": "Cancel",
+          "processing": "Processing...",
+          "execute": "Execute {action}"
+        },
+        "clearSelection": "Clear Selection",
+        "tip": "💡 Tip: Use bulk actions to efficiently manage multiple sessions at once",
+        "toast": {
+          "reasonRequired": "Please provide a reason for this action",
+          "executeFailed": "Failed to execute bulk action"
+        }
+      },
+      "realtime": {
+        "status": {
+          "live": "Live",
+          "reconnecting": "Reconnecting",
+          "disconnected": "Disconnected"
+        },
+        "tooltip": {
+          "connectionStatus": "Connection Status",
+          "connected": "Connected",
+          "disconnected": "Disconnected",
+          "lastUpdate": "Last Update",
+          "reconnectAttempts": "Reconnect Attempts"
+        }
+      },
+      "analytics": {
+        "title": "Session Analytics",
+        "timeRanges": {
+          "lastHour": "Last Hour",
+          "last24h": "Last 24h",
+          "last7days": "Last 7 days",
+          "last30days": "Last 30 days"
+        },
+        "metrics": {
+          "peakConcurrent": "Peak Concurrent",
+          "avgDuration": "Avg Duration",
+          "highRisk": "High Risk",
+          "mfaCoverage": "MFA Coverage"
+        },
+        "charts": {
+          "riskDistribution": "Risk Score Distribution",
+          "topAnomalies": "Top Anomalies",
+          "sessionsByCountry": "Sessions by Country",
+          "geoHeatmap": "Geographic Heatmap",
+          "deviceDistribution": "Device Type Distribution",
+          "browserDistribution": "Browser Distribution",
+          "securityMetrics": "Security Metrics",
+          "securityEvents": "Security Events"
+        },
+        "risk": {
+          "lowRange": "Low (0-39)",
+          "mediumRange": "Medium (40-69)",
+          "highRange": "High (70-100)"
+        },
+        "worldMap": {
+          "title": "World Map",
+          "description": "Interactive geographic visualization would be displayed here"
+        },
+        "security": {
+          "mfaEnabled": "MFA Enabled Sessions",
+          "highRisk": "High Risk Sessions",
+          "flagged": "Flagged Sessions"
+        }
       }
     }
   },
   "admin": {
     "roles": {
       "title": "Roles",
-      "description": "Manage system roles and permissions",
+      "description": "Description",
       "newRole": "New Role",
       "totalRoles": "Total Roles",
       "totalUsers": "Total Users",
@@ -1790,7 +2109,6 @@
       "averagePermissions": "Average Permissions",
       "search": "Search roles...",
       "role": "Role",
-      "description": "Description",
       "permissions": "Permissions",
       "userCount": "User Count",
       "createdAt": "Created At",
@@ -1865,117 +2183,6 @@
         "title": "No logs found",
         "description": "No audit logs found matching the specified criteria."
       }
-    }
-  },
-  "users": {
-    "title": "Users",
-    "description": "Manage system users and edit their permissions",
-    "newUser": "New User",
-    "search": "Search users...",
-    "totalUsers": "Total Users",
-    "activeUsers": "Active Users",
-    "inactiveUsers": "Inactive Users",
-    "selected": "Selected",
-    "status": "Status",
-    "allStatuses": "All Statuses",
-    "active": "Active",
-    "inactive": "Inactive",
-    "role": "Role",
-    "allRoles": "All Roles",
-    "admin": "Admin",
-    "manager": "Manager",
-    "viewer": "Viewer",
-    "delete": "Delete",
-    "user": "User",
-    "roles": "Roles",
-    "lastLogin": "Last Login",
-    "loginCount": "Login Count",
-    "registrationDate": "Registration Date",
-    "neverLoggedIn": "Never logged in",
-    "edit": "Edit",
-    "manageRoles": "Manage Roles",
-    "deactivate": "Deactivate",
-    "activate": "Activate",
-    "noUsersFound": "No users found",
-    "noUsersMessage": "No users match the specified criteria.",
-    "showingResults": "Showing {from}-{to} of {total} total users",
-    "previous": "Previous",
-    "next": "Next",
-    "dialog": {
-      "editTitle": "Edit User",
-      "createTitle": "Create New User",
-      "editDescription": "Update user information and roles",
-      "createDescription": "Create a new system user",
-      "personalInformation": "Personal Information",
-      "accountInformation": "Account Information",
-      "contactInformation": "Contact Information",
-      "fields": {
-        "firstName": "First Name",
-        "lastName": "Last Name",
-        "email": "Email",
-        "username": "Username",
-        "phone": "Phone",
-        "department": "Department"
-      },
-      "placeholders": {
-        "firstName": "Enter your first name",
-        "lastName": "Enter your last name",
-        "email": "example@email.com",
-        "username": "username",
-        "phone": "+1 555 123 45 67",
-        "department": "Select department"
-      },
-      "departments": {
-        "it_department": "IT Department",
-        "security_department": "Security Department",
-        "operations": "Operations",
-        "human_resources": "Human Resources",
-        "finance": "Finance",
-        "marketing": "Marketing",
-        "engineering": "Engineering",
-        "support": "Support"
-      },
-      "roles": {
-        "title": "Role Assignment",
-        "selected": "selected"
-      },
-      "accountStatus": {
-        "title": "Account Status",
-        "active": "Active Account",
-        "description": "User can log in to the system and use assigned roles"
-      },
-      "preview": {
-        "title": "User Preview",
-        "active": "Active",
-        "inactive": "Inactive"
-      },
-      "validation": {
-        "emailRequired": "Email is required",
-        "emailValid": "Enter a valid email address",
-        "firstNameRequired": "First name is required",
-        "firstNameMin": "First name must be at least 2 characters",
-        "firstNameLetters": "First name can only contain letters",
-        "lastNameRequired": "Last name is required",
-        "lastNameMin": "Last name must be at least 2 characters",
-        "lastNameLetters": "Last name can only contain letters",
-        "usernameRequired": "Username is required",
-        "usernameMin": "Username must be at least 3 characters",
-        "usernameFormat": "Username can only contain letters, numbers, dots, hyphens, and underscores",
-        "departmentRequired": "Department is required",
-        "phoneRequired": "Phone number is required",
-        "phoneValid": "Please enter a valid phone number",
-        "rolesRequired": "At least one role must be selected",
-        "fixErrors": "Please fix the errors"
-      },
-      "cancel": "Cancel",
-      "create": "Create",
-      "update": "Update",
-      "creating": "Creating...",
-      "updating": "Updating...",
-      "createSuccess": "User created successfully",
-      "updateSuccess": "User updated successfully",
-      "createError": "Error creating user",
-      "updateError": "Error updating user"
     }
   }
 }

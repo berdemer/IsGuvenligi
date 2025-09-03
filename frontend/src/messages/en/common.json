@@ -46,7 +46,7 @@
   "welcome": "Welcome",
   "welcomeBack": "Welcome Back",
   "goodMorning": "Good Morning",
-  "goodAfternoon": "Good Afternoon", 
+  "goodAfternoon": "Good Afternoon",
   "goodEvening": "Good Evening",
   "pleaseWait": "Please wait...",
   "noData": "No data found",
@@ -68,7 +68,6 @@
   "timeFormat": "Time Format",
   "currency": "Currency",
   "goToDashboard": "Go to Dashboard",
-  "welcome": "Welcome",
   "workplaceSafety": "Workplace Safety Management System",
   "general": "General",
   "languages": "Languages",
@@ -150,7 +149,64 @@
       "active": "Active"
     },
     "anomalies": {
-      "detected": "{count} anomalies detected"
+      "title": "Anomaly Detection",
+      "description": "AI-powered detection of suspicious session patterns",
+      "detected": "{count} anomalies detected",
+      "highPriority": "high priority",
+      "stats": {
+        "totalAnomalies": "Total Anomalies",
+        "critical": "Critical",
+        "highRisk": "High Risk",
+        "mediumRisk": "Medium Risk",
+        "new": "New"
+      },
+      "tabs": {
+        "detectedAnomalies": "Detected Anomalies",
+        "detectionRules": "Detection Rules", 
+        "patternAnalysis": "Pattern Analysis"
+      },
+      "filters": {
+        "searchPlaceholder": "Search anomalies...",
+        "allSeverities": "All Severities",
+        "allTypes": "All Types",
+        "allStatus": "All Status",
+        "geographic": "Geographic",
+        "device": "Device",
+        "time": "Time",
+        "behavior": "Behavior",
+        "investigating": "Investigating",
+        "resolved": "Resolved",
+        "falsePositive": "False Positive"
+      },
+      "table": {
+        "user": "User",
+        "type": "Type",
+        "severity": "Severity",
+        "riskScore": "Risk Score",
+        "description": "Description",
+        "detected": "Detected",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "rules": {
+        "title": "Detection Rules Configuration",
+        "weight": "Weight",
+        "threshold": "Threshold", 
+        "configure": "Configure"
+      },
+      "patterns": {
+        "commonTypes": "Most Common Anomaly Types",
+        "riskDistribution": "Risk Score Distribution",
+        "geographicVelocity": "Geographic Velocity",
+        "deviceAnomaly": "Device Anomaly",
+        "timeAnomaly": "Time Anomaly",
+        "behavioralAnomaly": "Behavioral Anomaly",
+        "ipReputation": "IP Reputation",
+        "critical80100": "80-100 (Critical)",
+        "high6079": "60-79 (High)",
+        "medium4059": "40-59 (Medium)",
+        "low2039": "20-39 (Low)"
+      }
     },
     "actions": {
       "viewDetails": "View Details",
@@ -355,12 +411,6 @@
         "mediumRange": "Medium (40-69)",
         "highRange": "High (70-100)"
       },
-      "anomalies": {
-        "multipleConcurrent": "Multiple concurrent sessions",
-        "unusualLoginTime": "Unusual login time",
-        "newDeviceLogin": "New device login",
-        "geographicAnomaly": "Geographic anomaly"
-      },
       "worldMap": {
         "title": "World Map",
         "description": "Interactive geographic visualization would be displayed here"
@@ -369,36 +419,60 @@
         "mfaEnabled": "MFA Enabled Sessions",
         "highRisk": "High Risk Sessions",
         "flagged": "Flagged Sessions"
-      }
-    },
-    "anomalies": {
-      "search": {
-        "placeholder": "Search anomalies..."
       },
-      "types": {
-        "geoVelocity": {
-          "name": "Geographic Velocity",
-          "description": "Impossible travel between login locations"
+      "auditLog": {
+        "title": "Audit Log",
+        "description": "Complete audit trail of session management activities",
+        "export": "Export",
+        "stats": {
+          "totalEvents": "Total Events",
+          "critical": "Critical",
+          "errors": "Errors",
+          "warnings": "Warnings",
+          "adminActions": "Admin Actions"
         },
-        "deviceAnomaly": {
-          "name": "Device Anomaly",
-          "description": "Unusual device or browser fingerprint"
+        "tabs": {
+          "allEvents": "All Events",
+          "securityEvents": "Security Events",
+          "adminActions": "Admin Actions"
         },
-        "timeAnomaly": {
-          "name": "Time Anomaly",
-          "description": "Login at unusual hours for user"
+        "filters": {
+          "searchPlaceholder": "Search events, users, IP...",
+          "allActions": "All Actions",
+          "allLevels": "All Levels",
+          "allActors": "All Actors"
         },
-        "behavioralAnomaly": {
-          "name": "Behavioral Anomaly",
-          "description": "Unusual user behavior patterns"
+        "actionTypes": {
+          "login": "Login",
+          "logout": "Logout",
+          "sessionRevoke": "Session Revoke",
+          "sessionFlag": "Session Flag",
+          "mfaChallenge": "MFA Challenge",
+          "anomaly": "Anomaly",
+          "adminAction": "Admin Action"
         },
-        "concurrentSessions": {
-          "name": "Concurrent Sessions",
-          "description": "Excessive concurrent sessions"
+        "severityLevels": {
+          "critical": "Critical",
+          "error": "Error",
+          "warning": "Warning",
+          "info": "Info"
         },
-        "ipReputation": {
-          "name": "IP Reputation",
-          "description": "Known malicious or suspicious IP"
+        "actorTypes": {
+          "user": "User",
+          "system": "System",
+          "admin": "Admin"
+        },
+        "table": {
+          "title": "Audit Events ({count})",
+          "timestamp": "Timestamp",
+          "action": "Action",
+          "actor": "Actor",
+          "target": "Target",
+          "severity": "Severity",
+          "ipAddress": "IP Address",
+          "details": "Details",
+          "actions": "Actions",
+          "risk": "Risk"
         }
       }
     }

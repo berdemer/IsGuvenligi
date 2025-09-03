@@ -130,10 +130,10 @@
     "title": "Politiques d'Accès",
     "description": "Gérer les politiques de contrôle d'accès et permissions",
     "viewReports": "Voir les Rapports",
-    "exportCsv": "Exporter CSV", 
+    "exportCsv": "Exporter CSV",
     "createPolicy": "Créer Politique",
     "totalPolicies": "Politiques Totales",
-    "activePolicies": "Politiques Actives", 
+    "activePolicies": "Politiques Actives",
     "conflicts": "Conflits",
     "enforcedResources": "Ressources Appliquées",
     "fromLastMonth": "du mois dernier",
@@ -142,10 +142,10 @@
     "applicationsProtected": "applications protégées",
     "conflictsDetected": "conflits détectés",
     "reviewConflicts": "Examiner les conflits pour éviter les problèmes d'accès",
-    "lastUpdated": "Dernière Mise à Jour", 
+    "lastUpdated": "Dernière Mise à Jour",
     "refresh": "Actualiser",
     "loading": "Chargement...",
-    "policies": "Politiques", 
+    "policies": "Politiques",
     "simulation": "Simulation",
     "analytics": "Analytique",
     "audit": "Audit",
@@ -153,7 +153,7 @@
     "failedToLoad": "Échec du chargement des politiques",
     "createPolicyDialog": "Dialogue de création de politique s'ouvrirait ici",
     "policyExportStart": "L'exportation des politiques commencerait ici",
-    "navigateToReports": "Naviguer vers la page des rapports", 
+    "navigateToReports": "Naviguer vers la page des rapports",
     "policyUpdated": "Politique mise à jour",
     "policyDeleted": "Politique supprimée",
     "policyCloned": "Politique clonée",
@@ -250,7 +250,50 @@
   },
   "health": {
     "title": "Surveillance Système",
-    "overview": "Surveiller la santé système et métriques de performance",
+    "overview": {
+      "title": "Vue d'ensemble du Système",
+      "timeRanges": {
+        "1h": "Dernière Heure",
+        "24h": "Dernières 24h",
+        "7d": "7 Derniers Jours",
+        "30d": "30 Derniers Jours"
+      },
+      "healthScore": {
+        "title": "Score de Santé du Système",
+        "description": "Indicateur général de santé du système",
+        "outOf100": "/ 100",
+        "status": {
+          "excellent": "Excellent",
+          "good": "Bon",
+          "warning": "Attention",
+          "critical": "Critique"
+        }
+      },
+      "metrics": {
+        "averageResponseTime": "Temps de Réponse Moyen",
+        "errorRate": "Taux d'Erreur"
+      },
+      "services": {
+        "title": "Temps de Fonctionnement Services",
+        "uptimeTitle": "Temps de Fonctionnement Services (7j)",
+        "noServicesAvailable": "Aucun service disponible"
+      },
+      "alerts": {
+        "title": "Alertes Actives",
+        "active": "actif",
+        "acknowledged": "Reconnu",
+        "noActiveAlerts": "Aucune alerte active"
+      },
+      "sla": {
+        "title": "Statut SLA",
+        "target": "Cible",
+        "current": "Actuel",
+        "monthToDate": "Mois en Cours",
+        "status": "Statut",
+        "breach": "VIOLATION",
+        "good": "BON"
+      }
+    },
     "healthScore": "Score de Santé",
     "systemUptime": "Temps de Fonctionnement",
     "services": "Services",
@@ -313,50 +356,6 @@
       "diskSpaceLow": "Espace Disque Faible",
       "diskConsiderCleanup": "L'utilisation disque est à {usage}%, considérez un nettoyage",
       "allMetricsNormal": "Toutes les métriques d'infrastructure dans la plage normale"
-    },
-    "overview": {
-      "title": "Vue d'ensemble du Système",
-      "timeRanges": {
-        "1h": "Dernière Heure",
-        "24h": "Dernières 24h",
-        "7d": "7 Derniers Jours",
-        "30d": "30 Derniers Jours"
-      },
-      "healthScore": {
-        "title": "Score de Santé du Système",
-        "description": "Indicateur général de santé du système",
-        "outOf100": "/ 100",
-        "status": {
-          "excellent": "Excellent",
-          "good": "Bon",
-          "warning": "Attention",
-          "critical": "Critique"
-        }
-      },
-      "metrics": {
-        "averageResponseTime": "Temps de Réponse Moyen",
-        "errorRate": "Taux d'Erreur"
-      },
-      "services": {
-        "title": "Temps de Fonctionnement Services",
-        "uptimeTitle": "Temps de Fonctionnement Services (7j)",
-        "noServicesAvailable": "Aucun service disponible"
-      },
-      "alerts": {
-        "title": "Alertes Actives",
-        "active": "actif",
-        "acknowledged": "Reconnu",
-        "noActiveAlerts": "Aucune alerte active"
-      },
-      "sla": {
-        "title": "Statut SLA",
-        "target": "Cible",
-        "current": "Actuel",
-        "monthToDate": "Mois en Cours",
-        "status": "Statut",
-        "breach": "VIOLATION",
-        "good": "BON"
-      }
     }
   },
   "settings": {
@@ -576,94 +575,130 @@
     }
   },
   "common": {
+    "loading": "Chargement...",
     "save": "Enregistrer",
     "cancel": "Annuler",
     "delete": "Supprimer",
     "edit": "Modifier",
     "add": "Ajouter",
-    "create": "Créer",
-    "update": "Mettre à Jour",
-    "refresh": "Actualiser",
-    "reset": "Réinitialiser",
     "search": "Rechercher",
     "filter": "Filtrer",
     "export": "Exporter",
     "import": "Importer",
-    "loading": "Chargement...",
-    "error": "Erreur",
-    "success": "Succès",
-    "warning": "Avertissement",
-    "info": "Info",
-    "confirm": "Confirmer",
-    "yes": "Oui",
-    "no": "Non",
-    "ok": "OK",
-    "close": "Fermer",
+    "refresh": "Actualiser",
     "back": "Retour",
     "next": "Suivant",
     "previous": "Précédent",
-    "finish": "Terminer",
-    "new": "Nouveau",
+    "submit": "Soumettre",
+    "confirm": "Confirmer",
+    "yes": "Oui",
+    "no": "Non",
+    "close": "Fermer",
+    "view": "Voir",
+    "download": "Télécharger",
+    "upload": "Téléverser",
+    "clear": "Effacer",
+    "reset": "Réinitialiser",
+    "apply": "Appliquer",
+    "actions": "Actions",
+    "status": "Statut",
+    "name": "Nom",
+    "description": "Description",
+    "date": "Date",
+    "time": "Heure",
+    "user": "Utilisateur",
+    "email": "E-mail",
+    "phone": "Téléphone",
+    "address": "Adresse",
+    "total": "Total",
     "active": "Actif",
     "inactive": "Inactif",
     "enabled": "Activé",
     "disabled": "Désactivé",
-    "online": "En ligne",
-    "offline": "Hors ligne",
-    "connected": "Connecté",
-    "disconnected": "Déconnecté",
-    "name": "Nom",
-    "description": "Description",
-    "email": "E-mail",
-    "phone": "Téléphone",
-    "address": "Adresse",
-    "date": "Date",
-    "time": "Heure",
-    "type": "Type",
-    "category": "Catégorie",
-    "priority": "Priorité",
-    "status": "Statut",
-    "actions": "Actions",
-    "details": "Détails",
-    "settings": "Paramètres",
-    "profile": "Profil",
-    "logout": "Déconnexion",
-    "login": "Connexion",
-    "register": "S'inscrire",
-    "forgotPassword": "Mot de Passe Oublié",
-    "resetPassword": "Réinitialiser Mot de Passe",
-    "changePassword": "Changer Mot de Passe",
-    "emptyState": {
-      "noData": "Aucune donnée trouvée",
-      "noResults": "Aucun résultat trouvé",
-      "noItems": "Aucun élément trouvé"
-    },
-    "pagination": {
-      "page": "Page",
-      "of": "de",
-      "items": "éléments",
-      "showing": "Affichage",
-      "to": "à",
-      "results": "résultats"
-    },
-    "validation": {
-      "required": "Ce champ est requis",
-      "email": "Entrez une adresse e-mail valide",
-      "minLength": "Doit contenir au moins {min} caractères",
-      "maxLength": "Doit contenir au plus {max} caractères",
-      "fixErrors": "Veuillez corriger les erreurs de validation",
-      "firstNameRequired": "Le prénom est requis",
-      "firstNameMin": "Le prénom doit contenir au moins 2 caractères",
-      "firstNameLetters": "Le prénom ne peut contenir que des lettres",
-      "lastNameRequired": "Le nom de famille est requis",
-      "lastNameMin": "Le nom de famille doit contenir au moins 2 caractères",
-      "lastNameLetters": "Le nom de famille ne peut contenir que des lettres",
-      "usernameRequired": "Le nom d'utilisateur est requis",
-      "usernameMin": "Le nom d'utilisateur doit contenir au moins 3 caractères",
-      "usernameFormat": "Le nom d'utilisateur ne peut contenir que des lettres, des chiffres, des points, des tirets et des underscores",
-      "departmentRequired": "Le département est requis",
-      "phoneRequired": "Le numéro de téléphone est requis",
-      "phoneValid": "Veuillez entrer un numéro de téléphone valide"
+    "success": "Succès",
+    "error": "Erreur",
+    "warning": "Avertissement",
+    "info": "Information",
+    "welcome": "Bienvenue",
+    "welcomeBack": "Bon retour",
+    "goodMorning": "Bonjour",
+    "goodAfternoon": "Bon après-midi",
+    "goodEvening": "Bonsoir",
+    "pleaseWait": "Veuillez patienter...",
+    "noData": "Aucune donnée trouvée",
+    "notFound": "Introuvable",
+    "unauthorized": "Non autorisé",
+    "forbidden": "Interdit",
+    "sessionExpired": "Session expirée",
+    "networkError": "Erreur réseau",
+    "serverError": "Erreur serveur",
+    "operationSuccessful": "Opération réussie",
+    "operationFailed": "Opération échouée",
+    "confirmDelete": "Êtes-vous sûr de vouloir supprimer ?",
+    "confirmAction": "Êtes-vous sûr de vouloir effectuer cette action ?",
+    "unsavedChanges": "Vous avez des modifications non enregistrées",
+    "language": "Langue",
+    "theme": "Thème",
+    "timezone": "Fuseau horaire",
+    "dateFormat": "Format de date",
+    "timeFormat": "Format d'heure",
+    "currency": "Devise",
+    "sessions": {
+      "auditLog": {
+        "title": "Journal d'audit",
+        "description": "Piste d'audit complète des activités de gestion de session",
+        "export": "Exporter",
+        "stats": {
+          "totalEvents": "Total des événements",
+          "critical": "Critique",
+          "errors": "Erreurs",
+          "warnings": "Avertissements",
+          "adminActions": "Actions d'admin"
+        },
+        "tabs": {
+          "allEvents": "Tous les événements",
+          "securityEvents": "Événements de sécurité",
+          "adminActions": "Actions d'admin"
+        },
+        "filters": {
+          "searchPlaceholder": "Rechercher événements, utilisateurs, IP...",
+          "allActions": "Toutes les actions",
+          "allLevels": "Tous les niveaux",
+          "allActors": "Tous les acteurs"
+        },
+        "actionTypes": {
+          "login": "Connexion",
+          "logout": "Déconnexion",
+          "sessionRevoke": "Révoquer session",
+          "sessionFlag": "Marquer session",
+          "mfaChallenge": "Défi MFA",
+          "anomaly": "Anomalie",
+          "adminAction": "Action d'admin"
+        },
+        "severityLevels": {
+          "critical": "Critique",
+          "error": "Erreur",
+          "warning": "Avertissement",
+          "info": "Information"
+        },
+        "actorTypes": {
+          "user": "Utilisateur",
+          "system": "Système",
+          "admin": "Administrateur"
+        },
+        "table": {
+          "title": "Événements d'audit ({count})",
+          "timestamp": "Horodatage",
+          "action": "Action",
+          "actor": "Acteur",
+          "target": "Cible",
+          "severity": "Gravité",
+          "ipAddress": "Adresse IP",
+          "details": "Détails",
+          "actions": "Actions",
+          "risk": "Risque"
+        }
+      }
     }
   }
 }

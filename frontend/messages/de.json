@@ -129,7 +129,7 @@
   "policies": {
     "title": "Zugriffsrichtlinien",
     "description": "Zugriffskontrollrichtlinien und Berechtigungen verwalten",
-    "viewReports": "Berichte anzeigen", 
+    "viewReports": "Berichte anzeigen",
     "exportCsv": "CSV exportieren",
     "createPolicy": "Richtlinie erstellen",
     "totalPolicies": "Gesamte Richtlinien",
@@ -137,7 +137,7 @@
     "conflicts": "Konflikte",
     "enforcedResources": "Durchgesetzte Ressourcen",
     "fromLastMonth": "vom letzten Monat",
-    "ofTotal": "von gesamt", 
+    "ofTotal": "von gesamt",
     "requiresAttention": "benötigt Aufmerksamkeit",
     "applicationsProtected": "Anwendungen geschützt",
     "conflictsDetected": "Konflikte erkannt",
@@ -148,7 +148,7 @@
     "policies": "Richtlinien",
     "simulation": "Simulation",
     "analytics": "Analytik",
-    "audit": "Audit", 
+    "audit": "Audit",
     "keycloak": "Keycloak",
     "failedToLoad": "Richtlinien konnten nicht geladen werden",
     "createPolicyDialog": "Richtlinie erstellen Dialog würde hier geöffnet",
@@ -250,7 +250,50 @@
   },
   "health": {
     "title": "Systemüberwachung",
-    "overview": "Systemgesundheit und Leistungsmetriken überwachen",
+    "overview": {
+      "title": "Systemübersicht",
+      "timeRanges": {
+        "1h": "Letzte Stunde",
+        "24h": "Letzte 24h",
+        "7d": "Letzte 7d",
+        "30d": "Letzte 30d"
+      },
+      "healthScore": {
+        "title": "System-Gesundheitspunktzahl",
+        "description": "Allgemeiner Systemgesundheitsindikator",
+        "outOf100": "/ 100",
+        "status": {
+          "excellent": "Ausgezeichnet",
+          "good": "Gut",
+          "warning": "Warnung",
+          "critical": "Kritisch"
+        }
+      },
+      "metrics": {
+        "averageResponseTime": "Durchschnittliche Antwortzeit",
+        "errorRate": "Fehlerrate"
+      },
+      "services": {
+        "title": "Service-Betriebszeit",
+        "uptimeTitle": "Service-Betriebszeit (7d)",
+        "noServicesAvailable": "Keine Services verfügbar"
+      },
+      "alerts": {
+        "title": "Aktive Warnungen",
+        "active": "aktiv",
+        "acknowledged": "Bestätigt",
+        "noActiveAlerts": "Keine aktiven Warnungen"
+      },
+      "sla": {
+        "title": "SLA-Status",
+        "target": "Ziel",
+        "current": "Aktuell",
+        "monthToDate": "Monat bis heute",
+        "status": "Status",
+        "breach": "VERLETZUNG",
+        "good": "GUT"
+      }
+    },
     "healthScore": "Gesundheitspunktzahl",
     "systemUptime": "System-Betriebszeit",
     "services": "Dienste",
@@ -313,50 +356,6 @@
       "diskSpaceLow": "Festplattenspeicher niedrig",
       "diskConsiderCleanup": "Festplattenauslastung beträgt {usage}%, Bereinigung erwägen",
       "allMetricsNormal": "Alle Infrastruktur-Metriken im normalen Bereich"
-    },
-    "overview": {
-      "title": "Systemübersicht",
-      "timeRanges": {
-        "1h": "Letzte Stunde",
-        "24h": "Letzte 24h",
-        "7d": "Letzte 7d",
-        "30d": "Letzte 30d"
-      },
-      "healthScore": {
-        "title": "System-Gesundheitspunktzahl",
-        "description": "Allgemeiner Systemgesundheitsindikator",
-        "outOf100": "/ 100",
-        "status": {
-          "excellent": "Ausgezeichnet",
-          "good": "Gut",
-          "warning": "Warnung",
-          "critical": "Kritisch"
-        }
-      },
-      "metrics": {
-        "averageResponseTime": "Durchschnittliche Antwortzeit",
-        "errorRate": "Fehlerrate"
-      },
-      "services": {
-        "title": "Service-Betriebszeit",
-        "uptimeTitle": "Service-Betriebszeit (7d)",
-        "noServicesAvailable": "Keine Services verfügbar"
-      },
-      "alerts": {
-        "title": "Aktive Warnungen",
-        "active": "aktiv",
-        "acknowledged": "Bestätigt",
-        "noActiveAlerts": "Keine aktiven Warnungen"
-      },
-      "sla": {
-        "title": "SLA-Status",
-        "target": "Ziel",
-        "current": "Aktuell",
-        "monthToDate": "Monat bis heute",
-        "status": "Status",
-        "breach": "VERLETZUNG",
-        "good": "GUT"
-      }
     }
   },
   "settings": {
@@ -576,94 +575,130 @@
     }
   },
   "common": {
+    "loading": "Lädt...",
     "save": "Speichern",
     "cancel": "Abbrechen",
     "delete": "Löschen",
     "edit": "Bearbeiten",
     "add": "Hinzufügen",
-    "create": "Erstellen",
-    "update": "Aktualisieren",
-    "refresh": "Aktualisieren",
-    "reset": "Zurücksetzen",
     "search": "Suchen",
     "filter": "Filtern",
     "export": "Exportieren",
     "import": "Importieren",
-    "loading": "Wird geladen...",
-    "error": "Fehler",
-    "success": "Erfolg",
-    "warning": "Warnung",
-    "info": "Info",
-    "confirm": "Bestätigen",
-    "yes": "Ja",
-    "no": "Nein",
-    "ok": "OK",
-    "close": "Schließen",
+    "refresh": "Aktualisieren",
     "back": "Zurück",
     "next": "Weiter",
     "previous": "Vorherige",
-    "finish": "Beenden",
-    "new": "Neu",
+    "submit": "Senden",
+    "confirm": "Bestätigen",
+    "yes": "Ja",
+    "no": "Nein",
+    "close": "Schließen",
+    "view": "Ansehen",
+    "download": "Herunterladen",
+    "upload": "Hochladen",
+    "clear": "Löschen",
+    "reset": "Zurücksetzen",
+    "apply": "Anwenden",
+    "actions": "Aktionen",
+    "status": "Status",
+    "name": "Name",
+    "description": "Beschreibung",
+    "date": "Datum",
+    "time": "Zeit",
+    "user": "Benutzer",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "address": "Adresse",
+    "total": "Gesamt",
     "active": "Aktiv",
     "inactive": "Inaktiv",
     "enabled": "Aktiviert",
     "disabled": "Deaktiviert",
-    "online": "Online",
-    "offline": "Offline",
-    "connected": "Verbunden",
-    "disconnected": "Getrennt",
-    "name": "Name",
-    "description": "Beschreibung",
-    "email": "E-Mail",
-    "phone": "Telefon",
-    "address": "Adresse",
-    "date": "Datum",
-    "time": "Zeit",
-    "type": "Typ",
-    "category": "Kategorie",
-    "priority": "Priorität",
-    "status": "Status",
-    "actions": "Aktionen",
-    "details": "Details",
-    "settings": "Einstellungen",
-    "profile": "Profil",
-    "logout": "Abmelden",
-    "login": "Anmelden",
-    "register": "Registrieren",
-    "forgotPassword": "Passwort vergessen",
-    "resetPassword": "Passwort zurücksetzen",
-    "changePassword": "Passwort ändern",
-    "emptyState": {
-      "noData": "Keine Daten gefunden",
-      "noResults": "Keine Ergebnisse gefunden",
-      "noItems": "Keine Elemente gefunden"
-    },
-    "pagination": {
-      "page": "Seite",
-      "of": "von",
-      "items": "Elemente",
-      "showing": "Zeige",
-      "to": "bis",
-      "results": "Ergebnisse"
-    },
-    "validation": {
-      "required": "Dieses Feld ist erforderlich",
-      "email": "Geben Sie eine gültige E-Mail-Adresse ein",
-      "minLength": "Muss mindestens {min} Zeichen lang sein",
-      "maxLength": "Darf höchstens {max} Zeichen lang sein",
-      "fixErrors": "Bitte beheben Sie die Validierungsfehler",
-      "firstNameRequired": "Vorname ist erforderlich",
-      "firstNameMin": "Vorname muss mindestens 2 Zeichen lang sein",
-      "firstNameLetters": "Vorname darf nur Buchstaben enthalten",
-      "lastNameRequired": "Nachname ist erforderlich",
-      "lastNameMin": "Nachname muss mindestens 2 Zeichen lang sein",
-      "lastNameLetters": "Nachname darf nur Buchstaben enthalten",
-      "usernameRequired": "Benutzername ist erforderlich",
-      "usernameMin": "Benutzername muss mindestens 3 Zeichen lang sein",
-      "usernameFormat": "Benutzername darf nur Buchstaben, Zahlen, Punkte, Bindestriche und Unterstriche enthalten",
-      "departmentRequired": "Abteilung ist erforderlich",
-      "phoneRequired": "Telefonnummer ist erforderlich",
-      "phoneValid": "Bitte geben Sie eine gültige Telefonnummer ein"
+    "success": "Erfolg",
+    "error": "Fehler",
+    "warning": "Warnung",
+    "info": "Information",
+    "welcome": "Willkommen",
+    "welcomeBack": "Willkommen zurück",
+    "goodMorning": "Guten Morgen",
+    "goodAfternoon": "Guten Tag",
+    "goodEvening": "Guten Abend",
+    "pleaseWait": "Bitte warten...",
+    "noData": "Keine Daten gefunden",
+    "notFound": "Nicht gefunden",
+    "unauthorized": "Nicht autorisiert",
+    "forbidden": "Verboten",
+    "sessionExpired": "Sitzung abgelaufen",
+    "networkError": "Netzwerkfehler",
+    "serverError": "Serverfehler",
+    "operationSuccessful": "Operation erfolgreich",
+    "operationFailed": "Operation fehlgeschlagen",
+    "confirmDelete": "Sind Sie sicher, dass Sie löschen möchten?",
+    "confirmAction": "Sind Sie sicher, dass Sie diese Aktion durchführen möchten?",
+    "unsavedChanges": "Sie haben nicht gespeicherte Änderungen",
+    "language": "Sprache",
+    "theme": "Thema",
+    "timezone": "Zeitzone",
+    "dateFormat": "Datumsformat",
+    "timeFormat": "Zeitformat",
+    "currency": "Währung",
+    "sessions": {
+      "auditLog": {
+        "title": "Prüfprotokoll",
+        "description": "Vollständige Prüfspur der Sitzungsverwaltungsaktivitäten",
+        "export": "Exportieren",
+        "stats": {
+          "totalEvents": "Gesamtereignisse",
+          "critical": "Kritisch",
+          "errors": "Fehler",
+          "warnings": "Warnungen",
+          "adminActions": "Admin-Aktionen"
+        },
+        "tabs": {
+          "allEvents": "Alle Ereignisse",
+          "securityEvents": "Sicherheitsereignisse",
+          "adminActions": "Admin-Aktionen"
+        },
+        "filters": {
+          "searchPlaceholder": "Ereignisse, Benutzer, IP suchen...",
+          "allActions": "Alle Aktionen",
+          "allLevels": "Alle Ebenen",
+          "allActors": "Alle Akteure"
+        },
+        "actionTypes": {
+          "login": "Anmeldung",
+          "logout": "Abmeldung",
+          "sessionRevoke": "Sitzung widerrufen",
+          "sessionFlag": "Sitzung markieren",
+          "mfaChallenge": "MFA-Herausforderung",
+          "anomaly": "Anomalie",
+          "adminAction": "Admin-Aktion"
+        },
+        "severityLevels": {
+          "critical": "Kritisch",
+          "error": "Fehler",
+          "warning": "Warnung",
+          "info": "Information"
+        },
+        "actorTypes": {
+          "user": "Benutzer",
+          "system": "System",
+          "admin": "Administrator"
+        },
+        "table": {
+          "title": "Prüfereignisse ({count})",
+          "timestamp": "Zeitstempel",
+          "action": "Aktion",
+          "actor": "Akteur",
+          "target": "Ziel",
+          "severity": "Schweregrad",
+          "ipAddress": "IP-Adresse",
+          "details": "Details",
+          "actions": "Aktionen",
+          "risk": "Risiko"
+        }
+      }
     }
   }
 }

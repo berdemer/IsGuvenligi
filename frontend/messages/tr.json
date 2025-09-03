@@ -1810,6 +1810,25 @@
           "detected": "Tespit Edilme",
           "status": "Durum",
           "actions": "İşlemler"
+        },
+        "rules": {
+          "title": "Tespit Kuralları Yapılandırması",
+          "weight": "Ağırlık",
+          "threshold": "Eşik",
+          "configure": "Yapılandır"
+        },
+        "patterns": {
+          "commonTypes": "En Yaygın Anomali Türleri",
+          "riskDistribution": "Risk Puanı Dağılımı",
+          "geographicVelocity": "Coğrafi Hız",
+          "deviceAnomaly": "Cihaz Anomalisi",
+          "timeAnomaly": "Zaman Anomalisi",
+          "behavioralAnomaly": "Davranışsal Anomali",
+          "ipReputation": "IP İtibarı",
+          "critical80100": "80-100 (Kritik)",
+          "high6079": "60-79 (Yüksek)",
+          "medium4059": "40-59 (Orta)",
+          "low2039": "20-39 (Düşük)"
         }
       },
       "actions": {
@@ -2034,6 +2053,77 @@
           "activity": "Aktivite"
         },
         "percentOfTotal": "{percent}% toplam"
+      },
+      "auditLog": {
+        "title": "Denetim Günlüğü",
+        "description": "Oturum yönetimi aktivitelerinin tam denetim izi",
+        "export": "Dışa Aktar",
+        "filters": {
+          "searchPlaceholder": "Olay, kullanıcı, IP ara...",
+          "allActions": "Tüm İşlemler",
+          "allUsers": "Tüm Kullanıcılar",
+          "allLevels": "Tüm Seviyeler",
+          "allActors": "Tüm Aktörler",
+          "dateRange": "Tarih Aralığı",
+          "lastHour": "Son Saat",
+          "last24h": "Son 24 Saat",
+          "last7d": "Son 7 Gün",
+          "last30d": "Son 30 Gün",
+          "custom": "Özel"
+        },
+        "actionTypes": {
+          "login": "Giriş",
+          "logout": "Çıkış",
+          "sessionRevoke": "Oturum Sonlandır",
+          "sessionFlag": "Oturum İşaretle",
+          "mfaChallenge": "MFA Zorluğu",
+          "anomaly": "Anomali",
+          "adminAction": "Yönetici İşlemi"
+        },
+        "severityLevels": {
+          "critical": "Kritik",
+          "error": "Hata",
+          "warning": "Uyarı",
+          "info": "Bilgi"
+        },
+        "actorTypes": {
+          "user": "Kullanıcı",
+          "system": "Sistem",
+          "admin": "Yönetici"
+        },
+        "stats": {
+          "totalEvents": "Toplam Olay",
+          "critical": "Kritik",
+          "errors": "Hatalar",
+          "warnings": "Uyarılar",
+          "adminActions": "Yönetici İşlemleri"
+        },
+        "tabs": {
+          "allEvents": "Tüm Olaylar",
+          "securityEvents": "Güvenlik Olayları",
+          "adminActions": "Yönetici İşlemleri"
+        },
+        "table": {
+          "title": "Denetim Olayları ({count})",
+          "timestamp": "Zaman Damgası",
+          "action": "İşlem",
+          "actor": "Aktör",
+          "target": "Hedef",
+          "severity": "Önem",
+          "ipAddress": "IP Adresi",
+          "details": "Detaylar",
+          "actions": "İşlemler",
+          "risk": "Risk"
+        },
+        "auditEvents": "Denetim Olayları",
+        "status": {
+          "success": "Başarılı",
+          "failed": "Başarısız",
+          "pending": "Beklemede"
+        },
+        "noResults": "Kriterlere uygun denetim kaydı bulunamadı",
+        "exportSuccess": "Denetim günlüğü başarıyla dışa aktarıldı",
+        "exportFailed": "Dışa aktarma başarısız"
       }
     }
   },

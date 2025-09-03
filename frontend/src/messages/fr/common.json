@@ -66,5 +66,62 @@
   "timezone": "Fuseau horaire",
   "dateFormat": "Format de date",
   "timeFormat": "Format d'heure",
-  "currency": "Devise"
+  "currency": "Devise",
+  "sessions": {
+    "auditLog": {
+      "title": "Journal d'audit",
+      "description": "Piste d'audit complète des activités de gestion de session",
+      "export": "Exporter",
+      "stats": {
+        "totalEvents": "Total des événements",
+        "critical": "Critique",
+        "errors": "Erreurs",
+        "warnings": "Avertissements",
+        "adminActions": "Actions d'admin"
+      },
+      "tabs": {
+        "allEvents": "Tous les événements",
+        "securityEvents": "Événements de sécurité",
+        "adminActions": "Actions d'admin"
+      },
+      "filters": {
+        "searchPlaceholder": "Rechercher événements, utilisateurs, IP...",
+        "allActions": "Toutes les actions",
+        "allLevels": "Tous les niveaux",
+        "allActors": "Tous les acteurs"
+      },
+      "actionTypes": {
+        "login": "Connexion",
+        "logout": "Déconnexion",
+        "sessionRevoke": "Révoquer session",
+        "sessionFlag": "Marquer session",
+        "mfaChallenge": "Défi MFA",
+        "anomaly": "Anomalie",
+        "adminAction": "Action d'admin"
+      },
+      "severityLevels": {
+        "critical": "Critique",
+        "error": "Erreur",
+        "warning": "Avertissement",
+        "info": "Information"
+      },
+      "actorTypes": {
+        "user": "Utilisateur",
+        "system": "Système",
+        "admin": "Administrateur"
+      },
+      "table": {
+        "title": "Événements d'audit ({count})",
+        "timestamp": "Horodatage",
+        "action": "Action",
+        "actor": "Acteur",
+        "target": "Cible",
+        "severity": "Gravité",
+        "ipAddress": "Adresse IP",
+        "details": "Détails",
+        "actions": "Actions",
+        "risk": "Risque"
+      }
+    }
+  }
 }

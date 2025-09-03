@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useMemo } from "react"
+import { useTranslations } from "next-intl"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -114,6 +115,7 @@ export function SessionsAuditLog({
   onExport, 
   onViewDetails 
 }: SessionsAuditLogProps) {
+  const t = useTranslations('common.sessions.auditLog')
   const [searchQuery, setSearchQuery] = useState("")
   const [actionFilter, setActionFilter] = useState("all")
   const [severityFilter, setSeverityFilter] = useState("all")
@@ -205,15 +207,15 @@ export function SessionsAuditLog({
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold tracking-tight">Audit Log</h2>
+          <h2 className="text-2xl font-bold tracking-tight">{t('title')}</h2>
           <p className="text-muted-foreground">
-            Complete audit trail of session management activities
+            {t('description')}
           </p>
         </div>
         <div className="flex items-center space-x-2">
           <Button variant="outline" onClick={handleExport}>
             <Download className="h-4 w-4 mr-2" />
-            Export
+            {t('export')}
           </Button>
         </div>
       </div>
@@ -225,7 +227,7 @@ export function SessionsAuditLog({
             <div className="flex items-center">
               <Activity className="h-8 w-8 text-blue-600" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-muted-foreground">Total Events</p>
+                <p className="text-sm font-medium text-muted-foreground">{t('stats.totalEvents')}</p>
                 <p className="text-2xl font-bold">{stats.total}</p>
               </div>
             </div>
@@ -237,7 +239,7 @@ export function SessionsAuditLog({
             <div className="flex items-center">
               <AlertTriangle className="h-8 w-8 text-red-600" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-muted-foreground">Critical</p>
+                <p className="text-sm font-medium text-muted-foreground">{t('stats.critical')}</p>
                 <p className="text-2xl font-bold text-red-600">{stats.critical}</p>
               </div>
             </div>
@@ -249,7 +251,7 @@ export function SessionsAuditLog({
             <div className="flex items-center">
               <XCircle className="h-8 w-8 text-red-500" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-muted-foreground">Errors</p>
+                <p className="text-sm font-medium text-muted-foreground">{t('stats.errors')}</p>
                 <p className="text-2xl font-bold text-red-500">{stats.errors}</p>
               </div>
             </div>
@@ -261,7 +263,7 @@ export function SessionsAuditLog({
             <div className="flex items-center">
               <AlertCircle className="h-8 w-8 text-amber-600" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-muted-foreground">Warnings</p>
+                <p className="text-sm font-medium text-muted-foreground">{t('stats.warnings')}</p>
                 <p className="text-2xl font-bold text-amber-600">{stats.warnings}</p>
               </div>
             </div>
@@ -273,7 +275,7 @@ export function SessionsAuditLog({
             <div className="flex items-center">
               <Settings className="h-8 w-8 text-purple-600" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-muted-foreground">Admin Actions</p>
+                <p className="text-sm font-medium text-muted-foreground">{t('stats.adminActions')}</p>
                 <p className="text-2xl font-bold text-purple-600">{stats.adminActions}</p>
               </div>
             </div>
@@ -285,15 +287,15 @@ export function SessionsAuditLog({
         <TabsList>
           <TabsTrigger value="events">
             <Activity className="h-4 w-4 mr-2" />
-            All Events
+            {t('tabs.allEvents')}
           </TabsTrigger>
           <TabsTrigger value="security">
             <Shield className="h-4 w-4 mr-2" />
-            Security Events
+            {t('tabs.securityEvents')}
           </TabsTrigger>
           <TabsTrigger value="admin">
             <Settings className="h-4 w-4 mr-2" />
-            Admin Actions
+            {t('tabs.adminActions')}
           </TabsTrigger>
         </TabsList>
 
@@ -305,7 +307,7 @@ export function SessionsAuditLog({
                 <div className="relative flex-1 min-w-64">
                   <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                   <Input
-                    placeholder="Search events, users, IPs..."
+                    placeholder={t('filters.searchPlaceholder')}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="pl-9"
@@ -317,14 +319,14 @@ export function SessionsAuditLog({
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">All Actions</SelectItem>
-                    <SelectItem value="login">Login</SelectItem>
-                    <SelectItem value="logout">Logout</SelectItem>
-                    <SelectItem value="session_revoke">Session Revoke</SelectItem>
-                    <SelectItem value="session_flag">Session Flag</SelectItem>
-                    <SelectItem value="mfa_challenge">MFA Challenge</SelectItem>
-                    <SelectItem value="anomaly_detected">Anomaly</SelectItem>
-                    <SelectItem value="admin_action">Admin Action</SelectItem>
+                    <SelectItem value="all">{t('filters.allActions')}</SelectItem>
+                    <SelectItem value="login">{t('actionTypes.login')}</SelectItem>
+                    <SelectItem value="logout">{t('actionTypes.logout')}</SelectItem>
+                    <SelectItem value="session_revoke">{t('actionTypes.sessionRevoke')}</SelectItem>
+                    <SelectItem value="session_flag">{t('actionTypes.sessionFlag')}</SelectItem>
+                    <SelectItem value="mfa_challenge">{t('actionTypes.mfaChallenge')}</SelectItem>
+                    <SelectItem value="anomaly_detected">{t('actionTypes.anomaly')}</SelectItem>
+                    <SelectItem value="admin_action">{t('actionTypes.adminAction')}</SelectItem>
                   </SelectContent>
                 </Select>
 
@@ -333,11 +335,11 @@ export function SessionsAuditLog({
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">All Levels</SelectItem>
-                    <SelectItem value="critical">Critical</SelectItem>
-                    <SelectItem value="error">Error</SelectItem>
-                    <SelectItem value="warning">Warning</SelectItem>
-                    <SelectItem value="info">Info</SelectItem>
+                    <SelectItem value="all">{t('filters.allLevels')}</SelectItem>
+                    <SelectItem value="critical">{t('severityLevels.critical')}</SelectItem>
+                    <SelectItem value="error">{t('severityLevels.error')}</SelectItem>
+                    <SelectItem value="warning">{t('severityLevels.warning')}</SelectItem>
+                    <SelectItem value="info">{t('severityLevels.info')}</SelectItem>
                   </SelectContent>
                 </Select>
 
@@ -346,10 +348,10 @@ export function SessionsAuditLog({
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">All Actors</SelectItem>
-                    <SelectItem value="user">User</SelectItem>
-                    <SelectItem value="system">System</SelectItem>
-                    <SelectItem value="admin">Admin</SelectItem>
+                    <SelectItem value="all">{t('filters.allActors')}</SelectItem>
+                    <SelectItem value="user">{t('actorTypes.user')}</SelectItem>
+                    <SelectItem value="system">{t('actorTypes.system')}</SelectItem>
+                    <SelectItem value="admin">{t('actorTypes.admin')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -360,21 +362,21 @@ export function SessionsAuditLog({
           <Card>
             <CardHeader>
               <CardTitle>
-                Audit Events ({filteredLogs.length})
+                {t('table.title', {count: filteredLogs.length})}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Timestamp</TableHead>
-                    <TableHead>Action</TableHead>
-                    <TableHead>Actor</TableHead>
-                    <TableHead>Target</TableHead>
-                    <TableHead>Severity</TableHead>
-                    <TableHead>IP Address</TableHead>
-                    <TableHead>Details</TableHead>
-                    <TableHead>Actions</TableHead>
+                    <TableHead>{t('table.timestamp')}</TableHead>
+                    <TableHead>{t('table.action')}</TableHead>
+                    <TableHead>{t('table.actor')}</TableHead>
+                    <TableHead>{t('table.target')}</TableHead>
+                    <TableHead>{t('table.severity')}</TableHead>
+                    <TableHead>{t('table.ipAddress')}</TableHead>
+                    <TableHead>{t('table.details')}</TableHead>
+                    <TableHead>{t('table.actions')}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -441,7 +443,7 @@ export function SessionsAuditLog({
                           )}
                           {log.details.riskScore && (
                             <p className="text-xs text-muted-foreground">
-                              Risk: {log.details.riskScore}
+                              {t('table.risk')}: {log.details.riskScore}
                             </p>
                           )}
                         </div>
@@ -466,7 +468,7 @@ export function SessionsAuditLog({
         <TabsContent value="security" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Security-Related Events</CardTitle>
+              <CardTitle>{t('tabs.securityEvents')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
@@ -502,7 +504,7 @@ export function SessionsAuditLog({
         <TabsContent value="admin" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Administrative Actions</CardTitle>
+              <CardTitle>{t('tabs.adminActions')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
@@ -516,7 +518,7 @@ export function SessionsAuditLog({
                         <div>
                           <p className="font-medium">{formatActionName(log.action)}</p>
                           <p className="text-sm text-muted-foreground">
-                            System • {log.timestamp.toLocaleString()}
+                            {t('actorTypes.system')} • {log.timestamp.toLocaleString()}
                           </p>
                         </div>
                       </div>
