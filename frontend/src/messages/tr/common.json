@@ -43,10 +43,10 @@
   "error": "Hata",
   "warning": "Uyarı",
   "info": "Bilgi",
-  "welcome": "Hoşgeldin",
+  "welcome": "Hoşgeldiniz",
   "welcomeBack": "Tekrar Hoşgeldin",
   "goodMorning": "Günaydın",
-  "goodAfternoon": "Tünaydın", 
+  "goodAfternoon": "Tünaydın",
   "goodEvening": "İyi akşamlar",
   "pleaseWait": "Lütfen bekleyin...",
   "noData": "Veri bulunamadı",
@@ -68,7 +68,6 @@
   "timeFormat": "Saat Formatı",
   "currency": "Para Birimi",
   "goToDashboard": "Panoya Git",
-  "welcome": "Hoşgeldiniz",
   "workplaceSafety": "İş Güvenliği Yönetim Sistemi",
   "general": "Genel",
   "languages": "Diller",
@@ -150,7 +149,45 @@
       "active": "Aktif"
     },
     "anomalies": {
-      "detected": "{count} anomali tespit edildi"
+      "title": "Anomali Tespiti", 
+      "description": "Şüpheli oturum desenlerinin AI destekli tespiti",
+      "detected": "{count} anomali tespit edildi",
+      "highPriority": "yüksek öncelik",
+      "stats": {
+        "totalAnomalies": "Toplam Anomali",
+        "critical": "Kritik",
+        "highRisk": "Yüksek Risk",
+        "mediumRisk": "Orta Risk", 
+        "new": "Yeni"
+      },
+      "tabs": {
+        "detectedAnomalies": "Tespit Edilen Anomaliler",
+        "detectionRules": "Tespit Kuralları",
+        "patternAnalysis": "Desen Analizi"
+      },
+      "filters": {
+        "searchPlaceholder": "Anomali ara...",
+        "allSeverities": "Tüm Önem Seviyeleri",
+        "allTypes": "Tüm Türler", 
+        "allStatus": "Tüm Durumlar",
+        "geographic": "Coğrafi",
+        "device": "Cihaz",
+        "time": "Zaman",
+        "behavior": "Davranış",
+        "investigating": "Araştırılıyor",
+        "resolved": "Çözülmüş",
+        "falsePositive": "Yanlış Pozitif"
+      },
+      "table": {
+        "user": "Kullanıcı",
+        "type": "Tür", 
+        "severity": "Önem",
+        "riskScore": "Risk Puanı",
+        "description": "Açıklama",
+        "detected": "Tespit Edilme",
+        "status": "Durum",
+        "actions": "İşlemler"
+      }
     },
     "actions": {
       "viewDetails": "Detayları Görüntüle",
@@ -355,12 +392,6 @@
         "mediumRange": "Orta (40-69)",
         "highRange": "Yüksek (70-100)"
       },
-      "anomalies": {
-        "multipleConcurrent": "Çoklu eşzamanlı oturumlar",
-        "unusualLoginTime": "Olağandışı giriş zamanı",
-        "newDeviceLogin": "Yeni cihaz girişi",
-        "geographicAnomaly": "Coğrafi anomali"
-      },
       "worldMap": {
         "title": "Dünya Haritası",
         "description": "Etkileşimli coğrafi görselleştirme burada gösterilecek"
@@ -376,41 +407,10 @@
         "overview": "Genel Bakış",
         "geographic": "Coğrafik",
         "devices": "Cihazlar",
-        "security": "Güvenlik", 
+        "security": "Güvenlik",
         "activity": "Aktivite"
       },
       "percentOfTotal": "{percent}% toplam"
-    },
-    "anomalies": {
-      "search": {
-        "placeholder": "Anomalileri ara..."
-      },
-      "types": {
-        "geoVelocity": {
-          "name": "Coğrafi Hız",
-          "description": "Giriş konumları arasında imkansız seyahat"
-        },
-        "deviceAnomaly": {
-          "name": "Cihaz Anomalisi",
-          "description": "Olağandışı cihaz veya tarayıcı parmak izi"
-        },
-        "timeAnomaly": {
-          "name": "Zaman Anomalisi",
-          "description": "Kullanıcı için olağandışı saatlerde giriş"
-        },
-        "behavioralAnomaly": {
-          "name": "Davranışsal Anomali",
-          "description": "Olağandışı kullanıcı davranış kalıpları"
-        },
-        "concurrentSessions": {
-          "name": "Eşzamanlı Oturumlar",
-          "description": "Aşırı eşzamanlı oturumlar"
-        },
-        "ipReputation": {
-          "name": "IP İtibarı",
-          "description": "Bilinen kötü amaçlı veya şüpheli IP"
-        }
-      }
     }
   }
 }

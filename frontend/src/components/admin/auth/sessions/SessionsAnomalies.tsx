@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useMemo } from "react"
+import { useTranslations } from "next-intl"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -89,6 +90,7 @@ const ANOMALY_RULES = {
 }
 
 export function SessionsAnomalies({ sessions, onSessionAction }: SessionsAnomaliesProps) {
+  const t = useTranslations('common.sessions.anomalies')
   const [searchQuery, setSearchQuery] = useState("")
   const [severityFilter, setSeverityFilter] = useState("all")
   const [typeFilter, setTypeFilter] = useState("all")
@@ -266,15 +268,15 @@ export function SessionsAnomalies({ sessions, onSessionAction }: SessionsAnomali
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold tracking-tight">Anomaly Detection</h2>
+          <h2 className="text-2xl font-bold tracking-tight">{t('title')}</h2>
           <p className="text-muted-foreground">
-            AI-powered detection of suspicious session patterns
+            {t('description')}
           </p>
         </div>
         <div className="flex items-center space-x-2">
           <Badge variant="outline" className="text-red-600">
             <AlertTriangle className="h-3 w-3 mr-1" />
-            {anomalyStats.critical + anomalyStats.high} high priority
+            {anomalyStats.critical + anomalyStats.high} {t('highPriority')}
           </Badge>
         </div>
       </div>
@@ -286,7 +288,7 @@ export function SessionsAnomalies({ sessions, onSessionAction }: SessionsAnomali
             <div className="flex items-center">
               <Brain className="h-8 w-8 text-purple-600" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-muted-foreground">Total Anomalies</p>
+                <p className="text-sm font-medium text-muted-foreground">{t('stats.totalAnomalies')}</p>
                 <p className="text-2xl font-bold">{anomalyStats.total}</p>
               </div>
             </div>
@@ -298,7 +300,7 @@ export function SessionsAnomalies({ sessions, onSessionAction }: SessionsAnomali
             <div className="flex items-center">
               <AlertTriangle className="h-8 w-8 text-red-600" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-muted-foreground">Critical</p>
+                <p className="text-sm font-medium text-muted-foreground">{t('stats.critical')}</p>
                 <p className="text-2xl font-bold text-red-600">{anomalyStats.critical}</p>
               </div>
             </div>
@@ -310,7 +312,7 @@ export function SessionsAnomalies({ sessions, onSessionAction }: SessionsAnomali
             <div className="flex items-center">
               <AlertCircle className="h-8 w-8 text-amber-600" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-muted-foreground">High Risk</p>
+                <p className="text-sm font-medium text-muted-foreground">{t('stats.highRisk')}</p>
                 <p className="text-2xl font-bold text-amber-600">{anomalyStats.high}</p>
               </div>
             </div>
@@ -322,7 +324,7 @@ export function SessionsAnomalies({ sessions, onSessionAction }: SessionsAnomali
             <div className="flex items-center">
               <Flag className="h-8 w-8 text-yellow-600" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-muted-foreground">Medium Risk</p>
+                <p className="text-sm font-medium text-muted-foreground">{t('stats.mediumRisk')}</p>
                 <p className="text-2xl font-bold text-yellow-600">{anomalyStats.medium}</p>
               </div>
             </div>
@@ -334,7 +336,7 @@ export function SessionsAnomalies({ sessions, onSessionAction }: SessionsAnomali
             <div className="flex items-center">
               <Zap className="h-8 w-8 text-blue-600" />
               <div className="ml-4">
-                <p className="text-sm font-medium text-muted-foreground">New</p>
+                <p className="text-sm font-medium text-muted-foreground">{t('stats.new')}</p>
                 <p className="text-2xl font-bold text-blue-600">{anomalyStats.new}</p>
               </div>
             </div>
@@ -346,15 +348,15 @@ export function SessionsAnomalies({ sessions, onSessionAction }: SessionsAnomali
         <TabsList>
           <TabsTrigger value="anomalies">
             <AlertTriangle className="h-4 w-4 mr-2" />
-            Detected Anomalies
+            {t('tabs.detectedAnomalies')}
           </TabsTrigger>
           <TabsTrigger value="rules">
             <Shield className="h-4 w-4 mr-2" />
-            Detection Rules
+            {t('tabs.detectionRules')}
           </TabsTrigger>
           <TabsTrigger value="patterns">
             <Activity className="h-4 w-4 mr-2" />
-            Pattern Analysis
+            {t('tabs.patternAnalysis')}
           </TabsTrigger>
         </TabsList>
 
@@ -366,7 +368,7 @@ export function SessionsAnomalies({ sessions, onSessionAction }: SessionsAnomali
                 <div className="relative flex-1 max-w-sm">
                   <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                   <Input
-                    placeholder="Search anomalies..."
+                    placeholder={t('filters.searchPlaceholder')}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="pl-9"
@@ -378,11 +380,11 @@ export function SessionsAnomalies({ sessions, onSessionAction }: SessionsAnomali
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">All Severities</SelectItem>
-                    <SelectItem value="critical">Critical</SelectItem>
-                    <SelectItem value="high">High</SelectItem>
-                    <SelectItem value="medium">Medium</SelectItem>
-                    <SelectItem value="low">Low</SelectItem>
+                    <SelectItem value="all">{t('filters.allSeverities')}</SelectItem>
+                    <SelectItem value="critical">{t('stats.critical')}</SelectItem>
+                    <SelectItem value="high">{t('stats.highRisk')}</SelectItem>
+                    <SelectItem value="medium">{t('stats.mediumRisk')}</SelectItem>
+                    <SelectItem value="low">Düşük</SelectItem>
                   </SelectContent>
                 </Select>
 
@@ -391,11 +393,11 @@ export function SessionsAnomalies({ sessions, onSessionAction }: SessionsAnomali
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">All Types</SelectItem>
-                    <SelectItem value="geo_velocity">Geographic</SelectItem>
-                    <SelectItem value="device_anomaly">Device</SelectItem>
-                    <SelectItem value="time_anomaly">Time</SelectItem>
-                    <SelectItem value="behavior_anomaly">Behavior</SelectItem>
+                    <SelectItem value="all">{t('filters.allTypes')}</SelectItem>
+                    <SelectItem value="geo_velocity">{t('filters.geographic')}</SelectItem>
+                    <SelectItem value="device_anomaly">{t('filters.device')}</SelectItem>
+                    <SelectItem value="time_anomaly">{t('filters.time')}</SelectItem>
+                    <SelectItem value="behavior_anomaly">{t('filters.behavior')}</SelectItem>
                   </SelectContent>
                 </Select>
 
@@ -404,11 +406,11 @@ export function SessionsAnomalies({ sessions, onSessionAction }: SessionsAnomali
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">All Status</SelectItem>
-                    <SelectItem value="new">New</SelectItem>
-                    <SelectItem value="investigating">Investigating</SelectItem>
-                    <SelectItem value="resolved">Resolved</SelectItem>
-                    <SelectItem value="false_positive">False Positive</SelectItem>
+                    <SelectItem value="all">{t('filters.allStatus')}</SelectItem>
+                    <SelectItem value="new">{t('stats.new')}</SelectItem>
+                    <SelectItem value="investigating">{t('filters.investigating')}</SelectItem>
+                    <SelectItem value="resolved">{t('filters.resolved')}</SelectItem>
+                    <SelectItem value="false_positive">{t('filters.falsePositive')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -419,21 +421,21 @@ export function SessionsAnomalies({ sessions, onSessionAction }: SessionsAnomali
           <Card>
             <CardHeader>
               <CardTitle>
-                Detected Anomalies ({filteredAnomalies.length})
+                {t('tabs.detectedAnomalies')} ({filteredAnomalies.length})
               </CardTitle>
             </CardHeader>
             <CardContent>
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>User</TableHead>
-                    <TableHead>Type</TableHead>
-                    <TableHead>Severity</TableHead>
-                    <TableHead>Risk Score</TableHead>
-                    <TableHead>Description</TableHead>
-                    <TableHead>Detected</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Actions</TableHead>
+                    <TableHead>{t('table.user')}</TableHead>
+                    <TableHead>{t('table.type')}</TableHead>
+                    <TableHead>{t('table.severity')}</TableHead>
+                    <TableHead>{t('table.riskScore')}</TableHead>
+                    <TableHead>{t('table.description')}</TableHead>
+                    <TableHead>{t('table.detected')}</TableHead>
+                    <TableHead>{t('table.status')}</TableHead>
+                    <TableHead>{t('table.actions')}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
