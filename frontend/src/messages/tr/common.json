@@ -584,6 +584,31 @@
     }
   },
   "policies": {
+    "title": "Kimlik Doğrulama Politikaları",
+    "description": "Kullanıcı kimlik doğrulama, oturum yönetimi ve güvenlik kurallarını yönetin",
+    "createPolicy": "Politika Oluştur",
+    "editPolicy": "Politikayı Düzenle",
+    "policies": "Politikalar",
+    "conflicts": "Çakışmalar",
+    "simulation": "Simülasyon",
+    "analytics": "Analitikler",
+    "auditLog": "Denetim Günlüğü",
+    "totalPolicies": "Toplam Politikalar",
+    "activePolicies": "Aktif Politikalar",
+    "totalApplications": "Toplam Uygulamalar",
+    "conflictsDetected": "çakışma tespit edildi",
+    "policyCreated": "Politika başarıyla oluşturuldu",
+    "policyUpdated": "Politika başarıyla güncellendi",
+    "policyDeleted": "Politika başarıyla silindi",
+    "policyActivated": "Politika başarıyla etkinleştirildi",
+    "failedToLoad": "Politikalar yüklenemedi",
+    "failedToSave": "Politika kaydedilemedi",
+    "failedToDelete": "Politika silinemedi",
+    "failedToActivate": "Politika etkinleştirilemedi",
+    "noCreatePermission": "Politika oluşturma izniniz yok",
+    "noEditPermission": "Politika düzenleme izniniz yok",
+    "noDeletePermission": "Politika silme izniniz yok",
+    "noActivatePermission": "Politika etkinleştirme izniniz yok",
     "policySimulation": {
       "title": "Politika Simülasyonu",
       "buttons": {
@@ -757,6 +782,9 @@
         "dependency": "Politika çakışan başka bir politikaya bağlı",
         "unknown": "Bilinmeyen çakışma türü"
       },
+      "conflictDescriptions": {
+        "globalSessionOverlap": "Eşzamanlı oturumlar için Global Oturum Politikası ile çakışıyor"
+      },
       "noConflicts": {
         "title": "Çakışma Tespit Edilmedi",
         "subtitle": "Her Şey Yolunda!",
@@ -767,6 +795,21 @@
         "highPriority": "Yüksek Öncelik",
         "autoResolvable": "Otomatik çözülebilir",
         "totalConflicts": "Toplam Çakışma"
+      },
+      "conflictsList": {
+        "title": "Çakışma Listesi",
+        "affectedPolicies": "Etkilenen Politikalar"
+      },
+      "buttons": {
+        "resolve": "Çöz"
+      },
+      "preventionTips": {
+        "title": "Çakışma Önleme İpuçları",
+        "tip1": "Politika oluştururken mevcut politikaları gözden geçirin",
+        "tip2": "Kapsamları açıkça tanımlayın ve çakışmaları önleyin",
+        "tip3": "Politika önceliklerini doğru şekilde ayarlayın",
+        "tip4": "Test ortamında simülasyon yaparak çakışmaları tespit edin",
+        "tip5": "Düzenli olarak politika uyumluluğunu kontrol edin"
       },
       "criticalAlert": {
         "title": "{count} kritik çakışma tespit edildi!",

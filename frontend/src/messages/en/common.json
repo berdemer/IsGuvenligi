@@ -558,6 +558,31 @@
     }
   },
   "policies": {
+    "title": "Authentication Policies",
+    "description": "Manage user authentication, session management and security rules",
+    "createPolicy": "Create Policy",
+    "editPolicy": "Edit Policy",
+    "policies": "Policies",
+    "conflicts": "Conflicts",
+    "simulation": "Simulation",
+    "analytics": "Analytics",
+    "auditLog": "Audit Log",
+    "totalPolicies": "Total Policies",
+    "activePolicies": "Active Policies",
+    "totalApplications": "Total Applications",
+    "conflictsDetected": "conflicts detected",
+    "policyCreated": "Policy created successfully",
+    "policyUpdated": "Policy updated successfully",
+    "policyDeleted": "Policy deleted successfully",
+    "policyActivated": "Policy activated successfully",
+    "failedToLoad": "Failed to load policies",
+    "failedToSave": "Failed to save policy",
+    "failedToDelete": "Failed to delete policy",
+    "failedToActivate": "Failed to activate policy",
+    "noCreatePermission": "You don't have permission to create policies",
+    "noEditPermission": "You don't have permission to edit policies",
+    "noDeletePermission": "You don't have permission to delete policies",
+    "noActivatePermission": "You don't have permission to activate policies",
     "policySimulation": {
       "title": "Policy Simulation",
       "buttons": {
@@ -731,6 +756,9 @@
         "dependency": "Policy depends on another policy that conflicts",
         "unknown": "Unknown conflict type"
       },
+      "conflictDescriptions": {
+        "globalSessionOverlap": "Overlaps with Global Session Policy for concurrent sessions"
+      },
       "noConflicts": {
         "title": "No Conflicts Detected",
         "subtitle": "All Clear!",
@@ -775,13 +803,20 @@
           "disable": "Disable lower priority policy"
         }
       },
+      "conflictsList": {
+        "title": "Conflict List",
+        "affectedPolicies": "Affected Policies"
+      },
+      "buttons": {
+        "resolve": "Resolve"
+      },
       "preventionTips": {
         "title": "Conflict Prevention Tips",
-        "tip1": "Use clear, non-overlapping scopes for different policy types",
-        "tip2": "Set appropriate priority levels to establish clear precedence",
-        "tip3": "Test policies in simulation mode before activation",
-        "tip4": "Use gradual rollouts to identify conflicts early",
-        "tip5": "Review and update policies regularly to prevent drift"
+        "tip1": "Review existing policies when creating new ones",
+        "tip2": "Define scopes clearly and avoid overlaps",
+        "tip3": "Set policy priorities correctly",
+        "tip4": "Use simulation mode to detect conflicts before activation",
+        "tip5": "Regularly check policy compliance"
       }
     }
   }

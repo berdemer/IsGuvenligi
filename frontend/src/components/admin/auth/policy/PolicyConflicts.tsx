@@ -94,6 +94,16 @@ export function PolicyConflicts({ policies }: PolicyConflictsProps) {
     }
   }
 
+  const translateDescription = (description: string) => {
+    // If description starts with our namespace, it's a translation key
+    if (description.startsWith('policies.conflictManager.')) {
+      const keyPath = description.replace('policies.conflictManager.', '')
+      return t(keyPath)
+    }
+    // Otherwise return as-is (fallback for old data)
+    return description
+  }
+
   const handleAutoResolve = async (conflictId: string) => {
     setResolvingConflict(conflictId)
     
@@ -271,7 +281,7 @@ export function PolicyConflicts({ policies }: PolicyConflictsProps) {
                         )}
                       </div>
                       
-                      <h4 className="font-medium">{conflict.description}</h4>
+                      <h4 className="font-medium">{translateDescription(conflict.description)}</h4>
                       
                       <p className="text-sm opacity-80">
                         {getConflictTypeDescription(conflict.type)}
@@ -342,7 +352,7 @@ export function PolicyConflicts({ policies }: PolicyConflictsProps) {
                             <Alert>
                               <AlertTriangle className="h-4 w-4" />
                               <AlertDescription>
-                                <strong>{t('resolveDialog.conflictLabel')}:</strong> {conflict.description}
+                                <strong>{t('resolveDialog.conflictLabel')}:</strong> {translateDescription(conflict.description)}
                               </AlertDescription>
                             </Alert>
                             

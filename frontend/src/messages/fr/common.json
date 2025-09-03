@@ -205,6 +205,31 @@
     }
   },
   "policies": {
+    "title": "Politiques d'Authentification",
+    "description": "Gérer l'authentification des utilisateurs, la gestion des sessions et les règles de sécurité",
+    "createPolicy": "Créer une Politique",
+    "editPolicy": "Modifier la Politique",
+    "policies": "Politiques",
+    "conflicts": "Conflits",
+    "simulation": "Simulation",
+    "analytics": "Analytiques",
+    "auditLog": "Journal d'Audit",
+    "totalPolicies": "Total des Politiques",
+    "activePolicies": "Politiques Actives",
+    "totalApplications": "Total des Applications",
+    "conflictsDetected": "conflits détectés",
+    "policyCreated": "Politique créée avec succès",
+    "policyUpdated": "Politique mise à jour avec succès",
+    "policyDeleted": "Politique supprimée avec succès",
+    "policyActivated": "Politique activée avec succès",
+    "failedToLoad": "Échec du chargement des politiques",
+    "failedToSave": "Échec de l'enregistrement de la politique",
+    "failedToDelete": "Échec de la suppression de la politique",
+    "failedToActivate": "Échec de l'activation de la politique",
+    "noCreatePermission": "Vous n'avez pas l'autorisation de créer des politiques",
+    "noEditPermission": "Vous n'avez pas l'autorisation de modifier des politiques",
+    "noDeletePermission": "Vous n'avez pas l'autorisation de supprimer des politiques",
+    "noActivatePermission": "Vous n'avez pas l'autorisation d'activer des politiques",
     "policySimulation": {
       "title": "Simulation de Politique",
       "buttons": {
@@ -363,6 +388,75 @@
       "security": {
         "title": "Événements de Sécurité",
         "comingSoon": "L'analyse des événements de sécurité et la détection des menaces seront disponibles dans la prochaine mise à jour."
+      }
+    },
+    "conflictManager": {
+      "toast": {
+        "resolvedAuto": "Conflit résolu automatiquement",
+        "resolveFailed": "Échec de la résolution du conflit",
+        "resolutionApplied": "Résolution appliquée",
+        "applyFailed": "Échec de l'application de la résolution"
+      },
+      "conflictTypes": {
+        "overlap": "Les politiques ont des portées ou des conditions qui se chevauchent",
+        "contradiction": "Les politiques contiennent des règles contradictoires",
+        "dependency": "La politique dépend d'une autre politique en conflit",
+        "unknown": "Type de conflit inconnu"
+      },
+      "conflictDescriptions": {
+        "globalSessionOverlap": "Chevauche avec la politique de session globale pour les sessions simultanées"
+      },
+      "noConflicts": {
+        "title": "Aucun Conflit Détecté",
+        "subtitle": "Tout est clair !",
+        "description": "Aucun conflit de politique n'a été détecté. Vos politiques d'authentification fonctionnent harmonieusement."
+      },
+      "summary": {
+        "critical": "Critique",
+        "highPriority": "Haute Priorité",
+        "autoResolvable": "Résolvable automatiquement",
+        "totalConflicts": "Conflits Totaux"
+      },
+      "criticalAlert": {
+        "title": "{count} conflits critiques détectés !",
+        "description": "Ces conflits peuvent empêcher une authentification correcte et doivent être résolus immédiatement."
+      },
+      "autoResolution": {
+        "title": "Résolution Automatique Disponible",
+        "description": "{count} conflits peuvent être résolus automatiquement"
+      },
+      "buttons": {
+        "resolveAll": "Résoudre Tout",
+        "resolving": "Résolution en cours...",
+        "autoResolve": "Résoudre Automatiquement",
+        "resolve": "Résoudre",
+        "cancel": "Annuler"
+      },
+      "labels": {
+        "autoResolvable": "Résolvable automatiquement"
+      },
+      "conflictsList": {
+        "title": "Conflits de Politiques",
+        "affectedPolicies": "Politiques Affectées",
+        "suggestedResolution": "Résolution Suggérée"
+      },
+      "resolveDialog": {
+        "title": "Résoudre le Conflit",
+        "description": "Choisissez comment résoudre ce conflit de politique. Cette action modifiera les politiques affectées.",
+        "conflictLabel": "Conflit",
+        "options": {
+          "prioritize": "Prioriser par priorité de politique",
+          "merge": "Fusionner les règles conflictuelles",
+          "disable": "Désactiver la politique de priorité inférieure"
+        }
+      },
+      "preventionTips": {
+        "title": "Conseils de Prévention des Conflits",
+        "tip1": "Utilisez des portées claires et non chevauchantes pour différents types de politiques",
+        "tip2": "Définissez des niveaux de priorité appropriés pour établir une précédence claire",
+        "tip3": "Testez les politiques en mode simulation avant l'activation",
+        "tip4": "Utilisez des déploiements progressifs pour identifier les conflits tôt",
+        "tip5": "Révisez et mettez à jour les politiques régulièrement pour éviter la dérive"
       }
     }
   }

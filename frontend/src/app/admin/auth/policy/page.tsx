@@ -31,7 +31,7 @@ const mockPermissions: PolicyPermissions = {
 }
 
 export default function AuthPolicyPage() {
-  const t = useTranslations('auth.policies')
+  const t = useTranslations('policies')
   const [activeTab, setActiveTab] = useState("policies")
   const [showCreateForm, setShowCreateForm] = useState(false)
   const [editingPolicy, setEditingPolicy] = useState<AuthPolicy | null>(null)
@@ -195,7 +195,7 @@ export default function AuthPolicyPage() {
               conflictId: "conf_1",
               type: "overlap",
               severity: "medium",
-              description: "Overlaps with Global Session Policy for concurrent sessions",
+              description: "policies.conflictManager.conflictDescriptions.globalSessionOverlap",
               affectedPolicies: ["pol_3", "pol_4"],
               autoResolvable: false
             }

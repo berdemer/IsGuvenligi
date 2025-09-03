@@ -205,6 +205,31 @@
     }
   },
   "policies": {
+    "title": "Authentifizierungsrichtlinien",
+    "description": "Benutzerauthentifizierung, Sitzungsverwaltung und Sicherheitsregeln verwalten",
+    "createPolicy": "Richtlinie Erstellen",
+    "editPolicy": "Richtlinie Bearbeiten",
+    "policies": "Richtlinien",
+    "conflicts": "Konflikte",
+    "simulation": "Simulation",
+    "analytics": "Analytik",
+    "auditLog": "Audit-Protokoll",
+    "totalPolicies": "Gesamte Richtlinien",
+    "activePolicies": "Aktive Richtlinien",
+    "totalApplications": "Gesamte Anwendungen",
+    "conflictsDetected": "Konflikte erkannt",
+    "policyCreated": "Richtlinie erfolgreich erstellt",
+    "policyUpdated": "Richtlinie erfolgreich aktualisiert",
+    "policyDeleted": "Richtlinie erfolgreich gelöscht",
+    "policyActivated": "Richtlinie erfolgreich aktiviert",
+    "failedToLoad": "Richtlinien konnten nicht geladen werden",
+    "failedToSave": "Richtlinie konnte nicht gespeichert werden",
+    "failedToDelete": "Richtlinie konnte nicht gelöscht werden",
+    "failedToActivate": "Richtlinie konnte nicht aktiviert werden",
+    "noCreatePermission": "Sie haben keine Berechtigung zum Erstellen von Richtlinien",
+    "noEditPermission": "Sie haben keine Berechtigung zum Bearbeiten von Richtlinien",
+    "noDeletePermission": "Sie haben keine Berechtigung zum Löschen von Richtlinien",
+    "noActivatePermission": "Sie haben keine Berechtigung zum Aktivieren von Richtlinien",
     "policySimulation": {
       "title": "Richtlinien-Simulation",
       "buttons": {
@@ -363,6 +388,75 @@
       "security": {
         "title": "Sicherheitsereignisse",
         "comingSoon": "Analyse von Sicherheitsereignissen und Bedrohungserkennung werden im nächsten Update verfügbar sein."
+      }
+    },
+    "conflictManager": {
+      "toast": {
+        "resolvedAuto": "Konflikt automatisch gelöst",
+        "resolveFailed": "Konfliktlösung fehlgeschlagen",
+        "resolutionApplied": "Lösung angewendet",
+        "applyFailed": "Anwendung der Lösung fehlgeschlagen"
+      },
+      "conflictTypes": {
+        "overlap": "Richtlinien haben überlappende Bereiche oder Bedingungen",
+        "contradiction": "Richtlinien enthalten widersprüchliche Regeln",
+        "dependency": "Richtlinie ist abhängig von einer anderen Richtlinie, die in Konflikt steht",
+        "unknown": "Unbekannter Konflikttyp"
+      },
+      "conflictDescriptions": {
+        "globalSessionOverlap": "Überschneidet sich mit der globalen Sitzungsrichtlinie für gleichzeitige Sitzungen"
+      },
+      "noConflicts": {
+        "title": "Keine Konflikte erkannt",
+        "subtitle": "Alles in Ordnung!",
+        "description": "Es wurden keine Richtlinienkonflikte erkannt. Ihre Authentifizierungsrichtlinien arbeiten harmonisch zusammen."
+      },
+      "summary": {
+        "critical": "Kritisch",
+        "highPriority": "Hohe Priorität",
+        "autoResolvable": "Automatisch lösbar",
+        "totalConflicts": "Gesamte Konflikte"
+      },
+      "criticalAlert": {
+        "title": "{count} kritische Konflikte erkannt!",
+        "description": "Diese Konflikte können ordnungsgemäße Authentifizierung verhindern und sollten sofort gelöst werden."
+      },
+      "autoResolution": {
+        "title": "Automatische Lösung verfügbar",
+        "description": "{count} Konflikte können automatisch gelöst werden"
+      },
+      "buttons": {
+        "resolveAll": "Alle lösen",
+        "resolving": "Wird gelöst...",
+        "autoResolve": "Automatisch lösen",
+        "resolve": "Lösen",
+        "cancel": "Abbrechen"
+      },
+      "labels": {
+        "autoResolvable": "Automatisch lösbar"
+      },
+      "conflictsList": {
+        "title": "Richtlinienkonflikte",
+        "affectedPolicies": "Betroffene Richtlinien",
+        "suggestedResolution": "Vorgeschlagene Lösung"
+      },
+      "resolveDialog": {
+        "title": "Konflikt lösen",
+        "description": "Wählen Sie, wie dieser Richtlinienkonflikt gelöst werden soll. Diese Aktion wird die betroffenen Richtlinien ändern.",
+        "conflictLabel": "Konflikt",
+        "options": {
+          "prioritize": "Nach Richtlinienpriorität priorisieren",
+          "merge": "Widersprüchliche Regeln zusammenführen",
+          "disable": "Richtlinie mit niedrigerer Priorität deaktivieren"
+        }
+      },
+      "preventionTips": {
+        "title": "Tipps zur Konfliktvermeidung",
+        "tip1": "Verwenden Sie klare, sich nicht überschneidende Bereiche für verschiedene Richtlinientypen",
+        "tip2": "Setzen Sie angemessene Prioritätsstufen fest, um klare Rangfolgen zu etablieren",
+        "tip3": "Testen Sie Richtlinien im Simulationsmodus vor der Aktivierung",
+        "tip4": "Verwenden Sie schrittweise Rollouts, um Konflikte frühzeitig zu identifizieren",
+        "tip5": "Überprüfen und aktualisieren Sie Richtlinien regelmäßig, um Abweichungen zu verhindern"
       }
     }
   }
