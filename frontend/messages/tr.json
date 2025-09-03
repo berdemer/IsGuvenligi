@@ -164,7 +164,10 @@
       "policyActivated": "Politika başarıyla etkinleştirildi",
       "failedToSave": "Politika kaydedilemedi",
       "failedToDelete": "Politika silinemedi",
-      "failedToActivate": "Politika etkinleştirilemedi"
+      "failedToActivate": "Politika etkinleştirilemedi",
+      "conflicts": "Çakışmalar",
+      "policies": "Politikalar",
+      "analytics": "Analitik"
     },
     "sessions": {
       "title": "Aktif Oturumlar",
@@ -2124,6 +2127,86 @@
         "noResults": "Kriterlere uygun denetim kaydı bulunamadı",
         "exportSuccess": "Denetim günlüğü başarıyla dışa aktarıldı",
         "exportFailed": "Dışa aktarma başarısız"
+      }
+    },
+    "policy": {
+      "audit": {
+        "title": "Denetim Günlüğü",
+        "description": "Politika değişiklikleri ve yönetici işlemlerinin tam geçmişi",
+        "buttons": {
+          "filters": "Filtreler",
+          "refresh": "Yenile",
+          "export": "Dışa Aktar",
+          "clearFilters": "Filtreleri Temizle"
+        },
+        "search": {
+          "placeholder": "Politika, kullanıcı veya işlemleri ara..."
+        },
+        "filters": {
+          "action": "İşlem",
+          "user": "Kullanıcı",
+          "allActions": "Tüm İşlemler",
+          "allUsers": "Tüm Kullanıcılar"
+        },
+        "actions": {
+          "created": "Oluşturuldu",
+          "updated": "Güncellendi",
+          "deleted": "Silindi",
+          "activated": "Etkinleştirildi",
+          "deactivated": "Devre Dışı Bırakıldı",
+          "simulated": "Simüle Edildi",
+          "rolledBack": "Geri Alındı"
+        },
+        "stats": {
+          "showing": "{filtered} / {total} girdi gösteriliyor",
+          "lastUpdated": "Son güncelleme: {date}"
+        },
+        "table": {
+          "timestamp": "Zaman Damgası",
+          "action": "İşlem",
+          "policy": "Politika",
+          "user": "Kullanıcı",
+          "changes": "Değişiklikler",
+          "ipAddress": "IP Adresi",
+          "noChanges": "Değişiklik yok"
+        },
+        "empty": {
+          "title": "Denetim günlüğü bulunamadı",
+          "noLogs": "Henüz hiçbir politika değişikliği kaydedilmedi",
+          "noResults": "Arama veya filtre kriterlerinizi ayarlamayı deneyin"
+        },
+        "details": {
+          "title": "Denetim Günlüğü Detayları",
+          "description": "Bu politika değişikliği hakkında detaylı bilgi",
+          "fields": {
+            "action": "İşlem",
+            "timestamp": "Zaman Damgası",
+            "policy": "Politika",
+            "userInfo": "Kullanıcı Bilgileri",
+            "email": "E-posta",
+            "ipAddress": "IP Adresi",
+            "changesMade": "Yapılan Değişiklikler",
+            "reason": "Neden",
+            "userAgent": "Kullanıcı Aracısı",
+            "simulationResults": "Simülasyon Sonuçları"
+          },
+          "simulation": {
+            "testCases": "Test Durumları",
+            "passed": "Geçen",
+            "coverage": "Kapsam"
+          }
+        },
+        "compliance": {
+          "title": "Uyumluluk Notu",
+          "description": "Tüm politika değişiklikleri otomatik olarak kaydedilir ve uyumluluk amaçları için saklanır. Bu günlükler kurcalanamaz ve güvenlik incelemeleri ve düzenleyici gereksinimler için tam bir denetim izi sağlar."
+        },
+        "messages": {
+          "exportSuccess": "Denetim günlükleri başarıyla dışa aktarıldı"
+        },
+        "errors": {
+          "loadFailed": "Denetim günlükleri yüklenemedi",
+          "exportFailed": "Denetim günlükleri dışa aktarılamadı"
+        }
       }
     }
   },

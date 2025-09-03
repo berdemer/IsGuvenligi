@@ -46,7 +46,7 @@ export function PolicyList({
   onActivate, 
   permissions 
 }: PolicyListProps) {
-  const t = useTranslations('common.policies')
+  const t = useTranslations('policies')
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedType, setSelectedType] = useState<string>("all")
   const [selectedStatus, setSelectedStatus] = useState<string>("all")

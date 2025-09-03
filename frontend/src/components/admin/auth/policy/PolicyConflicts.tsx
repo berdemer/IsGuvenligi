@@ -20,7 +20,7 @@ interface PolicyConflictsProps {
 }
 
 export function PolicyConflicts({ policies }: PolicyConflictsProps) {
-  const t = useTranslations('common.conflicts')
+  const t = useTranslations('policies.conflictManager')
   const [resolvingConflict, setResolvingConflict] = useState<string | null>(null)
   const [showResolutionDialog, setShowResolutionDialog] = useState<string | null>(null)
 

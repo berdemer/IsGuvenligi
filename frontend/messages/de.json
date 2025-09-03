@@ -90,7 +90,10 @@
       "policyActivated": "Richtlinie erfolgreich aktiviert",
       "failedToSave": "Richtlinie konnte nicht gespeichert werden",
       "failedToDelete": "Richtlinie konnte nicht gelöscht werden",
-      "failedToActivate": "Richtlinie konnte nicht aktiviert werden"
+      "failedToActivate": "Richtlinie konnte nicht aktiviert werden",
+      "conflicts": "Konflikte",
+      "policies": "Richtlinien",
+      "analytics": "Analytik"
     },
     "sessions": {
       "title": "Aktive Sitzungen",
@@ -697,6 +700,86 @@
           "details": "Details",
           "actions": "Aktionen",
           "risk": "Risiko"
+        }
+      }
+    },
+    "policy": {
+      "audit": {
+        "title": "Prüfprotokoll",
+        "description": "Vollständige Historie von Richtlinienänderungen und administrativen Aktionen",
+        "buttons": {
+          "filters": "Filter",
+          "refresh": "Aktualisieren",
+          "export": "Exportieren",
+          "clearFilters": "Filter löschen"
+        },
+        "search": {
+          "placeholder": "Richtlinien, Benutzer oder Aktionen suchen..."
+        },
+        "filters": {
+          "action": "Aktion",
+          "user": "Benutzer",
+          "allActions": "Alle Aktionen",
+          "allUsers": "Alle Benutzer"
+        },
+        "actions": {
+          "created": "Erstellt",
+          "updated": "Aktualisiert",
+          "deleted": "Gelöscht",
+          "activated": "Aktiviert",
+          "deactivated": "Deaktiviert",
+          "simulated": "Simuliert",
+          "rolledBack": "Zurückgesetzt"
+        },
+        "stats": {
+          "showing": "Zeige {filtered} von {total} Einträgen",
+          "lastUpdated": "Zuletzt aktualisiert: {date}"
+        },
+        "table": {
+          "timestamp": "Zeitstempel",
+          "action": "Aktion",
+          "policy": "Richtlinie",
+          "user": "Benutzer",
+          "changes": "Änderungen",
+          "ipAddress": "IP-Adresse",
+          "noChanges": "Keine Änderungen"
+        },
+        "empty": {
+          "title": "Keine Prüfprotokolle gefunden",
+          "noLogs": "Es wurden noch keine Richtlinienänderungen aufgezeichnet",
+          "noResults": "Versuchen Sie, Ihre Such- oder Filterkriterien anzupassen"
+        },
+        "details": {
+          "title": "Prüfprotokoll-Details",
+          "description": "Detaillierte Informationen zu dieser Richtlinienänderung",
+          "fields": {
+            "action": "Aktion",
+            "timestamp": "Zeitstempel",
+            "policy": "Richtlinie",
+            "userInfo": "Benutzerinformationen",
+            "email": "E-Mail",
+            "ipAddress": "IP-Adresse",
+            "changesMade": "Vorgenommene Änderungen",
+            "reason": "Grund",
+            "userAgent": "Benutzer-Agent",
+            "simulationResults": "Simulationsergebnisse"
+          },
+          "simulation": {
+            "testCases": "Testfälle",
+            "passed": "Bestanden",
+            "coverage": "Abdeckung"
+          }
+        },
+        "compliance": {
+          "title": "Compliance-Hinweis",
+          "description": "Alle Richtlinienänderungen werden automatisch protokolliert und zu Compliance-Zwecken aufbewahrt. Diese Protokolle sind manipulationssicher und bieten eine vollständige Prüfspur für Sicherheitsüberprüfungen und regulatorische Anforderungen."
+        },
+        "messages": {
+          "exportSuccess": "Prüfprotokolle erfolgreich exportiert"
+        },
+        "errors": {
+          "loadFailed": "Fehler beim Laden der Prüfprotokolle",
+          "exportFailed": "Fehler beim Exportieren der Prüfprotokolle"
         }
       }
     }

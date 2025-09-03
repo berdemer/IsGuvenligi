@@ -475,6 +475,86 @@
           "risk": "Risk"
         }
       }
+    },
+    "policy": {
+      "audit": {
+        "title": "Audit Log",
+        "description": "Complete history of policy changes and administrative actions",
+        "buttons": {
+          "filters": "Filters",
+          "refresh": "Refresh",
+          "export": "Export",
+          "clearFilters": "Clear Filters"
+        },
+        "search": {
+          "placeholder": "Search policies, users, or actions..."
+        },
+        "filters": {
+          "action": "Action",
+          "user": "User",
+          "allActions": "All Actions",
+          "allUsers": "All Users"
+        },
+        "actions": {
+          "created": "Created",
+          "updated": "Updated",
+          "deleted": "Deleted",
+          "activated": "Activated",
+          "deactivated": "Deactivated",
+          "simulated": "Simulated",
+          "rolledBack": "Rolled Back"
+        },
+        "stats": {
+          "showing": "Showing {filtered} of {total} entries",
+          "lastUpdated": "Last updated: {date}"
+        },
+        "table": {
+          "timestamp": "Timestamp",
+          "action": "Action",
+          "policy": "Policy",
+          "user": "User",
+          "changes": "Changes",
+          "ipAddress": "IP Address",
+          "noChanges": "No changes"
+        },
+        "empty": {
+          "title": "No audit logs found",
+          "noLogs": "No policy changes have been recorded yet",
+          "noResults": "Try adjusting your search or filter criteria"
+        },
+        "details": {
+          "title": "Audit Log Details",
+          "description": "Detailed information about this policy change",
+          "fields": {
+            "action": "Action",
+            "timestamp": "Timestamp",
+            "policy": "Policy",
+            "userInfo": "User Information",
+            "email": "Email",
+            "ipAddress": "IP Address",
+            "changesMade": "Changes Made",
+            "reason": "Reason",
+            "userAgent": "User Agent",
+            "simulationResults": "Simulation Results"
+          },
+          "simulation": {
+            "testCases": "Test Cases",
+            "passed": "Passed",
+            "coverage": "Coverage"
+          }
+        },
+        "compliance": {
+          "title": "Compliance Note",
+          "description": "All policy changes are automatically logged and retained for compliance purposes. These logs are tamper-proof and provide a complete audit trail for security reviews and regulatory requirements."
+        },
+        "messages": {
+          "exportSuccess": "Audit logs exported successfully"
+        },
+        "errors": {
+          "loadFailed": "Failed to load audit logs",
+          "exportFailed": "Failed to export audit logs"
+        }
+      }
     }
   }
 }

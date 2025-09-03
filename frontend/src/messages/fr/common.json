@@ -123,5 +123,85 @@
         "risk": "Risque"
       }
     }
+  },
+  "policy": {
+    "audit": {
+      "title": "Journal d'audit",
+      "description": "Historique complet des modifications de politique et des actions administratives",
+      "buttons": {
+        "filters": "Filtres",
+        "refresh": "Actualiser",
+        "export": "Exporter",
+        "clearFilters": "Effacer les filtres"
+      },
+      "search": {
+        "placeholder": "Rechercher des politiques, utilisateurs ou actions..."
+      },
+      "filters": {
+        "action": "Action",
+        "user": "Utilisateur",
+        "allActions": "Toutes les actions",
+        "allUsers": "Tous les utilisateurs"
+      },
+      "actions": {
+        "created": "Créé",
+        "updated": "Mis à jour",
+        "deleted": "Supprimé",
+        "activated": "Activé",
+        "deactivated": "Désactivé",
+        "simulated": "Simulé",
+        "rolledBack": "Annulé"
+      },
+      "stats": {
+        "showing": "Affichage de {filtered} sur {total} entrées",
+        "lastUpdated": "Dernière mise à jour : {date}"
+      },
+      "table": {
+        "timestamp": "Horodatage",
+        "action": "Action",
+        "policy": "Politique",
+        "user": "Utilisateur",
+        "changes": "Modifications",
+        "ipAddress": "Adresse IP",
+        "noChanges": "Aucun changement"
+      },
+      "empty": {
+        "title": "Aucun journal d'audit trouvé",
+        "noLogs": "Aucune modification de politique n'a encore été enregistrée",
+        "noResults": "Essayez d'ajuster vos critères de recherche ou de filtre"
+      },
+      "details": {
+        "title": "Détails du journal d'audit",
+        "description": "Informations détaillées sur ce changement de politique",
+        "fields": {
+          "action": "Action",
+          "timestamp": "Horodatage",
+          "policy": "Politique",
+          "userInfo": "Informations utilisateur",
+          "email": "E-mail",
+          "ipAddress": "Adresse IP",
+          "changesMade": "Modifications apportées",
+          "reason": "Raison",
+          "userAgent": "Agent utilisateur",
+          "simulationResults": "Résultats de simulation"
+        },
+        "simulation": {
+          "testCases": "Cas de test",
+          "passed": "Réussi",
+          "coverage": "Couverture"
+        }
+      },
+      "compliance": {
+        "title": "Note de conformité",
+        "description": "Toutes les modifications de politique sont automatiquement enregistrées et conservées à des fins de conformité. Ces journaux sont inviolables et fournissent une piste d'audit complète pour les examens de sécurité et les exigences réglementaires."
+      },
+      "messages": {
+        "exportSuccess": "Journaux d'audit exportés avec succès"
+      },
+      "errors": {
+        "loadFailed": "Échec du chargement des journaux d'audit",
+        "exportFailed": "Échec de l'exportation des journaux d'audit"
+      }
+    }
   }
 }

@@ -275,7 +275,10 @@
       "policyActivated": "Policy activated successfully",
       "failedToSave": "Failed to save policy",
       "failedToDelete": "Failed to delete policy",
-      "failedToActivate": "Failed to activate policy"
+      "failedToActivate": "Failed to activate policy",
+      "conflicts": "Conflicts",
+      "policies": "Policies",
+      "analytics": "Analytics"
     },
     "sessions": {
       "title": "Active Sessions",

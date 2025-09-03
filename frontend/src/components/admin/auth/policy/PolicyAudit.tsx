@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useTranslations } from "next-intl"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -10,6 +11,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Skeleton } from "@/components/ui/skeleton"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Label } from "@/components/ui/label"
 import { 
   Search, Filter, Download, History, Eye, User, 
   Calendar, AlertCircle, CheckCircle, Edit, Trash2, 
@@ -112,6 +114,7 @@ const mockAuditLogs: PolicyAuditLog[] = [
 ]
 
 export function PolicyAudit() {
+  const t = useTranslations('common.policy.audit')
   const [auditLogs, setAuditLogs] = useState<PolicyAuditLog[]>([])
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState("")
@@ -131,7 +134,7 @@ export function PolicyAudit() {
       await new Promise(resolve => setTimeout(resolve, 1000))
       setAuditLogs(mockAuditLogs)
     } catch (error) {
-      toast.error("Failed to load audit logs")
+      toast.error(t('errors.loadFailed'))
     } finally {
       setLoading(false)
     }
@@ -172,19 +175,19 @@ export function PolicyAudit() {
   const getActionBadge = (action: string) => {
     switch (action) {
       case 'created':
-        return <Badge variant="default" className="bg-green-500">Created</Badge>
+        return <Badge variant="default" className="bg-green-500">{t('actions.created')}</Badge>
       case 'updated':
-        return <Badge variant="default" className="bg-blue-500">Updated</Badge>
+        return <Badge variant="default" className="bg-blue-500">{t('actions.updated')}</Badge>
       case 'deleted':
-        return <Badge variant="destructive">Deleted</Badge>
+        return <Badge variant="destructive">{t('actions.deleted')}</Badge>
       case 'activated':
-        return <Badge variant="default" className="bg-green-500">Activated</Badge>
+        return <Badge variant="default" className="bg-green-500">{t('actions.activated')}</Badge>
       case 'deactivated':
-        return <Badge variant="secondary" className="bg-amber-500 text-white">Deactivated</Badge>
+        return <Badge variant="secondary" className="bg-amber-500 text-white">{t('actions.deactivated')}</Badge>
       case 'simulated':
-        return <Badge variant="outline" className="border-purple-500 text-purple-500">Simulated</Badge>
+        return <Badge variant="outline" className="border-purple-500 text-purple-500">{t('actions.simulated')}</Badge>
       case 'rolled_back':
-        return <Badge variant="destructive">Rolled Back</Badge>
+        return <Badge variant="destructive">{t('actions.rolledBack')}</Badge>
       default:
         return <Badge variant="outline">{action}</Badge>
     }
@@ -239,9 +242,9 @@ export function PolicyAudit() {
       document.body.removeChild(a)
       window.URL.revokeObjectURL(url)
       
-      toast.success('Audit logs exported successfully')
+      toast.success(t('messages.exportSuccess'))
     } catch (error) {
-      toast.error('Failed to export audit logs')
+      toast.error(t('errors.exportFailed'))
     }
   }
 
@@ -257,7 +260,7 @@ export function PolicyAudit() {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Audit Log</CardTitle>
+          <CardTitle>{t('title')}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -284,10 +287,10 @@ export function PolicyAudit() {
             <div>
               <CardTitle className="flex items-center space-x-2">
                 <History className="h-5 w-5" />
-                <span>Audit Log</span>
+                <span>{t('title')}</span>
               </CardTitle>
               <p className="text-sm text-muted-foreground">
-                Complete history of policy changes and administrative actions
+                {t('description')}
               </p>
             </div>
             <div className="flex items-center space-x-2">
@@ -297,15 +300,15 @@ export function PolicyAudit() {
                 onClick={() => setShowFilters(!showFilters)}
               >
                 <Filter className="h-4 w-4 mr-2" />
-                Filters
+                {t('buttons.filters')}
               </Button>
               <Button variant="outline" size="sm" onClick={loadAuditLogs}>
                 <RefreshCw className="h-4 w-4 mr-2" />
-                Refresh
+                {t('buttons.refresh')}
               </Button>
               <Button variant="outline" size="sm" onClick={handleExportLogs}>
                 <Download className="h-4 w-4 mr-2" />
-                Export
+                {t('buttons.export')}
               </Button>
             </div>
           </div>
@@ -319,7 +322,7 @@ export function PolicyAudit() {
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
-                placeholder="Search policies, users, or actions..."
+                placeholder={t('search.placeholder')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-9"
@@ -330,32 +333,32 @@ export function PolicyAudit() {
           {showFilters && (
             <div className="grid gap-4 md:grid-cols-3 p-4 bg-muted/50 rounded-lg">
               <div className="space-y-2">
-                <label className="text-sm font-medium">Action</label>
+                <label className="text-sm font-medium">{t('filters.action')}</label>
                 <Select value={selectedAction} onValueChange={setSelectedAction}>
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">All Actions</SelectItem>
-                    <SelectItem value="created">Created</SelectItem>
-                    <SelectItem value="updated">Updated</SelectItem>
-                    <SelectItem value="activated">Activated</SelectItem>
-                    <SelectItem value="deactivated">Deactivated</SelectItem>
-                    <SelectItem value="deleted">Deleted</SelectItem>
-                    <SelectItem value="simulated">Simulated</SelectItem>
-                    <SelectItem value="rolled_back">Rolled Back</SelectItem>
+                    <SelectItem value="all">{t('filters.allActions')}</SelectItem>
+                    <SelectItem value="created">{t('actions.created')}</SelectItem>
+                    <SelectItem value="updated">{t('actions.updated')}</SelectItem>
+                    <SelectItem value="activated">{t('actions.activated')}</SelectItem>
+                    <SelectItem value="deactivated">{t('actions.deactivated')}</SelectItem>
+                    <SelectItem value="deleted">{t('actions.deleted')}</SelectItem>
+                    <SelectItem value="simulated">{t('actions.simulated')}</SelectItem>
+                    <SelectItem value="rolled_back">{t('actions.rolledBack')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium">User</label>
+                <label className="text-sm font-medium">{t('filters.user')}</label>
                 <Select value={selectedUser} onValueChange={setSelectedUser}>
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">All Users</SelectItem>
+                    <SelectItem value="all">{t('filters.allUsers')}</SelectItem>
                     {uniqueUsers.map(user => (
                       <SelectItem key={user} value={user}>
                         {user}
@@ -367,15 +370,15 @@ export function PolicyAudit() {
 
               <div className="flex items-end">
                 <Button variant="outline" onClick={clearFilters} className="w-full">
-                  Clear Filters
+                  {t('buttons.clearFilters')}
                 </Button>
               </div>
             </div>
           )}
 
           <div className="flex items-center justify-between text-sm text-muted-foreground">
-            <span>Showing {filteredLogs.length} of {auditLogs.length} entries</span>
-            <span>Last updated: {formatDate(new Date().toISOString())}</span>
+            <span>{t('stats.showing', {filtered: filteredLogs.length, total: auditLogs.length})}</span>
+            <span>{t('stats.lastUpdated', {date: formatDate(new Date().toISOString())})}</span>
           </div>
         </CardContent>
       </Card>
@@ -386,11 +389,11 @@ export function PolicyAudit() {
           {filteredLogs.length === 0 ? (
             <div className="text-center py-12">
               <History className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-              <h3 className="text-lg font-medium">No audit logs found</h3>
+              <h3 className="text-lg font-medium">{t('empty.title')}</h3>
               <p className="text-muted-foreground">
                 {auditLogs.length === 0 
-                  ? "No policy changes have been recorded yet"
-                  : "Try adjusting your search or filter criteria"
+                  ? t('empty.noLogs')
+                  : t('empty.noResults')
                 }
               </p>
             </div>
@@ -398,12 +401,12 @@ export function PolicyAudit() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Timestamp</TableHead>
-                  <TableHead>Action</TableHead>
-                  <TableHead>Policy</TableHead>
-                  <TableHead>User</TableHead>
-                  <TableHead>Changes</TableHead>
-                  <TableHead>IP Address</TableHead>
+                  <TableHead>{t('table.timestamp')}</TableHead>
+                  <TableHead>{t('table.action')}</TableHead>
+                  <TableHead>{t('table.policy')}</TableHead>
+                  <TableHead>{t('table.user')}</TableHead>
+                  <TableHead>{t('table.changes')}</TableHead>
+                  <TableHead>{t('table.ipAddress')}</TableHead>
                   <TableHead className="w-12"></TableHead>
                 </TableRow>
               </TableHeader>
@@ -453,7 +456,7 @@ export function PolicyAudit() {
                             {log.metadata.reason}
                           </p>
                         ) : (
-                          <span className="text-xs text-muted-foreground">No changes</span>
+                          <span className="text-xs text-muted-foreground">{t('table.noChanges')}</span>
                         )}
                       </div>
                     </TableCell>
@@ -479,10 +482,10 @@ export function PolicyAudit() {
                           <DialogHeader>
                             <DialogTitle className="flex items-center space-x-2">
                               <FileText className="h-5 w-5" />
-                              <span>Audit Log Details</span>
+                              <span>{t('details.title')}</span>
                             </DialogTitle>
                             <DialogDescription>
-                              Detailed information about this policy change
+                              {t('details.description')}
                             </DialogDescription>
                           </DialogHeader>
                           
@@ -490,7 +493,7 @@ export function PolicyAudit() {
                             <div className="space-y-6">
                               <div className="grid gap-4 md:grid-cols-2">
                                 <div className="space-y-2">
-                                  <Label className="text-sm font-medium">Action</Label>
+                                  <Label className="text-sm font-medium">{t('details.fields.action')}</Label>
                                   <div className="flex items-center space-x-2">
                                     {getActionIcon(selectedLog.action)}
                                     {getActionBadge(selectedLog.action)}
@@ -498,13 +501,13 @@ export function PolicyAudit() {
                                 </div>
                                 
                                 <div className="space-y-2">
-                                  <Label className="text-sm font-medium">Timestamp</Label>
+                                  <Label className="text-sm font-medium">{t('details.fields.timestamp')}</Label>
                                   <p className="text-sm">{formatDate(selectedLog.timestamp)}</p>
                                 </div>
                               </div>
                               
                               <div className="space-y-2">
-                                <Label className="text-sm font-medium">Policy</Label>
+                                <Label className="text-sm font-medium">{t('details.fields.policy')}</Label>
                                 <div className="flex items-center space-x-2">
                                   <span>{selectedLog.metadata.policyName}</span>
                                   <Badge variant="outline" className="capitalize">
@@ -514,14 +517,14 @@ export function PolicyAudit() {
                               </div>
                               
                               <div className="space-y-2">
-                                <Label className="text-sm font-medium">User Information</Label>
+                                <Label className="text-sm font-medium">{t('details.fields.userInfo')}</Label>
                                 <div className="grid gap-2 md:grid-cols-2 text-sm">
                                   <div>
-                                    <span className="text-muted-foreground">Email:</span>
+                                    <span className="text-muted-foreground">{t('details.fields.email')}:</span>
                                     <span className="ml-2">{selectedLog.userEmail}</span>
                                   </div>
                                   <div>
-                                    <span className="text-muted-foreground">IP Address:</span>
+                                    <span className="text-muted-foreground">{t('details.fields.ipAddress')}:</span>
                                     <code className="ml-2 bg-muted px-2 py-1 rounded text-xs">
                                       {selectedLog.ipAddress}
                                     </code>
@@ -531,7 +534,7 @@ export function PolicyAudit() {
                               
                               {selectedLog.changes && (
                                 <div className="space-y-2">
-                                  <Label className="text-sm font-medium">Changes Made</Label>
+                                  <Label className="text-sm font-medium">{t('details.fields.changesMade')}</Label>
                                   <div className="bg-muted p-3 rounded space-y-2">
                                     {formatChanges(selectedLog.changes)}
                                   </div>
@@ -540,7 +543,7 @@ export function PolicyAudit() {
                               
                               {selectedLog.metadata.reason && (
                                 <div className="space-y-2">
-                                  <Label className="text-sm font-medium">Reason</Label>
+                                  <Label className="text-sm font-medium">{t('details.fields.reason')}</Label>
                                   <p className="text-sm bg-muted p-3 rounded">
                                     {selectedLog.metadata.reason}
                                   </p>
@@ -548,7 +551,7 @@ export function PolicyAudit() {
                               )}
                               
                               <div className="space-y-2">
-                                <Label className="text-sm font-medium">User Agent</Label>
+                                <Label className="text-sm font-medium">{t('details.fields.userAgent')}</Label>
                                 <p className="text-xs font-mono bg-muted p-2 rounded break-all">
                                   {selectedLog.userAgent}
                                 </p>
@@ -556,12 +559,12 @@ export function PolicyAudit() {
                               
                               {selectedLog.metadata.simulationResults && (
                                 <div className="space-y-2">
-                                  <Label className="text-sm font-medium">Simulation Results</Label>
+                                  <Label className="text-sm font-medium">{t('details.fields.simulationResults')}</Label>
                                   <div className="bg-muted p-3 rounded">
                                     <div className="grid gap-2 md:grid-cols-3 text-sm">
-                                      <div>Test Cases: {selectedLog.metadata.simulationResults.testCases}</div>
-                                      <div>Passed: {selectedLog.metadata.simulationResults.passed}</div>
-                                      <div>Coverage: {selectedLog.metadata.simulationResults.coverage}%</div>
+                                      <div>{t('details.simulation.testCases')}: {selectedLog.metadata.simulationResults.testCases}</div>
+                                      <div>{t('details.simulation.passed')}: {selectedLog.metadata.simulationResults.passed}</div>
+                                      <div>{t('details.simulation.coverage')}: {selectedLog.metadata.simulationResults.coverage}%</div>
                                     </div>
                                   </div>
                                 </div>
@@ -583,8 +586,7 @@ export function PolicyAudit() {
       <Alert>
         <AlertCircle className="h-4 w-4" />
         <AlertDescription>
-          <strong>Compliance Note:</strong> All policy changes are automatically logged and retained for compliance purposes. 
-          These logs are tamper-proof and provide a complete audit trail for security reviews and regulatory requirements.
+          <strong>{t('compliance.title')}:</strong> {t('compliance.description')}
         </AlertDescription>
       </Alert>
     </div>
