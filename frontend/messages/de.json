@@ -160,7 +160,92 @@
     "policyUpdated": "Richtlinie aktualisiert",
     "policyDeleted": "Richtlinie gelöscht",
     "policyCloned": "Richtlinie kopiert",
-    "editPolicy": "Richtlinie bearbeiten"
+    "editPolicy": "Richtlinie bearbeiten",
+    "policyForm": {
+      "types": {
+        "password": {
+          "label": "Passwort-Richtlinie",
+          "description": "Passwort-Stärke und Lebenszyklus-Regeln"
+        },
+        "mfa": {
+          "label": "Multi-Faktor-Authentifizierung",
+          "description": "MFA-Anforderungen und Methoden"
+        },
+        "session": {
+          "label": "Sitzungsverwaltung",
+          "description": "Sitzungszeitlimits und -beschränkungen"
+        },
+        "provider": {
+          "label": "Identitätsanbieter",
+          "description": "Externe Anbieterbeschränkungen"
+        },
+        "recovery": {
+          "label": "Konto-Wiederherstellung",
+          "description": "Passwort-Reset und Wiederherstellungsoptionen"
+        }
+      },
+      "labels": {
+        "policyName": "Richtlinienname *",
+        "policyType": "Richtlinientyp *",
+        "description": "Beschreibung *",
+        "priority": "Priorität (1-100)",
+        "initialStatus": "Anfangsstatus",
+        "targets": "Ziele"
+      },
+      "placeholders": {
+        "policyName": "Richtlinienname eingeben",
+        "description": "Beschreiben Sie, was diese Richtlinie tut und wann sie gilt",
+        "enterTargets": "{type}-Namen eingeben..."
+      },
+      "priority": {
+        "low": "1 (Niedrig)",
+        "high": "100 (Hoch)"
+      },
+      "status": {
+        "draft": "Entwurf",
+        "inactive": "Inaktiv",
+        "active": "Aktiv"
+      },
+      "scope": {
+        "global": {
+          "title": "Global",
+          "description": "Gilt für alle Benutzer"
+        },
+        "role": {
+          "title": "Rollenbasiert",
+          "description": "Auf bestimmte Rollen anwenden"
+        },
+        "group": {
+          "title": "Gruppenbasiert",
+          "description": "Auf Benutzergruppen anwenden"
+        },
+        "user": {
+          "title": "Benutzerspezifisch",
+          "description": "Auf einzelne Benutzer anwenden"
+        }
+      },
+      "alerts": {
+        "priorityNote": "Richtlinien mit höherer Priorität haben Vorrang, wenn mehrere Richtlinien für denselben Benutzer oder dieselbe Situation gelten. Beginnen Sie mit Entwurfs- oder Inaktiv-Status zum Testen vor der Aktivierung."
+      },
+      "errors": {
+        "fixValidation": "Bitte beheben Sie die Validierungsfehler",
+        "simulationFailed": "Simulation fehlgeschlagen. Bitte überprüfen Sie die Richtlinienkonfiguration."
+      },
+      "title": {
+        "edit": "Richtlinie bearbeiten",
+        "create": "Neue Richtlinie erstellen"
+      },
+      "buttons": {
+        "cancel": "Abbrechen",
+        "saving": "Speichern...",
+        "update": "Richtlinie aktualisieren",
+        "create": "Richtlinie erstellen",
+        "continueWithSave": "Mit Speichern fortfahren"
+      },
+      "options": {
+        "simulateBeforeSave": "Vor dem Speichern simulieren"
+      }
+    }
   },
   "access": {
     "title": "Zugriffsrichtlinien",

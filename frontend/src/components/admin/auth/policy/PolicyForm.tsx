@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useTranslations } from "next-intl"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -30,15 +31,16 @@ interface PolicyFormProps {
   permissions: PolicyPermissions
 }
 
-const policyTypes = [
-  { value: 'password', label: 'Password Policy', icon: Key, description: 'Password strength and lifecycle rules' },
-  { value: 'mfa', label: 'Multi-Factor Authentication', icon: Shield, description: 'MFA requirements and methods' },
-  { value: 'session', label: 'Session Management', icon: Timer, description: 'Session timeouts and limits' },
-  { value: 'provider', label: 'Identity Providers', icon: Globe, description: 'External provider restrictions' },
-  { value: 'recovery', label: 'Account Recovery', icon: LifeBuoy, description: 'Password reset and recovery options' }
-]
-
 export function PolicyForm({ policy, onSubmit, onCancel, permissions }: PolicyFormProps) {
+  const t = useTranslations('policies.policyForm')
+  
+  const policyTypes = [
+    { value: 'password', label: t('types.password.label'), icon: Key, description: t('types.password.description') },
+    { value: 'mfa', label: t('types.mfa.label'), icon: Shield, description: t('types.mfa.description') },
+    { value: 'session', label: t('types.session.label'), icon: Timer, description: t('types.session.description') },
+    { value: 'provider', label: t('types.provider.label'), icon: Globe, description: t('types.provider.description') },
+    { value: 'recovery', label: t('types.recovery.label'), icon: LifeBuoy, description: t('types.recovery.description') }
+  ]
   const [formData, setFormData] = useState<PolicyFormData>({
     name: '',
     description: '',
@@ -135,7 +137,7 @@ export function PolicyForm({ policy, onSubmit, onCancel, permissions }: PolicyFo
     e.preventDefault()
     
     if (!validateForm()) {
-      toast.error('Please fix the validation errors')
+      toast.error(t('errors.fixValidation'))
       return
     }
 
@@ -156,7 +158,7 @@ export function PolicyForm({ policy, onSubmit, onCancel, permissions }: PolicyFo
     setShowSimulation(false)
     
     if (results.overallResult === 'fail') {
-      toast.error('Simulation failed. Please review the policy configuration.')
+      toast.error(t('errors.simulationFailed'))
       return
     }
 
@@ -176,12 +178,12 @@ export function PolicyForm({ policy, onSubmit, onCancel, permissions }: PolicyFo
     <div className="space-y-6">
       <div className="grid gap-4 md:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="name">Policy Name *</Label>
+          <Label htmlFor="name">{t('labels.policyName')}</Label>
           <Input
             id="name"
             value={formData.name}
             onChange={(e) => updateFormData({ name: e.target.value })}
-            placeholder="Enter policy name"
+            placeholder={t('placeholders.policyName')}
             className={errors.name ? 'border-red-500' : ''}
           />
           {errors.name && (
@@ -190,7 +192,7 @@ export function PolicyForm({ policy, onSubmit, onCancel, permissions }: PolicyFo
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="type">Policy Type *</Label>
+          <Label htmlFor="type">{t('labels.policyType')}</Label>
           <Select
             value={formData.type}
             onValueChange={(value) => updateFormData({ type: value as any })}
@@ -219,12 +221,12 @@ export function PolicyForm({ policy, onSubmit, onCancel, permissions }: PolicyFo
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="description">Description *</Label>
+        <Label htmlFor="description">{t('labels.description')}</Label>
         <Textarea
           id="description"
           value={formData.description}
           onChange={(e) => updateFormData({ description: e.target.value })}
-          placeholder="Describe what this policy does and when it applies"
+          placeholder={t('placeholders.description')}
           rows={3}
           className={errors.description ? 'border-red-500' : ''}
         />
@@ -235,7 +237,7 @@ export function PolicyForm({ policy, onSubmit, onCancel, permissions }: PolicyFo
 
       <div className="grid gap-4 md:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="priority">Priority (1-100)</Label>
+          <Label htmlFor="priority">{t('labels.priority')}</Label>
           <div className="space-y-2">
             <Slider
               value={[formData.priority]}
@@ -246,9 +248,9 @@ export function PolicyForm({ policy, onSubmit, onCancel, permissions }: PolicyFo
               className="w-full"
             />
             <div className="flex justify-between text-sm text-muted-foreground">
-              <span>1 (Low)</span>
+              <span>{t('priority.low')}</span>
               <span className="font-medium">{formData.priority}</span>
-              <span>100 (High)</span>
+              <span>{t('priority.high')}</span>
             </div>
           </div>
           {errors.priority && (
@@ -257,7 +259,7 @@ export function PolicyForm({ policy, onSubmit, onCancel, permissions }: PolicyFo
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="status">Initial Status</Label>
+          <Label htmlFor="status">{t('labels.initialStatus')}</Label>
           <Select
             value={formData.status}
             onValueChange={(value) => updateFormData({ status: value as any })}
@@ -266,10 +268,10 @@ export function PolicyForm({ policy, onSubmit, onCancel, permissions }: PolicyFo
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="draft">Draft</SelectItem>
-              <SelectItem value="inactive">Inactive</SelectItem>
+              <SelectItem value="draft">{t('status.draft')}</SelectItem>
+              <SelectItem value="inactive">{t('status.inactive')}</SelectItem>
               {permissions.canActivate && (
-                <SelectItem value="active">Active</SelectItem>
+                <SelectItem value="active">{t('status.active')}</SelectItem>
               )}
             </SelectContent>
           </Select>
@@ -279,8 +281,7 @@ export function PolicyForm({ policy, onSubmit, onCancel, permissions }: PolicyFo
       <Alert>
         <Info className="h-4 w-4" />
         <AlertDescription>
-          Higher priority policies take precedence when multiple policies apply to the same user or situation.
-          Start with draft or inactive status to test before activation.
+          {t('alerts.priorityNote')}
         </AlertDescription>
       </Alert>
     </div>
@@ -305,8 +306,8 @@ export function PolicyForm({ policy, onSubmit, onCancel, permissions }: PolicyFo
                 <div className="flex items-center space-x-2">
                   <Globe className="h-4 w-4" />
                   <div>
-                    <p>Global</p>
-                    <p className="text-xs text-muted-foreground">Applies to all users</p>
+                    <p>{t('scope.global.title')}</p>
+                    <p className="text-xs text-muted-foreground">{t('scope.global.description')}</p>
                   </div>
                 </div>
               </SelectItem>
@@ -314,8 +315,8 @@ export function PolicyForm({ policy, onSubmit, onCancel, permissions }: PolicyFo
                 <div className="flex items-center space-x-2">
                   <Users className="h-4 w-4" />
                   <div>
-                    <p>Role-based</p>
-                    <p className="text-xs text-muted-foreground">Apply to specific roles</p>
+                    <p>{t('scope.role.title')}</p>
+                    <p className="text-xs text-muted-foreground">{t('scope.role.description')}</p>
                   </div>
                 </div>
               </SelectItem>
@@ -323,8 +324,8 @@ export function PolicyForm({ policy, onSubmit, onCancel, permissions }: PolicyFo
                 <div className="flex items-center space-x-2">
                   <Target className="h-4 w-4" />
                   <div>
-                    <p>Group-based</p>
-                    <p className="text-xs text-muted-foreground">Apply to user groups</p>
+                    <p>{t('scope.group.title')}</p>
+                    <p className="text-xs text-muted-foreground">{t('scope.group.description')}</p>
                   </div>
                 </div>
               </SelectItem>
@@ -332,8 +333,8 @@ export function PolicyForm({ policy, onSubmit, onCancel, permissions }: PolicyFo
                 <div className="flex items-center space-x-2">
                   <Users className="h-4 w-4" />
                   <div>
-                    <p>User-specific</p>
-                    <p className="text-xs text-muted-foreground">Apply to individual users</p>
+                    <p>{t('scope.user.title')}</p>
+                    <p className="text-xs text-muted-foreground">{t('scope.user.description')}</p>
                   </div>
                 </div>
               </SelectItem>
@@ -343,10 +344,10 @@ export function PolicyForm({ policy, onSubmit, onCancel, permissions }: PolicyFo
 
         {formData.scope.type !== 'global' && (
           <div className="space-y-2">
-            <Label>Targets</Label>
+            <Label>{t('labels.targets')}</Label>
             <div className="space-y-2">
               <Input
-                placeholder={`Enter ${formData.scope.type} names...`}
+                placeholder={t('placeholders.enterTargets', {type: formData.scope.type})}
                 onKeyPress={(e) => {
                   if (e.key === 'Enter') {
                     const target = (e.target as HTMLInputElement).value.trim()
@@ -419,13 +420,13 @@ export function PolicyForm({ policy, onSubmit, onCancel, permissions }: PolicyFo
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
-          <span>{policy ? 'Edit Policy' : 'Create New Policy'}</span>
+          <span>{policy ? t('title.edit') : t('title.create')}</span>
           <div className="flex items-center space-x-2">
             <Button variant="outline" onClick={onCancel}>
-              Cancel
+              {t('buttons.cancel')}
             </Button>
             <Button onClick={handleSubmit} disabled={loading}>
-              {loading ? 'Saving...' : policy ? 'Update Policy' : 'Create Policy'}
+              {loading ? t('buttons.saving') : policy ? t('buttons.update') : t('buttons.create')}
             </Button>
           </div>
         </CardTitle>
@@ -481,7 +482,7 @@ export function PolicyForm({ policy, onSubmit, onCancel, permissions }: PolicyFo
                   checked={formData.simulateBeforeSave}
                   onCheckedChange={(checked) => updateFormData({ simulateBeforeSave: checked as boolean })}
                 />
-                <Label htmlFor="simulateBeforeSave">Simulate before saving</Label>
+                <Label htmlFor="simulateBeforeSave">{t('options.simulateBeforeSave')}</Label>
               </div>
               
               <div className="flex items-center space-x-2">
@@ -496,11 +497,11 @@ export function PolicyForm({ policy, onSubmit, onCancel, permissions }: PolicyFo
 
             <div className="flex items-center space-x-2">
               <Button type="button" variant="outline" onClick={onCancel}>
-                Cancel
+                {t('buttons.cancel')}
               </Button>
               <Button type="submit" disabled={loading}>
                 <Save className="h-4 w-4 mr-2" />
-                {loading ? 'Saving...' : policy ? 'Update Policy' : 'Create Policy'}
+                {loading ? t('buttons.saving') : policy ? t('buttons.update') : t('buttons.create')}
               </Button>
             </div>
           </div>
@@ -527,10 +528,10 @@ export function PolicyForm({ policy, onSubmit, onCancel, permissions }: PolicyFo
 
           <DialogFooter>
             <Button variant="outline" onClick={() => setShowSimulation(false)}>
-              Cancel
+              {t('buttons.cancel')}
             </Button>
             <Button onClick={() => handleSimulationComplete({ overallResult: 'pass' })}>
-              Continue with Save
+              {t('buttons.continueWithSave')}
             </Button>
           </DialogFooter>
         </DialogContent>

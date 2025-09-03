@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useTranslations } from "next-intl"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -143,6 +144,7 @@ const mockScenarios: SimulationScenario[] = [
 ]
 
 export function PolicySimulation({ policies }: PolicySimulationProps) {
+  const t = useTranslations('policies.policySimulation')
   const [activeTab, setActiveTab] = useState("scenarios")
   const [selectedScenarios, setSelectedScenarios] = useState<string[]>([])
   const [customScenario, setCustomScenario] = useState<Partial<SimulationScenario>>({})
@@ -152,7 +154,7 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
 
   const handleRunSimulation = async () => {
     if (selectedScenarios.length === 0 && !customScenario.id) {
-      toast.error("Please select at least one scenario to simulate")
+      toast.error(t('errors.selectScenario'))
       return
     }
 
@@ -194,9 +196,9 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
 
       setSimulationResults(mockResults)
       setActiveTab("results")
-      toast.success("Simulation completed successfully")
+      toast.success(t('messages.simulationCompleted'))
     } catch (error) {
-      toast.error("Simulation failed")
+      toast.error(t('errors.simulationFailed'))
     } finally {
       setRunning(false)
       setProgress(0)
@@ -226,18 +228,18 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
 
   const getResultBadge = (result: string, passed: boolean) => {
     if (!passed) {
-      return <Badge variant="destructive">Failed</Badge>
+      return <Badge variant="destructive">{t('results.status.failed')}</Badge>
     }
     
     switch (result) {
       case 'allow':
-        return <Badge variant="default" className="bg-green-500">Allow</Badge>
+        return <Badge variant="default" className="bg-green-500">{t('results.status.allow')}</Badge>
       case 'deny':
-        return <Badge variant="destructive">Deny</Badge>
+        return <Badge variant="destructive">{t('results.status.deny')}</Badge>
       case 'challenge':
-        return <Badge variant="secondary" className="bg-amber-500 text-white">Challenge</Badge>
+        return <Badge variant="secondary" className="bg-amber-500 text-white">{t('results.status.challenge')}</Badge>
       default:
-        return <Badge variant="outline">Unknown</Badge>
+        return <Badge variant="outline">{t('results.status.unknown')}</Badge>
     }
   }
 
@@ -248,7 +250,7 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
           <div className="flex items-center justify-between">
             <CardTitle className="flex items-center space-x-2">
               <TestTube className="h-5 w-5" />
-              <span>Policy Simulation</span>
+              <span>{t('title')}</span>
             </CardTitle>
             <div className="flex items-center space-x-2">
               <Button 
@@ -260,7 +262,7 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
                 }}
               >
                 <RotateCcw className="h-4 w-4 mr-2" />
-                Reset
+                {t('buttons.reset')}
               </Button>
               <Button 
                 onClick={handleRunSimulation}
@@ -269,12 +271,12 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
                 {running ? (
                   <>
                     <Clock className="h-4 w-4 mr-2 animate-spin" />
-                    Running...
+                    {t('buttons.running')}
                   </>
                 ) : (
                   <>
                     <Play className="h-4 w-4 mr-2" />
-                    Run Simulation
+                    {t('buttons.runSimulation')}
                   </>
                 )}
               </Button>
@@ -289,11 +291,11 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
                 <TestTube className="h-5 w-5 animate-pulse" />
-                <span className="font-medium">Running simulation tests...</span>
+                <span className="font-medium">{t('messages.runningTests')}</span>
               </div>
               <Progress value={progress} className="w-full" />
               <p className="text-sm text-muted-foreground">
-                Testing {selectedScenarios.length || 1} scenario(s) against {policies.length} active policies
+                {t('messages.testingScenarios', {scenarios: selectedScenarios.length || 1, policies: policies.length})}
               </p>
             </div>
           </CardContent>
@@ -302,10 +304,10 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
         <TabsList>
-          <TabsTrigger value="scenarios">Test Scenarios</TabsTrigger>
-          <TabsTrigger value="custom">Custom Test</TabsTrigger>
+          <TabsTrigger value="scenarios">{t('tabs.scenarios')}</TabsTrigger>
+          <TabsTrigger value="custom">{t('tabs.customTest')}</TabsTrigger>
           <TabsTrigger value="results" disabled={!simulationResults}>
-            Results
+            {t('tabs.results')}
             {simulationResults && (
               <Badge variant="secondary" className="ml-2">
                 {simulationResults.testCases.length}
@@ -317,15 +319,15 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
         <TabsContent value="scenarios" className="space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle>Pre-built Test Scenarios</CardTitle>
+              <CardTitle>{t('scenarios.title')}</CardTitle>
               <p className="text-sm text-muted-foreground">
-                Select one or more scenarios to test your policies against common authentication situations.
+                {t('scenarios.description')}
               </p>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between mb-4">
                 <p className="text-sm text-muted-foreground">
-                  {selectedScenarios.length} of {mockScenarios.length} scenarios selected
+                  {t('scenarios.selected', {selected: selectedScenarios.length, total: mockScenarios.length})}
                 </p>
                 <div className="space-x-2">
                   <Button 
@@ -333,14 +335,14 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
                     size="sm"
                     onClick={() => setSelectedScenarios(mockScenarios.map(s => s.id))}
                   >
-                    Select All
+                    {t('buttons.selectAll')}
                   </Button>
                   <Button 
                     variant="outline" 
                     size="sm"
                     onClick={() => setSelectedScenarios([])}
                   >
-                    Clear All
+                    {t('buttons.clearAll')}
                   </Button>
                 </div>
               </div>
@@ -393,7 +395,7 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
                         </div>
                         
                         <div className="flex items-center justify-between">
-                          <span className="text-xs text-muted-foreground">Expected:</span>
+                          <span className="text-xs text-muted-foreground">{t('scenarios.expected')}:</span>
                           {getResultBadge(scenario.expectedResult, true)}
                         </div>
                       </div>
@@ -408,18 +410,18 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
         <TabsContent value="custom" className="space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle>Custom Test Scenario</CardTitle>
+              <CardTitle>{t('customTest.title')}</CardTitle>
               <p className="text-sm text-muted-foreground">
-                Create a custom test scenario with specific user and condition parameters.
+                {t('customTest.description')}
               </p>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="customName">Scenario Name</Label>
+                  <Label htmlFor="customName">{t('customTest.labels.scenarioName')}</Label>
                   <Input
                     id="customName"
-                    placeholder="Enter scenario name"
+                    placeholder={t('placeholders.scenarioName')}
                     value={customScenario.name || ''}
                     onChange={(e) => setCustomScenario(prev => ({
                       ...prev,
@@ -429,7 +431,7 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="customEmail">User Email</Label>
+                  <Label htmlFor="customEmail">{t('customTest.labels.userEmail')}</Label>
                   <Input
                     id="customEmail"
                     placeholder="user@company.com"
@@ -443,10 +445,10 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="customDescription">Description</Label>
+                <Label htmlFor="customDescription">{t('customTest.labels.description')}</Label>
                 <Input
                   id="customDescription"
-                  placeholder="Describe the test scenario"
+                  placeholder={t('placeholders.scenarioDescription')}
                   value={customScenario.description || ''}
                   onChange={(e) => setCustomScenario(prev => ({
                     ...prev,
@@ -459,7 +461,7 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
               
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="customIP">IP Address</Label>
+                  <Label htmlFor="customIP">{t('customTest.labels.ipAddress')}</Label>
                   <Input
                     id="customIP"
                     placeholder="192.168.1.100"
@@ -472,7 +474,7 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="customLocation">Location</Label>
+                  <Label htmlFor="customLocation">{t('customTest.labels.location')}</Label>
                   <Input
                     id="customLocation"
                     placeholder="Istanbul, Turkey"
@@ -487,7 +489,7 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
               
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="customDevice">Device</Label>
+                  <Label htmlFor="customDevice">{t('customTest.labels.device')}</Label>
                   <Input
                     id="customDevice"
                     placeholder="Desktop - Windows 11"
@@ -500,7 +502,7 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="customExpected">Expected Result</Label>
+                  <Label htmlFor="customExpected">{t('customTest.labels.expectedResult')}</Label>
                   <Select
                     value={customScenario.expectedResult || ''}
                     onValueChange={(value) => setCustomScenario(prev => ({
@@ -509,12 +511,12 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
                     }))}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Select expected result" />
+                      <SelectValue placeholder={t('placeholders.selectResult')} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="allow">Allow</SelectItem>
-                      <SelectItem value="deny">Deny</SelectItem>
-                      <SelectItem value="challenge">Challenge (MFA)</SelectItem>
+                      <SelectItem value="allow">{t('customTest.results.allow')}</SelectItem>
+                      <SelectItem value="deny">{t('customTest.results.deny')}</SelectItem>
+                      <SelectItem value="challenge">{t('customTest.results.challenge')}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -534,7 +536,7 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
                       <TestTube className="h-4 w-4 text-blue-500" />
                       <div>
                         <p className="text-2xl font-bold">{simulationResults.testCases.length}</p>
-                        <p className="text-xs text-muted-foreground">Total Tests</p>
+                        <p className="text-xs text-muted-foreground">{t('results.summary.totalTests')}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -548,7 +550,7 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
                         <p className="text-2xl font-bold text-green-600">
                           {simulationResults.testCases.filter(t => t.passed).length}
                         </p>
-                        <p className="text-xs text-muted-foreground">Passed</p>
+                        <p className="text-xs text-muted-foreground">{t('results.summary.passed')}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -562,7 +564,7 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
                         <p className="text-2xl font-bold text-red-600">
                           {simulationResults.testCases.filter(t => !t.passed).length}
                         </p>
-                        <p className="text-xs text-muted-foreground">Failed</p>
+                        <p className="text-xs text-muted-foreground">{t('results.summary.failed')}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -574,7 +576,7 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
                       <Shield className="h-4 w-4 text-blue-500" />
                       <div>
                         <p className="text-2xl font-bold">{simulationResults.coverage}%</p>
-                        <p className="text-xs text-muted-foreground">Coverage</p>
+                        <p className="text-xs text-muted-foreground">{t('results.summary.coverage')}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -604,16 +606,13 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
                     : 'text-red-800'
                 }>
                   <strong>
-                    Simulation {simulationResults.overallResult === 'pass' ? 'Passed' : 
-                      simulationResults.overallResult === 'warning' ? 'Passed with Warnings' : 'Failed'}
+                    {simulationResults.overallResult === 'pass' ? t('results.overall.passed') : 
+                      simulationResults.overallResult === 'warning' ? t('results.overall.warning') : t('results.overall.failed')}
                   </strong>
                   <br />
-                  {simulationResults.overallResult === 'pass' && 
-                    "All test scenarios completed successfully. Your policies are working as expected."}
-                  {simulationResults.overallResult === 'warning' && 
-                    "Some tests passed with warnings. Review the results below for potential improvements."}
-                  {simulationResults.overallResult === 'fail' && 
-                    "Some tests failed. Please review your policy configuration before deployment."}
+                  {simulationResults.overallResult === 'pass' && t('results.overall.passedDescription')}
+                  {simulationResults.overallResult === 'warning' && t('results.overall.warningDescription')}
+                  {simulationResults.overallResult === 'fail' && t('results.overall.failedDescription')}
                 </AlertDescription>
               </Alert>
 
@@ -621,10 +620,10 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
               <Card>
                 <CardHeader>
                   <div className="flex items-center justify-between">
-                    <CardTitle>Test Results</CardTitle>
+                    <CardTitle>{t('results.testResults.title')}</CardTitle>
                     <Button variant="outline" size="sm">
                       <Download className="h-4 w-4 mr-2" />
-                      Export Report
+                      {t('results.testResults.exportReport')}
                     </Button>
                   </div>
                 </CardHeader>
@@ -632,12 +631,12 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
                   <Table>
                     <TableHeader>
                       <TableRow>
-                        <TableHead>Scenario</TableHead>
-                        <TableHead>User</TableHead>
-                        <TableHead>Expected</TableHead>
-                        <TableHead>Actual</TableHead>
-                        <TableHead>Result</TableHead>
-                        <TableHead>Details</TableHead>
+                        <TableHead>{t('results.testResults.columns.scenario')}</TableHead>
+                        <TableHead>{t('results.testResults.columns.user')}</TableHead>
+                        <TableHead>{t('results.testResults.columns.expected')}</TableHead>
+                        <TableHead>{t('results.testResults.columns.actual')}</TableHead>
+                        <TableHead>{t('results.testResults.columns.result')}</TableHead>
+                        <TableHead>{t('results.testResults.columns.details')}</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -657,12 +656,12 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
                             {testCase.passed ? (
                               <Badge variant="default" className="bg-green-500">
                                 <CheckCircle className="h-3 w-3 mr-1" />
-                                Pass
+                                {t('results.testResults.status.pass')}
                               </Badge>
                             ) : (
                               <Badge variant="destructive">
                                 <XCircle className="h-3 w-3 mr-1" />
-                                Fail
+                                {t('results.testResults.status.fail')}
                               </Badge>
                             )}
                           </TableCell>
@@ -682,7 +681,7 @@ export function PolicySimulation({ policies }: PolicySimulationProps) {
                   <CardHeader>
                     <CardTitle className="flex items-center space-x-2">
                       <AlertTriangle className="h-5 w-5" />
-                      <span>Recommendations</span>
+                      <span>{t('results.recommendations.title')}</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent>

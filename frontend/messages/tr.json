@@ -685,6 +685,91 @@
         "delete": "Sil",
         "add": "Ekle"
       }
+    },
+    "policyForm": {
+      "types": {
+        "password": {
+          "label": "Şifre Politikası",
+          "description": "Şifre gücü ve yaşam döngüsü kuralları"
+        },
+        "mfa": {
+          "label": "Çok Faktörlü Kimlik Doğrulama",
+          "description": "MFA gereksinimleri ve yöntemleri"
+        },
+        "session": {
+          "label": "Oturum Yönetimi",
+          "description": "Oturum zaman aşımları ve sınırları"
+        },
+        "provider": {
+          "label": "Kimlik Sağlayıcıları",
+          "description": "Harici sağlayıcı kısıtlamaları"
+        },
+        "recovery": {
+          "label": "Hesap Kurtarma",
+          "description": "Şifre sıfırlama ve kurtarma seçenekleri"
+        }
+      },
+      "labels": {
+        "policyName": "Politika Adı *",
+        "policyType": "Politika Türü *",
+        "description": "Açıklama *",
+        "priority": "Öncelik (1-100)",
+        "initialStatus": "Başlangıç Durumu",
+        "targets": "Hedefler"
+      },
+      "placeholders": {
+        "policyName": "Politika adını girin",
+        "description": "Bu politikanın ne yaptığını ve ne zaman uygulandığını açıklayın",
+        "enterTargets": "{type} adlarını girin..."
+      },
+      "priority": {
+        "low": "1 (Düşük)",
+        "high": "100 (Yüksek)"
+      },
+      "status": {
+        "draft": "Taslak",
+        "inactive": "Pasif",
+        "active": "Aktif"
+      },
+      "scope": {
+        "global": {
+          "title": "Global",
+          "description": "Tüm kullanıcılar için geçerli"
+        },
+        "role": {
+          "title": "Rol Tabanlı",
+          "description": "Belirli roller için uygula"
+        },
+        "group": {
+          "title": "Grup Tabanlı",
+          "description": "Kullanıcı grupları için uygula"
+        },
+        "user": {
+          "title": "Kullanıcı Özel",
+          "description": "Bireysel kullanıcılar için uygula"
+        }
+      },
+      "alerts": {
+        "priorityNote": "Yüksek öncelikli politikalar, aynı kullanıcı veya duruma birden fazla politika uygulandığında öncelik alır. Etkinleştirmeden önce test etmek için taslak veya pasif durumla başlayın."
+      },
+      "errors": {
+        "fixValidation": "Lütfen doğrulama hatalarını düzeltin",
+        "simulationFailed": "Simülasyon başarısız oldu. Lütfen politika yapılandırmasını gözden geçirin."
+      },
+      "title": {
+        "edit": "Politika Düzenle",
+        "create": "Yeni Politika Oluştur"
+      },
+      "buttons": {
+        "cancel": "İptal",
+        "saving": "Kaydediliyor...",
+        "update": "Politika Güncelle",
+        "create": "Politika Oluştur",
+        "continueWithSave": "Kaydetmeye Devam Et"
+      },
+      "options": {
+        "simulateBeforeSave": "Kaydetmeden önce simüle et"
+      }
     }
   },
   "access": {

@@ -796,6 +796,91 @@
         "delete": "Delete",
         "add": "Add"
       }
+    },
+    "policyForm": {
+      "types": {
+        "password": {
+          "label": "Password Policy",
+          "description": "Password strength and lifecycle rules"
+        },
+        "mfa": {
+          "label": "Multi-Factor Authentication",
+          "description": "MFA requirements and methods"
+        },
+        "session": {
+          "label": "Session Management",
+          "description": "Session timeouts and limits"
+        },
+        "provider": {
+          "label": "Identity Providers",
+          "description": "External provider restrictions"
+        },
+        "recovery": {
+          "label": "Account Recovery",
+          "description": "Password reset and recovery options"
+        }
+      },
+      "labels": {
+        "policyName": "Policy Name *",
+        "policyType": "Policy Type *",
+        "description": "Description *",
+        "priority": "Priority (1-100)",
+        "initialStatus": "Initial Status",
+        "targets": "Targets"
+      },
+      "placeholders": {
+        "policyName": "Enter policy name",
+        "description": "Describe what this policy does and when it applies",
+        "enterTargets": "Enter {type} names..."
+      },
+      "priority": {
+        "low": "1 (Low)",
+        "high": "100 (High)"
+      },
+      "status": {
+        "draft": "Draft",
+        "inactive": "Inactive",
+        "active": "Active"
+      },
+      "scope": {
+        "global": {
+          "title": "Global",
+          "description": "Applies to all users"
+        },
+        "role": {
+          "title": "Role-based",
+          "description": "Apply to specific roles"
+        },
+        "group": {
+          "title": "Group-based",
+          "description": "Apply to user groups"
+        },
+        "user": {
+          "title": "User-specific",
+          "description": "Apply to individual users"
+        }
+      },
+      "alerts": {
+        "priorityNote": "Higher priority policies take precedence when multiple policies apply to the same user or situation. Start with draft or inactive status to test before activation."
+      },
+      "errors": {
+        "fixValidation": "Please fix the validation errors",
+        "simulationFailed": "Simulation failed. Please review the policy configuration."
+      },
+      "title": {
+        "edit": "Edit Policy",
+        "create": "Create New Policy"
+      },
+      "buttons": {
+        "cancel": "Cancel",
+        "saving": "Saving...",
+        "update": "Update Policy",
+        "create": "Create Policy",
+        "continueWithSave": "Continue with Save"
+      },
+      "options": {
+        "simulateBeforeSave": "Simulate before saving"
+      }
     }
   },
   "access": {

@@ -556,5 +556,233 @@
         }
       }
     }
+  },
+  "policies": {
+    "policySimulation": {
+      "title": "Policy Simulation",
+      "buttons": {
+        "reset": "Reset",
+        "running": "Running",
+        "runSimulation": "Run Simulation",
+        "selectAll": "Select All",
+        "clearAll": "Clear All"
+      },
+      "messages": {
+        "runningTests": "Running tests...",
+        "testingScenarios": "Testing {scenarios} scenarios against {policies} policies",
+        "simulationCompleted": "Simulation completed",
+        "simulationFailed": "Simulation failed"
+      },
+      "errors": {
+        "selectScenario": "Please select at least one scenario to run",
+        "simulationFailed": "Simulation failed"
+      },
+      "tabs": {
+        "scenarios": "Scenarios",
+        "customTest": "Custom Test",
+        "results": "Results"
+      },
+      "scenarios": {
+        "title": "Test Scenarios",
+        "description": "Select predefined scenarios to test your policies against various user scenarios.",
+        "selected": "{selected} / {total} scenarios selected",
+        "expected": "Expected"
+      },
+      "customTest": {
+        "title": "Custom Test Scenario",
+        "description": "Create a custom test scenario with specific user and condition parameters.",
+        "labels": {
+          "scenarioName": "Scenario Name",
+          "userEmail": "User Email",
+          "description": "Description",
+          "ipAddress": "IP Address",
+          "location": "Location",
+          "device": "Device",
+          "expectedResult": "Expected Result"
+        },
+        "results": {
+          "allow": "Allow",
+          "deny": "Deny",
+          "challenge": "Challenge (MFA)"
+        }
+      },
+      "placeholders": {
+        "scenarioName": "Enter scenario name...",
+        "scenarioDescription": "Enter scenario description...",
+        "selectResult": "Select expected result..."
+      },
+      "results": {
+        "summary": {
+          "totalTests": "Total Tests",
+          "passed": "Passed",
+          "failed": "Failed",
+          "coverage": "Coverage"
+        },
+        "overall": {
+          "passed": "Simulation Passed",
+          "warning": "Passed with Warnings",
+          "failed": "Simulation Failed",
+          "passedDescription": "All test scenarios completed successfully. Your policies are working as expected.",
+          "warningDescription": "Some tests passed with warnings. Review the results below for potential improvements.",
+          "failedDescription": "Some tests failed. Please review your policy configuration before deployment."
+        },
+        "testResults": {
+          "title": "Test Results",
+          "exportReport": "Export Report",
+          "columns": {
+            "scenario": "Scenario",
+            "user": "User",
+            "expected": "Expected",
+            "actual": "Actual",
+            "result": "Result",
+            "details": "Details"
+          },
+          "status": {
+            "pass": "Pass",
+            "fail": "Fail"
+          }
+        },
+        "recommendations": {
+          "title": "Recommendations"
+        },
+        "status": {
+          "allow": "Allow",
+          "deny": "Deny",
+          "challenge": "Challenge",
+          "unknown": "Unknown",
+          "failed": "Failed"
+        }
+      }
+    },
+    "policyStats": {
+      "title": "Policy Analytics",
+      "description": "Analytics and performance metrics for {timeRange}",
+      "buttons": {
+        "refresh": "Refresh",
+        "export": "Export"
+      },
+      "timeRanges": {
+        "last24Hours": "Last 24 Hours",
+        "last7Days": "Last 7 Days",
+        "last30Days": "Last 30 Days",
+        "last90Days": "Last 90 Days"
+      },
+      "common": {
+        "never": "Never"
+      },
+      "tabs": {
+        "overview": "Overview",
+        "performance": "Policy Performance",
+        "trends": "Trends",
+        "security": "Security Events"
+      },
+      "metrics": {
+        "totalApplications": "Total Applications",
+        "successRate": "Success Rate",
+        "denials": "Denials",
+        "challenges": "Challenges",
+        "percentOfTotal": "{percent}% of total"
+      },
+      "charts": {
+        "policyTypeDistribution": "Policy Type Distribution",
+        "topPerformingPolicies": "Top Performing Policies"
+      },
+      "performance": {
+        "title": "Individual Policy Performance",
+        "description": "Detailed performance metrics for each policy in the selected time range",
+        "applications": "{count} applications",
+        "success": "{rate}% success",
+        "ratings": {
+          "excellent": "Excellent",
+          "good": "Good",
+          "needsAttention": "Needs Attention"
+        },
+        "table": {
+          "policy": "Policy",
+          "type": "Type",
+          "status": "Status",
+          "applications": "Applications",
+          "successRate": "Success Rate",
+          "denials": "Denials",
+          "challenges": "Challenges",
+          "errors": "Errors",
+          "lastApplied": "Last Applied"
+        }
+      },
+      "trends": {
+        "title": "Trends Analysis",
+        "comingSoon": "Historical trends and pattern analysis will be available in the next update."
+      },
+      "security": {
+        "title": "Security Events",
+        "comingSoon": "Security event analysis and threat detection will be available in the next update."
+      }
+    },
+    "conflictManager": {
+      "toast": {
+        "resolvedAuto": "Conflict resolved automatically",
+        "resolveFailed": "Conflict resolution failed",
+        "resolutionApplied": "Resolution applied",
+        "applyFailed": "Failed to apply resolution"
+      },
+      "conflictTypes": {
+        "overlap": "Policies have overlapping scopes or conditions",
+        "contradiction": "Policies contain contradictory rules",
+        "dependency": "Policy depends on another policy that conflicts",
+        "unknown": "Unknown conflict type"
+      },
+      "noConflicts": {
+        "title": "No Conflicts Detected",
+        "subtitle": "All Clear!",
+        "description": "No policy conflicts have been detected. Your authentication policies are working harmoniously."
+      },
+      "summary": {
+        "critical": "Critical",
+        "highPriority": "High Priority",
+        "autoResolvable": "Auto-resolvable",
+        "totalConflicts": "Total Conflicts"
+      },
+      "criticalAlert": {
+        "title": "{count} critical conflicts detected!",
+        "description": "These conflicts may prevent proper authentication and should be resolved immediately."
+      },
+      "autoResolution": {
+        "title": "Auto-Resolution Available",
+        "description": "{count} conflicts can be resolved automatically"
+      },
+      "buttons": {
+        "resolveAll": "Resolve All",
+        "resolving": "Resolving...",
+        "autoResolve": "Auto Resolve",
+        "resolve": "Resolve",
+        "cancel": "Cancel"
+      },
+      "labels": {
+        "autoResolvable": "Auto-resolvable"
+      },
+      "conflictsList": {
+        "title": "Policy Conflicts",
+        "affectedPolicies": "Affected Policies",
+        "suggestedResolution": "Suggested Resolution"
+      },
+      "resolveDialog": {
+        "title": "Resolve Conflict",
+        "description": "Choose how to resolve this policy conflict. This action will modify the affected policies.",
+        "conflictLabel": "Conflict",
+        "options": {
+          "prioritize": "Prioritize by policy priority",
+          "merge": "Merge conflicting rules",
+          "disable": "Disable lower priority policy"
+        }
+      },
+      "preventionTips": {
+        "title": "Conflict Prevention Tips",
+        "tip1": "Use clear, non-overlapping scopes for different policy types",
+        "tip2": "Set appropriate priority levels to establish clear precedence",
+        "tip3": "Test policies in simulation mode before activation",
+        "tip4": "Use gradual rollouts to identify conflicts early",
+        "tip5": "Review and update policies regularly to prevent drift"
+      }
+    }
   }
 }

@@ -203,5 +203,167 @@
         "exportFailed": "Fehler beim Exportieren der Prüfprotokolle"
       }
     }
+  },
+  "policies": {
+    "policySimulation": {
+      "title": "Richtlinien-Simulation",
+      "buttons": {
+        "reset": "Zurücksetzen",
+        "running": "Läuft",
+        "runSimulation": "Simulation ausführen",
+        "selectAll": "Alle auswählen",
+        "clearAll": "Alle löschen"
+      },
+      "messages": {
+        "runningTests": "Tests werden ausgeführt...",
+        "testingScenarios": "{scenarios} Szenarien gegen {policies} Richtlinien testen",
+        "simulationCompleted": "Simulation abgeschlossen",
+        "simulationFailed": "Simulation fehlgeschlagen"
+      },
+      "errors": {
+        "selectScenario": "Bitte mindestens ein Szenario zum Ausführen auswählen",
+        "simulationFailed": "Simulation fehlgeschlagen"
+      },
+      "tabs": {
+        "scenarios": "Szenarien",
+        "customTest": "Benutzertest",
+        "results": "Ergebnisse"
+      },
+      "scenarios": {
+        "title": "Test-Szenarien",
+        "description": "Vordefinierte Szenarien auswählen, um Ihre Richtlinien gegen verschiedene Benutzerszenarien zu testen.",
+        "selected": "{selected} / {total} Szenarien ausgewählt",
+        "expected": "Erwartet"
+      },
+      "customTest": {
+        "title": "Benutzerdefiniertes Test-Szenario",
+        "description": "Erstellen Sie ein benutzerdefiniertes Test-Szenario mit spezifischen Benutzer- und Bedingungsparametern.",
+        "labels": {
+          "scenarioName": "Szenario-Name",
+          "userEmail": "Benutzer-E-Mail",
+          "description": "Beschreibung",
+          "ipAddress": "IP-Adresse",
+          "location": "Standort",
+          "device": "Gerät",
+          "expectedResult": "Erwartetes Ergebnis"
+        },
+        "results": {
+          "allow": "Erlauben",
+          "deny": "Verweigern",
+          "challenge": "Herausforderung (MFA)"
+        }
+      },
+      "placeholders": {
+        "scenarioName": "Szenario-Name eingeben...",
+        "scenarioDescription": "Szenario-Beschreibung eingeben...",
+        "selectResult": "Erwartetes Ergebnis auswählen..."
+      },
+      "results": {
+        "summary": {
+          "totalTests": "Tests gesamt",
+          "passed": "Bestanden",
+          "failed": "Fehlgeschlagen",
+          "coverage": "Abdeckung"
+        },
+        "overall": {
+          "passed": "Simulation bestanden",
+          "warning": "Bestanden mit Warnungen",
+          "failed": "Simulation fehlgeschlagen",
+          "passedDescription": "Alle Test-Szenarien erfolgreich abgeschlossen. Ihre Richtlinien funktionieren wie erwartet.",
+          "warningDescription": "Einige Tests bestanden mit Warnungen. Überprüfen Sie die unten stehenden Ergebnisse für mögliche Verbesserungen.",
+          "failedDescription": "Einige Tests sind fehlgeschlagen. Bitte überprüfen Sie Ihre Richtlinienkonfiguration vor der Bereitstellung."
+        },
+        "testResults": {
+          "title": "Test-Ergebnisse",
+          "exportReport": "Bericht exportieren",
+          "columns": {
+            "scenario": "Szenario",
+            "user": "Benutzer",
+            "expected": "Erwartet",
+            "actual": "Tatsächlich",
+            "result": "Ergebnis",
+            "details": "Details"
+          },
+          "status": {
+            "pass": "Bestanden",
+            "fail": "Fehlgeschlagen"
+          }
+        },
+        "recommendations": {
+          "title": "Empfehlungen"
+        },
+        "status": {
+          "allow": "Erlauben",
+          "deny": "Verweigern",
+          "challenge": "Herausforderung",
+          "unknown": "Unbekannt",
+          "failed": "Fehlgeschlagen"
+        }
+      }
+    },
+    "policyStats": {
+      "title": "Richtlinien-Analytik",
+      "description": "Analytik und Leistungsmetriken für {timeRange}",
+      "buttons": {
+        "refresh": "Aktualisieren",
+        "export": "Exportieren"
+      },
+      "timeRanges": {
+        "last24Hours": "Letzte 24 Stunden",
+        "last7Days": "Letzte 7 Tage",
+        "last30Days": "Letzte 30 Tage",
+        "last90Days": "Letzte 90 Tage"
+      },
+      "common": {
+        "never": "Niemals"
+      },
+      "tabs": {
+        "overview": "Übersicht",
+        "performance": "Richtlinien-Leistung",
+        "trends": "Trends",
+        "security": "Sicherheitsereignisse"
+      },
+      "metrics": {
+        "totalApplications": "Anwendungen gesamt",
+        "successRate": "Erfolgsrate",
+        "denials": "Ablehnungen",
+        "challenges": "Herausforderungen",
+        "percentOfTotal": "{percent}% der Gesamtmenge"
+      },
+      "charts": {
+        "policyTypeDistribution": "Richtlinien-Typ-Verteilung",
+        "topPerformingPolicies": "Leistungsstärkste Richtlinien"
+      },
+      "performance": {
+        "title": "Individuelle Richtlinien-Leistung",
+        "description": "Detaillierte Leistungsmetriken für jede Richtlinie im ausgewählten Zeitraum",
+        "applications": "{count} Anwendungen",
+        "success": "{rate}% Erfolg",
+        "ratings": {
+          "excellent": "Ausgezeichnet",
+          "good": "Gut",
+          "needsAttention": "Aufmerksamkeit erforderlich"
+        },
+        "table": {
+          "policy": "Richtlinie",
+          "type": "Typ",
+          "status": "Status",
+          "applications": "Anwendungen",
+          "successRate": "Erfolgsrate",
+          "denials": "Ablehnungen",
+          "challenges": "Herausforderungen",
+          "errors": "Fehler",
+          "lastApplied": "Zuletzt angewandt"
+        }
+      },
+      "trends": {
+        "title": "Trend-Analyse",
+        "comingSoon": "Historische Trends und Musteranalyse werden im nächsten Update verfügbar sein."
+      },
+      "security": {
+        "title": "Sicherheitsereignisse",
+        "comingSoon": "Analyse von Sicherheitsereignissen und Bedrohungserkennung werden im nächsten Update verfügbar sein."
+      }
+    }
   }
 }

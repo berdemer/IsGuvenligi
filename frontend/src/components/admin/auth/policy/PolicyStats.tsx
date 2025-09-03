@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useMemo } from "react"
+import { useTranslations } from "next-intl"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -22,6 +23,7 @@ interface PolicyStatsProps {
 type TimeRange = '24h' | '7d' | '30d' | '90d'
 
 export function PolicyStats({ policies }: PolicyStatsProps) {
+  const t = useTranslations('policies.policyStats')
   const [timeRange, setTimeRange] = useState<TimeRange>('7d')
   const [selectedPolicy, setSelectedPolicy] = useState<string>('all')
 
@@ -84,11 +86,11 @@ export function PolicyStats({ policies }: PolicyStatsProps) {
 
   const getTimeRangeLabel = (range: TimeRange) => {
     switch (range) {
-      case '24h': return 'Last 24 Hours'
-      case '7d': return 'Last 7 Days'
-      case '30d': return 'Last 30 Days'
-      case '90d': return 'Last 90 Days'
-      default: return 'Last 7 Days'
+      case '24h': return t('timeRanges.last24Hours')
+      case '7d': return t('timeRanges.last7Days')
+      case '30d': return t('timeRanges.last30Days')
+      case '90d': return t('timeRanges.last90Days')
+      default: return t('timeRanges.last7Days')
     }
   }
 
@@ -102,7 +104,7 @@ export function PolicyStats({ policies }: PolicyStatsProps) {
   }
 
   const formatDate = (dateStr?: string) => {
-    if (!dateStr) return 'Never'
+    if (!dateStr) return t('common.never')
     return new Date(dateStr).toLocaleDateString('tr-TR', {
       month: 'short',
       day: 'numeric',
@@ -119,7 +121,7 @@ export function PolicyStats({ policies }: PolicyStatsProps) {
           <div className="flex items-center justify-between">
             <CardTitle className="flex items-center space-x-2">
               <BarChart3 className="h-5 w-5" />
-              <span>Policy Analytics</span>
+              <span>{t('title')}</span>
             </CardTitle>
             <div className="flex items-center space-x-2">
               <Select value={timeRange} onValueChange={(value) => setTimeRange(value as TimeRange)}>
@@ -127,34 +129,34 @@ export function PolicyStats({ policies }: PolicyStatsProps) {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="24h">Last 24 Hours</SelectItem>
-                  <SelectItem value="7d">Last 7 Days</SelectItem>
-                  <SelectItem value="30d">Last 30 Days</SelectItem>
-                  <SelectItem value="90d">Last 90 Days</SelectItem>
+                  <SelectItem value="24h">{t('timeRanges.last24Hours')}</SelectItem>
+                  <SelectItem value="7d">{t('timeRanges.last7Days')}</SelectItem>
+                  <SelectItem value="30d">{t('timeRanges.last30Days')}</SelectItem>
+                  <SelectItem value="90d">{t('timeRanges.last90Days')}</SelectItem>
                 </SelectContent>
               </Select>
               <Button variant="outline" size="sm" onClick={handleRefreshStats}>
                 <RefreshCw className="h-4 w-4 mr-2" />
-                Refresh
+                {t('buttons.refresh')}
               </Button>
               <Button variant="outline" size="sm" onClick={handleExportStats}>
                 <Download className="h-4 w-4 mr-2" />
-                Export
+                {t('buttons.export')}
               </Button>
             </div>
           </div>
           <p className="text-sm text-muted-foreground">
-            Analytics and performance metrics for {getTimeRangeLabel(timeRange).toLowerCase()}
+            {t('description', { timeRange: getTimeRangeLabel(timeRange).toLowerCase() })}
           </p>
         </CardHeader>
       </Card>
 
       <Tabs defaultValue="overview" className="space-y-6">
         <TabsList>
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="performance">Policy Performance</TabsTrigger>
-          <TabsTrigger value="trends">Trends</TabsTrigger>
-          <TabsTrigger value="security">Security Events</TabsTrigger>
+          <TabsTrigger value="overview">{t('tabs.overview')}</TabsTrigger>
+          <TabsTrigger value="performance">{t('tabs.performance')}</TabsTrigger>
+          <TabsTrigger value="trends">{t('tabs.trends')}</TabsTrigger>
+          <TabsTrigger value="security">{t('tabs.security')}</TabsTrigger>
         </TabsList>
 
         <TabsContent value="overview" className="space-y-6">
@@ -166,7 +168,7 @@ export function PolicyStats({ policies }: PolicyStatsProps) {
                   <Shield className="h-4 w-4 text-blue-500" />
                   <div>
                     <p className="text-2xl font-bold">{formatNumber(stats.totalApplications)}</p>
-                    <p className="text-xs text-muted-foreground">Total Applications</p>
+                    <p className="text-xs text-muted-foreground">{t('metrics.totalApplications')}</p>
                   </div>
                 </div>
                 <div className="mt-2 flex items-center space-x-2">
@@ -182,7 +184,7 @@ export function PolicyStats({ policies }: PolicyStatsProps) {
                   <CheckCircle className="h-4 w-4 text-green-500" />
                   <div>
                     <p className="text-2xl font-bold text-green-600">{stats.successRate.toFixed(1)}%</p>
-                    <p className="text-xs text-muted-foreground">Success Rate</p>
+                    <p className="text-xs text-muted-foreground">{t('metrics.successRate')}</p>
                   </div>
                 </div>
                 <Progress value={stats.successRate} className="mt-2 h-1" />
@@ -195,12 +197,12 @@ export function PolicyStats({ policies }: PolicyStatsProps) {
                   <XCircle className="h-4 w-4 text-red-500" />
                   <div>
                     <p className="text-2xl font-bold text-red-600">{formatNumber(stats.totalDenials)}</p>
-                    <p className="text-xs text-muted-foreground">Denials</p>
+                    <p className="text-xs text-muted-foreground">{t('metrics.denials')}</p>
                   </div>
                 </div>
                 <div className="mt-2 flex items-center space-x-2">
                   <span className="text-xs text-muted-foreground">
-                    {stats.denyRate.toFixed(1)}% of total
+                    {t('metrics.percentOfTotal', { percent: stats.denyRate.toFixed(1) })}
                   </span>
                 </div>
               </CardContent>
@@ -212,12 +214,12 @@ export function PolicyStats({ policies }: PolicyStatsProps) {
                   <AlertTriangle className="h-4 w-4 text-amber-500" />
                   <div>
                     <p className="text-2xl font-bold text-amber-600">{formatNumber(stats.totalChallenges)}</p>
-                    <p className="text-xs text-muted-foreground">Challenges</p>
+                    <p className="text-xs text-muted-foreground">{t('metrics.challenges')}</p>
                   </div>
                 </div>
                 <div className="mt-2 flex items-center space-x-2">
                   <span className="text-xs text-muted-foreground">
-                    {stats.challengeRate.toFixed(1)}% of total
+                    {t('metrics.percentOfTotal', { percent: stats.challengeRate.toFixed(1) })}
                   </span>
                 </div>
               </CardContent>
@@ -230,7 +232,7 @@ export function PolicyStats({ policies }: PolicyStatsProps) {
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
                   <PieChart className="h-5 w-5" />
-                  <span>Policy Type Distribution</span>
+                  <span>{t('charts.policyTypeDistribution')}</span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -269,7 +271,7 @@ export function PolicyStats({ policies }: PolicyStatsProps) {
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
                   <Users className="h-5 w-5" />
-                  <span>Top Performing Policies</span>
+                  <span>{t('charts.topPerformingPolicies')}</span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -285,8 +287,8 @@ export function PolicyStats({ policies }: PolicyStatsProps) {
                           </Badge>
                         </div>
                         <div className="flex items-center space-x-4 text-xs text-muted-foreground">
-                          <span>{formatNumber(policy.applications)} applications</span>
-                          <span>{policy.successRate.toFixed(1)}% success</span>
+                          <span>{t('performance.applications', { count: formatNumber(policy.applications) })}</span>
+                          <span>{t('performance.success', { rate: policy.successRate.toFixed(1) })}</span>
                         </div>
                       </div>
                       <div className="text-right">
@@ -295,8 +297,8 @@ export function PolicyStats({ policies }: PolicyStatsProps) {
                           policy.successRate >= 85 ? 'bg-yellow-100 text-yellow-800' :
                           'bg-red-100 text-red-800'
                         }`}>
-                          {policy.successRate >= 95 ? 'Excellent' :
-                           policy.successRate >= 85 ? 'Good' : 'Needs Attention'}
+                          {policy.successRate >= 95 ? t('performance.ratings.excellent') :
+                           policy.successRate >= 85 ? t('performance.ratings.good') : t('performance.ratings.needsAttention')}
                         </div>
                       </div>
                     </div>
@@ -310,24 +312,24 @@ export function PolicyStats({ policies }: PolicyStatsProps) {
         <TabsContent value="performance" className="space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle>Individual Policy Performance</CardTitle>
+              <CardTitle>{t('performance.title')}</CardTitle>
               <p className="text-sm text-muted-foreground">
-                Detailed performance metrics for each policy in the selected time range
+                {t('performance.description')}
               </p>
             </CardHeader>
             <CardContent>
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Policy</TableHead>
-                    <TableHead>Type</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Applications</TableHead>
-                    <TableHead>Success Rate</TableHead>
-                    <TableHead>Denials</TableHead>
-                    <TableHead>Challenges</TableHead>
-                    <TableHead>Errors</TableHead>
-                    <TableHead>Last Applied</TableHead>
+                    <TableHead>{t('performance.table.policy')}</TableHead>
+                    <TableHead>{t('performance.table.type')}</TableHead>
+                    <TableHead>{t('performance.table.status')}</TableHead>
+                    <TableHead>{t('performance.table.applications')}</TableHead>
+                    <TableHead>{t('performance.table.successRate')}</TableHead>
+                    <TableHead>{t('performance.table.denials')}</TableHead>
+                    <TableHead>{t('performance.table.challenges')}</TableHead>
+                    <TableHead>{t('performance.table.errors')}</TableHead>
+                    <TableHead>{t('performance.table.lastApplied')}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -408,9 +410,9 @@ export function PolicyStats({ policies }: PolicyStatsProps) {
         <TabsContent value="trends" className="space-y-6">
           <div className="text-center py-12">
             <BarChart3 className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-            <h3 className="text-lg font-medium mb-2">Trends Analysis</h3>
+            <h3 className="text-lg font-medium mb-2">{t('trends.title')}</h3>
             <p className="text-muted-foreground">
-              Historical trends and pattern analysis will be available in the next update.
+              {t('trends.comingSoon')}
             </p>
           </div>
         </TabsContent>
@@ -418,9 +420,9 @@ export function PolicyStats({ policies }: PolicyStatsProps) {
         <TabsContent value="security" className="space-y-6">
           <div className="text-center py-12">
             <Shield className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-            <h3 className="text-lg font-medium mb-2">Security Events</h3>
+            <h3 className="text-lg font-medium mb-2">{t('security.title')}</h3>
             <p className="text-muted-foreground">
-              Security event analysis and threat detection will be available in the next update.
+              {t('security.comingSoon')}
             </p>
           </div>
         </TabsContent>

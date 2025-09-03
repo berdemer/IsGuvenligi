@@ -203,5 +203,167 @@
         "exportFailed": "Échec de l'exportation des journaux d'audit"
       }
     }
+  },
+  "policies": {
+    "policySimulation": {
+      "title": "Simulation de Politique",
+      "buttons": {
+        "reset": "Réinitialiser",
+        "running": "En cours",
+        "runSimulation": "Lancer la Simulation",
+        "selectAll": "Tout sélectionner",
+        "clearAll": "Tout effacer"
+      },
+      "messages": {
+        "runningTests": "Tests en cours...",
+        "testingScenarios": "Test de {scenarios} scénarios contre {policies} politiques",
+        "simulationCompleted": "Simulation terminée",
+        "simulationFailed": "Simulation échouée"
+      },
+      "errors": {
+        "selectScenario": "Veuillez sélectionner au moins un scénario à exécuter",
+        "simulationFailed": "Simulation échouée"
+      },
+      "tabs": {
+        "scenarios": "Scénarios",
+        "customTest": "Test Personnalisé",
+        "results": "Résultats"
+      },
+      "scenarios": {
+        "title": "Scénarios de Test",
+        "description": "Sélectionnez des scénarios prédéfinis pour tester vos politiques contre divers scénarios d'utilisateur.",
+        "selected": "{selected} / {total} scénarios sélectionnés",
+        "expected": "Attendu"
+      },
+      "customTest": {
+        "title": "Scénario de Test Personnalisé",
+        "description": "Créez un scénario de test personnalisé avec des paramètres d'utilisateur et de condition spécifiques.",
+        "labels": {
+          "scenarioName": "Nom du Scénario",
+          "userEmail": "E-mail Utilisateur",
+          "description": "Description",
+          "ipAddress": "Adresse IP",
+          "location": "Localisation",
+          "device": "Appareil",
+          "expectedResult": "Résultat Attendu"
+        },
+        "results": {
+          "allow": "Autoriser",
+          "deny": "Refuser",
+          "challenge": "Défi (MFA)"
+        }
+      },
+      "placeholders": {
+        "scenarioName": "Entrez le nom du scénario...",
+        "scenarioDescription": "Entrez la description du scénario...",
+        "selectResult": "Sélectionnez le résultat attendu..."
+      },
+      "results": {
+        "summary": {
+          "totalTests": "Tests Totaux",
+          "passed": "Réussis",
+          "failed": "Échoués",
+          "coverage": "Couverture"
+        },
+        "overall": {
+          "passed": "Simulation Réussie",
+          "warning": "Réussie avec Avertissements",
+          "failed": "Simulation Échouée",
+          "passedDescription": "Tous les scénarios de test ont été complétés avec succès. Vos politiques fonctionnent comme attendu.",
+          "warningDescription": "Certains tests sont réussis avec des avertissements. Consultez les résultats ci-dessous pour des améliorations potentielles.",
+          "failedDescription": "Certains tests ont échoué. Veuillez réviser votre configuration de politique avant le déploiement."
+        },
+        "testResults": {
+          "title": "Résultats des Tests",
+          "exportReport": "Exporter le Rapport",
+          "columns": {
+            "scenario": "Scénario",
+            "user": "Utilisateur",
+            "expected": "Attendu",
+            "actual": "Réel",
+            "result": "Résultat",
+            "details": "Détails"
+          },
+          "status": {
+            "pass": "Réussi",
+            "fail": "Échoué"
+          }
+        },
+        "recommendations": {
+          "title": "Recommandations"
+        },
+        "status": {
+          "allow": "Autoriser",
+          "deny": "Refuser",
+          "challenge": "Défi",
+          "unknown": "Inconnu",
+          "failed": "Échoué"
+        }
+      }
+    },
+    "policyStats": {
+      "title": "Analytiques de Politique",
+      "description": "Analytiques et métriques de performance pour {timeRange}",
+      "buttons": {
+        "refresh": "Actualiser",
+        "export": "Exporter"
+      },
+      "timeRanges": {
+        "last24Hours": "Dernières 24 Heures",
+        "last7Days": "7 Derniers Jours",
+        "last30Days": "30 Derniers Jours",
+        "last90Days": "90 Derniers Jours"
+      },
+      "common": {
+        "never": "Jamais"
+      },
+      "tabs": {
+        "overview": "Aperçu",
+        "performance": "Performance des Politiques",
+        "trends": "Tendances",
+        "security": "Événements de Sécurité"
+      },
+      "metrics": {
+        "totalApplications": "Applications Totales",
+        "successRate": "Taux de Réussite",
+        "denials": "Refus",
+        "challenges": "Défis",
+        "percentOfTotal": "{percent}% du total"
+      },
+      "charts": {
+        "policyTypeDistribution": "Distribution des Types de Politique",
+        "topPerformingPolicies": "Politiques les Plus Performantes"
+      },
+      "performance": {
+        "title": "Performance Individuelle des Politiques",
+        "description": "Métriques de performance détaillées pour chaque politique dans la plage de temps sélectionnée",
+        "applications": "{count} applications",
+        "success": "{rate}% de succès",
+        "ratings": {
+          "excellent": "Excellent",
+          "good": "Bien",
+          "needsAttention": "Nécessite Attention"
+        },
+        "table": {
+          "policy": "Politique",
+          "type": "Type",
+          "status": "Statut",
+          "applications": "Applications",
+          "successRate": "Taux de Réussite",
+          "denials": "Refus",
+          "challenges": "Défis",
+          "errors": "Erreurs",
+          "lastApplied": "Dernière Application"
+        }
+      },
+      "trends": {
+        "title": "Analyse des Tendances",
+        "comingSoon": "L'analyse des tendances historiques et des modèles sera disponible dans la prochaine mise à jour."
+      },
+      "security": {
+        "title": "Événements de Sécurité",
+        "comingSoon": "L'analyse des événements de sécurité et la détection des menaces seront disponibles dans la prochaine mise à jour."
+      }
+    }
   }
 }

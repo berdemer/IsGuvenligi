@@ -84,13 +84,13 @@ export function PolicyConflicts({ policies }: PolicyConflictsProps) {
   const getConflictTypeDescription = (type: string) => {
     switch (type) {
       case 'overlap':
-        return 'Policies have overlapping scopes or conditions'
+        return t('conflictTypes.overlap')
       case 'contradiction':
-        return 'Policies contain contradictory rules'
+        return t('conflictTypes.contradiction')
       case 'dependency':
-        return 'Policy depends on another policy that conflicts'
+        return t('conflictTypes.dependency')
       default:
-        return 'Unknown conflict type'
+        return t('conflictTypes.unknown')
     }
   }
 
@@ -128,15 +128,15 @@ export function PolicyConflicts({ policies }: PolicyConflictsProps) {
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <CheckCircle className="h-5 w-5 text-green-500" />
-            <span>No Conflicts Detected</span>
+            <span>{t('noConflicts.title')}</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="text-center py-8">
             <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-            <h3 className="text-lg font-medium mb-2">All Clear!</h3>
+            <h3 className="text-lg font-medium mb-2">{t('noConflicts.subtitle')}</h3>
             <p className="text-muted-foreground">
-              No policy conflicts have been detected. Your authentication policies are working harmoniously.
+              {t('noConflicts.description')}
             </p>
           </div>
         </CardContent>
@@ -158,7 +158,7 @@ export function PolicyConflicts({ policies }: PolicyConflictsProps) {
               <AlertTriangle className="h-4 w-4 text-red-500" />
               <div>
                 <p className="text-2xl font-bold text-red-600">{criticalConflicts}</p>
-                <p className="text-xs text-muted-foreground">Critical</p>
+                <p className="text-xs text-muted-foreground">{t('summary.critical')}</p>
               </div>
             </div>
           </CardContent>
@@ -170,7 +170,7 @@ export function PolicyConflicts({ policies }: PolicyConflictsProps) {
               <AlertTriangle className="h-4 w-4 text-amber-500" />
               <div>
                 <p className="text-2xl font-bold text-amber-600">{highConflicts}</p>
-                <p className="text-xs text-muted-foreground">High Priority</p>
+                <p className="text-xs text-muted-foreground">{t('summary.highPriority')}</p>
               </div>
             </div>
           </CardContent>
@@ -182,7 +182,7 @@ export function PolicyConflicts({ policies }: PolicyConflictsProps) {
               <Zap className="h-4 w-4 text-blue-500" />
               <div>
                 <p className="text-2xl font-bold text-blue-600">{autoResolvableConflicts}</p>
-                <p className="text-xs text-muted-foreground">Auto-resolvable</p>
+                <p className="text-xs text-muted-foreground">{t('summary.autoResolvable')}</p>
               </div>
             </div>
           </CardContent>
@@ -194,7 +194,7 @@ export function PolicyConflicts({ policies }: PolicyConflictsProps) {
               <AlertTriangle className="h-4 w-4 text-orange-500" />
               <div>
                 <p className="text-2xl font-bold">{allConflicts.length}</p>
-                <p className="text-xs text-muted-foreground">Total Conflicts</p>
+                <p className="text-xs text-muted-foreground">{t('summary.totalConflicts')}</p>
               </div>
             </div>
           </CardContent>
@@ -206,9 +206,9 @@ export function PolicyConflicts({ policies }: PolicyConflictsProps) {
         <Alert className="border-red-200 bg-red-50">
           <XCircle className="h-4 w-4 text-red-600" />
           <AlertDescription className="text-red-800">
-            <strong>{criticalConflicts} critical conflict{criticalConflicts > 1 ? 's' : ''} detected!</strong>
+            <strong>{t('criticalAlert.title', { count: criticalConflicts })}</strong>
             <br />
-            These conflicts may prevent proper authentication and should be resolved immediately.
+            {t('criticalAlert.description')}
           </AlertDescription>
         </Alert>
       )}
@@ -221,9 +221,9 @@ export function PolicyConflicts({ policies }: PolicyConflictsProps) {
               <div className="flex items-center space-x-2">
                 <Zap className="h-5 w-5 text-blue-600" />
                 <div>
-                  <p className="font-medium text-blue-800">Auto-Resolution Available</p>
+                  <p className="font-medium text-blue-800">{t('autoResolution.title')}</p>
                   <p className="text-sm text-blue-600">
-                    {autoResolvableConflicts} conflict{autoResolvableConflicts > 1 ? 's' : ''} can be resolved automatically
+                    {t('autoResolution.description', { count: autoResolvableConflicts })}
                   </p>
                 </div>
               </div>
@@ -237,7 +237,7 @@ export function PolicyConflicts({ policies }: PolicyConflictsProps) {
                 }}
               >
                 <Zap className="h-4 w-4 mr-2" />
-                Resolve All
+                {t('buttons.resolveAll')}
               </Button>
             </div>
           </CardContent>
@@ -247,7 +247,7 @@ export function PolicyConflicts({ policies }: PolicyConflictsProps) {
       {/* Conflicts List */}
       <Card>
         <CardHeader>
-          <CardTitle>Policy Conflicts</CardTitle>
+          <CardTitle>{t('conflictsList.title')}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           {allConflicts.map((conflict, index) => (
@@ -266,7 +266,7 @@ export function PolicyConflicts({ policies }: PolicyConflictsProps) {
                         </Badge>
                         {conflict.autoResolvable && (
                           <Badge variant="outline" className="text-blue-600 border-blue-300">
-                            Auto-resolvable
+                            {t('labels.autoResolvable')}
                           </Badge>
                         )}
                       </div>
@@ -278,7 +278,7 @@ export function PolicyConflicts({ policies }: PolicyConflictsProps) {
                       </p>
                       
                       <div className="space-y-2">
-                        <p className="text-sm font-medium">Affected Policies:</p>
+                        <p className="text-sm font-medium">{t('conflictsList.affectedPolicies')}:</p>
                         <div className="flex flex-wrap gap-2">
                           {conflict.affectedPolicies.map(policyId => {
                             const policy = policies.find(p => p.id === policyId)
@@ -294,7 +294,7 @@ export function PolicyConflicts({ policies }: PolicyConflictsProps) {
                       {conflict.resolution && (
                         <div className="mt-3 p-3 bg-white/50 rounded border">
                           <p className="text-sm">
-                            <strong>Suggested Resolution:</strong> {conflict.resolution}
+                            <strong>{t('conflictsList.suggestedResolution')}:</strong> {conflict.resolution}
                           </p>
                         </div>
                       )}
@@ -313,12 +313,12 @@ export function PolicyConflicts({ policies }: PolicyConflictsProps) {
                         {resolvingConflict === conflict.conflictId ? (
                           <>
                             <Settings className="h-3 w-3 mr-1 animate-spin" />
-                            Resolving...
+                            {t('buttons.resolving')}
                           </>
                         ) : (
                           <>
                             <Zap className="h-3 w-3 mr-1" />
-                            Auto Resolve
+                            {t('buttons.autoResolve')}
                           </>
                         )}
                       </Button>
@@ -327,14 +327,14 @@ export function PolicyConflicts({ policies }: PolicyConflictsProps) {
                         <DialogTrigger asChild>
                           <Button size="sm" variant="outline">
                             <Settings className="h-3 w-3 mr-1" />
-                            Resolve
+                            {t('buttons.resolve')}
                           </Button>
                         </DialogTrigger>
                         <DialogContent>
                           <DialogHeader>
-                            <DialogTitle>Resolve Conflict</DialogTitle>
+                            <DialogTitle>{t('resolveDialog.title')}</DialogTitle>
                             <DialogDescription>
-                              Choose how to resolve this policy conflict. This action will modify the affected policies.
+                              {t('resolveDialog.description')}
                             </DialogDescription>
                           </DialogHeader>
                           
@@ -342,7 +342,7 @@ export function PolicyConflicts({ policies }: PolicyConflictsProps) {
                             <Alert>
                               <AlertTriangle className="h-4 w-4" />
                               <AlertDescription>
-                                <strong>Conflict:</strong> {conflict.description}
+                                <strong>{t('resolveDialog.conflictLabel')}:</strong> {conflict.description}
                               </AlertDescription>
                             </Alert>
                             
@@ -353,7 +353,7 @@ export function PolicyConflicts({ policies }: PolicyConflictsProps) {
                                 onClick={() => handleManualResolve(conflict.conflictId, 'prioritize')}
                               >
                                 <ArrowRight className="h-4 w-4 mr-2" />
-                                Prioritize by policy priority
+                                {t('resolveDialog.options.prioritize')}
                               </Button>
                               
                               <Button
@@ -362,7 +362,7 @@ export function PolicyConflicts({ policies }: PolicyConflictsProps) {
                                 onClick={() => handleManualResolve(conflict.conflictId, 'merge')}
                               >
                                 <ArrowRight className="h-4 w-4 mr-2" />
-                                Merge conflicting rules
+                                {t('resolveDialog.options.merge')}
                               </Button>
                               
                               <Button
@@ -371,13 +371,13 @@ export function PolicyConflicts({ policies }: PolicyConflictsProps) {
                                 onClick={() => handleManualResolve(conflict.conflictId, 'disable')}
                               >
                                 <Pause className="h-4 w-4 mr-2" />
-                                Disable lower priority policy
+                                {t('resolveDialog.options.disable')}
                               </Button>
                             </div>
                           </div>
 
                           <DialogFooter>
-                            <Button variant="outline">Cancel</Button>
+                            <Button variant="outline">{t('buttons.cancel')}</Button>
                           </DialogFooter>
                         </DialogContent>
                       </Dialog>
@@ -399,30 +399,30 @@ export function PolicyConflicts({ policies }: PolicyConflictsProps) {
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <Info className="h-5 w-5" />
-            <span>Conflict Prevention Tips</span>
+            <span>{t('preventionTips.title')}</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-3 text-sm">
             <div className="flex items-start space-x-2">
               <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
-              <p>Use clear, non-overlapping scopes for different policy types</p>
+              <p>{t('preventionTips.tip1')}</p>
             </div>
             <div className="flex items-start space-x-2">
               <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
-              <p>Set appropriate priority levels to establish clear precedence</p>
+              <p>{t('preventionTips.tip2')}</p>
             </div>
             <div className="flex items-start space-x-2">
               <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
-              <p>Test policies in simulation mode before activation</p>
+              <p>{t('preventionTips.tip3')}</p>
             </div>
             <div className="flex items-start space-x-2">
               <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
-              <p>Use gradual rollouts to identify conflicts early</p>
+              <p>{t('preventionTips.tip4')}</p>
             </div>
             <div className="flex items-start space-x-2">
               <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
-              <p>Review and update policies regularly to prevent drift</p>
+              <p>{t('preventionTips.tip5')}</p>
             </div>
           </div>
         </CardContent>

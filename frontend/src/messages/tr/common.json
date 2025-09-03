@@ -582,5 +582,233 @@
         "exportFailed": "Denetim günlükleri dışa aktarılamadı"
       }
     }
+  },
+  "policies": {
+    "policySimulation": {
+      "title": "Politika Simülasyonu",
+      "buttons": {
+        "reset": "Sıfırla",
+        "running": "Çalışıyor",
+        "runSimulation": "Simülasyon Çalıştır",
+        "selectAll": "Tümünü Seç",
+        "clearAll": "Tümünü Temizle"
+      },
+      "messages": {
+        "runningTests": "Testler çalıştırılıyor...",
+        "testingScenarios": "{scenarios} senaryo {policies} politikaya karşı test ediliyor",
+        "simulationCompleted": "Simülasyon tamamlandı",
+        "simulationFailed": "Simülasyon başarısız oldu"
+      },
+      "errors": {
+        "selectScenario": "Çalıştırmak için en az bir senaryo seçin",
+        "simulationFailed": "Simülasyon başarısız oldu"
+      },
+      "tabs": {
+        "scenarios": "Senaryolar",
+        "customTest": "Özel Test",
+        "results": "Sonuçlar"
+      },
+      "scenarios": {
+        "title": "Test Senaryoları",
+        "description": "Politikalarınızı çeşitli kullanıcı senaryolarına karşı test etmek için önceden tanımlanmış senaryoları seçin.",
+        "selected": "{selected} / {total} senaryo seçildi",
+        "expected": "Beklenen"
+      },
+      "customTest": {
+        "title": "Özel Test Senaryosu",
+        "description": "Belirli kullanıcı ve koşul parametreleriyle özel bir test senaryosu oluşturun.",
+        "labels": {
+          "scenarioName": "Senaryo Adı",
+          "userEmail": "Kullanıcı E-postası",
+          "description": "Açıklama",
+          "ipAddress": "IP Adresi",
+          "location": "Konum",
+          "device": "Cihaz",
+          "expectedResult": "Beklenen Sonuç"
+        },
+        "results": {
+          "allow": "İzin Ver",
+          "deny": "Reddet",
+          "challenge": "Zorluk (MFA)"
+        }
+      },
+      "placeholders": {
+        "scenarioName": "Senaryo adını girin...",
+        "scenarioDescription": "Senaryo açıklamasını girin...",
+        "selectResult": "Beklenen sonucu seçin..."
+      },
+      "results": {
+        "summary": {
+          "totalTests": "Toplam Test",
+          "passed": "Geçen",
+          "failed": "Başarısız",
+          "coverage": "Kapsama"
+        },
+        "overall": {
+          "passed": "Simülasyon Geçti",
+          "warning": "Uyarılarla Geçti",
+          "failed": "Simülasyon Başarısız",
+          "passedDescription": "Tüm test senaryoları başarıyla tamamlandı. Politikalarınız beklendiği gibi çalışıyor.",
+          "warningDescription": "Bazı testler uyarılarla geçti. Potansiyel iyileştirmeler için aşağıdaki sonuçları inceleyin.",
+          "failedDescription": "Bazı testler başarısız oldu. Dağıtım öncesi politika yapılandırmanızı gözden geçirin."
+        },
+        "testResults": {
+          "title": "Test Sonuçları",
+          "exportReport": "Rapor Dışa Aktar",
+          "columns": {
+            "scenario": "Senaryo",
+            "user": "Kullanıcı",
+            "expected": "Beklenen",
+            "actual": "Gerçek",
+            "result": "Sonuç",
+            "details": "Detaylar"
+          },
+          "status": {
+            "pass": "Geçti",
+            "fail": "Başarısız"
+          }
+        },
+        "recommendations": {
+          "title": "Öneriler"
+        },
+        "status": {
+          "allow": "İzin Ver",
+          "deny": "Reddet",
+          "challenge": "Zorluk",
+          "unknown": "Bilinmiyor",
+          "failed": "Başarısız"
+        }
+      }
+    },
+    "policyStats": {
+      "title": "Politika Analitiği",
+      "description": "{timeRange} için analitik ve performans metrikleri",
+      "buttons": {
+        "refresh": "Yenile",
+        "export": "Dışa Aktar"
+      },
+      "timeRanges": {
+        "last24Hours": "Son 24 Saat",
+        "last7Days": "Son 7 Gün",
+        "last30Days": "Son 30 Gün",
+        "last90Days": "Son 90 Gün"
+      },
+      "common": {
+        "never": "Hiçbir zaman"
+      },
+      "tabs": {
+        "overview": "Genel Bakış",
+        "performance": "Politika Performansı",
+        "trends": "Trendler",
+        "security": "Güvenlik Olayları"
+      },
+      "metrics": {
+        "totalApplications": "Toplam Uygulamalar",
+        "successRate": "Başarı Oranı",
+        "denials": "Reddedilmeler",
+        "challenges": "Zorluklklar",
+        "percentOfTotal": "{percent}% toplam"
+      },
+      "charts": {
+        "policyTypeDistribution": "Politika Türü Dağılımı",
+        "topPerformingPolicies": "En İyi Performans Gösteren Politikalar"
+      },
+      "performance": {
+        "title": "Bireysel Politika Performansı",
+        "description": "Seçilen zaman aralığında her politika için detaylı performans metrikleri",
+        "applications": "{count} uygulama",
+        "success": "{rate}% başarı",
+        "ratings": {
+          "excellent": "Mükemmel",
+          "good": "İyi",
+          "needsAttention": "Dikkat Gerekiyor"
+        },
+        "table": {
+          "policy": "Politika",
+          "type": "Tür",
+          "status": "Durum",
+          "applications": "Uygulamalar",
+          "successRate": "Başarı Oranı",
+          "denials": "Reddedilmeler",
+          "challenges": "Zorluklar",
+          "errors": "Hatalar",
+          "lastApplied": "Son Uygulanan"
+        }
+      },
+      "trends": {
+        "title": "Trend Analizi",
+        "comingSoon": "Geçmiş trendler ve desen analizi bir sonraki güncellemede mevcut olacak."
+      },
+      "security": {
+        "title": "Güvenlik Olayları",
+        "comingSoon": "Güvenlik olay analizi ve tehdit tespiti bir sonraki güncellemede mevcut olacak."
+      }
+    },
+    "conflictManager": {
+      "toast": {
+        "resolvedAuto": "Çakışma otomatik olarak çözüldü",
+        "resolveFailed": "Çakışma çözümü başarısız",
+        "resolutionApplied": "Çözüm uygulandı",
+        "applyFailed": "Çözüm uygulaması başarısız"
+      },
+      "conflictTypes": {
+        "overlap": "Politikalar çakışan kapsamlara veya koşullara sahip",
+        "contradiction": "Politikalar çelişkili kurallar içeriyor",
+        "dependency": "Politika çakışan başka bir politikaya bağlı",
+        "unknown": "Bilinmeyen çakışma türü"
+      },
+      "noConflicts": {
+        "title": "Çakışma Tespit Edilmedi",
+        "subtitle": "Her Şey Yolunda!",
+        "description": "Hiçbir politika çakışması tespit edilmedi. Kimlik doğrulama politikalarınız uyum içinde çalışıyor."
+      },
+      "summary": {
+        "critical": "Kritik",
+        "highPriority": "Yüksek Öncelik",
+        "autoResolvable": "Otomatik çözülebilir",
+        "totalConflicts": "Toplam Çakışma"
+      },
+      "criticalAlert": {
+        "title": "{count} kritik çakışma tespit edildi!",
+        "description": "Bu çakışmalar doğru kimlik doğrulamasını engelleyebilir ve hemen çözülmelidir."
+      },
+      "autoResolution": {
+        "title": "Otomatik Çözüm Mevcut",
+        "description": "{count} çakışma otomatik olarak çözülebilir"
+      },
+      "buttons": {
+        "resolveAll": "Tümünü Çöz",
+        "resolving": "Çözülüyor...",
+        "autoResolve": "Otomatik Çöz",
+        "resolve": "Çöz",
+        "cancel": "İptal"
+      },
+      "labels": {
+        "autoResolvable": "Otomatik çözülebilir"
+      },
+      "conflictsList": {
+        "title": "Politika Çakışmaları",
+        "affectedPolicies": "Etkilenen Politikalar",
+        "suggestedResolution": "Önerilen Çözüm"
+      },
+      "resolveDialog": {
+        "title": "Çakışmayı Çöz",
+        "description": "Bu politika çakışmasını nasıl çözeceğinizi seçin. Bu işlem etkilenen politikaları değiştirecektir.",
+        "conflictLabel": "Çakışma",
+        "options": {
+          "prioritize": "Politika önceliğine göre önceliklendir",
+          "merge": "Çakışan kuralları birleştir",
+          "disable": "Düşük öncelikli politikayı devre dışı bırak"
+        }
+      },
+      "preventionTips": {
+        "title": "Çakışma Önleme İpuçları",
+        "tip1": "Farklı politika türleri için açık, çakışmayan kapsamlar kullanın",
+        "tip2": "Net öncelik oluşturmak için uygun öncelik seviyeleri belirleyin",
+        "tip3": "Politikaları etkinleştirmeden önce simülasyon modunda test edin",
+        "tip4": "Çakışmaları erken tespit etmek için aşamalı dağıtımlar kullanın",
+        "tip5": "Sapmaları önlemek için politikaları düzenli olarak gözden geçirin ve güncelleyin"
+      }
+    }
   }
 }

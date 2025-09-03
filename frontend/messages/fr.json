@@ -160,7 +160,92 @@
     "policyUpdated": "Politique mise à jour",
     "policyDeleted": "Politique supprimée",
     "policyCloned": "Politique clonée",
-    "editPolicy": "Modifier politique"
+    "editPolicy": "Modifier politique",
+    "policyForm": {
+      "types": {
+        "password": {
+          "label": "Politique de mot de passe",
+          "description": "Règles de force et de cycle de vie des mots de passe"
+        },
+        "mfa": {
+          "label": "Authentification multifacteur",
+          "description": "Exigences et méthodes MFA"
+        },
+        "session": {
+          "label": "Gestion de session",
+          "description": "Délais et limites de session"
+        },
+        "provider": {
+          "label": "Fournisseurs d'identité",
+          "description": "Restrictions de fournisseurs externes"
+        },
+        "recovery": {
+          "label": "Récupération de compte",
+          "description": "Options de réinitialisation et récupération de mot de passe"
+        }
+      },
+      "labels": {
+        "policyName": "Nom de la politique *",
+        "policyType": "Type de politique *",
+        "description": "Description *",
+        "priority": "Priorité (1-100)",
+        "initialStatus": "Statut initial",
+        "targets": "Cibles"
+      },
+      "placeholders": {
+        "policyName": "Entrer le nom de la politique",
+        "description": "Décrivez ce que fait cette politique et quand elle s'applique",
+        "enterTargets": "Entrer les noms de {type}..."
+      },
+      "priority": {
+        "low": "1 (Bas)",
+        "high": "100 (Haut)"
+      },
+      "status": {
+        "draft": "Brouillon",
+        "inactive": "Inactif",
+        "active": "Actif"
+      },
+      "scope": {
+        "global": {
+          "title": "Global",
+          "description": "S'applique à tous les utilisateurs"
+        },
+        "role": {
+          "title": "Basé sur les rôles",
+          "description": "Appliquer à des rôles spécifiques"
+        },
+        "group": {
+          "title": "Basé sur les groupes",
+          "description": "Appliquer aux groupes d'utilisateurs"
+        },
+        "user": {
+          "title": "Spécifique à l'utilisateur",
+          "description": "Appliquer aux utilisateurs individuels"
+        }
+      },
+      "alerts": {
+        "priorityNote": "Les politiques de priorité supérieure prennent le pas lorsque plusieurs politiques s'appliquent au même utilisateur ou à la même situation. Commencez par un statut brouillon ou inactif pour tester avant l'activation."
+      },
+      "errors": {
+        "fixValidation": "Veuillez corriger les erreurs de validation",
+        "simulationFailed": "Simulation échouée. Veuillez revoir la configuration de la politique."
+      },
+      "title": {
+        "edit": "Modifier la politique",
+        "create": "Créer une nouvelle politique"
+      },
+      "buttons": {
+        "cancel": "Annuler",
+        "saving": "Enregistrement...",
+        "update": "Mettre à jour la politique",
+        "create": "Créer une politique",
+        "continueWithSave": "Continuer avec l'enregistrement"
+      },
+      "options": {
+        "simulateBeforeSave": "Simuler avant d'enregistrer"
+      }
+    }
   },
   "access": {
     "title": "Politiques d'Accès",
