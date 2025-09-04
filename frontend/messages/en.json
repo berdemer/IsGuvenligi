@@ -1559,14 +1559,75 @@
     },
     "performance": {
       "title": "Performance & Caching",
-      "description": "Configure system performance and caching settings"
+      "description": "Configure system performance and caching settings",
+      "cacheTimeout": "Cache Timeout (seconds)",
+      "cacheTimeoutDesc": "How long to keep data in cache (0 = no cache)",
+      "sessionTimeout": "Session Timeout (seconds)",
+      "sessionTimeoutDesc": "User session expiration time",
+      "maxFileSize": "Maximum File Size (MB)",
+      "maxFileSizeDesc": "Maximum file upload size",
+      "enableCompression": "Enable Compression",
+      "enableCompressionDesc": "Compress responses to reduce bandwidth",
+      "connectionTest": "Connection Test",
+      "connectionTestDesc": "Test system connection and performance",
+      "testConnection": "Test Connection"
     },
     "reset": {
       "title": "Reset Settings",
+      "description": "Reset all general settings to their default values",
+      "resetAll": "Reset All",
       "resetToDefaults": "Reset to Defaults",
-      "resetDescription": "This will reset all general settings to their default values. This action cannot be undone.",
-      "warning": "This action cannot be undone!"
-    }
+      "resetDescription": "This will reset all general settings to their default values. This action cannot be undone."
+    },
+    "stats": {
+      "totalSettings": "Total Settings",
+      "modified": "Modified",
+      "systemStatus": "System Status",
+      "cacheStatus": "Cache Status"
+    },
+    "enterSystemDescription": "Enter system description",
+    "timezones": {
+      "istanbul": "Istanbul (UTC+3)",
+      "utc": "UTC (UTC+0)",
+      "london": "London (UTC+0)",
+      "newYork": "New York (UTC-5)"
+    },
+    "currencies": {
+      "try": "Turkish Lira (₺)",
+      "usd": "US Dollar ($)",
+      "eur": "Euro (€)",
+      "gbp": "British Pound (£)"
+    },
+    "themes": {
+      "light": "Light",
+      "dark": "Dark",
+      "auto": "Auto (System)"
+    },
+    "compactModeDescription": "Reduce spacing and padding for more content",
+    "animationsDescription": "Enable smooth transitions and animations",
+    "intervals": {
+      "10seconds": "10 seconds",
+      "30seconds": "30 seconds",
+      "1minute": "1 minute",
+      "5minutes": "5 minutes",
+      "disabled": "Disabled"
+    },
+    "features": {
+      "darkModeToggle": "Dark Mode Toggle",
+      "advancedSearch": "Advanced Search",
+      "exportFeatures": "Export Features",
+      "betaFeatures": "Beta Features",
+      "analyticsTracking": "Analytics Tracking",
+      "maintenanceMode": "Maintenance Mode",
+      "darkModeToggleDesc": "Allow users to switch between light and dark themes",
+      "advancedSearchDesc": "Enable advanced filtering and search capabilities",
+      "exportFeaturesDesc": "Allow data export in various formats",
+      "betaFeaturesDesc": "Enable experimental and beta features",
+      "analyticsTrackingDesc": "Collect anonymous usage analytics",
+      "maintenanceModeDesc": "Put system into maintenance mode"
+    },
+    "active": "Active",
+    "experimental": "Experimental"
   },
   "profile": {
     "title": "Profile Information",
@@ -1963,6 +2024,7 @@
     "general": "General",
     "languages": "Languages",
     "placeholders": "Placeholders",
+    "settings": "Settings",
     "sessions": {
       "title": "Active Sessions",
       "search": {

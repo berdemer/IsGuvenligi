@@ -1533,7 +1533,9 @@
     "reset": {
       "title": "Ayarları Sıfırla",
       "description": "Tüm genel ayarları varsayılan değerlerine sıfırla",
-      "resetAll": "Tümünü Sıfırla"
+      "resetAll": "Tümünü Sıfırla",
+      "resetToDefaults": "Varsayılan Değerlere Sıfırla",
+      "resetDescription": "Bu işlem tüm genel ayarları varsayılan değerlerine sıfırlayacaktır. Bu eylem geri alınamaz."
     },
     "stats": {
       "totalSettings": "Toplam Ayarlar",

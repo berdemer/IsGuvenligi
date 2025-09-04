@@ -471,7 +471,83 @@
     "compactMode": "Mode Compact",
     "animationsEnabled": "Animations",
     "autoRefreshInterval": "Intervalle de Rafraîchissement Auto",
-    "itemsPerPage": "Éléments par Page"
+    "itemsPerPage": "Éléments par Page",
+    "featureFlags": {
+      "title": "Flags de Fonctionnalité",
+      "description": "Activer ou désactiver les fonctionnalités système et expérimentales",
+      "beta": "Bêta"
+    },
+    "performance": {
+      "title": "Performance et Cache",
+      "description": "Configurer les paramètres de performance et de cache système",
+      "cacheTimeout": "Timeout Cache (secondes)",
+      "cacheTimeoutDesc": "Combien de temps garder les données en cache (0 = pas de cache)",
+      "sessionTimeout": "Timeout Session (secondes)",
+      "sessionTimeoutDesc": "Délai d'expiration de session utilisateur",
+      "maxFileSize": "Taille Max Fichier (MB)",
+      "maxFileSizeDesc": "Taille maximale de téléchargement de fichier",
+      "enableCompression": "Activer la Compression",
+      "enableCompressionDesc": "Compresser les réponses pour réduire la bande passante",
+      "connectionTest": "Test de Connexion",
+      "connectionTestDesc": "Tester la connexion et performance système",
+      "testConnection": "Tester la Connexion"
+    },
+    "reset": {
+      "title": "Réinitialiser les Paramètres",
+      "description": "Réinitialiser tous les paramètres généraux aux valeurs par défaut",
+      "resetAll": "Tout Réinitialiser",
+      "resetToDefaults": "Réinitialiser aux Défauts",
+      "resetDescription": "Ceci réinitialisera tous les paramètres généraux à leurs valeurs par défaut. Cette action ne peut pas être annulée."
+    },
+    "stats": {
+      "totalSettings": "Total Paramètres",
+      "modified": "Modifié",
+      "systemStatus": "État Système",
+      "cacheStatus": "État Cache"
+    },
+    "enterSystemDescription": "Entrer description système",
+    "timezones": {
+      "istanbul": "Istanbul (UTC+3)",
+      "utc": "UTC (UTC+0)",
+      "london": "Londres (UTC+0)",
+      "newYork": "New York (UTC-5)"
+    },
+    "currencies": {
+      "try": "Livre Turque (₺)",
+      "usd": "Dollar US ($)",
+      "eur": "Euro (€)",
+      "gbp": "Livre Sterling (£)"
+    },
+    "themes": {
+      "light": "Clair",
+      "dark": "Sombre",
+      "auto": "Auto (Système)"
+    },
+    "compactModeDescription": "Réduire l'espacement et le rembourrage pour plus de contenu",
+    "animationsDescription": "Activer les transitions douces et animations",
+    "intervals": {
+      "10seconds": "10 secondes",
+      "30seconds": "30 secondes",
+      "1minute": "1 minute",
+      "5minutes": "5 minutes",
+      "disabled": "Désactivé"
+    },
+    "features": {
+      "darkModeToggle": "Basculer Mode Sombre",
+      "advancedSearch": "Recherche Avancée",
+      "exportFeatures": "Fonctions d'Export",
+      "betaFeatures": "Fonctions Bêta",
+      "analyticsTracking": "Suivi Analytique",
+      "maintenanceMode": "Mode Maintenance",
+      "darkModeToggleDesc": "Permettre aux utilisateurs de basculer entre thèmes clair et sombre",
+      "advancedSearchDesc": "Activer les capacités de filtrage et recherche avancées",
+      "exportFeaturesDesc": "Permettre l'export de données en divers formats",
+      "betaFeaturesDesc": "Activer les fonctionnalités expérimentales et bêta",
+      "analyticsTrackingDesc": "Collecter des analyses d'usage anonymes",
+      "maintenanceModeDesc": "Mettre le système en mode maintenance"
+    },
+    "active": "Actif",
+    "experimental": "Expérimental"
   },
   "profile": {
     "title": "Informations de Profil",
@@ -731,6 +807,7 @@
     "dateFormat": "Format de date",
     "timeFormat": "Format d'heure",
     "currency": "Devise",
+    "settings": "Paramètres",
     "sessions": {
       "auditLog": {
         "title": "Journal d'audit",

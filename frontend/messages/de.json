@@ -471,7 +471,83 @@
     "compactMode": "Kompaktmodus",
     "animationsEnabled": "Animationen",
     "autoRefreshInterval": "Auto-Aktualisierungsintervall",
-    "itemsPerPage": "Elemente pro Seite"
+    "itemsPerPage": "Elemente pro Seite",
+    "featureFlags": {
+      "title": "Feature-Flags",
+      "description": "Systemfunktionen und experimentelle Funktionalität aktivieren oder deaktivieren",
+      "beta": "Beta"
+    },
+    "performance": {
+      "title": "Leistung & Caching",
+      "description": "Systemleistung und Caching-Einstellungen konfigurieren",
+      "cacheTimeout": "Cache-Timeout (Sekunden)",
+      "cacheTimeoutDesc": "Wie lange Daten im Cache gespeichert werden (0 = kein Cache)",
+      "sessionTimeout": "Sitzungs-Timeout (Sekunden)",
+      "sessionTimeoutDesc": "Benutzer-Sitzungsablaufzeit",
+      "maxFileSize": "Maximale Dateigröße (MB)",
+      "maxFileSizeDesc": "Maximale Datei-Upload-Größe",
+      "enableCompression": "Komprimierung aktivieren",
+      "enableCompressionDesc": "Antworten komprimieren um Bandbreite zu reduzieren",
+      "connectionTest": "Verbindungstest",
+      "connectionTestDesc": "Systemverbindung und Leistung testen",
+      "testConnection": "Verbindung testen"
+    },
+    "reset": {
+      "title": "Einstellungen zurücksetzen",
+      "description": "Alle allgemeinen Einstellungen auf Standardwerte zurücksetzen",
+      "resetAll": "Alle zurücksetzen",
+      "resetToDefaults": "Auf Standardwerte zurücksetzen",
+      "resetDescription": "Dies wird alle allgemeinen Einstellungen auf ihre Standardwerte zurücksetzen. Diese Aktion kann nicht rückgängig gemacht werden."
+    },
+    "stats": {
+      "totalSettings": "Gesamte Einstellungen",
+      "modified": "Geändert",
+      "systemStatus": "Systemstatus",
+      "cacheStatus": "Cache-Status"
+    },
+    "enterSystemDescription": "Systembeschreibung eingeben",
+    "timezones": {
+      "istanbul": "Istanbul (UTC+3)",
+      "utc": "UTC (UTC+0)",
+      "london": "London (UTC+0)",
+      "newYork": "New York (UTC-5)"
+    },
+    "currencies": {
+      "try": "Türkische Lira (₺)",
+      "usd": "US Dollar ($)",
+      "eur": "Euro (€)",
+      "gbp": "Britisches Pfund (£)"
+    },
+    "themes": {
+      "light": "Hell",
+      "dark": "Dunkel",
+      "auto": "Automatisch (System)"
+    },
+    "compactModeDescription": "Abstände und Polsterung für mehr Inhalt reduzieren",
+    "animationsDescription": "Sanfte Übergänge und Animationen aktivieren",
+    "intervals": {
+      "10seconds": "10 Sekunden",
+      "30seconds": "30 Sekunden",
+      "1minute": "1 Minute",
+      "5minutes": "5 Minuten",
+      "disabled": "Deaktiviert"
+    },
+    "features": {
+      "darkModeToggle": "Dark-Mode-Umschaltung",
+      "advancedSearch": "Erweiterte Suche",
+      "exportFeatures": "Export-Funktionen",
+      "betaFeatures": "Beta-Funktionen",
+      "analyticsTracking": "Analytics-Tracking",
+      "maintenanceMode": "Wartungsmodus",
+      "darkModeToggleDesc": "Benutzern erlauben zwischen hellen und dunklen Themes zu wechseln",
+      "advancedSearchDesc": "Erweiterte Filter- und Suchfunktionen aktivieren",
+      "exportFeaturesDesc": "Datenexport in verschiedenen Formaten erlauben",
+      "betaFeaturesDesc": "Experimentelle und Beta-Funktionen aktivieren",
+      "analyticsTrackingDesc": "Anonyme Nutzungsanalysen sammeln",
+      "maintenanceModeDesc": "System in Wartungsmodus versetzen"
+    },
+    "active": "Aktiv",
+    "experimental": "Experimentell"
   },
   "profile": {
     "title": "Profilinformationen",
@@ -731,6 +807,7 @@
     "dateFormat": "Datumsformat",
     "timeFormat": "Zeitformat",
     "currency": "Währung",
+    "settings": "Einstellungen",
     "sessions": {
       "auditLog": {
         "title": "Prüfprotokoll",
