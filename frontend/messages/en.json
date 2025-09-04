@@ -352,6 +352,7 @@
     "simulation": "Simulation",
     "analytics": "Analytics",
     "audit": "Audit",
+    "auditLog": "Audit Log",
     "keycloak": "Keycloak",
     "failedToLoad": "Failed to load policies",
     "createPolicyDialog": "Create Policy dialog would open here",
@@ -365,6 +366,12 @@
       "title": "Policy Conflicts",
       "description": "Resolve conflicting policies to ensure proper access control",
       "searchPlaceholder": "Search conflicts...",
+      "summary": {
+        "critical": "Critical",
+        "highPriority": "High Priority",
+        "autoResolvable": "Auto Resolvable",
+        "totalConflicts": "Total Conflicts"
+      },
       "priorityOrder": {
         "title": "Policy Priority Order",
         "description": "Drag policies to reorder their priority. Higher priority policies override lower ones."
@@ -386,6 +393,30 @@
         "priority": "Priority",
         "overlap": "Overlap",
         "circular": "Circular"
+      },
+      "conflictsList": {
+        "title": "Conflicts List",
+        "affectedPolicies": "Affected Policies"
+      },
+      "buttons": {
+        "resolve": "Resolve"
+      },
+      "preventionTips": {
+        "title": "Conflict Prevention Tips",
+        "tip1": "Review existing policies when creating new ones",
+        "tip2": "Define scopes clearly to prevent overlaps",
+        "tip3": "Set policy priorities correctly",
+        "tip4": "Use simulation in test environments to detect conflicts",
+        "tip5": "Regularly check policy compliance"
+      },
+      "conflictTypes": {
+        "overlap": "Policies have conflicting scopes or conditions",
+        "contradiction": "Policies contain contradictory rules",
+        "dependency": "Policy depends on another conflicting policy",
+        "unknown": "Unknown conflict type"
+      },
+      "conflictDescriptions": {
+        "globalSessionOverlap": "Conflicts with Global Session Policy for concurrent sessions"
       }
     },
     "policyList": {
@@ -509,9 +540,25 @@
     "policySimulation": {
       "title": "Policy Simulation",
       "description": "Test how your access policies behave with different user-resource combinations",
+      "buttons": {
+        "reset": "Reset",
+        "running": "Running",
+        "runSimulation": "Run Simulation",
+        "selectAll": "Select All",
+        "clearAll": "Clear All"
+      },
       "tabs": {
         "simulate": "New Simulation",
-        "history": "Simulation History"
+        "history": "Simulation History",
+        "scenarios": "Scenarios",
+        "customTest": "Custom Test",
+        "results": "Results"
+      },
+      "scenarios": {
+        "title": "Test Scenarios",
+        "description": "Select predefined scenarios to test your policies against various user scenarios.",
+        "selected": "{selected} / {total} scenarios selected",
+        "expected": "Expected"
       },
       "parameters": {
         "title": "Simulation Parameters",
@@ -549,7 +596,14 @@
         "appliedPolicies": "Applied Policies",
         "matchedConditions": "Matched Conditions",
         "conflicts": "Conflicts",
-        "recommendations": "Recommendations"
+        "recommendations": "Recommendations",
+        "status": {
+          "allow": "Allow",
+          "deny": "Deny",
+          "challenge": "Challenge",
+          "unknown": "Unknown",
+          "failed": "Failed"
+        }
       },
       "history": {
         "title": "Simulation History",
@@ -558,6 +612,24 @@
         "resource": "Resource",
         "result": "Result",
         "timestamp": "Timestamp"
+      },
+      "customTest": {
+        "title": "Custom Test",
+        "description": "Create and run your customized test scenarios",
+        "labels": {
+          "scenarioName": "Scenario Name",
+          "userEmail": "User Email",
+          "description": "Description",
+          "ipAddress": "IP Address",
+          "location": "Location",
+          "device": "Device",
+          "expectedResult": "Expected Result"
+        },
+        "placeholders": {
+          "scenarioName": "Enter test scenario name",
+          "scenarioDescription": "Enter test scenario description",
+          "selectResult": "Select expected result"
+        }
       }
     },
     "policyAnalytics": {
@@ -1627,7 +1699,27 @@
       "maintenanceModeDesc": "Put system into maintenance mode"
     },
     "active": "Active",
-    "experimental": "Experimental"
+    "experimental": "Experimental",
+    "interfaceSettings": "Interface Settings",
+    "interfaceDescription": "Configure theme, appearance, and user interface preferences",
+    "unsavedChanges": "Unsaved Changes",
+    "lastSaved": "Last Saved",
+    "toast": {
+      "autoSaved": "Auto Saved",
+      "autoSavedDescription": "Your changes have been automatically saved.",
+      "autoSaveFailed": "Auto Save Failed",
+      "autoSaveFailedDescription": "Changes could not be automatically saved.",
+      "settingsSaved": "Settings Saved",
+      "settingsSavedDescription": "System settings have been saved successfully.",
+      "saveFailed": "Save Failed",
+      "saveFailedDescription": "System settings could not be saved.",
+      "settingsReset": "Settings Reset",
+      "settingsResetDescription": "System settings have been reset to defaults.",
+      "settingsExported": "Settings Exported",
+      "settingsExportedDescription": "System settings have been exported successfully.",
+      "exportFailed": "Export Failed",
+      "exportFailedDescription": "System settings could not be exported."
+    }
   },
   "profile": {
     "title": "Profile Information",
@@ -2025,6 +2117,46 @@
     "languages": "Languages",
     "placeholders": "Placeholders",
     "settings": "Settings",
+    "policy": {
+      "audit": {
+        "title": "Policy Audit Logs",
+        "description": "Track policy changes and activities",
+        "buttons": {
+          "filters": "Filters",
+          "refresh": "Refresh",
+          "export": "Export"
+        },
+        "search": {
+          "placeholder": "Search policy, user or action..."
+        },
+        "stats": {
+          "showing": "Showing {filtered} / {total} records",
+          "lastUpdated": "Last updated: {timestamp}"
+        },
+        "table": {
+          "timestamp": "Timestamp",
+          "action": "Action",
+          "policy": "Policy",
+          "user": "User",
+          "changes": "Changes",
+          "ipAddress": "IP Address",
+          "noChanges": "No changes"
+        },
+        "actions": {
+          "updated": "Updated",
+          "activated": "Activated",
+          "deactivated": "Deactivated",
+          "created": "Created",
+          "deleted": "Deleted",
+          "simulated": "Simulated",
+          "cloned": "Cloned"
+        },
+        "compliance": {
+          "title": "Compliance Status",
+          "description": "Policy compliance metrics and status"
+        }
+      }
+    },
     "sessions": {
       "title": "Active Sessions",
       "search": {
@@ -2461,6 +2593,425 @@
         "title": "No logs found",
         "description": "No audit logs found matching the specified criteria."
       }
+    }
+  },
+  "security": {
+    "title": "Security Settings",
+    "tabs": {
+      "keycloak": "Keycloak",
+      "authentication": "Authentication",
+      "mfa": "Multi-Factor",
+      "security": "Security",
+      "audit": "Audit"
+    },
+    "keycloak": {
+      "title": "Keycloak Configuration",
+      "description": "Configure Keycloak integration for authentication and authorization",
+      "enabled": "Enabled",
+      "disabled": "Disabled",
+      "enableIntegration": "Enable Keycloak Integration",
+      "enableIntegrationDescription": "Use Keycloak for user authentication and management",
+      "serverUrl": "Server URL",
+      "realm": "Realm",
+      "clientId": "Client ID",
+      "clientSecret": "Client Secret",
+      "clientSecretPlaceholder": "Enter client secret",
+      "adminUsername": "Admin Username",
+      "adminPassword": "Admin Password",
+      "adminPasswordPlaceholder": "Enter admin password",
+      "requireSsl": "Require SSL",
+      "publicClient": "Public Client",
+      "connectionTest": "Connection Test",
+      "connectionTestDescription": "Test connection to Keycloak server",
+      "testConnection": "Test Connection",
+      "connectionSuccessful": "Connection successful",
+      "connectionFailed": "Connection failed",
+      "connectionUnknown": "Test connection to Keycloak server",
+      "successfullyConnected": "Successfully connected to Keycloak server.",
+      "couldNotConnect": "Could not connect to Keycloak server. Please check your settings.",
+      "connectionError": "Connection error",
+      "errorOccurred": "An error occurred during connection test."
+    },
+    "passwordPolicy": {
+      "title": "Password Policy",
+      "description": "Configure password requirements and security rules",
+      "minLength": "Minimum Length",
+      "maxAge": "Password Age (days)",
+      "requireUppercase": "Require Uppercase",
+      "requireLowercase": "Require Lowercase",
+      "requireNumbers": "Require Numbers",
+      "requireSpecialChars": "Require Special Characters",
+      "historyCount": "Password History Count",
+      "historyCountDescription": "Number of previous passwords to remember"
+    },
+    "sessionManagement": {
+      "title": "Session Management",
+      "description": "Configure session security and timeout policies",
+      "maxSessions": "Maximum Sessions per User",
+      "sessionTimeout": "Session Timeout (minutes)",
+      "idleTimeout": "Idle Timeout (minutes)",
+      "rememberMe": "Remember Me Duration (days)",
+      "requireReauth": "Require Re-authentication for Sensitive Operations",
+      "secureSessionCookies": "Secure Session Cookies",
+      "httpOnlyCookies": "HTTP Only Cookies",
+      "sameSiteCookies": "Same Site Cookie Policy",
+      "cookiePolicies": {
+        "strict": "Strict",
+        "lax": "Lax",
+        "none": "None"
+      }
+    }
+  },
+  "notificationSettings": {
+    "tabs": {
+      "email": "Email",
+      "push": "Push",
+      "sms": "SMS",
+      "integrations": "Integrations",
+      "system": "System",
+      "preferences": "Preferences"
+    },
+    "email": {
+      "title": "Email Configuration",
+      "description": "Configure SMTP settings and email templates",
+      "enabled": "Enabled",
+      "disabled": "Disabled",
+      "enableEmailNotifications": "Enable Email Notifications",
+      "enableEmailDescription": "Send notifications via email",
+      "smtpServerSettings": "SMTP Server Settings",
+      "smtpHost": "SMTP Host",
+      "smtpPort": "SMTP Port",
+      "username": "Username",
+      "password": "Password",
+      "passwordPlaceholder": "Enter SMTP password",
+      "encryption": "Encryption",
+      "fromEmail": "From Email Address",
+      "fromName": "From Name",
+      "testEmail": "Test Email",
+      "testEmailDescription": "Send a test email to verify SMTP configuration",
+      "sendTestEmail": "Send Test Email",
+      "testRecipient": "Test Recipient",
+      "testRecipientPlaceholder": "Enter email address for test",
+      "encryptionTypes": {
+        "none": "None",
+        "tls": "TLS",
+        "ssl": "SSL"
+      },
+      "templates": {
+        "title": "Email Templates",
+        "description": "Customize email notification templates",
+        "securityAlert": "Security Alert",
+        "systemHealth": "System Health",
+        "userActivity": "User Activity",
+        "passwordReset": "Password Reset",
+        "accountLocked": "Account Locked",
+        "newUser": "New User Welcome"
+      }
+    },
+    "push": {
+      "title": "Push Notifications",
+      "description": "Configure web push notifications",
+      "comingSoon": "Coming Soon",
+      "comingSoonDescription": "Push notification configuration will be available in the next release."
+    },
+    "sms": {
+      "title": "SMS Notifications",
+      "description": "Configure SMS notifications with Twilio or AWS SNS",
+      "enterprise": "Enterprise",
+      "enterpriseDescription": "SMS notifications are available in Enterprise plan."
+    },
+    "integrations": {
+      "title": "Third Party Integrations",
+      "description": "Configure Slack, Microsoft Teams, and other integrations",
+      "configureHere": "Integration settings will be configured here."
+    },
+    "system": {
+      "title": "System Notifications",
+      "description": "Configure browser and system notification preferences",
+      "desktopNotifications": "Desktop Notifications",
+      "browserNotifications": "Browser Notifications",
+      "soundAlerts": "Sound Alerts",
+      "badgeNotifications": "Badge Notifications"
+    },
+    "preferences": {
+      "title": "Notification Preferences",
+      "description": "Configure notification scheduling and priority settings",
+      "quietHours": "Quiet Hours",
+      "quietHoursDescription": "Disable non-critical notifications during specified hours",
+      "startTime": "Start Time",
+      "endTime": "End Time"
+    },
+    "toast": {
+      "testEmailSent": "Test email sent",
+      "testEmailSentDescription": "Test email has been sent successfully.",
+      "testEmailFailed": "Test email failed",
+      "testEmailFailedDescription": "Test email could not be sent. Check your SMTP settings."
+    }
+  },
+  "notificationPreferences": {
+    "title": "Notification Settings",
+    "description": "Configure how and when you receive notifications",
+    "reset": "Reset",
+    "saveChanges": "Save Changes",
+    "unsavedChanges": "You have unsaved changes. Don't forget to save your notification preferences.",
+    "tabs": {
+      "channels": "Delivery Channels",
+      "types": "Notification Types",
+      "schedule": "Scheduling & Timing",
+      "advanced": "Advanced Settings"
+    },
+    "channels": {
+      "title": "Delivery Channels",
+      "description": "Choose how you want to receive notifications. In-app notifications are always enabled.",
+      "inApp": "In-App Notifications",
+      "inAppDescription": "Show notifications in the admin panel",
+      "email": "Email Notifications",
+      "emailDescription": "Send notifications to your email address",
+      "sms": "SMS Notifications",
+      "smsDescription": "Send critical alerts via text message",
+      "alwaysEnabled": "Always Enabled"
+    },
+    "types": {
+      "title": "Notification Types",
+      "description": "Configure settings for each notification type",
+      "security": "Security Alerts",
+      "securityDescription": "Login failures, suspicious activity, policy violations",
+      "system": "System Health",
+      "systemDescription": "System errors, performance issues, service status",
+      "risk": "Risk & Safety",
+      "riskDescription": "Safety incidents, risk threshold alerts",
+      "userActivity": "User Activity",
+      "userActivityDescription": "Role changes, account modifications",
+      "test": "Test",
+      "minimumSeverity": "Minimum Severity",
+      "deliveryChannels": "Delivery Channels",
+      "onlyEnabledChannels": "Only enabled channels can be selected",
+      "app": "App",
+      "email": "Email",
+      "sms": "SMS"
+    },
+    "severity": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High",
+      "critical": "Critical"
+    },
+    "quietHours": {
+      "title": "Quiet Hours",
+      "description": "Disable non-critical notifications during specified hours",
+      "enable": "Enable quiet hours",
+      "startTime": "Start Time",
+      "endTime": "End Time",
+      "timezone": "Timezone",
+      "timezones": {
+        "utc": "UTC",
+        "easternTime": "Eastern Time",
+        "centralTime": "Central Time",
+        "mountainTime": "Mountain Time",
+        "pacificTime": "Pacific Time",
+        "london": "London",
+        "istanbul": "Istanbul"
+      }
+    },
+    "digest": {
+      "title": "Notification Digest",
+      "description": "Receive a summary of notifications instead of individual alerts",
+      "enable": "Enable digest mode",
+      "frequency": "Frequency",
+      "deliveryTime": "Delivery Time",
+      "frequencies": {
+        "daily": "Daily",
+        "weekly": "Weekly"
+      }
+    },
+    "advanced": {
+      "title": "Advanced Settings",
+      "description": "Additional notification configuration options",
+      "futureFeature": "Advanced settings will be available in future releases. Currently showing placeholder configuration options.",
+      "autoMarkRead": "Auto-mark notifications as read",
+      "autoMarkReadDescription": "Automatically mark notifications as read after viewing",
+      "groupSimilar": "Group similar notifications",
+      "groupSimilarDescription": "Combine similar notifications into groups",
+      "retentionPeriod": "Retention period",
+      "retentionPeriodDescription": "How long to keep read notifications",
+      "retentionPlaceholder": "30 days"
+    },
+    "toast": {
+      "settingsSaved": "Notification settings saved successfully",
+      "settingsReset": "Settings reset to defaults",
+      "saveError": "Could not save notification settings",
+      "testNotification": "Test {type} notification sent!"
+    }
+  },
+  "healthMonitoring": {
+    "title": "Health Monitoring Thresholds",
+    "description": "Configure system health monitoring thresholds and alert system",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "enableHealthMonitoring": "Enable Health Monitoring",
+    "enableHealthMonitoringDescription": "Monitor system resources and performance metrics",
+    "alertThresholds": "Alert Thresholds",
+    "monitoringConfiguration": "Monitoring Configuration",
+    "cpuUsage": "CPU Usage (%)",
+    "memoryUsage": "Memory Usage (%)",
+    "diskUsage": "Disk Usage (%)",
+    "responseTime": "Response Time (ms)",
+    "warning": "Warning:",
+    "critical": "Critical:",
+    "checkInterval": "Check Interval (seconds)",
+    "dataRetention": "Data Retention (days)",
+    "enableAlerting": "Enable Alert System",
+    "units": {
+      "percentage": "%",
+      "milliseconds": "ms"
+    }
+  },
+  "dataManagement": {
+    "backup": {
+      "title": "Data Backup and Export",
+      "description": "Configure automated backup and data export options",
+      "enableAutomatedBackups": "Enable Automated Backups",
+      "enableAutomatedBackupsDescription": "Automatically backup system data at specified intervals",
+      "backupFrequency": "Backup Frequency",
+      "retentionPeriod": "Retention Period (days)",
+      "enableCompression": "Enable Compression",
+      "enableEncryption": "Enable Encryption",
+      "manualDataExport": "Manual Data Export",
+      "manualDataExportDescription": "Export all system data for backup or migration",
+      "exportData": "Export Data",
+      "importData": "Import Data",
+      "importDataDescription": "Import data from backup or migration file",
+      "frequencies": {
+        "hourly": "Hourly",
+        "daily": "Daily",
+        "weekly": "Weekly",
+        "monthly": "Monthly"
+      }
+    },
+    "cache": {
+      "title": "Redis Cache Management",
+      "description": "Configure and manage Redis cache settings",
+      "active": "Active",
+      "inactive": "Inactive",
+      "enableRedisCache": "Enable Redis Cache",
+      "enableRedisCacheDescription": "Use Redis for application caching",
+      "defaultTtl": "Default TTL (seconds)",
+      "maxCacheSize": "Maximum Cache Size",
+      "cleanupInterval": "Cleanup Interval (seconds)",
+      "clearCache": "Clear Cache",
+      "clearCacheDescription": "Clear all cache data immediately"
+    },
+    "cleanup": {
+      "title": "Data Cleanup and Maintenance",
+      "description": "Configure automatic data cleanup and maintenance tasks",
+      "enableAutomaticCleanup": "Enable Automatic Cleanup",
+      "enableAutomaticCleanupDescription": "Automatically clean old data and temporary files",
+      "logRetention": "Log Retention (days)",
+      "cleanTemporaryFiles": "Clean Temporary Files",
+      "cleanExpiredSessions": "Clean Expired Sessions"
+    },
+    "toast": {
+      "exportCompleted": "Export completed",
+      "exportCompletedDescription": "System data has been exported successfully.",
+      "exportFailed": "Export failed",
+      "exportFailedDescription": "System data could not be exported.",
+      "cacheCleared": "Cache cleared",
+      "cacheClearedDescription": "Redis cache has been cleared successfully.",
+      "clearFailed": "Clear failed",
+      "clearFailedDescription": "Cache could not be cleared."
+    }
+  },
+  "auditSettings": {
+    "title": "Audit Log Configuration",
+    "description": "Configure comprehensive audit logging for security and compliance",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "enableAuditLogging": "Enable Audit Logging",
+    "enableAuditLoggingDescription": "Log all system activities for security monitoring and compliance",
+    "general": {
+      "title": "General Settings",
+      "logLevel": "Log Level",
+      "retentionPeriod": "Retention Period (days)",
+      "enableCompression": "Enable Compression",
+      "enableEncryption": "Enable Encryption",
+      "logLevels": {
+        "debug": "Debug",
+        "info": "Info",
+        "warn": "Warning",
+        "error": "Error",
+        "critical": "Critical"
+      }
+    },
+    "events": {
+      "title": "Event Types",
+      "userActions": "User Actions",
+      "systemActions": "System Actions",
+      "authenticationEvents": "Authentication Events",
+      "dataChanges": "Data Changes",
+      "configurationChanges": "Configuration Changes",
+      "errorEvents": "Error Events",
+      "performanceMetrics": "Performance Metrics"
+    },
+    "storage": {
+      "title": "Storage Configuration",
+      "storageLocation": "Storage Location",
+      "maxFileSize": "Maximum File Size",
+      "rotationPolicy": "Rotation Policy",
+      "enableBackup": "Enable Backup",
+      "locations": {
+        "database": "Database",
+        "file": "File System",
+        "both": "Both"
+      },
+      "rotations": {
+        "hourly": "Hourly",
+        "daily": "Daily",
+        "weekly": "Weekly",
+        "monthly": "Monthly"
+      }
+    },
+    "alerts": {
+      "title": "Security Alerts",
+      "failedLoginAttempts": "Failed Login Attempts",
+      "suspiciousActivity": "Suspicious Activity",
+      "dataExfiltration": "Data Exfiltration",
+      "configurationChanges": "Configuration Changes",
+      "thresholdBreaches": "Threshold Breaches"
+    }
+  },
+  "accessPolicySettings": {
+    "title": "Access Policy Management",
+    "description": "Configure role-based access control and user permissions",
+    "rbacEnabled": "RBAC Enabled",
+    "accessPolicyConfiguration": "Access Policy Configuration",
+    "detailedDescription": "Detailed RBAC settings will be implemented here with user roles, permissions, and access policies.",
+    "addPolicy": "Add Policy"
+  },
+  "notificationBell": {
+    "notifications": "Notifications",
+    "markAllRead": "Mark All Read",
+    "total": "total",
+    "unread": "unread",
+    "noNotifications": "No notifications yet",
+    "actionRequired": "Action Required",
+    "settings": "Settings",
+    "viewAll": "View All",
+    "toast": {
+      "loadFailed": "Failed to load notifications",
+      "markedAsRead": "Notification marked as read",
+      "markReadFailed": "Could not mark as read",
+      "allMarkedAsRead": "All notifications marked as read",
+      "markAllFailed": "Could not mark all as read"
+    },
+    "mockData": {
+      "criticalSecurityAlert": "Critical Security Alert",
+      "multipleFailedLogins": "Multiple failed login attempts detected in the last 5 minutes",
+      "systemHealthWarning": "System Health Warning",
+      "highCpuUsage": "Server CPU usage exceeded 85%",
+      "newAdminUserCreated": "New Admin User Created",
+      "userGrantedAdmin": "User Mike Chen has been granted admin privileges",
+      "backupCompleted": "Backup Completed",
+      "dailyBackupSuccess": "Daily database backup completed successfully"
     }
   }
 }

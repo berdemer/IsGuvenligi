@@ -275,10 +275,10 @@ export default function GeneralSettings({ onSettingsChange }: GeneralSettingsPro
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Palette className="h-5 w-5" />
-            {tCommon('settings')}
+            {t('interfaceSettings')}
           </CardTitle>
           <CardDescription>
-            {t('systemDescription')}
+            {t('interfaceDescription')}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">

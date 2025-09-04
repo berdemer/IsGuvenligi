@@ -256,6 +256,12 @@
       "title": "Politika Çakışmaları",
       "description": "Doğru erişim kontrolü sağlamak için çakışan politikaları çözümleyin",
       "searchPlaceholder": "Çakışmaları ara...",
+      "summary": {
+        "critical": "Kritik",
+        "highPriority": "Yüksek Öncelik",
+        "autoResolvable": "Otomatik Çözülebilir",
+        "totalConflicts": "Toplam Çakışmalar"
+      },
       "priorityOrder": {
         "title": "Politika Öncelik Sırası",
         "description": "Politikaları önceliklerini yeniden sıralamak için sürükleyin. Daha yüksek öncelikli politikalar düşük olanları geçersiz kılar."
@@ -1585,7 +1591,27 @@
       "maintenanceModeDesc": "Sistemi bakım moduna al"
     },
     "active": "Aktif",
-    "experimental": "Deneysel"
+    "experimental": "Deneysel",
+    "interfaceSettings": "Arayüz Ayarları",
+    "interfaceDescription": "Tema, görünüm ve kullanıcı arayüzü tercihlerini yapılandırın",
+    "unsavedChanges": "Kaydedilmemiş Değişiklikler",
+    "lastSaved": "Son Kaydedilme",
+    "toast": {
+      "autoSaved": "Otomatik Kaydedildi",
+      "autoSavedDescription": "Değişiklikleriniz otomatik olarak kaydedildi.",
+      "autoSaveFailed": "Otomatik Kaydetme Başarısız",
+      "autoSaveFailedDescription": "Değişiklikler otomatik olarak kaydedilemedi.",
+      "settingsSaved": "Ayarlar Kaydedildi",
+      "settingsSavedDescription": "Sistem ayarları başarıyla kaydedildi.",
+      "saveFailed": "Kaydetme Başarısız",
+      "saveFailedDescription": "Sistem ayarları kaydedilemedi.",
+      "settingsReset": "Ayarlar Sıfırlandı",
+      "settingsResetDescription": "Sistem ayarları varsayılan değerlere sıfırlandı.",
+      "settingsExported": "Ayarlar Dışa Aktarıldı",
+      "settingsExportedDescription": "Sistem ayarları başarıyla dışa aktarıldı.",
+      "exportFailed": "Dışa Aktarma Başarısız",
+      "exportFailedDescription": "Sistem ayarları dışa aktarılamadı."
+    }
   },
   "profile": {
     "title": "Profil Bilgileri",
@@ -1983,6 +2009,46 @@
     "general": "Genel",
     "languages": "Diller",
     "placeholders": "Yer Tutucular",
+    "policy": {
+      "audit": {
+        "title": "Politika Denetim Günlükleri",
+        "description": "Politika değişikliklerini ve etkinliklerini izleyin",
+        "buttons": {
+          "filters": "Filtreler",
+          "refresh": "Yenile",
+          "export": "Dışa Aktar"
+        },
+        "search": {
+          "placeholder": "Politika, kullanıcı veya eylem ara..."
+        },
+        "stats": {
+          "showing": "{filtered} / {total} kayıt gösteriliyor",
+          "lastUpdated": "Son güncelleme: {timestamp}"
+        },
+        "table": {
+          "timestamp": "Zaman Damgası",
+          "action": "Eylem",
+          "policy": "Politika",
+          "user": "Kullanıcı",
+          "changes": "Değişiklikler",
+          "ipAddress": "IP Adresi",
+          "noChanges": "Değişiklik yok"
+        },
+        "actions": {
+          "updated": "Güncellendi",
+          "activated": "Etkinleştirildi",
+          "deactivated": "Devre dışı bırakıldı",
+          "created": "Oluşturuldu",
+          "deleted": "Silindi",
+          "simulated": "Simüle edildi",
+          "cloned": "Kopyalandı"
+        },
+        "compliance": {
+          "title": "Uyumluluk Durumu",
+          "description": "Politika uyumluluk metrikleri ve durumu"
+        }
+      }
+    },
     "sessions": {
       "title": "Aktif Oturumlar",
       "search": {

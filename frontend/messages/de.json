@@ -152,6 +152,7 @@
     "simulation": "Simulation",
     "analytics": "Analytik",
     "audit": "Audit",
+    "auditLog": "Audit-Protokoll",
     "keycloak": "Keycloak",
     "failedToLoad": "Richtlinien konnten nicht geladen werden",
     "createPolicyDialog": "Richtlinie erstellen Dialog würde hier geöffnet",
@@ -161,6 +162,158 @@
     "policyDeleted": "Richtlinie gelöscht",
     "policyCloned": "Richtlinie kopiert",
     "editPolicy": "Richtlinie bearbeiten",
+    "conflictManager": {
+      "title": "Richtlinien-Konflikte",
+      "description": "Lösen Sie widersprüchliche Richtlinien für ordnungsgemäße Zugriffskontrolle",
+      "searchPlaceholder": "Konflikte suchen...",
+      "summary": {
+        "critical": "Kritisch",
+        "highPriority": "Hohe Priorität",
+        "autoResolvable": "Automatisch Lösbar",
+        "totalConflicts": "Gesamte Konflikte"
+      },
+      "priorityOrder": {
+        "title": "Richtlinien-Prioritätsreihenfolge",
+        "description": "Ziehen Sie Richtlinien, um ihre Priorität neu zu ordnen. Höhere Priorität überschreibt niedrigere."
+      },
+      "filters": {
+        "severity": "Schweregrad",
+        "allSeverity": "Alle Schweregrade",
+        "type": "Typ",
+        "allTypes": "Alle Typen"
+      },
+      "severity": {
+        "critical": "Kritisch",
+        "high": "Hoch",
+        "medium": "Mittel",
+        "low": "Niedrig"
+      },
+      "types": {
+        "contradiction": "Widerspruch",
+        "priority": "Priorität",
+        "overlap": "Überlappung",
+        "circular": "Zirkulär"
+      },
+      "conflictsList": {
+        "title": "Konfliktliste",
+        "affectedPolicies": "Betroffene Richtlinien"
+      },
+      "buttons": {
+        "resolve": "Lösen"
+      },
+      "preventionTips": {
+        "title": "Konflikt-Präventions-Tipps",
+        "tip1": "Überprüfen Sie vorhandene Richtlinien beim Erstellen neuer",
+        "tip2": "Definieren Sie Bereiche klar, um Überlappungen zu vermeiden",
+        "tip3": "Setzen Sie Richtlinien-Prioritäten richtig",
+        "tip4": "Verwenden Sie Simulation in Testumgebungen zur Konflikterkennung",
+        "tip5": "Überprüfen Sie regelmäßig die Richtlinien-Konformität"
+      },
+      "conflictTypes": {
+        "overlap": "Richtlinien haben widersprüchliche Bereiche oder Bedingungen",
+        "contradiction": "Richtlinien enthalten widersprüchliche Regeln",
+        "dependency": "Richtlinie hängt von einer anderen widersprüchlichen Richtlinie ab",
+        "unknown": "Unbekannter Konflikttyp"
+      },
+      "conflictDescriptions": {
+        "globalSessionOverlap": "Konflikt mit globaler Sitzungsrichtlinie für gleichzeitige Sitzungen"
+      }
+    },
+    "policySimulation": {
+      "title": "Richtlinien-Simulation",
+      "description": "Testen Sie, wie sich Ihre Zugriffsrichtlinien mit verschiedenen Benutzer-Ressource-Kombinationen verhalten",
+      "buttons": {
+        "reset": "Zurücksetzen",
+        "running": "Läuft",
+        "runSimulation": "Simulation starten",
+        "selectAll": "Alle auswählen",
+        "clearAll": "Alle löschen"
+      },
+      "tabs": {
+        "simulate": "Neue Simulation",
+        "history": "Simulationsverlauf",
+        "scenarios": "Szenarien",
+        "customTest": "Benutzerdefinierter Test",
+        "results": "Ergebnisse"
+      },
+      "scenarios": {
+        "title": "Test-Szenarien",
+        "description": "Wählen Sie vordefinierte Szenarien aus, um Ihre Richtlinien gegen verschiedene Benutzerszenarien zu testen.",
+        "selected": "{selected} / {total} Szenarien ausgewählt",
+        "expected": "Erwartet"
+      },
+      "parameters": {
+        "title": "Simulationsparameter",
+        "description": "Konfigurieren Sie das Szenario, das Sie testen möchten",
+        "selectUser": "Benutzer auswählen",
+        "selectUserPlaceholder": "Einen Benutzer zur Simulation wählen",
+        "selectResource": "Ressource auswählen",
+        "selectResourcePlaceholder": "Eine zu testende Ressource wählen",
+        "accessLevel": "Zugriffsstufe",
+        "accessLevelPlaceholder": "Zugriffsstufe auswählen"
+      },
+      "context": {
+        "title": "Simulationskontext",
+        "description": "Zusätzliche Parameter festlegen",
+        "ipAddress": "IP-Adresse",
+        "ipPlaceholder": "IP-Adresse des Benutzers eingeben",
+        "userAgent": "User Agent",
+        "userAgentPlaceholder": "Browser-/Geräteinformationen eingeben",
+        "location": "Standort",
+        "locationPlaceholder": "Geografischen Standort eingeben",
+        "timeOfDay": "Tageszeit",
+        "timeOfDayPlaceholder": "Zugriffszeit auswählen"
+      },
+      "actions": {
+        "runSimulation": "Simulation starten",
+        "saveSimulation": "Simulation speichern",
+        "clearHistory": "Verlauf löschen"
+      },
+      "results": {
+        "loading": "Simulation läuft...",
+        "noResults": "Parameter konfigurieren und Simulation starten, um Ergebnisse zu sehen",
+        "accessGranted": "Zugriff gewährt",
+        "accessDenied": "Zugriff verweigert",
+        "effectiveAccess": "Effektiver Zugriff",
+        "appliedPolicies": "Angewandte Richtlinien",
+        "matchedConditions": "Übereinstimmende Bedingungen",
+        "conflicts": "Konflikte",
+        "recommendations": "Empfehlungen",
+        "status": {
+          "allow": "Erlauben",
+          "deny": "Verweigern",
+          "challenge": "Herausforderung",
+          "unknown": "Unbekannt",
+          "failed": "Fehlgeschlagen"
+        }
+      },
+      "history": {
+        "title": "Simulationsverlauf",
+        "noHistory": "Noch keine gespeicherten Simulationen",
+        "user": "Benutzer",
+        "resource": "Ressource",
+        "result": "Ergebnis",
+        "timestamp": "Zeitstempel"
+      },
+      "customTest": {
+        "title": "Benutzerdefinierter Test",
+        "description": "Erstellen und führen Sie Ihre benutzerdefinierten Testszenarien aus",
+        "labels": {
+          "scenarioName": "Szenario-Name",
+          "userEmail": "Benutzer-E-Mail",
+          "description": "Beschreibung",
+          "ipAddress": "IP-Adresse",
+          "location": "Standort",
+          "device": "Gerät",
+          "expectedResult": "Erwartetes Ergebnis"
+        },
+        "placeholders": {
+          "scenarioName": "Test-Szenario-Name eingeben",
+          "scenarioDescription": "Test-Szenario-Beschreibung eingeben",
+          "selectResult": "Erwartetes Ergebnis auswählen"
+        }
+      }
+    },
     "policyForm": {
       "types": {
         "password": {
@@ -547,7 +700,27 @@
       "maintenanceModeDesc": "System in Wartungsmodus versetzen"
     },
     "active": "Aktiv",
-    "experimental": "Experimentell"
+    "experimental": "Experimentell",
+    "interfaceSettings": "Benutzeroberfläche-Einstellungen",
+    "interfaceDescription": "Thema, Aussehen und Benutzeroberflächen-Einstellungen konfigurieren",
+    "unsavedChanges": "Nicht gespeicherte Änderungen",
+    "lastSaved": "Zuletzt gespeichert",
+    "toast": {
+      "autoSaved": "Automatisch gespeichert",
+      "autoSavedDescription": "Ihre Änderungen wurden automatisch gespeichert.",
+      "autoSaveFailed": "Automatisches Speichern fehlgeschlagen",
+      "autoSaveFailedDescription": "Änderungen konnten nicht automatisch gespeichert werden.",
+      "settingsSaved": "Einstellungen gespeichert",
+      "settingsSavedDescription": "Systemeinstellungen wurden erfolgreich gespeichert.",
+      "saveFailed": "Speichern fehlgeschlagen",
+      "saveFailedDescription": "Systemeinstellungen konnten nicht gespeichert werden.",
+      "settingsReset": "Einstellungen zurückgesetzt",
+      "settingsResetDescription": "Systemeinstellungen wurden auf Standardwerte zurückgesetzt.",
+      "settingsExported": "Einstellungen exportiert",
+      "settingsExportedDescription": "Systemeinstellungen wurden erfolgreich exportiert.",
+      "exportFailed": "Export fehlgeschlagen",
+      "exportFailedDescription": "Systemeinstellungen konnten nicht exportiert werden."
+    }
   },
   "profile": {
     "title": "Profilinformationen",
@@ -808,6 +981,46 @@
     "timeFormat": "Zeitformat",
     "currency": "Währung",
     "settings": "Einstellungen",
+    "policy": {
+      "audit": {
+        "title": "Richtlinien-Audit-Protokolle",
+        "description": "Richtlinien-Änderungen und -Aktivitäten verfolgen",
+        "buttons": {
+          "filters": "Filter",
+          "refresh": "Aktualisieren",
+          "export": "Exportieren"
+        },
+        "search": {
+          "placeholder": "Richtlinie, Benutzer oder Aktion suchen..."
+        },
+        "stats": {
+          "showing": "{filtered} / {total} Datensätze angezeigt",
+          "lastUpdated": "Zuletzt aktualisiert: {timestamp}"
+        },
+        "table": {
+          "timestamp": "Zeitstempel",
+          "action": "Aktion",
+          "policy": "Richtlinie",
+          "user": "Benutzer",
+          "changes": "Änderungen",
+          "ipAddress": "IP-Adresse",
+          "noChanges": "Keine Änderungen"
+        },
+        "actions": {
+          "updated": "Aktualisiert",
+          "activated": "Aktiviert",
+          "deactivated": "Deaktiviert",
+          "created": "Erstellt",
+          "deleted": "Gelöscht",
+          "simulated": "Simuliert",
+          "cloned": "Kloniert"
+        },
+        "compliance": {
+          "title": "Compliance-Status",
+          "description": "Richtlinien-Compliance-Metriken und -Status"
+        }
+      }
+    },
     "sessions": {
       "auditLog": {
         "title": "Prüfprotokoll",
@@ -895,7 +1108,7 @@
         },
         "stats": {
           "showing": "Zeige {filtered} von {total} Einträgen",
-          "lastUpdated": "Zuletzt aktualisiert: {date}"
+          "lastUpdated": "Zuletzt aktualisiert: {timestamp}"
         },
         "table": {
           "timestamp": "Zeitstempel",
@@ -944,6 +1157,425 @@
           "exportFailed": "Fehler beim Exportieren der Prüfprotokolle"
         }
       }
+    }
+  },
+  "security": {
+    "title": "Sicherheitseinstellungen",
+    "tabs": {
+      "keycloak": "Keycloak",
+      "authentication": "Authentifizierung",
+      "mfa": "Mehr-Faktor",
+      "security": "Sicherheit",
+      "audit": "Prüfung"
+    },
+    "keycloak": {
+      "title": "Keycloak-Konfiguration",
+      "description": "Keycloak-Integration für Authentifizierung und Autorisierung konfigurieren",
+      "enabled": "Aktiviert",
+      "disabled": "Deaktiviert",
+      "enableIntegration": "Keycloak-Integration aktivieren",
+      "enableIntegrationDescription": "Keycloak für Benutzerauthentifizierung und -verwaltung verwenden",
+      "serverUrl": "Server-URL",
+      "realm": "Realm",
+      "clientId": "Client-ID",
+      "clientSecret": "Client-Secret",
+      "clientSecretPlaceholder": "Client-Secret eingeben",
+      "adminUsername": "Admin-Benutzername",
+      "adminPassword": "Admin-Passwort",
+      "adminPasswordPlaceholder": "Admin-Passwort eingeben",
+      "requireSsl": "SSL erforderlich",
+      "publicClient": "Öffentlicher Client",
+      "connectionTest": "Verbindungstest",
+      "connectionTestDescription": "Verbindung zum Keycloak-Server testen",
+      "testConnection": "Verbindung testen",
+      "connectionSuccessful": "Verbindung erfolgreich",
+      "connectionFailed": "Verbindung fehlgeschlagen",
+      "connectionUnknown": "Verbindung zum Keycloak-Server testen",
+      "successfullyConnected": "Erfolgreich mit Keycloak-Server verbunden.",
+      "couldNotConnect": "Konnte nicht mit Keycloak-Server verbinden. Bitte überprüfen Sie Ihre Einstellungen.",
+      "connectionError": "Verbindungsfehler",
+      "errorOccurred": "Ein Fehler ist beim Verbindungstest aufgetreten."
+    },
+    "passwordPolicy": {
+      "title": "Passwort-Richtlinie",
+      "description": "Passwort-Anforderungen und Sicherheitsregeln konfigurieren",
+      "minLength": "Mindestlänge",
+      "maxAge": "Passwort-Alter (Tage)",
+      "requireUppercase": "Großbuchstaben erforderlich",
+      "requireLowercase": "Kleinbuchstaben erforderlich",
+      "requireNumbers": "Zahlen erforderlich",
+      "requireSpecialChars": "Sonderzeichen erforderlich",
+      "historyCount": "Passwort-Verlaufsanzahl",
+      "historyCountDescription": "Anzahl der zu merkenden vorherigen Passwörter"
+    },
+    "sessionManagement": {
+      "title": "Sitzungsverwaltung",
+      "description": "Sitzungssicherheit und Timeout-Richtlinien konfigurieren",
+      "maxSessions": "Maximale Sitzungen pro Benutzer",
+      "sessionTimeout": "Sitzungs-Timeout (Minuten)",
+      "idleTimeout": "Inaktivitäts-Timeout (Minuten)",
+      "rememberMe": "Angemeldet bleiben Dauer (Tage)",
+      "requireReauth": "Erneute Authentifizierung für sensible Operationen erforderlich",
+      "secureSessionCookies": "Sichere Sitzungs-Cookies",
+      "httpOnlyCookies": "HTTP-Only Cookies",
+      "sameSiteCookies": "Same-Site Cookie-Richtlinie",
+      "cookiePolicies": {
+        "strict": "Strikt",
+        "lax": "Locker",
+        "none": "Keine"
+      }
+    }
+  },
+  "notificationSettings": {
+    "tabs": {
+      "email": "E-Mail",
+      "push": "Push",
+      "sms": "SMS",
+      "integrations": "Integrationen",
+      "system": "System",
+      "preferences": "Einstellungen"
+    },
+    "email": {
+      "title": "E-Mail-Konfiguration",
+      "description": "SMTP-Einstellungen und E-Mail-Vorlagen konfigurieren",
+      "enabled": "Aktiviert",
+      "disabled": "Deaktiviert",
+      "enableEmailNotifications": "E-Mail-Benachrichtigungen aktivieren",
+      "enableEmailDescription": "Benachrichtigungen per E-Mail senden",
+      "smtpServerSettings": "SMTP-Server-Einstellungen",
+      "smtpHost": "SMTP-Host",
+      "smtpPort": "SMTP-Port",
+      "username": "Benutzername",
+      "password": "Passwort",
+      "passwordPlaceholder": "SMTP-Passwort eingeben",
+      "encryption": "Verschlüsselung",
+      "fromEmail": "Absender-E-Mail-Adresse",
+      "fromName": "Absendername",
+      "testEmail": "Test-E-Mail",
+      "testEmailDescription": "Test-E-Mail senden, um SMTP-Konfiguration zu überprüfen",
+      "sendTestEmail": "Test-E-Mail senden",
+      "testRecipient": "Test-Empfänger",
+      "testRecipientPlaceholder": "E-Mail-Adresse für Test eingeben",
+      "encryptionTypes": {
+        "none": "Keine",
+        "tls": "TLS",
+        "ssl": "SSL"
+      },
+      "templates": {
+        "title": "E-Mail-Vorlagen",
+        "description": "E-Mail-Benachrichtigungsvorlagen anpassen",
+        "securityAlert": "Sicherheitswarnung",
+        "systemHealth": "Systemgesundheit",
+        "userActivity": "Benutzeraktivität",
+        "passwordReset": "Passwort zurücksetzen",
+        "accountLocked": "Konto gesperrt",
+        "newUser": "Neuer Benutzer Willkommen"
+      }
+    },
+    "push": {
+      "title": "Push-Benachrichtigungen",
+      "description": "Web-Push-Benachrichtigungen konfigurieren",
+      "comingSoon": "Demnächst",
+      "comingSoonDescription": "Push-Benachrichtigungskonfiguration wird in der nächsten Version verfügbar sein."
+    },
+    "sms": {
+      "title": "SMS-Benachrichtigungen",
+      "description": "SMS-Benachrichtigungen mit Twilio oder AWS SNS konfigurieren",
+      "enterprise": "Enterprise",
+      "enterpriseDescription": "SMS-Benachrichtigungen sind im Enterprise-Plan verfügbar."
+    },
+    "integrations": {
+      "title": "Drittanbieter-Integrationen",
+      "description": "Slack, Microsoft Teams und andere Integrationen konfigurieren",
+      "configureHere": "Integrationseinstellungen werden hier konfiguriert."
+    },
+    "system": {
+      "title": "System-Benachrichtigungen",
+      "description": "Browser- und System-Benachrichtigungseinstellungen konfigurieren",
+      "desktopNotifications": "Desktop-Benachrichtigungen",
+      "browserNotifications": "Browser-Benachrichtigungen",
+      "soundAlerts": "Ton-Benachrichtigungen",
+      "badgeNotifications": "Badge-Benachrichtigungen"
+    },
+    "preferences": {
+      "title": "Benachrichtigungseinstellungen",
+      "description": "Benachrichtigungsplanung und Prioritätseinstellungen konfigurieren",
+      "quietHours": "Ruhestunden",
+      "quietHoursDescription": "Nicht-kritische Benachrichtigungen während bestimmter Stunden deaktivieren",
+      "startTime": "Startzeit",
+      "endTime": "Endzeit"
+    },
+    "toast": {
+      "testEmailSent": "Test-E-Mail gesendet",
+      "testEmailSentDescription": "Test-E-Mail wurde erfolgreich gesendet.",
+      "testEmailFailed": "Test-E-Mail fehlgeschlagen",
+      "testEmailFailedDescription": "Test-E-Mail konnte nicht gesendet werden. Überprüfen Sie Ihre SMTP-Einstellungen."
+    }
+  },
+  "notificationPreferences": {
+    "title": "Benachrichtigungseinstellungen",
+    "description": "Konfigurieren Sie, wie und wann Sie Benachrichtigungen erhalten",
+    "reset": "Zurücksetzen",
+    "saveChanges": "Änderungen speichern",
+    "unsavedChanges": "Sie haben nicht gespeicherte Änderungen. Vergessen Sie nicht, Ihre Benachrichtigungseinstellungen zu speichern.",
+    "tabs": {
+      "channels": "Übertragungskanäle",
+      "types": "Benachrichtigungstypen",
+      "schedule": "Planung & Timing",
+      "advanced": "Erweiterte Einstellungen"
+    },
+    "channels": {
+      "title": "Übertragungskanäle",
+      "description": "Wählen Sie aus, wie Sie Benachrichtigungen erhalten möchten. In-App-Benachrichtigungen sind immer aktiviert.",
+      "inApp": "In-App-Benachrichtigungen",
+      "inAppDescription": "Benachrichtigungen im Admin-Panel anzeigen",
+      "email": "E-Mail-Benachrichtigungen",
+      "emailDescription": "Benachrichtigungen an Ihre E-Mail-Adresse senden",
+      "sms": "SMS-Benachrichtigungen",
+      "smsDescription": "Kritische Warnungen per SMS senden",
+      "alwaysEnabled": "Immer aktiviert"
+    },
+    "types": {
+      "title": "Benachrichtigungstypen",
+      "description": "Einstellungen für jeden Benachrichtigungstyp konfigurieren",
+      "security": "Sicherheitswarnungen",
+      "securityDescription": "Anmeldefehler, verdächtige Aktivitäten, Richtlinienverletzungen",
+      "system": "Systemgesundheit",
+      "systemDescription": "Systemfehler, Leistungsprobleme, Servicestatus",
+      "risk": "Risiko & Sicherheit",
+      "riskDescription": "Sicherheitsvorfälle, Risikoschwellenwerte-Warnungen",
+      "userActivity": "Benutzeraktivität",
+      "userActivityDescription": "Rollenänderungen, Kontomodifikationen",
+      "test": "Test",
+      "minimumSeverity": "Minimale Schwere",
+      "deliveryChannels": "Übertragungskanäle",
+      "onlyEnabledChannels": "Nur aktivierte Kanäle können ausgewählt werden",
+      "app": "App",
+      "email": "E-Mail",
+      "sms": "SMS"
+    },
+    "severity": {
+      "low": "Niedrig",
+      "medium": "Mittel",
+      "high": "Hoch",
+      "critical": "Kritisch"
+    },
+    "quietHours": {
+      "title": "Ruhestunden",
+      "description": "Nicht-kritische Benachrichtigungen während bestimmter Stunden deaktivieren",
+      "enable": "Ruhestunden aktivieren",
+      "startTime": "Startzeit",
+      "endTime": "Endzeit",
+      "timezone": "Zeitzone",
+      "timezones": {
+        "utc": "UTC",
+        "easternTime": "Ostzeit",
+        "centralTime": "Zentralzeit",
+        "mountainTime": "Bergzeit",
+        "pacificTime": "Pazifikzeit",
+        "london": "London",
+        "istanbul": "Istanbul"
+      }
+    },
+    "digest": {
+      "title": "Benachrichtigungszusammenfassung",
+      "description": "Erhalten Sie eine Zusammenfassung von Benachrichtigungen anstatt einzelner Warnungen",
+      "enable": "Zusammenfassungsmodus aktivieren",
+      "frequency": "Häufigkeit",
+      "deliveryTime": "Lieferzeit",
+      "frequencies": {
+        "daily": "Täglich",
+        "weekly": "Wöchentlich"
+      }
+    },
+    "advanced": {
+      "title": "Erweiterte Einstellungen",
+      "description": "Zusätzliche Benachrichtigungskonfigurationsoptionen",
+      "futureFeature": "Erweiterte Einstellungen werden in zukünftigen Versionen verfügbar sein. Zeigt derzeit Platzhalter-Konfigurationsoptionen.",
+      "autoMarkRead": "Benachrichtigungen automatisch als gelesen markieren",
+      "autoMarkReadDescription": "Benachrichtigungen nach dem Anzeigen automatisch als gelesen markieren",
+      "groupSimilar": "Ähnliche Benachrichtigungen gruppieren",
+      "groupSimilarDescription": "Ähnliche Benachrichtigungen in Gruppen zusammenfassen",
+      "retentionPeriod": "Aufbewahrungszeitraum",
+      "retentionPeriodDescription": "Wie lange gelesene Benachrichtigungen aufbewahrt werden sollen",
+      "retentionPlaceholder": "30 Tage"
+    },
+    "toast": {
+      "settingsSaved": "Benachrichtigungseinstellungen erfolgreich gespeichert",
+      "settingsReset": "Einstellungen auf Standardwerte zurückgesetzt",
+      "saveError": "Benachrichtigungseinstellungen konnten nicht gespeichert werden",
+      "testNotification": "Test-{type}-Benachrichtigung gesendet!"
+    }
+  },
+  "healthMonitoring": {
+    "title": "Systemüberwachungsschwellenwerte",
+    "description": "Systemüberwachungsschwellenwerte und Warnsystem konfigurieren",
+    "enabled": "Aktiviert",
+    "disabled": "Deaktiviert",
+    "enableHealthMonitoring": "Systemüberwachung aktivieren",
+    "enableHealthMonitoringDescription": "Systemressourcen und Leistungsmetriken überwachen",
+    "alertThresholds": "Warnschwellenwerte",
+    "monitoringConfiguration": "Überwachungskonfiguration",
+    "cpuUsage": "CPU-Auslastung (%)",
+    "memoryUsage": "Speicherverbrauch (%)",
+    "diskUsage": "Festplattennutzung (%)",
+    "responseTime": "Antwortzeit (ms)",
+    "warning": "Warnung:",
+    "critical": "Kritisch:",
+    "checkInterval": "Prüfintervall (Sekunden)",
+    "dataRetention": "Datenaufbewahrung (Tage)",
+    "enableAlerting": "Warnsystem aktivieren",
+    "units": {
+      "percentage": "%",
+      "milliseconds": "ms"
+    }
+  },
+  "dataManagement": {
+    "backup": {
+      "title": "Datensicherung und Export",
+      "description": "Automatische Sicherung und Datenexportoptionen konfigurieren",
+      "enableAutomatedBackups": "Automatische Sicherungen aktivieren",
+      "enableAutomatedBackupsDescription": "Systemdaten in bestimmten Intervallen automatisch sichern",
+      "backupFrequency": "Sicherungsfrequenz",
+      "retentionPeriod": "Aufbewahrungszeitraum (Tage)",
+      "enableCompression": "Komprimierung aktivieren",
+      "enableEncryption": "Verschlüsselung aktivieren",
+      "manualDataExport": "Manueller Datenexport",
+      "manualDataExportDescription": "Alle Systemdaten für Sicherung oder Migration exportieren",
+      "exportData": "Daten exportieren",
+      "importData": "Daten importieren",
+      "importDataDescription": "Daten aus Sicherungs- oder Migrationsdatei importieren",
+      "frequencies": {
+        "hourly": "Stündlich",
+        "daily": "Täglich",
+        "weekly": "Wöchentlich",
+        "monthly": "Monatlich"
+      }
+    },
+    "cache": {
+      "title": "Redis-Cache-Verwaltung",
+      "description": "Redis-Cache-Einstellungen konfigurieren und verwalten",
+      "active": "Aktiv",
+      "inactive": "Inaktiv",
+      "enableRedisCache": "Redis-Cache aktivieren",
+      "enableRedisCacheDescription": "Redis für Anwendungscaching verwenden",
+      "defaultTtl": "Standard-TTL (Sekunden)",
+      "maxCacheSize": "Maximale Cache-Größe",
+      "cleanupInterval": "Bereinigungsintervall (Sekunden)",
+      "clearCache": "Cache leeren",
+      "clearCacheDescription": "Alle Cache-Daten sofort löschen"
+    },
+    "cleanup": {
+      "title": "Datenbereinigung und Wartung",
+      "description": "Automatische Datenbereinigung und Wartungsaufgaben konfigurieren",
+      "enableAutomaticCleanup": "Automatische Bereinigung aktivieren",
+      "enableAutomaticCleanupDescription": "Alte Daten und temporäre Dateien automatisch bereinigen",
+      "logRetention": "Protokollaufbewahrung (Tage)",
+      "cleanTemporaryFiles": "Temporäre Dateien bereinigen",
+      "cleanExpiredSessions": "Abgelaufene Sitzungen bereinigen"
+    },
+    "toast": {
+      "exportCompleted": "Export abgeschlossen",
+      "exportCompletedDescription": "Systemdaten wurden erfolgreich exportiert.",
+      "exportFailed": "Export fehlgeschlagen",
+      "exportFailedDescription": "Systemdaten konnten nicht exportiert werden.",
+      "cacheCleared": "Cache geleert",
+      "cacheClearedDescription": "Redis-Cache wurde erfolgreich geleert.",
+      "clearFailed": "Leerung fehlgeschlagen",
+      "clearFailedDescription": "Cache konnte nicht geleert werden."
+    }
+  },
+  "auditSettings": {
+    "title": "Audit-Protokoll-Konfiguration",
+    "description": "Umfassende Audit-Protokollierung für Sicherheit und Compliance konfigurieren",
+    "enabled": "Aktiviert",
+    "disabled": "Deaktiviert",
+    "enableAuditLogging": "Audit-Protokollierung aktivieren",
+    "enableAuditLoggingDescription": "Alle Systemaktivitäten für Sicherheitsüberwachung und Compliance protokollieren",
+    "general": {
+      "title": "Allgemeine Einstellungen",
+      "logLevel": "Protokollstufe",
+      "retentionPeriod": "Aufbewahrungszeitraum (Tage)",
+      "enableCompression": "Komprimierung aktivieren",
+      "enableEncryption": "Verschlüsselung aktivieren",
+      "logLevels": {
+        "debug": "Debug",
+        "info": "Info",
+        "warn": "Warnung",
+        "error": "Fehler",
+        "critical": "Kritisch"
+      }
+    },
+    "events": {
+      "title": "Ereignistypen",
+      "userActions": "Benutzeraktionen",
+      "systemActions": "Systemaktionen",
+      "authenticationEvents": "Authentifizierungsereignisse",
+      "dataChanges": "Datenänderungen",
+      "configurationChanges": "Konfigurationsänderungen",
+      "errorEvents": "Fehlerereignisse",
+      "performanceMetrics": "Leistungsmetriken"
+    },
+    "storage": {
+      "title": "Speicherkonfiguration",
+      "storageLocation": "Speicherort",
+      "maxFileSize": "Maximale Dateigröße",
+      "rotationPolicy": "Rotationsrichtlinie",
+      "enableBackup": "Sicherung aktivieren",
+      "locations": {
+        "database": "Datenbank",
+        "file": "Dateisystem",
+        "both": "Beide"
+      },
+      "rotations": {
+        "hourly": "Stündlich",
+        "daily": "Täglich",
+        "weekly": "Wöchentlich",
+        "monthly": "Monatlich"
+      }
+    },
+    "alerts": {
+      "title": "Sicherheitswarnungen",
+      "failedLoginAttempts": "Fehlgeschlagene Anmeldeversuche",
+      "suspiciousActivity": "Verdächtige Aktivitäten",
+      "dataExfiltration": "Datenabfluss",
+      "configurationChanges": "Konfigurationsänderungen",
+      "thresholdBreaches": "Schwellenwert-Verletzungen"
+    }
+  },
+  "accessPolicySettings": {
+    "title": "Zugriffsrichtlinien-Verwaltung",
+    "description": "Rollenbasierte Zugriffskontrolle und Benutzerberechtigungen konfigurieren",
+    "rbacEnabled": "RBAC aktiviert",
+    "accessPolicyConfiguration": "Zugriffsrichtlinien-Konfiguration",
+    "detailedDescription": "Detaillierte RBAC-Einstellungen werden hier mit Benutzerrollen, Berechtigungen und Zugriffsrichtlinien implementiert.",
+    "addPolicy": "Richtlinie hinzufügen"
+  },
+  "notificationBell": {
+    "notifications": "Benachrichtigungen",
+    "markAllRead": "Alle als gelesen markieren",
+    "total": "gesamt",
+    "unread": "ungelesen",
+    "noNotifications": "Noch keine Benachrichtigungen",
+    "actionRequired": "Aktion erforderlich",
+    "settings": "Einstellungen",
+    "viewAll": "Alle anzeigen",
+    "toast": {
+      "loadFailed": "Benachrichtigungen konnten nicht geladen werden",
+      "markedAsRead": "Benachrichtigung als gelesen markiert",
+      "markReadFailed": "Konnte nicht als gelesen markiert werden",
+      "allMarkedAsRead": "Alle Benachrichtigungen als gelesen markiert",
+      "markAllFailed": "Konnte nicht alle als gelesen markieren"
+    },
+    "mockData": {
+      "criticalSecurityAlert": "Kritische Sicherheitswarnung",
+      "multipleFailedLogins": "Mehrere fehlgeschlagene Anmeldeversuche in den letzten 5 Minuten erkannt",
+      "systemHealthWarning": "Systemgesundheit-Warnung",
+      "highCpuUsage": "Server-CPU-Auslastung überschritt 85%",
+      "newAdminUserCreated": "Neuer Admin-Benutzer erstellt",
+      "userGrantedAdmin": "Benutzer Mike Chen wurden Admin-Rechte gewährt",
+      "backupCompleted": "Sicherung abgeschlossen",
+      "dailyBackupSuccess": "Tägliche Datenbanksicherung erfolgreich abgeschlossen"
     }
   }
 }
