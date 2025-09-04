@@ -881,6 +881,70 @@
       "options": {
         "simulateBeforeSave": "Simulate before saving"
       }
+    },
+    "policyStats": {
+      "title": "Policy Statistics",
+      "description": "View policy performance and usage statistics for the {timeRange} period",
+      "timeRanges": {
+        "last24Hours": "Last 24 Hours",
+        "last7Days": "Last 7 Days",
+        "last30Days": "Last 30 Days",
+        "last90Days": "Last 90 Days"
+      },
+      "buttons": {
+        "refresh": "Refresh",
+        "export": "Export"
+      },
+      "tabs": {
+        "overview": "Overview",
+        "performance": "Performance",
+        "trends": "Trends",
+        "security": "Security"
+      },
+      "metrics": {
+        "totalApplications": "Total Applications",
+        "successRate": "Success Rate",
+        "denials": "Denials",
+        "challenges": "Challenges",
+        "percentOfTotal": "{percent}% of total"
+      },
+      "charts": {
+        "policyTypeDistribution": "Policy Type Distribution",
+        "topPerformingPolicies": "Top Performing Policies"
+      },
+      "performance": {
+        "title": "Policy Performance",
+        "description": "Detailed performance metrics for each policy",
+        "applications": "{count} applications",
+        "success": "{rate}% success",
+        "ratings": {
+          "excellent": "Excellent",
+          "good": "Good",
+          "needsAttention": "Needs Attention"
+        },
+        "table": {
+          "policy": "Policy",
+          "type": "Type",
+          "status": "Status",
+          "applications": "Applications",
+          "successRate": "Success Rate",
+          "denials": "Denials",
+          "challenges": "Challenges",
+          "errors": "Errors",
+          "lastApplied": "Last Applied"
+        }
+      },
+      "trends": {
+        "title": "Trend Analysis",
+        "comingSoon": "Trend analysis features coming soon"
+      },
+      "security": {
+        "title": "Security Overview",
+        "comingSoon": "Security overview features coming soon"
+      },
+      "common": {
+        "never": "Never"
+      }
     }
   },
   "access": {
@@ -919,6 +983,70 @@
       "analytics": "Analytics",
       "audit": "Audit",
       "keycloak": "Keycloak"
+    },
+    "policyStats": {
+      "title": "Policy Statistics",
+      "description": "View policy performance and usage statistics for the {timeRange} period",
+      "timeRanges": {
+        "last24Hours": "Last 24 Hours",
+        "last7Days": "Last 7 Days",
+        "last30Days": "Last 30 Days",
+        "last90Days": "Last 90 Days"
+      },
+      "buttons": {
+        "refresh": "Refresh",
+        "export": "Export"
+      },
+      "tabs": {
+        "overview": "Overview",
+        "performance": "Performance",
+        "trends": "Trends",
+        "security": "Security"
+      },
+      "metrics": {
+        "totalApplications": "Total Applications",
+        "successRate": "Success Rate",
+        "denials": "Denials",
+        "challenges": "Challenges",
+        "percentOfTotal": "{percent}% of total"
+      },
+      "charts": {
+        "policyTypeDistribution": "Policy Type Distribution",
+        "topPerformingPolicies": "Top Performing Policies"
+      },
+      "performance": {
+        "title": "Policy Performance",
+        "description": "Detailed performance metrics for each policy",
+        "applications": "{count} applications",
+        "success": "{rate}% success",
+        "ratings": {
+          "excellent": "Excellent",
+          "good": "Good",
+          "needsAttention": "Needs Attention"
+        },
+        "table": {
+          "policy": "Policy",
+          "type": "Type",
+          "status": "Status",
+          "applications": "Applications",
+          "successRate": "Success Rate",
+          "denials": "Denials",
+          "challenges": "Challenges",
+          "errors": "Errors",
+          "lastApplied": "Last Applied"
+        }
+      },
+      "trends": {
+        "title": "Trend Analysis",
+        "comingSoon": "Trend analysis features coming soon"
+      },
+      "security": {
+        "title": "Security Overview",
+        "comingSoon": "Security overview features coming soon"
+      },
+      "common": {
+        "never": "Never"
+      }
     }
   },
   "audit": {
