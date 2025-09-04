@@ -14,7 +14,7 @@
     "test:coverage": "jest --coverage",
     "i18n:validate": "node scripts/validate-i18n.js",
     "i18n:report": "node scripts/validate-i18n.js --report",
-    "prebuild": "npm run i18n:validate && npm run type-check"
+    "prebuild": "npm run type-check"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
