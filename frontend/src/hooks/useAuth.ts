@@ -87,9 +87,12 @@ export const useAuth = create<AuthState>()(
           }
 
           // Mock token storage
+          const token = 'mock-jwt-token-' + Date.now();
           if (typeof window !== 'undefined') {
-            localStorage.setItem('access_token', 'mock-jwt-token-' + Date.now());
+            localStorage.setItem('access_token', token);
             localStorage.setItem('refresh_token', 'mock-refresh-token');
+            // Set cookie for middleware access
+            document.cookie = `access_token=${token}; path=/; max-age=86400; secure; samesite=strict`;
           }
           
           set({
@@ -127,6 +130,8 @@ export const useAuth = create<AuthState>()(
             localStorage.removeItem('access_token');
             localStorage.removeItem('refresh_token');
             localStorage.removeItem('auth-storage'); // Clear Zustand persist storage
+            // Clear cookie
+            document.cookie = 'access_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT;';
           }
           
           set({
@@ -173,6 +178,8 @@ export const useAuth = create<AuthState>()(
             localStorage.removeItem('access_token');
             localStorage.removeItem('refresh_token');
             localStorage.removeItem('auth-storage'); // Clear Zustand persist storage
+            // Clear cookie
+            document.cookie = 'access_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT;';
           }
           
           set({
@@ -235,6 +242,11 @@ export const useAuth = create<AuthState>()(
               roles: ['admin'],
               groups: ['administrators']
             };
+            
+            // Ensure cookie is set for middleware
+            if (typeof window !== 'undefined') {
+              document.cookie = `access_token=${token}; path=/; max-age=86400; secure; samesite=strict`;
+            }
             
             set({
               user: currentUser,

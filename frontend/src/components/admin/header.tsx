@@ -16,10 +16,12 @@ import {
 import { SidebarTrigger } from '@/components/ui/sidebar'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/hooks/useAuth'
+import { useTranslations } from 'next-intl'
 
 export function Header() {
   const router = useRouter()
   const { user, logout } = useAuth()
+  const t = useTranslations('common')
 
   const handleLogout = async () => {
     try {
@@ -56,7 +58,7 @@ export function Header() {
           <div className="relative">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
-              placeholder="Search users, logs, policies..."
+              placeholder={t('searchPlaceholder')}
               className="pl-9"
             />
           </div>
@@ -82,7 +84,7 @@ export function Header() {
                   <p className="text-sm font-medium">
                     {user?.firstName && user?.lastName 
                       ? `${user.firstName} ${user.lastName}` 
-                      : user?.username || 'User'}
+                      : user?.username || t('user')}
                   </p>
                   <p className="text-xs text-muted-foreground">
                     {user?.email || 'user@isguvenligi.com'}
@@ -92,16 +94,16 @@ export function Header() {
               <DropdownMenuSeparator />
               <DropdownMenuItem onClick={() => router.push('/profile')}>
                 <User className="mr-2 h-4 w-4" />
-                Profile
+                {t('profile')}
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => router.push('/admin/settings')}>
                 <Settings className="mr-2 h-4 w-4" />
-                Settings
+                {t('settings')}
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem onClick={handleLogout} className="text-destructive">
                 <LogOut className="mr-2 h-4 w-4" />
-                Logout
+                {t('logout')}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

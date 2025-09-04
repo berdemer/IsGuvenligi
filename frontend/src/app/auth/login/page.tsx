@@ -75,6 +75,15 @@ export default function LoginPage() {
         return;
       }
       
+      // Check for redirect parameter first
+      const urlParams = new URLSearchParams(window.location.search);
+      const redirectUrl = urlParams.get('redirect');
+      
+      if (redirectUrl) {
+        router.replace(redirectUrl);
+        return;
+      }
+      
       // Normal rol kontrolü
       const hasAdminAccess = user?.roles?.some(role => 
         ['admin', 'manager'].includes(role.toLowerCase())
