@@ -424,9 +424,34 @@
     "policySimulation": {
       "title": "Politika Simülasyonu",
       "description": "Farklı kullanıcı-kaynak kombinasyonlarıyla erişim politikalarınızın nasıl davrandığını test edin",
+      "buttons": {
+        "reset": "Sıfırla",
+        "running": "Çalışıyor",
+        "runSimulation": "Simülasyon Çalıştır",
+        "selectAll": "Tümünü Seç",
+        "clearAll": "Tümünü Temizle"
+      },
       "tabs": {
         "simulate": "Yeni Simülasyon",
-        "history": "Simülasyon Geçmişi"
+        "history": "Simülasyon Geçmişi",
+        "scenarios": "Senaryolar",
+        "customTest": "Özel Test",
+        "results": "Sonuçlar"
+      },
+      "scenarios": {
+        "title": "Test Senaryoları",
+        "description": "Politikalarınızı çeşitli kullanıcı senaryolarına karşı test etmek için önceden tanımlanmış senaryoları seçin.",
+        "selected": "{selected} / {total} senaryo seçildi",
+        "expected": "Beklenen"
+      },
+      "results": {
+        "status": {
+          "allow": "İzin Ver",
+          "deny": "Reddet",
+          "challenge": "Zorluk",
+          "unknown": "Bilinmiyor",
+          "failed": "Başarısız"
+        }
       },
       "parameters": {
         "title": "Simülasyon Parametreleri",
@@ -473,6 +498,24 @@
         "resource": "Kaynak",
         "result": "Sonuç",
         "timestamp": "Zaman Damgası"
+      },
+      "customTest": {
+        "title": "Özel Test",
+        "description": "Özelleştirilmiş test senaryolarınızı oluşturun ve çalıştırın",
+        "labels": {
+          "scenarioName": "Senaryo Adı",
+          "userEmail": "Kullanıcı E-postası",
+          "description": "Açıklama",
+          "ipAddress": "IP Adresi",
+          "location": "Konum",
+          "device": "Cihaz",
+          "expectedResult": "Beklenen Sonuç"
+        },
+        "placeholders": {
+          "scenarioName": "Test senaryosunun adını girin",
+          "scenarioDescription": "Test senaryosunun açıklamasını girin",
+          "selectResult": "Beklenen sonucu seçin"
+        }
       }
     },
     "policyAnalytics": {
