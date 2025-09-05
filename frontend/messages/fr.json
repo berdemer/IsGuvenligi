@@ -5,6 +5,7 @@
     "userMgmt": "Gestion des Utilisateurs",
     "users": "Utilisateurs",
     "roles": "Rôles",
+    "departments": "Départements",
     "auth": "Authentification",
     "oauthProviders": "Fournisseurs OAuth",
     "authPolicies": "Politiques d'Auth",

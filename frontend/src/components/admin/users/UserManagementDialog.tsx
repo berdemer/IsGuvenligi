@@ -6,14 +6,16 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from "@/components/ui/command"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Switch } from "@/components/ui/switch"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { UserPlus, Save, AlertTriangle, Mail, Phone, Shield, User, Building } from "lucide-react"
+import { UserPlus, Save, AlertTriangle, Mail, Phone, Shield, User, Building, Check, ChevronsUpDown } from "lucide-react"
+import { useDepartmentsStore } from '@/stores/departmentsStore'
 import toast from "react-hot-toast"
 
 interface User {
@@ -43,19 +45,17 @@ const AVAILABLE_ROLES = [
   { id: 'viewer', name: 'viewer', displayName: 'Read-Only User' },
 ]
 
-const DEPARTMENTS = [
-  'IT Department',
-  'Security Department', 
-  'Operations',
-  'Human Resources',
-  'Finance',
-  'Marketing',
-  'Engineering',
-  'Support'
-]
+// DEPARTMENTS will be loaded dynamically from store
 
 export function UserManagementDialog({ open, onOpenChange, user, onSave }: UserManagementDialogProps) {
   const t = useTranslations('users.dialog')
+  const { getActiveDepartments, departments } = useDepartmentsStore()
+  const activeDepartments = getActiveDepartments()
+  
+  // Debug: Log when departments change
+  useEffect(() => {
+    console.log('🏢 UserManagementDialog - Active departments updated:', activeDepartments.length, activeDepartments.map(d => d.name));
+  }, [activeDepartments])
   const [formData, setFormData] = useState<User>({
     email: user?.email || '',
     firstName: user?.firstName || '',
@@ -69,6 +69,7 @@ export function UserManagementDialog({ open, onOpenChange, user, onSave }: UserM
   })
   const [loading, setLoading] = useState(false)
   const [errors, setErrors] = useState<{[key: string]: string}>({})
+  const [departmentOpen, setDepartmentOpen] = useState(false)
 
   const isEdit = !!user?.id
 
@@ -330,22 +331,49 @@ export function UserManagementDialog({ open, onOpenChange, user, onSave }: UserM
 
               <div className="space-y-2">
                 <Label htmlFor="department">{t('fields.department')} *</Label>
-                <Select
-                  value={formData.department}
-                  onValueChange={(value) => setFormData(prev => ({ ...prev, department: value }))}
-                  disabled={loading}
-                >
-                  <SelectTrigger className={errors.department ? "border-red-500" : ""}>
-                    <SelectValue placeholder={t('placeholders.department')} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {DEPARTMENTS.map(dept => (
-                      <SelectItem key={dept} value={dept}>
-                        {t(`departments.${dept.toLowerCase().replace(/\s+/g, '_')}`, { fallback: dept })}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                <Popover open={departmentOpen} onOpenChange={setDepartmentOpen}>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="outline"
+                      role="combobox"
+                      aria-expanded={departmentOpen}
+                      className={`w-full justify-between ${errors.department ? "border-red-500" : ""}`}
+                      disabled={loading}
+                    >
+                      {formData.department || t('placeholders.department')}
+                      <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0" align="start">
+                    <Command>
+                      <CommandInput 
+                        placeholder={t('placeholders.searchDepartment') || "Departman ara..."} 
+                        className="h-9"
+                      />
+                      <CommandEmpty>Departman bulunamadı.</CommandEmpty>
+                      <CommandGroup className="max-h-64 overflow-auto">
+                        {activeDepartments.map((dept) => (
+                          <CommandItem
+                            key={dept.id}
+                            value={dept.name}
+                            onSelect={(value: string) => {
+                              setFormData(prev => ({ ...prev, department: value === formData.department ? "" : value }))
+                              setDepartmentOpen(false)
+                            }}
+                          >
+                            <Check
+                              className={`mr-2 h-4 w-4 ${
+                                formData.department === dept.name ? "opacity-100" : "opacity-0"
+                              }`}
+                            />
+                            <Building className="mr-2 h-4 w-4 text-gray-500" />
+                            {dept.name}
+                          </CommandItem>
+                        ))}
+                      </CommandGroup>
+                    </Command>
+                  </PopoverContent>
+                </Popover>
                 {errors.department && (
                   <p className="text-sm text-red-500">{errors.department}</p>
                 )}

@@ -21,6 +21,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Checkbox } from '@/components/ui/checkbox';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useUsersStore, type User } from '@/stores/usersStore';
+import { useDepartmentsStore } from '@/stores/departmentsStore';
 import toast from 'react-hot-toast';
 
 // UserDialogData type for the dialog component compatibility
@@ -48,6 +49,12 @@ export default function UsersPage() {
     deleteUser, 
     searchUsers 
   } = useUsersStore();
+  
+  const { 
+    incrementEmployeeCount, 
+    decrementEmployeeCount, 
+    updateEmployeeCount 
+  } = useDepartmentsStore();
   const [loading, setLoading] = useState(true);
   const [userDialogOpen, setUserDialogOpen] = useState(false);
   const [roleDialogOpen, setRoleDialogOpen] = useState(false);
@@ -123,6 +130,11 @@ export default function UsersPage() {
     const count = selectedUsers.size;
     if (confirm(`Are you sure you want to delete ${count} selected users?`)) {
       selectedUsers.forEach(userId => {
+        // Find user to get department info before deleting
+        const user = users.find(u => u.id === userId);
+        if (user && user.department) {
+          decrementEmployeeCount(user.department);
+        }
         deleteUser(userId);
       });
       setSelectedUsers(new Set());
@@ -326,7 +338,7 @@ export default function UsersPage() {
                   />
                 </TableHead>
                 <TableHead>{t('user')}</TableHead>
-                <TableHead>{t('roles')}</TableHead>
+                <TableHead>{t('rolesHeader')}</TableHead>
                 <TableHead>{t('status')}</TableHead>
                 <TableHead>{t('lastLogin')}</TableHead>
                 <TableHead>{t('loginCount')}</TableHead>
@@ -448,6 +460,10 @@ export default function UsersPage() {
                           className="text-red-600"
                           onClick={() => {
                             if (confirm(`Are you sure you want to delete ${user.fullName}?`)) {
+                              // Decrement department employee count
+                              if (user.department) {
+                                decrementEmployeeCount(user.department);
+                              }
                               deleteUser(user.id);
                               toast.success('User deleted successfully');
                             }
@@ -516,6 +532,9 @@ export default function UsersPage() {
           try {
             if (selectedUser && selectedUser.id) {
               // Update existing user
+              const oldDepartment = selectedUser.department;
+              const newDepartment = updatedUser.department;
+              
               updateUser(selectedUser.id, {
                 email: updatedUser.email,
                 firstName: updatedUser.firstName,
@@ -526,6 +545,11 @@ export default function UsersPage() {
                 isActive: updatedUser.isActive,
                 roles: updatedUser.roles
               });
+              
+              // Update department employee counts if department changed
+              console.log('🔄 Updating employee count:', { oldDepartment, newDepartment });
+              updateEmployeeCount(oldDepartment, newDepartment);
+              
               toast.success('User updated successfully');
             } else {
               // Add new user
@@ -539,6 +563,13 @@ export default function UsersPage() {
                 isActive: updatedUser.isActive,
                 roles: updatedUser.roles
               });
+              
+              // Increment employee count for new user's department
+              console.log('➕ Adding user to department:', updatedUser.department);
+              if (updatedUser.department) {
+                incrementEmployeeCount(updatedUser.department);
+              }
+              
               toast.success('User created successfully');
             }
             setUserDialogOpen(false);

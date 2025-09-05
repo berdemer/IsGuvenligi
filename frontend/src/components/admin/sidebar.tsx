@@ -52,6 +52,7 @@ export function Sidebar() {
       items: [
         { title: t('users'), href: '/admin/users' },
         { title: t('roles'), href: '/admin/roles' },
+        { title: t('departments'), href: '/admin/departments' },
       ],
     },
     {

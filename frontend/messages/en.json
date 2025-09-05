@@ -5,6 +5,7 @@
     "userMgmt": "User Management",
     "users": "Users",
     "roles": "Roles",
+    "departments": "Departments",
     "auth": "Authentication",
     "oauthProviders": "OAuth Providers",
     "authPolicies": "Auth Policies",

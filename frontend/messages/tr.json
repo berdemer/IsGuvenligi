@@ -5,6 +5,7 @@
     "userMgmt": "Kullanıcı Yönetimi",
     "users": "Kullanıcılar",
     "roles": "Roller",
+    "departments": "Departmanlar",
     "auth": "Kimlik Doğrulama",
     "oauthProviders": "OAuth Sağlayıcılar",
     "authPolicies": "Kimlik Politikaları",
@@ -3146,7 +3147,7 @@
     "viewer": "Görüntüleyici",
     "delete": "Sil",
     "user": "Kullanıcı",
-    "roles": "Roller",
+    "rolesHeader": "Roller",
     "lastLogin": "Son Giriş",
     "loginCount": "Giriş Sayısı",
     "registrationDate": "Kayıt Tarihi",
@@ -3182,7 +3183,8 @@
         "email": "ornek@email.com",
         "username": "kullanici_adi",
         "phone": "+90 555 123 45 67",
-        "department": "Departman seçin"
+        "department": "Departman seçin",
+        "searchDepartment": "Departman ara..."
       },
       "departments": {
         "it_department": "IT Departmanı",
@@ -3255,6 +3257,82 @@
         "manager": "Güvenlik politikalarını yönetir ve raporları görüntüler",
         "viewer": "Sistem verilerine sadece görüntüleme erişimi"
       }
+    }
+  },
+  "departments": {
+    "title": "Departmanlar",
+    "description": "Organizasyonel departmanları ve bilgilerini yönetin",
+    "newDepartment": "Yeni Departman",
+    "search": "Departman ara...",
+    "totalDepartments": "Toplam Departman",
+    "activeDepartments": "Aktif Departmanlar",
+    "totalEmployees": "Toplam Çalışan",
+    "selected": "Seçili",
+    "status": "Durum",
+    "allStatus": "Tüm Durumlar",
+    "active": "Aktif",
+    "inactive": "Pasif",
+    "department": "Departman",
+    "manager": "Yönetici",
+    "employees": "Çalışanlar",
+    "created": "Oluşturulma",
+    "noManagerAssigned": "Atanmış yönetici yok",
+    "edit": "Düzenle",
+    "deactivate": "Devre Dışı Bırak",
+    "activate": "Etkinleştir",
+    "delete": "Sil",
+    "noDepartmentsFound": "Departman bulunamadı",
+    "noDepartmentsMessage": "Belirtilen kriterlere uygun departman bulunmuyor.",
+    "deleteConfirm": "'{name}' departmanını silmek istediğinizden emin misiniz?",
+    "deleteMultipleConfirm": "{count} seçili departmanı silmek istediğinizden emin misiniz?",
+    "departmentDeleted": "Departman başarıyla silindi",
+    "departmentsDeleted": "{count} departman başarıyla silindi",
+    "departmentActivated": "Departman etkinleştirildi",
+    "departmentDeactivated": "Departman devre dışı bırakıldı",
+    "dialog": {
+      "editTitle": "Departmanı Düzenle",
+      "createTitle": "Yeni Departman Oluştur",
+      "editDescription": "Departman bilgilerini güncelleyin",
+      "createDescription": "Yeni bir departman oluşturun",
+      "basicInformation": "Temel Bilgiler",
+      "fields": {
+        "name": "Departman Adı",
+        "description": "Açıklama", 
+        "managerEmail": "Yönetici E-postası"
+      },
+      "placeholders": {
+        "name": "Departman adını girin",
+        "description": "Departmanın görevlerini ve sorumluluklarını açıklayın",
+        "managerEmail": "manager@company.com"
+      },
+      "status": {
+        "title": "Departman Durumu",
+        "active": "Aktif Departman",
+        "description": "Departman aktif ve çalışanlar atanabilir"
+      },
+      "preview": {
+        "title": "Departman Önizlemesi",
+        "defaultName": "Yeni Departman",
+        "defaultDescription": "Departman açıklaması",
+        "employees": "çalışan"
+      },
+      "validation": {
+        "nameRequired": "Departman adı gereklidir",
+        "nameMin": "Departman adı en az 2 karakter olmalıdır",
+        "descriptionRequired": "Açıklama gereklidir",
+        "descriptionMin": "Açıklama en az 10 karakter olmalıdır",
+        "managerEmailValid": "Geçerli bir e-posta adresi girin",
+        "fixErrors": "Lütfen hataları düzeltin"
+      },
+      "cancel": "İptal",
+      "create": "Oluştur",
+      "update": "Güncelle",
+      "creating": "Oluşturuluyor...",
+      "updating": "Güncelleniyor...",
+      "createSuccess": "Departman başarıyla oluşturuldu",
+      "updateSuccess": "Departman başarıyla güncellendi",
+      "createError": "Departman oluşturulurken hata oluştu",
+      "updateError": "Departman güncellenirken hata oluştu"
     }
   }
 }
