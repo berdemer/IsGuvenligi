@@ -201,6 +201,26 @@
       "updateSuccess": "User updated successfully",
       "createError": "Error creating user",
       "updateError": "Error updating user"
+    },
+    "roles": {
+      "title": "Role Management",
+      "description": "Manage user system roles",
+      "updateSuccess": "Roles updated successfully",
+      "updateError": "Error updating roles",
+      "active": "Active",
+      "inactive": "Inactive",
+      "currentRoles": "Current Roles",
+      "selected": "selected",
+      "availableRoles": "Available Roles",
+      "noRolesWarning": "User must have at least one role assigned",
+      "cancel": "Cancel",
+      "saveChanges": "Save Changes",
+      "updating": "Updating...",
+      "roleDescriptions": {
+        "admin": "Full system access with all permissions",
+        "manager": "Manage security policies and view reports",
+        "viewer": "View-only access to system data"
+      }
     }
   },
   "roles": {

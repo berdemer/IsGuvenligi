@@ -43,7 +43,28 @@
     "status": "Status",
     "createdAt": "Erstellt am",
     "lastLogin": "Letzter Login",
-    "actions": "Aktionen"
+    "actions": "Aktionen",
+    "manageRoles": "Rollen verwalten",
+    "roles": {
+      "title": "Rollenverwaltung",
+      "description": "Benutzerrollensystem verwalten",
+      "updateSuccess": "Rollen erfolgreich aktualisiert",
+      "updateError": "Fehler beim Aktualisieren der Rollen",
+      "active": "Aktiv",
+      "inactive": "Inaktiv",
+      "currentRoles": "Aktuelle Rollen",
+      "selected": "ausgewählt",
+      "availableRoles": "Verfügbare Rollen",
+      "noRolesWarning": "Benutzer muss mindestens eine Rolle haben",
+      "cancel": "Abbrechen",
+      "saveChanges": "Änderungen speichern",
+      "updating": "Aktualisierung...",
+      "roleDescriptions": {
+        "admin": "Vollzugriff mit allen Berechtigungen",
+        "manager": "Sicherheitsrichtlinien verwalten und Berichte anzeigen",
+        "viewer": "Nur-Lese-Zugriff auf Systemdaten"
+      }
+    }
   },
   "roles": {
     "title": "Rollenverwaltung",

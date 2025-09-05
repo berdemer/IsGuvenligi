@@ -3235,6 +3235,26 @@
       "updateSuccess": "Kullanıcı başarıyla güncellendi",
       "createError": "Kullanıcı oluşturulurken hata oluştu",
       "updateError": "Kullanıcı güncellenirken hata oluştu"
+    },
+    "roles": {
+      "title": "Rol Yönetimi",
+      "description": "Kullanıcının sistem rollerini yönetin",
+      "updateSuccess": "Roller başarıyla güncellendi",
+      "updateError": "Roller güncellenirken bir hata oluştu",
+      "active": "Aktif",
+      "inactive": "Pasif",
+      "currentRoles": "Mevcut Roller",
+      "selected": "seçili",
+      "availableRoles": "Mevcut Roller",
+      "noRolesWarning": "Kullanıcının en az bir rolü olması gerekir",
+      "cancel": "İptal",
+      "saveChanges": "Değişiklikleri Kaydet",
+      "updating": "Güncelleniyor...",
+      "roleDescriptions": {
+        "admin": "Tüm izinlerle tam sistem erişimi",
+        "manager": "Güvenlik politikalarını yönetir ve raporları görüntüler",
+        "viewer": "Sistem verilerine sadece görüntüleme erişimi"
+      }
     }
   }
 }

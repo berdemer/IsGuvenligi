@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useTranslations } from "next-intl"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
@@ -71,6 +71,41 @@ export function UserManagementDialog({ open, onOpenChange, user, onSave }: UserM
   const [errors, setErrors] = useState<{[key: string]: string}>({})
 
   const isEdit = !!user?.id
+
+  // Update form data when user prop changes
+  useEffect(() => {
+    console.log('Dialog useEffect triggered - user:', user, 'open:', open);
+    if (user) {
+      const newFormData = {
+        email: user.email || '',
+        firstName: user.firstName || '',
+        lastName: user.lastName || '',
+        username: user.username || '',
+        department: user.department || '',
+        phone: user.phone || '',
+        isActive: user.isActive ?? true,
+        roles: user.roles || [],
+        ...user
+      };
+      console.log('Setting form data:', newFormData);
+      setFormData(newFormData);
+    } else {
+      // Reset form for new user
+      console.log('Resetting form for new user');
+      setFormData({
+        email: '',
+        firstName: '',
+        lastName: '',
+        username: '',
+        department: '',
+        phone: '',
+        isActive: true,
+        roles: [],
+      });
+    }
+    // Clear errors when user changes
+    setErrors({});
+  }, [user, open])
 
   const validateForm = () => {
     const newErrors: {[key: string]: string} = {}
@@ -321,7 +356,7 @@ export function UserManagementDialog({ open, onOpenChange, user, onSave }: UserM
           <Separator />
 
           {/* Role Assignment */}
-          <div className="space-y-4">
+          <div className="space-y-4" data-role-section>
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-medium">{t('roles.title')}</h3>
               <Badge variant="outline">

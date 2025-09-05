@@ -43,7 +43,28 @@
     "status": "Statut",
     "createdAt": "Créé le",
     "lastLogin": "Dernière Connexion",
-    "actions": "Actions"
+    "actions": "Actions",
+    "manageRoles": "Gérer les Rôles",
+    "roles": {
+      "title": "Gestion des Rôles",
+      "description": "Gérer les rôles système utilisateur",
+      "updateSuccess": "Rôles mis à jour avec succès",
+      "updateError": "Erreur lors de la mise à jour des rôles",
+      "active": "Actif",
+      "inactive": "Inactif",
+      "currentRoles": "Rôles Actuels",
+      "selected": "sélectionné",
+      "availableRoles": "Rôles Disponibles",
+      "noRolesWarning": "L'utilisateur doit avoir au moins un rôle assigné",
+      "cancel": "Annuler",
+      "saveChanges": "Enregistrer les Modifications",
+      "updating": "Mise à jour...",
+      "roleDescriptions": {
+        "admin": "Accès système complet avec toutes les permissions",
+        "manager": "Gérer les politiques de sécurité et voir les rapports",
+        "viewer": "Accès en lecture seule aux données système"
+      }
+    }
   },
   "roles": {
     "title": "Gestion des Rôles",

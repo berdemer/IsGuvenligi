@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { Plus, Search, Filter, Edit, Trash2, MoreHorizontal, UserPlus, UserMinus, Shield } from 'lucide-react';
+import { Plus, Search, Filter, Edit, Trash2, MoreHorizontal, UserPlus, UserMinus, Shield, RefreshCw } from 'lucide-react';
 import { UserManagementDialog } from '@/components/admin/users/UserManagementDialog';
+import { RoleManagementDialog } from '@/components/admin/users/RoleManagementDialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -19,24 +20,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { useUsersStore, type User } from '@/stores/usersStore';
+import toast from 'react-hot-toast';
 
-interface User {
-  id: string;
-  email: string;
-  fullName: string;
-  isActive: boolean;
-  createdAt: string;
-  updatedAt: string;
-  roles?: Array<{
-    id: string;
-    name: string;
-    displayName: string;
-  }>;
-  lastLoginAt?: string;
-  loginCount?: number;
-}
-
-interface UserDialogData {
+// UserDialogData type for the dialog component compatibility
+type UserDialogData = {
   id?: string;
   email: string;
   firstName: string;
@@ -48,116 +36,70 @@ interface UserDialogData {
   roles: string[];
   createdAt?: string;
   updatedAt?: string;
-}
-
-interface UsersResponse {
-  data: User[];
-  total: number;
-  page: number;
-  limit: number;
-  totalPages: number;
-  hasNextPage: boolean;
-  hasPrevPage: boolean;
-}
+};
 
 export default function UsersPage() {
   const t = useTranslations('users');
-  const [users, setUsers] = useState<User[]>([]);
+  const { 
+    users, 
+    initializeUsers, 
+    addUser, 
+    updateUser, 
+    deleteUser, 
+    searchUsers 
+  } = useUsersStore();
   const [loading, setLoading] = useState(true);
   const [userDialogOpen, setUserDialogOpen] = useState(false);
+  const [roleDialogOpen, setRoleDialogOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState<UserDialogData | undefined>();
+  const [selectedUserForRole, setSelectedUserForRole] = useState<User | null>(null);
   const [selectedUsers, setSelectedUsers] = useState<Set<string>>(new Set());
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [roleFilter, setRoleFilter] = useState<string>('all');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [total, setTotal] = useState(0);
+  const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
 
-  // Mock data - In real implementation, this would come from API
+  // Initialize users from localStorage on component mount
   useEffect(() => {
-    // Simulate API call
-    const mockUsers: User[] = [
-      {
-        id: '1',
-        email: 'admin@isguvenligi.com',
-        fullName: 'System Administrator',
-        isActive: true,
-        createdAt: '2024-01-15T10:00:00.000Z',
-        updatedAt: '2024-08-24T10:00:00.000Z',
-        roles: [
-          { id: '1', name: 'admin', displayName: 'Administrator' }
-        ],
-        lastLoginAt: '2024-08-24T09:30:00.000Z',
-        loginCount: 145
-      },
-      {
-        id: '2',
-        email: 'manager@isguvenligi.com',
-        fullName: 'Security Manager',
-        isActive: true,
-        createdAt: '2024-01-20T10:00:00.000Z',
-        updatedAt: '2024-08-24T10:00:00.000Z',
-        roles: [
-          { id: '2', name: 'manager', displayName: 'Manager' }
-        ],
-        lastLoginAt: '2024-08-23T16:45:00.000Z',
-        loginCount: 89
-      },
-      {
-        id: '3',
-        email: 'analyst@isguvenligi.com',
-        fullName: 'Security Analyst',
-        isActive: true,
-        createdAt: '2024-02-01T10:00:00.000Z',
-        updatedAt: '2024-08-20T10:00:00.000Z',
-        roles: [
-          { id: '3', name: 'viewer', displayName: 'Viewer' }
-        ],
-        lastLoginAt: '2024-08-24T08:15:00.000Z',
-        loginCount: 67
-      },
-      {
-        id: '4',
-        email: 'inactive@isguvenligi.com',
-        fullName: 'Inactive User',
-        isActive: false,
-        createdAt: '2024-03-15T10:00:00.000Z',
-        updatedAt: '2024-07-10T10:00:00.000Z',
-        roles: [
-          { id: '3', name: 'viewer', displayName: 'Viewer' }
-        ],
-        lastLoginAt: '2024-07-10T14:20:00.000Z',
-        loginCount: 23
-      }
-    ];
+    setLoading(true);
+    try {
+      // Initialize users from localStorage or default users
+      initializeUsers();
+    } catch (error) {
+      console.error('Error initializing users:', error);
+      toast.error('Failed to load users');
+    } finally {
+      setLoading(false);
+    }
+  }, [initializeUsers]);
 
-    // Filter mock data based on current filters
-    let filteredUsers = mockUsers;
+  // Filter users based on search and filters
+  useEffect(() => {
+    let filtered = users;
 
-    if (searchQuery) {
-      filteredUsers = filteredUsers.filter(user => 
-        user.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        user.fullName.toLowerCase().includes(searchQuery.toLowerCase())
-      );
+    // Apply search filter
+    if (searchQuery.trim()) {
+      filtered = searchUsers(searchQuery);
     }
 
+    // Apply status filter
     if (statusFilter !== 'all') {
       const isActive = statusFilter === 'active';
-      filteredUsers = filteredUsers.filter(user => user.isActive === isActive);
+      filtered = filtered.filter(user => user.isActive === isActive);
     }
 
+    // Apply role filter
     if (roleFilter !== 'all') {
-      filteredUsers = filteredUsers.filter(user => 
-        user.roles?.some(role => role.name === roleFilter)
+      filtered = filtered.filter(user => 
+        user.roles?.includes(roleFilter)
       );
     }
 
-    setUsers(filteredUsers);
-    setTotal(filteredUsers.length);
-    setTotalPages(Math.ceil(filteredUsers.length / 10));
-    setLoading(false);
-  }, [searchQuery, statusFilter, roleFilter, currentPage]);
+    setFilteredUsers(filtered);
+    setTotalPages(Math.ceil(filtered.length / 10));
+  }, [users, searchQuery, statusFilter, roleFilter, searchUsers]);
 
   const handleSelectUser = (userId: string) => {
     const newSelected = new Set(selectedUsers);
@@ -170,11 +112,40 @@ export default function UsersPage() {
   };
 
   const handleSelectAll = () => {
-    if (selectedUsers.size === users.length) {
+    if (selectedUsers.size === filteredUsers.length) {
       setSelectedUsers(new Set());
     } else {
-      setSelectedUsers(new Set(users.map(user => user.id)));
+      setSelectedUsers(new Set(filteredUsers.map(user => user.id)));
     }
+  };
+
+  const handleDeleteSelected = () => {
+    const count = selectedUsers.size;
+    if (confirm(`Are you sure you want to delete ${count} selected users?`)) {
+      selectedUsers.forEach(userId => {
+        deleteUser(userId);
+      });
+      setSelectedUsers(new Set());
+      toast.success(`${count} users deleted successfully`);
+    }
+  };
+
+  // Convert User to UserDialogData for editing
+  const convertToDialogData = (user: User): UserDialogData => {
+    const [firstName, ...lastNameParts] = user.fullName?.split(' ') || ['', ''];
+    return {
+      id: user.id,
+      email: user.email,
+      firstName: firstName || '',
+      lastName: lastNameParts.join(' ') || '',
+      username: user.username || user.email.split('@')[0],
+      department: user.department || 'IT Department',
+      phone: user.phone || '+90 555 123 45 67',
+      isActive: user.isActive,
+      roles: user.roles || [],
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt
+    };
   };
 
   const getInitials = (name: string) => {
@@ -242,7 +213,7 @@ export default function UsersPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-600">{t('totalUsers')}</p>
-                <p className="text-2xl font-bold text-gray-900">{total}</p>
+                <p className="text-2xl font-bold text-gray-900">{filteredUsers.length}</p>
               </div>
               <div className="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center">
                 <Shield className="h-6 w-6 text-blue-600" />
@@ -257,7 +228,7 @@ export default function UsersPage() {
               <div>
                 <p className="text-sm font-medium text-gray-600">{t('activeUsers')}</p>
                 <p className="text-2xl font-bold text-green-600">
-                  {users.filter(u => u.isActive).length}
+                  {filteredUsers.filter(u => u.isActive).length}
                 </p>
               </div>
               <div className="h-12 w-12 bg-green-100 rounded-lg flex items-center justify-center">
@@ -273,7 +244,7 @@ export default function UsersPage() {
               <div>
                 <p className="text-sm font-medium text-gray-600">{t('inactiveUsers')}</p>
                 <p className="text-2xl font-bold text-red-600">
-                  {users.filter(u => !u.isActive).length}
+                  {filteredUsers.filter(u => !u.isActive).length}
                 </p>
               </div>
               <div className="h-12 w-12 bg-red-100 rounded-lg flex items-center justify-center">
@@ -336,7 +307,7 @@ export default function UsersPage() {
               </Select>
 
               {selectedUsers.size > 0 && (
-                <Button variant="destructive" size="sm">
+                <Button variant="destructive" size="sm" onClick={handleDeleteSelected}>
                   <Trash2 className="h-4 w-4 mr-2" />
                   {t('delete')} ({selectedUsers.size})
                 </Button>
@@ -350,7 +321,7 @@ export default function UsersPage() {
               <TableRow>
                 <TableHead className="w-12">
                   <Checkbox
-                    checked={selectedUsers.size === users.length && users.length > 0}
+                    checked={selectedUsers.size === filteredUsers.length && filteredUsers.length > 0}
                     onCheckedChange={handleSelectAll}
                   />
                 </TableHead>
@@ -364,7 +335,7 @@ export default function UsersPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {users.map((user) => (
+              {filteredUsers.map((user) => (
                 <TableRow key={user.id} className="hover:bg-gray-50">
                   <TableCell>
                     <Checkbox
@@ -376,7 +347,7 @@ export default function UsersPage() {
                     <div className="flex items-center gap-3">
                       <Avatar className="h-8 w-8">
                         <AvatarFallback className="text-xs font-medium">
-                          {getInitials(user.fullName)}
+                          {getInitials(user.fullName || 'User')}
                         </AvatarFallback>
                       </Avatar>
                       <div>
@@ -387,15 +358,18 @@ export default function UsersPage() {
                   </TableCell>
                   <TableCell>
                     <div className="flex flex-wrap gap-1">
-                      {user.roles?.map((role) => (
-                        <Badge
-                          key={role.id}
-                          variant="secondary"
-                          className={`text-xs ${getRoleBadgeColor(role.name)}`}
-                        >
-                          {role.displayName}
-                        </Badge>
-                      ))}
+                      {user.roles?.map((role) => {
+                        const roleNames = { admin: 'Administrator', manager: 'Manager', viewer: 'Viewer' };
+                        return (
+                          <Badge
+                            key={role}
+                            variant="secondary"
+                            className={`text-xs ${getRoleBadgeColor(role)}`}
+                          >
+                            {roleNames[role as keyof typeof roleNames] || role}
+                          </Badge>
+                        );
+                      })}
                     </div>
                   </TableCell>
                   <TableCell>
@@ -431,32 +405,32 @@ export default function UsersPage() {
                       <DropdownMenuContent align="end">
                         <DropdownMenuItem
                           onClick={() => {
-                            const userData = {
-                              id: user.id,
-                              email: user.email,
-                              firstName: user.fullName.split(' ')[0] || '',
-                              lastName: user.fullName.split(' ').slice(1).join(' ') || '',
-                              username: user.email.split('@')[0],
-                              department: 'IT Department',
-                              phone: '+90 555 123 45 67',
-                              isActive: user.isActive,
-                              roles: user.roles?.map(r => r.name) || [],
-                              createdAt: user.createdAt,
-                              updatedAt: user.updatedAt
-                            };
-                            setSelectedUser(userData);
+                            const dialogData = convertToDialogData(user);
+                            console.log('Edit clicked - Original user:', user);
+                            console.log('Edit clicked - Converted data:', dialogData);
+                            setSelectedUser(dialogData);
                             setUserDialogOpen(true);
                           }}
                         >
                           <Edit className="h-4 w-4 mr-2" />
                           {t('edit')}
                         </DropdownMenuItem>
-                        <DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={() => {
+                            setSelectedUserForRole(user);
+                            setRoleDialogOpen(true);
+                          }}
+                        >
                           <Shield className="h-4 w-4 mr-2" />
                           {t('manageRoles')}
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={() => {
+                            updateUser(user.id, { isActive: !user.isActive });
+                            toast.success(user.isActive ? 'User deactivated' : 'User activated');
+                          }}
+                        >
                           {user.isActive ? (
                             <>
                               <UserMinus className="h-4 w-4 mr-2" />
@@ -470,7 +444,15 @@ export default function UsersPage() {
                           )}
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem className="text-red-600">
+                        <DropdownMenuItem 
+                          className="text-red-600"
+                          onClick={() => {
+                            if (confirm(`Are you sure you want to delete ${user.fullName}?`)) {
+                              deleteUser(user.id);
+                              toast.success('User deleted successfully');
+                            }
+                          }}
+                        >
                           <Trash2 className="h-4 w-4 mr-2" />
                           {t('delete')}
                         </DropdownMenuItem>
@@ -482,7 +464,7 @@ export default function UsersPage() {
             </TableBody>
           </Table>
 
-          {users.length === 0 && (
+          {filteredUsers.length === 0 && (
             <div className="text-center py-12">
               <div className="text-gray-500">
                 <Shield className="h-12 w-12 mx-auto mb-4 opacity-50" />
@@ -499,9 +481,9 @@ export default function UsersPage() {
         <div className="flex items-center justify-between">
           <div className="text-sm text-gray-700">
             {t('showingResults', { 
-              total, 
+              total: filteredUsers.length, 
               from: ((currentPage - 1) * 10) + 1, 
-              to: Math.min(currentPage * 10, total)
+              to: Math.min(currentPage * 10, filteredUsers.length)
             })}
           </div>
           <div className="flex gap-2">
@@ -531,37 +513,48 @@ export default function UsersPage() {
         onOpenChange={setUserDialogOpen}
         user={selectedUser}
         onSave={(updatedUser) => {
-          if (selectedUser && selectedUser.id) {
-            // Update existing user
-            setUsers(prev => prev.map(u => u.id === selectedUser.id ? {
-              ...u,
-              email: updatedUser.email,
-              fullName: `${updatedUser.firstName} ${updatedUser.lastName}`,
-              isActive: updatedUser.isActive,
-              updatedAt: new Date().toISOString()
-            } : u));
-          } else {
-            // Add new user
-            const newUser: User = {
-              id: Date.now().toString(),
-              email: updatedUser.email,
-              fullName: `${updatedUser.firstName} ${updatedUser.lastName}`,
-              isActive: updatedUser.isActive,
-              createdAt: new Date().toISOString(),
-              updatedAt: new Date().toISOString(),
-              roles: updatedUser.roles.map(roleId => {
-                const roleNames = { admin: 'Administrator', manager: 'Manager', viewer: 'Viewer' };
-                return {
-                  id: roleId,
-                  name: roleId,
-                  displayName: roleNames[roleId as keyof typeof roleNames] || roleId
-                };
-              }),
-              loginCount: 0
-            };
-            setUsers(prev => [...prev, newUser]);
+          try {
+            if (selectedUser && selectedUser.id) {
+              // Update existing user
+              updateUser(selectedUser.id, {
+                email: updatedUser.email,
+                firstName: updatedUser.firstName,
+                lastName: updatedUser.lastName,
+                username: updatedUser.username,
+                department: updatedUser.department,
+                phone: updatedUser.phone,
+                isActive: updatedUser.isActive,
+                roles: updatedUser.roles
+              });
+              toast.success('User updated successfully');
+            } else {
+              // Add new user
+              addUser({
+                email: updatedUser.email,
+                firstName: updatedUser.firstName,
+                lastName: updatedUser.lastName,
+                username: updatedUser.username,
+                department: updatedUser.department,
+                phone: updatedUser.phone,
+                isActive: updatedUser.isActive,
+                roles: updatedUser.roles
+              });
+              toast.success('User created successfully');
+            }
+            setUserDialogOpen(false);
+            setSelectedUser(undefined);
+          } catch (error) {
+            console.error('Error saving user:', error);
+            toast.error('Failed to save user');
           }
         }}
+      />
+
+      {/* Role Management Dialog */}
+      <RoleManagementDialog
+        open={roleDialogOpen}
+        onOpenChange={setRoleDialogOpen}
+        user={selectedUserForRole}
       />
     </div>
   );
