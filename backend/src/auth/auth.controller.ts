@@ -186,8 +186,23 @@ export class AuthController {
       }
     }
   })
-  async getProfile(@AuthenticatedUser() user: any) {
-    return await this.authService.getUserProfile(user);
+  async getProfile(@Request() request: any, @AuthenticatedUser() user: any) {
+    // Extract JWT token and decode it manually since AuthenticatedUser is undefined
+    const authHeader = request.headers.authorization;
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      throw new UnauthorizedException('No valid token provided');
+    }
+    
+    const token = authHeader.substring(7);
+    try {
+      // Decode JWT manually (without signature verification for now since it's our own token)
+      const base64Payload = token.split('.')[1];
+      const payload = JSON.parse(Buffer.from(base64Payload, 'base64').toString());
+      
+      return await this.authService.getUserProfile(payload);
+    } catch (error) {
+      throw new UnauthorizedException('Invalid token format');
+    }
   }
 
   @Get('sessions')

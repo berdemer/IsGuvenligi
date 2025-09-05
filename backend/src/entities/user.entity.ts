@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToMany, JoinTable, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToMany, JoinTable, OneToMany, ManyToOne } from 'typeorm';
 import { Role } from './role.entity';
 import { AuditLog } from './audit-log.entity';
+import { Department } from './department.entity';
 
 @Entity('users')
 export class User {
@@ -15,6 +16,12 @@ export class User {
 
   @Column()
   lastName: string;
+
+  @Column({ unique: true, nullable: true })
+  username: string;
+
+  @Column({ nullable: true })
+  phone: string;
 
   @Column({ nullable: true })
   avatar: string;
@@ -59,6 +66,9 @@ export class User {
 
   @OneToMany(() => AuditLog, auditLog => auditLog.user)
   auditLogs: AuditLog[];
+
+  @ManyToOne(() => Department, (department) => department.users)
+  department: Department;
 
   // Virtual getters
   get fullName(): string {

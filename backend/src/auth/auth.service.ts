@@ -105,8 +105,8 @@ export class AuthService {
       id: user.sub,
       username: user.preferred_username,
       email: user.email,
-      firstName: 'Test',
-      lastName: 'User',
+      firstName: user.given_name || user.firstName || 'User',
+      lastName: user.family_name || user.lastName || 'Name',
       roles: user.realm_access?.roles || [],
       groups: user.groups || [],
       profile: {}

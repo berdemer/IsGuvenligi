@@ -23,24 +23,24 @@ import { AppService } from './app.service';
       expandVariables: true,
     }),
 
-    // Database
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        type: 'postgres',
-        url: configService.get('DATABASE_URL'),
-        autoLoadEntities: true,
-        synchronize: process.env.NODE_ENV === 'development',
-        logging: process.env.NODE_ENV === 'development',
-        ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
-        extra: {
-          max: 20,
-          idleTimeoutMillis: 30000,
-          connectionTimeoutMillis: 2000,
-        },
-      }),
-      inject: [ConfigService],
-    }),
+    // Database - Temporarily disabled for authentication testing
+    // TypeOrmModule.forRootAsync({
+    //   imports: [ConfigModule],
+    //   useFactory: (configService: ConfigService) => ({
+    //     type: 'postgres',
+    //     url: configService.get('DATABASE_URL'),
+    //     autoLoadEntities: true,
+    //     synchronize: process.env.NODE_ENV === 'development',
+    //     logging: process.env.NODE_ENV === 'development',
+    //     ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+    //     extra: {
+    //       max: 20,
+    //       idleTimeoutMillis: 30000,
+    //       connectionTimeoutMillis: 2000,
+    //     },
+    //   }),
+    //   inject: [ConfigService],
+    // }),
 
     // Redis Cache - Temporarily disabled for testing
     // CacheModule.registerAsync({

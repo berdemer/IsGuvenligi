@@ -38,71 +38,40 @@ export const useAuth = create<AuthState>()(
         try {
           set({ isLoading: true, error: null });
           
-          // TEMPORARY: Mock login for development (since backend has compilation issues)
-          const mockUsers: { [key: string]: any } = {
-            'admin': {
-              id: 'admin-user-id',
-              username: 'admin',
-              email: 'admin@isguvenligi.com',
-              firstName: 'System',
-              lastName: 'Administrator',
-              fullName: 'System Administrator',
-              roles: ['admin'],
-              groups: ['administrators']
+          // Call backend API
+          const response = await fetch('http://localhost:3001/auth/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
             },
-            'manager': {
-              id: 'manager-user-id',
-              username: 'manager',
-              email: 'manager@isguvenligi.com',
-              firstName: 'Security',
-              lastName: 'Manager',
-              fullName: 'Security Manager',
-              roles: ['manager'],
-              groups: ['managers']
-            },
-            'test': {
-              id: 'test-user-id',
-              username: 'test',
-              email: 'test@isguvenligi.com',
-              firstName: 'Test',
-              lastName: 'User',
-              fullName: 'Test User',
-              roles: ['user'],
-              groups: ['users']
-            }
-          };
+            body: JSON.stringify({ username, password }),
+          });
 
-          // Simulate API delay
-          await new Promise(resolve => setTimeout(resolve, 1000));
-
-          // Check if user exists and password is correct
-          const mockUser = mockUsers[username];
-          if (!mockUser) {
-            throw new Error('Kullanıcı bulunamadı');
+          if (!response.ok) {
+            const errorData = await response.json().catch(() => ({}));
+            throw new Error(errorData.message || 'Giriş başarısız');
           }
+
+          const data = await response.json();
           
-          // Accept any password for development (or specific password)
-          if (password !== 'password1234' && password !== 'admin' && password !== '123456') {
-            throw new Error('Geçersiz şifre');
-          }
-
-          // Mock token storage
-          const token = 'mock-jwt-token-' + Date.now();
+          // Store tokens
           if (typeof window !== 'undefined') {
-            localStorage.setItem('access_token', token);
-            localStorage.setItem('refresh_token', 'mock-refresh-token');
+            localStorage.setItem('access_token', data.access_token);
+            if (data.refresh_token) {
+              localStorage.setItem('refresh_token', data.refresh_token);
+            }
             // Set cookie for middleware access
-            document.cookie = `access_token=${token}; path=/; max-age=86400; secure; samesite=strict`;
+            document.cookie = `access_token=${data.access_token}; path=/; max-age=86400; secure; samesite=strict`;
           }
           
           set({
-            user: mockUser,
+            user: data.user,
             isAuthenticated: true,
             isLoading: false,
             error: null,
           });
 
-          toast.success(`Hoş geldiniz, ${mockUser.firstName || mockUser.username}!`);
+          toast.success(`Hoş geldiniz, ${data.user.firstName || data.user.username}!`);
         } catch (error: any) {
           const errorMessage = error.message || 
                               'Giriş işlemi başarısız. Lütfen bilgilerinizi kontrol edin.';
@@ -122,10 +91,24 @@ export const useAuth = create<AuthState>()(
         try {
           set({ isLoading: true });
           
-          // TEMPORARY: Mock logout for development (since backend has compilation issues)
-          await new Promise(resolve => setTimeout(resolve, 500)); // Simulate API delay
+          const token = typeof window !== 'undefined' ? localStorage.getItem('access_token') : null;
           
-          // Clear mock tokens and persist storage
+          // Call backend logout API if token exists
+          if (token) {
+            try {
+              await fetch('http://localhost:3001/auth/logout', {
+                method: 'POST',
+                headers: {
+                  'Authorization': `Bearer ${token}`,
+                  'Content-Type': 'application/json',
+                },
+              });
+            } catch (error) {
+              console.warn('Logout API call failed, continuing with local logout:', error);
+            }
+          }
+          
+          // Clear tokens and persist storage
           if (typeof window !== 'undefined') {
             localStorage.removeItem('access_token');
             localStorage.removeItem('refresh_token');
@@ -229,38 +212,48 @@ export const useAuth = create<AuthState>()(
             return;
           }
 
-          // TEMPORARY: Mock token validation
-          if (token.startsWith('mock-jwt-token')) {
-            // Extract user data from persisted state or use default admin
-            const currentUser = get().user || {
-              id: 'admin-user-id',
-              username: 'admin',
-              email: 'admin@isguvenligi.com',
-              firstName: 'System',
-              lastName: 'Administrator',
-              fullName: 'System Administrator',
-              roles: ['admin'],
-              groups: ['administrators']
-            };
-            
-            // Ensure cookie is set for middleware
-            if (typeof window !== 'undefined') {
-              document.cookie = `access_token=${token}; path=/; max-age=86400; secure; samesite=strict`;
-            }
-            
-            set({
-              user: currentUser,
-              isAuthenticated: true,
-              isLoading: false,
-              error: null,
+          // Call backend to validate token and get user info
+          try {
+            const response = await fetch('http://localhost:3001/auth/profile', {
+              method: 'GET',
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+              },
             });
-          } else {
+
+            if (response.ok) {
+              const userData = await response.json();
+              
+              // Ensure cookie is set for middleware
+              if (typeof window !== 'undefined') {
+                document.cookie = `access_token=${token}; path=/; max-age=86400; secure; samesite=strict`;
+              }
+              
+              set({
+                user: userData,
+                isAuthenticated: true,
+                isLoading: false,
+                error: null,
+              });
+            } else {
+              // Token is invalid, clear it
+              throw new Error('Invalid token');
+            }
+          } catch (error) {
+            // Token validation failed, clear auth state
             set({
               user: null,
               isAuthenticated: false,
               isLoading: false,
               error: null,
             });
+            
+            // Clear invalid token
+            if (typeof window !== 'undefined') {
+              localStorage.removeItem('access_token');
+              localStorage.removeItem('refresh_token');
+            }
           }
         } catch (error: any) {
           console.error('Auth check error:', error);

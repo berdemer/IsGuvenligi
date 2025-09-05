@@ -5,13 +5,15 @@ import { AdminUsersModule } from './users/users.module';
 import { AdminRolesModule } from './roles/roles.module';
 import { AdminOAuthProvidersModule } from './oauth/oauth-providers.module';
 import { AdminAuditModule } from './audit/audit.module';
+import { DepartmentsModule } from './departments/departments.module';
 
 @Module({
   imports: [
-    AdminUsersModule, 
-    AdminRolesModule, 
-    AdminOAuthProvidersModule,
-    AdminAuditModule
+    // AdminUsersModule, 
+    // AdminRolesModule, 
+    // AdminOAuthProvidersModule,
+    // AdminAuditModule,
+    DepartmentsModule
   ],
   controllers: [AdminController],
   providers: [AdminService],

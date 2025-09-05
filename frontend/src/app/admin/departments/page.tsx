@@ -19,24 +19,23 @@ import { Card, CardContent, CardDescription, CardHeader } from '@/components/ui/
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { useDepartmentsStore, type Department } from '@/stores/departmentsStore';
-import { useUsersStore } from '@/stores/usersStore';
+import { useDepartmentsApiStore } from '@/stores/departmentsStore.api';
+import { type Department } from '@/services/departments.api';
 import toast from 'react-hot-toast';
 
 export default function DepartmentsPage() {
   const t = useTranslations('departments');
   const { 
-    departments, 
-    initializeDepartments, 
-    updateDepartment, 
-    deleteDepartment, 
+    departments,
+    loading: isLoading,
+    error,
+    fetchDepartments,
+    updateDepartment,
+    deleteDepartment,
     searchDepartments,
-    syncEmployeeCountsWithUsers 
-  } = useDepartmentsStore();
-  
-  const { users, initializeUsers } = useUsersStore();
-  
-  const [loading, setLoading] = useState(true);
+    deleteMultipleDepartments,
+    clearError
+  } = useDepartmentsApiStore();
   const [departmentDialogOpen, setDepartmentDialogOpen] = useState(false);
   const [selectedDepartment, setSelectedDepartment] = useState<any | undefined>();
   const [selectedDepartments, setSelectedDepartments] = useState<Set<string>>(new Set());
@@ -45,28 +44,21 @@ export default function DepartmentsPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredDepartments, setFilteredDepartments] = useState<Department[]>([]);
 
-  // Initialize departments from localStorage on component mount
+  // Initialize departments from API on component mount
   useEffect(() => {
-    setLoading(true);
-    try {
-      initializeDepartments();
-      initializeUsers();
-    } catch (error) {
-      console.error('Error initializing stores:', error);
-      toast.error('Failed to load data');
-    } finally {
-      setLoading(false);
-    }
-  }, [initializeDepartments, initializeUsers]);
+    fetchDepartments().catch((error) => {
+      console.error('Error fetching departments:', error);
+      toast.error('Failed to load departments');
+    });
+  }, [fetchDepartments]);
 
-  // Sync employee counts when users are loaded
+  // Show error toast when error occurs
   useEffect(() => {
-    console.log('🏢 Departments page - Users available:', users.length);
-    if (users.length > 0) {
-      console.log('📊 Syncing employee counts with users:', users.map(u => ({name: u.fullName, dept: u.department, isActive: u.isActive})));
-      syncEmployeeCountsWithUsers(users);
+    if (error) {
+      toast.error(error);
+      clearError();
     }
-  }, [users, syncEmployeeCountsWithUsers]);
+  }, [error, clearError]);
 
   // Filter departments based on search and filters
   useEffect(() => {
@@ -74,7 +66,12 @@ export default function DepartmentsPage() {
 
     // Apply search filter
     if (searchQuery.trim()) {
-      filtered = searchDepartments(searchQuery);
+      const lowerQuery = searchQuery.toLowerCase();
+      filtered = filtered.filter(dept => 
+        dept.name.toLowerCase().includes(lowerQuery) ||
+        dept.description.toLowerCase().includes(lowerQuery) ||
+        dept.managerEmail?.toLowerCase().includes(lowerQuery)
+      );
     }
 
     // Apply status filter
@@ -84,7 +81,7 @@ export default function DepartmentsPage() {
     }
 
     setFilteredDepartments(filtered);
-  }, [departments, searchQuery, statusFilter, searchDepartments]);
+  }, [departments, searchQuery, statusFilter]);
 
   const handleSelectDepartment = (departmentId: string) => {
     const newSelected = new Set(selectedDepartments);
@@ -104,14 +101,19 @@ export default function DepartmentsPage() {
     }
   };
 
-  const handleDeleteSelected = () => {
+  const handleDeleteSelected = async () => {
     const count = selectedDepartments.size;
     if (confirm(t('deleteMultipleConfirm', { count }))) {
-      selectedDepartments.forEach(departmentId => {
-        deleteDepartment(departmentId);
-      });
+      const ids = Array.from(selectedDepartments);
+      const result = await deleteMultipleDepartments(ids);
       setSelectedDepartments(new Set());
-      toast.success(t('departmentsDeleted', { count }));
+      
+      if (result.deleted > 0) {
+        toast.success(t('departmentsDeleted', { count: result.deleted }));
+      }
+      if (result.errors.length > 0) {
+        toast.error(`Some departments could not be deleted`);
+      }
     }
   };
 
@@ -128,7 +130,7 @@ export default function DepartmentsPage() {
     });
   };
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
@@ -350,9 +352,11 @@ export default function DepartmentsPage() {
                           {t('edit')}
                         </DropdownMenuItem>
                         <DropdownMenuItem
-                          onClick={() => {
-                            updateDepartment(department.id, { isActive: !department.isActive });
-                            toast.success(department.isActive ? t('departmentDeactivated') : t('departmentActivated'));
+                          onClick={async () => {
+                            const result = await updateDepartment(department.id, { isActive: !department.isActive });
+                            if (result) {
+                              toast.success(department.isActive ? t('departmentDeactivated') : t('departmentActivated'));
+                            }
                           }}
                         >
                           {department.isActive ? (
@@ -370,10 +374,12 @@ export default function DepartmentsPage() {
                         <DropdownMenuSeparator />
                         <DropdownMenuItem 
                           className="text-red-600"
-                          onClick={() => {
+                          onClick={async () => {
                             if (confirm(t('deleteConfirm', { name: department.name }))) {
-                              deleteDepartment(department.id);
-                              toast.success(t('departmentDeleted'));
+                              const success = await deleteDepartment(department.id);
+                              if (success) {
+                                toast.success(t('departmentDeleted'));
+                              }
                             }
                           }}
                         >
