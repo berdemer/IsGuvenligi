@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react"
 import { useTranslations } from 'next-intl'
+import { useAuth } from '@/hooks/useAuth'
+import { apiService } from '@/services/api'
 import { ProfileHeader } from "@/components/profile/ProfileHeader"
 import { UserInfoForm } from "@/components/profile/UserInfoForm"
 import { SecurityCard } from "@/components/profile/SecurityCard"
@@ -50,6 +52,7 @@ interface ProfileData {
 
 export default function ProfilePage() {
   const t = useTranslations('profile')
+  const { user, isAuthenticated } = useAuth()
   const [profileData, setProfileData] = useState<ProfileData | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -59,27 +62,28 @@ export default function ProfilePage() {
       setLoading(true)
       setError(null)
       
-      // Mock API call - replace with actual API
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      // Get user profile from backend API
+      const backendProfile = await apiService.getProfile()
       
-      const mockData: ProfileData = {
-        id: "user_12345",
-        email: "john.doe@company.com",
-        firstName: "John",
-        lastName: "Doe",
-        username: "johndoe",
-        department: "IT Security",
-        phone: "+90 555 123 4567",
-        role: "Security Admin",
-        lastLoginAt: "2024-01-15T10:30:00Z",
-        lastLoginIp: "192.168.1.100",
-        lastLoginDevice: "Chrome on Windows",
+      // Transform backend data to match ProfileData interface
+      const transformedData: ProfileData = {
+        id: backendProfile.id || user?.id || "unknown",
+        email: backendProfile.email || user?.email || "",
+        firstName: backendProfile.firstName || user?.firstName || "",
+        lastName: backendProfile.lastName || user?.lastName || "",
+        username: backendProfile.username || user?.username || "",
+        department: backendProfile.department?.name || "Bilinmiyor",
+        phone: backendProfile.phoneNumber || "Belirtilmemiş",
+        role: backendProfile.roles?.[0] || user?.roles?.[0] || "user",
+        lastLoginAt: backendProfile.lastLoginAt || new Date().toISOString(),
+        lastLoginIp: "192.168.1.100", // Mock data for now
+        lastLoginDevice: "Chrome on Windows", // Mock data for now
         mfa: {
-          totp: true,
+          totp: false, // Mock data - implement when MFA is available
           webauthn: false
         },
         providers: {
-          google: true,
+          google: false, // Mock data - implement when social providers are integrated
           microsoft: false
         },
         preferences: {
@@ -94,17 +98,20 @@ export default function ProfilePage() {
         }
       }
       
-      setProfileData(mockData)
-    } catch (err) {
-      setError(t('common.failedToLoad'))
+      setProfileData(transformedData)
+    } catch (err: any) {
+      console.error('Profile fetch error:', err)
+      setError(err.message || t('common.failedToLoad'))
     } finally {
       setLoading(false)
     }
   }
 
   useEffect(() => {
-    fetchProfileData()
-  }, [])
+    if (isAuthenticated) {
+      fetchProfileData()
+    }
+  }, [isAuthenticated])
 
   const handleRetry = () => {
     fetchProfileData()
@@ -197,32 +204,32 @@ export default function ProfilePage() {
         <div className="lg:col-span-2 space-y-6">
           <ProfileHeader 
             profileData={profileData}
-            onUpdate={(data) => setProfileData(data)}
+            onUpdate={setProfileData}
           />
           
           <UserInfoForm 
             profileData={profileData}
-            onUpdate={(data) => setProfileData(data)}
+            onUpdate={setProfileData}
           />
           
           <SecurityCard 
             profileData={profileData}
-            onUpdate={(data) => setProfileData(data)}
+            onUpdate={setProfileData}
           />
           
           <ProvidersCard 
             profileData={profileData}
-            onUpdate={(data) => setProfileData(data)}
+            onUpdate={setProfileData}
           />
           
           <PreferencesForm 
             profileData={profileData}
-            onUpdate={(data) => setProfileData(data)}
+            onUpdate={setProfileData}
           />
           
           <DangerZone 
             profileData={profileData}
-            onUpdate={(data) => setProfileData(data)}
+            onUpdate={setProfileData}
           />
         </div>
         

@@ -1006,104 +1006,6 @@
     "dateFormat": "Datumsformat",
     "timeFormat": "Zeitformat",
     "currency": "Währung",
-    "settings": "Einstellungen",
-    "policy": {
-      "audit": {
-        "title": "Richtlinien-Audit-Protokolle",
-        "description": "Richtlinien-Änderungen und -Aktivitäten verfolgen",
-        "buttons": {
-          "filters": "Filter",
-          "refresh": "Aktualisieren",
-          "export": "Exportieren"
-        },
-        "search": {
-          "placeholder": "Richtlinie, Benutzer oder Aktion suchen..."
-        },
-        "stats": {
-          "showing": "{filtered} / {total} Datensätze angezeigt",
-          "lastUpdated": "Zuletzt aktualisiert: {timestamp}"
-        },
-        "table": {
-          "timestamp": "Zeitstempel",
-          "action": "Aktion",
-          "policy": "Richtlinie",
-          "user": "Benutzer",
-          "changes": "Änderungen",
-          "ipAddress": "IP-Adresse",
-          "noChanges": "Keine Änderungen"
-        },
-        "actions": {
-          "updated": "Aktualisiert",
-          "activated": "Aktiviert",
-          "deactivated": "Deaktiviert",
-          "created": "Erstellt",
-          "deleted": "Gelöscht",
-          "simulated": "Simuliert",
-          "cloned": "Kloniert"
-        },
-        "compliance": {
-          "title": "Compliance-Status",
-          "description": "Richtlinien-Compliance-Metriken und -Status"
-        }
-      }
-    },
-    "sessions": {
-      "auditLog": {
-        "title": "Prüfprotokoll",
-        "description": "Vollständige Prüfspur der Sitzungsverwaltungsaktivitäten",
-        "export": "Exportieren",
-        "stats": {
-          "totalEvents": "Gesamtereignisse",
-          "critical": "Kritisch",
-          "errors": "Fehler",
-          "warnings": "Warnungen",
-          "adminActions": "Admin-Aktionen"
-        },
-        "tabs": {
-          "allEvents": "Alle Ereignisse",
-          "securityEvents": "Sicherheitsereignisse",
-          "adminActions": "Admin-Aktionen"
-        },
-        "filters": {
-          "searchPlaceholder": "Ereignisse, Benutzer, IP suchen...",
-          "allActions": "Alle Aktionen",
-          "allLevels": "Alle Ebenen",
-          "allActors": "Alle Akteure"
-        },
-        "actionTypes": {
-          "login": "Anmeldung",
-          "logout": "Abmeldung",
-          "sessionRevoke": "Sitzung widerrufen",
-          "sessionFlag": "Sitzung markieren",
-          "mfaChallenge": "MFA-Herausforderung",
-          "anomaly": "Anomalie",
-          "adminAction": "Admin-Aktion"
-        },
-        "severityLevels": {
-          "critical": "Kritisch",
-          "error": "Fehler",
-          "warning": "Warnung",
-          "info": "Information"
-        },
-        "actorTypes": {
-          "user": "Benutzer",
-          "system": "System",
-          "admin": "Administrator"
-        },
-        "table": {
-          "title": "Prüfereignisse ({count})",
-          "timestamp": "Zeitstempel",
-          "action": "Aktion",
-          "actor": "Akteur",
-          "target": "Ziel",
-          "severity": "Schweregrad",
-          "ipAddress": "IP-Adresse",
-          "details": "Details",
-          "actions": "Aktionen",
-          "risk": "Risiko"
-        }
-      }
-    },
     "policy": {
       "audit": {
         "title": "Prüfprotokoll",
@@ -1181,6 +1083,63 @@
         "errors": {
           "loadFailed": "Fehler beim Laden der Prüfprotokolle",
           "exportFailed": "Fehler beim Exportieren der Prüfprotokolle"
+        }
+      }
+    },
+    "sessions": {
+      "auditLog": {
+        "title": "Prüfprotokoll",
+        "description": "Vollständige Prüfspur der Sitzungsverwaltungsaktivitäten",
+        "export": "Exportieren",
+        "stats": {
+          "totalEvents": "Gesamtereignisse",
+          "critical": "Kritisch",
+          "errors": "Fehler",
+          "warnings": "Warnungen",
+          "adminActions": "Admin-Aktionen"
+        },
+        "tabs": {
+          "allEvents": "Alle Ereignisse",
+          "securityEvents": "Sicherheitsereignisse",
+          "adminActions": "Admin-Aktionen"
+        },
+        "filters": {
+          "searchPlaceholder": "Ereignisse, Benutzer, IP suchen...",
+          "allActions": "Alle Aktionen",
+          "allLevels": "Alle Ebenen",
+          "allActors": "Alle Akteure"
+        },
+        "actionTypes": {
+          "login": "Anmeldung",
+          "logout": "Abmeldung",
+          "sessionRevoke": "Sitzung widerrufen",
+          "sessionFlag": "Sitzung markieren",
+          "mfaChallenge": "MFA-Herausforderung",
+          "anomaly": "Anomalie",
+          "adminAction": "Admin-Aktion"
+        },
+        "severityLevels": {
+          "critical": "Kritisch",
+          "error": "Fehler",
+          "warning": "Warnung",
+          "info": "Information"
+        },
+        "actorTypes": {
+          "user": "Benutzer",
+          "system": "System",
+          "admin": "Administrator"
+        },
+        "table": {
+          "title": "Prüfereignisse ({count})",
+          "timestamp": "Zeitstempel",
+          "action": "Aktion",
+          "actor": "Akteur",
+          "target": "Ziel",
+          "severity": "Schweregrad",
+          "ipAddress": "IP-Adresse",
+          "details": "Details",
+          "actions": "Aktionen",
+          "risk": "Risiko"
         }
       }
     }
@@ -1602,6 +1561,47 @@
       "userGrantedAdmin": "Benutzer Mike Chen wurden Admin-Rechte gewährt",
       "backupCompleted": "Sicherung abgeschlossen",
       "dailyBackupSuccess": "Tägliche Datenbanksicherung erfolgreich abgeschlossen"
+    }
+  },
+  "admin": {
+    "roles": {
+      "dialog": {
+        "createTitle": "Neue Rolle erstellen",
+        "createDescription": "Erstellen Sie eine neue Rolle und konfigurieren Sie ihre Berechtigungen",
+        "editTitle": "Rolle bearbeiten",
+        "editDescription": "Bearbeiten Sie die Informationen und Berechtigungen dieser Rolle",
+        "basicInformation": "Grundinformationen",
+        "fields": {
+          "name": "Rollenname",
+          "displayName": "Anzeigename",
+          "description": "Beschreibung"
+        },
+        "placeholders": {
+          "name": "rollen_name",
+          "displayName": "Anzeige-Rollenname",
+          "description": "Beschreibung dieser Rolle..."
+        },
+        "permissions": {
+          "title": "Berechtigungen",
+          "selected": "ausgewählte Berechtigungen",
+          "categories": {
+            "user": "Benutzerberechtigungen",
+            "role": "Rollenberechtigungen",
+            "oauth": "OAuth-Berechtigungen",
+            "audit": "Audit-Berechtigungen",
+            "system": "Systemberechtigungen",
+            "settings": "Einstellungsberechtigungen"
+          },
+          "actions": {
+            "read": "Lesen/Anzeigen",
+            "write": "Schreiben/Bearbeiten",
+            "delete": "Löschen"
+          }
+        },
+        "cancel": "Abbrechen",
+        "save": "Speichern",
+        "create": "Erstellen"
+      }
     }
   }
 }

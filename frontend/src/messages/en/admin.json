@@ -1,0 +1,62 @@
+{
+  "roles": {
+    "title": "Role Management",
+    "addRole": "Add Role",
+    "editRole": "Edit Role",
+    "deleteRole": "Delete Role",
+    "roleList": "Role List",
+    "roleDetails": "Role Details",
+    "dialog": {
+      "createTitle": "Create New Role",
+      "createDescription": "Create a new role and configure its permissions",
+      "editTitle": "Edit Role",
+      "editDescription": "Edit this role's information and permissions",
+      "basicInformation": "Basic Information",
+      "fields": {
+        "name": "Role Name",
+        "displayName": "Display Name",
+        "description": "Description"
+      },
+      "placeholders": {
+        "name": "role_name",
+        "displayName": "Display Role Name",
+        "description": "Description of this role..."
+      },
+      "permissions": {
+        "title": "Permissions",
+        "selected": "selected permissions",
+        "categories": {
+          "user": "User Permissions",
+          "role": "Role Permissions",
+          "oauth": "OAuth Permissions",
+          "audit": "Audit Permissions",
+          "system": "System Permissions",
+          "settings": "Settings Permissions"
+        },
+        "actions": {
+          "read": "Read/View",
+          "write": "Write/Edit",
+          "delete": "Delete"
+        }
+      },
+      "cancel": "Cancel",
+      "save": "Save",
+      "create": "Create"
+    }
+  },
+  "departments": {
+    "title": "Department Management",
+    "addDepartment": "Add Department",
+    "editDepartment": "Edit Department",
+    "deleteDepartment": "Delete Department",
+    "departmentList": "Department List",
+    "departmentDetails": "Department Details"
+  },
+  "settings": {
+    "title": "System Settings",
+    "general": "General Settings",
+    "security": "Security Settings",
+    "authentication": "Authentication",
+    "notifications": "Notification Settings"
+  }
+}

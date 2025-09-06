@@ -1,0 +1,62 @@
+{
+  "roles": {
+    "title": "Rollenverwaltung",
+    "addRole": "Rolle hinzufügen",
+    "editRole": "Rolle bearbeiten",
+    "deleteRole": "Rolle löschen",
+    "roleList": "Rollenliste",
+    "roleDetails": "Rollendetails",
+    "dialog": {
+      "createTitle": "Neue Rolle erstellen",
+      "createDescription": "Erstellen Sie eine neue Rolle und konfigurieren Sie ihre Berechtigungen",
+      "editTitle": "Rolle bearbeiten",
+      "editDescription": "Bearbeiten Sie die Informationen und Berechtigungen dieser Rolle",
+      "basicInformation": "Grundinformationen",
+      "fields": {
+        "name": "Rollenname",
+        "displayName": "Anzeigename",
+        "description": "Beschreibung"
+      },
+      "placeholders": {
+        "name": "rollen_name",
+        "displayName": "Anzeige-Rollenname",
+        "description": "Beschreibung dieser Rolle..."
+      },
+      "permissions": {
+        "title": "Berechtigungen",
+        "selected": "ausgewählte Berechtigungen",
+        "categories": {
+          "user": "Benutzerberechtigungen",
+          "role": "Rollenberechtigungen",
+          "oauth": "OAuth-Berechtigungen",
+          "audit": "Audit-Berechtigungen",
+          "system": "Systemberechtigungen",
+          "settings": "Einstellungsberechtigungen"
+        },
+        "actions": {
+          "read": "Lesen/Anzeigen",
+          "write": "Schreiben/Bearbeiten",
+          "delete": "Löschen"
+        }
+      },
+      "cancel": "Abbrechen",
+      "save": "Speichern",
+      "create": "Erstellen"
+    }
+  },
+  "departments": {
+    "title": "Abteilungsverwaltung",
+    "addDepartment": "Abteilung hinzufügen",
+    "editDepartment": "Abteilung bearbeiten",
+    "deleteDepartment": "Abteilung löschen",
+    "departmentList": "Abteilungsliste",
+    "departmentDetails": "Abteilungsdetails"
+  },
+  "settings": {
+    "title": "Systemeinstellungen",
+    "general": "Allgemeine Einstellungen",
+    "security": "Sicherheitseinstellungen",
+    "authentication": "Authentifizierung",
+    "notifications": "Benachrichtigungseinstellungen"
+  }
+}

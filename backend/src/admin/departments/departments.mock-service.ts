@@ -1,4 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger, Inject } from '@nestjs/common';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
+import { Cache } from 'cache-manager';
 import { CreateDepartmentDto } from './dto/create-department.dto';
 import { UpdateDepartmentDto } from './dto/update-department.dto';
 import { DepartmentResponseDto } from './dto/department-response.dto';
@@ -39,21 +41,63 @@ const mockDepartments = [
 
 @Injectable()
 export class DepartmentsMockService {
+  private readonly logger = new Logger(DepartmentsMockService.name);
   private departments = [...mockDepartments];
 
+  constructor(
+    @Inject(CACHE_MANAGER) private cacheManager: Cache,
+  ) {}
+
   async findAll(): Promise<DepartmentResponseDto[]> {
-    return this.departments.map(dept => new DepartmentResponseDto(dept as any));
+    this.logger.debug('Finding all departments with mock data');
+    
+    const cacheKey = 'departments:all';
+    
+    // Try to get from cache first
+    let cachedDepartments = await this.cacheManager.get(cacheKey);
+    if (cachedDepartments) {
+      this.logger.debug('Retrieved departments list from cache');
+      return cachedDepartments as DepartmentResponseDto[];
+    }
+
+    // If not in cache, prepare data and cache it
+    const result = this.departments.map(dept => new DepartmentResponseDto(dept as any));
+
+    // Cache for 2 minutes
+    await this.cacheManager.set(cacheKey, result, 120000);
+    this.logger.debug('Cached departments list');
+    
+    return result;
   }
 
   async findOne(id: string): Promise<DepartmentResponseDto> {
+    this.logger.debug(`Finding department by id: ${id}`);
+    
+    const cacheKey = `department:${id}`;
+    
+    // Try to get from cache first
+    let cachedDepartment = await this.cacheManager.get(cacheKey);
+    if (cachedDepartment) {
+      this.logger.debug(`Retrieved department ${id} from cache`);
+      return cachedDepartment as DepartmentResponseDto;
+    }
+
     const department = this.departments.find(d => d.id === id);
     if (!department) {
       throw new Error(`Department with ID ${id} not found`);
     }
-    return new DepartmentResponseDto(department as any);
+
+    const result = new DepartmentResponseDto(department as any);
+
+    // Cache the department for 5 minutes
+    await this.cacheManager.set(cacheKey, result, 300000);
+    this.logger.debug(`Cached department ${id}`);
+    
+    return result;
   }
 
   async create(createDepartmentDto: CreateDepartmentDto): Promise<DepartmentResponseDto> {
+    this.logger.debug('Creating new department with mock data');
     const newDept = {
       id: `dept-${Date.now()}`,
       name: createDepartmentDto.name.trim(),
@@ -66,10 +110,15 @@ export class DepartmentsMockService {
     };
     
     this.departments.push(newDept);
+
+    // Invalidate departments list cache
+    await this.invalidateDepartmentCaches();
+    
     return new DepartmentResponseDto(newDept as any);
   }
 
   async update(id: string, updateDepartmentDto: UpdateDepartmentDto): Promise<DepartmentResponseDto> {
+    this.logger.debug(`Updating department ${id} with mock data`);
     const deptIndex = this.departments.findIndex(d => d.id === id);
     if (deptIndex === -1) {
       throw new Error(`Department with ID ${id} not found`);
@@ -82,15 +131,22 @@ export class DepartmentsMockService {
       updatedAt: new Date(),
     };
 
+    // Invalidate cache for this department and departments list
+    await this.invalidateDepartmentCaches(id);
+
     return new DepartmentResponseDto(this.departments[deptIndex] as any);
   }
 
   async remove(id: string): Promise<void> {
+    this.logger.debug(`Deleting department ${id} with mock data`);
     const deptIndex = this.departments.findIndex(d => d.id === id);
     if (deptIndex === -1) {
       throw new Error(`Department with ID ${id} not found`);
     }
     this.departments.splice(deptIndex, 1);
+
+    // Invalidate cache for this department and departments list
+    await this.invalidateDepartmentCaches(id);
   }
 
   async removeMultiple(ids: string[]): Promise<{ deleted: number; errors: string[] }> {
@@ -138,5 +194,19 @@ export class DepartmentsMockService {
         newCount: d.employeeCount
       }))
     };
+  }
+
+  private async invalidateDepartmentCaches(departmentId?: string): Promise<void> {
+    this.logger.debug('Invalidating department caches');
+    
+    // Clear specific department cache if provided
+    if (departmentId) {
+      await this.cacheManager.del(`department:${departmentId}`);
+    }
+    
+    // Clear departments list cache
+    await this.cacheManager.del('departments:all');
+    
+    this.logger.debug('Department caches invalidated');
   }
 }

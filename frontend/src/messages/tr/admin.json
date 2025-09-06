@@ -1,0 +1,62 @@
+{
+  "roles": {
+    "title": "Rol Yönetimi",
+    "addRole": "Rol Ekle",
+    "editRole": "Rolü Düzenle",
+    "deleteRole": "Rolü Sil",
+    "roleList": "Rol Listesi",
+    "roleDetails": "Rol Detayları",
+    "dialog": {
+      "createTitle": "Yeni Rol Oluştur",
+      "createDescription": "Yeni bir rol oluşturun ve izinlerini ayarlayın",
+      "editTitle": "Rolü Düzenle",
+      "editDescription": "Bu rolün bilgilerini ve izinlerini düzenleyin",
+      "basicInformation": "Temel Bilgiler",
+      "fields": {
+        "name": "Rol Adı",
+        "displayName": "Görünen Ad",
+        "description": "Açıklama"
+      },
+      "placeholders": {
+        "name": "rol_adi",
+        "displayName": "Görünen Rol Adı",
+        "description": "Bu rolün açıklaması..."
+      },
+      "permissions": {
+        "title": "İzinler",
+        "selected": "seçili izin",
+        "categories": {
+          "user": "Kullanıcı İzinleri",
+          "role": "Rol İzinleri",
+          "oauth": "OAuth İzinleri",
+          "audit": "Denetim İzinleri",
+          "system": "Sistem İzinleri",
+          "settings": "Ayar İzinleri"
+        },
+        "actions": {
+          "read": "Görüntüleme",
+          "write": "Yazma/Düzenleme",
+          "delete": "Silme"
+        }
+      },
+      "cancel": "İptal",
+      "save": "Kaydet",
+      "create": "Oluştur"
+    }
+  },
+  "departments": {
+    "title": "Departman Yönetimi",
+    "addDepartment": "Departman Ekle",
+    "editDepartment": "Departmanı Düzenle",
+    "deleteDepartment": "Departmanı Sil",
+    "departmentList": "Departman Listesi",
+    "departmentDetails": "Departman Detayları"
+  },
+  "settings": {
+    "title": "Sistem Ayarları",
+    "general": "Genel Ayarlar",
+    "security": "Güvenlik Ayarları",
+    "authentication": "Kimlik Doğrulama",
+    "notifications": "Bildirim Ayarları"
+  }
+}

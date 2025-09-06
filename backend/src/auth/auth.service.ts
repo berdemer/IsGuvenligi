@@ -1,6 +1,8 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger, Inject } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
+import { Cache } from 'cache-manager';
 
 import { LoginDto } from './dto/login.dto';
 
@@ -11,6 +13,7 @@ export class AuthService {
   constructor(
     private configService: ConfigService,
     private jwtService: JwtService,
+    @Inject(CACHE_MANAGER) private cacheManager: Cache,
   ) {}
 
   async login(loginDto: LoginDto, request?: any) {
@@ -101,7 +104,17 @@ export class AuthService {
   }
 
   async getUserProfile(user: any) {
-    return {
+    const cacheKey = `user_profile:${user.sub}`;
+    
+    // Try to get from cache first
+    let cachedProfile = await this.cacheManager.get(cacheKey);
+    if (cachedProfile) {
+      this.logger.debug(`Retrieved user profile from cache for user: ${user.sub}`);
+      return cachedProfile;
+    }
+
+    // If not in cache, create profile and cache it
+    const profile = {
       id: user.sub,
       username: user.preferred_username,
       email: user.email,
@@ -111,6 +124,12 @@ export class AuthService {
       groups: user.groups || [],
       profile: {}
     };
+
+    // Cache the profile for 5 minutes
+    await this.cacheManager.set(cacheKey, profile, 300000);
+    this.logger.debug(`Cached user profile for user: ${user.sub}`);
+    
+    return profile;
   }
 
   async getActiveSessions(userId: string) {

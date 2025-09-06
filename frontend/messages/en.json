@@ -113,7 +113,26 @@
     "viewer": "Viewer",
     "delete": "Delete",
     "user": "User",
-    "roles": "Roles",
+    "roles": {
+      "title": "Role Management",
+      "description": "Manage user system roles",
+      "updateSuccess": "Roles updated successfully",
+      "updateError": "Error updating roles",
+      "active": "Active",
+      "inactive": "Inactive",
+      "currentRoles": "Current Roles",
+      "selected": "selected",
+      "availableRoles": "Available Roles",
+      "noRolesWarning": "User must have at least one role assigned",
+      "cancel": "Cancel",
+      "saveChanges": "Save Changes",
+      "updating": "Updating...",
+      "roleDescriptions": {
+        "admin": "Full system access with all permissions",
+        "manager": "Manage security policies and view reports",
+        "viewer": "View-only access to system data"
+      }
+    },
     "lastLogin": "Last Login",
     "loginCount": "Login Count",
     "registrationDate": "Registration Date",
@@ -202,26 +221,6 @@
       "updateSuccess": "User updated successfully",
       "createError": "Error creating user",
       "updateError": "Error updating user"
-    },
-    "roles": {
-      "title": "Role Management",
-      "description": "Manage user system roles",
-      "updateSuccess": "Roles updated successfully",
-      "updateError": "Error updating roles",
-      "active": "Active",
-      "inactive": "Inactive",
-      "currentRoles": "Current Roles",
-      "selected": "selected",
-      "availableRoles": "Available Roles",
-      "noRolesWarning": "User must have at least one role assigned",
-      "cancel": "Cancel",
-      "saveChanges": "Save Changes",
-      "updating": "Updating...",
-      "roleDescriptions": {
-        "admin": "Full system access with all permissions",
-        "manager": "Manage security policies and view reports",
-        "viewer": "View-only access to system data"
-      }
     }
   },
   "roles": {
@@ -2141,7 +2140,6 @@
     "general": "General",
     "languages": "Languages",
     "placeholders": "Placeholders",
-    "settings": "Settings",
     "policy": {
       "audit": {
         "title": "Policy Audit Logs",
@@ -2567,6 +2565,43 @@
           "displayName": "Read-Only User",
           "description": "User with view-only permissions"
         }
+      },
+      "dialog": {
+        "createTitle": "Create New Role",
+        "createDescription": "Create a new role and configure its permissions",
+        "editTitle": "Edit Role",
+        "editDescription": "Edit this role's information and permissions",
+        "basicInformation": "Basic Information",
+        "fields": {
+          "name": "Role Name",
+          "displayName": "Display Name",
+          "description": "Description"
+        },
+        "placeholders": {
+          "name": "role_name",
+          "displayName": "Display Role Name",
+          "description": "Description of this role..."
+        },
+        "permissions": {
+          "title": "Permissions",
+          "selected": "selected permissions",
+          "categories": {
+            "user": "User Permissions",
+            "role": "Role Permissions",
+            "oauth": "OAuth Permissions",
+            "audit": "Audit Permissions",
+            "system": "System Permissions",
+            "settings": "Settings Permissions"
+          },
+          "actions": {
+            "read": "Read/View",
+            "write": "Write/Edit",
+            "delete": "Delete"
+          }
+        },
+        "cancel": "Cancel",
+        "save": "Save",
+        "create": "Create"
       }
     },
     "audit": {

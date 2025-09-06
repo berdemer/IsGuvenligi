@@ -23,7 +23,7 @@ import { AppService } from './app.service';
       expandVariables: true,
     }),
 
-    // Database - Temporarily disabled for authentication testing
+    // Database - Temporarily disabled due to authentication issues
     // TypeOrmModule.forRootAsync({
     //   imports: [ConfigModule],
     //   useFactory: (configService: ConfigService) => ({
@@ -42,21 +42,19 @@ import { AppService } from './app.service';
     //   inject: [ConfigService],
     // }),
 
-    // Redis Cache - Temporarily disabled for testing
-    // CacheModule.registerAsync({
-    //   isGlobal: true,
-    //   imports: [ConfigModule],
-    //   useFactory: async (configService: ConfigService) => {
-    //     return {
-    //       store: redisStore,
-    //       host: configService.get('REDIS_HOST', 'redis'),
-    //       port: configService.get('REDIS_PORT', 6379),
-    //       ttl: 300, // 5 minutes default
-    //       max: 1000, // maximum number of items in cache
-    //     };
-    //   },
-    //   inject: [ConfigService],
-    // }),
+    // Redis Cache - Enable for session management
+    CacheModule.registerAsync({
+      isGlobal: true,
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => {
+        return {
+          // Use memory store for now, can be switched to Redis later
+          ttl: 300, // 5 minutes default
+          max: 1000, // maximum number of items in cache
+        };
+      },
+      inject: [ConfigService],
+    }),
 
     // Feature modules
     AuthModule,

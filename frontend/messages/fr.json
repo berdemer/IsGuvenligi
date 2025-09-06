@@ -1006,104 +1006,6 @@
     "dateFormat": "Format de date",
     "timeFormat": "Format d'heure",
     "currency": "Devise",
-    "settings": "Paramètres",
-    "policy": {
-      "audit": {
-        "title": "Journaux d'Audit des Politiques",
-        "description": "Suivre les modifications et activités des politiques",
-        "buttons": {
-          "filters": "Filtres",
-          "refresh": "Actualiser",
-          "export": "Exporter"
-        },
-        "search": {
-          "placeholder": "Rechercher politique, utilisateur ou action..."
-        },
-        "stats": {
-          "showing": "Affichage de {filtered} / {total} enregistrements",
-          "lastUpdated": "Dernière mise à jour: {timestamp}"
-        },
-        "table": {
-          "timestamp": "Horodatage",
-          "action": "Action",
-          "policy": "Politique",
-          "user": "Utilisateur",
-          "changes": "Modifications",
-          "ipAddress": "Adresse IP",
-          "noChanges": "Aucun changement"
-        },
-        "actions": {
-          "updated": "Mis à jour",
-          "activated": "Activé",
-          "deactivated": "Désactivé",
-          "created": "Créé",
-          "deleted": "Supprimé",
-          "simulated": "Simulé",
-          "cloned": "Cloné"
-        },
-        "compliance": {
-          "title": "État de Conformité",
-          "description": "Métriques et état de conformité des politiques"
-        }
-      }
-    },
-    "sessions": {
-      "auditLog": {
-        "title": "Journal d'audit",
-        "description": "Piste d'audit complète des activités de gestion de session",
-        "export": "Exporter",
-        "stats": {
-          "totalEvents": "Total des événements",
-          "critical": "Critique",
-          "errors": "Erreurs",
-          "warnings": "Avertissements",
-          "adminActions": "Actions d'admin"
-        },
-        "tabs": {
-          "allEvents": "Tous les événements",
-          "securityEvents": "Événements de sécurité",
-          "adminActions": "Actions d'admin"
-        },
-        "filters": {
-          "searchPlaceholder": "Rechercher événements, utilisateurs, IP...",
-          "allActions": "Toutes les actions",
-          "allLevels": "Tous les niveaux",
-          "allActors": "Tous les acteurs"
-        },
-        "actionTypes": {
-          "login": "Connexion",
-          "logout": "Déconnexion",
-          "sessionRevoke": "Révoquer session",
-          "sessionFlag": "Marquer session",
-          "mfaChallenge": "Défi MFA",
-          "anomaly": "Anomalie",
-          "adminAction": "Action d'admin"
-        },
-        "severityLevels": {
-          "critical": "Critique",
-          "error": "Erreur",
-          "warning": "Avertissement",
-          "info": "Information"
-        },
-        "actorTypes": {
-          "user": "Utilisateur",
-          "system": "Système",
-          "admin": "Administrateur"
-        },
-        "table": {
-          "title": "Événements d'audit ({count})",
-          "timestamp": "Horodatage",
-          "action": "Action",
-          "actor": "Acteur",
-          "target": "Cible",
-          "severity": "Gravité",
-          "ipAddress": "Adresse IP",
-          "details": "Détails",
-          "actions": "Actions",
-          "risk": "Risque"
-        }
-      }
-    },
     "policy": {
       "audit": {
         "title": "Journal d'audit",
@@ -1181,6 +1083,63 @@
         "errors": {
           "loadFailed": "Échec du chargement des journaux d'audit",
           "exportFailed": "Échec de l'exportation des journaux d'audit"
+        }
+      }
+    },
+    "sessions": {
+      "auditLog": {
+        "title": "Journal d'audit",
+        "description": "Piste d'audit complète des activités de gestion de session",
+        "export": "Exporter",
+        "stats": {
+          "totalEvents": "Total des événements",
+          "critical": "Critique",
+          "errors": "Erreurs",
+          "warnings": "Avertissements",
+          "adminActions": "Actions d'admin"
+        },
+        "tabs": {
+          "allEvents": "Tous les événements",
+          "securityEvents": "Événements de sécurité",
+          "adminActions": "Actions d'admin"
+        },
+        "filters": {
+          "searchPlaceholder": "Rechercher événements, utilisateurs, IP...",
+          "allActions": "Toutes les actions",
+          "allLevels": "Tous les niveaux",
+          "allActors": "Tous les acteurs"
+        },
+        "actionTypes": {
+          "login": "Connexion",
+          "logout": "Déconnexion",
+          "sessionRevoke": "Révoquer session",
+          "sessionFlag": "Marquer session",
+          "mfaChallenge": "Défi MFA",
+          "anomaly": "Anomalie",
+          "adminAction": "Action d'admin"
+        },
+        "severityLevels": {
+          "critical": "Critique",
+          "error": "Erreur",
+          "warning": "Avertissement",
+          "info": "Information"
+        },
+        "actorTypes": {
+          "user": "Utilisateur",
+          "system": "Système",
+          "admin": "Administrateur"
+        },
+        "table": {
+          "title": "Événements d'audit ({count})",
+          "timestamp": "Horodatage",
+          "action": "Action",
+          "actor": "Acteur",
+          "target": "Cible",
+          "severity": "Gravité",
+          "ipAddress": "Adresse IP",
+          "details": "Détails",
+          "actions": "Actions",
+          "risk": "Risque"
         }
       }
     }
@@ -1602,6 +1561,47 @@
       "userGrantedAdmin": "L'utilisateur Mike Chen a reçu les privilèges admin",
       "backupCompleted": "Sauvegarde terminée",
       "dailyBackupSuccess": "Sauvegarde quotidienne de la base de données terminée avec succès"
+    }
+  },
+  "admin": {
+    "roles": {
+      "dialog": {
+        "createTitle": "Créer un Nouveau Rôle",
+        "createDescription": "Créez un nouveau rôle et configurez ses permissions",
+        "editTitle": "Modifier le Rôle",
+        "editDescription": "Modifiez les informations et permissions de ce rôle",
+        "basicInformation": "Informations de Base",
+        "fields": {
+          "name": "Nom du Rôle",
+          "displayName": "Nom d'Affichage",
+          "description": "Description"
+        },
+        "placeholders": {
+          "name": "nom_role",
+          "displayName": "Nom d'Affichage du Rôle",
+          "description": "Description de ce rôle..."
+        },
+        "permissions": {
+          "title": "Permissions",
+          "selected": "permissions sélectionnées",
+          "categories": {
+            "user": "Permissions Utilisateur",
+            "role": "Permissions de Rôle",
+            "oauth": "Permissions OAuth",
+            "audit": "Permissions d'Audit",
+            "system": "Permissions Système",
+            "settings": "Permissions de Paramètres"
+          },
+          "actions": {
+            "read": "Lire/Voir",
+            "write": "Écrire/Modifier",
+            "delete": "Supprimer"
+          }
+        },
+        "cancel": "Annuler",
+        "save": "Enregistrer",
+        "create": "Créer"
+      }
     }
   }
 }

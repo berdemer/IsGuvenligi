@@ -1,0 +1,62 @@
+{
+  "roles": {
+    "title": "Gestion des Rôles",
+    "addRole": "Ajouter un Rôle",
+    "editRole": "Modifier le Rôle",
+    "deleteRole": "Supprimer le Rôle",
+    "roleList": "Liste des Rôles",
+    "roleDetails": "Détails du Rôle",
+    "dialog": {
+      "createTitle": "Créer un Nouveau Rôle",
+      "createDescription": "Créez un nouveau rôle et configurez ses permissions",
+      "editTitle": "Modifier le Rôle",
+      "editDescription": "Modifiez les informations et permissions de ce rôle",
+      "basicInformation": "Informations de Base",
+      "fields": {
+        "name": "Nom du Rôle",
+        "displayName": "Nom d'Affichage",
+        "description": "Description"
+      },
+      "placeholders": {
+        "name": "nom_role",
+        "displayName": "Nom d'Affichage du Rôle",
+        "description": "Description de ce rôle..."
+      },
+      "permissions": {
+        "title": "Permissions",
+        "selected": "permissions sélectionnées",
+        "categories": {
+          "user": "Permissions Utilisateur",
+          "role": "Permissions de Rôle",
+          "oauth": "Permissions OAuth",
+          "audit": "Permissions d'Audit",
+          "system": "Permissions Système",
+          "settings": "Permissions de Paramètres"
+        },
+        "actions": {
+          "read": "Lire/Voir",
+          "write": "Écrire/Modifier",
+          "delete": "Supprimer"
+        }
+      },
+      "cancel": "Annuler",
+      "save": "Enregistrer",
+      "create": "Créer"
+    }
+  },
+  "departments": {
+    "title": "Gestion des Départements",
+    "addDepartment": "Ajouter un Département",
+    "editDepartment": "Modifier le Département",
+    "deleteDepartment": "Supprimer le Département",
+    "departmentList": "Liste des Départements",
+    "departmentDetails": "Détails du Département"
+  },
+  "settings": {
+    "title": "Paramètres Système",
+    "general": "Paramètres Généraux",
+    "security": "Paramètres de Sécurité",
+    "authentication": "Authentification",
+    "notifications": "Paramètres de Notification"
+  }
+}
